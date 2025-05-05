@@ -17,6 +17,8 @@ The SSO integration aims to:
 *   Improve security by leveraging the organization's existing IdP infrastructure and policies (e.g., MFA).
 *   Streamline user provisioning and de-provisioning (depending on IdP capabilities and configuration).
 
+{{< youtube vn2ZfY9couw >}}
+
 ## Technology: Tyk Identity Broker (TIB)
 
 Tyk AI Studio leverages the embedded **Tyk Identity Broker (TIB)** component to handle SSO integrations. TIB acts as a bridge between Tyk AI Studio (the Service Provider or SP) and various external Identity Providers (IdPs).

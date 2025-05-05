@@ -26,27 +26,33 @@ This guide will help you get started with the Tyk AI Studio using Docker Compose
 
 3. Create a `compose.yaml` file with the following content:
    ```yaml
-   version: "3"
-   services:
-     ai-sudio:
-       image: tykio/midsommar:latest
-       volumes:
-         - ./confs/.env:/app/.env
-       environment:
-         - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
-         - DATABASE_TYPE=postgres
-       depends_on:
-         - postgres
-       ports:
-         - 8080:8080  # Main application port
-         - 9090:9090  # Management API port
+    version: "3"
+    services:
+      midsommar:
+        image: tykio/midsommar:latest
+        volumes:
+          - ./confs/.env:/app/.env
+        environment:
+          - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+          - DATABASE_TYPE=postgres
+        depends_on:
+          postgres:
+            condition: service_healthy
+        ports:
+          - 8080:8080  # Main application port
+          - 9090:9090  # Gateway server port
 
-     postgres:
-       image: postgres:latest
-       environment:
-         - POSTGRES_USER=postgres
-         - POSTGRES_PASSWORD=postgres
-         - POSTGRES_DB=postgres
+      postgres:
+        image: postgres:latest
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=postgres
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U postgres"]
+          interval: 5s
+          timeout: 5s
+          retries: 5
    ```
 
 4. Create a configuration directory and environment file:
@@ -110,7 +116,7 @@ docker compose down
 The Docker Compose setup includes:
 
 - **Tyk AI Studio Service**: The main AI Portal application
-  - Runs on ports 8080 (web interface) and 9090 (management API)
+  - Runs on ports 8080 (web interface) and 9090 (gateway server)
   - Connects to PostgreSQL for data storage
   - Uses environment variables for configuration
 
