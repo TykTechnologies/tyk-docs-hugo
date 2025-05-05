@@ -1,3 +1,11 @@
+$tab-height: 45px;
+$tab-height-mobile: 42px;
+$tab-spacing: 20px;
+$border-color: #e3ceff;
+$hover-bg: #f3f4f6;
+$active-color: #8438fa;
+$text-color: #374151;
+
 .tabs-menu {
   position: fixed;
   top: 64px;
@@ -5,8 +13,9 @@
   width: 100%;
   z-index: 100;
   background: #fff;
-  border-bottom: 1px solid #e3ceff;
-  height: 45px;
+  border-bottom: 1px solid $border-color;
+  height: $tab-height;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .tabs-wrapper {
@@ -21,48 +30,62 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  gap: 20px;
+  gap: $tab-spacing;
   background: #fff;
+  margin: 0 $tab-spacing;
+  
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-left: 25px;
-}
-
-.tabs-container::-webkit-scrollbar {
-  display: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .tab-item {
   white-space: nowrap;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .tab-link {
-  color: #374151;
+  color: $text-color;
   text-decoration: none;
   border-radius: 4px;
+  padding: 8px 12px;
   transition: all 0.3s ease;
+  font-weight: 500;
+  
+  &:hover {
+    background: $hover-bg;
+    color: darken($text-color, 10%);
+  }
 }
 
-.tab-link:hover {
-  background: #f3f4f6;
+.page-content,
+.section-page {
+  padding-top: 18px;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .tab-item {
     font-size: 13px;
   }
 
   .tab-link {
-    padding: 8px 0;
+    padding: 8px 10px;
   }
 
   .tabs-menu {
-    height: 42px;
+    height: $tab-height-mobile;
   }
 
   .tabs-wrapper .nav_sub_active {
-    border-bottom: 2px solid #8438fa;
+    border-bottom: 2px solid $active-color;
   }
 }
 
@@ -77,9 +100,7 @@
     right: 0;
     padding: 0 1rem;
   }
-}
 
-@media (max-width: 1024px) {
   .documentation-table-of-contents {
     position: relative;
     width: 100%;
@@ -88,15 +109,9 @@
     background: transparent;
     padding: 0;
   }
-}
 
-@media (max-width: 1024px) {
   .page-content__main {
     display: flex;
     flex-direction: column;
   }
-}
-
-.page-content, .section-page {
-  padding-top: 35px;
 }

@@ -16,15 +16,12 @@
     {{- $has := false -}}
     {{- $isActiveParent := false -}}
 
-    {{- /* Check if current item or any of its descendants is active */ -}}
     {{- $path := replace $item.path "/" "" -}}
     {{- if eq $path $pagePath -}}
-      {{- $has = true -}}
       {{- $is = true -}}
       {{- $isActiveParent = true -}}
     {{- end -}}
 
-    {{- /* Check all descendants recursively */ -}}
     {{- if (isset $item "menu") -}}
       {{- range $child := $item.menu -}}
         {{- $childPath := replace $child.path "/" "" -}}
@@ -39,6 +36,22 @@
               {{- $has = true -}}
               {{- $isActiveParent = true -}}
             {{- end -}}
+            {{- if (isset $grandChild "menu") -}}
+              {{- /* Recursively check deeper levels */ -}}
+              {{- $greatGrandHas := false -}}
+              {{- range $greatGrandChild := $grandChild.menu -}}
+                {{- $greatGrandChildPath := replace $greatGrandChild.path "/" "" -}}
+                {{- if eq $greatGrandChildPath $pagePath -}}
+                  {{- $has = true -}}
+                  {{- $isActiveParent = true -}}
+                  {{- $greatGrandHas = true -}}
+                {{- end -}}
+              {{- end -}}
+              {{- if $greatGrandHas -}}
+                {{- $has = true -}}
+                {{- $isActiveParent = true -}}
+              {{- end -}}
+            {{- end -}}
           {{- end -}}
         {{- end -}}
       {{- end -}}
@@ -49,37 +62,37 @@
       {{- $has = false -}}
     {{ end }}
 
+    {{- $active := or $is $isActiveParent $parentActive $has -}}
+    {{- $shouldShowChildren := or $active $is -}}
+
     {{- if and (isset $item "menu") (ne $item.category "Label") (ne $item.category "Tab") -}}
-      {{ if or $isActiveParent $parentActive -}}
-        <li
-          class="category-{{ $item.category }} {{ if $is }}active{{ end }} {{ if or $is $has (eq $item.category `Label`) (eq $item.category `Tab`) }}
-            st-open
-          {{ else }}
-            st-collapsed
-          {{ end }}">
-          {{- if $item.path -}}
-            {{- $prefixPath := strings.TrimLeft "/" $item.path -}}
-            <a href="{{ $prefixPath | relURL }}" class="directory-link {{ if not $item.show }}paint-red{{ end }}">
-              {{- $item.title -}}
-            </a>
+      <li class="category-{{ $item.category }} {{ if or $is $has }}st-open{{ else }}st-collapsed{{ end }}">
+        {{- if $item.path -}}
+          {{- $prefixPath := strings.TrimLeft "/" $item.path -}}
+          {{- if eq $item.category "Directory" -}}
+            <a href="{{ $prefixPath | relURL }}" class="directory-link {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
           {{- else -}}
-            <a class="{{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
+            <a href="{{ $prefixPath | relURL }}" class="{{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
           {{- end -}}
-          {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" (or $isActiveParent $parentActive)) -}}
-        </li>
-      {{ end }}
+        {{- else -}}
+          <a class="{{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
+        {{- end -}}
+        {{- if $shouldShowChildren -}}
+          {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" $active) -}}
+        {{- end -}}
+      </li>
     {{- else if and ($item.show) (or (eq $item.category "Label") (eq $item.category "Tab")) -}}
-      {{- if or $isActiveParent $parentActive (and $isHome (eq $item.title "Home")) -}}
+      {{- if or $active (and $isHome (eq $item.title "Home")) -}}
         {{- if eq $item.category "Label" -}}
           <hr />
         {{- end -}}
         <h6 style="font-size: 15px;" class="{{ if and (eq $item.category "Tab") (eq $index 0) }}first-tab{{ end }}">{{ $item.title }}</h6>
-        {{- if or $isActiveParent $parentActive -}}
+        {{- if or $active -}}
           {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" true) -}}
         {{- end -}}
       {{- end -}}
     {{- else -}}
-      {{ if or $isActiveParent $parentActive -}}
+      {{ if or $active -}}
         <li class="st-file {{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">
           {{- $prefixPath := strings.TrimLeft "/" $item.path -}}
           {{- $prefixPath := strings.TrimRight "/" $item.path -}}
@@ -87,9 +100,7 @@
           {{- $prefixMD := printf "%s.md" $prefixPath -}}
 
           {{- if $prefixPath -}}
-            <a href="{{ ref $page $prefixMD }}" class="{{ if not $item.show }}paint-red{{ end }}">
-              {{- $item.title -}}
-            </a>
+            <a href="{{ ref $page $prefixMD }}" class="{{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
           {{- else -}}
             {{- $item.title -}}
           {{- end -}}

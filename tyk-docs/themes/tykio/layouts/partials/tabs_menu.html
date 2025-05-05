@@ -40,18 +40,30 @@
                     {{- $path_not_empty = true -}}
                   {{- end -}}
                 {{- end -}}
+                {{- if (isset . "menu") -}}
+                  {{- range .menu -}}
+                    {{- $greatGrandChildPath := replace .path "/" "" -}}
+                    {{- if eq $greatGrandChildPath $pagePath -}}
+                      {{- $selected = true -}}
+                      {{- $has_active_child = true -}}
+                      {{- if or (ne $greatGrandChildPath "") $is_home -}}
+                        {{- $path_not_empty = true -}}
+                      {{- end -}}
+                    {{- end -}}
+                  {{- end -}}
+                {{- end -}}
               {{- end -}}
             {{- end -}}
           {{- end -}}
         {{- end -}}
 
         {{- if or (.show) ($showEmptyPages) -}}
-          <div class="tab-item {{if (and $selected $path_not_empty )}}nav_sub_active{{end}}">
+          <div class="tab-item {{if (or $selected $has_active_child)}}nav_sub_active{{end}}">
             {{- if .url -}}
-              <a href="{{ .url }}" class="tab-link {{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}} active{{end}}">{{- .title -}}</a>
+              <a href="{{ .url }}" class="tab-link {{if not .show}} paint-red {{end}} {{if (or $selected $has_active_child)}} active{{end}}">{{- .title -}}</a>
             {{- else -}}
               {{- $prefixPath := strings.TrimLeft "/" .path -}}
-              <a href="{{$prefixPath | relURL}}" class="tab-link {{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}} active{{end}}">{{- .title -}}</a>
+              <a href="{{$prefixPath | relURL}}" class="tab-link {{if not .show}} paint-red {{end}} {{if (or $selected $has_active_child)}} active{{end}}">{{- .title -}}</a>
             {{- end -}}
           </div>
         {{- end -}}
