@@ -105,7 +105,7 @@ As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-
 
 When using HMAC request signing, you need to provide Tyk with sufficient information to verify the client's identity from the signature in the request. You do this by creating and registering HMAC user [session objects]({{< ref "api-management/policies#what-is-a-session-object" >}}) with Tyk. When these are created, a matching HMAC secret is also generated, which must be used by the client when signing their requests.
 
-The way that this is implemented is through the creation of a key that grants access to the API (as you would for an API protected by [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}})) and indicating that the key is to be used for HMAC signed requests by setting `hmac_enabled` to `true`. Tyk will return the HMAC secret in the response confirming creation of the key.
+The way that this is implemented is through the creation of a key that grants access to the API (as you would for an API protected by [auth token]({{< ref "api-management/authentication/bearer-token" >}})) and indicating that the key is to be used for HMAC signed requests by setting `hmac_enabled` to `true`. Tyk will return the HMAC secret in the response confirming creation of the key.
 
 When calling the API, the client would never use the key itself as a token, instead they must sign requests using the provided secret.
 

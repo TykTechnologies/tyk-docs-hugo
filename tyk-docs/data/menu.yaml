@@ -79,6 +79,18 @@ menu:
         path: /api-management/client-authentication
         show: True
         menu:
+        - title: "Bearer Tokens"
+          path: /api-management/authentication/bearer-token
+          category: Page
+          show: True
+        - title: "Basic Authentication"
+          path: /api-management/authentication/basic-authentication
+          category: Page
+          show: True
+        - title: "OAuth 2.0"
+          path: /api-management/authentication/oauth-2
+          category: Page
+          show: True
         - title: "JSON Web Tokens"
           path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
           category: Page
@@ -358,8 +370,13 @@ menu:
         show: True
       - title: "API Consumer"
         path: /portal/api-consumer
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Invite Codes"
+          path: /portal/api-consumer/invite-codes
+          category: Page
+          show: True
       - title: "API Provider"
         path: /portal/api-provider
         category: Page
