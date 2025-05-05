@@ -229,8 +229,8 @@ var testJSVMData = new TykJS.TykMiddleware.NewMiddleware({});
 testJSVMData.NewProcessRequest(function(request, session, config) {
   // Logic to determine if the request should be overridden
   if (someCondition) {
-      request.ReturnOverrides.responseCode = 403;
-      request.ReturnOverrides.responseBody = "Access Denied";
+      request.ReturnOverrides.ResponseCode = 403;
+      request.ReturnOverrides.ResponseBody = "Access Denied";
       request.ReturnOverrides.headers = {"X-Error": "the-condition"};
       // This stops the request from proceeding to the upstream
   }
