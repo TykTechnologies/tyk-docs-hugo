@@ -38,7 +38,7 @@ One of the most common initial steps is connecting Tyk AI Studio to an LLM provi
     *   **Other Parameters:** Configure any other provider-specific settings (e.g., Base URL for Azure/custom endpoints, default temperature, etc.).
 5.  **Save:** Save the LLM configuration.
 
-    ![Placeholder: LLM Config UI](https://placehold.co/600x400?text=LLM+Configuration+UI)
+    {{< img src="/img/ai-management/initial-configuration-llm-config-ui.png" alt="LLM Config UI" >}}
 
 This LLM is now available for use within Tyk AI Studio, subject to [User/Group permissions]({{< ref "ai-management/ai-studio/user-management" >}}).
 
