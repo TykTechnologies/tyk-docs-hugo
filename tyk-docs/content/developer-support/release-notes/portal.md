@@ -241,6 +241,18 @@ Plans:
 
 These APIs complement the UI-based product management capabilities, enabling automated workflows and CI/CD integration for product lifecycle management.
 
+
+{{< note >}}
+**Note**
+
+Request body for Get all plans had two changes:
+- RateLimit: from string -> number
+- Quota: from string -> integer
+
+For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}})
+{{< /note >}}
+
+
 </details>
 </li>
 </ul>
