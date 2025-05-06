@@ -233,7 +233,7 @@ This comparison clearly shows how Request Throttling changes the behaviour from 
 ---
 ## Configuration Options
 
-Request Throttling is configured within Tyk [Security Policies]({{< ref "/api-management/policies" >}}) or directly on individual [Access Keys]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}).
+Request Throttling is configured within Tyk [Security Policies]({{< ref "/api-management/policies" >}}) or directly on individual [Access Keys]({{< ref "api-management/authentication/bearer-token" >}}).
 
 The configuration involves setting two specific fields:
 
