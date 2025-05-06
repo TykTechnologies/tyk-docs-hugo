@@ -104,34 +104,8 @@ setTimeout(function(container){
         tabPane = $(container).find('> .tab-content > .tab-pane').eq(tabIndex),
         tabId = tabPane.attr('id');
     
-    // Get the existing hash
-    var currentHash = window.location.hash.substr(1);
+    // Always use just the tab ID in the URL
     var newHash = tabId;
-    
-    // If there's a section ID, preserve it and add the tab ID
-    if (currentHash && currentHash !== tabId) {
-      // Check if the current hash is a compound hash (section + tab)
-      var existingTabIds = [];
-      $(container).find('> .tab-content > .tab-pane').each(function() {
-        existingTabIds.push($(this).attr('id'));
-      });
-      
-      // Remove any existing tab ID from the current hash
-      var sectionPart = currentHash;
-      for (var i = 0; i < existingTabIds.length; i++) {
-        if (currentHash.endsWith('-' + existingTabIds[i])) {
-          sectionPart = currentHash.substring(0, currentHash.length - existingTabIds[i].length - 1);
-          break;
-        } else if (currentHash.includes('-' + existingTabIds[i] + '-')) {
-          var parts = currentHash.split('-' + existingTabIds[i] + '-');
-          sectionPart = parts.join('-');
-          break;
-        }
-      }
-      
-      // Combine section with new tab ID
-      newHash = sectionPart + '-' + tabId;
-    }
     
     // Update URL without full page reload
     if (history.pushState && tabId) {
