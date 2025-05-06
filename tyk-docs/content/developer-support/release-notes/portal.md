@@ -117,7 +117,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 #### Breaking Changes {#breaking-changes-v1.13.0}
 
 The `Plans` API object includes two changes:
-- The data type of the **RateLimit** field has been changed from string to number.
+- The data type of the **RateLimit** field has been changed from string to integer.
 - The data type of the **Quota** field has been changed from string to integer.
 
 For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
