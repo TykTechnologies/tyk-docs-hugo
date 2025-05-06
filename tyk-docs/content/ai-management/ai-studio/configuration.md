@@ -15,7 +15,7 @@ This guide covers the essential first steps to take within the Tyk AI Studio UI 
     *   **Email:** The `ADMIN_EMAIL` configured during deployment (e.g., `admin@yourdomain.com`).
     *   **Password:** Check the deployment logs or default configuration for the initial admin password setup. You may be required to set a new password upon first login.
 
-    ![Placeholder: Login Screen](https://placehold.co/600x300?text=Tyk AI Studio+Login)
+    {{< img src="/img/ai-management/login-screen.png" alt="Login Screen" >}}
 
 ## 2. Configure Your First LLM
 
