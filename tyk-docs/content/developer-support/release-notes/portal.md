@@ -114,8 +114,13 @@ The v1.13.0 release includes the following new features and improvements:
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.0) below.
 
-#### Breaking Changes
-This release has no breaking changes.
+#### Breaking Changes {#breaking-changes-v1.13.0}
+
+The `Plans` API object includes two changes:
+- The data type of the **RateLimit** field has been changed from string to number.
+- The data type of the **Quota** field has been changed from string to integer.
+
+For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
 
 #### Deprecations
 There are no deprecations in this release.
@@ -123,7 +128,10 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this release.
 
-While upgrading to 1.13.0, Portal will automatically migrate the new Custom IDs to most of the existing resources. For more information, please refer to the [changelog](#Changelog-v1.13.0).
+While upgrading to 1.13.0, 
+1. Portal will automatically migrate the new Custom IDs to most of the existing resources. For more information, please refer to the [changelog](#Changelog-v1.13.0).
+2. Users are advised to take appropriate actions in their system regarding the `Plans` API object changes as described in the [breaking changes section]({{< ref "#breaking-changes-v1.13.0" >}}).
+
 To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
@@ -225,33 +233,26 @@ This addition complements the embedded Tyk Identity Broker functionality introdu
 
 Added new APIs for managing Products and Plans programmatically, enabling automation of the product lifecycle. These APIs include:
 
-Products:
+**Products:**
 - Create products 
 - List all products 
 - Get product details 
 - Update products
 - Delete products
 
-Plans:
+**Plans:**
 - Create plans
-- List all plans 
-- Get plan details
 - Update plans
 - Delete plans
-
-These APIs complement the UI-based product management capabilities, enabling automated workflows and CI/CD integration for product lifecycle management.
-
 
 {{< note >}}
 **Note**
 
-Request body for Get all plans had two changes:
-- RateLimit: from string -> number
-- Quota: from string -> integer
+The Plans API object has schema changes; please refer to the [breaking changes section]({{< ref "#breaking-changes-v1.13.0" >}}) for details.
 
-For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}})
 {{< /note >}}
 
+These APIs complement the UI-based product management capabilities, enabling automated workflows and CI/CD integration for product lifecycle management.
 
 </details>
 </li>
