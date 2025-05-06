@@ -85,6 +85,6 @@ Tyk AI Studio allows setting monthly spending limits to control AI costs.
 *   **LLM Budget:** Set the `MonthlyBudget` field when creating/editing an LLM configuration.
 *   **App Budget:** Set the `MonthlyBudget` field when creating/editing an App configuration.
 
-    {{< img src="/img/ai-management/llm-budger-config.png" alt="Budget Config" >}}
+    {{< img src="/img/ai-management/llm-budget-config.png" alt="Budget Config" >}}
 
 By combining LLM configuration, pricing, and budgeting, administrators gain granular control over AI model access and expenditure within Tyk AI Studio.
