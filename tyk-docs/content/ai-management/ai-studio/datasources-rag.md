@@ -67,14 +67,14 @@ Administrators configure Data Sources via the UI or API:
     *   Reference a [Secret]({{< ref "ai-management/ai-studio/secrets" >}}) containing the API key (if applicable).
 4.  **Upload Files:** Upload documents to be chunked, embedded, and indexed into the vector store.
 
-    ![Placeholder: Datasource Config](https://placehold.co/600x400?text=DataSource+Config)
+    {{< img src="/img/ai-management/data-sources-config.png" alt="Datasource Config" >}}
 
 ## Organizing & Assigning Data Sources (Admin)
 
 *   **Create Catalogues:** Group related Data Sources into Catalogues (e.g., "Product Docs", "Support KB").
 *   **Assign to Groups:** Assign Data Source Catalogues to specific [User Groups]({{< ref "ai-management/ai-studio/user-management" >}}).
 
-    ![Placeholder: Catalogue Config](https://placehold.co/600x400?text=DataSource+Catalogue+Config)
+    {{< img src="/img/ai-management/data-sources-catalog-config.png" alt="Catalogue Config" >}}
 
 ## Using Data Sources (User)
 
