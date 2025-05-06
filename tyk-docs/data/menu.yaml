@@ -14,8 +14,10 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /tyk-overview
+          - title: "Overview"
+            path: /tyk-overview
+            category: Page
+            show: True
           - title: "Tyk Stack"
             path: /tyk-stack
             category: Page

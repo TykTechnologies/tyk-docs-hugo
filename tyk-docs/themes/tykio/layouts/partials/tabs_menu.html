@@ -14,8 +14,8 @@
         {{- $has_active_child := false -}}
 
         {{- if eq $path $pagePath -}}
-          {{- $selected = true -}}
-          {{- if or (ne $path "") $is_home -}}
+          {{- if or (ne $pagePath "") $is_home -}}
+            {{- $selected = true -}}
             {{- $path_not_empty = true -}}
           {{- end -}}
         {{- end -}}
@@ -24,9 +24,9 @@
           {{- range .menu -}}
             {{- $childPath := replace .path "/" "" -}}
             {{- if eq $childPath $pagePath -}}
-              {{- $selected = true -}}
-              {{- $has_active_child = true -}}
-              {{- if or (ne $childPath "") $is_home -}}
+              {{- if or (ne $pagePath "") $is_home -}}
+                {{- $selected = true -}}
+                {{- $has_active_child = true -}}
                 {{- $path_not_empty = true -}}
               {{- end -}}
             {{- end -}}
@@ -34,9 +34,9 @@
               {{- range .menu -}}
                 {{- $grandChildPath := replace .path "/" "" -}}
                 {{- if eq $grandChildPath $pagePath -}}
-                  {{- $selected = true -}}
-                  {{- $has_active_child = true -}}
-                  {{- if or (ne $grandChildPath "") $is_home -}}
+                  {{- if or (ne $pagePath "") $is_home -}}
+                    {{- $selected = true -}}
+                    {{- $has_active_child = true -}}
                     {{- $path_not_empty = true -}}
                   {{- end -}}
                 {{- end -}}
@@ -44,9 +44,9 @@
                   {{- range .menu -}}
                     {{- $greatGrandChildPath := replace .path "/" "" -}}
                     {{- if eq $greatGrandChildPath $pagePath -}}
-                      {{- $selected = true -}}
-                      {{- $has_active_child = true -}}
-                      {{- if or (ne $greatGrandChildPath "") $is_home -}}
+                      {{- if or (ne $pagePath "") $is_home -}}
+                        {{- $selected = true -}}
+                        {{- $has_active_child = true -}}
                         {{- $path_not_empty = true -}}
                       {{- end -}}
                     {{- end -}}
@@ -71,5 +71,3 @@
     {{- end -}}
   </div>
 </div>
-
-
