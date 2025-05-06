@@ -75,26 +75,21 @@
 
     {{- if and (isset . "menu") (ne .category "Label") -}}
       {{ if or (.show) ($showEmptyPages) -}}
-        <li
-          class="category-{{ .category }} {{ if $is }}active{{ end }} {{ if or $is $has (eq .category `Label`) }}
-            st-open
-          {{ else }}
-            st-collapsed
-          {{ end }}">
+        <li class="category-{{ .category }}{{ if $is }} active{{ end }}{{ if or $is $has (eq .category `Label`) }} st-open{{ else }} st-collapsed{{ end }}">
           {{- if .path -}}
             {{- $prefixPath := strings.TrimLeft "/" .path -}}
-            <a href="{{ $prefixPath | relURL }}" class="directory-link {{ if not .show }}paint-red{{ end }}">
-              {{- .title -}}
+            <a href="{{ $prefixPath | relURL }}" class="directory-link{{ if not .show }} paint-red{{ end }}">
+              <span class="static-text">{{- .title -}}</span>
             </a>
           {{- else -}}
-            <a class="{{ if not .show }}paint-red{{ end }}">{{- .title -}}</a>
+            <a class="nav-label{{ if not .show }} paint-red{{ end }}">{{- .title -}}</a>
           {{- end -}}
           {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
         </li>
       {{ end }}
     {{- else if and (.show) (eq .category "Label") -}}
       {{- if eq .title "Home" -}}
-        <a href="{{ "" | relURL }}" style="font-size: 15px;">{{ .title }}</a>
+        <a href="{{ "" | relURL }}" class="home-link" style="font-size: 15px;">{{ .title }}</a>
       {{- else -}}
         <hr />
         <h6 style="font-size: 15px;">{{ .title }}</h6>
@@ -102,18 +97,18 @@
       {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
     {{- else -}}
       {{ if or (.show) ($showEmptyPages) -}}
-        <li class="st-file {{ if $is }}active{{ end }} {{ if not .show }}paint-red{{ end }}">
+        <li class="st-file{{ if $is }} active{{ end }}{{ if not .show }} paint-red{{ end }}">
           {{- $prefixPath := strings.TrimLeft "/" .path -}}
           {{- $prefixPath := strings.TrimRight "/" .path -}}
           {{- $prefixPath := replace $prefixPath "--" "-&-" -}}
           {{- $prefixMD := printf "%s.md" $prefixPath -}}
 
           {{- if $prefixPath -}}
-            <a href="{{ ref $page $prefixMD }}" class="{{ if not .show }}paint-red{{ end }}">
-              {{- .title -}}
+            <a href="{{ ref $page $prefixMD }}" class="menu-link{{ if not .show }} paint-red{{ end }}">
+              <span class="menu-text">{{- .title -}}</span>
             </a>
           {{- else -}}
-            {{- .title -}}
+            <span class="static-title">{{- .title -}}</span>
           {{- end -}}
 
           {{ if not .path }}
