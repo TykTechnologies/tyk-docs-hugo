@@ -47,7 +47,7 @@ Administrators manage users via the UI or API:
 *   **Status Management:** Activate or deactivate user accounts.
 *   **API Key Management:** Admins may have visibility into user API keys (though users typically generate their own).
 
-    ![Placeholder: User Management UI](https://placehold.co/600x400?text=User+Management+UI)
+    {{< img src="/img/ai-management/user-management-ui.png" alt="User Management UI" >}}
 
 ## Group Management (Admin)
 
@@ -57,7 +57,7 @@ Groups are central to managing permissions:
 *   **User Assignment:** Add/remove users from groups.
 *   **Resource Assignment:** Grant access to specific LLM Configurations, Tool Catalogues, or Data Source Catalogues *to the group*. Any user in that group inherits this access.
 
-    ![Placeholder: Group Management UI](https://placehold.co/600x400?text=Group+Management+UI)
+    {{< img src="/img/ai-management/group-management-ui.png" alt="Group Management UI" >}}
 
 ## Authentication Methods
 

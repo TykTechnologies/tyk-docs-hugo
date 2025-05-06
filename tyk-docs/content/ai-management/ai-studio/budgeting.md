@@ -33,7 +33,7 @@ Budgets are typically configured by administrators and applied at specific level
 
 Administrators configure these budgets via the Tyk AI Studio UI or API.
 
-    ![Placeholder: Budget Config UI](https://placehold.co/600x400?text=Budget+Configuration)
+    {{< img src="/img/ai-management/budget-config-ui.png" alt="Budget Config UI" >}}
 
 ## Enforcement
 
