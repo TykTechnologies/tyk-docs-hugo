@@ -1452,7 +1452,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Dashboard: Fix misconfiguration preventing detail log display with Mongo Pump</summary>
 
-This fix addresses a misconfiguration in the Dashboard chart that was causing the Log Browser not showing API activity logs for users utilizing Mongo Pump. The default configuration `dashboard.useShardedAnalytics` is now set to `true`, ensuring proper log visibility. Users who use Mongo Pump will now be able to view the API activity log as expected. Additionally, the correct Dashboard environment variable `TYK_DB_USESHARDEDANLAYTICS` is now set using `dashboard.useShardedAnalytics`. This enhancement ensures accurate log visibility and improves the overall user experience with the Dashboard by properly configuring sharded analytics.
+This fix addresses a misconfiguration in the Dashboard chart that was causing the Log Browser not showing API activity logs for users utilizing Mongo Pump. The default configuration `dashboard.useShardedAnalytics` is now set to `true`, ensuring proper log visibility. Users who use Mongo Pump will now be able to view the API activity log as expected. Additionally, the correct Dashboard environment variable `TYK_DB_USESHARDEDANALYTICS` is now set using `dashboard.useShardedAnalytics`. This enhancement ensures accurate log visibility and improves the overall user experience with the Dashboard by properly configuring sharded analytics.
 </details>
 </li>
 

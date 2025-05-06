@@ -1113,7 +1113,7 @@ Type: `bool`<br />
 Skip the TLS verification in the transport layer of the HTTP client. Is intended to have it enable for POC and testing purposes, do not use in production. Defaults to false.
 
 ### use_sharded_analytics
-ENV: <b>TYK_DB_USESHARDEDANLAYTICS</b><br />
+ENV: <b>TYK_DB_USESHARDEDANALYTICS</b><br />
 Type: `bool`<br />
 
 If using the `mongo-pump-selective` pump, where data is written to org-id-specific collections in MongoDB, then enabling this option will switch querying for analytics over to the independent collection entries.
