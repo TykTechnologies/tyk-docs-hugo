@@ -38,7 +38,7 @@ Users access the AI Portal through a web browser at the configured URL for their
 4.  **Documentation Access:** Users can browse integrated documentation to learn about available capabilities.
 5.  **Profile Management:** Users can update their profile settings, preferences, and view usage statistics.
 
-    ![Placeholder: AI Portal Dashboard](https://placehold.co/600x400?text=AI+Portal+Dashboard)
+    {{< img src="/img/ai-management/ai-portal-dashboard.png" alt="AI Portal Dashboard" >}}
 
 ## Configuration (Admin)
 
@@ -51,7 +51,7 @@ Administrators configure the AI Portal through the Tyk AI Studio admin interface
 *   **Access Control:** Manage which user groups can access the portal and specific features within it.
 *   **Custom Content:** Add organization-specific documentation, welcome messages, or announcements.
 
-    ![Placeholder: Portal Configuration](https://placehold.co/600x400?text=Portal+Configuration)
+    {{< img src="/img/ai-management/ai-portal-configuration.png" alt="Portal Configuration" >}}
 
 ## API Access
 
