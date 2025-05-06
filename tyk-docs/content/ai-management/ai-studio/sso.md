@@ -45,7 +45,7 @@ Administrators configure SSO providers within the Tyk AI Studio administration i
     *   *Example:* If the IdP sends a `groups` claim containing "Tyk AI Studio Admins", map this to automatically add the user to the "Administrators" group in Tyk AI Studio.
 5.  **Enable Provider:** Activate the configured IdP for user login.
 
-    ![Placeholder: SSO Config UI](https://placehold.co/600x400?text=SSO+Provider+Config)
+    {{< img src="/img/ai-management/sso-config-ui.png" alt="SSO Config UI" >}}
 
 ## Login Flow
 
