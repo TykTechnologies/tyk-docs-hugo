@@ -217,7 +217,7 @@ function getActiveId(){
 function getHighestHeading() {
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
-  const headerHeight = 80; // Adjust this value to match the height of your fixed header
+  const headerHeight = 100; // Adjust this value to match the height of your fixed header
   // Find the highest visible heading in the viewport
   contentTitles.each(function () {
     const rect = $(this)[0].getBoundingClientRect();

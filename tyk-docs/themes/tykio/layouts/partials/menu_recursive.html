@@ -46,6 +46,42 @@
                   {{- $isActiveParent = true -}}
                   {{- $greatGrandHas = true -}}
                 {{- end -}}
+                {{- if (isset $greatGrandChild "menu") -}}
+                  {{- $fifthLevelHas := false -}}
+                  {{- range $fifthLevelChild := $greatGrandChild.menu -}}
+                    {{- $fifthLevelChildPath := replace $fifthLevelChild.path "/" "" -}}
+                    {{- if eq $fifthLevelChildPath $pagePath -}}
+                      {{- $has = true -}}
+                      {{- $isActiveParent = true -}}
+                      {{- $greatGrandHas = true -}}
+                      {{- $fifthLevelHas = true -}}
+                    {{- end -}}
+                    {{- if (isset $fifthLevelChild "menu") -}}
+                      {{- $sixthLevelHas := false -}}
+                      {{- range $sixthLevelChild := $fifthLevelChild.menu -}}
+                        {{- $sixthLevelChildPath := replace $sixthLevelChild.path "/" "" -}}
+                        {{- if eq $sixthLevelChildPath $pagePath -}}
+                          {{- $has = true -}}
+                          {{- $isActiveParent = true -}}
+                          {{- $greatGrandHas = true -}}
+                          {{- $fifthLevelHas = true -}}
+                          {{- $sixthLevelHas = true -}}
+                        {{- end -}}
+                      {{- end -}}
+                      {{- if $sixthLevelHas -}}
+                        {{- $has = true -}}
+                        {{- $isActiveParent = true -}}
+                        {{- $greatGrandHas = true -}}
+                        {{- $fifthLevelHas = true -}}
+                      {{- end -}}
+                    {{- end -}}
+                  {{- end -}}
+                  {{- if $fifthLevelHas -}}
+                    {{- $has = true -}}
+                    {{- $isActiveParent = true -}}
+                    {{- $greatGrandHas = true -}}
+                  {{- end -}}
+                {{- end -}}
               {{- end -}}
               {{- if $greatGrandHas -}}
                 {{- $has = true -}}
@@ -84,12 +120,18 @@
     {{- else if and ($item.show) (or (eq $item.category "Label") (eq $item.category "Tab")) -}}
       {{- if or $active (and $isHome (eq $item.title "Home")) -}}
         {{- if eq $item.category "Label" -}}
-          <hr />
+          {{- if ne $index 0 }}<hr />{{- end }}
+          <h6 style="font-size: 15px;">{{ $item.title }}</h6>
         {{- end -}}
-        <h6 style="font-size: 15px;" class="{{ if and (eq $item.category "Tab") (eq $index 0) }}first-tab{{ end }}">{{ $item.title }}</h6>
+        <h6 style="font-size: 15px;" class="sidebar-tab-title">{{ $item.title }}</h6>
         {{- if or $active -}}
           {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" true) -}}
         {{- end -}}
+      {{- end -}}
+    {{- else if and ($item.show) (eq $item.category "Tab") -}}
+      <h6 class="sidebar-tab-title">{{ $item.title }}</h6>
+      {{- if $item.menu -}}
+        {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" $active) -}}
       {{- end -}}
     {{- else -}}
       {{ if or $active -}}
@@ -114,3 +156,6 @@
   {{- end -}}
 </ul>
 {{- end -}}
+<style>
+   
+</style>

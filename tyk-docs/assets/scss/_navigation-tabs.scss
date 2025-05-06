@@ -16,6 +16,15 @@ $text-color: #374151;
   border-bottom: 1px solid $border-color;
   height: $tab-height;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: top 0.3s ease;
+}
+
+body.has-hubspot-banner .tabs-menu {
+  top: calc(64px + 68px); 
+}
+
+.sidebar-tab-title {
+  display: none !important;
 }
 
 .tabs-wrapper {
@@ -70,7 +79,11 @@ $text-color: #374151;
 .section-page {
   padding-top: 18px;
 }
-
+.page-content {
+  h2, h3, h4, h5, h6 {
+    scroll-margin-top: 35px;
+  }
+}
 @media (max-width: 768px) {
   .tab-item {
     font-size: 13px;
