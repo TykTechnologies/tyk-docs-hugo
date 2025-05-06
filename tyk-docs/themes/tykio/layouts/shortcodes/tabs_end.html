@@ -34,31 +34,75 @@
 var tabsBontainer = document.currentScript.previousElementSibling.previousElementSibling;
 
 setTimeout(function(container){
+  // Create tab navigation items
   $(container).find('> .tab-content > .tab-pane').each(function(idx, item) {
     var navTabs = $(this.parentNode.parentNode).find('> .nav-tabs'),
-        title = $(this).attr('title');
-    navTabs.append('<li><a href="#">'+title+'</a></li');
+        title = $(this).attr('title'),
+        id = $(this).attr('id');
+    navTabs.append('<li><a href="#' + id + '">'+title+'</a></li');
   });
 
-  $(container).find('> ul.nav-tabs').each(function() {
-    console.log(this, $(this).find("li:first"))
-    $(this).find("li:first").addClass('active');
-  })
+  // Check if URL has fragment and activate corresponding tab
+  function activateTabFromHash() {
+    var hash = window.location.hash.substr(1);
+    if (hash) {
+      var tabToActivate = $(container).find('> .tab-content > .tab-pane#' + hash);
+      if (tabToActivate.length) {
+        var tabIndex = tabToActivate.index();
+        var tabNav = $(container).find('> .nav-tabs > li').eq(tabIndex);
+        
+        // Deactivate current tabs
+        $(container).find('> .nav-tabs > .active').removeClass('active');
+        $(container).find('> .tab-content > .active').removeClass('active');
+        
+        // Activate selected tab
+        tabNav.addClass('active');
+        tabToActivate.addClass('active');
+        return true;
+      }
+    }
+    return false;
+  }
 
-  $(container).find('> .tab-content').each(function() {
-    $(this).find("div:first").addClass('active');
-  });
+  // If no tab is activated by URL hash, activate first tab
+  if (!activateTabFromHash()) {
+    $(container).find('> ul.nav-tabs').each(function() {
+      $(this).find("li:first").addClass('active');
+    });
+    
+    $(container).find('> .tab-content').each(function() {
+      $(this).find("div:first").addClass('active');
+    });
+  }
 
+  // Handle tab clicks - update URL and show tab
   $(container).find('> .nav-tabs a').click(function(e){
-    e.preventDefault();
     var tab = $(this).parent(),
         tabIndex = tab.index(),
-        tabPane = $(container).find('> .tab-content > .tab-pane').eq(tabIndex);
+        tabPane = $(container).find('> .tab-content > .tab-pane').eq(tabIndex),
+        tabId = tabPane.attr('id');
+    
+    // Update URL without full page reload
+    if (history.pushState && tabId) {
+      history.pushState(null, null, '#' + tabId);
+    } else {
+      window.location.hash = tabId;
+    }
+    
+    // Deactivate current tabs
     $(container).find('> .nav-tabs > .active').removeClass('active');
     $(container).find('> .tab-content > .active').removeClass('active');
+    
+    // Activate selected tab
     tab.addClass('active');
     tabPane.addClass('active');
+    
+    e.preventDefault();
   });
-}, 0, tabsBontainer)
 
+  // Handle browser back/forward navigation
+  $(window).on('hashchange', function() {
+    activateTabFromHash();
+  });
+}, 0, tabsBontainer);
 </script>
