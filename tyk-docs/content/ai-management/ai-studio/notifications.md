@@ -53,7 +53,7 @@ Examples of events that might trigger notifications include:
     *   Opt-in/opt-out of specific notification categories.
     *   Choose preferred delivery channels (e.g., receive budget alerts via email).
 
-    ![Placeholder: Notification Prefs UI](https://placehold.co/600x400?text=User+Notification+Preferences)
+    {{< img src="/img/ai-management/notification-preferences.png" alt="Notification Prefs UI" >}}
 
 ## Integration
 
