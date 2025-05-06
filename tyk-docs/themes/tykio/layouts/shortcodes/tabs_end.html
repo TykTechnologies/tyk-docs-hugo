@@ -46,7 +46,29 @@ setTimeout(function(container){
   function activateTabFromHash() {
     var hash = window.location.hash.substr(1);
     if (hash) {
+      // First try exact match (direct tab ID)
       var tabToActivate = $(container).find('> .tab-content > .tab-pane#' + hash);
+      
+      // If no exact match, check if hash contains both section and tab IDs
+      if (!tabToActivate.length) {
+        // Get all tab IDs
+        var tabIds = [];
+        $(container).find('> .tab-content > .tab-pane').each(function() {
+          tabIds.push($(this).attr('id'));
+        });
+        
+        // Check if any tab ID is contained within the hash (for section-tab combined links)
+        for (var i = 0; i < tabIds.length; i++) {
+          var tabId = tabIds[i];
+          // If hash ends with the tab ID or contains it followed by a hyphen
+          if (hash.endsWith('-' + tabId) || hash.includes('-' + tabId + '-')) {
+            tabToActivate = $(container).find('> .tab-content > .tab-pane#' + tabId);
+            break;
+          }
+        }
+      }
+      
+      // If we found a tab to activate
       if (tabToActivate.length) {
         var tabIndex = tabToActivate.index();
         var tabNav = $(container).find('> .nav-tabs > li').eq(tabIndex);
@@ -82,11 +104,40 @@ setTimeout(function(container){
         tabPane = $(container).find('> .tab-content > .tab-pane').eq(tabIndex),
         tabId = tabPane.attr('id');
     
+    // Get the existing hash
+    var currentHash = window.location.hash.substr(1);
+    var newHash = tabId;
+    
+    // If there's a section ID, preserve it and add the tab ID
+    if (currentHash && currentHash !== tabId) {
+      // Check if the current hash is a compound hash (section + tab)
+      var existingTabIds = [];
+      $(container).find('> .tab-content > .tab-pane').each(function() {
+        existingTabIds.push($(this).attr('id'));
+      });
+      
+      // Remove any existing tab ID from the current hash
+      var sectionPart = currentHash;
+      for (var i = 0; i < existingTabIds.length; i++) {
+        if (currentHash.endsWith('-' + existingTabIds[i])) {
+          sectionPart = currentHash.substring(0, currentHash.length - existingTabIds[i].length - 1);
+          break;
+        } else if (currentHash.includes('-' + existingTabIds[i] + '-')) {
+          var parts = currentHash.split('-' + existingTabIds[i] + '-');
+          sectionPart = parts.join('-');
+          break;
+        }
+      }
+      
+      // Combine section with new tab ID
+      newHash = sectionPart + '-' + tabId;
+    }
+    
     // Update URL without full page reload
     if (history.pushState && tabId) {
-      history.pushState(null, null, '#' + tabId);
+      history.pushState(null, null, '#' + newHash);
     } else {
-      window.location.hash = tabId;
+      window.location.hash = newHash;
     }
     
     // Deactivate current tabs
