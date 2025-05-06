@@ -67,7 +67,7 @@ Administrators typically access analytics data via dashboards within the Tyk AI 
 *   **Visualizations:** Charts and graphs showing trends in cost, token usage, request volume, and latency.
 *   **Detailed Logs:** Access to raw or near-raw event logs for specific interactions (useful for debugging).
 
-    ![Placeholder: Analytics Dashboard](https://placehold.co/600x400?text=Analytics+Dashboard)
+    {{< img src="/img/ai-management/analytics-dashboard.png" alt="Analytics Dashboard" >}}
 
 ## Integration with Other Systems
 
