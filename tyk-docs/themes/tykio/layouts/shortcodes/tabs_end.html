@@ -34,12 +34,30 @@
 var tabsBontainer = document.currentScript.previousElementSibling.previousElementSibling;
 
 setTimeout(function(container){
+  // Find parent heading ID (if exists)
+  var parentHeadingId = '';
+  var parentHeading = $(container).closest('div').prevAll('h1, h2, h3, h4, h5, h6').first();
+  if (parentHeading.length > 0 && parentHeading.attr('id')) {
+    parentHeadingId = parentHeading.attr('id');
+  }
+  
   // Create tab navigation items
   $(container).find('> .tab-content > .tab-pane').each(function(idx, item) {
     var navTabs = $(this.parentNode.parentNode).find('> .nav-tabs'),
         title = $(this).attr('title'),
         id = $(this).attr('id');
-    navTabs.append('<li><a href="#' + id + '">'+title+'</a></li');
+    
+    // Store original ID for reference
+    $(this).attr('data-original-id', id);
+    
+    // If parent heading has ID, modify this tab's ID to include it
+    if (parentHeadingId) {
+      var combinedId = parentHeadingId + '-' + id;
+      $(this).attr('id', combinedId);
+      navTabs.append('<li><a href="#' + combinedId + '">'+title+'</a></li');
+    } else {
+      navTabs.append('<li><a href="#' + id + '">'+title+'</a></li');
+    }
   });
 
   // Check if URL has fragment and activate corresponding tab
@@ -49,23 +67,26 @@ setTimeout(function(container){
       // First try exact match (direct tab ID)
       var tabToActivate = $(container).find('> .tab-content > .tab-pane#' + hash);
       
-      // If no exact match, check if hash contains both section and tab IDs
+      // If no exact match, try to match by original ID before it was combined with parent heading
       if (!tabToActivate.length) {
-        // Get all tab IDs
-        var tabIds = [];
         $(container).find('> .tab-content > .tab-pane').each(function() {
-          tabIds.push($(this).attr('id'));
-        });
-        
-        // Check if any tab ID is contained within the hash (for section-tab combined links)
-        for (var i = 0; i < tabIds.length; i++) {
-          var tabId = tabIds[i];
-          // If hash ends with the tab ID or contains it followed by a hyphen
-          if (hash.endsWith('-' + tabId) || hash.includes('-' + tabId + '-')) {
-            tabToActivate = $(container).find('> .tab-content > .tab-pane#' + tabId);
-            break;
+          var originalId = $(this).attr('data-original-id');
+          if (originalId && originalId === hash) {
+            tabToActivate = $(this);
+            return false; // Break the loop
           }
-        }
+        });
+      }
+      
+      // If still no match, check for parent-tab combined IDs in the URL hash
+      if (!tabToActivate.length) {
+        $(container).find('> .tab-content > .tab-pane').each(function() {
+          var originalId = $(this).attr('data-original-id');
+          if (originalId && hash.endsWith('-' + originalId)) {
+            tabToActivate = $(this);
+            return false; // Break the loop
+          }
+        });
       }
       
       // If we found a tab to activate
@@ -104,7 +125,7 @@ setTimeout(function(container){
         tabPane = $(container).find('> .tab-content > .tab-pane').eq(tabIndex),
         tabId = tabPane.attr('id');
     
-    // Always use just the tab ID in the URL
+    // Use the current tab ID which already includes the parent heading ID if it exists
     var newHash = tabId;
     
     // Update URL without full page reload
