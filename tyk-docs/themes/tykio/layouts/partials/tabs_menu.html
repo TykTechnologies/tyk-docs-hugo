@@ -1,6 +1,6 @@
-{{- $pagePath := replace .Page.RelPermalink "/docs" "" -}}
+{{- $pagePath := .Page.RelPermalink -}}
+{{- $pagePath := replace $pagePath "/docs" "" -}}
 {{- $pagePath := replace $pagePath "/nightly" "" -}}
-{{- $pagePath := replace $pagePath "/" "" -}}
 {{- $showEmptyPages := .Site.Params.showEmptyPages -}}
 
 <div class="tabs-wrapper">
@@ -10,10 +10,10 @@
         {{- $selected := false -}}
         {{- $is_home := eq (lower .title) "home" -}}
         {{- $path_not_empty := false -}}
-        {{- $path := replace .path "/" "" -}}
+        {{- $tabPath := .path | relURL -}}
         {{- $has_active_child := false -}}
 
-        {{- if eq $path $pagePath -}}
+        {{- if or (eq $tabPath $pagePath) (and (ne $tabPath "/") (hasPrefix $pagePath $tabPath) (or (eq (substr $pagePath (len $tabPath) 1) "/") (eq (substr $pagePath (len $tabPath) 1) ""))) -}}
           {{- if or (ne $pagePath "") $is_home -}}
             {{- $selected = true -}}
             {{- $path_not_empty = true -}}
@@ -22,8 +22,8 @@
 
         {{- if (isset . "menu") -}}
           {{- range .menu -}}
-            {{- $childPath := replace .path "/" "" -}}
-            {{- if eq $childPath $pagePath -}}
+            {{- $childPath := .path | relURL -}}
+            {{- if or (eq $childPath $pagePath) (and (ne $childPath "/") (hasPrefix $pagePath $childPath) (or (eq (substr $pagePath (len $childPath) 1) "/") (eq (substr $pagePath (len $childPath) 1) ""))) -}}
               {{- if or (ne $pagePath "") $is_home -}}
                 {{- $selected = true -}}
                 {{- $has_active_child = true -}}
@@ -32,8 +32,8 @@
             {{- end -}}
             {{- if (isset . "menu") -}}
               {{- range .menu -}}
-                {{- $grandChildPath := replace .path "/" "" -}}
-                {{- if eq $grandChildPath $pagePath -}}
+                {{- $grandChildPath := .path | relURL -}}
+                {{- if or (eq $grandChildPath $pagePath) (and (ne $grandChildPath "/") (hasPrefix $pagePath $grandChildPath) (or (eq (substr $pagePath (len $grandChildPath) 1) "/") (eq (substr $pagePath (len $grandChildPath) 1) ""))) -}}
                   {{- if or (ne $pagePath "") $is_home -}}
                     {{- $selected = true -}}
                     {{- $has_active_child = true -}}
@@ -42,8 +42,8 @@
                 {{- end -}}
                 {{- if (isset . "menu") -}}
                   {{- range .menu -}}
-                    {{- $greatGrandChildPath := replace .path "/" "" -}}
-                    {{- if eq $greatGrandChildPath $pagePath -}}
+                    {{- $greatGrandChildPath := .path | relURL -}}
+                    {{- if or (eq $greatGrandChildPath $pagePath) (and (ne $greatGrandChildPath "/") (hasPrefix $pagePath $greatGrandChildPath) (or (eq (substr $pagePath (len $greatGrandChildPath) 1) "/") (eq (substr $pagePath (len $greatGrandChildPath) 1) ""))) -}}
                       {{- if or (ne $pagePath "") $is_home -}}
                         {{- $selected = true -}}
                         {{- $has_active_child = true -}}
