@@ -46,7 +46,7 @@ Administrators manage secrets via the Tyk AI Studio UI or API:
     *   **Secret Value:** The actual sensitive string (e.g., `sk-abc123xyz...`).
 3.  Save the secret. It is immediately encrypted and stored.
 
-    ![Placeholder: Secrets UI](https://placehold.co/600x400?text=Secrets+Management+UI)
+    {{< img src="/img/ai-management/secrets-management-ui.png" alt="Secrets UI" >}}
 
 Secrets can be updated or deleted as needed. Updating a secret value will automatically apply the new value wherever the `$SECRET/VariableName` reference is used, without needing to modify the configurations themselves.
 
