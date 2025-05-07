@@ -35,6 +35,7 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+
 ## 5.8 Release Notes
 
 ### 5.8.0 Release Notes
@@ -1475,6 +1476,109 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 
 ## 5.3 Release Notes
+
+### 5.3.11 Release Notes
+
+#### Release Date 7 May 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.11" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.3.11}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.11 | MDCB v2.8.0     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.0}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.3.11}
+
+If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.11)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.3.11
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.3.11}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>License allocation now works across multiple dashboards</summary>
+
+Fixed an issue where the Dashboard might not allow the correct number of Gateways to connect. This was due to a conflict with license management in deployments with multiple Dashboards which has now been resolved.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Control for Dashboard API Credentials</summary>
+
+Users can now always access their own Dashboard API credentials, regardless of permissions. Admins’ ability to view or reset other users’ credentials is now strictly controlled by security flags
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
+
+Updated OPA rules in the Dashboard to allow all users to reset their access tokens and view their user data, improving self-service while maintaining security.
+
+Users with custom OPA rules are <b>strongly advised</b> to add the `is_self_key_reset` and `is_me` helper rules to their configuration. They should then modify existing relevant rules to exclude cases where `is_self_key_reset` or `is_me` apply, to enable this functionality.
+</details>
+</li>
+<li>
+<details>
+<summary>Various fixes to the Dashboard UI</summary>
+
+We have implemented various fixes and improvements in the Dashboard GUI to enhance usability.
+</details>
+</li>
+</ul>
+
+#### Security Fixes 
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2025-46569](https://nvd.nist.gov/vuln/detail/CVE-2025-46569)
+</details>
+</li>
+</ul>
 
 ### 5.3.10 Release Notes
 
