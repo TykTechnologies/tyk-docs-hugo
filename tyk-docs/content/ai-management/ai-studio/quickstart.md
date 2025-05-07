@@ -28,7 +28,7 @@ This guide will help you get started with the Tyk AI Studio using Docker Compose
    ```yaml
     version: "3"
     services:
-      midsommar:
+      ai-studio:
         image: tykio/midsommar:latest
         volumes:
           - ./confs/.env:/app/.env
