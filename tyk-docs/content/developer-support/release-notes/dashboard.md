@@ -165,6 +165,18 @@ Resolved a bug that blocked multipart OAS ZIP imports when using a YAML file as 
 </li>
 </ul>
 
+#### Security Fixes 
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2025-46569](https://nvd.nist.gov/vuln/detail/CVE-2025-46569)
+</details>
+</li>
+</ul>
 
 ### 5.8.0 Release Notes
 
