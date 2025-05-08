@@ -3,6 +3,17 @@
     display: none !important;
 }
 
+/* Modal overlay for darkening the background */
+#chat-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
 #chat-widget-container {
     position: fixed;
     bottom: 20px;
@@ -79,12 +90,12 @@
     border-top: 1px solid #e5e7eb;
 }
 
-#chat-input-container > div {
+#chat-input-container>div {
     display: flex;
     align-items: center;
 }
 
-#chat-input-container > div > * + * {
+#chat-input-container>div>*+* {
     margin-left: 1rem;
 }
 
@@ -183,9 +194,12 @@
 }
 
 @keyframes typing {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-5px);
     }
@@ -221,7 +235,9 @@
     margin: 1em 0;
 }
 
-.markdown-content h4, .markdown-content h5, .markdown-content h6 {
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
     font-weight: bold;
     margin: 1.33em 0;
 }
@@ -230,7 +246,8 @@
     margin: 1em 0;
 }
 
-.markdown-content ul, .markdown-content ol {
+.markdown-content ul,
+.markdown-content ol {
     margin: 1em 0;
     padding-left: 2em;
 }
@@ -299,7 +316,8 @@
     overflow: auto;
 }
 
-.markdown-content table th, .markdown-content table td {
+.markdown-content table th,
+.markdown-content table td {
     border: 1px solid #dfe2e5;
     padding: 6px 13px;
 }

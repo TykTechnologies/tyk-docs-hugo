@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatMessages = document.getElementById('chat-messages');
   const chatBubble = document.getElementById('chat-bubble');
   const chatPopup = document.getElementById('chat-popup');
+  const chatOverlay = document.getElementById('chat-overlay');
   const closePopup = document.getElementById('close-popup');
   
   // Log elements to help debug
@@ -21,13 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   // Check if all required elements exist before initializing
-  if (!chatInput || !chatSubmit || !chatStop || !chatMessages || !chatBubble || !chatPopup || !closePopup) {
+  if (!chatInput || !chatSubmit || !chatStop || !chatMessages || !chatBubble || !chatPopup || !chatOverlay || !closePopup) {
     console.error('Chat widget: Some required elements are missing. Widget initialization aborted.');
     return;
   }
   
-  // Ensure the popup is hidden by default
+  // Ensure the popup and overlay are hidden by default
   chatPopup.classList.add('hidden');
+  chatOverlay.classList.add('hidden');
   
   // Initialize messages array to store conversation history
   let messagesHistory = [];
@@ -95,6 +97,14 @@ document.addEventListener('DOMContentLoaded', function () {
     e.stopPropagation();
     hidePopup();
   });
+  
+  // Close popup when clicking on the overlay
+  chatOverlay.addEventListener('click', function (e) {
+    console.log('Overlay clicked');
+    e.preventDefault();
+    e.stopPropagation();
+    hidePopup();
+  });
 
   // Toggle chat popup visibility
   function togglePopup() {
@@ -109,12 +119,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Show popup
   function showPopup() {
     chatPopup.classList.remove('hidden');
+    chatOverlay.classList.remove('hidden');
     chatInput.focus();
   }
   
   // Hide popup
   function hidePopup() {
     chatPopup.classList.add('hidden');
+    chatOverlay.classList.add('hidden');
   }
 
   // Handle user message and API call
