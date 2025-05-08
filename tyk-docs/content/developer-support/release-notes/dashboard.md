@@ -138,6 +138,13 @@ Fixed colors on the certificates list table when a certificate contains or does 
 </li>
 <li>
 <details>
+<summary>SSO Login No Longer Overwrites Admin Permissions</summary>
+
+Fixed an issue where existing admin users had their permissions overwritten by SSO group settings during login. Admin users now retain their original permissions when sso_enable_user_lookup is enabled. Group permissions are only applied to new or non-admin users.
+</details>
+</li>
+<li>
+<details>
 <summary>Fixed API creation from pasted YAML definitions</summary>
 
 Fixed an issue that prevented creation of an API from a YAML format Tyk OAS API definitions using the "paste API definition" method. You can now export your Tyk OAS API definition in YAML or JSON format and use the content of this file to create a new API.
