@@ -38,6 +38,8 @@ aliases:
   - /tyk-apis/tyk-dashboard-admin-api/import
   - /advanced-configuration/transform-traffic/endpoint-designer
   - /transform-traffic/endpoint-designer
+  - /tyk-dashboard/getting-started
+  - /basic-config-and-security/security/dashboard
 ## Traffic Analytics
   - /analyse
   - /tyk-stack/tyk-pump/tyk-dash-analytics
@@ -2326,7 +2328,7 @@ Body: {
 
 #### OAuth2.0 Authorization Code
 
-This endpoint is used in the [Authorization Code Grant]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}) flow, generating an authorization code that can be used by the client to request an access token.
+This endpoint is used in the [Authorization Code Grant]({{< ref "api-management/authentication/oauth-2#using-the-authorization-code-grant" >}}) flow, generating an authorization code that can be used by the client to request an access token.
 
 | **Property** | **Description**                                |
 | ------------ | ---------------------------------------------- |
