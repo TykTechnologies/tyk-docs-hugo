@@ -148,15 +148,10 @@ document.addEventListener('DOMContentLoaded', function () {
       content: message
     });
 
-    // Handle streaming response
-    handleStreamingResponse(messagesHistory);
-  }
-
-  function handleStreamingResponse(messages) {
-    // Create a new AbortController for this request
-    activeController = new AbortController();
+    // Create and show typing indicator immediately
     const replyElement = document.createElement('div');
     replyElement.className = 'assistant-message';
+    replyElement.id = 'current-response'; // Add ID for easy reference
     replyElement.innerHTML = `
       <div class="message-bubble assistant-bubble">
         <div class="raw-content" style="white-space: pre-wrap;"></div>
@@ -167,8 +162,20 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="dot"></span>
       </div>
     `;
-    let replyAppended = false;
+    
+    // Append typing indicator immediately
+    chatMessages.appendChild(replyElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
+    // Handle streaming response
+    handleStreamingResponse(messagesHistory, replyElement);
+  }
+
+  function handleStreamingResponse(messages, replyElement) {
+    // Create a new AbortController for this request
+    activeController = new AbortController();
+
+    // Get references to elements
     const messageContainer = replyElement.querySelector('.assistant-bubble');
     const rawContentContainer = replyElement.querySelector('.raw-content');
     const typingIndicator = replyElement.querySelector('.typing-indicator');
@@ -221,11 +228,6 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
               const parsedData = JSON.parse(data);
               if (parsedData.text) {
-                if (!replyAppended) {
-                  chatMessages.appendChild(replyElement);
-                  chatMessages.scrollTop = chatMessages.scrollHeight;
-                  replyAppended = true;
-                }
 
                 if (parsedData.text === "[ERROR]") {
                   accumulatedText += "\n\n**Unexpected failure, please try again**"
