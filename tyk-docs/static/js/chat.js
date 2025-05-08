@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    fetch('https://tyk-docs-ask-ai.dokku.tyk.technology/api/stream', {
+    fetch('http://localhost:8080/api/stream', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ prompt: message }),
@@ -145,9 +145,16 @@ document.addEventListener('DOMContentLoaded', function () {
                   chatMessages.scrollTop = chatMessages.scrollHeight;
                   replyAppended = true;
                 }
-                accumulatedText += parsedData.text;
-                rawContentContainer.textContent = accumulatedText;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                if (parsedData.text === "[ERROR]") {
+                  accumulatedText += "\n\n**Unexpected failure, please try again**"
+                  rawContentContainer.textContent = "\n\n**Unexpected failure, please try again**"
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+                } else {
+                  accumulatedText += parsedData.text;
+                  rawContentContainer.textContent = accumulatedText;
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
               }
             } catch (error) {
               console.error('Error parsing SSE data:', error);
