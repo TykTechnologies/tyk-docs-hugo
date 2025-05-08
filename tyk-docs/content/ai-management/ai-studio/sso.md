@@ -19,6 +19,7 @@ The SSO integration aims to:
 
 {{< youtube vn2ZfY9couw >}}
 
+
 ## Technology: Tyk Identity Broker (TIB)
 
 Tyk AI Studio leverages the embedded **Tyk Identity Broker (TIB)** component to handle SSO integrations. TIB acts as a bridge between Tyk AI Studio (the Service Provider or SP) and various external Identity Providers (IdPs).
