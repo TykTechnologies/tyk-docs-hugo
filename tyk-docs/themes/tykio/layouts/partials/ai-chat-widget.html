@@ -18,6 +18,8 @@
                     placeholder="Type your message...">
                 <button id="chat-submit"
                     class="bg-gray-800 text-white rounded-md px-4 py-2 cursor-pointer">Send</button>
+                <button id="chat-stop"
+                    class="bg-red-600 text-white rounded-md px-4 py-2 cursor-pointer hidden">Stop</button>
             </div>
         </div>
     </div>
@@ -28,5 +30,4 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js"></script>
-<link rel="stylesheet" href="css/chat.css">
-<script defer src="js/chat.js"></script>
+<link rel="stylesheet" href="{{ "css/chat.css" | relURL }}">

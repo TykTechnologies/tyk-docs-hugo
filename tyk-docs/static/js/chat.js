@@ -3,10 +3,23 @@ document.addEventListener('DOMContentLoaded', function () {
   // Get DOM elements
   const chatInput = document.getElementById('chat-input');
   const chatSubmit = document.getElementById('chat-submit');
+  const chatStop = document.getElementById('chat-stop');
   const chatMessages = document.getElementById('chat-messages');
   const chatBubble = document.getElementById('chat-bubble');
   const chatPopup = document.getElementById('chat-popup');
   const closePopup = document.getElementById('close-popup');
+  
+  // Check if all required elements exist before initializing
+  if (!chatInput || !chatSubmit || !chatStop || !chatMessages || !chatBubble || !chatPopup || !closePopup) {
+    console.error('Chat widget: Some required elements are missing. Widget initialization aborted.');
+    return;
+  }
+  
+  // Initialize messages array to store conversation history
+  let messagesHistory = [];
+  
+  // Controller for aborting fetch requests
+  let activeController = null;
 
   // Configure marked.js options
   marked.setOptions({
@@ -28,9 +41,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const message = chatInput.value.trim();
     if (!message) return;
 
+    // Toggle buttons
+    chatSubmit.classList.add('hidden');
+    chatStop.classList.remove('hidden');
+
     chatMessages.scrollTop = chatMessages.scrollHeight;
     chatInput.value = '';
     onUserRequest(message);
+  });
+
+  chatStop.addEventListener('click', function() {
+    // Abort the current request if active
+    if (activeController) {
+      activeController.abort();
+      activeController = null;
+    }
+    
+    // Toggle buttons back
+    chatStop.classList.add('hidden');
+    chatSubmit.classList.remove('hidden');
   });
 
   chatInput.addEventListener('keyup', function (event) {
@@ -68,11 +97,19 @@ document.addEventListener('DOMContentLoaded', function () {
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
+    // Add user message to history
+    messagesHistory.push({
+      role: "user",
+      content: message
+    });
+
     // Handle streaming response
-    handleStreamingResponse(message);
+    handleStreamingResponse(messagesHistory);
   }
 
-  function handleStreamingResponse(message) {
+  function handleStreamingResponse(messages) {
+    // Create a new AbortController for this request
+    activeController = new AbortController();
     const replyElement = document.createElement('div');
     replyElement.className = 'flex flex-col mb-3'; // <-- Make it a column container
     replyElement.innerHTML = `
@@ -97,13 +134,12 @@ document.addEventListener('DOMContentLoaded', function () {
       'Content-Type': 'application/json'
     });
 
-    const controller = new AbortController();
-    const signal = controller.signal;
+    const signal = activeController.signal;
 
     fetch('http://localhost:8080/api/stream', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ prompt: message }),
+      body: JSON.stringify({ messages: messages }),
       signal: signal
     }).then(response => {
       const reader = response.body.getReader();
@@ -175,17 +211,39 @@ document.addEventListener('DOMContentLoaded', function () {
     }).catch(error => {
       console.error('Error fetching stream:', error);
       if (typingIndicator) typingIndicator.remove();
-      rawContentContainer.textContent = 'Sorry, something went wrong with the streaming connection.';
+      
+      // Check if this was an abort error
+      if (error.name === 'AbortError') {
+        rawContentContainer.textContent = 'Request was cancelled.';
+      } else {
+        rawContentContainer.textContent = 'Sorry, something went wrong with the streaming connection.';
+      }
+      
+      // Reset UI
+      chatStop.classList.add('hidden');
+      chatSubmit.classList.remove('hidden');
     });
   }
 
   // Helper to render Markdown at the end
   function renderMarkdown(accumulatedText, container) {
+    // Reset UI
+    chatStop.classList.add('hidden');
+    chatSubmit.classList.remove('hidden');
+    activeController = null;
     try {
       const markdownContainer = document.createElement('div');
       markdownContainer.className = 'markdown-content';
       markdownContainer.innerHTML = marked.parse(accumulatedText);
       container.replaceWith(markdownContainer);
+
+      // Add assistant response to history
+      if (accumulatedText) {
+        messagesHistory.push({
+          role: "assistant",
+          content: accumulatedText
+        });
+      }
 
       document.querySelectorAll('pre code').forEach((block) => {
         hljs.highlightElement(block);
