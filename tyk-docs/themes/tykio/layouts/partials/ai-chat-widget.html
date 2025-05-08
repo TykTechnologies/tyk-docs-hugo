@@ -1,32 +1,28 @@
 <!-- Chat Widget Container -->
 <div id="chat-widget-container">
-    <div id="chat-popup" class="hidden bg-white rounded-md shadow-md flex flex-col transition-all text-sm">
-        <div id="chat-header" class="flex justify-between items-center p-4 bg-gray-800 text-white rounded-t-md">
-            <h3 class="m-0 text-lg">Tyk Docs AI</h3>
-            <button id="close-popup" class="bg-transparent border-none text-white cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+    <!-- Ensure popup is hidden by default with inline style as well -->
+    <div id="chat-popup">
+        <div id="chat-header">
+            <h3>Tyk Docs AI</h3>
+            <button id="close-popup">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
-        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto"></div>
-        <div id="chat-input-container" class="p-4 border-t border-gray-200">
-            <div class="flex space-x-4 items-center">
-                <input type="text" id="chat-input"
-                    class="flex-1 border border-gray-300 rounded-md px-4 py-2 outline-none w-3/4"
-                    placeholder="Type your message...">
-                <button id="chat-submit"
-                    class="bg-gray-800 text-white rounded-md px-4 py-2 cursor-pointer">Send</button>
-                <button id="chat-stop"
-                    class="bg-red-600 text-white rounded-md px-4 py-2 cursor-pointer hidden">Stop</button>
+        <div id="chat-messages"></div>
+        <div id="chat-input-container">
+            <div>
+                <input type="text" id="chat-input" placeholder="Type your message...">
+                <button id="chat-submit">Send</button>
+                <button id="chat-stop" class="hidden">Stop</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Include necessary scripts -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js"></script>

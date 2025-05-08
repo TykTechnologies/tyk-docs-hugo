@@ -9,11 +9,25 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatPopup = document.getElementById('chat-popup');
   const closePopup = document.getElementById('close-popup');
   
+  // Log elements to help debug
+  console.log('Chat elements:', {
+    chatInput,
+    chatSubmit,
+    chatStop,
+    chatMessages,
+    chatBubble,
+    chatPopup,
+    closePopup
+  });
+  
   // Check if all required elements exist before initializing
   if (!chatInput || !chatSubmit || !chatStop || !chatMessages || !chatBubble || !chatPopup || !closePopup) {
     console.error('Chat widget: Some required elements are missing. Widget initialization aborted.');
     return;
   }
+  
+  // Ensure the popup is hidden by default
+  chatPopup.classList.add('hidden');
   
   // Initialize messages array to store conversation history
   let messagesHistory = [];
@@ -68,29 +82,48 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  chatBubble.addEventListener('click', function () {
+  chatBubble.addEventListener('click', function (e) {
+    console.log('Chat bubble clicked');
+    e.preventDefault();
+    e.stopPropagation();
     togglePopup();
   });
 
-  closePopup.addEventListener('click', function () {
-    togglePopup();
+  closePopup.addEventListener('click', function (e) {
+    console.log('Close popup clicked');
+    e.preventDefault();
+    e.stopPropagation();
+    hidePopup();
   });
 
   // Toggle chat popup visibility
   function togglePopup() {
-    chatPopup.classList.toggle('hidden');
-    if (!chatPopup.classList.contains('hidden')) {
-      chatInput.focus();
+    console.log('Toggling popup, current state:', chatPopup.classList.contains('hidden'));
+    if (chatPopup.classList.contains('hidden')) {
+      showPopup();
+    } else {
+      hidePopup();
     }
+  }
+  
+  // Show popup
+  function showPopup() {
+    chatPopup.classList.remove('hidden');
+    chatInput.focus();
+  }
+  
+  // Hide popup
+  function hidePopup() {
+    chatPopup.classList.add('hidden');
   }
 
   // Handle user message and API call
   function onUserRequest(message) {
     // Display user message
     const messageElement = document.createElement('div');
-    messageElement.className = 'flex justify-end mb-3';
+    messageElement.className = 'user-message';
     messageElement.innerHTML = `
-        <div class="bg-gray-800 text-white rounded-lg py-2 px-4 max-w-[70%]">
+        <div class="message-bubble user-bubble">
           ${message}
         </div>
       `;
@@ -111,12 +144,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create a new AbortController for this request
     activeController = new AbortController();
     const replyElement = document.createElement('div');
-    replyElement.className = 'flex flex-col mb-3'; // <-- Make it a column container
+    replyElement.className = 'assistant-message';
     replyElement.innerHTML = `
-      <div class="bg-gray-200 text-black rounded-lg py-2 px-4 max-w-[70%]">
+      <div class="message-bubble assistant-bubble">
         <div class="raw-content" style="white-space: pre-wrap;"></div>
       </div>
-      <div class="flex justify-start mt-1 typing-indicator">
+      <div class="typing-indicator">
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
@@ -124,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     let replyAppended = false;
 
-    const messageContainer = replyElement.querySelector('.bg-gray-200');
+    const messageContainer = replyElement.querySelector('.assistant-bubble');
     const rawContentContainer = replyElement.querySelector('.raw-content');
     const typingIndicator = replyElement.querySelector('.typing-indicator');
 
