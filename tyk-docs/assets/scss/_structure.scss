@@ -146,6 +146,17 @@ body {
   color: #44546f;
 }
 
+.page-content,
+.section-page {
+  padding-top: 18px;
+}
+
+.page-content {
+  h4 {
+    scroll-margin-top: 10px;
+  }
+}
+
 .metadata_heading {
   font-size: 22px;
   font-family: "Inter", sans-serif;
