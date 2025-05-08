@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatPopup = document.getElementById('chat-popup');
   const chatOverlay = document.getElementById('chat-overlay');
   const closePopup = document.getElementById('close-popup');
-  
+
   // Log elements to help debug
   console.log('Chat elements:', {
     chatInput,
@@ -20,20 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
     chatPopup,
     closePopup
   });
-  
+
   // Check if all required elements exist before initializing
   if (!chatInput || !chatSubmit || !chatStop || !chatMessages || !chatBubble || !chatPopup || !chatOverlay || !closePopup) {
     console.error('Chat widget: Some required elements are missing. Widget initialization aborted.');
     return;
   }
-  
+
   // Ensure the popup and overlay are hidden by default
   chatPopup.classList.add('hidden');
   chatOverlay.classList.add('hidden');
-  
+
   // Initialize messages array to store conversation history
   let messagesHistory = [];
-  
+
   // Controller for aborting fetch requests
   let activeController = null;
 
@@ -66,13 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
     onUserRequest(message);
   });
 
-  chatStop.addEventListener('click', function() {
+  chatStop.addEventListener('click', function () {
     // Abort the current request if active
     if (activeController) {
       activeController.abort();
       activeController = null;
     }
-    
+
     // Toggle buttons back
     chatStop.classList.add('hidden');
     chatSubmit.classList.remove('hidden');
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     e.stopPropagation();
     hidePopup();
   });
-  
+
   // Close popup when clicking on the overlay
   chatOverlay.addEventListener('click', function (e) {
     console.log('Overlay clicked');
@@ -115,14 +115,14 @@ document.addEventListener('DOMContentLoaded', function () {
       hidePopup();
     }
   }
-  
+
   // Show popup
   function showPopup() {
     chatPopup.classList.remove('hidden');
     chatOverlay.classList.remove('hidden');
     chatInput.focus();
   }
-  
+
   // Hide popup
   function hidePopup() {
     chatPopup.classList.add('hidden');
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="dot"></span>
       </div>
     `;
-    
+
     // Append typing indicator immediately
     chatMessages.appendChild(replyElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const signal = activeController.signal;
 
-    fetch('http://localhost:8080/api/stream', {
+    fetch('https://tyk-docs-ask-ai.dokku.tyk.technology/api/stream', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ messages: messages }),
@@ -258,14 +258,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }).catch(error => {
       console.error('Error fetching stream:', error);
       if (typingIndicator) typingIndicator.remove();
-      
+
       // Check if this was an abort error
       if (error.name === 'AbortError') {
         rawContentContainer.textContent = 'Request was cancelled.';
       } else {
         rawContentContainer.textContent = 'Sorry, something went wrong with the streaming connection.';
       }
-      
+
       // Reset UI
       chatStop.classList.add('hidden');
       chatSubmit.classList.remove('hidden');
