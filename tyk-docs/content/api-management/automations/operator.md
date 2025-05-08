@@ -101,7 +101,7 @@ Tyk Operator manages multiple custom resources to help users create and maintain
 
 **ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{< ref "api-management/gateway-config-tyk-classic" >}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
 
-**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-as-code">}}) which is based on [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk Operator supports all [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}) features as they become available on the Gateway.
+**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options">}}) which is based on [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk Operator supports all [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}) features as they become available on the Gateway.
 
 **SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
 
@@ -115,7 +115,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 |--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
 | TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{< ref "api-management/gateway-config-tyk-oas" >}})                                 |
 | ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{< ref "api-management/gateway-config-tyk-classic" >}})                                 |
-| TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{< ref "api-management/event-driven-apis#configuration-as-code" >}})                                 |
+| TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{< ref "api-management/event-driven-apis#configuration-options" >}})                                 |
 | SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
 | SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                           |
 | SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                        |
@@ -257,7 +257,7 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
 Cloud]({{< ref "tyk-cloud#quick-start-tyk-cloud" >}}) or [Tyk Self
-Managed]({{< ref "getting-started/installation" >}}) page. [Tyk Helm
+Managed]({{< ref "tyk-self-managed" >}}) page. [Tyk Helm
 Chart]({{< ref "product-stack/tyk-charts/overview" >}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
 
 In order for policy ID matching to work correctly, Dashboard must have `allow_explicit_policy_id` and
@@ -1223,7 +1223,7 @@ spec:
 
 #### Auth Token (Bearer Token)
 
-This setup requires a [bearer token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) for access.
+This setup requires a [bearer token]({{< ref "api-management/authentication/bearer-token" >}}) for access.
 
 In the below example, the authentication token is set by default to the `Authorization` header of the request. You can customize this behavior by configuring the following fields:
 
@@ -1232,7 +1232,7 @@ In the below example, the authentication token is set by default to the `Authori
 - `use_param`: Set to true to allow the token to be passed as a query parameter.
 - `param_name`: Specify the parameter name if use_param is enabled.
 - `use_certificate`: Enable client certificate. This allows you to create dynamic keys based on certificates.
-- `validate_signature`: Enable [signature validation]({{< ref "api-management/client-authentication#auth-token-with-signature" >}}).
+- `validate_signature`: Enable [signature validation]({{< ref "api-management/authentication/bearer-token#auth-token-with-signature" >}}).
 
 ```yaml {hl_lines=["13-35"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1365,7 +1365,7 @@ curl http://localhost:8080/httpbin-jwt1/get -H 'Authorization: Bearer eyJhbGciOi
 
 #### Basic Authentication
 
-This configuration uses [Basic Authentication]({{< ref "api-management/client-authentication#use-basic-authentication" >}}), requiring a username and password for access.
+This configuration uses [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}), requiring a username and password for access.
 
 ```yaml {hl_lines=["13-13"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -5030,7 +5030,7 @@ The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API De
 | Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "#add-a-security-policy-to-your-api" >}}) |
 
 #### TykStreamsApiDefinition CRD
-The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-as-code" >}}) within a Kubernetes environment.
+The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options" >}}) within a Kubernetes environment.
 
 ##### TykStreamsApiDefinition Features
 
