@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Controller for aborting fetch requests
   let activeController = null;
 
-  // Configure marked.js options
+  // Configure marked.js options with security in mind
   marked.setOptions({
     renderer: new marked.Renderer(),
     highlight: function (code, language) {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     pedantic: false,
     gfm: true,
     breaks: true,
-    sanitize: false,
+    sanitize: true, // Enable sanitization to prevent XSS
     smartypants: false,
     xhtml: false
   });
@@ -281,7 +281,10 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const markdownContainer = document.createElement('div');
       markdownContainer.className = 'markdown-content';
-      markdownContainer.innerHTML = marked.parse(accumulatedText);
+      
+      // Safely render markdown with sanitization
+      const sanitizedHtml = marked.parse(accumulatedText);
+      markdownContainer.innerHTML = sanitizedHtml;
       container.replaceWith(markdownContainer);
 
       // Add assistant response to history
