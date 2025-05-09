@@ -288,8 +288,72 @@ menu:
           path: /api-management/traffic-transformation
           category: Page
           show: True
-        - title: "SOAP to REST"
-          path: /advanced-configuration/transform-traffic/soap-rest
+        - title: "Allow List"
+          path: /advanced-configuration/transform-traffic/allow-list
+          category: Page
+          show: True
+        - title: "Block List"
+          path: /advanced-configuration/transform-traffic/block-list
+          category: Page
+          show: True
+        - title: "Do Not Track"
+          path: /advanced-configuration/transform-traffic/do-not-track
+          category: Page
+          show: True
+        - title: "Ignore Authentication"
+          path: /advanced-configuration/transform-traffic/ignore-authentication
+          category: Page
+          show: True
+        - title: "Internal Endpoint"
+          path: /advanced-configuration/transform-traffic/internal-endpoint
+          category: Page
+          show: True
+        - title: "Request Method "
+          path: /advanced-configuration/transform-traffic/request-method
+          category: Page
+          show: True
+        - title: "Request Body "
+          path: /advanced-configuration/transform-traffic/request-body
+          category: Page
+          show: True
+        - title: "Request Headers "
+          path: /advanced-configuration/transform-traffic/request-headers
+          category: Page
+          show: True
+        - title: "Request Size Limits"
+          path: /advanced-configuration/transform-traffic/request-size-limits
+          category: Page
+          show: True
+        - title: "Response Body"
+          path: /advanced-configuration/transform-traffic/response-body
+          category: Page
+          show: True
+        - title: "Response Headers"
+          path: /advanced-configuration/transform-traffic/response-headers
+          category: Page
+          show: True
+        - title: "Request Validation"
+          path: /advanced-configuration/transform-traffic/request-validation
+          category: Page
+          show: True
+        - title: "Mock Response"
+          path: /advanced-configuration/transform-traffic/mock-response
+          category: Page
+          show: True
+        - title: "Virtual Endpoints"
+          path: /advanced-configuration/transform-traffic/virtual-endpoints
+          category: Page
+          show: True
+        - title: "Go Templates"
+          path: /advanced-configuration/transform-traffic/go-templates
+          category: Page
+          show: True
+        - title: "JQ Transforms"
+          path: /advanced-configuration/transform-traffic/jq-transforms
+          category: Page
+          show: True
+        - title: "Request Context Variables"
+          path: /advanced-configuration/transform-traffic/request-context-variables
           category: Page
           show: True
         - title: "URL Rewrite"
