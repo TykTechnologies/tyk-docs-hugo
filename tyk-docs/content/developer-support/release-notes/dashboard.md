@@ -91,6 +91,7 @@ If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
+#### Changelog {#Changelog-v5.8.1}
 ##### Fixed
 
 <ul>
