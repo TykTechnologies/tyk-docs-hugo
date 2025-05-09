@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.0" >}}) below.
+This release contains minor updates to ensure compatibility with the latest versions of Gateway and Dashboard.
 
 #### Breaking Changes
 
@@ -60,20 +60,10 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
   - ```bash
     docker pull tykio/tyk-mdcb-docker:v2.8.1
     ```
-#### Changelog {#Changelog-v2.8.0}
+#### Changelog {#Changelog-v2.8.1}
 
-##### Changed
-<ul>
+No changes in this release.
 
-<li>
-<details>
-<summary>Add changelog Summary</summary>
-
-Add changelog description 
-</details>
-</li>
-
-</ul>
 
 ### 2.8.0 Release Notes
 
