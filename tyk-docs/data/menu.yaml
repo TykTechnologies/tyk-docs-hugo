@@ -3,49 +3,49 @@
 menu:
   - title: "Home"
     path: /
-    category: Label
+    category: Tab
     show: True
-  - title: "Overview"
-    category: Label
-    show: True
-    menu:
-      - title: "Tyk Overview"
-        path: /tyk-overview
-        category: Page
-        show: True
-      - title: "Tyk Components"
-        path: /tyk-components
-        category: Page
-        show: True
-      - title: "Deployment Options"
-        path: /apim
-        category: Page
-        show: True
-      - title: "Plan Your API Integration"
-        path: /plan-your-api-integration
-        category: Page
-        show: True
-  - title: "Getting Started"
-    category: Label
-    show: True
-    menu:
-      - title: "Create Account"
-        path: /getting-started/create-account
-        category: Page
-        show: True
-      - title: "Configure Your First API"
-        path: /getting-started/configure-first-api
-        category: Page
-        show: True
-      - title: "Using Tyk Dashboard"
-        path: /getting-started/using-tyk-dashboard
-        category: Page
-        show: True
   - title: "API Management"
     path: /getting-started
-    category: Label
+    category: Tab
     show: True
     menu:
+      - title: "Overview"
+        category: Label
+        show: True
+        menu:
+          - title: "Tyk Overview"
+            path: /tyk-overview
+            category: Page
+            show: True
+          - title: "Tyk Components"
+            path: /tyk-components
+            category: Page
+            show: True
+          - title: "Deployment Options"
+            path: /apim
+            category: Page
+            show: True
+          - title: "Plan Your API Integration"
+            path: /plan-your-api-integration
+            category: Page
+            show: True
+      - title: "Getting Started"
+        category: Label
+        show: True
+        menu:
+          - title: "Create Account"
+            path: /getting-started/create-account
+            category: Page
+            show: True
+          - title: "Configure Your First API"
+            path: /getting-started/configure-first-api
+            category: Page
+            show: True
+          - title: "Using Tyk Dashboard"
+            path: /getting-started/using-tyk-dashboard
+            category: Page
+            show: True
       - title: "Overview"
         path: /getting-started
         category: Page
@@ -356,9 +356,188 @@ menu:
         path: /api-management/troubleshooting-debugging
         category: Page
         show: True
+      - title: "Developer Support"
+        category: Label
+        show: True
+        path: /developer-support/community
+        menu:
+          - title: "Community Support"
+            path: /developer-support/community
+            category: Page
+            show: True
+          - title: "Support SLA"
+            path: /developer-support/support
+            category: Page
+            show: True
+          - title: "Tyk Release Types"
+            category: Directory
+            show: True
+            menu:
+              - title: "Long Term Support Release"
+                path: /developer-support/release-types/long-term-support
+                category: Page
+                show: True
+              - title: "Early access feature"
+                path: /developer-support/release-types/early-access-feature
+                category: Page
+                show: True
+              - title: "Lab Release"
+                path: /developer-support/release-types/lab-release
+                category: Page
+                show: True
+              - title: "FIPS Release"
+                path: /developer-support/release-types/fips-release
+                category: Page
+                show: True
+          - title: "Environment Variables and Configs"
+            category: Directory
+            show: True
+            menu:
+            - title: "Gateway"
+              path: /tyk-oss-gateway/configuration
+              category: Page
+              show: True
+            - title: "Dashboard"
+              path: /tyk-dashboard/configuration
+              category: Page
+              show: True
+            - title: "Pump"
+              path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
+              category: Page
+              show: True
+            - title: "Enterprise Developer Portal"
+              path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
+              category: Page
+              show: True
+            - title: "Multi Data Center Bridge"
+              path: /tyk-multi-data-centre/mdcb-configuration-options
+              category: Page
+              show: True
+            - title: "Tyk Identity Broker"
+              path: /tyk-configuration-reference/tyk-identity-broker-configuration
+              category: Page
+              show: True
+          - title: "API Documentation"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-apis
+              category: Page
+              show: True
+            - title: "Gateway"
+              path: /tyk-gateway-api
+              category: Page
+              show: True
+            - title: "Dashboard"
+              path: /tyk-dashboard-api
+              category: Page
+              show: True
+            - title: "Dashboard Admin"
+              path: /dashboard-admin-api
+              category: Page
+              show: True
+            - title: "Multi Data Center Bridge"
+              path: /tyk-mdcb-api
+              category: Page
+              show: True
+            - title: "Enterprise Developer Portal"
+              path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
+              category: Page
+              show: True
+            - title: "Enterprise Developer Portal Admin"
+              path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints
+              category: Page
+              show: True
+            - title: "Tyk Identity Broker"
+              path: /tyk-identity-broker/tib-rest-api
+              category: Page
+              show: True
+          - title: "Release Notes"
+            category: Directory
+            show: True
+            menu:
+            - title: "Latest Tyk Releases"
+              path: /developer-support/release-notes/overview
+              category: Page
+              show: True
+            - title: "Gateway"
+              path: /developer-support/release-notes/gateway
+              category: Page
+              show: True
+            - title: "Dashboard"
+              path: /developer-support/release-notes/dashboard
+              category: Page
+              show: True
+            - title: "Pump"
+              path: /developer-support/release-notes/pump
+              category: Page
+              show: True
+            - title: "Sync"
+              path: /developer-support/release-notes/sync
+              category: Page
+              show: True
+            - title: "Multi Data Center Bridge"
+              path: /developer-support/release-notes/mdcb
+              category: Page
+              show: True
+            - title: "Enterprise Developer Portal"
+              path: /developer-support/release-notes/portal
+              category: Page
+              show: True
+            - title: "Tyk Operator"
+              path: /developer-support/release-notes/operator
+              category: Page
+              show: True
+            - title: "Tyk Chart"
+              path: /developer-support/release-notes/helm-chart
+              category: Page
+              show: True
+            - title: "Tyk Identity Broker"
+              path: /developer-support/release-notes/tib
+              category: Page
+              show: True
+            - title: "Tyk Cloud"
+              path: /developer-support/release-notes/cloud
+              category: Page
+              show: True
+            - title: "Archived Releases"
+              path: /developer-support/release-notes/archived
+              category: Page
+              show: True
+          - title: "Deprecation"
+            path: /developer-support/deprecation
+            category: Page
+            show: True
+          - title: "Upgrading Guide"
+            path: /developer-support/upgrading
+            category: Page
+            show: True
+          - title: "Frequently Asked Questions"
+            path: /developer-support/faq
+            category: Page
+            show: True
+          - title: "Docs Contribution"
+            path: /developer-support/contributing
+            category: Directory
+            show: True
+            menu:
+              - title: "UI Example: Pill Label shortcode"
+                path: /ui-examples/test-pill-label
+                category: Page
+                show: true
+              - title: "UI Example: Feature Cards shortcode"
+                path: /ui-examples/feature-cards
+                category: Page
+                show: true
+              - title: "UI Example: YouTube Video Embed shortcode"
+                path: /ui-examples/youtube-video-embed
+                category: Page
+                show: true
   - title: "Developer Portal"
-    category: Label
+    category: Tab
     show: True
+    path: /portal/overview
     menu:
       - title: "Overview"
         path: /portal/overview
@@ -582,7 +761,8 @@ menu:
                     category: Page
                     show: True
   - title: "AI Management"
-    category: Label
+    category: Tab
+    path: /ai-management/overview
     show: True
     menu:
       - title: "Overview"
@@ -700,8 +880,9 @@ menu:
                 path: /ai-management/ai-studio/ai-studio-swagger
                 show: True
   - title: "API Governance"
-    category: Label
+    category: Tab
     show: True
+    path: /tyk-governance/overview
     menu:
       - title: "Overview"
         path: /tyk-governance/overview
@@ -723,181 +904,3 @@ menu:
         path: /tyk-governance/api-labeling
         category: Page
         show: True
-
-  - title: "Developer Support"
-    category: Label
-    show: True
-    menu:
-      - title: "Community Support"
-        path: /developer-support/community
-        category: Page
-        show: True
-      - title: "Support SLA"
-        path: /developer-support/support
-        category: Page
-        show: True
-      - title: "Tyk Release Types"
-        category: Directory
-        show: True
-        menu:
-          - title: "Long Term Support Release"
-            path: /developer-support/release-types/long-term-support
-            category: Page
-            show: True
-          - title: "Early access feature"
-            path: /developer-support/release-types/early-access-feature
-            category: Page
-            show: True
-          - title: "Lab Release"
-            path: /developer-support/release-types/lab-release
-            category: Page
-            show: True
-          - title: "FIPS Release"
-            path: /developer-support/release-types/fips-release
-            category: Page
-            show: True
-      - title: "Environment Variables and Configs"
-        category: Directory
-        show: True
-        menu:
-        - title: "Gateway"
-          path: /tyk-oss-gateway/configuration
-          category: Page
-          show: True
-        - title: "Dashboard"
-          path: /tyk-dashboard/configuration
-          category: Page
-          show: True
-        - title: "Pump"
-          path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
-          category: Page
-          show: True
-        - title: "Enterprise Developer Portal"
-          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
-          category: Page
-          show: True
-        - title: "Multi Data Center Bridge"
-          path: /tyk-multi-data-centre/mdcb-configuration-options
-          category: Page
-          show: True
-        - title: "Tyk Identity Broker"
-          path: /tyk-configuration-reference/tyk-identity-broker-configuration
-          category: Page
-          show: True
-      - title: "API Documentation"
-        category: Directory
-        show: True
-        menu:
-        - title: "Overview"
-          path: /tyk-apis
-          category: Page
-          show: True
-        - title: "Gateway"
-          path: /tyk-gateway-api
-          category: Page
-          show: True
-        - title: "Dashboard"
-          path: /tyk-dashboard-api
-          category: Page
-          show: True
-        - title: "Dashboard Admin"
-          path: /dashboard-admin-api
-          category: Page
-          show: True
-        - title: "Multi Data Center Bridge"
-          path: /tyk-mdcb-api
-          category: Page
-          show: True
-        - title: "Enterprise Developer Portal"
-          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
-          category: Page
-          show: True
-        - title: "Enterprise Developer Portal Admin"
-          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints
-          category: Page
-          show: True
-        - title: "Tyk Identity Broker"
-          path: /tyk-identity-broker/tib-rest-api
-          category: Page
-          show: True
-      - title: "Release Notes"
-        category: Directory
-        show: True
-        menu:
-        - title: "Latest Tyk Releases"
-          path: /developer-support/release-notes/overview
-          category: Page
-          show: True
-        - title: "Gateway"
-          path: /developer-support/release-notes/gateway
-          category: Page
-          show: True
-        - title: "Dashboard"
-          path: /developer-support/release-notes/dashboard
-          category: Page
-          show: True
-        - title: "Pump"
-          path: /developer-support/release-notes/pump
-          category: Page
-          show: True
-        - title: "Sync"
-          path: /developer-support/release-notes/sync
-          category: Page
-          show: True
-        - title: "Multi Data Center Bridge"
-          path: /developer-support/release-notes/mdcb
-          category: Page
-          show: True
-        - title: "Enterprise Developer Portal"
-          path: /developer-support/release-notes/portal
-          category: Page
-          show: True
-        - title: "Tyk Operator"
-          path: /developer-support/release-notes/operator
-          category: Page
-          show: True
-        - title: "Tyk Chart"
-          path: /developer-support/release-notes/helm-chart
-          category: Page
-          show: True
-        - title: "Tyk Identity Broker"
-          path: /developer-support/release-notes/tib
-          category: Page
-          show: True
-        - title: "Tyk Cloud"
-          path: /developer-support/release-notes/cloud
-          category: Page
-          show: True
-        - title: "Archived Releases"
-          path: /developer-support/release-notes/archived
-          category: Page
-          show: True
-      - title: "Deprecation"
-        path: /developer-support/deprecation
-        category: Page
-        show: True
-      - title: "Upgrading Guide"
-        path: /developer-support/upgrading
-        category: Page
-        show: True
-      - title: "Frequently Asked Questions"
-        path: /developer-support/faq
-        category: Page
-        show: True
-      - title: "Docs Contribution"
-        path: /developer-support/contributing
-        category: Directory
-        show: True
-        menu:
-          - title: "UI Example: Pill Label shortcode"
-            path: /ui-examples/test-pill-label
-            category: Page
-            show: true
-          - title: "UI Example: Feature Cards shortcode"
-            path: /ui-examples/feature-cards
-            category: Page
-            show: true
-          - title: "UI Example: YouTube Video Embed shortcode"
-            path: /ui-examples/youtube-video-embed
-            category: Page
-            show: true
