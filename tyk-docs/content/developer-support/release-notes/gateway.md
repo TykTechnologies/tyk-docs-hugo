@@ -46,7 +46,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.8.1 Release Notes
 
-#### Release Date XXX
+#### Release Date 9 May 2025
 
 #### Release Highlights
 
