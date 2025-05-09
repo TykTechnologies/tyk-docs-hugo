@@ -288,6 +288,10 @@ menu:
           path: /api-management/traffic-transformation
           category: Page
           show: True
+        - title: "SOAP To REST"
+          path: /advanced-configuration/transform-traffic/soap-rest
+          category: Page
+          show: True
         - title: "Allow List"
           path: /advanced-configuration/transform-traffic/allow-list
           category: Page
