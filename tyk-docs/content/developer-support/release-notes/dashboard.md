@@ -166,7 +166,7 @@ Resolved a bug that blocked multipart OAS ZIP imports when using a YAML file as 
 </li>
 </ul>
 
-#### Security Fixes 
+##### Security Fixes 
 
 <ul>
 <li>
