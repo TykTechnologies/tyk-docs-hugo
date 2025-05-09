@@ -24,14 +24,14 @@ Long Term Support describes a release of our Gateway and Dashboard which offers 
 In summary, LTS releases are stable minor or patch releases that are suitable for production use.
 
 {{< note success >}}
-Our current long term support release is 5.3 LTS. This is in full support from May 2024 to May 2025. This release will enter maintenance support until May 2026. Our next long term support release will be announced end of April 2025.
+Our current long term support release is 5.8 LTS. This is in full support from May 2025 to May 2026. This release will enter maintenance support until May 2027. Our next long term support release will be announced end of April 2026.
 {{</ note >}}
 
 ---
 
 ### What Is Our LTS Offering?
 
-We provide [full support]({{< ref "#full-support" >}}) for the first 12 months, including regular maintenance intervals every seven weeks. Following this period, we transition to [maintenance support]({{< ref "#maintenance-support" >}}) for an additional 12 months, focusing on critical fixes and essential security patching as needed.
+We provide [full support]({{< ref "#full-support" >}}) for the first 12 months, including regular maintenance intervals every eight weeks. Following this period, we transition to [maintenance support]({{< ref "#maintenance-support" >}}) for an additional 12 months, focusing on critical fixes and essential security patching as needed.
 
 We release a new Gateway LTS version every 12 months, which includes the [latest stable Golang version](https://go.dev/dl/).
 
@@ -46,7 +46,7 @@ In case there's a need to operate on a version beyond the established LTS policy
 
 ##### Full Support {#full-support}
 
-During the full support period, we patch the LTS branch on a regular 7-week cadence. 
+During the full support period, we patch the LTS branch on a regular eight-week cadence. 
 These patches may include any of the following:
 - Security updates
 - Bug fixes
@@ -62,9 +62,9 @@ If we find something critical we will react immediately and invoke our critical 
 
 | Version | Full Support Window | Maintenance Support Window | Completely Unsupported From |
 | ------- | ------------------- | -------------------------- | --------------------------- |
-| 5.0 LTS | April 2023 - April 2024 | May 2024 - April 2025 | May 2025 |
-| 5.3 LTS | May 2024-May 2025 | June 2025 - May 2026 | June 2026 |
-| LTS+1 (version TBC) | April 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
+| 5.3 LTS | May 2024 - May 2025 | June 2025 - May 2026 | June 2026 |
+| 5.8 LTS | May 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
+| LTS+1 (version TBC) | May 2026 - April 2027 | May 2027 - April 2028 | May 2028 |
 
 ---
 
@@ -120,7 +120,7 @@ As part of the release of the new Gateway LTS version we will commit to showing 
 1. **Recommended releases** - To ensure you get the most out of the latest Tyk experience, we'll provide information on which versions of different components across the entire stack you need.
 2. **Backwards Compatibility** - We'll provide information on what components and versions remain backward compatible with the new Tyk Dashboard and Tyk Gateway versions.
 
-Our next LTS version will be announced in April 2025.
+Our next LTS version will be announced in April 2026.
 
 <!-- COMMENTED OUT UNTIL LTS ANNOUNCED
 
@@ -149,8 +149,8 @@ To ensure a consistent and high-quality user experience, we have updated the way
 When selecting the "Latest" option, users can only choose the latest feature branch ([Gateway Release Notes]({{< ref "developer-support/release-notes/gateway" >}})).
 
 When selecting the "LTS" option, users will be able to choose from the following:
-- Current LTS version (e.g., 5.3.x): Full support provided, with the latest patch marked as `Recommended`.
-- Extended Support (e.g., 5.0.x): Maintenance support only.
+- Current LTS version (e.g., 5.8.x): Full support provided, with the latest patch marked as `Recommended`.
+- Extended Support (e.g., 5.3.x): Maintenance support only.
 
 Older versions (e.g., 5.2.x and below) are marked as "Unsupported" and will be greyed out. 
 
@@ -162,7 +162,7 @@ Unsupported versions are not eligible for bug fixes or feature updates. Users en
 While Tyk Cloud deployments may remain on unsupported versions without a specific upgrade timeline, we may automatically upgrade such deployments in case internal reasons (e.g., infrastructure dependencies, security, or performance risks) require such an action. In this case, Tyk will communicate a timeline for upgrading in advance.
 
 **Upgrade Recommendations**
-Users running deployments on a supported but non-latest version within a branch (e.g., 5.3.2) will see a notice encouraging an upgrade to the "Recommended" version (e.g., 5.3.4).
+Users running deployments on a supported but non-latest version within a branch (e.g., 5.3.2) will see a notice encouraging an upgrade to the "Recommended" version (e.g., 5.3.11).
 
 This ensures users benefit from the latest security patches and improvements within the supported branch.
 
