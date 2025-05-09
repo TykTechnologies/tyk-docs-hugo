@@ -136,7 +136,7 @@ Resolved a race condition in self-managed deployments which occasionally lead to
 <details>
 <summary>Resolved merging issue in field-based policy permissions</summary>
 
-Resolved a bug where allowed_types from multiple policies were incorrectly merged using intersection logic. Policies now correctly merge fields to allow access to any fields listed across the applied policies.
+Resolved a bug where `allowed_types` from multiple policies were incorrectly merged using intersection logic. Policies now correctly merge fields to allow access to any fields listed across the applied policies.
 </details>
 </li>
 </ul>
