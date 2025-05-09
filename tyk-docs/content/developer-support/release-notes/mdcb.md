@@ -28,6 +28,53 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 2.8 Release Notes
 
+### 2.8.1 Release Notes
+
+#### Release Date 9 May 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.0" >}}) below.
+
+#### Breaking Changes
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.7.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.7.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.8.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.1)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.1
+    ```
+#### Changelog {#Changelog-v2.8.0}
+
+##### Changed
+<ul>
+
+<li>
+<details>
+<summary>Add changelog Summary</summary>
+
+Add changelog description 
+</details>
+</li>
+
+</ul>
+
 ### 2.8.0 Release Notes
 
 #### Release Date 28 March 2025
