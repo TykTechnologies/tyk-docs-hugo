@@ -44,7 +44,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release focuses mainly on a security fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.1" >}}) below.
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.1" >}}) below.
 
 #### Breaking Changes
 
@@ -105,7 +105,7 @@ Improved formatting for the password error on the add user page
 <details>
 <summary>License allocation now works across multiple dashboards</summary>
 
-Converted license allocation to be stored in a distributed manner to allow a setup with multiple dashboards.
+Fixed an issue where the Dashboard might not allow the correct number of Gateways to connect. This was due to a conflict with license management in deployments with multiple Dashboards which has now been resolved.
 </details>
 </li>
 <li>
@@ -113,13 +113,6 @@ Converted license allocation to be stored in a distributed manner to allow a set
 <summary>Resolved vertical overflow display issue in APIs table</summary>
 
 Fixed display issue on the APIs table rows when content doesn't fit vertically
-</details>
-</li>
-<li>
-<details>
-<summary>Fixed race condition in gateway license allocation</summary>
-
-Resolved a race condition in gateway license allocation that occasionally allowed more or fewer gateways than licensed to register and serve traffic.
 </details>
 </li>
 <li>
