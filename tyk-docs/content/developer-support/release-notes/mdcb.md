@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release contains minor updates to ensure compatibility with the latest versions of Gateway and Dashboard.
+This is a version bump to align with Gateway and Dashboard v5.8.1; no changes have been implemented in this release.
 
 #### Breaking Changes
 
