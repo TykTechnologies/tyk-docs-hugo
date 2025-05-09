@@ -50,7 +50,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.1" >}}) below.
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.1" >}}) below.
 
 #### Breaking Changes
 
@@ -108,28 +108,28 @@ If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions]
 <details>
 <summary>Fixed Inconsistent Context Behavior in UDG APIs</summary>
 
-Fixed a bug where headers being sent upstream in UDG APIs were not being cached accurately, ensuring correct and consistent context handling for all requests.
+Addressed an issue for UDG APIs where caching led to the forwarding of stale values for headers that contained content variables towards the upstream of the UDG apis.
 </details>
 </li>
 <li>
 <details>
 <summary>Improved Route Matching Logic for API Requests</summary>
 
-Resolved an issue where some API requests were routed incorrectly due to path sorting not prioritizing specific routes over parameterized ones.
+Resolved an issue where requests could be routed incorrectly due to inverted prioritisation of dynamically declared paths over those with similar static paths. Now, statically declared paths take priority in the path matching algorithm, so if API1 has listen path `/path/{param}/endpoint` and API2 has listen path `/path/specific/endpoint` a request to `/path/specific/endpoint/resource` will be correctly routed to API2.
 </details>
 </li>
 <li>
 <details>
-<summary>Resolved Incorrect Timeout Application for Specific API Endpoints</summary>
+<summary>Resolved Issue With Default Enforced Request Timeout</summary>
 
-Fixed an issue where proxy_default_timeout for specific API endpoints were not being applied correctly, causing requests to use the global timeout instead.
+Fixed an issue where an [enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) set for a specific API endpoint could be overruled by the configured [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}). Now if an endpoint-level timeout is set then this will be honoured, regardless of any default timeout that is configured.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed race condition in gateway license allocation</summary>
+<summary>Fixed Issue With Tyk Self-Managed Gateways Claiming Licenses</summary>
 
-Resolved a race condition in gateway license allocation that occasionally allowed more or fewer gateways than licensed to register and serve traffic.
+Resolved a race condition in self-managed deployments which occasionally lead to fewer Gateways registering with the Dashboard than the number that had been licensed. Now Tyk Self-Managed deployments will allow the licensed number of Gateways to register and serve traffic.
 </details>
 </li>
 <li>
