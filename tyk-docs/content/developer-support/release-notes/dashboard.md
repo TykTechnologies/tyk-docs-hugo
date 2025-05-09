@@ -97,37 +97,9 @@ If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Improved password error messaging on Add User page</summary>
-
-Improved formatting for the password error on the add user page
-</details>
-</li>
-<li>
-<details>
 <summary>License allocation now works across multiple dashboards</summary>
 
 Fixed an issue where the Dashboard might not allow the correct number of Gateways to connect. This was due to a conflict with license management in deployments with multiple Dashboards which has now been resolved.
-</details>
-</li>
-<li>
-<details>
-<summary>Resolved vertical overflow display issue in APIs table</summary>
-
-Fixed display issue on the APIs table rows when content doesn't fit vertically
-</details>
-</li>
-<li>
-<details>
-<summary>Fixed API Category filter on Activity Overview page</summary>
-
-Fixed an issue where the API Category filter did not work as expected on the Activity Overview page in Dashboard Monitoring.
-</details>
-</li>
-<li>
-<details>
-<summary>Corrected certificate list colors based on private key presence</summary>
-
-Fixed colors on the certificates list table when a certificate contains or does not contain a private key.
 </details>
 </li>
 <li>
@@ -153,16 +125,16 @@ Fixed an issue when using API Designer to migrate an API from Tyk Classic to Tyk
 </li>
 <li>
 <details>
-<summary>Replaced crypto.randomUUID() to fix UI errors</summary>
+<summary>Fixed import issue for Tyk OAS ZIPs with YAML entrypoints</summary>
 
-Replaced calls to crypto.randomUUID() which caused errors in the UI.
+Resolved a bug that blocked multipart OAS ZIP imports when using a YAML file as the entrypoint.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed import issue for Tyk OAS ZIPs with YAML entrypoints</summary>
-
-Resolved a bug that blocked multipart OAS ZIP imports when using a YAML file as the entrypoint.
+<summary>Various fixes to the Dashboard UI</summary>
+  
+We have implemented various fixes and improvements in the Dashboard UI to enhance usability.
 </details>
 </li>
 </ul>
