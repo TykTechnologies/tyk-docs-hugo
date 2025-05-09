@@ -1,5 +1,5 @@
 ---
-title: "Request Method "
+title: "Request Method"
 date: 2025-01-10
 description: "How to configure Request Method traffic transformation middleware in Tyk"
 tags: ["Traffic Transformation", "Request Method"]
