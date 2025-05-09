@@ -84,7 +84,7 @@ Given the potential time difference between your upgrade and the release of this
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.0}
+#### Upgrade instructions {#upgrade-5.8.1}
 
 If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
