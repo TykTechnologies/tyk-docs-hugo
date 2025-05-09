@@ -64,7 +64,7 @@ There are no breaking changes in this release.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.0}
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.1}
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -104,30 +104,30 @@ Fixed an issue where the Dashboard might not allow the correct number of Gateway
 </li>
 <li>
 <details>
-<summary>SSO Login No Longer Overwrites Admin Permissions</summary>
+<summary>Admin permissions correctly assigned during SSO login</summary>
 
-Fixed an issue where existing admin users had their permissions overwritten by SSO group settings during login. Admin users now retain their original permissions when sso_enable_user_lookup is enabled. Group permissions are only applied to new or non-admin users.
+Fixed an issue where existing admin users could have their permissions overwritten by SSO group settings during login. Admin users now retain their original permissions when `sso_enable_user_lookup` is enabled. Group permissions are only applied to new or non-admin users.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed API creation from pasted YAML definitions</summary>
+<summary>Fixed import of Tyk OAS API definitions in YAML format</summary>
 
-Fixed an issue that prevented creation of an API from a YAML format Tyk OAS API definitions using the "paste API definition" method. You can now export your Tyk OAS API definition in YAML or JSON format and use the content of this file to create a new API.
+Fixed an issue that prevented creation of an API from a YAML format Tyk OAS API definition. You can now export your Tyk OAS API definition in YAML or JSON format and use the content of this file to create a new API.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed broken cancel button in API promotion flow</summary>
+<summary>Fixed broken cancel button in Tyk Classic to Tyk OAS flow</summary>
 
-Fixed an issue when using API Designer to migrate an API from Tyk Classic to Tyk OAS. Previously the cancel button did not work when promoting a staged API; this how now been fixed.
+Fixed an issue when using API Designer to migrate an API from Tyk Classic to Tyk OAS. Previously the cancel button did not work in the pop-up when promoting a staged API.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed import issue for Tyk OAS ZIPs with YAML entrypoints</summary>
+<summary>Multi-part OpenAPI descriptions in YAML format can now be imported</summary>
 
-Resolved a bug that blocked multipart OAS ZIP imports when using a YAML file as the entrypoint.
+Fixed an issue that prevented import of multi-part OpenAPI descriptions in YAML format.
 </details>
 </li>
 <li>
