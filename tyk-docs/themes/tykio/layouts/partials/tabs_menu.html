@@ -4,7 +4,7 @@
 {{- $showEmptyPages := .Site.Params.showEmptyPages -}}
 
 <div class="tabs-wrapper">
-  <div class="tabs-container">
+  <div class="tabs-container" id="tabs-container">
     {{- range .Site.Data.menu.menu -}}
       {{- if eq .category "Tab" -}}
         {{- $selected := false -}}
@@ -72,3 +72,20 @@
     
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var activeTab = document.querySelector('.tab-link.active');
+  var container = document.getElementById('tabs-container');
+  if (activeTab && container) {
+    // Only do this on small screens (mobile)
+    if (window.innerWidth <= 768) {
+      activeTab.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+  }
+});
+</script>
