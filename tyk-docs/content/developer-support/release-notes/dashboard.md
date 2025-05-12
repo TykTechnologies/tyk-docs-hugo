@@ -38,6 +38,120 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.8 Release Notes
 
+### 5.8.1 Release Notes
+
+#### Release Date 9 May 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.1" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.1}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.1 | MDCB v2.8.1     | MDCB v2.8.1 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.1}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.1}
+
+If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.1)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.1
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.1}
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>License allocation now works across multiple dashboards</summary>
+
+Fixed an issue where the Dashboard might not allow the correct number of Gateways to connect. This was due to a conflict with license management in deployments with multiple Dashboards which has now been resolved.
+</details>
+</li>
+<li>
+<details>
+<summary>Admin permissions correctly assigned during SSO login</summary>
+
+Fixed an issue where existing admin users could have their permissions overwritten by SSO group settings during login. Admin users now retain their original permissions when `sso_enable_user_lookup` is enabled. Group permissions are only applied to new or non-admin users.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed import of Tyk OAS API definitions in YAML format</summary>
+
+Fixed an issue that prevented creation of an API from a YAML format Tyk OAS API definition. You can now export your Tyk OAS API definition in YAML or JSON format and use the content of this file to create a new API.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed broken cancel button in Tyk Classic to Tyk OAS flow</summary>
+
+Fixed an issue when using API Designer to migrate an API from Tyk Classic to Tyk OAS. Previously the cancel button did not work in the pop-up when promoting a staged API.
+</details>
+</li>
+<li>
+<details>
+<summary>Multi-part OpenAPI descriptions in YAML format can now be imported</summary>
+
+Fixed an issue that prevented import of multi-part OpenAPI descriptions in YAML format.
+</details>
+</li>
+<li>
+<details>
+<summary>Various fixes to the Dashboard UI</summary>
+  
+We have implemented various fixes and improvements in the Dashboard UI to enhance usability.
+</details>
+</li>
+</ul>
+
+##### Security Fixes 
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2025-46569](https://nvd.nist.gov/vuln/detail/CVE-2025-46569)
+</details>
+</li>
+</ul>
+
 ### 5.8.0 Release Notes
 
 #### Release Date 28 March 2025
