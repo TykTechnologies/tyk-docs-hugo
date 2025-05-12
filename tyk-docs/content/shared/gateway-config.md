@@ -213,13 +213,16 @@ Enabled WebSockets and server side events support
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_CERTIFICATES</b><br />
 Type: `CertsData`<br />
 
-Deprecated. SSL certificates used by Gateway server.
+Deprecated: Use `ssl_certificates`instead.
 
 ### http_server_options.ssl_certificates
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES</b><br />
 Type: `[]string`<br />
 
-SSL certificates used by your Gateway server. A list of certificate IDs or path to files.
+Index of certificates available to the Gateway for use in client and upstream communication.
+The string value in the array can be two of the following options:
+1. The ID assigned to and used to identify a certificate in the Tyk Certificate Store
+2. The path to a file accessible to the Gateway. This PEM file must contain the private key and public certificate pair concatenated together.
 
 ### http_server_options.server_name
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_SERVERNAME</b><br />
