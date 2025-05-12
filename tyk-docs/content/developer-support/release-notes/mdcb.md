@@ -28,6 +28,42 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 2.8 Release Notes
 
+
+### 2.8.1 Release Notes
+
+#### Release Date 9 May 2025
+
+#### Release Highlights
+
+This is a version bump to align with Gateway and Dashboard v5.8.1; no changes have been implemented in this release.
+
+#### Breaking Changes
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are upgrading to 2.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.1)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.1
+    ```
+#### Changelog {#Changelog-v2.8.1}
+
+No changes in this release.
+
+
 ### 2.8.0 Release Notes
 
 #### Release Date 28 March 2025
