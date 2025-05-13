@@ -10,17 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatOverlay = document.getElementById('chat-overlay');
   const closePopup = document.getElementById('close-popup');
 
-  // Log elements to help debug
-  console.log('Chat elements:', {
-    chatInput,
-    chatSubmit,
-    chatStop,
-    chatMessages,
-    chatBubble,
-    chatPopup,
-    closePopup
-  });
-
   // Check if all required elements exist before initializing
   if (!chatInput || !chatSubmit || !chatStop || !chatMessages || !chatBubble || !chatPopup || !chatOverlay || !closePopup) {
     console.error('Chat widget: Some required elements are missing. Widget initialization aborted.');
@@ -47,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     pedantic: false,
     gfm: true,
     breaks: true,
-    sanitize: true, // Enable sanitization to prevent XSS
     smartypants: false,
     xhtml: false
   });
@@ -85,14 +73,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   chatBubble.addEventListener('click', function (e) {
-    console.log('Chat bubble clicked');
     e.preventDefault();
     e.stopPropagation();
     togglePopup();
   });
 
   closePopup.addEventListener('click', function (e) {
-    console.log('Close popup clicked');
     e.preventDefault();
     e.stopPropagation();
     hidePopup();
@@ -100,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Close popup when clicking on the overlay
   chatOverlay.addEventListener('click', function (e) {
-    console.log('Overlay clicked');
     e.preventDefault();
     e.stopPropagation();
     hidePopup();
@@ -108,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Toggle chat popup visibility
   function togglePopup() {
-    console.log('Toggling popup, current state:', chatPopup.classList.contains('hidden'));
     if (chatPopup.classList.contains('hidden')) {
       showPopup();
     } else {
@@ -134,11 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Display user message
     const messageElement = document.createElement('div');
     messageElement.className = 'user-message';
+
+    // Sanitize user input before inserting into DOM
+    const sanitizedMessage = DOMPurify.sanitize(message);
     messageElement.innerHTML = `
-        <div class="message-bubble user-bubble">
-          ${message}
-        </div>
-      `;
+      <div class="message-bubble user-bubble">
+        ${sanitizedMessage}
+      </div>
+    `;
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -202,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function () {
       function processStream() {
         reader.read().then(({ done, value }) => {
           if (done) {
-            console.log('Stream complete');
             if (typingIndicator) typingIndicator.remove();
             renderMarkdown(accumulatedText, rawContentContainer);
             return;
@@ -281,10 +267,14 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const markdownContainer = document.createElement('div');
       markdownContainer.className = 'markdown-content';
-      
-      // Safely render markdown with sanitization
-      const sanitizedHtml = marked.parse(accumulatedText);
+
+      // Convert markdown to HTML
+      const rawHtml = marked.parse(accumulatedText);
+
+      // Sanitize the HTML with DOMPurify before inserting into DOM
+      const sanitizedHtml = DOMPurify.sanitize(rawHtml);
       markdownContainer.innerHTML = sanitizedHtml;
+
       container.replaceWith(markdownContainer);
 
       // Add assistant response to history
