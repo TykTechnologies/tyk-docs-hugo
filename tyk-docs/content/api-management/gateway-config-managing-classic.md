@@ -1,5 +1,5 @@
 ---
-title: "Managing Classic API Definition"
+title: "Managing Tyk Classic API Definition"
 date: 2025-02-10
 tags: ["Tyk Classic API", "Create", "Update", "Import", "API Key", "Security Policy"]
 description: "How to manage Tyk Classic API definition"
@@ -43,8 +43,6 @@ To reach a detailed guide to creating Tyk API Definitions, please choose the tab
 
 ### Tyk Cloud
 
-<br>
-<br>
 Tyk Cloud is a fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world. Tyk Cloud includes everything you need to manage your global API ecosystem: [Tyk Gateways]({{< ref "tyk-oss-gateway" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}}) and [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}). 
 <br>  
 
@@ -53,8 +51,6 @@ For an advanced step by step guide we recommend visiting our [Getting Started gu
 
 ### Tyk Self-Managed
 
-<br>
-<br>
 {{< include "create-api-include" >}}
 
 If the command succeeds, you will see:
@@ -242,12 +238,9 @@ See [What is a Security Policy?]({{< ref "api-management/policies#what-is-a-secu
 
 ### Tyk Cloud
 
-<br>
-
 {{< include "create-security-policy-include" >}}
 
 ### Tyk Self Manged
-<br>
 
 {{< include "create-security-policy-include" >}}
 
