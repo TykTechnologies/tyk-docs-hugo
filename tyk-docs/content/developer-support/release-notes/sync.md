@@ -35,7 +35,7 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade instructions
-For users currently on v2.0.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.0.0 and proceed directly to this latest patch release.
+For users currently on v2.1.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.1.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
