@@ -19,6 +19,45 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.1 Release Notes
 
+### 2.1.1 Release Notes
+
+#### Release Date 13 May 2025
+
+#### Release Highlights
+
+This patch release contains a bug fix. Please refer to the [changelog]({{< ref "#Changelog-v2.1.1">}}) below for detailed explanation.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.1.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.1.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.1.1](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.1.1)
+  - ```bash
+    docker pull tykio/tyk-sync:v2.1.1
+    ```
+
+#### Changelog {#Changelog-v2.1.1}
+
+##### Fixed
+<ul>
+<li>
+<details>
+<summary>Fixed incorrect API-level rate limits from dump command</summary>
+
+Fixed an issue where the Tyk Sync dump command incorrectly set API-level rate limits in a policy that did not have such limits. This problem arose from Sync trying to add a default value when no rate limit is set in the policy, which led to unintended rate limiting. The issue has been resolved by ensuring that Sync respects the original policy when no API-level rate limit is set.
+</details>
+</li>
+</ul>
+
 ### 2.1.0 Release Notes
 
 #### Release Date 28 March 2025
