@@ -8,6 +8,11 @@ $text-color: #374151;
   z-index: 100;
   background: #fff;
   transition: top 0.3s ease;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid #e3ceff;
 }
 
 body.has-hubspot-banner .tabs-menu {
@@ -20,9 +25,9 @@ body.has-hubspot-banner .tabs-menu {
 
 .tabs-wrapper {
   width: 100%;
-  margin-top: 6px;
   overflow: hidden;
   background: #fff;
+  margin: 20px 15px 0 15px;
 }
 
 .tabs-container {
@@ -31,7 +36,6 @@ body.has-hubspot-banner .tabs-menu {
   overflow-x: auto;
   gap: $tab-spacing;
   background: #fff;
-  
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -86,6 +90,10 @@ body.has-hubspot-banner .tabs-menu {
     padding: 0 1rem;
   }
 
+  .tab-link {
+    padding: 0;
+  }
+
   .documentation-table-of-contents {
     position: relative;
     width: 100%;
@@ -98,10 +106,6 @@ body.has-hubspot-banner .tabs-menu {
   .page-content__main {
     display: flex;
     flex-direction: column;
-  }
-
-  .tabs-wrapper {
-    margin-top: 20px;
   }
 
   .tabs-wrapper .nav_sub_active {

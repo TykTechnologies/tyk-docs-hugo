@@ -4,7 +4,7 @@
 {{- $showEmptyPages := .Site.Params.showEmptyPages -}}
 
 <div class="tabs-wrapper">
-  <div class="tabs-container">
+  <div class="tabs-container" id="tabs-container">
     {{- range .Site.Data.menu.menu -}}
       {{- if eq .category "Tab" -}}
         {{- $selected := false -}}
@@ -69,5 +69,6 @@
         {{- end -}}
       {{- end -}}
     {{- end -}}
+    
   </div>
 </div>
