@@ -41,7 +41,7 @@
     },
     {
         "path": "/docs/5.0/",
-        "name": "5 - LTS",
+        "name": "5",
         "branch": "release-5"
     },
     {
@@ -61,7 +61,7 @@
     },
     {
         "path": "/docs/4.0/",
-        "name": "4 - LTS",
+        "name": "4",
         "branch": "release-4"
     },
     {
@@ -76,7 +76,7 @@
     },
     {
         "path": "/docs/3-lts/",
-        "name": "3 - LTS",
+        "name": "3",
         "branch": "release-3-lts"
     },
     {
