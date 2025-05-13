@@ -2103,6 +2103,14 @@ Tyk offers you two types of Playgrounds, depending on who should be authorized t
 * **Playground** tab in `API Designer`, that's only accessible via Tyk Dashboard and is always enabled. You need to log into the Tyk Dashboard to be able to use it.
 * **Public Playground** that you can enable for any GraphQL API and that is accessible for any consumer interacting with your GQL API. This playground will follow all security rules you set for your GQL API - authentication, authorization, etc.
 
+{{< note >}}
+**Note** 
+
+The Public Playground relies on assets in the `playground` folder under [template_path]({{< ref "tyk-oss-gateway/configuration#template_path" >}}) (default: `/opt/tyk-gateway/templates`).
+If you change this path, be sure to copy the `playground` folder to the new location to preserve functionality.
+
+{{< /note >}}
+
 #### Enabling Public GraphQL Playground
 
 {{< tabs_start >}}
