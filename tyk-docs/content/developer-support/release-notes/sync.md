@@ -25,7 +25,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release focuses mainly on bug fixes. Please refer to the [changelog]({{< ref "#Changelog-v2.1.1">}}) below for detailed explanation.
+This patch release contains a bug fix. Please refer to the [changelog]({{< ref "#Changelog-v2.1.1">}}) below for detailed explanation.
 
 #### Breaking Changes
 
