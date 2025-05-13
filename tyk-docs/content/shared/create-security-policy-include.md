@@ -52,11 +52,11 @@ To create a security policy with the Dashboard, follow these steps:
 
     **Throttling**
 
-    When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "api-management/rate-limit#request-throttling" >}}) for more details.
+    When hitting rate limits, you can set Tyk Gateway to automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "api-management/request-throttling" >}}) for more details.
 
     **Usage Quotas**
 
-    Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "api-management/rate-limit#request-quotas" >}}) for more details.
+    Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "api-management/request-quotas" >}}) for more details.
 
     Usage quotas can only be a positive number, or -1 (unlimited). **Note: The Usage Quota set by a policy will override a quota applied to an individual key.**
 

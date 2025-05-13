@@ -5,7 +5,8 @@ info:
     name: Tyk Technologies
     url: https://tyk.io/contact
   description: |2
-
+    <img src="https://tyk.io/docs/img/swagger_dashboard_image.png" width="963" height="250">
+    
     ## <a name="introduction"></a> Introduction
 
     The Tyk Dashboard API offers granular, programmatic access to a centralised database of resources that your Tyk nodes can pull from. This API has a dynamic user administrative structure which means the secret key that is used to communicate with your Tyk nodes can be kept secret and access to the wider management functions can be handled on a user-by-user and organisation-by-organisation basis.
@@ -43,7 +44,7 @@ servers:
 - url: https://{tenant}
   variables:
     tenant:
-      default: localhost:8080
+      default: localhost:3000
       description: Your dashboard host
 security:
 - bearerAuth: []
@@ -13343,11 +13344,13 @@ components:
           $ref: '#/components/schemas/ServiceDiscovery'
       type: object
     TimeDuration:
-      format: int64
-      type: integer
+      format: duration
+      type: string
+      example: "30s"
     TimeReadableDuration:
-      format: int64
-      type: integer
+      format: duration
+      type: string
+      example: PT2H30M15S
     TrackEndpoint:
       nullable: true
       properties:

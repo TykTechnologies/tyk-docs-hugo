@@ -44,6 +44,103 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 5.8 Release Notes
 
+### 5.8.1 Release Notes
+
+#### Release Date 9 May 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.1" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.1}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.1 | MDCB v2.8.1     | MDCB v2.8.1 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.1}
+
+If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.1
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.8.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Inconsistent Context Behavior in UDG APIs</summary>
+
+Addressed an issue for UDG APIs where caching led to the forwarding of stale values for headers that contained content variables towards the upstream of the UDG apis.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Route Matching Logic for API Requests</summary>
+
+Resolved an issue where requests could be routed incorrectly due to inverted prioritisation of dynamically declared paths over those with similar static paths. Now, statically declared paths take priority in the path matching algorithm, so if API1 has listen path `/path/{param}/endpoint` and API2 has listen path `/path/specific/endpoint` a request to `/path/specific/endpoint/resource` will be correctly routed to API2.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Issue With Default Enforced Request Timeout</summary>
+
+Fixed an issue where an [enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) set for a specific API endpoint could be overruled by the configured [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}). Now if an endpoint-level timeout is set then this will be honoured, regardless of any default timeout that is configured.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Issue With Tyk Self-Managed Gateways Claiming Licenses</summary>
+
+Resolved a race condition in self-managed deployments which occasionally lead to fewer Gateways registering with the Dashboard than the number that had been licensed. Now Tyk Self-Managed deployments will allow the licensed number of Gateways to register and serve traffic.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved merging issue in field-based policy permissions</summary>
+
+Resolved a bug where `allowed_types` from multiple policies were incorrectly merged using intersection logic. Policies now correctly merge fields to allow access to any fields listed across the applied policies.
+</details>
+</li>
+</ul>
+
 ### 5.8.0 Release Notes
 
 #### Release Date 28 March 2025
@@ -140,7 +237,7 @@ In Tyk 5.8.0, we have added configuration of the following features into the Tyk
 <details>
 <summary>Transaction Logs for Better API Request Visibility</summary>
 
-Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance.
+Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance. Find more details in our [Transaction Logs documentation]({{< ref "api-management/logs-metrics#enabling-api-request-access-logs-in-tyk-gateway" >}}).
 </details>
 </li>
 <li>
@@ -495,7 +592,7 @@ Given the potential time difference between your upgrade and the release of this
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
+In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 
 
 #### Upgrade instructions {#upgrade-5.7.0}
@@ -1727,6 +1824,123 @@ Repeat the release notes section above for every patch here
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
 ## 5.3 Release Notes
+
+### 5.3.11 Release Notes
+
+#### Release Date 7 May 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.11" >}}) below.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.11 | MDCB v2.8.0     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.3.11}
+
+If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.11)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.11
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.3.11}
+
+##### Added 
+
+<ul>
+<li>
+<details>
+<summary>Added GODEBUG Flags for Backward Compatibility with Deprecated Ciphers</summary>
+
+We have added GODEBUG flags to enable deprecated insecure ciphers by default for backward compatibility. Existing users will not be affected. New users or those who wish to override these settings can do so at runtime using environment variables.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Inconsistent Context Behavior in UDG APIs</summary>
+
+Addressed an issue for UDG APIs where caching led to the forwarding of stale values for headers that contained content variables towards the upstream of the UDG apis.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Route Matching Logic for API Requests</summary>
+
+Resolved an issue where requests could be routed incorrectly due to inverted prioritisation of dynamically declared paths over those with similar static paths. Now, statically declared paths take priority in the path matching algorithm, so if API1 has listen path `/path/{param}/endpoint` and API2 has listen path `/path/specific/endpoint` a request to `/path/specific/endpoint/resource` will be correctly routed to API2.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Issue With Default Enforced Request Timeout </summary>
+
+Fixed an issue where an [enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) set for a specific API endpoint could be overruled by the configured [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}). Now if an endpoint-level timeout is set then this will be honoured, regardless of any default timeout that is configured.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Issue With Tyk Self-Managed Gateways Claiming Licenses</summary>
+
+Resolved a race condition in self-managed deployments which occasionally lead to fewer Gateways registering with the Dashboard than the number that had been licensed. Now Tyk Self-Managed deployments will allow the licensed number of Gateways to register and serve traffic.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Gateway crash loop on restart without MDCB in Kubernetes</summary>
+
+Resolved a bug where Gateway pods in Kubernetes would enter a crash loop on restart if MDCB was down. The issue occurred due to the HTTP router failing to initialize properly during cold start. This fix ensures stable Gateway recovery even when MDCB is offline. 
+</details>
+</li>
+<li>
+<details>
+<summary>Multi-Value Response Headers in Coprocess Middleware</summary>
+
+Multi-value response headers were previously lost after synchronization with coprocess middleware, as only the first value was retained. This has been resolved, ensuring all response headers are properly synchronized and preserved
+</details>
+</li>
+</ul>
+
 
 ### 5.3.10 Release Notes
 

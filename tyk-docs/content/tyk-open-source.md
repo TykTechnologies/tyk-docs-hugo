@@ -22,6 +22,8 @@ aliases:
   - /apim/open-source
   - /tyk-stack/tyk-gateway/configuration/redis-cluster
   - /apim/open-source/getting-started
+  - /getting-started/installation
+  - /try-out-tyk/tutorials/tutorials
 ---
 
 ## What is Tyk Open Source
