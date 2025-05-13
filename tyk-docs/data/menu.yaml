@@ -6,7 +6,6 @@ menu:
     category: Label
     show: True
   - title: "Overview"
-    path: /
     category: Label
     show: True
     menu:
@@ -27,7 +26,6 @@ menu:
         category: Page
         show: True
   - title: "Getting Started"
-    path: /
     category: Label
     show: True
     menu:
@@ -43,19 +41,6 @@ menu:
         path: /getting-started/using-tyk-dashboard
         category: Page
         show: True
-  - title: "Deployment and Operations"
-    path: /apim
-    category: Label
-    show: False
-    menu:
-      - title: "Featured Guides"
-        category: Directory
-        show: False
-        menu:
-          - title: "Guide to Tyk installations"
-            path: /getting-started/installation
-            category: Page
-            show: True
   - title: "API Management"
     path: /getting-started
     category: Label
@@ -69,6 +54,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Stack"
+            path: /tyk-stack
+            category: Page
+            show: True
           - title: "Tyk Cloud"
             path: /tyk-cloud
             category: Page
@@ -81,11 +70,27 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
+      - title: "Tyk Gateway"
+        path: /tyk-oss-gateway
+        category: Page
+        show: True
       - title: "Client Authentication"
         category: Directory
         path: /api-management/client-authentication
         show: True
         menu:
+        - title: "Bearer Tokens"
+          path: /api-management/authentication/bearer-token
+          category: Page
+          show: True
+        - title: "Basic Authentication"
+          path: /api-management/authentication/basic-authentication
+          category: Page
+          show: True
+        - title: "OAuth 2.0"
+          path: /api-management/authentication/oauth-2
+          category: Page
+          show: True
         - title: "JSON Web Tokens"
           path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
           category: Page
@@ -98,10 +103,22 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: True
-      - title: "Rate Limiting"
-        path: /api-management/rate-limit
-        category: Page
+      - title: "API Traffic Control"
+        category: Directory
         show: True
+        menu:
+        - title: "Rate Limiting"
+          path: /api-management/rate-limit
+          category: Page
+          show: True
+        - title: "Request Quotas"
+          path: /api-management/request-quotas
+          category: Page
+          show: True
+        - title: "Request Throttling"
+          path: /api-management/request-throttling
+          category: Page
+          show: True
       - title: "Security Policy and Access Keys"
         path: /api-management/policies
         category: Page
@@ -356,60 +373,6 @@ menu:
         path: /api-management/troubleshooting-debugging
         category: Page
         show: True
-      - title: "AI Management"
-        category: Page
-        path: /api-management/ai-management/overview
-        show: True
-  - title: "Product Stack"
-    path: /tyk-stack
-    category: Label
-    show: False
-    menu:
-      - title: "Overview"
-        path: /tyk-stack
-        category: Page
-        show: False
-      - title: "Tyk Gateway (Open Source)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-oss-gateway
-            category: Page
-            show: False
-          - title: "Key concepts"
-            category: Directory
-            show: True
-            menu:
-
-          - title: "API access control"
-            category: Directory
-            show: False
-            menu: 
-              - title: "Overview"
-                path: /basic-config-and-security
-                category: Page
-                show: False
-              - title: "oauth"
-                category: page
-                show: False
-                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-              - title: "Gateway"
-                path: /basic-config-and-security/security/gateway
-                category: Page
-                show: False
-          - title: "Advanced configurations"
-            category: Directory
-            show: False
-            menu:
-              - title: "Overview"
-                path: /advanced-configuration
-                category: Page
-                show: False
-      - title: "Tyk Sync"
-        category: Directory
-        show: False
-        menu:
   - title: "Developer Portal"
     category: Label
     show: True
@@ -424,8 +387,13 @@ menu:
         show: True
       - title: "API Consumer"
         path: /portal/api-consumer
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Invite Codes"
+          path: /portal/api-consumer/invite-codes
+          category: Page
+          show: True
       - title: "API Provider"
         path: /portal/api-provider
         category: Page
@@ -630,6 +598,149 @@ menu:
                     path: /tyk-apis/tyk-dashboard-api/portal-policies
                     category: Page
                     show: True
+  - title: "AI Management"
+    category: Label
+    show: True
+    menu:
+      - title: "Overview"
+        category: Page
+        path: /ai-management/overview
+        show: True
+      - title: "MCPs"
+        path: /ai-management/mcps/overview
+        category: Directory
+        show: True
+        menu:
+          - title: "API to MCP"
+            category: Page
+            path: /ai-management/mcps/api-to-mcp
+            show: True
+          - title: "Dashboard API to MCP"
+            category: Page
+            path: /ai-management/mcps/dashboard-api-to-mcp
+            show: True
+          - title: "Tyk Docs MCP"
+            category: Page
+            path: /ai-management/mcps/tyk-docs-mcp
+            show: True
+      - title: "AI Studio"
+        path: /ai-management/ai-studio/overview
+        category: Directory
+        show: True
+        menu:
+          - title: "Introduction"
+            category: Directory
+            show: True
+            menu:
+              - title: "Quickstart"
+                category: Page
+                path: /ai-management/ai-studio/quickstart
+                show: True
+              - title: "Core Concepts"
+                category: Page
+                path: /ai-management/ai-studio/core-concepts
+                show: True
+          - title: "Getting Started"
+            category: Directory
+            show: True
+            menu:
+              - title: "Installation (Helm/K8s)"
+                category: Page
+                path: /ai-management/ai-studio/deployment-helm-k8s
+                show: True
+              - title: "Initial Configuration"
+                category: Page
+                path: /ai-management/ai-studio/configuration
+                show: True
+          - title: "Core Features"
+            category: Directory
+            show: True
+            menu:
+              - title: "AI Gateway"
+                category: Page
+                path: /ai-management/ai-studio/proxy
+                show: True
+              - title: "AI Portal"
+                category: Page
+                path: /ai-management/ai-studio/ai-portal
+                show: True
+              - title: "Chat Interface"
+                category: Page
+                path: /ai-management/ai-studio/chat-interface
+                show: True
+              - title: "LLM Management"
+                category: Page
+                path: /ai-management/ai-studio/llm-management
+                show: True
+              - title: "Tools & Extensibility"
+                category: Page
+                path: /ai-management/ai-studio/tools
+                show: True
+              - title: "Data Sources & RAG"
+                category: Page
+                path: /ai-management/ai-studio/datasources-rag
+                show: True
+              - title: "Filters & Policies"
+                category: Page
+                path: /ai-management/ai-studio/filters
+                show: True
+          - title: "Administration"
+            category: Directory
+            show: True
+            menu:
+              - title: "User Management & RBAC"
+                category: Page
+                path: /ai-management/ai-studio/user-management
+                show: True
+              - title: "SSO Integration"
+                category: Page
+                path: /ai-management/ai-studio/sso
+                show: True
+              - title: "Secrets Management"
+                category: Page
+                path: /ai-management/ai-studio/secrets
+                show: True
+              - title: "Budget Control"
+                category: Page
+                path: /ai-management/ai-studio/budgeting
+                show: True
+              - title: "Analytics & Monitoring"
+                category: Page
+                path: /ai-management/ai-studio/analytics
+                show: True
+              - title: "Notifications"
+                category: Page
+                path: /ai-management/ai-studio/notifications
+                show: True
+              - title: "API Documentation"
+                category: Page
+                path: /ai-management/ai-studio/ai-studio-swagger
+                show: True
+  - title: "API Governance"
+    category: Label
+    show: True
+    menu:
+      - title: "Overview"
+        path: /tyk-governance/overview
+        category: Page
+        show: True
+      - title: "Core Concepts"
+        path: /tyk-governance/core-concepts
+        category: Page
+        show: True
+      - title: "Installation"
+        path: /tyk-governance/installation
+        category: Page
+        show: True
+      - title: "Federated API Repository"
+        path: /tyk-governance/api-repository
+        category: Page
+        show: True
+      - title: "API Labeling and Categorization"
+        path: /tyk-governance/api-labeling
+        category: Page
+        show: True
+
   - title: "Developer Support"
     category: Label
     show: True
@@ -666,10 +777,6 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /tyk-environment-variables
-          category: Page
-          show: False
         - title: "Gateway"
           path: /tyk-oss-gateway/configuration
           category: Page
@@ -786,10 +893,6 @@ menu:
         path: /developer-support/deprecation
         category: Page
         show: True
-      - title: "Contributing"
-        path: /developer-support/contributing
-        category: Page
-        show: True
       - title: "Upgrading Guide"
         path: /developer-support/upgrading
         category: Page
@@ -798,112 +901,20 @@ menu:
         path: /developer-support/faq
         category: Page
         show: True
-      - title: "SDK"
+      - title: "Docs Contribution"
+        path: /developer-support/contributing
         category: Directory
-        show: False
-        menu:
-      - title: "CLI"
-        category: Directory
-        show: False
-        menu:
-      - title: "Deprecated pages"
-        category: Directory
-        show: False
-        menu:
-          - title: "Dashboard"
-            path: /basic-config-and-security/security/dashboard
-            category: Page
-            show: True
-          - title: "Get started"
-            path: /tyk-dashboard/getting-started
-            category: Page
-            show: True
-          - title: "Tyk Developer Portal"
-            path: /tyk-developer-portal
-            category: Page
-            show: True
-          - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
-            path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
-            category: Page
-            show: True
-          - title: "Cloud Classic Virtual Endpoints not working"
-            path: /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
-            category: Page
-            show: True
-          - title: "How to enable websockets in Cloud"
-            path: /frequently-asked-questions/enable-websockets-cloud
-            category: Page
-            show: True
-          - title: "Troubleshooting"
-            path: /troubleshooting
-            category: Page
-            show: True
-          - title: "“301 Moved permanently“ error in the Dashboard API"
-            path: /troubleshooting/tyk-cloud-classic/301-moved-permanently
-            category: Page
-            show: True
-          - title: "413 Request Entity Too Large"
-            path: /troubleshooting/tyk-cloud-classic/413-request-entity-large
-            category: Page
-            show: True
-          - title: "“504 GATEWAY_TIMEOUT“ error"
-            path: /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error
-            category: Page
-            show: True
-          - title: "“Organisation quota has been exceeded“ error in the Dashboard API"
-            path: /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
-            category: Page
-            show: True
-          - title: "Tyk Cloud Classic"
-            path: /troubleshooting/tyk-cloud
-            category: Page
-            show: True
-          - title: "Tyk Dashboard Troubleshooting"
-            path: /troubleshooting/tyk-dashboard
-            category: Page
-            show: True
-          - title: "Tyk Gateway Troubleshooting"
-            path: /troubleshooting/tyk-gateway
-            category: Page
-            show: True
-          - title: "Tyk Installation"
-            path: /troubleshooting/tyk-installation
-            category: Page
-            show: True
-          - title: "404 when trying to access Tyk Gateway Repo"
-            path: /troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo
-            category: Page
-            show: True
-          - title: "Unable to parse JSON Error from Dashboard bootstrap.sh Script"
-            path: /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
-            category: Page
-            show: True
-          - title: "Tyk Multi-Cloud"
-            path: /troubleshooting/tyk-multi-cloud
-            category: Page
-            show: True
-          - title: "Tyk On-Premises"
-            path: /troubleshooting/tyk-on-premise/tyk-on-premise
-            category: Page
-            show: True
-          - title: "Tyk Pump Troubleshooting"
-            path: /troubleshooting/tyk-pump
-            category: Page
-            show: True
-          - title: "Configuration Options"
-            path: /tyk-cloud/configuration-options
-            category: Page
-            show: True
-          - title: "Overview"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
-            category: Page
-            show: True
-  - title: "Orphan"
-    path: /orphan
-    category: Label
-    show: False
-    menu:
-      - title: "Orphan pages"
-        path: /orphan/
-        category: Page
         show: True
+        menu:
+          - title: "UI Example: Pill Label shortcode"
+            path: /ui-examples/test-pill-label
+            category: Page
+            show: true
+          - title: "UI Example: Feature Cards shortcode"
+            path: /ui-examples/feature-cards
+            category: Page
+            show: true
+          - title: "UI Example: YouTube Video Embed shortcode"
+            path: /ui-examples/youtube-video-embed
+            category: Page
+            show: true

@@ -44,7 +44,7 @@ With your goals in mind, you’ll now design the API:
 - **Define Endpoints and Methods**: Identify the actions your API should allow (e.g., GET for retrieving data, POST for adding data).
 - **Specify Data Models**: Define the format of data exchanged. For instance, will product data include details like price, description, and availability?
   
-**Security Consideration:** Plan how users will [authenticate]({{< ref "api-management/security-best-practices#authentication" >}}). Will they use [tokens]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) or [OAuth]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) (for user-specific access)? Tyk offers tools to implement any of these methods effectively.
+**Security Consideration:** Plan how users will [authenticate]({{< ref "api-management/security-best-practices#authentication" >}}). Will they use [tokens]({{< ref "api-management/authentication/bearer-token" >}}) or [OAuth]({{< ref "api-management/authentication/oauth-2" >}}) (for user-specific access)? Tyk offers tools to implement any of these methods effectively.
 
 #### **Step 3: Document the API**
 
@@ -101,7 +101,7 @@ In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or
 
 After deployment, Tyk offers robust tools to ensure smooth API operations and maintenance:
 - **Real-Time Monitoring and Analytics**: [Tyk’s dashboard]({{< ref "tyk-dashboard" >}}) provides insights into API traffic, usage patterns, and error rates, enabling quick response to issues.
-- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}), [request throttling]({{< ref "api-management/rate-limit#request-throttling" >}}), or [rate limiting]({{< ref "api-management/rate-limit" >}}).
+- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}), [request throttling]({{< ref "api-management/request-throttling" >}}), or [rate limiting]({{< ref "api-management/rate-limit" >}}).
 - **Plugin Support for Customization**: Use [Tyk’s plugin system]({{< ref "tyk-cloud#configure-plugins" >}}) to add custom functionality, such as [custom authentication]({{< ref "tyk-cloud#add-custom-authentication" >}}), or [traffic transformations]({{< ref "api-management/traffic-transformation#" >}}).
 
 ---

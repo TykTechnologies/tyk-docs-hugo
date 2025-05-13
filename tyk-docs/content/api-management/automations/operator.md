@@ -257,7 +257,7 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
 Cloud]({{< ref "tyk-cloud#quick-start-tyk-cloud" >}}) or [Tyk Self
-Managed]({{< ref "getting-started/installation" >}}) page. [Tyk Helm
+Managed]({{< ref "tyk-self-managed" >}}) page. [Tyk Helm
 Chart]({{< ref "product-stack/tyk-charts/overview" >}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
 
 In order for policy ID matching to work correctly, Dashboard must have `allow_explicit_policy_id` and
@@ -1223,7 +1223,7 @@ spec:
 
 #### Auth Token (Bearer Token)
 
-This setup requires a [bearer token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) for access.
+This setup requires a [bearer token]({{< ref "api-management/authentication/bearer-token" >}}) for access.
 
 In the below example, the authentication token is set by default to the `Authorization` header of the request. You can customize this behavior by configuring the following fields:
 
@@ -1232,7 +1232,7 @@ In the below example, the authentication token is set by default to the `Authori
 - `use_param`: Set to true to allow the token to be passed as a query parameter.
 - `param_name`: Specify the parameter name if use_param is enabled.
 - `use_certificate`: Enable client certificate. This allows you to create dynamic keys based on certificates.
-- `validate_signature`: Enable [signature validation]({{< ref "api-management/client-authentication#auth-token-with-signature" >}}).
+- `validate_signature`: Enable [signature validation]({{< ref "api-management/authentication/bearer-token#auth-token-with-signature" >}}).
 
 ```yaml {hl_lines=["13-35"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1365,7 +1365,7 @@ curl http://localhost:8080/httpbin-jwt1/get -H 'Authorization: Bearer eyJhbGciOi
 
 #### Basic Authentication
 
-This configuration uses [Basic Authentication]({{< ref "api-management/client-authentication#use-basic-authentication" >}}), requiring a username and password for access.
+This configuration uses [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}), requiring a username and password for access.
 
 ```yaml {hl_lines=["13-13"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1

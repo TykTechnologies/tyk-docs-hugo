@@ -166,7 +166,7 @@ A blue-green deployment involves two identical production environments, labeled 
 2. **Traffic Routing:** Use a load balancer or DNS to route traffic to the green environment (current production) while the blue environment undergoes the upgrade.
 3. **Upgrade Process:**
    - A VM snapshot is a recommended method for replication, but other methods such as a new deployment process can also be used.
-   - If using a new deployment process, follow the [deployment instructions]({{< ref "getting-started/installation" >}}) appropriate for your platform.
+   - If using a new deployment process, follow the [deployment instructions]({{< ref "tyk-self-managed" >}}) appropriate for your platform.
 4. **Switch Environments:** Once the upgrade is complete, switch the traffic to the upgraded environment.
 
 
@@ -1255,7 +1255,7 @@ If you are using Self Managed deployment then we recommend that you use [Tyk Syn
 
 ### Export And Restore APIs and Policies
 
-To facilitate backing up APIs and policies we have provided a Bash script [backup](https://github.com/TykTechnologies/backup) that can be used to export and restore all Tyk API definitions and Policies from Tyk Dashboard. This will be done by the *export* and *import* commands respectively. The script can be used on both Tyk Cloud and Self Managed deployments. The script is helpful for Tyk Cloud users who want to export their Tyk OAS APIs since *tyk-sync* does not currently support it on Tyk Cloud.
+To facilitate backing up APIs and policies we have provided a Bash script [backup](https://github.com/TykTechnologies/backup) that can be used to export and restore all Tyk API definitions and Policies from Tyk Dashboard. This will be done by the *export* and *import* commands respectively. The script can be used on both Tyk Cloud and Self Managed deployments.
 
 #### Export APIs and Policies
 
