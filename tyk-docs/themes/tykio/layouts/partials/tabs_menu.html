@@ -1,102 +1,73 @@
+{{- $pagePath := .Page.RelPermalink -}}
+{{- $pagePath := replace $pagePath "/docs" "" -}}
+{{- $pagePath := replace $pagePath "/nightly" "" -}}
+{{- $showEmptyPages := .Site.Params.showEmptyPages -}}
 
-      {{- $pagePath := replace .Page.RelPermalink "/docs" "" -}}
-      {{- $pagePath := replace $pagePath "/nightly" "" -}}
-      {{- $pagePath := replace $pagePath "/" "" -}}
-      {{- $showEmptyPages := .Site.Params.showEmptyPages -}}
-
-      {{- range .Site.Data.menu.menu -}}
+<div class="tabs-wrapper">
+  <div class="tabs-container" id="tabs-container">
+    {{- range .Site.Data.menu.menu -}}
+      {{- if eq .category "Tab" -}}
         {{- $selected := false -}}
         {{- $is_home := eq (lower .title) "home" -}}
         {{- $path_not_empty := false -}}
-        {{- $path := replace .path "/" "" -}}
-        {{- if eq $path $pagePath -}}
-        {{- $selected = true -}}
-          {{- if or (ne $path "") $is_home -}}
+        {{- $tabPath := .path | relURL -}}
+        {{- $has_active_child := false -}}
+
+        {{- if or (eq $tabPath $pagePath) (and (ne $tabPath "/") (hasPrefix $pagePath $tabPath) (or (eq (substr $pagePath (len $tabPath) 1) "/") (eq (substr $pagePath (len $tabPath) 1) ""))) -}}
+          {{- if or (ne $pagePath "") $is_home -}}
+            {{- $selected = true -}}
             {{- $path_not_empty = true -}}
           {{- end -}}
         {{- end -}}
+
         {{- if (isset . "menu") -}}
           {{- range .menu -}}
-            {{- $path := replace .path "/" "" -}}
-            {{- if eq $path $pagePath -}}
-              {{- $selected = true -}}
-                {{- if or (ne $path "") $is_home -}}
-                    {{-  $path_not_empty = true -}}
-                {{- end -}}
+            {{- $childPath := .path | relURL -}}
+            {{- if or (eq $childPath $pagePath) (and (ne $childPath "/") (hasPrefix $pagePath $childPath) (or (eq (substr $pagePath (len $childPath) 1) "/") (eq (substr $pagePath (len $childPath) 1) ""))) -}}
+              {{- if or (ne $pagePath "") $is_home -}}
+                {{- $selected = true -}}
+                {{- $has_active_child = true -}}
+                {{- $path_not_empty = true -}}
+              {{- end -}}
             {{- end -}}
             {{- if (isset . "menu") -}}
               {{- range .menu -}}
-                {{- $path := replace .path "/" "" -}}
-                {{- if eq $path $pagePath -}}
-                  {{- $selected = true -}}
-                    {{- if or (ne $path "") $is_home -}}
-                        {{- $path_not_empty = true -}}
-                    {{- end -}}
+                {{- $grandChildPath := .path | relURL -}}
+                {{- if or (eq $grandChildPath $pagePath) (and (ne $grandChildPath "/") (hasPrefix $pagePath $grandChildPath) (or (eq (substr $pagePath (len $grandChildPath) 1) "/") (eq (substr $pagePath (len $grandChildPath) 1) ""))) -}}
+                  {{- if or (ne $pagePath "") $is_home -}}
+                    {{- $selected = true -}}
+                    {{- $has_active_child = true -}}
+                    {{- $path_not_empty = true -}}
+                  {{- end -}}
                 {{- end -}}
                 {{- if (isset . "menu") -}}
                   {{- range .menu -}}
-                    {{- $path := replace .path "/" "" -}}
-                    {{- if eq $path $pagePath -}}
-                      {{- $selected = true -}}
-                        {{- if or (ne $path "") $is_home -}}
-                            {{- $path_not_empty = true -}}
-                        {{- end -}}
+                    {{- $greatGrandChildPath := .path | relURL -}}
+                    {{- if or (eq $greatGrandChildPath $pagePath) (and (ne $greatGrandChildPath "/") (hasPrefix $pagePath $greatGrandChildPath) (or (eq (substr $pagePath (len $greatGrandChildPath) 1) "/") (eq (substr $pagePath (len $greatGrandChildPath) 1) ""))) -}}
+                      {{- if or (ne $pagePath "") $is_home -}}
+                        {{- $selected = true -}}
+                        {{- $has_active_child = true -}}
+                        {{- $path_not_empty = true -}}
+                      {{- end -}}
                     {{- end -}}
-                        {{- if (isset . "menu") -}}
-                          {{- range .menu -}}
-                            {{- $path := replace .path "/" "" -}}
-                            {{- if eq $path $pagePath -}}
-                              {{- $selected = true -}}
-                                {{- if or (ne $path "") $is_home -}}
-                                  {{- $path_not_empty = true -}}
-                                {{- end -}}
-                            {{- end -}}
-                              {{- if (isset . "menu") -}}
-                                  {{- range .menu -}}
-                                    {{- $path := replace .path "/" "" -}}
-                                    {{- if eq $path $pagePath -}}
-                                      {{- $selected = true -}}
-                                        {{- if or (ne $path "") $is_home -}}
-                                          {{- $path_not_empty = true -}}
-                                        {{- end -}}
-                                    {{- end -}}
-                                      {{- if (isset . "menu") -}}
-                                        {{- range .menu -}}
-                                          {{- $path := replace .path "/" "" -}}
-                                          {{- if eq $path $pagePath -}}
-                                            {{- $selected = true -}}
-                                            {{- if or (ne $path "") $is_home -}}
-                                              {{- $path_not_empty = true -}}
-                                            {{- end -}}
-                                          {{- end -}}
-                                            {{- if (isset . "menu") -}}
-                                                {{- range .menu -}}
-                                                    {{- $path := replace .path "/" "" -}}
-                                                    {{- if eq $path $pagePath -}}
-                                                      {{- $selected = true -}}
-                                                      {{- if or (ne $path "") $is_home -}}
-                                                        {{- $path_not_empty = true -}}
-                                                      {{- end -}}
-                                                    {{- end -}}
-                                                {{- end -}}
-                                            {{- end -}}
-                                        {{- end -}}
-                                      {{- end -}}
-                                  {{- end -}}
-                              {{- end -}}
-                          {{- end -}}
-                        {{- end -}}
                   {{- end -}}
                 {{- end -}}
               {{- end -}}
             {{- end -}}
           {{- end -}}
         {{- end -}}
-        {{ $prefixPath := strings.TrimLeft "/" .path }}
-          {{if or (.show) ($showEmptyPages) }}
-      <div class="pr-40 {{if (and $selected $path_not_empty )}}nav_sub_active{{end}}">
-        <a href="{{$prefixPath | relURL}}" class="fs-xs text-black text-nowrap {{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}} font-700 active{{end}}">{{- .title -}}</a>
-      </div>
-          {{- end -}}
+        {{- if or (.show) ($showEmptyPages) -}}
+          <div class="tab-item {{if (or $selected $has_active_child)}}nav_sub_active{{end}}">
+            {{- if .url -}}
+              <a href="{{ .url }}" class="tab-link {{if not .show}} paint-red {{end}} {{if (or $selected $has_active_child)}} active{{end}}">{{- .title -}}</a>
+            {{- else -}}
+              {{- $prefixPath := strings.TrimLeft "/" .path -}}
+              <a href="{{$prefixPath | relURL}}" class="tab-link {{if not .show}} paint-red {{end}} {{if (or $selected $has_active_child)}} active{{end}}">{{- .title -}}</a>
+            {{- end -}}
+          </div>
+        {{- end -}}
       {{- end -}}
-
+    {{- end -}}
+    
+  </div>
+</div>
