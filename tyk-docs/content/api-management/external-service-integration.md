@@ -275,6 +275,16 @@ Authentication protocols such as OpenID Connect and SAML enable an application t
 
 Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users directory to login to the **Dashboard** or **Developer Portal** and have an SSO. TIB, among other options, supports four methods for login to Tyk's UI:
 
+<br>
+
+{{< note success >}}
+**Note**
+
+To activate SSO on the Dashboard or Developer portal, there’s no requirement to install TIB separately; it is integrated into the Dashboard and Developer Portal. You have two configurations for SSO within the dashboard:
+1. **Using Embedded TIB**: No need to install it separately.
+2. **Using External TIB**: If you are using a previous version of the Dashboard or Portal, you can still use SSO with TIB installed as a separate application.
+{{< /note >}}
+
 1. [Login with 3rd party social providers]({{< ref "#sso-with-social-identity-providers" >}})
 2. [Login with any IdP that supports OIDC]({{< ref "#sso-with-openid-connect-oidc" >}})
 3. [Login with any IdP that supports SAML]({{< ref "#sso-with-saml" >}})

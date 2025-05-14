@@ -21,6 +21,17 @@ The social provider is ideal for SSO-style logins for the Dashboard or for the P
 
 For more social provider examples see the Tyk Identity Broker (TIB) v0.2 Repo [Readme](https://github.com/TykTechnologies/tyk-identity-broker/blob/master/README.md#social).
 
+<br>
+
+{{< note success >}}
+**Note**
+
+To activate SSO on the Dashboard or Developer portal, there’s no requirement to install TIB separately; it is integrated into the Dashboard and Developer Portal. You have two configurations for SSO within the dashboard:
+1. **Using Embedded TIB**: No need to install it separately.
+2. **Using External TIB**: If you are using a previous version of the Dashboard or Portal, you can still use SSO with TIB installed as a separate application.
+{{< /note >}}
+
+
 ### Log into an APP with Github OAuth
 
 {{< youtube gqUaDM4aJTw >}}

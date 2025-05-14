@@ -14,10 +14,15 @@ This works well in a lot of situations as it allows Tyk to be self-contained, bu
 
 Tyk Dashboard uses the [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) to integrate Tyk authentication with 3rd party identity providers (IDPs). You can use this to enable your Dashboard to authenticate users with your LDAP-powered identity providers such as Active Directory.
 
-From dashboard version 3.0, TIB is embedded in the dashboard. With this, you have two options to configure SSO in the dashboard:
+<br>
 
-1. **[Using Embedded TIB]({{< ref "#configuring-sso-with-embedded-tib" >}})**: No need to install it separately.
-2. **[Using External TIB]({{< ref "#configuring-sso-with-external-tib" >}})**: If you are using a previous version of the dashboard, you can still use SSO with TIB installed as a separate application.
+{{< note success >}}
+**Note**
+
+To activate SSO on the Dashboard or Developer portal, there’s no requirement to install TIB separately; it is integrated into the Dashboard and Developer Portal. You have two configurations for SSO within the dashboard:
+1. **Using Embedded TIB**: No need to install it separately.
+2. **Using External TIB**: If you are using a previous version of the Dashboard or Portal, you can still use SSO with TIB installed as a separate application.
+{{< /note >}}
 
 ### Dashboard SSO with Embedded TIB
 
@@ -28,7 +33,7 @@ Configuring SSO with Embedded TIB is a two-step process:
 
 #### Create Profile
 
-TODO: Add GIF
+{{< img src="/img/dashboard/user-management/create-ldap-profile.png" alt="Create LDAP Profile" >}}
 
 1.  Log in to your Tyk Dashboard.
 1.  Navigate to **User management > User Settings** in the Tyk Dashboard sidebar.
@@ -48,6 +53,7 @@ TODO: Add GIF
     *   In the **User DN** field, the distinguished name which TIB will use to identify the user - this should be updated to match your LDAP installation and must retain the `*USERNAME*` token as this is replaced by the actual username at runtime (e.g., `cn=*USERNAME*,dc=example,dc=com`).
     *   (Optional) Click **+ Advanced Settings (optional)** to configure further LDAP settings if needed.
 6.  Click the **Create Profile** button.
+7.  Open the created profile and copy the login URL displayed. Save it, as it will be used later in testing. (e.g., `http://localhost:3000/auth/login-with-ldap/ADProvider`)
 
 #### Test the SSO Flow
 
@@ -89,7 +95,7 @@ TODO: Add GIF
 
     The form action `http://localhost:3000/auth/login-with-ldap/ADProvider` is the dashboard (embedded TIB) endpoint which will start the authentication process.
 
-    TODO: Add Image on how to get login URL
+    
 
 2. **Update the Dashboard config**
 
