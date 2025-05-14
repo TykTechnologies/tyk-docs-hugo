@@ -1,5 +1,5 @@
 <header class="home_header">
-  <nav style="padding: 16px 5px;">
+  <nav style="padding: 16px 5px 0 5px;">
     <div class="header-refresh">
       <a href="{{ "" | relURL }}">
         <img
@@ -10,6 +10,11 @@
       </a>
       <div class="search_widget">
         <div style="padding: 8px 8px 7px 10px" class="search-input" id="search_container"></div>
+        <div>
+          <button id="chat-bubble" class="fs-xs text-nowrap mn-btn ask-ai">
+            Ask AI
+          </button>
+        </div>
       </div>
       <div class="m-hide">
         <div class="header__nav_container">
@@ -24,8 +29,10 @@
           </div>
         </div>
       </div>
-
       <button class="m-show burger" data-toggle="show-submenu"></button>
+    </div>
+    <div class="d-flex overflow-auto justify-content-start tabs-menu">
+      {{- partial "tabs_menu.html" . -}}
     </div>
   </nav>
 </header>
