@@ -86,6 +86,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous" />
     <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
+    <script src="{{ "js/scroll_tabs_menu.js" | relURL }}"></script>
     <script
       type="text/javascript"
       src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0"></script>
@@ -101,7 +102,7 @@
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
   </head>
 
-  <body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+  <body class="page-documentation {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -115,15 +116,16 @@
     <!-- Header -->
     {{ partial "header.html" . }}
 
-
     <!-- Page content -->
-    <section class="section-page {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+    <section class="section-page {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
       <!-- Side menu -->
+      {{ if not .IsHome }}
       <aside class="page-submenu" data-turbolinks-permanent>
         {{ partial "side_menu.html" . }}
       </aside>
+      {{ end }}
 
-      <article class="page-content {{ if .Params.hideSidebar }}home-mobile-padding{{ end }}">
+      <article class="page-content {{ if or .Params.hideSidebar .IsHome }}home-mobile-margin{{ end }}">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
             {{ if .Params.diffTitle }}
@@ -188,6 +190,5 @@
       mermaid.initialize({ startOnLoad: true });
     </script>
     {{ end }}
-
   </body>
 </html>
