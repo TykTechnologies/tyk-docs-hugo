@@ -1,9 +1,9 @@
 ---
 title: "Custom Authentication with Proxy Identify Provider"
 date: 2025-01-10
-tags: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder", "SAML", "OIDC", "OpenID Connect", "Profies", "IDPs", "Social Provider" ,"LDAP"]
+tags: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder"]
 description: "Learn how to integrate external services with Tyk API Gateway. Discover how to use middleware plugins, webhooks, and service discovery to extend your API functionality and connect with third-party systems."
-keywords: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder", "SAML", "OIDC", "OpenID Connect", "Profies", "IDPs", "Social Provider" ,"LDAP"]
+keywords: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder"]
 ---
 
 The proxy identity provider is a generic solution to more legacy problems, as well as a way to handle flows such as basic auth access with third party providers or OAuth password grants where the request can just be passed through to the providing endpoint to return a direct response.
@@ -18,11 +18,11 @@ Success can be triggered using three methods:
 
 These can be used in conjunction as gates, e.g. a response must be `200 OK` and match the regex in order to be marked as successful.
 
-### JSON Data and User names
+## JSON Data and User names
 
 The Proxy provider can do some clever things, such as extract JSON data from the response and decode it, as well as pull username data from the Basic Auth header (for example, if your identity provider supports dynamic basic auth).
 
-### Log into the Dashboard with the Proxy Provider
+## Log into the Dashboard with the Proxy Provider
 
 The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}/` and evaluate the response status code, if the status code returned is `200` then TIB will assume the response is JSON (`"ResponseIsJson": true`) to extract an access token (e.g. if this is an OAuth pass-through request) and try and find an identity to bind the Dashboard user to in the `user_name` JSON field of the response object (`"UsernameField": "user_name"`):
 
