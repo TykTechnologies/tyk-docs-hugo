@@ -1,5 +1,5 @@
 ---
-title: Tyk QuickStart Configure Your First API
+title: Tyk QuickStart: Configure Your First API
 description: Configure your first API on Tyk Cloud
 date: 2020-06-24
 tags:
@@ -19,15 +19,17 @@ aliases:
 
 
 ## Overview
-This guide helps you get started with Tyk Cloud by covering the basics:
+This guide helps you get started with Tyk by covering the basics:
 
 - **Set up your API**: Create and configure a new API in the Tyk Dashboard.
 - **Create API keys**: Generate API keys and assign them to your APIs for secure access.
 - **Monitor API performance**: Track traffic, logs, and performance analytics.
 
-Follow these steps to quickly create and manage your APIs in Tyk Cloud.
+Follow these steps to quickly and easily create and manage your APIs with Tyk.
 
 ## Prerequisites
+
+To start quickly, we'll use Tyk Cloud in this guide.
 
 Before you begin, make sure you have:
 - [A Tyk Cloud account](https://tyk.io/sign-up/#cloud).
@@ -39,7 +41,7 @@ Before you begin, make sure you have:
 
 Start by creating a new API in Tyk Cloud:
 
-1. **Log in to the Tyk Dashboard**.
+1. **Log in to the Tyk Dashboard.**.
 2. **Navigate to APIs** and click **Add New API** or **Design From Scratch** button.
 
   {{< img src="/img/getting-started/create-account-design-from-scratch.png" alt="Create New API" >}}
@@ -63,16 +65,16 @@ Start by creating a new API in Tyk Cloud:
 5. **Configure your API Settings**:
 
   - **Expiration Date**: An optional config that allows you to set an expiry date for this API, where access will expire after this date. This can be edited at any time.
-  - **Gateway Status**: Setting this to `Active` will publish your API and make it public. When in the `Disabled` state, your API will stay in a draft state until you are ready to publish it. This is a required field, for this guide we will set it to `Active`.
-  - **Access**: Your API can be set to either `Internal` or `External`, determining whether you want to keep your API accessible only through Tyk or to external services, respectively. This is a required field, for this guide we will set it to `External`.
+  - **Gateway Status**: Setting this to `Active` will publish your API and make it public. When in the `Disabled` state, your API will stay in a draft state until you are ready to publish it. This is a required field; for this guide, we will set it to `Active`.
+  - **Access**: Your API can be set to either `Internal` or `External`, determining whether you want to keep your API accessible only through Tyk or to external services, respectively. This is a required field; for this guide, we will set it to `External`.
 
 {{< img src="/img/getting-started/apis-configure-settings-1.png" alt="Configure Settings" >}}
 
-Scrolling down, In the **Upstream** section you can configure settings to control the behaviour of your upstream APIs. 
+Scrolling down, in the **Upstream** section, you can configure settings to control the behaviour of your upstream APIs. 
 {{< note success >}}
   **Note**  
 
-  These are not necessary to add now but they are good to explore.
+  These are not necessary to add now, but they are good to explore.
   {{< /note >}}
 
   - **API Rate Limiting**: Set limits on the number of requests (e.g., 100 requests per minute) to control usage and prevent abuse.
@@ -84,7 +86,7 @@ Scrolling down, In the **Upstream** section you can configure settings to contro
 
 6. **Configuring the Server section**:
 
-  In the section you can configure Tyk Gateway related settings. Below are some important configurations.
+  In this section, you can configure Tyk Gateway related settings. Below are some important configurations.
   - **Listen Path**: This is the `path` Tyk API will use to proxy your API requests. So a request made to this URL `https://<tyk-clou-url>/<listen-path>` will be proxied to the upstream URL configured above.
   - **Authentication**: Choose the desired authentication method (e.g., **API Key**).
 
@@ -107,7 +109,7 @@ The Tyk Dashboard provides the simplest way to generate a new API key. Follow th
 
 2. **Add a Policy or API to Your Key**:
    - You can either add your key to an existing **Policy** or assign it to an individual **API**.
-   - For this guide, we will assign the key to the `My First API` which we created in the previous step. You can:
+   - For this guide, we will assign the key to the `My First API`, which we created in the previous step. You can:
      - Scroll through your **API Name list**,
      - Use the **Search field** or **Group by Authentication Type** to filter APIs.
    - Leave all other options at their default settings.
@@ -122,7 +124,7 @@ The Tyk Dashboard provides the simplest way to generate a new API key. Follow th
    - **Metadata**: Add metadata such as user IDs, which can be used by middleware components.
 
 5. Click **CREATE**:
-   - Once the key is created, a **Key successfully generated** pop-up will be displayed showing your key. **Copy the key ID** to your clipboard and save it for future reference as it will not be shown again. And that should result in a successfully generated key!
+   - Once the key is created, a **Key successfully generated** pop-up will be displayed showing your key. **Copy the key ID** to your clipboard and save it for future reference, as it will not be shown again. And that should result in a successfully generated key!
 
    {{< img src="/img/getting-started/apis-keys-success.png" alt="Key Success" >}}
   
