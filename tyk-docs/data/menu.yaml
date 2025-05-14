@@ -336,6 +336,10 @@ menu:
                 path: /api-management/single-sign-on-ldap
                 category: Page
                 show: True
+              - title: "Custom Authentication"
+                path: /api-management/custom-auth-with-proxy-identity-provider
+                category: Page
+                show: True
       - title: "Deploy Tyk"
         category: Label
         show: True
