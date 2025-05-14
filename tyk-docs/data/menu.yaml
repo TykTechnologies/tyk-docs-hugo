@@ -75,8 +75,6 @@ menu:
           path: /api-management/request-throttling
           category: Page
           show: True
-
-        path: /api-management/security-features
       - title: "Tyk API Definitions"
         category: Directory
         path: /api-management/gateway-config-introduction
@@ -384,6 +382,7 @@ menu:
             - title: "Security Features"
               category: Page
               show: True
+              path: /api-management/security-features
             - title: "Identity Management"
               path: /api-management/external-service-integration
               category: Page
