@@ -1,17 +1,15 @@
 ---
-aliases:
-- /quickstart-configure-first-api
-date: 2020-06-24
+title: Tyk QuickStart Configure Your First API
 description: Configure your first API on Tyk Cloud
-linkTitle: Getting Started
+date: 2020-06-24
 tags:
 - Tyk API Management
 - Open Source
 - Self-Managed
 - Tyk Cloud
 - API Gateway
-title: Tyk QuickStart Configure Your First API
 aliases:
+  - /quickstart-configure-first-api
   - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/
   - /try-out-tyk/tutorials/tutorials/
   - /getting-started/tutorials
