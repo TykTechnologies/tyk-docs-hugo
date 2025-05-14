@@ -6,7 +6,7 @@ menu:
     category: Tab
     show: True
   - title: "API Management"
-    path: /getting-started
+    path: /tyk-overview
     category: Tab
     show: True
     menu:
