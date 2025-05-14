@@ -11,6 +11,12 @@ tags:
 - Tyk Cloud
 - API Gateway
 title: Tyk QuickStart Configure Your First API
+aliases:
+  - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/
+  - /try-out-tyk/tutorials/tutorials/
+  - /getting-started/tutorials
+  - /getting-started/installation/tutorials/tutorials/
+  - /getting-started
 ---
 
 
