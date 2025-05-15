@@ -296,8 +296,29 @@ menu:
                 show: True
             - title: "Upstream Authentication"
               path: /api-management/upstream-authentication
-              category: Page
+              category: Directory
               show: True
+              menu:
+              - title: "Auth Token"
+                path: /api-management/upstream-authentication/auth-token
+                category: Page
+                show: True
+              - title: "Basic Auth"
+                path: /api-management/upstream-authentication/basic-auth
+                category: Page
+                show: True
+              - title: "OAuth 2.0"
+                path: /api-management/upstream-authentication/oauth
+                category: Page
+                show: True
+              - title: "Mutual TLS"
+                path: /api-management/upstream-authentication/mtls
+                category: Page
+                show: True
+              - title: "Request Signing"
+                path: /api-management/upstream-authentication/request-signing
+                category: Page
+                show: True
             - title: "Certificates in Tyk"
               path: /api-management/certificates
               category: Page
