@@ -1,5 +1,5 @@
 ---
-title: Tyk QuickStart: Configure Your First API
+title: "Tyk QuickStart: Configure Your First API"
 description: Configure your first API on Tyk Cloud
 date: 2020-06-24
 tags:
