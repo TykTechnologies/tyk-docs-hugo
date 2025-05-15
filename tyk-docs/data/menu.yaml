@@ -49,11 +49,6 @@ menu:
       - title: "Managing APIs"
         category: Label
         show: True
-        menu:
-        - title: "Overview"
-          path: /getting-started
-          category: Page
-          show: True
       - title: "Tyk Gateway"
         path: /tyk-oss-gateway
         category: Page
