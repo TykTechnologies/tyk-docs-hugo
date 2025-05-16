@@ -14,9 +14,9 @@ jobs:
   trigger_probe_implement:
     uses: buger/probe/.github/workflows/probe.yml@main
     with:
-      command_prefix: "/engineer" # Or '/ai', '/ask', etc.
+      command_prefix: "/writer" # Or '/ai', '/ask', etc.
       allow_edit: true
-      prompt: ./.probe/engineer.md
+      prompt: ./.probe/writer.md
     secrets:
       ANTHROPIC_API_KEY: ${{ secrets.PROBE_ANTHROPIC_API_KEY }}
       ANTHROPIC_API_URL: ${{ secrets.PROBE_ANTHROPIC_URL }}
