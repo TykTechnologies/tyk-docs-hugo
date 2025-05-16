@@ -303,12 +303,12 @@ menu:
                 path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
                 category: Page
                 show: True
-              - title: "Security Policy and Access Keys"
-                path: /api-management/policies
-                category: Page
-                show: True
             - title: "Upstream Authentication"
               path: /api-management/upstream-authentication
+              category: Page
+              show: True
+            - title: "Security Policy and Access Keys"
+              path: /api-management/policies
               category: Page
               show: True
             - title: "Certificates in Tyk"
