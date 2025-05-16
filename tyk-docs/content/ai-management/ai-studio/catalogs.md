@@ -15,11 +15,11 @@ The **Catalogs View** provides administrators with a centralized interface to gr
 
 1. **Purpose**:
    - Catalogs group similar resources (LLMs, Data Sources, or Tools) for streamlined management.
-   - Access to these resources is controlled by assigning catalogs to specific user groups.
+   - Access to these resources is controlled by assigning catalogs to specific teams.
 
 2. **Use Cases**:
    - Simplify resource management by categorizing related LLMs, Data Sources, or Tools into a single catalog.
-   - Apply consistent access control policies by assigning catalogs to groups.
+   - Apply consistent access control policies by assigning catalogs to teams.
    - Manage large quantities of resources efficiently in a growing environment.
 
 ---
@@ -72,7 +72,7 @@ This view applies to the following catalog types:
    - Handles large numbers of resources effectively as organizational needs evolve.
 
 4. **Flexible Integration**:
-   - Ensures that related resources are grouped for seamless assignment to user groups or chat rooms.
+   - Ensures that related resources are grouped for seamless assignment to teams or chat rooms.
 
 ---
 
