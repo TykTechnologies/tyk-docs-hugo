@@ -570,8 +570,45 @@ menu:
         show: True
       - title: "Customization"
         path: /portal/customization
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Themes"
+          path: /portal/customization/themes
+          category: Page
+          show: True
+        - title: "Templates"
+          path: /portal/customization/templates
+          category: Page
+          show: True
+        - title: "Pages"
+          path: /portal/customization/pages
+          category: Page
+          show: True
+        - title: "Menus"
+          path: /portal/customization/menus
+          category: Page
+          show: True
+        - title: "Branding"
+          path: /portal/customization/branding
+          category: Page
+          show: True
+        - title: "Sign Up Form"
+          path: /portal/customization/sign-up
+          category: Page
+          show: True
+        - title: "Email Notifications"
+          path: /portal/customization/email-notifications
+          category: Page
+          show: True
+        - title: "User Model"
+          path: /portal/customization/user-model
+          category: Page
+          show: True
+        - title: "Webhooks"
+          path: /portal/customization/webhooks
+          category: Page
+          show: True
       - title: "Advance Configuration"
         path: /portal/settings
         category: Page
