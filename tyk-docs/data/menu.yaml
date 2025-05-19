@@ -549,25 +549,48 @@ menu:
     menu:
       - title: "Overview"
         path: /portal/overview
-        category: Page
+        category: Label
         show: True
-      - title: "Install and Configure"
-        path: /portal/install
-        category: Page
+        menu:
+        - title: "Introduction"
+          path: /portal/overview/intro
+          category: Page
+          show: True
+        - title: "Quick Start"
+          path: /portal/overview/quick-start
+          category: Page
+          show: True
+        - title: "Core Concepts"
+          path: /portal/overview/concepts
+          category: Page
+          show: True
+      - title: "Getting Started"
+        path: /portal/overview
+        category: Label
         show: True
+        menu:
+        - title: "Install and Configure"
+          path: /portal/install
+          category: Page
+          show: True
       - title: "API Consumer"
         path: /portal/api-consumer
-        category: Directory
+        category: Label
         show: True
         menu:
         - title: "Invite Codes"
           path: /portal/api-consumer/invite-codes
           category: Page
           show: True
-      - title: "API Provider"
+      - title: "API Publisher"
         path: /portal/api-provider
-        category: Page
+        category: Label
         show: True
+        menu:
+        - title: "Invite Codes"
+          path: /portal/api-consumer/invite-codes
+          category: Page
+          show: True
       - title: "Customization"
         path: /portal/customization
         category: Directory
@@ -609,10 +632,23 @@ menu:
           path: /portal/customization/webhooks
           category: Page
           show: True
-      - title: "Advance Configuration"
+      - title: "Administration"
         path: /portal/settings
         category: Page
         show: True
+        menu:
+          - title: "Single Sign On"
+            path: /tyk-developer-portal/tyk-portal-classic
+            category: Page
+            show: True
+          - title: "Email Settings"
+            path: /tyk-developer-portal/tyk-portal-classic
+            category: Page
+            show: True
+          - title: "Resource Migration"
+            path: /tyk-developer-portal/tyk-portal-classic
+            category: Page
+            show: True
       - title: "Tyk Classic Developer Portal"
         category: Directory
         show: True
