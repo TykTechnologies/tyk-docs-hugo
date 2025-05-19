@@ -525,7 +525,7 @@ To manage these asynchronous interactions, the Tyk Streams module relies on seve
 1.  **Stream Middleware**: This component plugs into the Tyk Gateway's request processing chain. It runs *after* standard middleware like authentication and rate limiting but *before* the request would normally be proxied. Its job is to inspect incoming requests, identify if they match a configured stream path, and if so, divert them from the standard proxy flow into the stream handling logic.
 2.  **Stream Manager**: Acts as the supervisor for streaming operations defined in an API. A given stream configuration is responsible for initializing, managing the lifecycle (starting/stopping), and coordinating the necessary `Stream Instances`. It ensures the correct streaming infrastructure is ready based on the API definition.
 3.  **Stream Instance**: Represents a running, active instance of a specific stream processing task. Each instance executes the logic defined in its configuration – connecting to an event broker, processing messages, transforming data, handling connections, etc. There can be multiple instances depending on the configuration and workload.
-4.  **Stream Analytics**: This component captures telemetry data specific to stream operations, such as connection attempts and errors. This data can be exported to popular analytics platforms like Prometheus, OpenTelemetry, and StatsD.
+4.  **Stream Analytics**: This component captures connection attempts and errors related to HTTP outputs. This data can be exported to popular analytics platforms like Prometheus, OpenTelemetry, and StatsD.
 
 The following diagram shows the relationships and primary interactions between these internal components and how they relate to the Gateway and Upstream API:
 
@@ -586,7 +586,7 @@ sequenceDiagram
 1.  **Request Arrival & Gateway Pre-processing**: A client sends a request to an API endpoint managed by Tyk Gateway. The request passes through the initial middleware, such as authentication, key validation, and rate limiting.
 2.  **Streaming Middleware Interception**: The request reaches the `Stream Middleware`. It checks the request path against the stream routes defined in the API configuration.
 3.  **Path Matching**:
-    *   **If No Match**: The request is not destined for a stream. The `Stream Middleware` does nothing, and the request continues down the standard Tyk middleware chain, typically being proxied to the configured upstream service. <!-- technically correct, but not the desired behavior. Will change in the future, maybe next release if possible -->
+    *   **If No Match**: The request is not destined for a stream. The `Stream Middleware` does nothing, and the request continues down the standard Tyk middleware chain, typically being proxied to the configured upstream service. <!-- TODO: this behavior is true until 5.8.x. From 5.9.0 onwards it will return 404 Not Found. -->
     *   **If Match**: The request is intended for a stream. The `Stream Middleware` takes control of the request handling.
 4.  **Stream Manager Coordination**: The middleware interacts with the `Stream Manager` associated with the API's stream configuration. The `Stream Manager` ensures the required `Stream Instance`(s) are initialized and running based on the loaded configuration. This might involve creating a new instance or reusing a cached one.
 5.  **Stream Instance Execution**: The instance then executes its defined logic, interacting with the configured `Upstream Service / Event Broker` (e.g., publishing a message to Kafka, subscribing to an MQTT topic, forwarding data over a WebSocket).
@@ -790,11 +790,6 @@ Refer this docs, to know more about [Authentication]({{< ref "api-management/cli
 - **[Transformation]({{< ref "api-management/traffic-transformation" >}})**: Use Tyk's powerful middleware and plugin system to transform message payloads on the fly. You can convert between different data formats (e.g., JSON to XML), filter fields, or apply custom logic.
 - **[Enrichment]({{< ref "api-management/plugins/overview" >}})**: Enrich your async API messages with additional data from external sources. For example, you can lookup customer information from a database and append it to the message payload.
 
-### Analytics and Monitoring
-<!-- Analytics can only track connection attempts at the moment. What is described here is where we want to be in the future. We definitely need to rephrase it. -->
-Tyk provides comprehensive analytics and monitoring capabilities for async APIs. You can track usage metrics, monitor performance, and gain visibility into the health of your event-driven systems.
-Tyk captures detailed analytics data for async API usage, including message rates, latency, and error counts. This data can be exported to popular analytics platforms like Prometheus, OpenTelemetry, and StatsD.
-
 ### Monetization
 
 [Tyk Streams]({{< ref "api-management/event-driven-apis#" >}}) enables you to monetize your async APIs by exposing them through the Developer Portal. Developers can discover, subscribe to and consume your async APIs using webhooks or streaming subscriptions.
@@ -814,10 +809,6 @@ Tyk Streams allows you to perform complex event processing on streams of events 
 
 Here's an example of a Tyk Streams configuration that performs complex event processing, specifically it creates a new event stream, which filters high-value orders and enriches them with customer email addresses, by making an additional HTTP request.
 
-<!--
-bloblang/mapping is not officially supported in the current version 5.7.x and 5.8.x (LTS), but it's ready for 5.9.x - it does work though.
-same is technically true for all other processors like branch, etc, but I guess with official bloblang support those should be fine.
--->
 ```yaml
 input:
   kafka:
@@ -854,6 +845,17 @@ pipeline:
     - mapping: |
         root = this.merge({ "high_value_order": true })
 ```
+
+{{< note success >}}
+**Note:**
+
+Bloblang mapping is currently available and working, but it will be officially supported starting from version 5.9.0.
+
+You’re welcome to explore and experiment with this feature in non-production environments today. For production use, we recommend waiting for the official release in 5.9.0 to ensure full support.
+{{< /note >}}
+<!--
+TODO: Official bloblang support from 5.9.0 onwards
+-->
 
 In this example:
 
