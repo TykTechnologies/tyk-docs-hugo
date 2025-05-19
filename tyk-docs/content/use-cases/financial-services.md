@@ -59,7 +59,7 @@ flowchart TB
     class tykFAPISystem system
 ```
 
-AAA
+TODO: Move the below diagram to getting started.
 
 ```mermaid
 flowchart TB
@@ -329,6 +329,8 @@ Implementing Open Banking with Tyk FAPI Accelerator provides several benefits:
 5. **Developer-Friendly**: Comprehensive documentation and example applications make it easier for TPP developers to integrate.
 
 ## Getting Started
+
+TODO: Fix this guide.
 
 To get started with the Tyk FAPI Accelerator:
 
