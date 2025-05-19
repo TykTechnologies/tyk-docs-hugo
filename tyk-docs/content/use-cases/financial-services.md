@@ -15,7 +15,7 @@ Financial institutions face several challenges when implementing Open Banking AP
 
 1. **Security and Compliance**: Meeting stringent security requirements of Financial-grade API (FAPI) specifications and regulatory standards like PSD2, UK Open Banking, and Consumer Data Right (CDR).
 
-2. **Authentication Complexity**: Implementing advanced authentication mechanisms like OAuth 2.0 with Pushed Authorization Requests (PAR) and Demonstrating Proof of Possession (DPoP).
+2. **Authentication Complexity**: Implementing authentication mechanisms like OAuth 2.0 with Pushed Authorization Requests (PAR) and Demonstrating Proof of Possession (DPoP).
 
 3. **Event Notifications**: Securely delivering real-time notifications about account and payment events to third parties.
 
@@ -32,10 +32,42 @@ The Tyk FAPI Accelerator is a comprehensive solution that addresses these challe
 ```mermaid
 flowchart TB
     %% People/Actors
-    endUser(["End User
-    A customer of the bank who wants to access their accounts via a TPP"])
-    tppDeveloper(["TPP Developer
-    Developer building applications that integrate with the bank's API"])
+    psu(["PSU (Payment Services User)
+    A customer of the bank who accesses their accounts and initiates payments through third-party providers"])
+    tpp(["TPP (Third Party Provider)
+    Companies providing financial services like account aggregators, credit checkers, and savings apps that integrate with banks"])
+    aspsp(["ASPSP (Account Servicing Payment Service Provider)
+    Banks and financial institutions that provide account and payment APIs to authorized third parties"])
+    
+    %% Systems
+    subgraph tykFAPI ["Tyk FAPI Accelerator"]
+        tykFAPISystem["Provides FAPI-compliant APIs for account information and payment initiation"]
+    end
+    
+    %% Relationships
+    psu -->|"Views accounts,
+    initiates payments"| tykFAPI
+    tpp -->|"Integrates with,
+    consumes APIs from"| tykFAPI
+    aspsp -->|"Configures, monitors,
+    provides services through"| tykFAPI
+    
+    %% Styling
+    classDef person fill:#335FFD,color:#fff,stroke:#1A3FBD
+    classDef system fill:#5900CB,color:#fff,stroke:#3D0087
+    class psu,tpp,aspsp person
+    class tykFAPISystem system
+```
+
+AAA
+
+```mermaid
+flowchart TB
+    %% People/Actors
+    psu(["PSU (Payment Services User)
+    A customer of the bank who accesses their accounts and initiates payments through third-party providers"])
+    tpp(["TPP (Third Party Provider)
+    Companies providing financial services like account aggregators, credit checkers, and savings apps that integrate with banks"])
     
     %% Tyk FAPI Accelerator System with Containers
     subgraph tykFAPI ["Tyk FAPI Accelerator"]
@@ -44,7 +76,7 @@ flowchart TB
         Demonstrates how a TPP would interact with a bank's API"]
         apiGateway["API Gateway
         (Tyk Gateway)
-        Routes requests and handles event notifications"]
+        Secures and routes API requests, enforces FAPI compliance, and handles event notifications"]
         authServer["Authorization Server
         (Keycloak)
         Handles authentication and authorization"]
@@ -52,13 +84,21 @@ flowchart TB
         (Node.js)
         Mock bank implementation providing backend services"]
         database[(Database)]
+        databaseLabel["PostgreSQL
+        Stores account information, payment data, and event subscriptions"]
         kafka[(Message Broker)]
+        kafkaLabel["Kafka
+        Handles event notifications"]
     end
     
+    %% Connect labels to database and kafka
+    database --- databaseLabel
+    kafka --- kafkaLabel
+    
     %% Relationships
-    endUser -->|"Uses
+    psu -->|"Uses
     (HTTPS)"| tppApp
-    tppDeveloper -->|"Develops
+    tpp -->|"Develops
     (IDE)"| tppApp
     tppApp -->|"Makes API calls to
     (HTTPS)"| apiGateway
@@ -72,9 +112,30 @@ flowchart TB
     (SQL)"| database
     tykBank -->|"Publishes events to
     (Kafka Protocol)"| kafka
+    
+    %% Event notification flow
     kafka -->|"Subscribes to events"| apiGateway
     apiGateway -->|"Sends signed notifications
     (JWS/HTTPS Webhooks)"| tppApp
+    
+    %% Styling
+    classDef person fill:#335FFD,color:#fff,stroke:#1A3FBD
+    classDef tppStyle fill:#335FFD,color:#fff,stroke:#1A3FBD
+    classDef component fill:#5900CB,color:#fff,stroke:#3D0087
+    classDef authStyle fill:#00A3A0,color:#fff,stroke:#007370
+    classDef bankStyle fill:#C01F8B,color:#fff,stroke:#901568
+    classDef kafkaStyle fill:#E09D00,color:#fff,stroke:#A87700
+    classDef database fill:#5900CB,color:#fff,stroke:#3D0087
+    classDef label fill:none,stroke:none
+    
+    class psu,tpp person
+    class tppApp tppStyle
+    class apiGateway component
+    class authServer authStyle
+    class tykBank bankStyle
+    class database database
+    class kafka kafkaStyle
+    class databaseLabel,kafkaLabel label
 ```
 
 ### Key Components
@@ -138,38 +199,70 @@ sequenceDiagram
     participant Gateway as API Gateway
     participant Auth as Authorization Server
     participant Bank as Tyk Bank
+    participant DB as Database
+    participant Kafka as Message Broker
     
-    User->>TPP: 1. Initiate payment
+    %% Payment Initiation
+    User->>TPP: 1. Initiate payment (amount, recipient)
+    
+    %% Payment Consent Creation
     TPP->>Gateway: 2. Create payment consent
     Gateway->>Bank: 3. Forward consent request
+    Bank->>DB: 4. Store consent
+    DB-->>Bank: 5. Return consent ID
     Bank-->>Gateway: 6. Consent response with ConsentId
     Gateway-->>TPP: 7. Return ConsentId
     
+    %% Pushed Authorization Request (PAR)
     TPP->>Auth: 8. Push Authorization Request (PAR)
+    Note right of TPP: Direct connection to Auth Server
     Auth-->>TPP: 9. Return request_uri
     
+    %% Authorization Options
     TPP->>User: 10. Display authorization options
     
+    %% Two possible authorization flows
     alt Automatic Authorization
         User->>TPP: 11a. Select automatic authorization
         TPP->>Bank: 12a. Direct authorize consent request
+        Note right of TPP: Server-side authorization
+        Bank->>DB: 13a. Update consent status
+        DB-->>Bank: 14a. Confirm update
         Bank-->>TPP: 15a. Authorization confirmation
     else Manual Authorization
         User->>TPP: 11b. Select manual authorization
         TPP->>User: 12b. Redirect to authorization URL
-        User->>Auth: 13b. Authorization request
+        User->>Auth: 13b. Authorization request with request_uri
+        Auth->>Bank: 14b. Verify consent
+        Bank->>DB: 15b. Get consent details
+        DB-->>Bank: 16b. Return consent details
+        Bank-->>Auth: 17b. Consent details
         Auth->>User: 18b. Display authorization UI
         User->>Auth: 19b. Approve authorization
-        Auth->>User: 22b. Redirect to callback URL
+        Auth->>DB: 20b. Update consent status
+        DB-->>Auth: 21b. Confirm update
+        Auth->>User: 22b. Redirect to callback URL with code
         User->>TPP: 23b. Callback with authorization code
     end
     
+    %% Payment Creation
     TPP->>Gateway: 24. Create payment with authorized consent
     Gateway->>Bank: 25. Forward payment request
+    Bank->>DB: 26. Store payment
+    DB-->>Bank: 27. Return payment ID
     Bank-->>Gateway: 28. Payment response with PaymentId
     Gateway-->>TPP: 29. Return PaymentId
     
+    %% Payment Confirmation
     TPP->>User: 30. Display payment confirmation
+    
+    %% Event Notification
+    Bank->>Kafka: 31. Publish payment event
+    Kafka->>Bank: 32. Stream processor consumes event
+    Bank->>DB: 33. Query subscriptions
+    DB-->>Bank: 34. Return matching subscriptions
+    Bank->>TPP: 35. Send payment notification
+    TPP-->>Bank: 36. Acknowledge notification
 ```
 
 ### Event Notification Example
@@ -182,22 +275,43 @@ sequenceDiagram
     participant Gateway as API Gateway
     participant EventAPI as Event Subscriptions API
     participant PaymentAPI as Payment Initiation API
+    participant DB as Database
     participant Kafka as Message Broker
     
+    %% Subscription Registration
     TPP->>Gateway: 1. Register callback URL
     Gateway->>EventAPI: 2. Forward registration request
+    EventAPI->>DB: 3. Store subscription
+    DB-->>EventAPI: 4. Return subscription ID
     EventAPI-->>Gateway: 5. Registration response with SubscriptionId
     Gateway-->>TPP: 6. Return SubscriptionId
     
-    Note over PaymentAPI: Payment status change occurs
+    %% Event Generation
+    Note over PaymentAPI: Payment status change or other event occurs
     PaymentAPI->>Kafka: 7. Publish event
+    Note right of PaymentAPI: Event includes type, subject, timestamp
     
+    %% Event Processing
     Kafka-->>Gateway: 8. Consume event
-    Gateway->>Gateway: 11. Sign notification with JWS
+    Gateway->>DB: 9. Query subscriptions for event type
+    DB-->>Gateway: 10. Return matching subscriptions
+    Gateway->>Gateway: 11. Determine target TPPs and sign with JWS
     
+    %% Notification Delivery
     Gateway->>TPP: 12. Send signed notification
+    Note right of Gateway: Notification includes event details, links, and JWS signature
     TPP->>TPP: 13. Verify JWS signature
     TPP-->>Gateway: 14. Acknowledge (HTTP 200 OK)
+    
+    %% Error Handling (Alternative Flow)
+    alt Delivery Failure
+        Gateway->>TPP: 12. Send signed notification
+        TPP--xGateway: 13. Failed delivery (timeout/error)
+        Gateway->>Gateway: 14. Retry with exponential backoff
+        Gateway->>TPP: 15. Retry notification
+        TPP->>TPP: 16. Verify JWS signature
+        TPP-->>Gateway: 17. Acknowledge (HTTP 200 OK)
+    end
 ```
 
 ## Benefits for Financial Institutions
