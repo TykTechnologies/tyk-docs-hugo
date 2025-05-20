@@ -7,33 +7,43 @@ keywords: ["financial-grade API", "PSD2", "UK Open Banking", "TPP", "payment ini
 
 ## Introduction
 
-Open Banking is a financial services framework that enables secure data sharing between banks and third-party providers through standardized APIs. It is enabling the banking industry to move from closed ecosystems to open standards and collaborative platforms where customer data can be securely shared with authorized third parties.
+Open Banking is a financial services framework that enables secure data sharing between banks and third-party providers (TPPs) through standardized APIs. It fosters innovation, enhances customer experiences, and ensures compliance with regulatory requirements such as:
+- **Payment Services Directive 2 (PSD2)** ([PSD2](https://www.ecb.europa.eu/press/intro/mip-online/2018/html/1803_revisedpsd.en.html)) in the European Union, mandating secure access to account information and payment services.
+- **UK Open Banking** ([UK Open Banking](https://www.openbanking.org.uk/)), a UK initiative for standardized financial APIs.
+- **Consumer Data Right (CDR)** ([CDR](https://www.cdr.gov.au/)) in Australia, enabling consumer data sharing.
+- **Financial Data Exchange (FDX)** ([FDX](https://financialdataexchange.org/)) in the United States, an industry-led standard for data sharing.
 
-Financial institutions are embracing Open Banking initiatives to foster innovation, enhance customer experiences, and comply with regulatory requirements. These initiatives require secure, reliable, and standards-compliant APIs that can safely expose sensitive financial data to third-party providers (TPPs). This document explores how Tyk API Gateway, through its [FAPI Accelerator](https://github.com/TykTechnologies/tyk-fapi), enables financial institutions to implement robust Open Banking solutions.
+Open Banking is enabling the banking industry to move from closed ecosystems to open standards and collaborative platforms where customer data can be securely shared with authorized third parties. However, financial institutions face challenges implementing secure, compliant, Open Banking APIs. This document explores how [Tyk API Gateway]({{< ref "tyk-oss-gateway" >}}), through its [FAPI Accelerator](https://github.com/TykTechnologies/tyk-fapi), enables financial institutions to implement robust Open Banking APIs.
 
 ## Challenges in Financial Services API Implementation
 
-Financial institutions face several challenges when implementing Open Banking APIs:
+Implementing Open Banking APIs presents several challenges:
 
-1. **Open Banking Framework**: Meeting stringent security requirements of [Financial-grade API (FAPI)](https://openid.net/wg/fapi/) specifications and regulatory standards across different regions:
-   - [Payment Services Directive 2 (PSD2)](https://www.ecb.europa.eu/press/intro/mip-online/2018/html/1803_revisedpsd.en.html) in the European Union
-   - [Open Banking](https://www.openbanking.org.uk/) in the United Kingdom
-   - [Consumer Data Right (CDR)](https://www.cdr.gov.au/) in Australia
-   - [Financial Data Exchange (FDX)](https://financialdataexchange.org/) in the United States (industry-led standard)
+1. **Stringent Security Requirements**:
+   - Compliance with **Financial-grade API (FAPI)** standards, such as FAPI 2.0, which ensure high-security API interactions.
+   - Ensuring data integrity, authenticity, and non-repudiation for sensitive financial transactions.
 
-2. **Authentication Complexity**: Implementing authentication mechanisms like OAuth 2.0 with [Pushed Authorization Requests](https://datatracker.ietf.org/doc/html/rfc9126) (PAR) and [Demonstrating Proof of Possession](https://datatracker.ietf.org/doc/html/rfc9449) (DPoP).
+2. **Complex Authentication**:
+   - Implementing **OAuth 2.0** with features like **Pushed Authorization Requests (PAR)** ([PAR](https://datatracker.ietf.org/doc/html/rfc9126)) and **Demonstrating Proof of Possession (DPoP)** ([DPoP](https://datatracker.ietf.org/doc/html/rfc9449)).
+   - Managing secure user consent and authorization flows.
 
-3. **Event Notifications**: Providing the ability for third-party providers to subscribe to event notifications by registering their callback URLs, and then signing those messages with cryptographic signatures to ensure payload integrity, authenticity, and non-repudiation when delivering real-time updates about account and payment events.
+3. **Event Notifications**:
+   - Enabling TPPs to subscribe to real-time updates about account and payment events.
+   - Signing notifications with cryptographic signatures for security.
 
-4. **Idempotency**: Ensuring that duplicate requests (especially for payments) don't result in duplicate transactions.
+4. **Idempotency**:
+   - Ensuring that duplicate requests (especially for payments) don't result in duplicate transactions.
 
-5. **Developer Experience**: Providing a seamless experience for TPP developers while maintaining security.
+5. **Developer Experience**:
+   - Providing a seamless experience for TPP developers while maintaining high-security standards.
 
-## Tyk FAPI Accelerator
+## What is Tyk FAPI Accelerator?
 
-The Tyk FAPI Accelerator addresses these challenges through a modular, standards-compliant architecture:
+The **[Tyk FAPI Accelerator](https://github.com/TykTechnologies/tyk-fapi)** is a reference implementation provided by Tyk Technologies to help financial institutions build secure, standards-compliant Open Banking APIs. Built on the [Tyk API Gateway]({{< ref "tyk-oss-gateway" >}}).
 
 ### Architecture Overview
+
+The diagram below shows the Tyk FAPI Accelerator system in its environment, including users, external systems, and key actors.
 
 ```mermaid
 flowchart TB
@@ -65,7 +75,9 @@ flowchart TB
     class tykFAPISystem system
 ```
 
-TODO: Move the below diagram to getting started.
+### Tyk FAPI Accelerator
+
+The diagram below shows all major components of the Tyk FAPI Accelerator and their interactions.
 
 ```mermaid
 flowchart TB
@@ -191,6 +203,12 @@ The Tyk FAPI Accelerator implements several security features required for finan
    - Implements Pushed Authorization Requests for enhanced security
    - Supports both automatic and manual authorization flows
    - Complies with FAPI 2.0 security profile
+
+
+## Getting Started
+
+For detailed setup instructions, code examples, and deployment guides, please refer to the [Tyk FAPI Accelerator GitHub repository](https://github.com/TykTechnologies/tyk-fapi/tree/main?tab=readme-ov-file#getting-started).
+
 
 ## Implementation Examples
 
@@ -319,13 +337,3 @@ sequenceDiagram
         TPP-->>Gateway: 17. Acknowledge (HTTP 200 OK)
     end
 ```
-
-## Getting Started
-
-For detailed setup instructions, code examples, and deployment guides, please refer to the [Tyk FAPI Accelerator GitHub repository](https://github.com/TykTechnologies/tyk-fapi/tree/main?tab=readme-ov-file#getting-started).
-
-## Conclusion
-
-The Tyk FAPI Accelerator can be used by financial institutions to implement Open Banking APIs. By addressing the key challenges of security, authentication, event notifications, and developer experience, it enables banks to quickly deploy standards-compliant APIs that meet regulatory requirements while providing a seamless experience for TPP developers and end users.
-
-With its modular architecture and extensive documentation, the Tyk FAPI Accelerator serves as both a reference implementation and a starting point for production deployments, helping financial institutions navigate the complex landscape of Open Banking with confidence.
