@@ -285,11 +285,68 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
 
+      // Add feedback buttons
+      const feedbackContainer = document.createElement('div');
+      feedbackContainer.className = 'feedback-container';
+      
+      const likeButton = document.createElement('button');
+      likeButton.className = 'feedback-button like-button';
+      likeButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>';
+      likeButton.title = 'Like this response';
+      
+      const dislikeButton = document.createElement('button');
+      dislikeButton.className = 'feedback-button dislike-button';
+      dislikeButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path></svg>';
+      dislikeButton.title = 'Dislike this response';
+      
+      feedbackContainer.appendChild(likeButton);
+      feedbackContainer.appendChild(dislikeButton);
+      
+      // Add feedback container after the message
+      markdownContainer.parentNode.appendChild(feedbackContainer);
+      
+      // Add event listeners for feedback buttons
+      likeButton.addEventListener('click', function() {
+        handleFeedback(true, accumulatedText);
+        feedbackContainer.innerHTML = '<div class="feedback-message">Thanks for your feedback!</div>';
+      });
+      
+      dislikeButton.addEventListener('click', function() {
+        handleFeedback(false, accumulatedText);
+        feedbackContainer.innerHTML = '<div class="feedback-message">Thanks for your feedback!</div>';
+      });
+
       document.querySelectorAll('pre code').forEach((block) => {
         hljs.highlightElement(block);
       });
     } catch (error) {
       console.error('Error rendering final markdown:', error);
     }
+  }
+  
+  // Handle feedback submission
+  function handleFeedback(isLiked, responseText) {
+    console.log('Feedback submitted:', isLiked ? 'Liked' : 'Disliked', 'for response:', responseText);
+    
+    // Here you would typically send this feedback to your API
+    // For now, we're just logging it to the console as per requirements
+    
+    // Example API call (commented out for now)
+    /*
+    fetch('https://your-api-endpoint/feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        isLiked: isLiked,
+        responseText: responseText,
+        timestamp: new Date().toISOString()
+      }),
+    })
+    .then(response => response.json())
+    .then(data => console.log('Feedback API response:', data))
+    .catch(error => console.error('Error submitting feedback:', error));
+    */
   }
 });
