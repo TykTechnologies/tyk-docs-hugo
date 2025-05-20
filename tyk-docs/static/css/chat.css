@@ -67,6 +67,17 @@
     font-size: 1.125rem;
 }
 
+#ai-disclaimer {
+    background-color: #f8f9fa;
+    border-left: 4px solid #ffc107;
+    color: #333;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
 #close-popup {
     background-color: transparent;
     border: none;
@@ -344,6 +355,47 @@
     border: 0;
 }
 
+/* Feedback buttons styles */
+.feedback-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+.feedback-button {
+    background-color: transparent;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.feedback-button:hover {
+    background-color: #f3f4f6;
+}
+
+.like-button:hover {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.dislike-button:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.feedback-message {
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
 @media (max-width: 900px) {
     #chat-popup {
         position: fixed;
@@ -356,5 +408,9 @@
         max-height: 100%;
         border-radius: 0;
         transform: none;
+    }
+    
+    .feedback-container {
+        margin-right: 4px;
     }
 }
