@@ -600,6 +600,32 @@ The auth (bearer) tokens will be signed by the private key of the issuer, which 
 All of this happens automatically.  You just need to specify to Tyk what the JWKs url is, and then apply a "sub" and default policy in order for everything to work.  See Step #3, 4, and 5 under option #1 for explanations and examples.
 
 
+### Setting JWKS Endpoints with jwksURIs
+You can explicitly define one or more JSON Web Key Set (JWKS) endpoints using the ```jwksURIs``` field. This is useful when you want full control over where your JWT public keys are fetched from, particularly when Tyk needs to authenticate tokens issued by multiple OAuth providers. The ```jwksURIs``` field
+takes precedence over existing ```source``` field used to add a JWK endpoint or Certificate.
+
+```{.copyWrapper}
+"jwksURIs": [
+  {
+    "url": "https://www.googleapis.com/oauth2/v3/certs"
+  },
+  {
+    "url": "https://keycloak_host:8081/auth/realms/olasenv/protocol/openid-connect/certs"
+  }
+]
+```
+
+### When to Use
+- Use ```jwksURIs```  when authenticating tokens issued by multiple OAuth providers such as Keycloak, Google, Auth0, or any provider exposing a JWKS endpoint.
+
+- Each url must point to a valid and publicly accessible JWKS document.
+
+### Behavior
+- If ```jwksURIs``` is configured, it takes precedence over the ```source``` field.
+
+- Only the JWKS URLs defined in jwksURIs will be used for key discovery and JWT validation.
+
+
 ### Adjust JWT Clock Skew Configuration
 Due to the nature of distributed systems it is expected that despite best efforts you can end up in a situation with clock skew between the issuing party (An OpenID/OAuth provider) and the validating party (Tyk).  
 
