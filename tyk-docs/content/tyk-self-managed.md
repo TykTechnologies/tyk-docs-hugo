@@ -130,7 +130,7 @@ The full Tyk Self-Managed system consists of:
 
 {{< img src="/img/diagrams/diagram_docs_pump-data-flow@2x.png" alt="Tyk Self-Managed Archtecture" >}}
 
-### Tyk Self Managed License/Pricing
+### Tyk Self Managed Pricing
 
 Refer the [pricing page](https://tyk.io/pricing/)
 

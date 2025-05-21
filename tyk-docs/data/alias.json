@@ -100,7 +100,7 @@
     "tyk-on-premises/installation/on-aws": "#install-on-aws-marketplace",
     "tyk-on-premises/installation/on-heroku": "#install-on-heroku",
     "tyk-on-premises/kubernetes": "#install-on-kubernetes",
-    "tyk-on-premises/licensing": "#tyk-self-managed-licensepricing",
+    "tyk-on-premises/licensing": "#tyk-self-managed-pricing",
     "tyk-on-premises/microsoft-azure": "#install-on-microsoft-azure",
     "tyk-on-premises/on-aws/ec2": "#install-on-aws-marketplace",
     "tyk-on-premises/redhat-rhel-centos": "#install-database",
@@ -453,7 +453,6 @@
     "getting-started/key-concepts/what-is-an-api-definition": "#",
     "getting-started/using-oas-definitions/oas-glossary": "#oas-glossary",
     "tyk-apis/tyk-gateway-api/api-definition-objects/authentication": "#authentication-type-flags",
-    
     "tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics": "#custom-analytics-tags-using-http-headers",
     "tyk-apis/tyk-gateway-api/api-definition-objects/events": "#events",
     "tyk-apis/tyk-gateway-api/api-definition-objects/graphql": "#api-definition-graphql",
