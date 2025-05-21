@@ -36,14 +36,19 @@ Choosing the right one for your organization depends on your specific requiremen
 ## Licensing
 
 ### Self-managed (On-Prem)
+
 {{< include "self-managed-licensing-include" >}}
 
 ### Cloud (Software as a Service / SaaS)
-With Tyk Cloud, all of the above closed-source components are available. Get your free account [here](https://account.cloud-ara.tyk.io/signup).
+
+Tyk cloud is a fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world. Tyk Cloud includes everything you need to manage your global API ecosystem.
+
+Get your free account [here](https://tyk.io/sign-up/).
 
 ### Open Source (OSS)
-The Tyk Gateway is the backbone of all our solutions and can be deployed for free, forever.
+
+The Tyk Gateway is the backbone of all our solutions and can be deployed for free, forever. It offers various [installation options]({{< ref "tyk-open-source#installation-options-for-tyk-gateway" >}}) to suit different needs.
+
 Visit the [OSS section]({{< ref "tyk-open-source" >}}) for more information on it and other open source components.
 
-Explore the various open and closed source [Tyk components]({{< ref "tyk-stack" >}}) that are part of the Tyk platform
-solutions.
+Explore the various open and closed source [Tyk components]({{< ref "tyk-stack" >}}) that are part of the Tyk platform solutions.
