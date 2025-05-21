@@ -13,7 +13,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-This release focuses on improving . 
+This release focuses on further enhancing Tyk Cloud’s stability, security, and overall user experience. We've resolved a number of UI issues, improved input validation, aligned security defaults across versions, and addressed key vulnerabilities to make the platform more robust and secure. New 2025 pricing plans have also been introduced, along with entitlement updates for improved plan management.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.28.0" >}}) below.
 
@@ -30,6 +30,51 @@ There are no deprecations in this release.
 
 ### Changelog {#Changelog-v1.28.0}
 
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>2025 Tyk Cloud Pricing Plans Introduced</summary>
+
+Tyk Cloud has rolled out the 2025 base pricing plans, introducing new Core, Professional, and Enterprise tiers with updated entitlements and Stripe configurations. These changes provide clearer value differentiation across plans while maintaining flexibility for both SaaS and Hybrid deployments. The billing section is now hidden for new customers, though existing customers remain unaffected.
+
+</details>
+</li> 
+</ul>
+
+#### Fixed
+
+<ul>
+  
+<li>
+<details>
+<summary>Improved Validation for Hybrid Data Plane Names</summary>
+
+We’ve fixed an issue where pasting invalid characters like tab spaces into the hybrid data plane name field would break the registration flow in Ara. The system now includes input validation on both the frontend and backend, ensuring only valid characters are accepted. This prevents configuration issues and improves the reliability of the hybrid data plane creation process.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Login Handling in Tyk Cloud</summary>
+
+We’ve made backend improvements to the Tyk Cloud login functionality to enhance its security and resilience against automated attacks. These changes help ensure a more consistent and secure authentication experience.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Secure Defaults Aligned Across Dashboard Versions</summary>
+
+We’ve fixed an issue where secure configuration defaults for the Tyk Dashboard admin view were not properly applied in older versions (v5.3). These settings now default to true in v5.8+ as intended, while remaining false in v5.3 to preserve backward compatibility. This ensures consistent and expected security behavior across versions.
+
+</details>
+</li>
+
+</ul>
 
 ## 1.27.0 Release Notes
 
