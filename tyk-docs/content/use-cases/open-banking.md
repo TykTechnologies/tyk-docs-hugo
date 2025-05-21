@@ -69,8 +69,8 @@ flowchart TB
     provides services through"| tykFAPI
     
     %% Styling
-    classDef person fill:#335FFD,color:#fff,stroke:#1A3FBD
-    classDef system fill:#5900CB,color:#fff,stroke:#3D0087
+    classDef person fill:#335FFD,color:#F7F7FF,stroke:#9393AA
+    classDef system fill:#00A3A0,color:#F7F7FF,stroke:#03031C
     class psu,tpp,aspsp person
     class tykFAPISystem system
 ```
@@ -137,13 +137,13 @@ flowchart TB
     (JWS/HTTPS Webhooks)"| tppApp
     
     %% Styling
-    classDef person fill:#335FFD,color:#fff,stroke:#1A3FBD
-    classDef tppStyle fill:#335FFD,color:#fff,stroke:#1A3FBD
-    classDef component fill:#5900CB,color:#fff,stroke:#3D0087
-    classDef authStyle fill:#00A3A0,color:#fff,stroke:#007370
-    classDef bankStyle fill:#C01F8B,color:#fff,stroke:#901568
-    classDef kafkaStyle fill:#E09D00,color:#fff,stroke:#A87700
-    classDef database fill:#5900CB,color:#fff,stroke:#3D0087
+    classDef person fill:#335FFD,color:#F7F7FF,stroke:#9393AA
+    classDef tppStyle fill:#335FFD,color:#F7F7FF,stroke:#9393AA
+    classDef component fill:#00A3A0,color:#F7F7FF,stroke:#03031C
+    classDef authStyle fill:#00A3A0,color:#F7F7FF,stroke:#03031C
+    classDef bankStyle fill:#C01FB8,color:#F7F7FF,stroke:#03031C
+    classDef kafkaStyle fill:#E09D00,color:#F7F7FF,stroke:#03031C
+    classDef database fill:#5900CB,color:#F7F7FF,stroke:#03031C
     classDef label fill:none,stroke:none
     
     class psu,tpp person
