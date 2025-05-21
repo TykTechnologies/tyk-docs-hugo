@@ -17,9 +17,6 @@ aliases:
 
 {{< include "tyk-gateway-features-include" >}}
 
-## Install 
-[Installation options]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) for the Tyk Gateway
+## Deployment Options
 
-Want to get started?
-
-{{< button_left href="https://tyk.io/sign-up/" color="green" content="Discover Tyk OSS today" >}}
+Refer the [deployment options]({{< ref "apim" >}}) page.
