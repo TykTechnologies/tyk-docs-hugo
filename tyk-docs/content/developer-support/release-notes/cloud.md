@@ -13,7 +13,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-This release focuses on further enhancing Tyk Cloud’s stability, security, and overall user experience. We've resolved a number of UI issues, improved input validation, aligned security defaults across versions, and addressed key vulnerabilities to make the platform more robust and secure. New 2025 pricing plans have also been introduced, along with entitlement updates for improved plan management.
+This release focuses on further enhancing Tyk Cloud’s stability, security, and overall user experience. We've resolved a number of UI issues, improved input validation, aligned security defaults across versions, and addressed key vulnerabilities to make the platform more robust and secure. New 2025 pricing plans have also been introduced!
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.28.0" >}}) below.
 
@@ -37,7 +37,7 @@ There are no deprecations in this release.
 <details>
 <summary>2025 Tyk Cloud Pricing Plans Introduced</summary>
 
-Tyk Cloud has rolled out the 2025 base pricing plans, introducing new Core, Professional, and Enterprise tiers with updated entitlements and Stripe configurations. These changes provide clearer value differentiation across plans while maintaining flexibility for both SaaS and Hybrid deployments. The billing section is now hidden for new customers, though existing customers remain unaffected.
+Tyk Cloud has rolled out the 2025 base pricing plans, introducing new Core, Professional, and Enterprise tiers. These changes provide clearer value differentiation across plans while maintaining flexibility for both SaaS and Hybrid deployments. The billing section is now hidden for new customers, though existing customers remain unaffected. For more information, please check the [Pricing & Plans](https://tyk.io/pricing/)
 
 </details>
 </li> 
