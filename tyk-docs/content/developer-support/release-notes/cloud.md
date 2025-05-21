@@ -37,7 +37,7 @@ There are no deprecations in this release.
 <details>
 <summary>2025 Tyk Cloud Pricing Plans Introduced</summary>
 
-Tyk Cloud has rolled out the 2025 base pricing plans, introducing new Core, Professional, and Enterprise tiers. These changes provide clearer value differentiation across plans while maintaining flexibility for both SaaS and Hybrid deployments. The billing section is now hidden for new customers, though existing customers remain unaffected. For more information, please check the [Pricing & Plans](https://tyk.io/pricing/)
+Tyk Cloud has rolled out the 2025 base pricing plans, introducing new Core, Professional, and Enterprise tiers. These changes provide clearer value differentiation across plans while maintaining flexibility for both SaaS and Hybrid deployments. The "Account" section is now hidden for new customers, though existing customers remain unaffected. Usage and quota are still available in the "System Usage" and "Monitoring" sections. For more information, please check the [Pricing & Plans](https://tyk.io/pricing/)
 
 </details>
 </li> 
