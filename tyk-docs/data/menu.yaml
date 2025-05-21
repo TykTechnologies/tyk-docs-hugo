@@ -320,11 +320,18 @@ menu:
         path: /api-management/multiple-environments
         category: Page
         show: True
-
       - title: "User Management"
         path: /api-management/user-management
         category: Page
         show: True
+      - title: "Use Cases"
+        category: Directory
+        show: True
+        menu:
+          - title: "Open Banking"
+            path: /use-cases/open-banking
+            category: Page
+            show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
