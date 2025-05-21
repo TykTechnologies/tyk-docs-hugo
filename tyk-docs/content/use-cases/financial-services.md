@@ -1,5 +1,5 @@
 ---
-title: "Implementing Open Banking with Tyk FAPI Accelerator"
+title: "Tyk FAPI Accelerator for Open Banking"
 description: "Learn how Tyk API Gateway enables financial institutions to implement secure, standards-compliant Open Banking APIs with advanced features like DPoP authentication, event notifications, and idempotency support."
 tags: ["open banking", "financial services", "FAPI", "OAuth 2.0", "DPoP", "event notifications", "idempotency", "JWS", "security"]
 keywords: ["financial-grade API", "PSD2", "UK Open Banking", "TPP", "payment initiation", "account information", "FAPI 2.0", "Pushed Authorization Requests", "PAR", "Demonstrating Proof of Possession", "webhook", "API security", "regulatory compliance"]
