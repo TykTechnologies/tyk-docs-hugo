@@ -3944,7 +3944,7 @@ changes has improved connection management and enhanced system performance.
 <details>
 <summary>Fixed unintended external access to internal endpoints</summary>
 
-Resolved an issue in earlier versions (from v5.0.2) of Gateway, where external clients could access internal endpoints. Starting from v5.3.0, we now restrict internal endpoints to internal access only.
+Resolved an issue where in certain conditions external clients could access internal endpoints. This was caused by incorrect combination of middleware which could lead to internal endpoints proxying traffic from external sources. This has now been addressed, so that an endpoint with the internal middleware configured will not be reachable from external requests.
 
 </details>
 </li>
