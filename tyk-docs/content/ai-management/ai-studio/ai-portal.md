@@ -16,7 +16,7 @@ The main goals of the AI Portal are:
 *   **Self-Service Access:** Enable users to independently access and utilize AI features without administrator intervention.
 *   **Contextual Documentation:** Provide integrated documentation and guidance for available AI services.
 *   **Account Management:** Allow users to manage their own profile settings and view usage information.
-*   **Secure Access Control:** Enforce permissions based on user groups and organizational policies.
+*   **Secure Access Control:** Enforce permissions based on teams and organizational policies.
 
 ## Key Features
 
@@ -48,7 +48,7 @@ Administrators configure the AI Portal through the Tyk AI Studio admin interface
 *   **Available Features:** Enable or disable specific portal features (chat, documentation, etc.).
 *   **Authentication Methods:** Configure login options (local accounts, SSO integration, etc.).
 *   **Default Settings:** Set system-wide defaults for user experiences.
-*   **Access Control:** Manage which user groups can access the portal and specific features within it.
+*   **Access Control:** Manage which teams can access the portal and specific features within it.
 *   **Custom Content:** Add organization-specific documentation, welcome messages, or announcements.
 
     {{< img src="/img/ai-management/ai-portal-configuration.png" alt="Portal Configuration" >}}

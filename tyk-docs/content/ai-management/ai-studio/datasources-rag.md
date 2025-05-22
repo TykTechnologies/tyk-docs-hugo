@@ -30,7 +30,7 @@ The primary goal is to enhance LLM interactions by:
     2.  This query embedding is used to search the relevant vector store(s) for the most similar text chunks (based on vector similarity).
     3.  The retrieved text chunks are added as context to the prompt sent to the LLM.
     4.  The LLM uses this context to generate a more informed and relevant response.
-*   **Data Source Catalogues:** Similar to Tools, Data Sources are grouped into Catalogues for easier management and assignment to user groups.
+*   **Data Source Catalogues:** Similar to Tools, Data Sources are grouped into Catalogues for easier management and assignment to teams.
 *   **Privacy Levels:** Each Data Source has a privacy level. It can only be used in RAG if its level is less than or equal to the privacy level of the [LLM Configuration]({{< ref "ai-management/ai-studio/llm-management" >}}) being used, ensuring data governance.
 
     Privacy levels define how data is protected by controlling LLM access based on its sensitivity:
@@ -72,7 +72,7 @@ Administrators configure Data Sources via the UI or API:
 ## Organizing & Assigning Data Sources (Admin)
 
 *   **Create Catalogues:** Group related Data Sources into Catalogues (e.g., "Product Docs", "Support KB").
-*   **Assign to Groups:** Assign Data Source Catalogues to specific [User Groups]({{< ref "ai-management/ai-studio/user-management" >}}).
+*   **Assign to Groups:** Assign Data Source Catalogues to specific [Teams]({{< ref "ai-management/ai-studio/teams" >}}).
 
     {{< img src="/img/ai-management/data-sources-catalog-config.png" alt="Catalogue Config" >}}
 
@@ -83,7 +83,7 @@ Data Sources are primarily used implicitly via RAG within the [Chat Interface]({
 A Data Source will be used for RAG if:
 
 1.  The specific Chat Experience configuration includes the relevant Data Source Catalogue.
-2.  The user belongs to a Group that has been assigned that Data Source Catalogue.
+2.  The user belongs to a Team that has been assigned that Data Source Catalogue.
 3.  The Data Source's privacy level is compatible with the LLM being used.
 
 ## Programmatic Access via API
