@@ -849,7 +849,7 @@ pipeline:
 {{< note success >}}
 **Note:**
 
-Bloblang mapping is currently available and working, but it will be officially supported starting from version 5.9.0.
+Bloblang/Mapping is currently available and working, but it will be officially supported starting from version 5.9.0.
 
 You’re welcome to explore and experiment with this feature in non-production environments today. For production use, we recommend waiting for the official release in 5.9.0 to ensure full support.
 {{< /note >}}

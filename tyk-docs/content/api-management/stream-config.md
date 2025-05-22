@@ -31,7 +31,7 @@ aliases:
 
 ## Overview
 
-Tyk streams configuration is specified using YAML. The configuration consists of several main sections: *input*, *pipeline*, *output* and optionally *resources*, *logger*, and *metrics*.
+Tyk streams configuration is specified using YAML. The configuration consists of several main sections: *input*, *pipeline*, *output* and optionally *logger*.
 
 ### Input
 
@@ -128,7 +128,7 @@ input:
 
 #### Labels
 
-Inputs have an optional field `label` that can uniquely identify them in observability data such as metrics and logs.
+Inputs have an optional field `label` that can uniquely identify them in observability data such as logs.
 
 <!-- TODO
 
@@ -343,14 +343,11 @@ input:
     url: "" # No default (required)
     verb: GET
     headers: {}
-    rate_limit: "" # No default (optional)
     timeout: 5s
     payload: "" # No default (optional)
     stream:
       enabled: false
       reconnect: true
-      scanner:
-        lines: {}
     auto_replay_nacks: true
 ```
 
@@ -401,7 +398,6 @@ input:
     extract_headers:
       include_prefixes: []
       include_patterns: []
-    rate_limit: "" # No default (optional)
     timeout: 5s
     retry_period: 1s
     max_retry_backoff: 300s
@@ -416,14 +412,12 @@ input:
     stream:
       enabled: false
       reconnect: true
-      scanner:
-        lines: {}
     auto_replay_nacks: true
 ```
 
 ##### Streaming
 
-If you enable streaming then Tyk Streams will consume the body of the response as a continuous stream of data, breaking messages out following a chosen scanner. This allows you to consume APIs that provide long lived streamed data feeds (such as Twitter).
+If you enable streaming then Tyk Streams will consume the body of the response as a continuous stream of data. This allows you to consume APIs that provide long lived streamed data feeds (such as Twitter).
 
 ##### Pagination
 
@@ -443,13 +437,6 @@ input:
         (timestamp_unix()-300).ts_format("2006-01-02T15:04:05Z","UTC").escape_url_query()
       ) }${! ("&next_token="+this.meta.next_token.not_null()) | "" }
     verb: GET
-    rate_limit: foo_searches
-
-rate_limit_resources:
-  - label: foo_searches
-    local:
-      count: 1
-      interval: 30s
 ```
 
 <!--
@@ -945,13 +932,6 @@ include_patterns:
   - _timestamp_unix$
 ```
 
-##### rate_limit
-
-An optional [rate limit]({{< ref "api-management/rate-limit#rate-limiting-with-tyk-streams" >}}) to throttle requests by.
-
-
-Type: `string`
-
 ##### timeout
 
 A static timeout to apply to requests.
@@ -1056,13 +1036,6 @@ Sets whether to re-establish the connection once it is lost.
 Type: `bool`
 Default: `true`
 
-##### stream.scanner
-
-The [scanner]({{< ref "api-management/stream-config#overview-4" >}}) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
-
-
-Type: `scanner`
-Default: `{"lines":{}}`
 
 ##### auto_replay_nacks
 
@@ -1089,7 +1062,6 @@ input:
     allowed_verbs:
       - POST
     timeout: 5s
-    rate_limit: ""
 ```
 
 #### Advanced
@@ -1103,11 +1075,9 @@ input:
     path: /post
     ws_path: /post/ws
     ws_welcome_message: ""
-    ws_rate_limit_message: ""
     allowed_verbs:
       - POST
     timeout: 5s
-    rate_limit: ""
     cert_file: ""
     key_file: ""
     cors:
@@ -1159,8 +1129,6 @@ It is therefore recommended that you ensure paths of separate components do not 
 For example, if you were to deploy two separate `http_server` inputs, one with a path `/foo/` and the other with a path `/foo/bar`, it would not be possible to ensure that the path `/foo/` does not swallow requests made to `/foo/bar`.
 
 You may specify an optional `ws_welcome_message`, which is a static payload to be sent to all clients once a websocket connection is first established.
-
-It's also possible to specify a `ws_rate_limit_message`, which is a static payload to be sent to clients that have triggered the servers rate limit.
 
 ##### Metadata
 
@@ -1278,14 +1246,6 @@ Default: `"/post/ws"`
 ##### ws_welcome_message
 
 An optional message to deliver to fresh websocket connections.
-
-
-Type: `string`
-Default: `""`
-
-##### ws_rate_limit_message
-
-An optional message to delivery to websocket connections that are rate limited.
 
 
 Type: `string`
@@ -2082,7 +2042,7 @@ outout:
 
 #### Labels
 
-Outputs have an optional field `label` that can uniquely identify them in observability data such as metrics and logs.
+Outputs have an optional field `label` that can uniquely identify them in observability data such as logs.
 
 <!--
 
@@ -2319,7 +2279,6 @@ output:
     url: "" # No default (required)
     verb: POST
     headers: {}
-    rate_limit: "" # No default (optional)
     timeout: 5s
     max_in_flight: 64
     batching:
@@ -2376,7 +2335,6 @@ output:
     extract_headers:
       include_prefixes: []
       include_patterns: []
-    rate_limit: "" # No default (optional)
     timeout: 5s
     retry_period: 1s
     max_retry_backoff: 300s
@@ -2885,13 +2843,6 @@ include_patterns:
 include_patterns:
   - _timestamp_unix$
 ```
-
-##### rate_limit
-
-An optional [rate limit]({{< ref "api-management/rate-limit#rate-limiting-with-tyk-streams" >}}) to throttle requests by.
-
-
-Type: `string`
 
 ##### timeout
 
@@ -4040,7 +3991,7 @@ Processors have an optional field `label` that can uniquely identify them in obs
 
 -->
 
-Processors have an optional field `label` that can uniquely identify them in observability data such as metrics and logs.
+Processors have an optional field `label` that can uniquely identify them in observability data such as logs.
 
 ### Avro
 
