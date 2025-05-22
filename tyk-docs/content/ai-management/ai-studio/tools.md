@@ -64,7 +64,7 @@ Administrators define and manage Tools via the UI or API:
 ## Organizing & Assigning Tools (Admin)
 
 *   **Create Catalogues:** Group related tools into Tool Catalogues (e.g., "CRM Tools", "Search Tools").
-*   **Assign to Groups:** Assign Tool Catalogues to specific [User Groups]({{< ref "ai-management/ai-studio/user-management" >}}). This grants users in those groups *potential* access to the tools within the catalogue.
+*   **Assign to Groups:** Assign Tool Catalogues to specific [Teams]({{< ref "ai-management/ai-studio/teams" >}}). This grants users in those groups *potential* access to the tools within the catalogue.
 
     {{< img src="/img/ai-management/tool-catalog-config.png" alt="Catalogue Config" >}}
 
@@ -73,7 +73,7 @@ Administrators define and manage Tools via the UI or API:
 Tools become available to end-users within the [Chat Interface]({{< ref "ai-management/ai-studio/chat-interface" >}}) if:
 
 1.  The specific Chat Experience configuration includes the relevant Tool Catalogue.
-2.  The user belongs to a Group that has been assigned that Tool Catalogue.
+2.  The user belongs to a Team that has been assigned that Tool Catalogue.
 3.  The Tool's privacy level is compatible with the LLM being used in the Chat Experience.
 
 The LLM will then automatically decide when to use these available tools based on the conversation.
