@@ -13,7 +13,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-This release focuses on further enhancing Tyk Cloud’s stability, security, and overall user experience. We've resolved several UI issues, enhanced input validation, standardized security defaults across versions, and addressed key vulnerabilities to make the platform more robust and secure. New 2025 pricing plans have also been introduced!
+This release focuses on further enhancing Tyk Cloud’s stability, security, and overall user experience. We've resolved several UI issues, improved input validation, standardized security defaults across versions, and strengthened core platform behavior. Additionally, we’ve introduced new 2025 pricing plans!
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.28.0" >}}) below.
 
