@@ -1858,44 +1858,32 @@ We've added OpenTelemetry semantic conventions for GraphQL spans. Spans will now
 <details>
 <summary>Added support for detailed_tracing to be configured via GQL API definitions</summary>
 
-<<<<<<< HEAD
-GraphQL APIs can now use the `detailed_tracing` setting in an API definition. With that property set to `true` any call to a GraphQL API will create a span for each middleware involved in request processing. While it is set to `false`, only two spans encapsulating the entire request lifecycle will be generated. This setting helps to reduce the size of traces, which can get large for GraphQL APIs. Furthermore, this gives users an option to customise the level of tracing detail to suit their monitoring needs.
-=======
 GraphQL APIs can now use the `detailed_tracing` setting in an API definition. With that property set to `true` any call
 to a GraphQL API will create a span for each middleware involved in request processing. While it is set to `false`, only
 two spans encapsulating the entire request lifecycle will be generated. This setting helps to reduce the size of traces,
 which can get large for GraphQL APIs. Furthermore, this gives users an option to customize the level of tracing detail
 to suit their monitoring needs.
 
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 </details>
 </li>
 <li>
 <details>
 <summary>Enhanced OpenTelemetry trace generation for UDG with mixed data sources</summary>
 
-<<<<<<< HEAD
-This release introduces an enhanced trace generation system for Universal Data Graph (UDG). It consolidates all spans from both Tyk-managed and external data source executions into a single trace when used together. Furthermore, when UDG solely utilises Tyk-managed data sources, trace management is simplified and operational visibility is improved.
-=======
 This release introduces an enhanced trace generation system for Universal Data Graph (UDG). It consolidates all spans
 from both Tyk-managed and external data source executions into a single trace when used together. Furthermore, when UDG
 solely utilizes Tyk-managed data sources, trace management is simplified and operational visibility is improved.
 
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 </details>
 </li>
 <li>
 <details>
 <summary>Disabled normalise and validate in GraphQL Engine</summary>
 
-<<<<<<< HEAD
-For GraphQL requests normalisation and validation has been disabled in the GraphQL engine. Both of those actions were performed in the Tyk Gateway and were unnecessary to be done again in the engine. This enhances performance slightly and makes detailed OTel traces concise and easier to read.
-=======
 For GraphQL requests normalization and validation has been disabled in the GraphQL engine. Both of those actions were
 performed in the Tyk Gateway and were unnecessary to be done again in the engine. This enhances performance slightly and
 makes detailed OTel traces concise and easier to read.
 
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 </details>
 </li>
 <li>
@@ -1912,15 +1900,11 @@ configurations.
 <details>
 <summary>OAS-to-UDG converter support for allOf/anyOf/oneOf keywords</summary>
 
-<<<<<<< HEAD
-The OAS-to-UDG converter now seamlessly handles OpenAPI descriptions that utilise the *allOf*, *anyOf* and *oneOf* keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of OpenAPI documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
-=======
 The OAS-to-UDG converter now seamlessly handles OpenAPI descriptions that utilize the _allOf_, _anyOf_ and _oneOf_
 keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of
 OpenAPI documents that the converter can handle and allows our users to import REST API data sources defined in OAS in
 more complex cases.
 
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 </details>
 </li>
 <li>
@@ -1935,14 +1919,10 @@ The OAS-to-UDG converter can now create GraphQL types even if an object's defini
 <details>
 <summary>Refined handling of arrays of objects in endpoint responses by OAS-to-UDG Converter</summary>
 
-<<<<<<< HEAD
-The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI description had no properties defined. This limitation resulted in unexpected behaviour and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process.
-=======
 The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI description had no
 properties defined. This limitation resulted in unexpected behavior and errors during the conversion process. The tool
 will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process.
 
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 </details>
 </li>
 <li>
@@ -1993,9 +1973,6 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Prefetch session expiry information from MDCB to reduce API call duration in case Gateway is temporarily disconnected from MDCB</summary>
 
-<<<<<<< HEAD
-Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry information from the control plane the first time an API was accessed for a given organisation. This approach led to a significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session-fetching operation to time out, as it tried to communicate with the now-inaccessible control plane.
-=======
 Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry
 information from the control plane the first time an API was accessed for a given organization. This approach led to a
 significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response
@@ -2004,17 +1981,12 @@ time out, as it tried to communicate with the now-inaccessible control plane.
 
 <br>Now, the worker gateway fetches the session expiry information up front, while there is an active connection to
 MDCB. This ensures that this data is already available locally in the event of an MDCB disconnection.
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 
 <br>This change significantly improves the API response time under MDCB disconnection scenarios by removing the need for
 the Gateway to wait for a timeout when attempting to fetch session information from the control plane, avoiding the
 previous 30-second delay. This optimization enhances the resilience and efficiency of Tyk Gateway in distributed
 environments.
 
-<<<<<<< HEAD
-<br>This change significantly improves the API response time under MDCB disconnection scenarios by removing the need for the Gateway to wait for a timeout when attempting to fetch session information from the control plane, avoiding the previous 30-second delay. This optimisation enhances the resilience and efficiency of Tyk Gateway in distributed environments.
-=======
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 </details>
 </li>
 <li>
@@ -2031,14 +2003,7 @@ removal of the unnecessary `slug` field and simplification of the custom plugin 
 <details>
 <summary>Optimised Gateway memory usage and reduced network request payload with Redis Rate Limiter</summary>
 
-<<<<<<< HEAD
 We have optimised the allocation behaviour of our sliding window log rate limiter implementation ([Redis Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is retrieved, optimising the interaction with Redis and decreasing the Gateway memory usage.
-=======
-We have optimized the allocation behavior of our sliding window log rate limiter implementation ([Redis
-Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete
-request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is
-retrieved, optimizing the interaction with Redis and decreasing the Gateway memory usage.
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 
 </details>
 </li>
@@ -2186,6 +2151,14 @@ changes has improved connection management and enhanced system performance.
 </details>
 </li>
 
+<li>
+<details>
+<summary>Fixed unintended external access to internal endpoints</summary>
+
+Resolved an issue where in certain conditions external clients could access internal endpoints. This was caused by incorrect combination of middleware which could lead to internal endpoints proxying traffic from external sources. This has now been addressed, so that an endpoint with the internal middleware configured will not be reachable from external requests.
+
+</details>
+</li>
 </ul>
 
 #### Security Fixes
