@@ -22,7 +22,7 @@ Budgets are typically configured by administrators and applied at specific level
 
 *   **Organization Level:** A global budget limit for all LLM usage within the organization.
 *   **LLM Configuration Level:** A specific budget limit tied to a particular LLM setup (e.g., a dedicated budget for a high-cost `gpt-4` configuration).
-*   **(Potentially) Application/User Level:** Granular budgets might be assignable to specific applications or user groups (depending on implementation specifics).
+*   **(Potentially) Application/User Level:** Granular budgets might be assignable to specific applications or teams (depending on implementation specifics).
 
 **Configuration Parameters:**
 
