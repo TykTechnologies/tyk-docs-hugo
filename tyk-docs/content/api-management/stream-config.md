@@ -31,7 +31,7 @@ aliases:
 
 ## Overview
 
-Tyk streams configuration is specified using YAML. The configuration consists of several main sections: *input*, *pipeline*, *output* and optionally *resources*, *logger*, and *metrics*.
+Tyk streams configuration is specified using YAML. The configuration consists of several main sections: *input*, *pipeline*, *output* and optionally *logger*.
 
 ### Input
 
@@ -55,7 +55,7 @@ The pipeline section defines the processing steps applied to the data. It includ
 ```yaml
 pipeline:
   processors:
-    - bloblang: |
+    - mapping: |
         root = this
         root.foo = this.bar.uppercase()
     - json_schema:
@@ -75,24 +75,6 @@ output:
     client_id: example_output_client
 ```
 
-### Resources (Optional)
-
-The resources section allows you to define shared resources such as caches, rate limits and conditions that can be used across inputs, outputs and processors.
-
-```yaml
-resources:
-  caches:
-    my_cache:
-      memcached:
-        addresses:
-          - localhost:11211
-  rate_limits:
-    my_rate_limit:
-      local:
-        count: 1000
-        interval: 1s
-```
-
 ### Logger (Optional)
 
 The logger section is used to configure logging options, such as log level and output format.
@@ -103,70 +85,6 @@ logger:
   format: json
 ```
 
-### Metrics (Optional)
-
-The metrics section allows you to configure how metrics are collected and reported, supporting various backends like Prometheus, StatsD and Graphite.
-
-```yaml
-metrics:
-  prometheus:
-    prefix: tyk
-    listen_address: ":8080"
-```
-
-
-A complete example combining all the sections is given below:
-
-```yaml
-input:
-  kafka:
-    addresses:
-      - localhost:9092
-    topics:
-      - example_topic
-    consumer_group: example_group
-    client_id: example_client
-
-pipeline:
-  processors:
-    - bloblang: |
-        root = this
-        root.foo = this.bar.uppercase()
-    - text:
-        operator: trim
-    - bloblang: |
-        root.processed = this.foo.contains("example")
-
-output:
-  kafka:
-    addresses:
-      - localhost:9092
-    topic: output_topic
-    client_id: example_output_client
-
-resources:
-  caches:
-    my_cache:
-      memcached:
-        addresses:
-          - localhost:11211
-  rate_limits:
-    my_rate_limit:
-      local:
-        count: 1000
-        interval: 1s
-
-logger:
-  level: INFO
-  format: json
-
-metrics:
-  prometheus:
-    prefix: tyk
-    listen_address: ":8080"
-```
-
-This overview provides a foundational understanding of how to configure Tyk Streams for various streaming and processing tasks. Each section can be customized to fit specific use cases and deployment environments.
 ## Inputs
 
 ### Overview
@@ -185,7 +103,7 @@ input:
   # Optional list of processing steps
   processors:
     - avro:
-        operator: to_json 
+        operator: to_json
 ```
 
 #### Brokering
@@ -210,7 +128,7 @@ input:
 
 #### Labels
 
-Inputs have an optional field `label` that can uniquely identify them in observability data such as metrics and logs.
+Inputs have an optional field `label` that can uniquely identify them in observability data such as logs.
 
 <!-- TODO
 
@@ -303,22 +221,22 @@ It is possible to configure processors at the broker level, where they will be a
 Whatever is specified within `inputs` will be created this many times.
 
 
-Type: `int`  
-Default: `1`  
+Type: `int`
+Default: `1`
 
 ##### inputs
 
 A list of inputs to create.
 
 
-Type: `array`  
+Type: `array`
 
 ##### batching
 
 Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
 
-Type: `object`  
+Type: `object`
 
 ```yml
 # Examples
@@ -343,24 +261,24 @@ batching:
 A number of messages at which the batch should be flushed. If `0` disables count based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.byte_size
 
 An amount of bytes at which the batch should be flushed. If `0` disables size based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.period
 
 A period in which an incomplete batch should be flushed regardless of its size.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -378,8 +296,8 @@ period: 500ms
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -393,7 +311,7 @@ check: this.type == "end_of_transaction"
 A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 
-Type: `array`  
+Type: `array`
 
 ```yml
 # Examples
@@ -425,14 +343,11 @@ input:
     url: "" # No default (required)
     verb: GET
     headers: {}
-    rate_limit: "" # No default (optional)
     timeout: 5s
     payload: "" # No default (optional)
     stream:
       enabled: false
       reconnect: true
-      scanner:
-        lines: {}
     auto_replay_nacks: true
 ```
 
@@ -483,7 +398,6 @@ input:
     extract_headers:
       include_prefixes: []
       include_patterns: []
-    rate_limit: "" # No default (optional)
     timeout: 5s
     retry_period: 1s
     max_retry_backoff: 300s
@@ -498,14 +412,12 @@ input:
     stream:
       enabled: false
       reconnect: true
-      scanner:
-        lines: {}
     auto_replay_nacks: true
 ```
 
 ##### Streaming
 
-If you enable streaming then Tyk Streams will consume the body of the response as a continuous stream of data, breaking messages out following a chosen scanner. This allows you to consume APIs that provide long lived streamed data feeds (such as Twitter).
+If you enable streaming then Tyk Streams will consume the body of the response as a continuous stream of data. This allows you to consume APIs that provide long lived streamed data feeds (such as Twitter).
 
 ##### Pagination
 
@@ -525,13 +437,6 @@ input:
         (timestamp_unix()-300).ts_format("2006-01-02T15:04:05Z","UTC").escape_url_query()
       ) }${! ("&next_token="+this.meta.next_token.not_null()) | "" }
     verb: GET
-    rate_limit: foo_searches
-
-rate_limit_resources:
-  - label: foo_searches
-    local:
-      count: 1
-      interval: 30s
 ```
 
 <!--
@@ -568,15 +473,15 @@ rate_limit_resources:
 The URL to connect to.
 
 
-Type: `string`  
+Type: `string`
 
 ##### verb
 
 A verb to connect with
 
 
-Type: `string`  
-Default: `"GET"`  
+Type: `string`
+Default: `"GET"`
 
 ```yml
 # Examples
@@ -595,8 +500,8 @@ A map of headers to add to the request.
 This field supports interpolation functions.
 -->
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ```yml
 # Examples
@@ -611,15 +516,15 @@ headers:
 Specify optional matching rules to determine which metadata keys should be added to the HTTP request as headers.
 
 
-Type: `object`  
+Type: `object`
 
 ##### metadata.include_prefixes
 
 Provide a list of explicit metadata key prefixes to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -640,8 +545,8 @@ include_prefixes:
 Provide a list of explicit metadata key regular expression (re2) patterns to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -658,8 +563,8 @@ include_patterns:
 Optionally set a level at which the request and response payload of each request made will be logged.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 
 ##### oauth
@@ -667,30 +572,30 @@ Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 Allows you to specify open authentication via OAuth version 1.
 
 
-Type: `object`  
+Type: `object`
 
 ##### oauth.enabled
 
 Whether to use OAuth version 1 in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### oauth.consumer_key
 
 A value used to identify the client to the service provider.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth.consumer_secret
 
 A secret used to establish ownership of the consumer key.
 
 
-Type: `string`  
+Type: `string`
 Default: `""`
 
 ##### oauth.access_token
@@ -698,15 +603,15 @@ Default: `""`
 A value used to gain access to the protected resources on behalf of the user.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth.access_token_secret
 
 A secret provided in order to establish ownership of a given access token.
 
 
-Type: `string`  
+Type: `string`
 Default: `""`
 
 ##### oauth2
@@ -714,30 +619,30 @@ Default: `""`
 Allows you to specify open authentication via OAuth version 2 using the client credentials token flow.
 
 
-Type: `object`  
+Type: `object`
 
 ##### oauth2.enabled
 
 Whether to use OAuth version 2 in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### oauth2.client_key
 
 A value used to identify the client to the token provider.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth2.client_secret
 
 A secret used to establish ownership of the client key.
 
 
-Type: `string`  
+Type: `string`
 Default: `""`
 
 ##### oauth2.token_url
@@ -745,24 +650,24 @@ Default: `""`
 The URL of the token provider.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth2.scopes
 
 A list of optional requested permissions.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ##### oauth2.endpoint_params
 
 A list of optional endpoint parameters, values should be arrays of strings.
 
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ```yml
 # Examples
@@ -780,30 +685,30 @@ endpoint_params:
 Allows you to specify basic authentication.
 
 
-Type: `object`  
+Type: `object`
 
 ##### basic_auth.enabled
 
 Whether to use basic authentication in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### basic_auth.username
 
 A username to authenticate as.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### basic_auth.password
 
 A password to authenticate with.
 
 
-Type: `string`  
+Type: `string`
 Default: `""`
 
 ##### jwt
@@ -811,86 +716,86 @@ Default: `""`
 Allows you to specify JWT authentication.
 
 
-Type: `object`  
+Type: `object`
 
 ##### jwt.enabled
 
 Whether to use JWT authentication in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### jwt.private_key_file
 
 A file with the PEM encoded via PKCS1 or PKCS8 as private key.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### jwt.signing_method
 
 A method used to sign the token such as RS256, RS384, RS512 or EdDSA.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### jwt.claims
 
 A value used to identify the claims that issued the JWT.
 
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ##### jwt.headers
 
 Add optional key/value headers to the JWT.
 
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ##### tls
 
 Custom TLS settings can be used to override system defaults.
 
 
-Type: `object`  
+Type: `object`
 
 ##### tls.enabled
 
 Whether custom TLS settings are enabled.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.skip_cert_verify
 
 Whether to skip server side certificate verification.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.enable_renegotiation
 
 Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -906,8 +811,8 @@ root_cas: |-
 An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -920,8 +825,8 @@ root_cas_file: ./root_cas.pem
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -940,39 +845,39 @@ client_certs:
 A plain text certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].cert_file
 
 The path of a certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key_file
 
 The path of a certificate key to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -985,15 +890,15 @@ password: foo
 Specify which response headers should be added to resulting messages as metadata. Header keys are lowercased before matching, so ensure that your patterns target lowercased versions of the header keys that you expect.
 
 
-Type: `object`  
+Type: `object`
 
 ##### extract_headers.include_prefixes
 
 Provide a list of explicit metadata key prefixes to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -1014,8 +919,8 @@ include_prefixes:
 Provide a list of explicit metadata key regular expression (re2) patterns to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -1027,75 +932,68 @@ include_patterns:
   - _timestamp_unix$
 ```
 
-##### rate_limit
-
-An optional [rate limit]({{< ref "api-management/rate-limit#rate-limiting-with-tyk-streams" >}}) to throttle requests by.
-
-
-Type: `string`  
-
 ##### timeout
 
 A static timeout to apply to requests.
 
 
-Type: `string`  
-Default: `"5s"`  
+Type: `string`
+Default: `"5s"`
 
 ##### retry_period
 
 The base period to wait between failed requests.
 
 
-Type: `string`  
-Default: `"1s"`  
+Type: `string`
+Default: `"1s"`
 
 ##### max_retry_backoff
 
 The maximum period to wait between failed requests.
 
 
-Type: `string`  
-Default: `"300s"`  
+Type: `string`
+Default: `"300s"`
 
 ##### retries
 
 The maximum number of retry attempts to make.
 
 
-Type: `int`  
-Default: `3`  
+Type: `int`
+Default: `3`
 
 ##### backoff_on
 
 A list of status codes whereby the request should be considered to have failed and retries should be attempted, but the period between them should be increased gradually.
 
 
-Type: `array`  
-Default: `[429]`  
+Type: `array`
+Default: `[429]`
 
 ##### drop_on
 
 A list of status codes whereby the request should be considered to have failed but retries should not be attempted. This is useful for preventing wasted retries for requests that will never succeed. Note that with these status codes the *request* is dropped, but *message* that caused the request will not be dropped.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ##### successful_on
 
 A list of status codes whereby the attempt should be considered successful, this is useful for dropping requests that return non-2XX codes indicating that the message has been dealt with, such as a 303 See Other or a 409 Conflict. All 2XX codes are considered successful unless they are present within `backoff_on` or `drop_on`, regardless of this field.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ##### proxy_url
 
 An optional HTTP proxy URL.
 
 
-Type: `string`  
+Type: `string`
 
 ##### payload
 
@@ -1105,53 +1003,46 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
+Type: `string`
 
 ##### drop_empty_bodies
 
 Whether empty payloads received from the target server should be dropped.
 
 
-Type: `bool`  
-Default: `true`  
+Type: `bool`
+Default: `true`
 
 ##### stream
 
 Allows you to set streaming mode, where requests are kept open and messages are processed line-by-line.
 
 
-Type: `object`  
+Type: `object`
 
 ##### stream.enabled
 
 Enables streaming mode.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### stream.reconnect
 
 Sets whether to re-establish the connection once it is lost.
 
 
-Type: `bool`  
-Default: `true`  
+Type: `bool`
+Default: `true`
 
-##### stream.scanner
-
-The [scanner]({{< ref "api-management/stream-config#overview-4" >}}) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
-
-
-Type: `scanner`  
-Default: `{"lines":{}}`  
 
 ##### auto_replay_nacks
 
 Whether messages that are rejected (nacked) at the output level should be automatically replayed indefinitely, eventually resulting in back pressure if the cause of the rejections is persistent. If set to `false` these messages will instead be deleted. Disabling auto replays can greatly improve memory efficiency of high throughput streams as the original shape of the data can be discarded immediately upon consumption and mutation.
 
 
-Type: `bool`  
+Type: `bool`
 Default: `true`
 
 ### HTTP Server
@@ -1171,7 +1062,6 @@ input:
     allowed_verbs:
       - POST
     timeout: 5s
-    rate_limit: ""
 ```
 
 #### Advanced
@@ -1185,11 +1075,9 @@ input:
     path: /post
     ws_path: /post/ws
     ws_welcome_message: ""
-    ws_rate_limit_message: ""
     allowed_verbs:
       - POST
     timeout: 5s
-    rate_limit: ""
     cert_file: ""
     key_file: ""
     cors:
@@ -1241,8 +1129,6 @@ It is therefore recommended that you ensure paths of separate components do not 
 For example, if you were to deploy two separate `http_server` inputs, one with a path `/foo/` and the other with a path `/foo/bar`, it would not be possible to ensure that the path `/foo/` does not swallow requests made to `/foo/bar`.
 
 You may specify an optional `ws_welcome_message`, which is a static payload to be sent to all clients once a websocket connection is first established.
-
-It's also possible to specify a `ws_rate_limit_message`, which is a static payload to be sent to clients that have triggered the servers rate limit.
 
 ##### Metadata
 
@@ -1338,105 +1224,97 @@ input:
 An alternative address to host from. If left empty the service wide address is used.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### path
 
 The endpoint path to listen for POST requests.
 
 
-Type: `string`  
-Default: `"/post"`  
+Type: `string`
+Default: `"/post"`
 
 ##### ws_path
 
 The endpoint path to create websocket connections from.
 
 
-Type: `string`  
-Default: `"/post/ws"`  
+Type: `string`
+Default: `"/post/ws"`
 
 ##### ws_welcome_message
 
 An optional message to deliver to fresh websocket connections.
 
 
-Type: `string`  
-Default: `""`  
-
-##### ws_rate_limit_message
-
-An optional message to delivery to websocket connections that are rate limited.
-
-
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### allowed_verbs
 
 An array of verbs that are allowed for the `path` endpoint.
 
 
-Type: `array`  
-Default: `["POST"]`  
-Requires version 3.33.0 or newer  
+Type: `array`
+Default: `["POST"]`
+Requires version 3.33.0 or newer
 
 ##### timeout
 
 Timeout for requests. If a consumed messages takes longer than this to be delivered the connection is closed, but the message may still be delivered.
 
 
-Type: `string`  
-Default: `"5s"`  
+Type: `string`
+Default: `"5s"`
 
 <!-- TODO add rate limit ##### rate_limit
 
 An optional [rate limit](/docs/components/rate_limits/about) to throttle requests by. -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### cert_file
 
 Enable TLS by specifying a certificate and key file. Only valid with a custom `address`.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### key_file
 
 Enable TLS by specifying a certificate and key file. Only valid with a custom `address`.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### cors
 
 Adds Cross-Origin Resource Sharing headers. Only valid with a custom `address`.
 
 
-Type: `object`  
-Requires version 3.63.0 or newer  
+Type: `object`
+Requires version 3.63.0 or newer
 
 ##### cors.enabled
 
 Whether to allow CORS requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### cors.allowed_origins
 
 An explicit list of origins that are allowed for CORS requests.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ##### sync_response
 
@@ -1444,7 +1322,7 @@ Default: `[]`
 Customize messages returned via synchronous responses.
 
 
-Type: `object`  
+Type: `object`
 
 ##### sync_response.status
 
@@ -1454,8 +1332,8 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
-Default: `"200"`  
+Type: `string`
+Default: `"200"`
 
 ```yml
 # Examples
@@ -1473,23 +1351,23 @@ This field supports interpolation functions.
 -->
 
 
-Type: `object`  
-Default: `{"Content-Type":"application/octet-stream"}`  
+Type: `object`
+Default: `{"Content-Type":"application/octet-stream"}`
 
 ##### sync_response.metadata_headers
 
 Specify criteria for which metadata values are added to the response as headers.
 
 
-Type: `object`  
+Type: `object`
 
 ##### sync_response.metadata_headers.include_prefixes
 
 Provide a list of explicit metadata key prefixes to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -1510,8 +1388,8 @@ include_prefixes:
 Provide a list of explicit metadata key regular expression (re2) patterns to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -1635,7 +1513,7 @@ Unfortunately this error message will appear for a wide range of connection prob
 A list of broker addresses to connect to. If an item of the list contains commas it will be expanded into multiple addresses.
 
 
-Type: `array`  
+Type: `array`
 
 ```yml
 # Examples
@@ -1656,8 +1534,8 @@ addresses:
 A list of topics to consume from. Multiple comma separated topics can be listed in a single element. Partitions are automatically distributed across consumers of a topic. Alternatively, it's possible to specify explicit partitions to consume from with a colon after the topic name, e.g. `foo:0` would consume the partition 0 of the topic foo. This syntax supports ranges, e.g. `foo:0-10` would consume partitions 0 through to 10 inclusive.
 
 
-Type: `array`  
-Requires version 3.33.0 or newer  
+Type: `array`
+Requires version 3.33.0 or newer
 
 ```yml
 # Examples
@@ -1686,7 +1564,7 @@ topics:
 The version of the Kafka protocol to use. This limits the capabilities used by the client and should ideally match the version of your brokers. Defaults to the oldest supported stable version.
 
 
-Type: `string`  
+Type: `string`
 
 ```yml
 # Examples
@@ -1701,32 +1579,32 @@ target_version: 3.1.0
 Custom TLS settings can be used to override system defaults.
 
 
-Type: `object`  
+Type: `object`
 
 ##### tls.enabled
 
 Whether custom TLS settings are enabled.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.skip_cert_verify
 
 Whether to skip server side certificate verification.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.enable_renegotiation
 
 Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
 
 
-Type: `bool`  
-Default: `false`  
-Requires version 3.45.0 or newer  
+Type: `bool`
+Default: `false`
+Requires version 3.45.0 or newer
 
 ##### tls.root_cas
 
@@ -1737,8 +1615,8 @@ This field contains sensitive information that usually shouldn't be added to a c
 ::: -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -1754,8 +1632,8 @@ root_cas: |-
 An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -1768,8 +1646,8 @@ root_cas_file: ./root_cas.pem
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -1788,8 +1666,8 @@ client_certs:
 A plain text certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key
 
@@ -1800,32 +1678,32 @@ This field contains sensitive information that usually shouldn't be added to a c
 ::: -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].cert_file
 
 The path of a certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key_file
 
 The path of a certificate key to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Example
@@ -1840,15 +1718,15 @@ password: foo
 Enables SASL authentication.
 
 
-Type: `object`  
+Type: `object`
 
 ##### sasl.mechanism
 
 The SASL authentication mechanism, if left empty SASL authentication is not used.
 
 
-Type: `string`  
-Default: `"none"`  
+Type: `string`
+Default: `"none"`
 
 | Option | Summary |
 |---|---|
@@ -1864,8 +1742,8 @@ Default: `"none"`
 A PLAIN username. It is recommended that you use environment variables to populate this field.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -1881,8 +1759,8 @@ This field contains sensitive information that usually shouldn't be added to a c
 ::: -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -1895,89 +1773,89 @@ password: ${PASSWORD}
 A static OAUTHBEARER access token
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 <!-- TODO add ##### sasl.token_cache
 
 Instead of using a static `access_token` allows you to query a [`cache`](/docs/components/caches/about) resource to fetch OAUTHBEARER tokens from -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### sasl.token_key
 
 Required when using a `token_cache`, the key to query the cache with for tokens.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### consumer_group
 
 An identifier for the consumer group of the connection. This field can be explicitly made empty in order to disable stored offsets for the consumed topic partitions.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### client_id
 
 An identifier for the client connection.
 
 
-Type: `string`  
-Default: `"tyk"`  
+Type: `string`
+Default: `"tyk"`
 
 ##### rack_id
 
 A rack identifier for this client.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### start_from_oldest
 
 Determines whether to consume from the oldest available offset, otherwise messages are consumed from the latest offset. The setting is applied when creating a new consumer group or the saved offset no longer exists.
 
 
-Type: `bool`  
-Default: `true`  
+Type: `bool`
+Default: `true`
 
 ##### checkpoint_limit
 
 The maximum number of messages of the same topic and partition that can be processed at a given time. Increasing this limit enables parallel processing and batching at the output level to work on individual partitions. Any given offset will not be committed unless all messages under that offset are delivered in order to preserve at least once delivery guarantees.
 
 
-Type: `int`  
-Default: `1024`  
-Requires version 3.33.0 or newer  
+Type: `int`
+Default: `1024`
+Requires version 3.33.0 or newer
 
 ##### auto_replay_nacks
 
 Whether messages that are rejected (nacked) at the output level should be automatically replayed indefinitely, eventually resulting in back pressure if the cause of the rejections is persistent. If set to `false` these messages will instead be deleted. Disabling auto replays can greatly improve memory efficiency of high throughput streams as the original shape of the data can be discarded immediately upon consumption and mutation.
 
 
-Type: `bool`  
-Default: `true`  
+Type: `bool`
+Default: `true`
 
 ##### commit_period
 
 The period of time between each commit of the current partition offsets. Offsets are always committed during shutdown.
 
 
-Type: `string`  
-Default: `"1s"`  
+Type: `string`
+Default: `"1s"`
 
 ##### max_processing_period
 
 A maximum estimate for the time taken to process a message, this is used for tuning consumer group synchronization.
 
 
-Type: `string`  
-Default: `"100ms"`  
+Type: `string`
+Default: `"100ms"`
 
 <!-- TODO: when bloblang is supported
 ##### extract_tracing_map
@@ -1985,8 +1863,8 @@ Default: `"100ms"`
 A Bloblang mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
 
 
-Type: `string`  
-Requires version 3.45.0 or newer  
+Type: `string`
+Requires version 3.45.0 or newer
 
 ```yml
 # Examples
@@ -2002,53 +1880,53 @@ extract_tracing_map: root = this.meta.span
 Tuning parameters for consumer group synchronization.
 
 
-Type: `object`  
+Type: `object`
 
 ##### group.session_timeout
 
 A period after which a consumer of the group is kicked after no heartbeats.
 
 
-Type: `string`  
-Default: `"10s"`  
+Type: `string`
+Default: `"10s"`
 
 ##### group.heartbeat_interval
 
 A period in which heartbeats should be sent out.
 
 
-Type: `string`  
-Default: `"3s"`  
+Type: `string`
+Default: `"3s"`
 
 ##### group.rebalance_timeout
 
 A period after which rebalancing is abandoned if unresolved.
 
 
-Type: `string`  
-Default: `"60s"`  
+Type: `string`
+Default: `"60s"`
 
 ##### fetch_buffer_cap
 
 The maximum number of unprocessed messages to fetch at a given time.
 
 
-Type: `int`  
-Default: `256`  
+Type: `int`
+Default: `256`
 
 ##### multi_header
 
 Decode headers into lists to allow handling of multiple values with the same key
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### batching
 
 Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
-Type: `object`  
+Type: `object`
 
 ```yml
 # Examples
@@ -2073,24 +1951,24 @@ batching:
 A number of messages at which the batch should be flushed. If `0` disables count based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.byte_size
 
 An amount of bytes at which the batch should be flushed. If `0` disables size based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.period
 
 A period in which an incomplete batch should be flushed regardless of its size.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -2107,8 +1985,8 @@ period: 500ms
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -2122,7 +2000,7 @@ check: this.type == "end_of_transaction"
 A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 
-Type: `array`  
+Type: `array`
 
 ```yml
 # Examples
@@ -2164,11 +2042,11 @@ outout:
 
 #### Labels
 
-Outputs have an optional field `label` that can uniquely identify them in observability data such as metrics and logs.
+Outputs have an optional field `label` that can uniquely identify them in observability data such as logs.
 
 <!--
 
-TODO replace with this paragraph when determine if product supports metrics 
+TODO replace with this paragraph when determine if product supports metrics
 
 Outputs have an optional field `label` that can uniquely identify them in observability data such as metrics and logs. This can be useful when running configs with multiple outputs, otherwise their metrics labels will be generated based on their composition. For more information check out the [metrics documentation][metrics.about].
 
@@ -2237,16 +2115,16 @@ output:
 The number of copies of each configured output to spawn.
 
 
-Type: `int`  
-Default: `1`  
+Type: `int`
+Default: `1`
 
 ##### pattern
 
 The brokering pattern to use.
 
 
-Type: `string`  
-Default: `"fan_out"`  
+Type: `string`
+Default: `"fan_out"`
 Options: `fan_out`, `fan_out_fail_fast`, `fan_out_sequential`, `fan_out_sequential_fail_fast`, `round_robin`, `greedy`.
 
 ##### outputs
@@ -2254,14 +2132,14 @@ Options: `fan_out`, `fan_out_fail_fast`, `fan_out_sequential`, `fan_out_sequenti
 A list of child outputs to broker.
 
 
-Type: `array`  
+Type: `array`
 
 ##### batching
 
 Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
 
-Type: `object`  
+Type: `object`
 
 ```yml
 # Examples
@@ -2286,24 +2164,24 @@ batching:
 A number of messages at which the batch should be flushed. If `0` disables count based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.byte_size
 
 An amount of bytes at which the batch should be flushed. If `0` disables size based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.period
 
 A period in which an incomplete batch should be flushed regardless of its size.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -2321,8 +2199,8 @@ period: 500ms
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -2336,7 +2214,7 @@ check: this.type == "end_of_transaction"
 A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 
-Type: `array`  
+Type: `array`
 
 ```yml
 # Examples
@@ -2401,7 +2279,6 @@ output:
     url: "" # No default (required)
     verb: POST
     headers: {}
-    rate_limit: "" # No default (optional)
     timeout: 5s
     max_in_flight: 64
     batching:
@@ -2458,7 +2335,6 @@ output:
     extract_headers:
       include_prefixes: []
       include_patterns: []
-    rate_limit: "" # No default (optional)
     timeout: 5s
     retry_period: 1s
     max_retry_backoff: 300s
@@ -2507,15 +2383,15 @@ The URL to connect to.
 This field supports interpolation functions.
 -->
 
-Type: `string`  
+Type: `string`
 
 ##### verb
 
 A verb to connect with
 
 
-Type: `string`  
-Default: `"POST"`  
+Type: `string`
+Default: `"POST"`
 
 ```yml
 # Examples
@@ -2535,8 +2411,8 @@ This field supports interpolation functions.
 -->
 
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ```yml
 # Examples
@@ -2551,15 +2427,15 @@ headers:
 Specify optional matching rules to determine which metadata keys should be added to the HTTP request as headers.
 
 
-Type: `object`  
+Type: `object`
 
 ##### metadata.include_prefixes
 
 Provide a list of explicit metadata key prefixes to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -2580,8 +2456,8 @@ include_prefixes:
 Provide a list of explicit metadata key regular expression (re2) patterns to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -2598,8 +2474,8 @@ include_patterns:
 Optionally set a level at which the request and response payload of each request made will be logged.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 
 ##### oauth
@@ -2607,102 +2483,102 @@ Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 Allows you to specify open authentication via OAuth version 1.
 
 
-Type: `object`  
+Type: `object`
 
 ##### oauth.enabled
 
 Whether to use OAuth version 1 in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### oauth.consumer_key
 
 A value used to identify the client to the service provider.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth.consumer_secret
 
 A secret used to establish ownership of the consumer key.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth.access_token
 
 A value used to gain access to the protected resources on behalf of the user.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth.access_token_secret
 
 A secret provided in order to establish ownership of a given access token.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth2
 
 Allows you to specify open authentication via OAuth version 2 using the client credentials token flow.
 
 
-Type: `object`  
+Type: `object`
 
 ##### oauth2.enabled
 
 Whether to use OAuth version 2 in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### oauth2.client_key
 
 A value used to identify the client to the token provider.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth2.client_secret
 
 A secret used to establish ownership of the client key.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth2.token_url
 
 The URL of the token provider.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### oauth2.scopes
 
 A list of optional requested permissions.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ##### oauth2.endpoint_params
 
 A list of optional endpoint parameters, values should be arrays of strings.
 
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ```yml
 # Examples
@@ -2720,117 +2596,117 @@ endpoint_params:
 Allows you to specify basic authentication.
 
 
-Type: `object`  
+Type: `object`
 
 ##### basic_auth.enabled
 
 Whether to use basic authentication in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### basic_auth.username
 
 A username to authenticate as.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### basic_auth.password
 
 A password to authenticate with.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### jwt
 
 Allows you to specify JWT authentication.
 
 
-Type: `object`  
+Type: `object`
 
 ##### jwt.enabled
 
 Whether to use JWT authentication in requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### jwt.private_key_file
 
 A file with the PEM encoded via PKCS1 or PKCS8 as private key.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### jwt.signing_method
 
 A method used to sign the token such as RS256, RS384, RS512 or EdDSA.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### jwt.claims
 
 A value used to identify the claims that issued the JWT.
 
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ##### jwt.headers
 
 Add optional key/value headers to the JWT.
 
 
-Type: `object`  
-Default: `{}`  
+Type: `object`
+Default: `{}`
 
 ##### tls
 
 Custom TLS settings can be used to override system defaults.
 
 
-Type: `object`  
+Type: `object`
 
 ##### tls.enabled
 
 Whether custom TLS settings are enabled.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.skip_cert_verify
 
 Whether to skip server side certificate verification.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.enable_renegotiation
 
 Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -2846,8 +2722,8 @@ root_cas: |-
 An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -2860,8 +2736,8 @@ root_cas_file: ./root_cas.pem
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -2880,40 +2756,40 @@ client_certs:
 A plain text certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].cert_file
 
 The path of a certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key_file
 
 The path of a certificate key to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -2926,15 +2802,15 @@ password: foo
 Specify which response headers should be added to resulting synchronous response messages as metadata. Header keys are lowercased before matching, so ensure that your patterns target lowercased versions of the header keys that you expect. This field is not applicable unless `propagate_response` is set to `true`.
 
 
-Type: `object`  
+Type: `object`
 
 ##### extract_headers.include_prefixes
 
 Provide a list of explicit metadata key prefixes to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -2955,8 +2831,8 @@ include_prefixes:
 Provide a list of explicit metadata key regular expression (re2) patterns to match against.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -2968,106 +2844,99 @@ include_patterns:
   - _timestamp_unix$
 ```
 
-##### rate_limit
-
-An optional [rate limit]({{< ref "api-management/rate-limit#rate-limiting-with-tyk-streams" >}}) to throttle requests by.
-
-
-Type: `string`  
-
 ##### timeout
 
 A static timeout to apply to requests.
 
 
-Type: `string`  
-Default: `"5s"`  
+Type: `string`
+Default: `"5s"`
 
 ##### retry_period
 
 The base period to wait between failed requests.
 
 
-Type: `string`  
-Default: `"1s"`  
+Type: `string`
+Default: `"1s"`
 
 ##### max_retry_backoff
 
 The maximum period to wait between failed requests.
 
 
-Type: `string`  
-Default: `"300s"`  
+Type: `string`
+Default: `"300s"`
 
 ##### retries
 
 The maximum number of retry attempts to make.
 
 
-Type: `int`  
-Default: `3`  
+Type: `int`
+Default: `3`
 
 ##### backoff_on
 
 A list of status codes whereby the request should be considered to have failed and retries should be attempted, but the period between them should be increased gradually.
 
 
-Type: `array`  
-Default: `[429]`  
+Type: `array`
+Default: `[429]`
 
 ##### drop_on
 
 A list of status codes whereby the request should be considered to have failed but retries should not be attempted. This is useful for preventing wasted retries for requests that will never succeed. Note that with these status codes the _request_ is dropped, but _message_ that caused the request will not be dropped.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ##### successful_on
 
 A list of status codes whereby the attempt should be considered successful, this is useful for dropping requests that return non-2XX codes indicating that the message has been dealt with, such as a 303 See Other or a 409 Conflict. All 2XX codes are considered successful unless they are present within `backoff_on` or `drop_on`, regardless of this field.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ##### proxy_url
 
 An optional HTTP proxy URL.
 
 
-Type: `string`  
+Type: `string`
 
 ##### batch_as_multipart
 
 Send message batches as a single request using [RFC1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). If disabled messages in batches will be sent as individual requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### propagate_response
 
 Whether responses from the server should be propagated back to the input.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### max_in_flight
 
 The maximum number of parallel message batches to have in flight at any given time.
 
 
-Type: `int`  
-Default: `64`  
+Type: `int`
+Default: `64`
 
 ##### batching
 
 Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batching-6" >}}).
 
 
-Type: `object`  
+Type: `object`
 
 ```yml
 # Examples
@@ -3092,24 +2961,24 @@ batching:
 A number of messages at which the batch should be flushed. If `0` disables count based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.byte_size
 
 An amount of bytes at which the batch should be flushed. If `0` disables size based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.period
 
 A period in which an incomplete batch should be flushed regardless of its size.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3127,8 +2996,8 @@ period: 500ms
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3142,7 +3011,7 @@ check: this.type == "end_of_transaction"
 A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 
-Type: `array`  
+Type: `array`
 
 ```yml
 # Examples
@@ -3165,8 +3034,8 @@ processors:
 Create explicit multipart HTTP requests by specifying an array of parts to add to the request, each part specified consists of content headers and a data field that can be populated dynamically. If this field is populated it will override the default request creation behavior.
 
 
-Type: `array`  
-Default: `[]`   
+Type: `array`
+Default: `[]`
 
 ##### multipart[].content_type
 
@@ -3176,8 +3045,8 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3193,8 +3062,8 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3210,8 +3079,8 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3259,13 +3128,13 @@ output:
       allowed_origins: []
 ```
 
-Sets up an HTTP server that will send messages over HTTP(S) GET requests. 
+Sets up an HTTP server that will send messages over HTTP(S) GET requests.
 
 <!-- TODO add link here  If the `address` config field is left blank the [service-wide HTTP server](/docs/components/http/about) will be used. -->
 
 Three endpoints will be registered at the paths specified by the fields `path`, `stream_path` and `ws_path`. Which allow you to consume a single message batch, a continuous stream of line delimited messages, or a websocket of messages for each request respectively.
 
-When messages are batched the `path` endpoint encodes the batch according to [RFC1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). 
+When messages are batched the `path` endpoint encodes the batch according to [RFC1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
 
 <!-- TODO add link here - This behavior can be overridden by [archiving your batches](/docs/configuration/batching#post-batch-processing). -->
 
@@ -3287,87 +3156,87 @@ For example, if you were to deploy two separate `http_server` inputs, one with a
 An alternative address to host from. If left empty the service wide address is used.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### path
 
 The path from which discrete messages can be consumed.
 
 
-Type: `string`  
-Default: `"/get"`  
+Type: `string`
+Default: `"/get"`
 
 ##### stream_path
 
 The path from which a continuous stream of messages can be consumed.
 
 
-Type: `string`  
-Default: `"/get/stream"`  
+Type: `string`
+Default: `"/get/stream"`
 
 ##### ws_path
 
 The path from which websocket connections can be established.
 
 
-Type: `string`  
-Default: `"/get/ws"`  
+Type: `string`
+Default: `"/get/ws"`
 
 ##### allowed_verbs
 
 An array of verbs that are allowed for the `path` and `stream_path` HTTP endpoint.
 
 
-Type: `array`  
-Default: `["GET"]`  
+Type: `array`
+Default: `["GET"]`
 
 ##### timeout
 
 The maximum time to wait before a blocking, inactive connection is dropped (only applies to the `path` endpoint).
 
 
-Type: `string`  
-Default: `"5s"`  
+Type: `string`
+Default: `"5s"`
 
 ##### cert_file
 
 Enable TLS by specifying a certificate and key file. Only valid with a custom `address`.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### key_file
 
 Enable TLS by specifying a certificate and key file. Only valid with a custom `address`.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### cors
 
 Adds Cross-Origin Resource Sharing headers. Only valid with a custom `address`.
 
 
-Type: `object`  
+Type: `object`
 
 ##### cors.enabled
 
 Whether to allow CORS requests.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### cors.allowed_origins
 
 An explicit list of origins that are allowed for CORS requests.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 
 
@@ -3481,7 +3350,7 @@ Unfortunately this error message will appear for a wide range of connection prob
 
 This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
-This output benefits from sending messages as a [batch]({{< ref "api-management/stream-config#batching-6" >}}) for improved performance. Batches can be formed at both the input and output level. 
+This output benefits from sending messages as a [batch]({{< ref "api-management/stream-config#batching-6" >}}) for improved performance. Batches can be formed at both the input and output level.
 
 #### Fields
 
@@ -3490,7 +3359,7 @@ This output benefits from sending messages as a [batch]({{< ref "api-management/
 A list of broker addresses to connect to. If an item of the list contains commas it will be expanded into multiple addresses.
 
 
-Type: `array`  
+Type: `array`
 
 ```yml
 # Examples
@@ -3511,31 +3380,31 @@ addresses:
 Custom TLS settings can be used to override system defaults.
 
 
-Type: `object`  
+Type: `object`
 
 ##### tls.enabled
 
 Whether custom TLS settings are enabled.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.skip_cert_verify
 
 Whether to skip server side certificate verification.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.enable_renegotiation
 
 Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### tls.root_cas
 
@@ -3545,8 +3414,8 @@ This field contains sensitive information that usually shouldn't be added to a c
 ::: -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3562,8 +3431,8 @@ root_cas: |-
 An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3576,8 +3445,8 @@ root_cas_file: ./root_cas.pem
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 ```yml
 # Examples
@@ -3596,8 +3465,8 @@ client_certs:
 A plain text certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key
 
@@ -3607,32 +3476,32 @@ This field contains sensitive information that usually shouldn't be added to a c
 ::: -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].cert_file
 
 The path of a certificate to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].key_file
 
 The path of a certificate key to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Example
@@ -3647,15 +3516,15 @@ password: foo
 Enables SASL authentication.
 
 
-Type: `object`  
+Type: `object`
 
 ##### sasl.mechanism
 
 The SASL authentication mechanism, if left empty SASL authentication is not used.
 
 
-Type: `string`  
-Default: `"none"`  
+Type: `string`
+Default: `"none"`
 
 | Option | Summary |
 |---|---|
@@ -3671,8 +3540,8 @@ Default: `"none"`
 A PLAIN username. It is recommended that you use environment variables to populate this field.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3688,8 +3557,8 @@ This field contains sensitive information that usually shouldn't be added to a c
 ::: -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3702,24 +3571,24 @@ password: ${PASSWORD}
 A static OAUTHBEARER access token
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### sasl.token_cache
 
 Instead of using a static `access_token` allows you to query a `cache` resource to fetch OAUTHBEARER tokens from
 <!-- TODO: add cache resource link -->
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### sasl.token_key
 
 Required when using a `token_cache`, the key to query the cache with for tokens.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### topic
 
@@ -3729,22 +3598,22 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
+Type: `string`
 
 ##### client_id
 
 An identifier for the client connection.
 
 
-Type: `string`  
-Default: `"tyk"`  
+Type: `string`
+Default: `"tyk"`
 
 ##### target_version
 
 The version of the Kafka protocol to use. This limits the capabilities used by the client and should ideally match the version of your brokers. Defaults to the oldest supported stable version.
 
 
-Type: `string`  
+Type: `string`
 
 ```yml
 # Examples
@@ -3759,8 +3628,8 @@ target_version: 3.1.0
 A rack identifier for this client.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### key
 
@@ -3770,16 +3639,16 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### partitioner
 
 The partitioning algorithm to use.
 
 
-Type: `string`  
-Default: `"fnv1a_hash"`  
+Type: `string`
+Default: `"fnv1a_hash"`
 Options: `fnv1a_hash`, `murmur2_hash`, `random`, `round_robin`, `manual`.
 
 ##### partition
@@ -3790,47 +3659,47 @@ This field supports interpolation functions.
 -->
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### custom_topic_creation
 
 If enabled, topics will be created with the specified number of partitions and replication factor if they do not already exist.
 
 
-Type: `object`  
+Type: `object`
 
 ##### custom_topic_creation.enabled
 
 Whether to enable custom topic creation.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### custom_topic_creation.partitions
 
 The number of partitions to create for new topics. Leave at -1 to use the broker configured default. Must be >= 1.
 
 
-Type: `int`  
-Default: `-1`  
+Type: `int`
+Default: `-1`
 
 ##### custom_topic_creation.replication_factor
 
 The replication factor to use for new topics. Leave at -1 to use the broker configured default. Must be an odd number, and less then or equal to the number of brokers.
 
 
-Type: `int`  
-Default: `-1`  
+Type: `int`
+Default: `-1`
 
 ##### compression
 
 The compression algorithm to use.
 
 
-Type: `string`  
-Default: `"none"`  
+Type: `string`
+Default: `"none"`
 Options: `none`, `snappy`, `lz4`, `gzip`, `zstd`.
 
 ##### static_headers
@@ -3838,7 +3707,7 @@ Options: `none`, `snappy`, `lz4`, `gzip`, `zstd`.
 An optional map of static headers that should be added to messages in addition to metadata.
 
 
-Type: `object`  
+Type: `object`
 
 ```yml
 # Examples
@@ -3853,15 +3722,15 @@ static_headers:
 Specify criteria for which metadata values are sent with messages as headers.
 
 
-Type: `object`  
+Type: `object`
 
 ##### metadata.exclude_prefixes
 
 Provide a list of explicit metadata key prefixes to be excluded when adding metadata to sent messages.
 
 
-Type: `array`  
-Default: `[]`  
+Type: `array`
+Default: `[]`
 
 <!-- TODO: when bloblang is supported
 ##### inject_tracing_map
@@ -3869,8 +3738,8 @@ Default: `[]`
 A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
 
 
-Type: `string`  
-Requires version 3.45.0 or newer  
+Type: `string`
+Requires version 3.45.0 or newer
 
 ```yml
 # Examples
@@ -3886,55 +3755,55 @@ inject_tracing_map: root.meta.span = this
 The maximum number of messages to have in flight at a given time. Increase this to improve throughput.
 
 
-Type: `int`  
-Default: `64`  
+Type: `int`
+Default: `64`
 
 ##### idempotent_write
 
 Enable the idempotent write producer option. This requires the `IDEMPOTENT_WRITE` permission on `CLUSTER` and can be disabled if this permission is not available.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### ack_replicas
 
 Ensure that messages have been copied across all replicas before acknowledging receipt.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### max_msg_bytes
 
 The maximum size in bytes of messages sent to the target topic.
 
 
-Type: `int`  
-Default: `1000000`  
+Type: `int`
+Default: `1000000`
 
 ##### timeout
 
 The maximum period of time to wait for message sends before abandoning the request and retrying.
 
 
-Type: `string`  
-Default: `"5s"`  
+Type: `string`
+Default: `"5s"`
 
 ##### retry_as_batch
 
 When enabled forces an entire batch of messages to be retried if any individual message fails on a send, otherwise only the individual messages that failed are retried. Disabling this helps to reduce message duplicates during intermittent errors, but also makes it impossible to guarantee strict ordering of messages.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `bool`
+Default: `false`
 
 ##### batching
 
 Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
 
-Type: `object`  
+Type: `object`
 
 ```yml
 # Examples
@@ -3959,24 +3828,24 @@ batching:
 A number of messages at which the batch should be flushed. If `0` disables count based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.byte_size
 
 An amount of bytes at which the batch should be flushed. If `0` disables size based batching.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### batching.period
 
 A period in which an incomplete batch should be flushed regardless of its size.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -3994,8 +3863,8 @@ period: 500ms
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -4011,7 +3880,7 @@ check: this.type == "end_of_transaction"
 A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 
-Type: `array`  
+Type: `array`
 
 ```yml
 # Examples
@@ -4034,23 +3903,23 @@ processors:
 The maximum number of retries before giving up on the request. If set to zero there is no discrete limit.
 
 
-Type: `int`  
-Default: `0`  
+Type: `int`
+Default: `0`
 
 ##### backoff
 
 Control time intervals between retry attempts.
 
 
-Type: `object`  
+Type: `object`
 
 ##### backoff.initial_interval
 
 The initial period to wait between retry attempts.
 
 
-Type: `string`  
-Default: `"3s"`  
+Type: `string`
+Default: `"3s"`
 
 ```yml
 # Examples
@@ -4065,8 +3934,8 @@ initial_interval: 1s
 The maximum period to wait between retry attempts
 
 
-Type: `string`  
-Default: `"10s"`  
+Type: `string`
+Default: `"10s"`
 
 ```yml
 # Examples
@@ -4081,8 +3950,8 @@ max_interval: 1m
 The maximum overall period of time to spend on retry attempts before the request is aborted. Setting this value to a zeroed duration (such as `0s`) will result in unbounded retries.
 
 
-Type: `string`  
-Default: `"30s"`  
+Type: `string`
+Default: `"30s"`
 
 ```yml
 # Examples
@@ -4114,7 +3983,7 @@ The `threads` field in the pipeline section determines how many parallel process
 
 #### Labels
 
-<!-- 
+<!--
 
 TODO: Replace paragraph below in subsequent iteration when know if metrics supported from product
 
@@ -4122,7 +3991,7 @@ Processors have an optional field `label` that can uniquely identify them in obs
 
 -->
 
-Processors have an optional field `label` that can uniquely identify them in observability data such as metrics and logs.
+Processors have an optional field `label` that can uniquely identify them in observability data such as logs.
 
 ### Avro
 
@@ -4164,7 +4033,7 @@ specified encoding.
 The [operator](#operators) to execute
 
 
-Type: `string`  
+Type: `string`
 Options: `to_json`, `from_json`.
 
 ##### encoding
@@ -4172,8 +4041,8 @@ Options: `to_json`, `from_json`.
 An Avro encoding format to use for conversions to and from a schema.
 
 
-Type: `string`  
-Default: `"textual"`  
+Type: `string`
+Default: `"textual"`
 Options: `textual`, `binary`, `single`.
 
 ##### schema
@@ -4181,16 +4050,16 @@ Options: `textual`, `binary`, `single`.
 A full Avro schema to use.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ##### schema_path
 
 The path of a schema document to apply. Use either this or the `schema` field.
 
 
-Type: `string`  
-Default: `""`  
+Type: `string`
+Default: `""`
 
 ```yml
 # Examples
@@ -4198,224 +4067,6 @@ Default: `""`
 schema_path: file://path/to/spec.avsc
 
 schema_path: http://localhost:8081/path/to/spec/versions/1
-```
-
-
-
-## Scanners
-
-### Overview
-
-For most Tyk Streams inputs the data consumed comes pre-partitioned into discrete messages which can be comfortably held and processed in memory. However, some inputs such as the socket don't have a concept of consuming the data "entirely".
-
-For such inputs it's necessary to define a mechanism by which the stream of source bytes can be chopped into smaller logical messages, processed and outputted as a continuous process whilst the stream is being read, as this dramatically reduces the memory usage of Tyk Streams as a whole and results in a more fluid flow of data.
-
-The way in which we define this chopping mechanism is through scanners, configured as a field on each input that requires one. For example, if we wished to consume files line-by-line, which each individual line being processed as a discrete message, we could use the [lines scanner]({{< ref "api-management/stream-config#lines" >}}) a file input:
-
-#### Common
-
-```yaml
-input:
-  file:
-    paths: [ "./*.txt" ]
-    scanner:
-      lines: {}
-```
-
-#### Advanced
-
-```yaml
-# Instead of newlines, use a custom delimiter:
-input:
-  file:
-    paths: [ "./*.txt" ]
-    scanner:
-      lines:
-        custom_delimiter: "---END---"
-        max_buffer_size: 100_000_000 # 100MB line buffer
-```
-
-A scanner is a plugin similar to any other core Tyk Streams component (inputs, processors, outputs, etc), which means it's possible to define your own scanners that can be utilised by inputs that need them.
-
-### CSV
-
-Consume comma-separated values row by row, including support for custom delimiters.
-
-```yml
-# Config fields, showing default values
-csv:
-  custom_delimiter: "" # No default (optional)
-  parse_header_row: true
-  lazy_quotes: false
-  continue_on_error: false
-```
-
-##### Metadata
-
-This scanner adds the following metadata to each message:
-
-- `csv_row` The index of each row, beginning at 0.
-
-#### Fields
-
-##### custom_delimiter
-
-Use a provided custom delimiter instead of the default comma.
-
-
-Type: `string`  
-
-##### parse_header_row
-
-Whether to reference the first row as a header row. If set to true the output structure for messages will be an object where field keys are determined by the header row. Otherwise, each message will consist of an array of values from the corresponding CSV row.
-
-
-Type: `bool`  
-Default: `true`  
-
-##### lazy_quotes
-
-If set to `true`, a quote may appear in an unquoted field and a non-doubled quote may appear in a quoted field.
-
-
-Type: `bool`  
-Default: `false`  
-
-##### continue_on_error
-
-If a row fails to parse due to any error emit an empty message marked with the error and then continue consuming subsequent rows when possible. This can sometimes be useful in situations where input data contains individual rows which are malformed. However, when a row encounters a parsing error it is impossible to guarantee that following rows are valid, as this indicates that the input data is unreliable and could potentially emit misaligned rows.
-
-
-Type: `bool`  
-Default: `false`  
-
-### Lines
-
-Split an input stream into a message per line of data.
-
-```yml
-# Config fields, showing default values
-lines:
-  custom_delimiter: "" # No default (optional)
-  max_buffer_size: 65536
-```
-
-#### Fields
-
-##### custom_delimiter
-
-Use a provided custom delimiter for detecting the end of a line rather than a single line break.
-
-
-Type: `string`  
-
-##### max_buffer_size
-
-Set the maximum buffer size for storing line data, this limits the maximum size that a line can be without causing an error.
-
-
-Type: `int`  
-Default: `65536`  
-
-
-### Regular Express Match
-
-Split an input stream into segments matching against a regular expression.
-
-```yml
-# Config fields, showing default values
-re_match:
-  pattern: (?m)^\d\d:\d\d:\d\d # No default (required)
-  max_buffer_size: 65536
-```
-
-#### Fields
-
-##### pattern
-
-The pattern to match against.
-
-
-Type: `string`  
-
-```yml
-# Examples
-
-pattern: (?m)^\d\d:\d\d:\d\d
-```
-
-##### max_buffer_size
-
-Set the maximum buffer size for storing line data, this limits the maximum size that a message can be without causing an error.
-
-
-Type: `int`  
-Default: `65536`  
-
-
-### Switch
-
-Select a child scanner dynamically for source data based on factors such as the filename.
-
-```yml
-# Config fields, showing default values
-switch: [] # No default (required)
-```
-
-This scanner outlines a list of potential child scanner candidates to be chosen, and for each source of data the first candidate to pass will be selected. A candidate without any conditions acts as a catch-all and will pass for every source, it is recommended to always have a catch-all scanner at the end of your list. If a given source of data does not pass a candidate an error is returned and the data is rejected.
-
-#### Fields
-
-##### [].re_match_name
-
-A regular expression to test against the name of each source of data fed into the scanner (filename or equivalent). If this pattern matches the child scanner is selected.
-
-
-Type: `string`  
-
-##### [].scanner
-
-The scanner to activate if this candidate passes.
-
-
-Type: `scanner`  
-
-#### Examples
-
-##### Switch based on file name
-
-In this example a file input chooses a scanner based on the extension of each file
-
-```yaml
-input:
-  file:
-    paths: [ ./data/* ]
-    scanner:
-      switch:
-        - re_match_name: '\.avro$'
-          scanner: { avro: {} }
-
-        - re_match_name: '\.csv$'
-          scanner: { csv: {} }
-
-        - re_match_name: '\.csv.gz$'
-          scanner:
-            decompress:
-              algorithm: gzip
-              into:
-                csv: {}
-
-        - re_match_name: '\.tar$'
-          scanner: { tar: {} }
-
-        - re_match_name: '\.tar.gz$'
-          scanner:
-            decompress:
-              algorithm: gzip
-              into:
-                tar: {}
-
-        - scanner: { to_the_end: {} }
 ```
 
 ## Common Configuration
