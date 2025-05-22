@@ -3940,6 +3940,15 @@ changes has improved connection management and enhanced system performance.
 </details>
 </li>
 
+<li>
+<details>
+<summary>Fixed unintended external access to internal endpoints</summary>
+
+Resolved an issue in earlier versions (from v5.0.2) of Gateway, where external clients could access internal endpoints. Starting from v5.3.0, we now restrict internal endpoints to internal access only.
+
+</details>
+</li>
+
 </ul>
 
 ##### Security Fixes
