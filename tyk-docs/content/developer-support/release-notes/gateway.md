@@ -3940,6 +3940,15 @@ changes has improved connection management and enhanced system performance.
 </details>
 </li>
 
+<li>
+<details>
+<summary>Fixed unintended external access to internal endpoints</summary>
+
+Resolved an issue where in certain conditions external clients could access internal endpoints. This was caused by incorrect combination of middleware which could lead to internal endpoints proxying traffic from external sources. This has now been addressed, so that an endpoint with the internal middleware configured will not be reachable from external requests.
+
+</details>
+</li>
+
 </ul>
 
 ##### Security Fixes
