@@ -24,4 +24,3 @@ changed-files.txt
 !scripts/pr-review-bot/package-lock.json
 !scripts/eod-report-generator/package.json
 !scripts/eod-report-generator/package-lock.json
-.aider*
