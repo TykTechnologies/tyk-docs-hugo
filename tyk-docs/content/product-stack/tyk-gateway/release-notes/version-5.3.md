@@ -1117,10 +1117,6 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
 #### Added
-<<<<<<< HEAD
-=======
-
->>>>>>> 7e49967ff... GW 5.3.7 release notes (#5595)
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
