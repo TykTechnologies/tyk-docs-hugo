@@ -849,7 +849,7 @@ pipeline:
 {{< note success >}}
 **Note:**
 
-Bloblang/Mapping is currently available and working, but it will be officially supported starting from version 5.9.0.
+The `Mapping` processor is currently available and working, but it will be officially supported starting from version 5.9.0.
 
 You’re welcome to explore and experiment with this feature in non-production environments today. For production use, we recommend waiting for the official release in 5.9.0 to ensure full support.
 {{< /note >}}
@@ -860,7 +860,7 @@ TODO: Official bloblang support from 5.9.0 onwards
 In this example:
 
 - **Tyk Streams Setup**: Consumes events from a Kafka topic called *orders*.
-- **Processor Block Configuration**: Utilizes a custom Bloblang script that performs the following operations:
+- **Processor Block Configuration**: Utilizes a custom `Mapping` script that performs the following operations:
     - **Filters** orders, only processing those with a value greater than 1000.
     - **Enriches** the high-value orders by retrieving the customer ID and email from a separate data source.
     - **Adds** a new high_value_order flag to each qualifying event.
