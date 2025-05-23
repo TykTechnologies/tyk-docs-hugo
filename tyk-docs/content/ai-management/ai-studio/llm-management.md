@@ -16,7 +16,7 @@ The LLM Management system allows you to:
 *   **Manage Models:** Specify which models from a provider are available for use within Tyk AI Studio.
 *   **Define Pricing:** Set input and output token costs for each model to enable accurate cost tracking.
 *   **Set Budgets:** Establish monthly spending limits for LLM usage, either globally for a model or per Application.
-*   **Control Access:** Determine which user groups can access specific LLM configurations (via associated Apps).
+*   **Control Access:** Determine which teams can access specific LLM configurations (via associated Apps).
 
 ## Configuring LLM Providers
 
