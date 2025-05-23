@@ -51,7 +51,7 @@ To make use of this, you'll need to:
 - [register a client app](#client-app-registration) for each client that needs to access the API
 - [configure your API proxy](#configuring-your-api-proxy) to use the *Tyk OAuth 2.0* authentication method
 
-This video probably needs to be re-recorded with Tyk OAS, so not publishing for now:
+<!-- TODO: This video probably needs to be re-recorded with Tyk OAS, so not publishing for now: -->
 {{< youtube-seo id="C4CUDTIHynk" title="Using OAuth2.0 To Authenticate Your APIs">}}
 
 
