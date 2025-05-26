@@ -12,7 +12,7 @@ aliases:
 
 ## Overview {#request-method-overview}
 
-Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this to map `POST` requests from clients to upstream services that support only `PUT` and `DELETE` operations, providing a modern interface to your users. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) to apply more complex transformation to requests.
+Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this to map `POST` requests from clients to upstream services that support only `PUT` and `DELETE` operations, providing a modern interface to your users. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation/request-body" >}}) to apply more complex transformation to requests.
 
 ### Use Cases
 
@@ -50,7 +50,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#request-method-using-tyk-oas}
 
-Tyk's [request method transform]({{< ref "api-management/traffic-transformation#request-method-overview" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
+Tyk's [request method transform]({{< ref "api-management/traffic-transformation/request-method" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
 
 When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -153,7 +153,7 @@ Adding the transform to your API endpoints is easy when using the API Designer i
 
 ## Using Classic {#request-method-using-classic}
 
-Tyk's [request method transform]({{< ref "api-management/traffic-transformation#request-method-overview" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
+Tyk's [request method transform]({{< ref "api-management/traffic-transformation/request-method" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
 
 When working with Tyk Classic APIs the transformation is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 

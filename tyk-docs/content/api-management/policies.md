@@ -1001,6 +1001,6 @@ Metadata is exposed in several middleware for use in the middleware configuratio
 - [Response Header Transformation]({{< ref "api-management/traffic-transformation#injecting-dynamic-data-into-headers" >}})
 - [Request Body Transformation]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}})
 - [Response Body Transformation]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}})
-- [Virtual Endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}})
+- [Virtual Endpoints]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}})
 
 You can also access and update metadata from your [custom plugins]({{< ref "api-management/plugins/overview#" >}}).  For an example of this, take a look at this [gRPC enabled GO Server](https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt).  It's a PoC middleware that injects a JWT value into metadata and then accesses it later in the stream.

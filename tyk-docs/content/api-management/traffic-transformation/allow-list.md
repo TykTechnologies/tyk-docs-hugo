@@ -67,7 +67,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#allow-list-using-tyk-oas}
 
-The [allow list]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
+The [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}) is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
 When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -194,7 +194,7 @@ Adding the allow list to your API endpoints is easy is easy when using the API D
 
 ## Using Classic {#allow-list-using-classic}
 
-The [allow list]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
+The [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}) is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 

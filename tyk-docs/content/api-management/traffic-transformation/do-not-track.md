@@ -42,7 +42,7 @@ When working with Tyk Classic APIs, you can disable tracking at the API or endpo
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "api-management/traffic-transformation/do-not-track#do-not-track-using-tyk-oas" >}}).
 
 If you're using Tyk Classic APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "api-management/traffic-transformation#do-not-track-using-classic" >}}).
 
@@ -154,7 +154,7 @@ The [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-o
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation/do-not-track#do-not-track-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 

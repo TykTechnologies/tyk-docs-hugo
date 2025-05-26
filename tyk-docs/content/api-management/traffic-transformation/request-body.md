@@ -17,9 +17,9 @@ Tyk enables you to modify the payload of API requests before they are proxied to
 
 With the body transform middleware you can modify XML or JSON formatted payloads to ensure that the response contains the information required by your upstream service. You can enrich the request by adding contextual data that is held by Tyk but not included in the original request from the client.
 
-This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware to apply more complex transformation to requests.
+This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware to apply more complex transformation to requests.
 
-There is a closely related [Response Body Transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) middleware that provides the same functionality on the response from the upstream, prior to it being returned to the client.
+There is a closely related [Response Body Transform]({{< ref "api-management/traffic-transformation/response-body" >}}) middleware that provides the same functionality on the response from the upstream, prior to it being returned to the client.
 
 ### Use Cases
 
@@ -60,7 +60,7 @@ When working with JSON format data, the middleware will unmarshal the data into 
 #### Data accessible to the middleware
 
 The middleware has direct access to the request body and also to dynamic data as follows:
- - [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the template using the `._tyk_context.KEYNAME` namespace
+ - [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the template using the `._tyk_context.KEYNAME` namespace
  - [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into the template using the `._tyk_meta.KEYNAME` namespace 
  - inbound form or query data can be accessed through the `._tyk_context.request_data` namespace where it will be available in as a `key:[]value` map
  - values from [key-value (KV) storage]({{< ref "tyk-self-managed#transformation-middleware" >}}) can be injected into the template using the notation appropriate to the location of the KV store
@@ -91,12 +91,12 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  # Request Body Transform middleware summary
   - The Request Body Transform middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
   - The Request Body Transform middleware can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
-  - Request Body Transform can access both [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+  - Request Body Transform can access both [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) and [request context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}).
  -->
 
 ## Using Tyk OAS {#request-body-using-tyk-oas}
 
-The [request body transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
+The [request body transform]({{< ref "api-management/traffic-transformation/request-body" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -255,11 +255,11 @@ Adding Request Body Transformation to your API endpoints is easy when using the 
 
 ## Using Classic {#request-body-using-classic}
 
-The [request body transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
+The [request body transform]({{< ref "api-management/traffic-transformation/request-body" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
 
 This middleware is configured in the Tyk Classic API Definition at the endpoint level. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
+If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation/request-context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-body-using-tyk-oas" >}}) page.
 

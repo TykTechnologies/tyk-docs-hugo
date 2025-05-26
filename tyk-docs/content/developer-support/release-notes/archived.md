@@ -1026,7 +1026,7 @@ We have added the `jsonMarshal` helper to the body transform templates. You can 
 
 Example: `{{ .myField | jsonMarshal }}`
 
-[Docs]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
+[Docs]({{< ref "api-management/traffic-transformation/request-body" >}})
 
 #### Added a blocking reload endpoint
 

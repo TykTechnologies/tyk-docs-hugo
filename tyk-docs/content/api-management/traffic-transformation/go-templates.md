@@ -8,7 +8,7 @@ aliases:
   - /product-stack/tyk-gateway/references/go-templates
 ---
 
-Tyk's [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.
+Tyk's [request]({{< ref "api-management/traffic-transformation/request-body" >}}) and [response]({{< ref "api-management/traffic-transformation/response-body" >}}) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.
 
 Go templates are also used by Tyk's [webhook event handler]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) to produce the payload for the HTTP request sent to the target system.
 

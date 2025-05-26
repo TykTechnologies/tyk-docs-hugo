@@ -32,13 +32,13 @@ The following standard middleware can optionally be applied to API requests on a
 
 #### Allow list
 
-The [Allow List]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
+The [Allow List]({{< ref "api-management/traffic-transformation/allow-list" >}}) middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
 Enabling the allow list will cause the entire API to become blocked other than for endpoints that have this middleware enabled. This is great if you wish to have very strict access rules for your services, limiting access to specific published endpoints.
 
 #### Block list
 
-The [Block List]({{< ref "api-management/traffic-transformation#block-list-overview" >}})  middleware is a feature designed to prevent access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
+The [Block List]({{< ref "api-management/traffic-transformation/block-list" >}})  middleware is a feature designed to prevent access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
 
 #### Cache
 
@@ -58,7 +58,7 @@ Tyk’s [Enforced Timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) midd
 
 #### Ignore Authentication
 
-Adding the [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a specific endpoint (such as a ping) that you don't need to secure.
+Adding the [Ignore Authentication]({{< ref "api-management/traffic-transformation/ignore-authentication" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a specific endpoint (such as a ping) that you don't need to secure.
 
 #### Internal Endpoint
 
@@ -66,23 +66,23 @@ The [Internal Endpoint]({{< ref "api-management/traffic-transformation#internal-
 
 #### Method Transformation
 
-The [Method Transformation]({{< ref "api-management/traffic-transformation#request-method-overview" >}}) middleware allows you to change the HTTP method of a request.
+The [Method Transformation]({{< ref "api-management/traffic-transformation/request-method" >}}) middleware allows you to change the HTTP method of a request.
 
 #### Mock Response
 
-A [Mock Response]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
+A [Mock Response]({{< ref "api-management/traffic-transformation/mock-response" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
 
 #### Request Body Transform
 
-The [Request Body Transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) middleware allows you to perform modification to the body (payload) of the API request to ensure that it meets the requirements of your upstream service.
+The [Request Body Transform]({{< ref "api-management/traffic-transformation/request-body" >}}) middleware allows you to perform modification to the body (payload) of the API request to ensure that it meets the requirements of your upstream service.
 
 #### Request Header Transform
 
-The [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware allows you to modify the header information provided in the request before it leaves the Gateway and is passed to your upstream API.
+The [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware allows you to modify the header information provided in the request before it leaves the Gateway and is passed to your upstream API.
 
 #### Request Size Limit
 
-Tyk Gateway offers a flexible tiered system of limiting request sizes ranging from globally applied limits across all APIs deployed on the gateway down to specific size limits for individual API endpoints. The [Request Size Limit]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) middleware provides the most granular control over request size by enabling you to set different limits for individual endpoints.
+Tyk Gateway offers a flexible tiered system of limiting request sizes ranging from globally applied limits across all APIs deployed on the gateway down to specific size limits for individual API endpoints. The [Request Size Limit]({{< ref "api-management/traffic-transformation/request-size-limits" >}}) middleware provides the most granular control over request size by enabling you to set different limits for individual endpoints.
 
 #### Request Validation
 
@@ -100,7 +100,7 @@ If you do not want to include all endpoints in your [Activity by Endpoint]({{< r
 
 #### Virtual Endpoint
 
-Tyk’s [Virtual Endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) is a programmable middleware component that allows you to perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
+Tyk’s [Virtual Endpoints]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}}) is a programmable middleware component that allows you to perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
 
 ### Middleware applied to the API Response
 
@@ -108,11 +108,11 @@ The following transformations can be applied to the response recieved from the u
 
 #### Response Body Transform
 
-The [Response Body Transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) middleware allows you to perform modification to the body (payload) of the response received from the upstream service to ensure that it meets the expectations of the client.
+The [Response Body Transform]({{< ref "api-management/traffic-transformation/response-body" >}}) middleware allows you to perform modification to the body (payload) of the response received from the upstream service to ensure that it meets the expectations of the client.
 
 #### Response Header Transform
 
-The [Response Header Transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
+The [Response Header Transform]({{< ref "api-management/traffic-transformation/response-headers" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
 ### Request Middleware Chain
 
 {{< img src="/img/diagrams/middleware-execution-order@3x.png" alt="Middleware execution flow" >}}

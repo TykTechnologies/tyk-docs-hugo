@@ -58,7 +58,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#ignore-authentication-using-tyk-oas}
 
-The [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
+The [Ignore Authentication]({{< ref "api-management/traffic-transformation/ignore-authentication" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
 When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -193,7 +193,7 @@ Adding and configuring the Ignore Authentication middleware to your API endpoint
 
 ## Using Classic {#ignore-authentication-using-classic}
 
-The [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
+The [Ignore Authentication]({{< ref "api-management/traffic-transformation/ignore-authentication" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 

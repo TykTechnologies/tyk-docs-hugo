@@ -46,7 +46,7 @@ When the Mock Response middleware is configured for a specific endpoint, it term
 
 ### Advanced mock responses with Tyk OAS
 
-When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) in the OpenAPI description and use this to automatically generate responses using those examples. Where multiple examples are defined, for example for different response codes, Tyk enables you to [configure special headers]({{< ref "api-management/traffic-transformation#multiple-mock-responses-for-a-single-endpoint" >}}) in the request to select the desired mock response.
+When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) in the OpenAPI description and use this to automatically generate responses using those examples. Where multiple examples are defined, for example for different response codes, Tyk enables you to [configure special headers]({{< ref "api-management/traffic-transformation#multiple-mock-responses-for-a-single-endpoint" >}}) in the request to select the desired mock response.
 
 ### Middleware execution order during request processing
 
@@ -231,7 +231,7 @@ Notice that in the mock response above, `firstname` has the value `string` since
 
 This tutorial is for Tyk OAS API definition users. If you're using the legacy Tyk Classic APIs, please refer to the [Tyk Classic Mock Response tutorial]({{< ref "api-management/traffic-transformation#mock-response-using-classic" >}}).
 
-The [Mock Response]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}) middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. 
+The [Mock Response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. 
 
 When working with Tyk OAS APIs, this middleware is executed at the **end** of the request processing chain immediately prior to the upstream proxy stage. Thus, any other request processing middleware - including authentication - will be run before the request reaches the mock response.
 
@@ -328,7 +328,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ### Automatic configuration inferred from your OpenAPI Document
 
-Tyk will parse the [examples and schema]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) in the OpenAPI document and use them to generate mock responses automatically.
+Tyk will parse the [examples and schema]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) in the OpenAPI document and use them to generate mock responses automatically.
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human-readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -655,7 +655,7 @@ Modifying the automatically configured Mock Response middleware will update the 
 
 ## Using Classic {#mock-response-using-classic}
 
-The [Mock Response]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}) middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. This can be useful when creating a new API or making a development API available to an external team.
+The [Mock Response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. This can be useful when creating a new API or making a development API available to an external team.
 
 When working with Tyk Classic APIs, this middleware is executed at the start of the request processing chain. Thus an endpoint with the mock response middleware will not be authenticated, will not process other middleware configured for the API (neither API nor endpoint level) and will have no analytics created. It will simply return the configured response for any request made to that endpoint.
 
@@ -667,7 +667,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "ap
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}), [block list]({{< ref "api-management/traffic-transformation#block-list-overview" >}}) or [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
+To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}), [block list]({{< ref "api-management/traffic-transformation/block-list" >}}) or [ignore authentication]({{< ref "api-management/traffic-transformation/ignore-authentication" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
 
 The `white_list`, `black_list` and `ignored` objects all have the same structure and configuration as follows:
 
@@ -710,7 +710,7 @@ For example:
 }
 ```
 
-In this example the mock response middleware has been configured for requests to the `GET /anything` endpoint. The [allow list]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) middleware has been enabled for this endpoint and is case sensitive, so calls to `GET /Anything` will not return the mock response.
+In this example the mock response middleware has been configured for requests to the `GET /anything` endpoint. The [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}) middleware has been enabled for this endpoint and is case sensitive, so calls to `GET /Anything` will not return the mock response.
 
 A call to `GET /anything` would return:
 
@@ -730,7 +730,7 @@ You can use the API Designer in the Tyk Dashboard to configure the Mock Response
 
 1. **Add an endpoint for the path and configure a list plugin**
 
-    For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) the **Allow List** plugin.
+    For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}) the **Allow List** plugin.
 
 2. **Add the mock response plugin**
 

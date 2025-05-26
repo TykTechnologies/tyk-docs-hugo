@@ -80,7 +80,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#request-size-limits-using-tyk-oas}
 
-The [request size limit]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
+The [request size limit]({{< ref "api-management/traffic-transformation/request-size-limits" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -97,7 +97,7 @@ There are three different levels of granularity that can be used when configurin
 
 The API-level size limit has not yet been implemented for Tyk OAS APIs.
 
-You can work around this by implementing a combination of endpoint-level size limits and [allow]({{< ref "api-management/traffic-transformation#api-definition" >}}) or [block]({{< ref "api-management/traffic-transformation#api-designer-3" >}}) lists.
+You can work around this by implementing a combination of endpoint-level size limits and [allow]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}) or [block]({{< ref "api-management/traffic-transformation/block-list#api-designer" >}}) lists.
 
 #### Applying a size limit for a specific endpoint
 
@@ -197,7 +197,7 @@ Adding the Request Size Limit middleware to your API endpoints is easy when usin
 
 ## Using Classic {#request-size-limits-using-classic}
 
-The [request size limit]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
+The [request size limit]({{< ref "api-management/traffic-transformation/request-size-limits" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -209,7 +209,7 @@ If you're using Tyk Operator then check out the [configuring the middleware in T
 
 There are three different levels of granularity that can be used when configuring a request size limit.
 - [system-wide]({{< ref "api-management/traffic-transformation#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
-- [API-level]({{< ref "api-management/traffic-transformation#tyk-classic-api" >}}): affecting all endpoints for an API
+- [API-level]({{< ref "api-management/traffic-transformation/request-headers#tyk-classic-api" >}}): affecting all endpoints for an API
 - [endpoint-level]({{< ref "api-management/traffic-transformation#tyk-classic-endpoint" >}}): affecting a single API endpoint
 
 #### Applying a size limit for a specific API {#tyk-classic-api}

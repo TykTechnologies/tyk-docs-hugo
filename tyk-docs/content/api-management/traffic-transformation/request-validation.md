@@ -29,7 +29,7 @@ You can ensure that client requests adhere to a defined contract specifying mand
 
 #### Supporting data transformation
 
-Validation goes hand-in-hand with request [header]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) and [body]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) transformation by ensuring that a request complies with the expected schema prior to transformation. For example, you could validate that a date parameter is present, then transform it into a different date format as required by your upstream API dynamically on each request.
+Validation goes hand-in-hand with request [header]({{< ref "api-management/traffic-transformation/request-headers" >}}) and [body]({{< ref "api-management/traffic-transformation/request-body" >}}) transformation by ensuring that a request complies with the expected schema prior to transformation. For example, you could validate that a date parameter is present, then transform it into a different date format as required by your upstream API dynamically on each request.
 
 ### Working
 
@@ -37,15 +37,15 @@ The incoming request is compared with a defined schema, which is a structured de
 
 If the incoming request does not match the schema, it will be rejected with an `HTTP 422 Unprocessable Entity` error. This error code can be customized if required.
 
-When using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}), request validation is performed by the `Validate Request` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the OpenAPI description of the endpoint. All elements of the request can have a `schema` defined in the OpenAPI description so requests to Tyk OAS APIs can be validated for headers, path/query parameters and body (payload).
+When using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}), request validation is performed by the `Validate Request` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the OpenAPI description of the endpoint. All elements of the request can have a `schema` defined in the OpenAPI description so requests to Tyk OAS APIs can be validated for headers, path/query parameters and body (payload).
 
-When using the legacy [Tyk Classic APIs]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}), request validation is performed by the `Validate JSON` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the middleware configuration and is limited to the request body (payload). Request headers and path/query parameters cannot be validated when using Tyk Classic APIs.
+When using the legacy [Tyk Classic APIs]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-classic" >}}), request validation is performed by the `Validate JSON` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the middleware configuration and is limited to the request body (payload). Request headers and path/query parameters cannot be validated when using Tyk Classic APIs.
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Validate Request middleware summary
@@ -60,7 +60,7 @@ The [request validation]({{< ref "api-management/traffic-transformation#request-
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-classic" >}}) page.
 
 ### Request schema in OpenAPI Specification
 
@@ -256,7 +256,7 @@ When working with legacy Tyk Classic APIs, request validation is performed by th
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 

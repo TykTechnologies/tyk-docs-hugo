@@ -21,9 +21,9 @@ There are two options for this:
 
 With the header transform middleware you can append or delete any number of headers to ensure that the request contains the information required by your upstream service. You can enrich the request by adding contextual data that is held by Tyk but not included in the original request from the client.
 
-This middleware changes only the headers and not the method or payload. You can, however, combine this with the [Request Method Transform]({{< ref "api-management/traffic-transformation#request-method-overview" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) to apply more complex transformation to requests.
+This middleware changes only the headers and not the method or payload. You can, however, combine this with the [Request Method Transform]({{< ref "api-management/traffic-transformation/request-method" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation/request-body" >}}) to apply more complex transformation to requests.
 
-There are related [Response Header Transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the response from your upstream, prior to it being returned to the client.
+There are related [Response Header Transform]({{< ref "api-management/traffic-transformation/response-headers" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the response from your upstream, prior to it being returned to the client.
 
 ### Use Cases
 
@@ -33,7 +33,7 @@ A common use of this feature is to add custom headers to requests, such as addin
 
 #### Modifying Headers for Compatibility
 
-You could use the request header transform middleware to modify headers for compatibility with a downstream system, such as changing the Content-Type header from "application/json" to "application/xml" for an API that only accepts XML requests while using the [Request Body Tranform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) to transform the payload.
+You could use the request header transform middleware to modify headers for compatibility with a downstream system, such as changing the Content-Type header from "application/json" to "application/xml" for an API that only accepts XML requests while using the [Request Body Tranform]({{< ref "api-management/traffic-transformation/request-body" >}}) to transform the payload.
 
 #### Prefixing or Suffixing Headers
 
@@ -58,7 +58,7 @@ In the request middleware chain, the API-level transform is applied before the e
 #### Injecting dynamic data into headers
 
 You can enrich the request headers by injecting data from context variables or session objects into the headers.
-- [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}) are extracted from the request at the start of the middleware chain and can be injected into added headers using the `$tyk_context.` namespace
+- [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}) are extracted from the request at the start of the middleware chain and can be injected into added headers using the `$tyk_context.` namespace
 - [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
 - values from [key-value (KV) storage]({{< ref "tyk-self-managed#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
@@ -76,7 +76,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#request-headers-using-tyk-oas}
 
-Tyk's [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
+Tyk's [request header transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
 
 There are two options for this:
 - API-level modification that is applied to all requests to the API
@@ -169,7 +169,7 @@ For example:
 
 This configuration will add three new headers to each request:
 - `X-Static` with the value `foobar`
-- `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
+- `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}})
 - `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}})
 
 It will also delete one header (if present) from each request:
@@ -307,7 +307,7 @@ Then select **NEW HEADER** as appropriate to add or remove a header from API req
 
 ## Using Classic {#request-headers-using-classic}
 
-Tyk's [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
+Tyk's [request header transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
 
 There are two options for this:
 - API-level modification that is applied to all requests to the API
@@ -321,7 +321,7 @@ If both API-level and endpoint-level middleware are configured, the API-level tr
 
 When working with Tyk Classic APIs the transformation is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
+If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation/request-context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-headers-using-tyk-oas" >}}) page.
 
@@ -359,7 +359,7 @@ For example:
 
 This configuration will add three new headers to each request:
 - `X-Static` with the value `foobar`
-- `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
+- `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}})
 - `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}})
 
 It will also delete one header (if present) from each request:
