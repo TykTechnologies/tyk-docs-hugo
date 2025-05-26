@@ -5,6 +5,9 @@ description: "How to configure Ignore Authentication traffic transformation midd
 tags: ["Traffic Transformation", "Ignore Authentication"]
 keywords: ["Traffic Transformation", "Ignore Authentication"]
 aliases:
+  - /product-stack/tyk-gateway/middleware/ignore-middleware
+  - /product-stack/tyk-gateway/middleware/ignore-tyk-oas
+  - /product-stack/tyk-gateway/middleware/ignore-tyk-classic
 ---
 
 ## Overview {#ignore-authentication-overview}

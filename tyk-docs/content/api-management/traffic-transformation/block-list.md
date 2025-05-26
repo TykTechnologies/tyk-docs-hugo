@@ -5,6 +5,9 @@ description: "How to configure Block List traffic transformation middleware in T
 tags: ["Traffic Transformation", "Block List"]
 keywords: ["Traffic Transformation", "Block List"]
 aliases:
+  - /product-stack/tyk-gateway/middleware/block-list-middleware
+  - /product-stack/tyk-gateway/middleware/block-list-tyk-oas
+  - /product-stack/tyk-gateway/middleware/block-list-tyk-classic
 ---
 
 ## Overview {#block-list-overview}

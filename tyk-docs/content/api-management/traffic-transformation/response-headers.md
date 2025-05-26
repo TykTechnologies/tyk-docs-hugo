@@ -5,6 +5,9 @@ description: "How to configure Response Headers traffic transformation middlewar
 tags: ["Traffic Transformation", "Response Headers"]
 keywords: ["Traffic Transformation", "Response Headers"]
 aliases:
+  - /advanced-configuration/transform-traffic/response-headers
+  - /product-stack/tyk-gateway/middleware/response-header-tyk-oas
+  - /product-stack/tyk-gateway/middleware/response-header-tyk-classic
 ---
 
 ## Overview {#response-headers-overview}

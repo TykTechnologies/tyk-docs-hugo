@@ -5,6 +5,11 @@ description: "How to configure Virtual Endpoints traffic transformation middlewa
 tags: ["Traffic Transformation", "Virtual Endpoints"]
 keywords: ["Traffic Transformation", "Virtual Endpoints"]
 aliases:
+  - /advanced-configuration/compose-apis/virtual-endpoints
+  - /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas
+  - /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic
+  - /advanced-configuration/compose-apis/demo-virtual-endpoint
+  - /compose-apis/virtual-endpoints
 ---
 
 ## Overview {#virtual-endpoints-overview}

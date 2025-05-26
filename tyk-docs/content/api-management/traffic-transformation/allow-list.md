@@ -5,6 +5,9 @@ description: "How to configure Allow List traffic transformation middleware in T
 tags: ["Traffic Transformation", "Allow List"]
 keywords: ["Traffic Transformation", "Allow List"]
 aliases:
+  - /product-stack/tyk-gateway/middleware/allow-list-middleware
+  - /product-stack/tyk-gateway/middleware/allow-list-tyk-oas
+  - /product-stack/tyk-gateway/middleware/allow-list-tyk-classic
 ---
 
 ## Overview {#allow-list-overview}

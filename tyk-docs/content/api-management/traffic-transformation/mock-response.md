@@ -5,6 +5,11 @@ description: "How to configure Mock Response traffic transformation middleware i
 tags: ["Traffic Transformation", "Mock Response"]
 keywords: ["Traffic Transformation", "Mock Response"]
 aliases:
+  - /product-stack/tyk-gateway/middleware/mock-response-middleware
+  - /product-stack/tyk-gateway/middleware/mock-response-openapi
+  - /product-stack/tyk-gateway/middleware/mock-response-tyk-oas
+  - /product-stack/tyk-gateway/middleware/mock-response-tyk-classic
+  - /getting-started/using-oas-definitions/mock-response
 ---
 
 ## Overview {#mock-response-overview}

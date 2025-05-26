@@ -5,6 +5,7 @@ description: "How to configure JQ Transforms traffic transformation middleware i
 tags: ["Traffic Transformation", "JQ Transforms"]
 keywords: ["Traffic Transformation", "JQ Transforms"]
 aliases:
+  - /advanced-configuration/transform-traffic/jq-transformations
 ---
 
 

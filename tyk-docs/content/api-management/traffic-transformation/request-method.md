@@ -5,6 +5,9 @@ description: "How to configure Request Method traffic transformation middleware 
 tags: ["Traffic Transformation", "Request Method"]
 keywords: ["Traffic Transformation", "Request Method"]
 aliases:
+  - /advanced-configuration/transform-traffic/request-method-transform
+  - /product-stack/tyk-gateway/middleware/request-method-tyk-oas
+  - /product-stack/tyk-gateway/middleware/request-method-tyk-classic
 ---
 
 ## Overview {#request-method-overview}

@@ -5,6 +5,9 @@ description: "How to configure Request Size Limits traffic transformation middle
 tags: ["Traffic Transformation", "Request Size Limits"]
 keywords: ["Traffic Transformation", "Request Size Limits"]
 aliases:
+  - /basic-config-and-security/control-limit-traffic/request-size-limits
+  - /product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas
+  - /product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic
 ---
 
 ## Overview {#request-size-limits-overview}

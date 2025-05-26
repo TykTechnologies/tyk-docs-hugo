@@ -5,6 +5,7 @@ description: "How to configure Go Templates traffic transformation middleware in
 tags: ["Traffic Transformation", "Go Templates"]
 keywords: ["Traffic Transformation", "Go Templates"]
 aliases:
+  - /product-stack/tyk-gateway/references/go-templates
 ---
 
 Tyk's [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.

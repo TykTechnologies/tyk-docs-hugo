@@ -5,6 +5,9 @@ description: "How to configure Do Not Track traffic transformation middleware in
 tags: ["Traffic Transformation", "Do Not Track"]
 keywords: ["Traffic Transformation", "Do Not Track"]
 aliases:
+  - /product-stack/tyk-gateway/middleware/do-not-track-middleware
+  - /product-stack/tyk-gateway/middleware/do-not-track-tyk-oas
+  - /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
 ---
 
 ## Overview {#do-not-track-overview}

@@ -5,6 +5,9 @@ description: "How to configure Internal Endpoint traffic transformation middlewa
 tags: ["Traffic Transformation", "Internal Endpoint"]
 keywords: ["Traffic Transformation", "Internal Endpoint"]
 aliases:
+  - /product-stack/tyk-gateway/middleware/internal-endpoint-middleware
+  - /product-stack/tyk-gateway/middleware/internal-endpoint-tyk-oas
+  - /product-stack/tyk-gateway/middleware/internal-endpoint-tyk-classic
 ---
 
 ## Overview {#internal-endpoint-overview}

@@ -5,6 +5,9 @@ description: "How to configure Response Body traffic transformation middleware i
 tags: ["Traffic Transformation", "Response Body"]
 keywords: ["Traffic Transformation", "Response Body"]
 aliases:
+  - /advanced-configuration/transform-traffic/response-body
+  - /product-stack/tyk-gateway/middleware/response-body-tyk-oas
+  - /product-stack/tyk-gateway/middleware/response-body-tyk-classic
 ---
 
 ## Overview {#response-body-overview}

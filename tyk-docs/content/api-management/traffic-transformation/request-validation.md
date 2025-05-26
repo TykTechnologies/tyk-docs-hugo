@@ -5,6 +5,10 @@ description: "How to configure Request Validation traffic transformation middlew
 tags: ["Traffic Transformation", "Request Validation"]
 keywords: ["Traffic Transformation", "Request Validation"]
 aliases:
+  - /product-stack/tyk-gateway/middleware/validate-request-middleware
+  - /product-stack/tyk-gateway/middleware/validate-request-tyk-oas
+  - /product-stack/tyk-gateway/middleware/validate-request-tyk-classic
+  - /getting-started/key-concepts/request-validation
 ---
 
 ## Overview {#request-validation-overview}

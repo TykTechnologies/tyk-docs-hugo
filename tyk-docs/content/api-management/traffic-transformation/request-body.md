@@ -5,6 +5,10 @@ description: "How to configure Request Body traffic transformation middleware in
 tags: ["Traffic Transformation", "Request Body"]
 keywords: ["Traffic Transformation", "Request Body"]
 aliases:
+  - /transform-traffic/request-body
+  - /product-stack/tyk-gateway/middleware/request-body-tyk-oas
+  - /product-stack/tyk-gateway/middleware/request-body-tyk-classic
+  - /advanced-configuration/transform-traffic/request-body
 ---
 
 ## Overview {#request-body-overview}

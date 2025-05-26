@@ -5,6 +5,10 @@ description: "How to configure Request Context Variables traffic transformation 
 tags: ["Traffic Transformation", "Request Context Variables"]
 keywords: ["Traffic Transformation", "Request Context Variables"]
 aliases:
+  - /concepts/context-variables
+  - /getting-started/key-concepts/context-variables
+  - /context-variables
+
 ---
 
 Context variables are extracted from the request at the start of the middleware chain. These values can be very useful for later transformation of request data, for example, in converting a form POST request into a JSON PUT request or to capture an IP address as a header.

@@ -225,83 +225,80 @@ menu:
             category: Page
             show: True
       - title: "Traffic Transformation"
+        path: /api-management/traffic-transformation
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /api-management/traffic-transformation
-          category: Page
-          show: True
         - title: "SOAP To REST"
           path: /advanced-configuration/transform-traffic/soap-rest
           category: Page
           show: True
         - title: "Allow List"
-          path: /advanced-configuration/transform-traffic/allow-list
+          path: /api-management/traffic-transformation/allow-list
           category: Page
           show: True
         - title: "Block List"
-          path: /advanced-configuration/transform-traffic/block-list
+          path: /api-management/traffic-transformation/block-list
           category: Page
           show: True
         - title: "Do Not Track"
-          path: /advanced-configuration/transform-traffic/do-not-track
+          path: /api-management/traffic-transformation/do-not-track
           category: Page
           show: True
         - title: "Ignore Authentication"
-          path: /advanced-configuration/transform-traffic/ignore-authentication
+          path: /api-management/traffic-transformation/ignore-authentication
           category: Page
           show: True
         - title: "Internal Endpoint"
-          path: /advanced-configuration/transform-traffic/internal-endpoint
+          path: /api-management/traffic-transformation/internal-endpoint
           category: Page
           show: True
         - title: "Request Method "
-          path: /advanced-configuration/transform-traffic/request-method
+          path: /api-management/traffic-transformation/request-method
           category: Page
           show: True
         - title: "Request Body "
-          path: /advanced-configuration/transform-traffic/request-body
+          path: /api-management/traffic-transformation/request-body
           category: Page
           show: True
         - title: "Request Headers "
-          path: /advanced-configuration/transform-traffic/request-headers
+          path: /api-management/traffic-transformation/request-headers
           category: Page
           show: True
         - title: "Request Size Limits"
-          path: /advanced-configuration/transform-traffic/request-size-limits
+          path: /api-management/traffic-transformation/request-size-limits
           category: Page
           show: True
         - title: "Response Body"
-          path: /advanced-configuration/transform-traffic/response-body
+          path: /api-management/traffic-transformation/response-body
           category: Page
           show: True
         - title: "Response Headers"
-          path: /advanced-configuration/transform-traffic/response-headers
+          path: /api-management/traffic-transformation/response-headers
           category: Page
           show: True
         - title: "Request Validation"
-          path: /advanced-configuration/transform-traffic/request-validation
+          path: /api-management/traffic-transformation/request-validation
           category: Page
           show: True
         - title: "Mock Response"
-          path: /advanced-configuration/transform-traffic/mock-response
+          path: /api-management/traffic-transformation/mock-response
           category: Page
           show: True
         - title: "Virtual Endpoints"
-          path: /advanced-configuration/transform-traffic/virtual-endpoints
+          path: /api-management/traffic-transformation/virtual-endpoints
           category: Page
           show: True
         - title: "Go Templates"
-          path: /advanced-configuration/transform-traffic/go-templates
+          path: /api-management/traffic-transformation/go-templates
           category: Page
           show: True
         - title: "JQ Transforms"
-          path: /advanced-configuration/transform-traffic/jq-transforms
+          path: /api-management/traffic-transformation/jq-transforms
           category: Page
           show: True
         - title: "Request Context Variables"
-          path: /advanced-configuration/transform-traffic/request-context-variables
+          path: /api-management/traffic-transformation/request-context-variables
           category: Page
           show: True
         - title: "URL Rewrite"

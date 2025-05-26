@@ -5,6 +5,10 @@ description: "How to configure Request Headers traffic transformation middleware
 tags: ["Traffic Transformation", "Request Headers"]
 keywords: ["Traffic Transformation", "Request Headers"]
 aliases:
+  - /transform-traffic/request-headers
+  - /product-stack/tyk-gateway/middleware/request-header-tyk-oas
+  - /product-stack/tyk-gateway/middleware/request-header-tyk-classic
+  - /advanced-configuration/transform-traffic/request-headers
 ---
 
 ## Overview {#request-headers-overview}
