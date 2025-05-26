@@ -54,7 +54,19 @@ INCLUDE_SHORTCODE_PATTERN = re.compile(r'{{<\s*include\s+"([^"]+)"\s*>}}')
 YOUTUBE_SHORTCODE_PATTERN = re.compile(r'{{<\s*youtube\s+([^>]*?)>}}')
 YOUTUBE_SEO_SHORTCODE_PATTERN = re.compile(r'{{<\s*youtube-seo\s+id="([^"]+)"\s+title="([^"]+)"\s*>}}')
 FEATURE_CARDS_SHORTCODE_PATTERN = re.compile(r'{{<\s*feature-cards\s+dataFile="([^"]+)"\s*>}}')
+# Tab shortcode patterns
+TABS_START_PATTERN = re.compile(r'{{<\s*tabs_start\s*>}}')
+TABS_END_PATTERN = re.compile(r'{{<\s*tabs_end\s*>}}')
+TAB_PATTERN = re.compile(r'{{<\s*tab\s+title="([^"]*)"(?:\s+([^>]*))?\s*>}}(.*?){{<\s*/tab\s*>}}', re.DOTALL)
+TAB_START_PATTERN = re.compile(r'{{<\s*tab_start\s+"([^"]*)"(?:\s+([^>]*))?\s*>}}')
+TAB_END_PATTERN = re.compile(r'{{<\s*tab_end\s*>}}')
 MALFORMED_BR_PATTERN = re.compile(r'</br>')
+BR_PATTERN = re.compile(r'<br(?!\s*/>)(?:[^>]*)>')
+# HTML comment pattern - convert to JSX comments
+HTML_COMMENT_PATTERN = re.compile(r'<!--(.*?)-->', re.DOTALL)
+# Pattern to escape standalone curly braces in text for JSX compatibility
+STANDALONE_OPENING_BRACE_PATTERN = re.compile(r'(?<!{)\{(?!{)')
+STANDALONE_CLOSING_BRACE_PATTERN = re.compile(r'(?<!})\}(?!})')
 HUGO_HEADING_ANCHOR_PATTERN = re.compile(r'^(#{1,6})\s+(.+?)\s*\{#([^}]+)\}\s*$', re.MULTILINE)
 
 def create_directory_if_not_exists(directory):
@@ -433,6 +445,46 @@ def convert_include_shortcode(match, shared_dir, includes_list=None):
         return f'<!-- Included file not found: {include_name} -->'
 
 
+def convert_tabs_start(match):
+    """Convert Hugo tabs_start shortcode to Mintlify Tabs component."""
+    return '<Tabs>'
+
+def convert_tabs_end(match):
+    """Convert Hugo tabs_end shortcode to Mintlify Tabs component."""
+    return '</Tabs>'
+
+def convert_tab_shortcode(match):
+    """Convert Hugo tab shortcode to Mintlify Tab component."""
+    title = match.group(1) or "Tab"
+    additional_attrs = match.group(2) or ""
+    content = match.group(3).strip()
+    
+    return f'<Tab title="{title}">\n{content}\n</Tab>'
+
+def convert_tab_start(match):
+    """Convert Hugo tab_start shortcode to Mintlify Tab component."""
+    title = match.group(1) or "Tab"
+    additional_attrs = match.group(2) or ""
+    
+    return f'<Tab title="{title}">'
+
+def convert_tab_end(match):
+    """Convert Hugo tab_end shortcode to Mintlify Tab component."""
+    return '</Tab>'
+
+def convert_html_comment(match):
+    """Convert HTML comment to JSX comment."""
+    comment_content = match.group(1)
+    return f'{{/* {comment_content.strip()} */}}'
+
+def escape_unmatched_opening_brace(match):
+    """Escape unmatched opening curly brace for JSX."""
+    return '\\{'
+
+def escape_unmatched_closing_brace(match):
+    """Escape unmatched closing curly brace for JSX."""
+    return '\\}'
+
 def convert_feature_cards_shortcode(match, feature_cards_list=None):
     """Convert Hugo feature-cards shortcode to new component format."""
     data_file = match.group(1)
@@ -596,6 +648,14 @@ def process_shortcodes(content, shared_dir=None, includes_list=None, feature_car
 
     # Fix malformed HTML tags
     content = MALFORMED_BR_PATTERN.sub('<br />', content)
+    content = BR_PATTERN.sub('<br />', content)
+
+    # Convert HTML comments to JSX comments
+    content = HTML_COMMENT_PATTERN.sub(convert_html_comment, content)
+
+    # Escape standalone curly braces for JSX compatibility
+    content = STANDALONE_OPENING_BRACE_PATTERN.sub(escape_unmatched_opening_brace, content)
+    content = STANDALONE_CLOSING_BRACE_PATTERN.sub(escape_unmatched_closing_brace, content)
 
     # Convert Hugo heading anchors to HTML headings with id
     content = HUGO_HEADING_ANCHOR_PATTERN.sub(convert_hugo_heading_anchor, content)
@@ -637,6 +697,13 @@ def process_shortcodes(content, shared_dir=None, includes_list=None, feature_car
     # Convert YouTube videos (both standard and SEO versions)
     content = YOUTUBE_SHORTCODE_PATTERN.sub(convert_youtube_shortcode, content)
     content = YOUTUBE_SEO_SHORTCODE_PATTERN.sub(convert_youtube_seo_shortcode, content)
+
+    # Convert tabs
+    content = TABS_START_PATTERN.sub(convert_tabs_start, content)
+    content = TABS_END_PATTERN.sub(convert_tabs_end, content)
+    content = TAB_PATTERN.sub(convert_tab_shortcode, content)
+    content = TAB_START_PATTERN.sub(convert_tab_start, content)
+    content = TAB_END_PATTERN.sub(convert_tab_end, content)
 
     # Convert feature cards
     content = FEATURE_CARDS_SHORTCODE_PATTERN.sub(
