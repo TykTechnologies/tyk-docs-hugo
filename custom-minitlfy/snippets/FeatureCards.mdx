@@ -1,0 +1,18 @@
+export const FeatureCards = ({ components }) => {
+  return (
+    <div className="feature-grid">
+      {components.map((item, index) => (
+        <div key={index} className="feature-item">
+          <div className="feature-icon">{item.icon}</div>
+          <div className="feature-title">{item.title}</div>
+          <p className="feature-description">{item.description}</p>
+          {item.path && (
+            <div className="feature-button">
+              <a href={item.path}>{item.button_text || 'Learn More'}</a>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
