@@ -4,6 +4,8 @@ date: 2024-12-21
 tags: ["gRPC", "SSE", "Websocket", "Other Protocol"]
 description: "How to configure advanced communication protocols"
 keywords: ["gRPC", "SSE", "Websocket", "Other Protocol"]
+aliases:
+  - /api-management/non-http-protocols
 ---
 
 ## Overview
