@@ -5,8 +5,6 @@ description: How to use websockets in Tyk
 tags: ["websockets", "Non HTTP Protocol"]
 ---
 
-## WebSockets
-
 As from Tyk gateway v2.2, Tyk supports transparent WebSocket connection upgrades. To enable this feature, set the `enable_websockets` value to `true` in your `tyk.conf` file.
 
 WebSocket proxying is transparent, Tyk will not modify the frames that are sent between client and host, and rate limits are on a per-connection, not per-frame basis.
@@ -19,7 +17,7 @@ Tyk needs to decrypt the inbound and re-encrypt the outbound for the copy operat
 https://target:443/
 ```
 
-### WebSocket Example
+## WebSocket Example
 
 We are going to set up Tyk with a WebSocket proxy using our [Tyk Pro Docker Demo](https://github.com/TykTechnologies/tyk-pro-docker-demo) installation.
 

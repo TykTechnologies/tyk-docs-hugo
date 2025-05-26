@@ -6,9 +6,6 @@ description: "How to configure Non HTTP Protocols"
 keywords: ["gRPC", "SSE", "Websocket", "Non HTTP Protocol"]
 aliases:
   - /advanced-configuration/other-protocols
-  - /key-concepts/grpc-proxy
-  - /advanced-configuration/websockets
-  - /advanced-configuration/sse-proxy
 ---
 
 ## Overview
@@ -29,8 +26,8 @@ Tyk currently supports the following non-HTTP protocols:
 
 1. **[TCP Proxy]({{< ref "key-concepts/tcp-proxy" >}})**
 
-2. **[gRPC]({{< ref "api-management/non-http-protocols/grpc" >}})**
+2. **[gRPC]({{< ref "key-concepts/grpc-proxy" >}})**
 
-3. **[Server-Sent Events (SSE)]({{< ref "api-management/non-http-protocols/sse" >}})**
+3. **[Server-Sent Events (SSE)]({{< ref "advanced-configuration/sse-proxy" >}})**
 
-4. **[WebSockets]({{< ref "api-management/non-http-protocols/websockets" >}})**
+4. **[WebSockets]({{< ref "advanced-configuration/websockets" >}})**
