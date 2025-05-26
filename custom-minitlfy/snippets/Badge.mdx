@@ -1,0 +1,36 @@
+export const BadgeCard = ({
+  type = '',
+  href = '',
+  read = '',
+  title = '',
+  titleStyle = '',
+  image = '',
+  imageStyle = '',
+  alt = '',
+  children
+}) => {
+  const cleanedHref = href.replace(/^\/?(docs\/)?/, '');
+
+  return (
+    <a className={`badge ${type} ${image ? 'with_image' : ''}`} href={`/${cleanedHref}`}>
+      {read && <div className="nav read">{read}</div>}
+      {title && <div className="nav title" style={{ ...(titleStyle ? { style: titleStyle } : {}) }}>{title}</div>}
+
+      <p>
+        {image && <img src={image} style={imageStyle ? { style: imageStyle } : {}} alt={alt} />}
+        {title ? (
+          <div style={{ textAlign: 'center' }}>
+            {children}
+          </div>
+        ) : (
+          children
+        )}
+      </p>
+
+      <div className="bottom">
+        <div className="read">{read}</div>
+        <span className="button center button-black">Keep reading</span>
+      </div>
+    </a>
+  );
+};

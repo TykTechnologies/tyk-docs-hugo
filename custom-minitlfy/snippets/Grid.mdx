@@ -1,0 +1,19 @@
+export const GridWrapper = ({ children, type = '', next }) => {
+  return (
+    <div className={`grid-container ${type}`}>
+      {children}
+
+      {next && (
+        <a className="badge next" href={next}>
+          View more resources&nbsp;
+          <object
+            data="/images/arrows.png"
+            style={{ display: 'inline', verticalAlign: 'middle', marginTop: '-3px' }}
+          />
+        </a>
+      )}
+
+      <div style={{ clear: 'both' }} />
+    </div>
+  );
+};
