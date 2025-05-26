@@ -130,7 +130,7 @@ The full Tyk Self-Managed system consists of:
 
 {{< img src="/img/diagrams/diagram_docs_pump-data-flow@2x.png" alt="Tyk Self-Managed Archtecture" >}}
 
-### Tyk Self Managed License/Pricing
+### Tyk Self Managed Pricing
 
 Refer the [pricing page](https://tyk.io/pricing/)
 
@@ -5529,7 +5529,7 @@ spec:
 
 ##### gRPC load balancing
 
-You can also perform [gRPC Load balancing]({{< ref "api-management/non-http-protocols#grpc-load-balancing" >}}).
+You can also perform [gRPC Load balancing]({{< ref "key-concepts/grpc-proxy#grpc-load-balancing" >}}).
 
 
 #### Service Discovery
