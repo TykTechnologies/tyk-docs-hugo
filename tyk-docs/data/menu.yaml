@@ -175,14 +175,27 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
-      - title: "TCP Proxy"
-        path: /key-concepts/tcp-proxy
-        category: Page
+      - title: "Advanced Protocols"
+        path: /advanced-configuration/other-protocols
+        category: Directory
         show: True
-      - title: "Other Non HTTP Protocols"
-        path: /api-management/non-http-protocols
-        category: Page
-        show: True
+        menu:
+        - title: "TCP Proxy"
+          path: /key-concepts/tcp-proxy
+          category: Page
+          show: True
+        - title: "gRPC Proxy"
+          path: /key-concepts/grpc-proxy
+          category: Page
+          show: True
+        - title: "Server Side Events"
+          path: /advanced-configuration/sse-proxy
+          category: Page
+          show: True
+        - title: "Websockets"
+          path: /advanced-configuration/websockets
+          category: Page
+          show: True
       - title: "Request Optimization"
         category: Directory
         show: True
@@ -367,8 +380,29 @@ menu:
                 show: True
             - title: "Upstream Authentication"
               path: /api-management/upstream-authentication
-              category: Page
+              category: Directory
               show: True
+              menu:
+              - title: "Auth Token"
+                path: /api-management/upstream-authentication/auth-token
+                category: Page
+                show: True
+              - title: "Basic Auth"
+                path: /api-management/upstream-authentication/basic-auth
+                category: Page
+                show: True
+              - title: "OAuth 2.0"
+                path: /api-management/upstream-authentication/oauth
+                category: Page
+                show: True
+              - title: "Mutual TLS"
+                path: /api-management/upstream-authentication/mtls
+                category: Page
+                show: True
+              - title: "Request Signing"
+                path: /api-management/upstream-authentication/request-signing
+                category: Page
+                show: True
             - title: "Security Policy and Access Keys"
               path: /api-management/policies
               category: Page
