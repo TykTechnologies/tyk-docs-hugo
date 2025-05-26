@@ -44,6 +44,8 @@ GRID_SELF_CLOSING_PATTERN = re.compile(r'{{<\s*grid(?:\s+type="([^"]*)")?\s*/>}}
 BADGE_SHORTCODE_PATTERN = re.compile(r'{{<\s*badge(?:\s+title="([^"]*)")?\s+href="([^"]*)"(?:\s+image="([^"]*)")?(?:\s+imageStyle="([^"]*)")?\s*>}}(.*?){{<\s*/badge\s*>}}', re.DOTALL)
 # Additional badge pattern for different parameter orders
 BADGE_ALT_PATTERN = re.compile(r'{{<\s*badge\s+href="([^"]*)"\s+title="([^"]*)"(?:\s+image="([^"]*)")?(?:\s+imageStyle="([^"]*)")?\s*>}}(.*?){{<\s*/badge\s*>}}', re.DOTALL)
+# Badge pattern with read parameter
+BADGE_READ_PATTERN = re.compile(r'{{<\s*badge\s+read="([^"]*)"\s+href="([^"]*)"(?:\s+title="([^"]*)")?(?:\s+image="([^"]*)")?(?:\s+imageStyle="([^"]*)")?(?:\s+alt="([^"]*)")?\s*>}}(.*?){{<\s*/badge\s*>}}', re.DOTALL)
 BUTTON_SHORTCODE_PATTERN = re.compile(r'{{<\s*button\s+href="([^"]*)"\s+color="([^"]*)"\s+content="([^"]*)"\s*>}}')
 BUTTON_LEFT_SHORTCODE_PATTERN = re.compile(r'{{<\s*button_left\s+href="([^"]*)"\s+color="([^"]*)"\s+content="([^"]*)"\s*>}}')
 TOOLTIP_SHORTCODE_PATTERN = re.compile(r'{{<\s*tooltip\s*>}}(.*?){{<\s*definition\s*>}}(.*?){{<\s*/definition\s*>}}{{<\s*/tooltip\s*>}}', re.DOTALL)
@@ -198,16 +200,26 @@ def convert_internal_link(match):
     return f'/{path}'
 
 def convert_grid_shortcode(match):
-    """Convert Hugo grid shortcode to Mintlify Card group."""
+    """Convert Hugo grid shortcode to custom Grid component."""
     grid_type = match.group(1) or ""  # mid, big, or empty
     content = match.group(2)
 
-    # We'll process the content for any nested shortcodes before wrapping in Cards
-    # For now, just wrap in the Card group component
-    return f'<CardGroup cols={3}>\n{content}\n</CardGroup>'
+    # Process nested badge shortcodes within the grid content
+    processed_content = content
+    processed_content = BADGE_SHORTCODE_PATTERN.sub(convert_badge_shortcode, processed_content)
+    processed_content = BADGE_ALT_PATTERN.sub(convert_badge_alt_shortcode, processed_content)
+    processed_content = BADGE_READ_PATTERN.sub(convert_badge_read_shortcode, processed_content)
+
+    return f'<GridWrapper type="{grid_type}">\n{processed_content}\n</GridWrapper>'
+
+def convert_grid_self_closing(match):
+    """Convert Hugo self-closing grid shortcode to custom Grid component."""
+    grid_type = match.group(1) or ""  # mid, big, or empty
+    
+    return f'<GridWrapper type="{grid_type}"></GridWrapper>'
 
 def convert_badge_shortcode(match):
-    """Convert Hugo badge shortcode to Mintlify Card component."""
+    """Convert Hugo badge shortcode to custom BadgeCard component."""
     title = match.group(1) or ""
     href = match.group(2) or ""
     image = match.group(3) or ""
@@ -224,16 +236,89 @@ def convert_badge_shortcode(match):
         if '/img/' in image:
             image = image.replace('/img/', '/images/')
 
-    card_content = f'<Card title="{title}" href="/{href}"'
-
+    # Build the BadgeCard component
+    props = []
+    if title:
+        props.append(f'title="{title}"')
+    if href:
+        props.append(f'href="{href}"')
     if image:
-        card_content += f' icon="{image}"'
+        props.append(f'image="{image}"')
+    if image_style:
+        props.append(f'imageStyle="{image_style}"')
+    
+    props_str = ' '.join(props)
+    return f'<BadgeCard {props_str}>\n{content}\n</BadgeCard>'
 
-    card_content += '>\n'
-    card_content += content
-    card_content += '\n</Card>'
+def convert_badge_alt_shortcode(match):
+    """Convert Hugo badge shortcode with alternative parameter order to custom BadgeCard component."""
+    href = match.group(1) or ""
+    title = match.group(2) or ""
+    image = match.group(3) or ""
+    image_style = match.group(4) or ""
+    content = match.group(5).strip()
 
-    return card_content
+    # Clean up the path in href if needed
+    if href.startswith('/'):
+        href = href[1:]
+
+    # Adjust image path if needed
+    if image and image.startswith('/'):
+        image = image[1:]
+        if '/img/' in image:
+            image = image.replace('/img/', '/images/')
+
+    # Build the BadgeCard component
+    props = []
+    if title:
+        props.append(f'title="{title}"')
+    if href:
+        props.append(f'href="{href}"')
+    if image:
+        props.append(f'image="{image}"')
+    if image_style:
+        props.append(f'imageStyle="{image_style}"')
+    
+    props_str = ' '.join(props)
+    return f'<BadgeCard {props_str}>\n{content}\n</BadgeCard>'
+
+def convert_badge_read_shortcode(match):
+    """Convert Hugo badge shortcode with read parameter to custom BadgeCard component."""
+    read_time = match.group(1) or ""
+    href = match.group(2) or ""
+    title = match.group(3) or ""
+    image = match.group(4) or ""
+    image_style = match.group(5) or ""
+    alt = match.group(6) or ""
+    content = match.group(7).strip()
+
+    # Clean up the path in href if needed
+    if href.startswith('/'):
+        href = href[1:]
+
+    # Adjust image path if needed
+    if image and image.startswith('/'):
+        image = image[1:]
+        if '/img/' in image:
+            image = image.replace('/img/', '/images/')
+
+    # Build the BadgeCard component
+    props = []
+    if read_time:
+        props.append(f'read="{read_time}"')
+    if href:
+        props.append(f'href="{href}"')
+    if title:
+        props.append(f'title="{title}"')
+    if image:
+        props.append(f'image="{image}"')
+    if image_style:
+        props.append(f'imageStyle="{image_style}"')
+    if alt:
+        props.append(f'alt="{alt}"')
+    
+    props_str = ' '.join(props)
+    return f'<BadgeCard {props_str}>\n{content}\n</BadgeCard>'
 
 def convert_button_shortcode(match):
     """Convert Hugo button shortcode to Mintlify button component."""
@@ -540,11 +625,14 @@ def process_shortcodes(content, shared_dir=None, includes_list=None, feature_car
     content = BUTTON_LEFT_SHORTCODE_PATTERN.sub(
         lambda m: convert_button_left_shortcode(m, button_left_list), content)
 
-    # Convert badges (should be done before grids)
+    # Convert badges (should be done before grids) - handle all patterns
     content = BADGE_SHORTCODE_PATTERN.sub(convert_badge_shortcode, content)
+    content = BADGE_ALT_PATTERN.sub(convert_badge_alt_shortcode, content)
+    content = BADGE_READ_PATTERN.sub(convert_badge_read_shortcode, content)
 
-    # Convert grids (which may contain badges)
+    # Convert grids (which may contain badges) - handle both patterns
     content = GRID_SHORTCODE_PATTERN.sub(convert_grid_shortcode, content)
+    content = GRID_SELF_CLOSING_PATTERN.sub(convert_grid_self_closing, content)
 
     # Convert YouTube videos (both standard and SEO versions)
     content = YOUTUBE_SHORTCODE_PATTERN.sub(convert_youtube_shortcode, content)
@@ -614,6 +702,13 @@ def convert_file(input_path, output_path, shared_dir=None, global_feature_cards_
             # Add import for ButtonLeft if used in this file
             if file_button_left_list:
                 import_statements.append("import { ButtonLeft } from '/snippets/ButtonLeft.mdx';")
+
+            # Check if Grid or Badge components are used in this file and add imports
+            if '<GridWrapper' in main_content:
+                import_statements.append("import { GridWrapper } from '/snippets/Grid.mdx';")
+            
+            if '<BadgeCard' in main_content:
+                import_statements.append("import { BadgeCard } from '/snippets/Badge.mdx';")
 
             # Write to output file
             with open(output_path, 'w', encoding='utf-8') as outfile:
