@@ -61,7 +61,7 @@ This has the following parameters:
     - `header.enabled` must be set to `true` if your upstream expects the credentials to be in a custom header, otherwise it can be omitted to use `Authorization` header 
     - `header.name` is the custom header to be used if `header.enabled` is set to `true`
 
-Note that if you use the [Tyk API Designer]({{< ref "api-management/upstream-authentication/mtls#configuring-upstream-basic-auth-using-the-api-designer" >}}) in Tyk Dashboard it will always configure the `header` parameter - even if you are using the default `Authorization` value.
+Note that if you use the [Tyk API Designer]({{< ref "api-management/upstream-authentication/basic-auth#configuring-upstream-basic-auth-using-the-api-designer" >}}) in Tyk Dashboard it will always configure the `header` parameter - even if you are using the default `Authorization` value.
 
 For example:
 
@@ -171,7 +171,7 @@ This has the following parameters:
     - `header.enabled` must be set to `true` if your upstream expects the credentials to be in a custom header, otherwise it can be omitted to use `Authorization` header 
     - `header.name` is the custom header to be used if `header.enabled` is set to `true`
 
-Note that if you use the [Tyk API Designer]({{< ref "api-management/upstream-authentication/mtls#configuring-upstream-basic-auth-using-the-api-designer" >}}) in Tyk Dashboard it will always configure the `header` parameter - even if you are using the default `Authorization` value.
+Note that if you use the [Tyk API Designer]({{< ref "api-management/upstream-authentication/basic-auth#configuring-upstream-basic-auth-using-the-api-designer" >}}) in Tyk Dashboard it will always configure the `header` parameter - even if you are using the default `Authorization` value.
 
 For example:
 
