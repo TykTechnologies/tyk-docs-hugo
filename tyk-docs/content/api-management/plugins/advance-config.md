@@ -378,5 +378,237 @@ In the above code, the `NewFuncWithError` function demonstrates error handling i
 {{< img src="/img/plugins/span_error_handling.png" alt="OTel Span error handling" >}}
 
 
+# Highly Available gRPC Servers in Kubernetes
+
+When deploying gRPC servers as Tyk Gateway coprocess middlewares in Kubernetes, implementing proper health checks is crucial for achieving high availability and enabling seamless rolling updates. Not having them could lead to situations in which your calls that are going through Tyk erroring out due to the gRPC client being unable to connect and correctly execute the coprocessing middleware.
+
+## Why Health Probes Matter for gRPC Servers
+
+Kubernetes needs to know when your gRPC server is ready to accept traffic and when it's still alive. Without proper health checks:
+- Rolling deployments can cause service disruption
+- Traffic may be routed to pods that aren't ready
+- Failed pods won't be automatically restarted
+- Load balancing becomes unreliable
+
+For Tyk Gateway coprocess middlewares, this is especially important since the gateway depends on these gRPC services to process requests.
+
+## Implementation
+
+### main.go Setup
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"net"
+	"net/http"
+	"os"
+	"os/signal"
+	"sync/atomic"
+	"syscall"
+	"time"
+
+	"github.com/TykTechnologies/tyk/coprocess"
+	"google.golang.org/grpc"
+)
+
+const (
+	ListenAddress = ":50051"
+	HealthAddress = ":8080"
+)
+
+func main() {
+	// Track server readiness
+	var isReady int32
+
+	// Start HTTP server for health checks
+	go func() {
+		mux := http.NewServeMux()
+
+		// Readiness probe endpoint
+		mux.HandleFunc("/ready", func(w http.ResponseWriter, r *http.Request) {
+			if atomic.LoadInt32(&isReady) == 1 {
+				w.WriteHeader(http.StatusOK)
+				w.Write([]byte("Ready"))
+			} else {
+				w.WriteHeader(http.StatusServiceUnavailable)
+				w.Write([]byte("Not ready"))
+			}
+		})
+
+		// Liveness probe endpoint
+		mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("Healthy"))
+		})
+
+		if err := http.ListenAndServe(HealthAddress, mux); err != nil {
+			log.Fatalf("Failed to start health server: %v", err)
+		}
+	}()
+
+	lis, err := net.Listen("tcp", ListenAddress)
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
+	}
+
+	log.Printf("starting grpc server on %v", ListenAddress)
+	s := grpc.NewServer()
+	coprocess.RegisterDispatcherServer(s, &Dispatcher{})
+
+	// Channel to listen for errors coming from the listener.
+	serverErrors := make(chan error, 1)
+
+	// Start the service listening for requests.
+	go func() {
+		// Mark as ready once server is initialized
+		atomic.StoreInt32(&isReady, 1)
+		log.Printf("gRPC server is ready to accept connections")
+		serverErrors <- s.Serve(lis)
+	}()
+
+	// Channel to listen for an interrupt or terminate signal from the OS.
+	shutdown := make(chan os.Signal, 1)
+	signal.Notify(shutdown, os.Interrupt, syscall.SIGTERM)
+
+	// Blocking main and waiting for shutdown.
+	select {
+	case err := <-serverErrors:
+		atomic.StoreInt32(&isReady, 0)
+		log.Fatalf("Server error: %v", err)
+	case sig := <-shutdown:
+		atomic.StoreInt32(&isReady, 0)
+		log.Printf("Received signal: %v", sig)
+		// Give outstanding requests 5 seconds to complete.
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+
+		stopped := make(chan struct{})
+		go func() {
+			s.GracefulStop()
+			close(stopped)
+		}()
+
+		select {
+		case <-ctx.Done():
+			log.Printf("Graceful shutdown timed out")
+			s.Stop()
+		case <-stopped:
+			log.Printf("Graceful shutdown completed")
+		}
+	}
+}
+
+```
+
+### Kubernetes Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tyk-grpc-coprocess
+  labels:
+    app: tyk-grpc-coprocess
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: tyk-grpc-coprocess
+  template:
+    metadata:
+      labels:
+        app: tyk-grpc-coprocess
+    spec:
+      containers:
+      - name: grpc-server
+        image: your-registry/tyk-grpc-coprocess:latest
+        ports:
+        - containerPort: 50051
+          name: grpc
+        - containerPort: 8080
+          name: http-health
+        
+        # Readiness probe - determines when pod is ready for traffic
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+          successThreshold: 1
+        
+        # Liveness probe - determines when to restart pod
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
+          timeoutSeconds: 5
+          failureThreshold: 3
+        
+        # Startup probe - gives more time for initial startup
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 30
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tyk-grpc-coprocess-service
+spec:
+  selector:
+    app: tyk-grpc-coprocess
+  ports:
+  - name: grpc
+    port: 50051
+    targetPort: 50051
+    protocol: TCP
+  - name: http-health
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  type: ClusterIP
+```
+
+## Key Benefits for Rolling Updates
+
+### 1. Zero-Downtime Deployments
+- Readiness probes ensure new pods are fully ready before receiving traffic
+- Old pods continue serving until new ones are ready
+- Traffic is never routed to non-functional pods
+
+### 2. Graceful Shutdown
+- SIGTERM triggers immediate graceful shutdown sequence
+- Health status changes to "not serving" during shutdown
+- gRPC server stops gracefully, finishing in-flight requests
+- 30-second timeout ensures forced shutdown if graceful shutdown hangs
+
+### 3. Failure Recovery
+- Liveness probes detect and restart unhealthy pods
+- Startup probes give adequate time for slow-starting services
+- Failed deployments are automatically rolled back
+
+## How to do load balancing
+Starting with Tyk 5.8.2, you can also put your gRPC servers behind a load balancer and use the dns:/// (yes, triple slash) 
+protocol in the ENV VAR "TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER" in order to evenly distribute traffic. 
+For more info please visit https://github.com/grpc/grpc/blob/master/doc/naming.md.
+
 
 
