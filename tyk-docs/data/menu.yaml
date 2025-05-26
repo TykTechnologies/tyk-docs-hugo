@@ -314,6 +314,27 @@ menu:
               path: /api-management/upstream-authentication
               category: Directory
               show: True
+              menu:
+              - title: "Auth Token"
+                path: /api-management/upstream-authentication/auth-token
+                category: Page
+                show: True
+              - title: "Basic Auth"
+                path: /api-management/upstream-authentication/basic-auth
+                category: Page
+                show: True
+              - title: "OAuth 2.0"
+                path: /api-management/upstream-authentication/oauth
+                category: Page
+                show: True
+              - title: "Mutual TLS"
+                path: /api-management/upstream-authentication/mtls
+                category: Page
+                show: True
+              - title: "Request Signing"
+                path: /api-management/upstream-authentication/request-signing
+                category: Page
+                show: True
             - title: "Security Policy and Access Keys"
               path: /api-management/policies
               category: Page
