@@ -20,13 +20,13 @@ Tyk Gateway sits between your clients and your services, securely routing reques
 In the same way as you use Client Authentication to securely confirm the identity of the API clients, your upstream services probably need to securely confirm the identity of their client - namely Tyk. This is where Tyk's flexible **Upstream Authentication** capability comes in.
 
 When using Tyk, you can choose from a range of authentication methods for each upstream API:
-- [Mutual TLS]({{< ref "api-management/upstream-authentication#mutual-tls-mtls" >}})
-- [Token-based authentication]({{< ref "api-management/upstream-authentication#token-based-authentication" >}})
-- [Request signing]({{< ref "api-management/upstream-authentication#request-signing" >}})
-- [Basic Authentication]({{< ref "api-management/upstream-authentication#basic-authentication" >}})
-- [OAuth 2.0]({{< ref "api-management/upstream-authentication#upstream-oauth-20" >}})
-    - [OAuth 2.0 Client Credentials]({{< ref "api-management/upstream-authentication#oauth-client-credentials" >}})
-    - [OAuth 2.0 Password Grant]({{< ref "api-management/upstream-authentication#oauth-resource-owner-password-credentials" >}})
+- [Mutual TLS]({{< ref "api-management/upstream-authentication/mtls" >}})
+- [Token-based authentication]({{< ref "api-management/upstream-authentication/auth-token" >}})
+- [Request signing]({{< ref "api-management/upstream-authentication/request-signing" >}})
+- [Basic Authentication]({{< ref "api-management/upstream-authentication/basic-auth" >}})
+- [OAuth 2.0]({{< ref "api-management/upstream-authentication/oauth" >}})
+    - [OAuth 2.0 Client Credentials]({{< ref "api-management/upstream-authentication/oauth#oauth-client-credentials" >}})
+    - [OAuth 2.0 Password Grant]({{< ref "api-management/upstream-authentication/oauth#oauth-resource-owner-password-credentials" >}})
 
 {{< note success >}}
 **Note**  

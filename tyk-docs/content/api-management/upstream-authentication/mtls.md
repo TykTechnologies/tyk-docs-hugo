@@ -19,7 +19,7 @@ When Tyk performs an mTLS handshake with an upstream, it needs to know:
 - which client certificate Tyk should use to identify itself
 - which public key (certificate) that Tyk should use to verify the identity of the upstream
 
-We use a system of [mapping certificates]({{< ref "api-management/upstream-authentication#mapping-certificates-to-domains" >}}) to upstreams based on their host domain. This is used for both the [client certificate]({{< ref "api-management/upstream-authentication#upstream-client-certificates" >}}) and, optionally, for the [upstream public key]({{< ref "api-management/upstream-authentication#upstream-server-certificates" >}}) if we want to use specific certificates to protect against compromised certificate authorities (CAs).
+We use a system of [mapping certificates]({{< ref "#mapping-certificates-to-domains" >}}) to upstreams based on their host domain. This is used for both the [client certificate]({{< ref "#upstream-client-certificates" >}}) and, optionally, for the [upstream public key]({{< ref "#upstream-server-certificates" >}}) if we want to use specific certificates to protect against compromised certificate authorities (CAs).
 
 #### Upstream mTLS for Tyk middleware and plugins
 
@@ -96,7 +96,7 @@ Tyk will verify the certificate received from the upstream by performing the fol
 Tyk will look in the system trust store for the server that is running Tyk Gateway (typically `/etc/ssl/certs`). If you are using self-signed certificates, store them here so that Tyk can verify the upstream service.
 {{< /note >}}
 
-If you want to restrict the public keys that can be used by the upstream service, then you can use [certificate pinning]({{< ref "api-management/upstream-authentication#certificate-pinning" >}}) to store a list of certificates that Tyk will use to verify the upstream.
+If you want to restrict the public keys that can be used by the upstream service, then you can use [certificate pinning]({{< ref "api-management/upstream-authentication/mtls#certificate-pinning" >}}) to store a list of certificates that Tyk will use to verify the upstream.
 
 #### Certificate Pinning
 
@@ -138,7 +138,7 @@ Click on **Attach Certificate** to open the certificate attachment window:
 
 This is where you can define the upstream **Domain Name** and either select an existing certificate from the Tyk Certificate Store, or upload a new certificate to the store.
 
-If you want to [pin the public certificates]({{< ref "api-management/upstream-authentication#certificate-pinning" >}}) that can be used by Tyk when verifying the upstream service, then you should enable **Public certificates** and attach certificates in the same manner as for the client certificates:
+If you want to [pin the public certificates]({{< ref "api-management/upstream-authentication/mtls#certificate-pinning" >}}) that can be used by Tyk when verifying the upstream service, then you should enable **Public certificates** and attach certificates in the same manner as for the client certificates:
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-upstream-mtls-public.png" alt="Enable public key pinning" >}}
 

@@ -78,7 +78,7 @@ Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#i
 
 Tyk Operator now supports HMAC request signing, enabling enhanced security and integrity for API requests. This feature aligns with Tyk 5.8 capabilities.
 
-[Learn More]({{< ref "api-management/upstream-authentication#request-signing" >}})
+[Learn More]({{< ref "api-management/upstream-authentication/request-signing" >}})
 </details>
 </li>
 <li>
