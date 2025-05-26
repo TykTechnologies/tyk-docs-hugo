@@ -175,8 +175,8 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
-      - title: "Non HTTP Protocols"
-        path: /api-management/non-http-protocols
+      - title: "Advanced Protocols"
+        path: /advanced-configuration/other-protocols
         category: Directory
         show: True
         menu:

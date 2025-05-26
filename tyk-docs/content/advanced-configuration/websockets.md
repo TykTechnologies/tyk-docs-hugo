@@ -2,7 +2,7 @@
 title: "Websockets"
 date: 2019-09-23T10:28:52+03:00
 description: How to use websockets in Tyk
-tags: ["websockets", "Non HTTP Protocol"]
+tags: ["websockets", "Other Protocol"]
 ---
 
 As from Tyk gateway v2.2, Tyk supports transparent WebSocket connection upgrades. To enable this feature, set the `enable_websockets` value to `true` in your `tyk.conf` file.

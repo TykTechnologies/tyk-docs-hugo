@@ -2,7 +2,7 @@
 title: "gRPC Proxy"
 date: 2019-09-23T10:28:52+03:00
 description: How to use gRPC in Tyk
-tags: ["gRPC", "Non HTTP Protocol"]
+tags: ["gRPC", "Other Protocol"]
 ---
 
 ## Using Tyk as a gRPC Proxy

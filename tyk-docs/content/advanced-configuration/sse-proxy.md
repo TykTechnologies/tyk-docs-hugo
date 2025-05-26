@@ -2,7 +2,7 @@
 title: "Server Side Events Proxy"
 date: 2019-09-23T10:28:52+03:00
 description: Describe how you can use Tyk as a simple Server Side Events Proxy
-tags: ["SSE Proxy", "Non HTTP Protocol"]
+tags: ["SSE Proxy", "Other Protocol"]
 ---
 
 [Server-Sent Events](https://en.wikipedia.org/wiki/Server-sent_events) (SSE) is a server push technology enabling a subscribed client to receive automatic updates from a server via a long running HTTP connection. 
