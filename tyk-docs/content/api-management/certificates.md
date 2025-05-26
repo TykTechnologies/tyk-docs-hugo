@@ -45,7 +45,7 @@ When it comes to authorization, it is enough for the server that has a public cl
 Using Tyk, you have two main certificate use cases:
 
 1. Certificates without public keys used for [client authorization and authentication]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
-2. Certificates with private keys used for [upstream access]({{< ref "api-management/upstream-authentication#mutual-tls-mtls" >}}), and server certificates (in other words when we need to sign and encrypt the request or response).
+2. Certificates with private keys used for [upstream access]({{< ref "api-management/upstream-authentication/mtls" >}}), and server certificates (in other words when we need to sign and encrypt the request or response).
 
 ### PEM format
 
