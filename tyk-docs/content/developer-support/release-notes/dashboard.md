@@ -1235,13 +1235,13 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 
 ## 5.3 Release Notes
-  
+
 ### 5.3.10 Release Notes
-  
+
 #### Release Date 19 February 2025
-  
+
 #### Release Highlights
-  
+
 In this release, we upgraded the Golang version to `v1.23` and fixed a [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613]). For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
 
 #### Breaking Changes
