@@ -1,0 +1,15 @@
+export const GitHubStarButton = ({ owner, repo, showCount = "true" }) => {
+  return (
+    <a 
+      className="github-button"
+      href={`https://github.com/${owner}/${repo}`}
+      data-icon="octicon-star"
+      aria-label={`Star ${owner}/${repo} on GitHub`}
+      data-show-count={showCount}
+    >
+      ⭐ Star {owner}/{repo}
+    </a>
+  );
+};
+
+<GitHubStarButton {...props} />

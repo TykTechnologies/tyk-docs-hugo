@@ -38,6 +38,8 @@ MALFORMED_IMG_PATTERN = re.compile(r'img\s+src="([^"]+)"\s+alt="([^"]*)"\s*(?:wi
 NOTE_SHORTCODE_PATTERN = re.compile(r'{{<\s*note\s+([^>]*?)>}}(.*?){{<\s*/note\s*>}}', re.DOTALL)
 WARNING_SHORTCODE_PATTERN = re.compile(r'{{<\s*warning\s+([^>]*?)>}}(.*?){{<\s*/warning\s*>}}', re.DOTALL)
 INTERNAL_LINK_PATTERN = re.compile(r'{{<\s*ref\s+"([^"]+)"\s*>}}')
+# Malformed internal link pattern (missing space after ref)
+MALFORMED_INTERNAL_LINK_PATTERN = re.compile(r'{{<\s*ref"([^"]+)"\s*>}}')
 GRID_SHORTCODE_PATTERN = re.compile(r'{{<\s*grid(?:\s+type="([^"]*)")?\s*>}}(.*?){{<\s*/grid\s*>}}', re.DOTALL)
 # Additional grid pattern for self-closing grids
 GRID_SELF_CLOSING_PATTERN = re.compile(r'{{<\s*grid(?:\s+type="([^"]*)")?\s*/>}}')
@@ -51,6 +53,7 @@ BUTTON_LEFT_SHORTCODE_PATTERN = re.compile(r'{{<\s*button_left\s+href="([^"]*)"\
 TOOLTIP_SHORTCODE_PATTERN = re.compile(r'{{<\s*tooltip\s*>}}(.*?){{<\s*definition\s*>}}(.*?){{<\s*/definition\s*>}}{{<\s*/tooltip\s*>}}', re.DOTALL)
 PILL_LABEL_SHORTCODE_PATTERN = re.compile(r'{{<\s*pill-label\s+text="([^"]*)"(?:\s+class="([^"]*)")?(?:\s+style="([^"]*)")?\s*>}}')
 INCLUDE_SHORTCODE_PATTERN = re.compile(r'{{<\s*include\s+"([^"]+)"\s*>}}')
+INCLUDE_PERCENT_SHORTCODE_PATTERN = re.compile(r'{{%\s*include\s+"([^"]+)"\s*%}}')
 YOUTUBE_SHORTCODE_PATTERN = re.compile(r'{{<\s*youtube\s+([^>]*?)>}}')
 YOUTUBE_SEO_SHORTCODE_PATTERN = re.compile(r'{{<\s*youtube-seo\s+id="([^"]+)"\s+title="([^"]+)"\s*>}}')
 FEATURE_CARDS_SHORTCODE_PATTERN = re.compile(r'{{<\s*feature-cards\s+dataFile="([^"]+)"\s*>}}')
@@ -68,6 +71,14 @@ HTML_COMMENT_PATTERN = re.compile(r'<!--(.*?)-->', re.DOTALL)
 STANDALONE_OPENING_BRACE_PATTERN = re.compile(r'(?<!{)\{(?!{)')
 STANDALONE_CLOSING_BRACE_PATTERN = re.compile(r'(?<!})\}(?!})')
 HUGO_HEADING_ANCHOR_PATTERN = re.compile(r'^(#{1,6})\s+(.+?)\s*\{#([^}]+)\}\s*$', re.MULTILINE)
+# GitHub star button pattern
+# Pattern to convert standalone anchor references to span elements with id
+STANDALONE_ANCHOR_PATTERN = re.compile(r'\*\*(.+?)\{#([^}]+)\}\*\*')
+GITHUB_STAR_BUTTON_PATTERN = re.compile(r'{{<\s*github_star_button\s+"([^"]+)"\s+"([^"]+)"\s+"([^"]*)"\s*>}}')
+# Pattern to handle placeholder text in curly braces (like {API_KEY}, {ORG_ID}, etc.)
+PLACEHOLDER_BRACES_PATTERN = re.compile(r'\{([A-Z_\s\-0-9]+)\}')
+# Pattern to fix unclosed hr tags for MDX compatibility
+HR_PATTERN = re.compile(r'<hr(?!\s*/)>')
 
 def create_directory_if_not_exists(directory):
     """Create directory if it doesn't exist."""
@@ -104,6 +115,19 @@ def convert_frontmatter(frontmatter_yaml):
     except Exception as e:
         logger.error(f"Error converting frontmatter: {e}")
         return {"title": "", "description": ""}
+    
+def convert_github_star_button_shortcode(match, github_star_button_list=None):
+    """Convert Hugo github_star_button shortcode to GitHubStarButton component."""
+    owner = match.group(1)
+    repo = match.group(2)
+    show_count = match.group(3) or "true"
+
+    # Add to the list of github_star_button uses if provided
+    if github_star_button_list is not None and "github_star_button" not in github_star_button_list:
+        github_star_button_list.append("github_star_button")
+
+    return f'<GitHubStarButton owner="{owner}" repo="{repo}" showCount="{show_count}" />'
+
 
 def convert_img_shortcode(match):
     """Convert Hugo img shortcode to Mintlify img tag."""
@@ -227,8 +251,13 @@ def convert_grid_shortcode(match):
 def convert_grid_self_closing(match):
     """Convert Hugo self-closing grid shortcode to custom Grid component."""
     grid_type = match.group(1) or ""  # mid, big, or empty
-    
+
     return f'<GridWrapper type="{grid_type}"></GridWrapper>'
+
+def convert_hr_tag(match):
+    """Convert unclosed hr tag to self-closing for MDX compatibility."""
+    return '<hr />'
+
 
 def convert_badge_shortcode(match):
     """Convert Hugo badge shortcode to custom BadgeCard component."""
@@ -258,7 +287,7 @@ def convert_badge_shortcode(match):
         props.append(f'image="{image}"')
     if image_style:
         props.append(f'imageStyle="{image_style}"')
-    
+
     props_str = ' '.join(props)
     return f'<BadgeCard {props_str}>\n{content}\n</BadgeCard>'
 
@@ -290,7 +319,7 @@ def convert_badge_alt_shortcode(match):
         props.append(f'image="{image}"')
     if image_style:
         props.append(f'imageStyle="{image_style}"')
-    
+
     props_str = ' '.join(props)
     return f'<BadgeCard {props_str}>\n{content}\n</BadgeCard>'
 
@@ -328,9 +357,11 @@ def convert_badge_read_shortcode(match):
         props.append(f'imageStyle="{image_style}"')
     if alt:
         props.append(f'alt="{alt}"')
-    
+
     props_str = ' '.join(props)
     return f'<BadgeCard {props_str}>\n{content}\n</BadgeCard>'
+
+
 
 def convert_button_shortcode(match):
     """Convert Hugo button shortcode to Mintlify button component."""
@@ -365,12 +396,25 @@ def convert_button_left_shortcode(match, button_left_list=None):
     return f'<ButtonLeft href="{href}" color="{color}" content="{content}" />'
 
 def convert_hugo_heading_anchor(match):
-    """Convert Hugo heading with anchor to HTML heading with id attribute."""
+    """Convert Hugo heading with anchor to HTML heading with id for Mintlify."""
     heading_level = len(match.group(1))  # Count the #'s
     heading_text = match.group(2).strip()
     anchor_id = match.group(3)
 
+    # Convert to HTML heading with id attribute for Mintlify
     return f'<h{heading_level} id="{anchor_id}">{heading_text}</h{heading_level}>'
+def convert_placeholder_braces(match):
+    """Convert placeholder curly braces to backticks to avoid MDX parsing issues."""
+    placeholder = match.group(1)
+    return f'`{{{placeholder}}}`'
+
+def convert_standalone_anchor(match):
+    """Convert bold text with anchor reference to span with id."""
+    content = match.group(1)
+    anchor_id = match.group(2)
+    return f'**<span id="{anchor_id}">{content}</span>**'
+
+
 
 def convert_tooltip_shortcode(match):
     """Convert Hugo tooltip shortcode to Mintlify Tooltip component."""
@@ -458,14 +502,14 @@ def convert_tab_shortcode(match):
     title = match.group(1) or "Tab"
     additional_attrs = match.group(2) or ""
     content = match.group(3).strip()
-    
+
     return f'<Tab title="{title}">\n{content}\n</Tab>'
 
 def convert_tab_start(match):
     """Convert Hugo tab_start shortcode to Mintlify Tab component."""
     title = match.group(1) or "Tab"
     additional_attrs = match.group(2) or ""
-    
+
     return f'<Tab title="{title}">'
 
 def convert_tab_end(match):
@@ -642,24 +686,22 @@ def process_note_shortcodes_carefully(content):
     # Apply the conversion
     return NOTE_SHORTCODE_PATTERN.sub(convert_note_with_context, content)
 
-def process_shortcodes(content, shared_dir=None, includes_list=None, feature_cards_list=None, button_left_list=None):
+def process_shortcodes(content, shared_dir=None, includes_list=None, feature_cards_list=None, button_left_list=None, github_star_button_list=None):
     """Process all Hugo shortcodes in the content."""
     # Process in specific order to handle nested shortcodes correctly
 
     # Fix malformed HTML tags
     content = MALFORMED_BR_PATTERN.sub('<br />', content)
     content = BR_PATTERN.sub('<br />', content)
-
+    content = HR_PATTERN.sub(convert_hr_tag, content)
     # Convert HTML comments to JSX comments
     content = HTML_COMMENT_PATTERN.sub(convert_html_comment, content)
-
-    # Escape standalone curly braces for JSX compatibility
-    content = STANDALONE_OPENING_BRACE_PATTERN.sub(escape_unmatched_opening_brace, content)
-    content = STANDALONE_CLOSING_BRACE_PATTERN.sub(escape_unmatched_closing_brace, content)
+    content = PLACEHOLDER_BRACES_PATTERN.sub(convert_placeholder_braces, content)
+    # Note: Removed curly brace escaping as it interferes with Hugo heading anchor syntax
 
     # Convert Hugo heading anchors to HTML headings with id
     content = HUGO_HEADING_ANCHOR_PATTERN.sub(convert_hugo_heading_anchor, content)
-
+    content = STANDALONE_ANCHOR_PATTERN.sub(convert_standalone_anchor, content)
     # Convert images - including malformed ones and alt-first format
     content = IMG_SHORTCODE_PATTERN.sub(convert_img_shortcode, content)
     content = ALT_FIRST_IMG_PATTERN.sub(convert_alt_first_img, content)
@@ -671,7 +713,8 @@ def process_shortcodes(content, shared_dir=None, includes_list=None, feature_car
 
     # Convert internal links
     content = INTERNAL_LINK_PATTERN.sub(convert_internal_link, content)
-
+    # Convert malformed internal links (missing space after ref)
+    content = MALFORMED_INTERNAL_LINK_PATTERN.sub(convert_internal_link, content)
     # Convert tooltips
     content = TOOLTIP_SHORTCODE_PATTERN.sub(convert_tooltip_shortcode, content)
 
@@ -684,6 +727,11 @@ def process_shortcodes(content, shared_dir=None, includes_list=None, feature_car
     # Convert button_left
     content = BUTTON_LEFT_SHORTCODE_PATTERN.sub(
         lambda m: convert_button_left_shortcode(m, button_left_list), content)
+    
+    # Convert GitHub star button
+    content = GITHUB_STAR_BUTTON_PATTERN.sub(
+    lambda m: convert_github_star_button_shortcode(m, github_star_button_list), content)
+
 
     # Convert badges (should be done before grids) - handle all patterns
     content = BADGE_SHORTCODE_PATTERN.sub(convert_badge_shortcode, content)
@@ -712,6 +760,8 @@ def process_shortcodes(content, shared_dir=None, includes_list=None, feature_car
     # Convert includes if shared_dir is provided
     if shared_dir:
         content = INCLUDE_SHORTCODE_PATTERN.sub(
+            lambda m: convert_include_shortcode(m, shared_dir, includes_list), content)
+        content = INCLUDE_PERCENT_SHORTCODE_PATTERN.sub(
             lambda m: convert_include_shortcode(m, shared_dir, includes_list), content)
 
     return content
@@ -755,6 +805,10 @@ def convert_file(input_path, output_path, shared_dir=None, global_feature_cards_
                 component_name = ''.join(word.capitalize() for word in include_name.replace('-', ' ').split())
                 import_statements.append(f"import {component_name} from '/snippets/{include_name}.mdx';")
 
+                # Track github_star_button used in THIS FILE ONLY
+            file_github_star_button_list = []
+
+
             # Add import statements ONLY for feature cards used in THIS file
             for data_file in file_feature_cards_list:
                 if data_file == "ai-studio-features":
@@ -769,11 +823,15 @@ def convert_file(input_path, output_path, shared_dir=None, global_feature_cards_
             # Add import for ButtonLeft if used in this file
             if file_button_left_list:
                 import_statements.append("import { ButtonLeft } from '/snippets/ButtonLeft.mdx';")
+            # Add import for GitHubStarButton if used in this file
+            if file_github_star_button_list:
+                import_statements.append("import { GitHubStarButton } from '/snippets/GitHubStarButton.mdx';")
+
 
             # Check if Grid or Badge components are used in this file and add imports
             if '<GridWrapper' in main_content:
                 import_statements.append("import { GridWrapper } from '/snippets/Grid.mdx';")
-            
+
             if '<BadgeCard' in main_content:
                 import_statements.append("import { BadgeCard } from '/snippets/Badge.mdx';")
 
