@@ -71,6 +71,8 @@ We’ve made backend improvements to the Tyk Cloud login functionality to enhanc
 
 We’ve fixed an issue where secure configuration defaults for the Tyk Dashboard admin view were not properly applied in older versions (v5.3). These settings now default to true in v5.8+ as intended, while remaining false in v5.3 to preserve backward compatibility. This ensures consistent and expected security behavior across versions.
 
+**Note:** Changes in deployment configurations are applied during a redeployment, triggered by the user or system. In addition, defaults can be changed individually by creating a support ticket.
+
 </details>
 </li>
 
