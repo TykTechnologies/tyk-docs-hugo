@@ -54,9 +54,9 @@ Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-ma
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "api-management/traffic-transformation#allow-list-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "#allow-list-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "api-management/traffic-transformation#allow-list-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "#allow-list-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Allow List middleware summary
@@ -71,7 +71,7 @@ The [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}})
 
 When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#allow-list-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#allow-list-using-classic" >}}) page.
 
 
 ### API Definition
@@ -153,7 +153,7 @@ For example:
 
 In this example the allow list middleware has been configured for requests to the `GET /anything` and `PUT /anything` endpoints. Requests to any other endpoints will be rejected with `HTTP 403 Forbidden`, unless they also have the allow list middleware enabled.
 Note that the allow list has been configured to be case insensitive, so calls to `GET /Anything` will be allowed
-Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /anything/foobar` will be allowed as the [regular expression pattern match]({{< ref "api-management/traffic-transformation#endpoint-parsing" >}}) will recognize this as `GET /anything`.
+Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /anything/foobar` will be allowed as the [regular expression pattern match]({{< ref "#endpoint-parsing" >}}) will recognize this as `GET /anything`.
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the allow list feature.
 
@@ -198,7 +198,7 @@ The [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}})
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#allow-list-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#allow-list-using-tyk-oas" >}}) page.
 
 ### API Definition
 
@@ -254,7 +254,7 @@ For example:
 
 In this example the allow list middleware has been configured for HTTP `GET` and `PUT` requests to the `/status/200` endpoint. Requests to any other endpoints will be rejected with `HTTP 403 Forbidden`, unless they also have the allow list middleware enabled.
 Note that the allow list has been configured to be case sensitive, so calls to `GET /Status/200` will also be rejected.
-Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /status/200/foobar` will be allowed as the [regular expression pattern match]({{< ref "api-management/traffic-transformation#endpoint-parsing" >}}) will recognize this as `GET /status/200`.
+Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /status/200/foobar` will be allowed as the [regular expression pattern match]({{< ref "#endpoint-parsing" >}}) will recognize this as `GET /status/200`.
 
 Consult section [configuring the Allow List in Tyk Operator](#tyk-operator) for details on how to configure allow lists for endpoints using Tyk Operator.
 
@@ -323,6 +323,6 @@ spec:
               path: "/get"
 ```
 
-In this example the allow list middleware has been configured for `HTTP GET` requests to the `/get` endpoint. Requests to any other endpoints will be rejected with `HTTP 403 Forbidden`, unless they also have the allow list middleware enabled. Note that the allow list has been configured to case insensitive, so calls to `GET /Get` will also be accepted. Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /get/foobar` will be allowed as the [regular expression pattern match]({{< ref "api-management/traffic-transformation#endpoint-parsing" >}}) will recognize this as `GET /get`.
+In this example the allow list middleware has been configured for `HTTP GET` requests to the `/get` endpoint. Requests to any other endpoints will be rejected with `HTTP 403 Forbidden`, unless they also have the allow list middleware enabled. Note that the allow list has been configured to case insensitive, so calls to `GET /Get` will also be accepted. Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /get/foobar` will be allowed as the [regular expression pattern match]({{< ref "#endpoint-parsing" >}}) will recognize this as `GET /get`.
 
 

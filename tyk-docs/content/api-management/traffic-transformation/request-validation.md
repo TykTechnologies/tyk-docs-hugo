@@ -56,7 +56,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#request-validation-using-tyk-oas}
 
-The [request validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints. If the incoming request fails validation, the Tyk Gateway will reject the request with an `HTTP 422 Unprocessable Entity` response. Tyk can be [configured](#configuring-the-request-validation-middleware) to return a different HTTP status code if required. 
+The [request validation]({{< ref "#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints. If the incoming request fails validation, the Tyk Gateway will reject the request with an `HTTP 422 Unprocessable Entity` response. Tyk can be [configured](#configuring-the-request-validation-middleware) to return a different HTTP status code if required. 
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -250,7 +250,7 @@ Adding and configuring Request Validation for your API endpoints is easy when us
 
 ## Using Classic {#request-validation-using-classic}
 
-The [request validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+The [request validation]({{< ref "#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
 When working with legacy Tyk Classic APIs, request validation is performed by the `Validate JSON` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the middleware configuration and is limited to the request body (payload). Request headers and path/query parameters cannot be validated when using Tyk Classic APIs.
 

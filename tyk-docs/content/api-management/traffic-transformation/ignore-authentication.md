@@ -45,9 +45,9 @@ Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-ma
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "api-management/traffic-transformation#ignore-authentication-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "#ignore-authentication-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "api-management/traffic-transformation#ignore-authentication-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "#ignore-authentication-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Ignore Authentication middleware summary
@@ -62,7 +62,7 @@ The [Ignore Authentication]({{< ref "api-management/traffic-transformation/ignor
 
 When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#ignore-authentication-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#ignore-authentication-using-classic" >}}) page.
 
 ### API Definition
 
@@ -197,7 +197,7 @@ The [Ignore Authentication]({{< ref "api-management/traffic-transformation/ignor
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#ignore-authentication-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#ignore-authentication-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
@@ -209,7 +209,7 @@ The `ignored` object has the following configuration:
 - `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
-- `method_actions`: a shared object used to configure the [mock response]({{< ref "api-management/traffic-transformation#when-is-it-useful" >}}) middleware
+- `method_actions`: a shared object used to configure the [mock response]({{< ref "#when-is-it-useful" >}}) middleware
 
 The `method_actions` object should be configured as follows, with an entry created for each allowed method on the path:
 - `action`: this should be set to `no_action`

@@ -17,8 +17,8 @@ In this section of the documentation, we provide some guidance and a few example
 ## Data format conversion using helper functions
 
 Tyk provides two helper functions to assist with data format translation between JSON and XML:
-- `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "api-management/traffic-transformation#xml-to-json-conversion-using-jsonmarshal" >}}))
-- `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "api-management/traffic-transformation#json-to-xml-conversion-using-xmlmarshal" >}}))
+- `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "#xml-to-json-conversion-using-jsonmarshal" >}}))
+- `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "#json-to-xml-conversion-using-xmlmarshal" >}}))
 
 When creating these functions within your Go templates, please note:
 - the use of `.` in the template refers to the entire input, whereas something like `.myField` refers to just the `myField` field of the input
@@ -58,7 +58,7 @@ We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) wh
 Here's a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) and [YouTube tutorial](https://www.youtube.com/watch?v=k5wJv4XO7a0) that can help you to learn about using Go templates. 
 
 ## Go templating examples
-Here we provide worked examples for both [JSON]({{< ref "api-management/traffic-transformation#example-json-transformation-template" >}}) and [XML]({{< ref "api-management/traffic-transformation#example-xml-transformation-template" >}}) formatted inputs. We also explain examples using the [jsonMarshal]({{< ref "api-management/traffic-transformation#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "api-management/traffic-transformation#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.
+Here we provide worked examples for both [JSON]({{< ref "#example-json-transformation-template" >}}) and [XML]({{< ref "#example-xml-transformation-template" >}}) formatted inputs. We also explain examples using the [jsonMarshal]({{< ref "#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.
 
 ### Example JSON transformation template
 Imagine you have a published API that accepts the request listed below, but your upstream service requires a few alterations, namely:

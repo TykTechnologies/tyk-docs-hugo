@@ -57,9 +57,9 @@ Or from within `/api1/endpoint1_ext` as:
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the Internal Endpoint middleware [here]({{< ref "api-management/traffic-transformation#internal-endpoint-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the Internal Endpoint middleware [here]({{< ref "#internal-endpoint-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the Internal Endpoint middleware [here]({{< ref "api-management/traffic-transformation#internal-endpoint-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the Internal Endpoint middleware [here]({{< ref "#internal-endpoint-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Internal Endpoint middleware summary
@@ -71,11 +71,11 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#internal-endpoint-using-tyk-oas}
 
-The [Internal Endpoint]({{< ref "api-management/traffic-transformation#internal-endpoint-overview" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
+The [Internal Endpoint]({{< ref "#internal-endpoint-overview" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
 When working with Tyk OAS APIs, the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#internal-endpoint-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#internal-endpoint-using-classic" >}}) page.
 
 ### API Definition
 
@@ -189,11 +189,11 @@ Adding the Internal Endpoint middleware to your API endpoints is easy when using
 
 ## Using Classic {#internal-endpoint-using-classic}
 
-The [Internal Endpoint]({{< ref "api-management/traffic-transformation#internal-endpoint-overview" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
+The [Internal Endpoint]({{< ref "#internal-endpoint-overview" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
 When working with Tyk Classic APIs, the middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#internal-endpoint-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#internal-endpoint-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 

@@ -5984,7 +5984,7 @@ Securely store sensitive information like API keys, passwords, and certificates 
 
 ##### Support per-machine variables
 
-Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "api-management/traffic-transformation#" >}}).
+Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "api-management/traffic-transformation" >}}).
 
 #### How external Key-Value storage works
 

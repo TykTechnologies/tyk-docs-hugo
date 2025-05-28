@@ -36,7 +36,7 @@ URL path matching is fundamental to the behavior of various Tyk middleware, incl
 - [Granular access control]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}})
 - [Allow List]({{< ref "api-management/traffic-transformation/allow-list" >}})
 - [Block List]({{< ref "api-management/traffic-transformation/block-list" >}})
-- [Request and Response transformation]({{< ref "api-management/traffic-transformation#" >}})
+- [Request and Response transformation]({{< ref "api-management/traffic-transformation" >}})
 
 {{< note success >}}
 **Note**  

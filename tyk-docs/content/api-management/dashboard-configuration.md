@@ -3560,7 +3560,7 @@ At the top of the Endpoint Designer, you can see which version you are currently
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-endpoint.png" alt="The Tyk Classic Endpoint Designer - Endpoint Designer tab" >}}
 
-The **Endpoint Designer** is where you can define endpoints for your API so that you can enable and configure Tyk middleware to [perform checks and transformations]({{< ref "api-management/traffic-transformation#" >}}) on the API traffic.
+The **Endpoint Designer** is where you can define endpoints for your API so that you can enable and configure Tyk middleware to [perform checks and transformations]({{< ref "api-management/traffic-transformation" >}}) on the API traffic.
 
 In some cases, you will want to set global settings that affect all paths that are managed by Tyk. The **Global Version Settings** section will enable you to configure API-level [request]({{< ref "api-management/traffic-transformation/request-headers#tyk-classic-api" >}}) and [response]({{< ref "api-management/traffic-transformation/request-headers#tyk-classic-api" >}}) header transformation.
 

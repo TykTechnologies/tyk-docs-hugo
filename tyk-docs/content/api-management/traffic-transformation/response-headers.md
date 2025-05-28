@@ -61,9 +61,9 @@ You can enrich the response headers by injecting data from context variables or 
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "api-management/traffic-transformation#response-headers-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "#response-headers-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "api-management/traffic-transformation#response-headers-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "#response-headers-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Response Header Transform middleware summary
@@ -87,7 +87,7 @@ If both API-level and endpoint-level middleware are configured, the endpoint-lev
 
 When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#response-headers-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#response-headers-using-classic" >}}) page.
 
 ### API Definition
 
@@ -247,7 +247,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 #### Combining API-level and Endpoint-level transforms
 
-If the example [API-level]({{< ref "api-management/traffic-transformation#api-level-transform" >}}) and [endpoint-level]({{< ref "api-management/traffic-transformation#endpoint-level-transform" >}}) transforms are applied to the same API, then the `X-Secret` header will be added (by the endpoint-level transform first) and then removed (by the API-level transform). Subsequently, the result of the two transforms for a call to `GET /status/200` would be to add four headers:
+If the example [API-level]({{< ref "#api-level-transform" >}}) and [endpoint-level]({{< ref "#endpoint-level-transform" >}}) transforms are applied to the same API, then the `X-Secret` header will be added (by the endpoint-level transform first) and then removed (by the API-level transform). Subsequently, the result of the two transforms for a call to `GET /status/200` would be to add four headers:
 - `X-Request-ID`
 - `X-User-ID`
 - `X-Static`
@@ -311,7 +311,7 @@ When working with Tyk Classic APIs the transformation is configured in the Tyk C
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation/request-context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the response header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#response-headers-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#response-headers-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the Response Header Transform in Tyk Operator](#tyk-operator) section below.
 
@@ -401,7 +401,7 @@ In this example the Response Header Transform middleware has been configured for
 
 #### Combining API-level and Endpoint-level transforms
 
-If the example [API-level]({{< ref "api-management/traffic-transformation#api-level-transform" >}}) and [endpoint-level]({{< ref "api-management/traffic-transformation#endpoint-level-transform" >}}) transforms are applied to the same API, then the `X-Secret` header will be added (by the endpoint-level transform first) and then removed (by the API-level transform). Subsequently, the result of the two transforms for a call to `GET /status/200` would be to add four headers:
+If the example [API-level]({{< ref "#api-level-transform" >}}) and [endpoint-level]({{< ref "#endpoint-level-transform" >}}) transforms are applied to the same API, then the `X-Secret` header will be added (by the endpoint-level transform first) and then removed (by the API-level transform). Subsequently, the result of the two transforms for a call to `GET /status/200` would be to add four headers:
 - `X-Request-ID`
 - `X-User-ID`
 - `X-Static`
@@ -436,7 +436,7 @@ For example:
 
 In this example, the `Link` and `Location` headers will be modified from the server-generated response, with the protocol, domain and port of the value set in `target_host`.
 
-This feature is rarely used and has not been implemented in the Tyk Dashboard UI, nor in the [Tyk OAS API]({{< ref "api-management/traffic-transformation#response-headers-using-tyk-oas" >}}).
+This feature is rarely used and has not been implemented in the Tyk Dashboard UI, nor in the [Tyk OAS API]({{< ref "#response-headers-using-tyk-oas" >}}).
 
 ### API Designer
 

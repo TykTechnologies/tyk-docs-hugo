@@ -46,7 +46,7 @@ When the Mock Response middleware is configured for a specific endpoint, it term
 
 ### Advanced mock responses with Tyk OAS
 
-When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) in the OpenAPI description and use this to automatically generate responses using those examples. Where multiple examples are defined, for example for different response codes, Tyk enables you to [configure special headers]({{< ref "api-management/traffic-transformation#multiple-mock-responses-for-a-single-endpoint" >}}) in the request to select the desired mock response.
+When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) in the OpenAPI description and use this to automatically generate responses using those examples. Where multiple examples are defined, for example for different response codes, Tyk enables you to [configure special headers]({{< ref "#multiple-mock-responses-for-a-single-endpoint" >}}) in the request to select the desired mock response.
 
 ### Middleware execution order during request processing
 
@@ -62,9 +62,9 @@ When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema](
 
 <hr>
 
-If you’re using Tyk OAS APIs, then you can find details and examples of how to configure the mock response middleware [here]({{< ref "api-management/traffic-transformation#mock-response-using-tyk-oas" >}}).
+If you’re using Tyk OAS APIs, then you can find details and examples of how to configure the mock response middleware [here]({{< ref "#mock-response-using-tyk-oas" >}}).
 
-If you’re using Tyk Classic APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "api-management/traffic-transformation#mock-response-using-classic" >}}).
+If you’re using Tyk Classic APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "#mock-response-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ### Mock Response middleware summary
@@ -78,7 +78,7 @@ If you’re using Tyk Classic APIs, then you can find details and examples of ho
 
 The [OpenAPI Specification](https://learn.openapis.org/specification/docs.html#adding-examples) provides metadata that can be used by automatic documentation generators to create comprehensive reference guides for APIs. Most objects in the specification include a `description` field that offers additional human-readable information for documentation. Alongside descriptions, some OpenAPI objects can include sample values in the OpenAPI Document, enhancing the generated documentation by providing representative content that the upstream service might return in responses.
 
-Tyk leverages examples from your API documentation (in OpenAPI Spec format) to generate mock responses for the API exposed via the gateway. Based on this data, Tyk adds a new middleware named "Mock Response" and returns various mock responses according to your spec. Refer to the [Mock configuration guide]({{< ref "api-management/traffic-transformation#automatic-configuration-inferred-from-your-openapi-document" >}}) to learn how to do this.
+Tyk leverages examples from your API documentation (in OpenAPI Spec format) to generate mock responses for the API exposed via the gateway. Based on this data, Tyk adds a new middleware named "Mock Response" and returns various mock responses according to your spec. Refer to the [Mock configuration guide]({{< ref "#automatic-configuration-inferred-from-your-openapi-document" >}}) to learn how to do this.
 
 The specification provides three methods for Tyk to deduce the mock response: `example`, `examples` and `schema`. 
 1. `example`: A sample value that could be returned in a specific field in a response (see [below](#using-example-to-generate-a-mock-response))
@@ -151,7 +151,7 @@ In this extract, the API developer also indicates that a call to `GET /get` coul
 }
 ```
 
-The `exampleNames` for these two values have been configured as `first-example` and `second-example` and can be used to [invoke the desired response]({{< ref "api-management/traffic-transformation#multiple-mock-responses-for-a-single-endpoint" >}}) from a mocked endpoint.
+The `exampleNames` for these two values have been configured as `first-example` and `second-example` and can be used to [invoke the desired response]({{< ref "#multiple-mock-responses-for-a-single-endpoint" >}}) from a mocked endpoint.
 
 ### Using `schema` to generate a mock response
 
@@ -229,7 +229,7 @@ Notice that in the mock response above, `firstname` has the value `string` since
 
 ## Using Tyk OAS {#mock-response-using-tyk-oas}
 
-This tutorial is for Tyk OAS API definition users. If you're using the legacy Tyk Classic APIs, please refer to the [Tyk Classic Mock Response tutorial]({{< ref "api-management/traffic-transformation#mock-response-using-classic" >}}).
+This tutorial is for Tyk OAS API definition users. If you're using the legacy Tyk Classic APIs, please refer to the [Tyk Classic Mock Response tutorial]({{< ref "#mock-response-using-classic" >}}).
 
 The [Mock Response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. 
 
@@ -661,7 +661,7 @@ When working with Tyk Classic APIs, this middleware is executed at the start of 
 
 The middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API, the API Designer or in [Tyk Operator](#tyk-operator).
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#mock-response-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#mock-response-using-tyk-oas" >}}) page.
 
 ### API Definition
 

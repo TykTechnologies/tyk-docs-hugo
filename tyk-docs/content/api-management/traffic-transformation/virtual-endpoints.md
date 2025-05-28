@@ -68,9 +68,9 @@ Virtual endpoints are not available in Tyk Cloud Classic.
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "#virtual-endpoints-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "#virtual-endpoints-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Virtual Endpoint middleware summary
@@ -85,7 +85,7 @@ The [virtual endpoint]({{< ref "api-management/traffic-transformation/virtual-en
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "virtual-endpoints-using-classic" >}}) page.
 
 ### API Definition
 
@@ -264,7 +264,7 @@ The [virtual endpoint]({{< ref "api-management/traffic-transformation/virtual-en
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#virtual-endpoints-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 

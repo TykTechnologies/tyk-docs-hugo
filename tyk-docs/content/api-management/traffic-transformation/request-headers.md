@@ -64,9 +64,9 @@ You can enrich the request headers by injecting data from context variables or s
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "api-management/traffic-transformation#request-headers-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "#request-headers-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "api-management/traffic-transformation#request-headers-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "#request-headers-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Header Transform middleware summary
@@ -90,7 +90,7 @@ If both API-level and endpoint-level middleware are configured, the API-level tr
 
 When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-headers-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#request-headers-using-classic" >}}) page.
 
 ### API Definition
 
@@ -323,7 +323,7 @@ When working with Tyk Classic APIs the transformation is configured in the Tyk C
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation/request-context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-headers-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#request-headers-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the Request Header Transform in Tyk Operator](#tyk-operator) section below.
 

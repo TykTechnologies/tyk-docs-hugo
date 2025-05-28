@@ -83,9 +83,9 @@ The Request Body Transform supports two helper functions that you can use in you
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "api-management/traffic-transformation#request-body-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "#request-body-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "api-management/traffic-transformation#request-body-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "#request-body-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Body Transform middleware summary
@@ -100,7 +100,7 @@ The [request body transform]({{< ref "api-management/traffic-transformation/requ
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-body-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#request-body-using-classic" >}}) page.
 
 ### API Definition
 
@@ -261,7 +261,7 @@ This middleware is configured in the Tyk Classic API Definition at the endpoint 
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation/request-context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-body-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#request-body-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [Configuring the middleware in Tyk Operator](#tyk-operator) section below.
 

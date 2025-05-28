@@ -341,7 +341,7 @@ Prevent sensitive data, such as usernames, passwords, license keys and other sec
 **Sanitise Responses**
 
 
-Modify or remove sensitive data from responses by using [transforms]({{< ref "api-management/traffic-transformation#" >}}) to alter the [response headers]({{< ref "api-management/traffic-transformation/response-headers" >}}) and [body]({{< ref "api-management/traffic-transformation/response-body" >}}).
+Modify or remove sensitive data from responses by using [transforms]({{< ref "api-management/traffic-transformation" >}}) to alter the [response headers]({{< ref "api-management/traffic-transformation/response-headers" >}}) and [body]({{< ref "api-management/traffic-transformation/response-body" >}}).
 
 <a id="sign-payloads"></a>
 

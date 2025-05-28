@@ -44,7 +44,7 @@ When working with Tyk Classic APIs, you can disable tracking at the API or endpo
 
 If you're using Tyk OAS APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "api-management/traffic-transformation/do-not-track#do-not-track-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "api-management/traffic-transformation#do-not-track-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "#do-not-track-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Do-Not-Track middleware summary
@@ -55,11 +55,11 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## Using Tyk OAS {#do-not-track-using-tyk-oas}
 
-The [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests to your APIs). When working with Tyk OAS APIs, you can currently disable tracking only at the endpoint-level.
+The [Do-Not-Track]({{< ref "#do-not-track-overview" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests to your APIs). When working with Tyk OAS APIs, you can currently disable tracking only at the endpoint-level.
 
 When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}) either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#do-not-track-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#do-not-track-using-classic" >}}) page.
 
 ### API Definition
 
@@ -150,7 +150,7 @@ Adding do-not-track to your API endpoints is easy when using the API Designer in
 
 ## Using Classic {#do-not-track-using-classic}
 
-The [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests) at the API or endpoint level.
+The [Do-Not-Track]({{< ref "#do-not-track-overview" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests) at the API or endpoint level.
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 

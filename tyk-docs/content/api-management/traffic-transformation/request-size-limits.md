@@ -67,9 +67,9 @@ Tyk Cloud Classic enforces a strict request size limit of 1MB on all inbound req
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "api-management/traffic-transformation#request-size-limits-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "#request-size-limits-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "api-management/traffic-transformation#request-size-limits-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "#request-size-limits-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Size Limit middleware summary
@@ -84,14 +84,14 @@ The [request size limit]({{< ref "api-management/traffic-transformation/request-
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-size-limits-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#request-size-limits-using-classic" >}}) page.
 
 ### API Definition
 
 There are three different levels of granularity that can be used when configuring a request size limit.
-- [system-wide]({{< ref "api-management/traffic-transformation#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
-- [API-level]({{< ref "api-management/traffic-transformation#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
-- [endpoint-level]({{< ref "api-management/traffic-transformation#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
+- [system-wide]({{< ref "#apďlying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
+- [API-level]({{< ref "#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
+- [endpoint-level]({{< ref "#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
 
 #### Applying a size limit for a specific API
 
@@ -201,16 +201,16 @@ The [request size limit]({{< ref "api-management/traffic-transformation/request-
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-size-limits-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#request-size-limits-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
 ### API Definition
 
 There are three different levels of granularity that can be used when configuring a request size limit.
-- [system-wide]({{< ref "api-management/traffic-transformation#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
+- [system-wide]({{< ref "#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
 - [API-level]({{< ref "api-management/traffic-transformation/request-headers#tyk-classic-api" >}}): affecting all endpoints for an API
-- [endpoint-level]({{< ref "api-management/traffic-transformation#tyk-classic-endpoint" >}}): affecting a single API endpoint
+- [endpoint-level]({{< ref "#tyk-classic-endpoint" >}}): affecting a single API endpoint
 
 #### Applying a size limit for a specific API {#tyk-classic-api}
 
