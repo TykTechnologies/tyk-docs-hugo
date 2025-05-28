@@ -89,7 +89,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 ### API Definition
 
 There are three different levels of granularity that can be used when configuring a request size limit.
-- [system-wide]({{< ref "#apďlying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
+- [system-wide]({{< ref "#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
 - [API-level]({{< ref "#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
 - [endpoint-level]({{< ref "#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
 
