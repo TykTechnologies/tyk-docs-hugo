@@ -51,7 +51,7 @@ API sunsetting is the process of phasing out or retiring an older version of an 
 
 When sunsetting API versions, you may have endpoints that become deprecated between versions. It can be more user friendly to retain those endpoints but return a helpful error, instead of just returning `HTTP 404 Not Found`.
 
-This is easy to do with Tyk. You could, for example, include the deprecated endpoint in the new version of the API and configure the [mock response]({{< ref "api-management/traffic-transformation#mock-response-1" >}}) middleware to provide your clients with relevant information and instruction. Alternatively, you could return a `HTTP 302 Found` header and redirect the user to the new endpoint.
+This is easy to do with Tyk. You could, for example, include the deprecated endpoint in the new version of the API and configure the [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware to provide your clients with relevant information and instruction. Alternatively, you could return a `HTTP 302 Found` header and redirect the user to the new endpoint.
 
 ---
 
@@ -158,7 +158,7 @@ When using Tyk Classic APIs you can explicitly grant access to specific versions
 
 As explained, there are differences between the way that versioning works for Tyk OAS and Tyk Classic APIs.
 
-These are largely due to the fact that a separate API definition is generated for each version of a Tyk OAS API, with one designated as the [base]({{< ref "api-management/api-versioning#base-and-child-apis" >}}) version (which should be exposed on Tyk Gateway with the other (child) versions set to [internal]({{< ref "api-management/traffic-transformation#internal-endpoint-1" >}}) visibility) whereas all versions of a Tyk Classic API are described by a single API definition.
+These are largely due to the fact that a separate API definition is generated for each version of a Tyk OAS API, with one designated as the [base]({{< ref "api-management/api-versioning#base-and-child-apis" >}}) version (which should be exposed on Tyk Gateway with the other (child) versions set to [internal]({{< ref "api-management/traffic-transformation/internal-endpoint" >}}) visibility) whereas all versions of a Tyk Classic API are described by a single API definition.
 
 The Tyk Classic approach limits the range of features that can differ between versions.
 
