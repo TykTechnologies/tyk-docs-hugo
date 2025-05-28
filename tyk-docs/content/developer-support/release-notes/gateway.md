@@ -363,7 +363,7 @@ There are no breaking changes in this release.
 
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
-| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
 
