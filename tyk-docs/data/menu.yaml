@@ -175,14 +175,27 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
-      - title: "TCP Proxy"
-        path: /key-concepts/tcp-proxy
-        category: Page
+      - title: "Advanced Protocols"
+        path: /advanced-configuration/other-protocols
+        category: Directory
         show: True
-      - title: "Other Non HTTP Protocols"
-        path: /api-management/non-http-protocols
-        category: Page
-        show: True
+        menu:
+        - title: "TCP Proxy"
+          path: /key-concepts/tcp-proxy
+          category: Page
+          show: True
+        - title: "gRPC Proxy"
+          path: /key-concepts/grpc-proxy
+          category: Page
+          show: True
+        - title: "Server Side Events"
+          path: /advanced-configuration/sse-proxy
+          category: Page
+          show: True
+        - title: "Websockets"
+          path: /advanced-configuration/websockets
+          category: Page
+          show: True
       - title: "Request Optimization"
         category: Directory
         show: True
@@ -212,15 +225,80 @@ menu:
             category: Page
             show: True
       - title: "Traffic Transformation"
+        path: /api-management/traffic-transformation
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /api-management/traffic-transformation
+        - title: "SOAP To REST"
+          path: /advanced-configuration/transform-traffic/soap-rest
           category: Page
           show: True
-        - title: "SOAP to REST"
-          path: /advanced-configuration/transform-traffic/soap-rest
+        - title: "Allow List"
+          path: /api-management/traffic-transformation/allow-list
+          category: Page
+          show: True
+        - title: "Block List"
+          path: /api-management/traffic-transformation/block-list
+          category: Page
+          show: True
+        - title: "Do Not Track"
+          path: /api-management/traffic-transformation/do-not-track
+          category: Page
+          show: True
+        - title: "Ignore Authentication"
+          path: /api-management/traffic-transformation/ignore-authentication
+          category: Page
+          show: True
+        - title: "Internal Endpoint"
+          path: /api-management/traffic-transformation/internal-endpoint
+          category: Page
+          show: True
+        - title: "Request Method "
+          path: /api-management/traffic-transformation/request-method
+          category: Page
+          show: True
+        - title: "Request Body "
+          path: /api-management/traffic-transformation/request-body
+          category: Page
+          show: True
+        - title: "Request Headers "
+          path: /api-management/traffic-transformation/request-headers
+          category: Page
+          show: True
+        - title: "Request Size Limits"
+          path: /api-management/traffic-transformation/request-size-limits
+          category: Page
+          show: True
+        - title: "Response Body"
+          path: /api-management/traffic-transformation/response-body
+          category: Page
+          show: True
+        - title: "Response Headers"
+          path: /api-management/traffic-transformation/response-headers
+          category: Page
+          show: True
+        - title: "Request Validation"
+          path: /api-management/traffic-transformation/request-validation
+          category: Page
+          show: True
+        - title: "Mock Response"
+          path: /api-management/traffic-transformation/mock-response
+          category: Page
+          show: True
+        - title: "Virtual Endpoints"
+          path: /api-management/traffic-transformation/virtual-endpoints
+          category: Page
+          show: True
+        - title: "Go Templates"
+          path: /api-management/traffic-transformation/go-templates
+          category: Page
+          show: True
+        - title: "JQ Transforms"
+          path: /api-management/traffic-transformation/jq-transforms
+          category: Page
+          show: True
+        - title: "Request Context Variables"
+          path: /api-management/traffic-transformation/request-context-variables
           category: Page
           show: True
         - title: "URL Rewrite"
@@ -252,11 +330,18 @@ menu:
         path: /api-management/multiple-environments
         category: Page
         show: True
-
       - title: "User Management"
         path: /api-management/user-management
         category: Page
         show: True
+      - title: "Use Cases"
+        category: Directory
+        show: True
+        menu:
+          - title: "Open Banking"
+            path: /use-cases/open-banking
+            category: Page
+            show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
@@ -290,12 +375,33 @@ menu:
                 path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
                 category: Page
                 show: True
-              - title: "Security Policy and Access Keys"
-                path: /api-management/policies
-                category: Page
-                show: True
             - title: "Upstream Authentication"
               path: /api-management/upstream-authentication
+              category: Directory
+              show: True
+              menu:
+              - title: "Auth Token"
+                path: /api-management/upstream-authentication/auth-token
+                category: Page
+                show: True
+              - title: "Basic Auth"
+                path: /api-management/upstream-authentication/basic-auth
+                category: Page
+                show: True
+              - title: "OAuth 2.0"
+                path: /api-management/upstream-authentication/oauth
+                category: Page
+                show: True
+              - title: "Mutual TLS"
+                path: /api-management/upstream-authentication/mtls
+                category: Page
+                show: True
+              - title: "Request Signing"
+                path: /api-management/upstream-authentication/request-signing
+                category: Page
+                show: True
+            - title: "Security Policy and Access Keys"
+              path: /api-management/policies
               category: Page
               show: True
             - title: "Certificates in Tyk"

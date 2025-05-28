@@ -353,7 +353,7 @@ If set to `true` when matching the URL path for requests to this API, the case o
   * `/my-api/getUser`
   * `/my-api/GetUser`
 
-If set to true, this will override the endpoint level settings in [Ignore]({{< ref "api-management/traffic-transformation#case-sensitivity-2" >}}), [Allowlist]({{< ref "api-management/traffic-transformation#case-sensitivity" >}}) and [Blocklist]({{< ref "api-management/traffic-transformation#case-sensitivity-1" >}}) middleware. This setting can be overriden at the Tyk Gateway level, and so applied to all APIs, by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
+If set to true, this will override the endpoint level settings in [Ignore]({{< ref "api-management/traffic-transformation/ignore-authentication#case-sensitivity" >}}), [Allowlist]({{< ref "api-management/traffic-transformation/allow-list#case-sensitivity" >}}) and [Blocklist]({{< ref "api-management/traffic-transformation/block-list#case-sensitivity" >}}) middleware. This setting can be overriden at the Tyk Gateway level, and so applied to all APIs, by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
 
 **Field: `enable_batch_request_support`**
 Set to true to enable batch support

@@ -17,7 +17,7 @@ The main goals of the Chat Interface are:
 *   **User-Friendly Interaction:** Offer an intuitive web-based chat experience for users of all technical levels.
 *   **Unified Access:** Provide a single point of access to various configured LLMs, Tools, and Data Sources.
 *   **Context Management:** Maintain conversation history and manage context, including system prompts and retrieved data (RAG).
-*   **Secure & Governed:** Enforce access controls based on user groups and apply configured Filters.
+*   **Secure & Governed:** Enforce access controls based on teams and apply configured Filters.
 
 ## Key Features
 
@@ -28,7 +28,7 @@ The main goals of the Chat Interface are:
 *   **System Prompts:** Administrators can define specific system prompts for different Chat Experiences to guide the LLM's persona, tone, and behavior.
 *   **History:** Users can view their past chat sessions.
 *   **File Upload (Context):** Users might be able to upload files directly within a chat to provide temporary context for the LLM (depending on configuration).
-*   **Access Control:** Users only see and can interact with Chat Experiences assigned to their [Groups]({{< ref "ai-management/ai-studio/user-management" >}}).
+*   **Access Control:** Users only see and can interact with Chat Experiences assigned to their [Teams]({{< ref "ai-management/ai-studio/teams" >}}).
 
 ## Using the Chat Interface
 
@@ -50,7 +50,7 @@ Administrators configure the available "Chat Experiences" (formerly known as Cha
 *   **Enabling Data Sources:** Selecting which [Data Source Catalogues]({{< ref "ai-management/ai-studio/datasources-rag" >}}) are available.
 *   **Setting System Prompt:** Defining the guiding prompt for the LLM.
 *   **Applying Filters:** Associating specific [Filters]({{< ref "ai-management/ai-studio/filters" >}}) for governance.
-*   **Assigning Groups:** Determining which [User Groups]({{< ref "ai-management/ai-studio/user-management" >}}) can access this Chat Experience.
+*   **Assigning Groups:** Determining which [Teams]({{< ref "ai-management/ai-studio/teams" >}}) can access this Chat Experience.
 *   **Enabling/Disabling Features:** Toggling features like file uploads or direct tool usage.
 
     {{< img src="/img/ai-management/chat-experience-config.png" alt="Chat Config" >}}

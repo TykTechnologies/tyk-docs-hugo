@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.justifyContent = "center";
     modal.style.alignItems = "center";
     modal.style.cursor = "pointer";
+    modal.style.zIndex = "1000"; // Higher than header's z-index (11)
 
     let img = document.createElement("img");
     img.style.maxWidth = "90%";
