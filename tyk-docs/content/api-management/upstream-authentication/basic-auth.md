@@ -30,7 +30,7 @@ If the incoming request from the client already has credentials in the `Authoriz
 
 Sometimes a non-standard upstream server might require the authentication credentials to be provided in a different header (i.e. not `Authorization`). With Tyk, you can easily configure a custom header to be used for the credentials if required.
 
-Upstream Basic Authentication is only supported by Tyk OAS APIs. If you are using Tyk Classic APIs, you could create the client credential offline and add the `Authorization` header using the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware.
+Upstream Basic Authentication is only supported by Tyk OAS APIs. If you are using Tyk Classic APIs, you could create the client credential offline and add the `Authorization` header using the [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware.
 
 #### Configuring Upstream Basic Auth in the Tyk OAS API definition
 

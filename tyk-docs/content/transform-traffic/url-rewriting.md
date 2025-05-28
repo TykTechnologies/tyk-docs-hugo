@@ -54,9 +54,9 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 <!-- proposed "summary box" to be shown graphically on each middleware page
 
 ## URL Rewrite middleware summary
- - The URL Rewrite middleware is an optional stage in Tyk's API Request processing chain, sitting between the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) and [Response Caching]({{< ref "api-management/response-caching" >}}) middleware.
+ - The URL Rewrite middleware is an optional stage in Tyk's API Request processing chain, sitting between the [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) and [Response Caching]({{< ref "api-management/response-caching" >}}) middleware.
  - URL Rewrite is configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard.
- - URL Rewrite can access both [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+ - URL Rewrite can access both [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) and [request context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}).
  
 -->
 
@@ -96,7 +96,7 @@ When using the request path location, you can use wildcards in the key name (whi
 The pattern takes the form of a regular expression (regex) against which the key value will be compared.
 
 This pattern can be a static regex or can contain dynamic variables:
-- [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
+- [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
 - [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
 
 Percent-encoded (URL-encoded) characters can be used in the pattern regex when the key is the request path or path parameter
@@ -490,7 +490,7 @@ URL rewrite triggers and rules are explained in detail [here]({{< ref "transform
 
 When working with Tyk Classic APIs the rules and triggers are configured in the Tyk Classic API Definition; this can be done manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
-If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
+If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation/request-context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
 If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "transform-traffic/url-rewriting#url-rewriting-using-tyk-oas" >}}) page.
 
