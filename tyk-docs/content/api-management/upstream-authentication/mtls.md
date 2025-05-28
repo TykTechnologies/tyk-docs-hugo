@@ -23,7 +23,7 @@ We use a system of [mapping certificates]({{< ref "#mapping-certificates-to-doma
 
 #### Upstream mTLS for Tyk middleware and plugins
 
-If upstream mTLS certificates are configured for an API, they will not be used for direct proxies to the upstream and will also automatically be used for any HTTP requests made from the [JavaScript Virtual Endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints" >}}) middleware. They will **not** be used for HTTP requests from custom plugins.
+If upstream mTLS certificates are configured for an API, they will not be used for direct proxies to the upstream and will also automatically be used for any HTTP requests made from the [JavaScript Virtual Endpoint]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}}) middleware. They will **not** be used for HTTP requests from custom plugins.
 
 
 #### Upstream mTLS for Tyk Cloud

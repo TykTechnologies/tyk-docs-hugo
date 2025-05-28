@@ -50,7 +50,7 @@ The [Circuit Breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}) is a prot
 
 #### Do Not Track Endpoint
 
-If [traffic logging]({{< ref "api-management/logs-metrics#api-traffic-logs" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware to suppress creation of transaction records for specific endpoints.
+If [traffic logging]({{< ref "api-management/logs-metrics#api-traffic-logs" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "api-management/traffic-transformation/do-not-track" >}}) middleware to suppress creation of transaction records for specific endpoints.
 
 #### Enforced Timeout
 
@@ -62,7 +62,7 @@ Adding the [Ignore Authentication]({{< ref "api-management/traffic-transformatio
 
 #### Internal Endpoint
 
-The [Internal Endpoint]({{< ref "api-management/traffic-transformation#internal-endpoint-overview" >}}) middleware instructs Tyk Gateway not to expose the endpoint externally. Tyk Gateway will then ignore external requests to that endpoint while continuing to process internal requests from other APIs; this is often used with the [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) functionality.
+The [Internal Endpoint]({{< ref "api-management/traffic-transformation/internal-endpoint" >}}) middleware instructs Tyk Gateway not to expose the endpoint externally. Tyk Gateway will then ignore external requests to that endpoint while continuing to process internal requests from other APIs; this is often used with the [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) functionality.
 
 #### Method Transformation
 
@@ -86,7 +86,7 @@ Tyk Gateway offers a flexible tiered system of limiting request sizes ranging fr
 
 #### Request Validation
 
-Tyk’s [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+Tyk’s [Request Validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
 When working with Tyk OAS APIs, the request validation covers both headers and body (payload); with the older Tyk Classic API style we can validate only the request body (payload).
 

@@ -209,7 +209,7 @@ The `jsonMarshal` function converts XML formatted input into JSON, for example:
 {"hello":"world"}
 ```
 
-Note that in this example, Go will step through the entire data structure provided to the template. When used in the [Request]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}}) or [Response]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}}) Body Transform middleware, this would include Context Variables and Session Metadata if provided to the middleware.
+Note that in this example, Go will step through the entire data structure provided to the template. When used in the [Request]({{< ref "api-management/traffic-transformation/request-body#data-accessible-to-the-middleware" >}}) or [Response]({{< ref "api-management/traffic-transformation/request-body#data-accessible-to-the-middleware" >}}) Body Transform middleware, this would include Context Variables and Session Metadata if provided to the middleware.
 
 ### JSON to XML conversion using xmlMarshal
 The `xmlMarshal` function converts JSON formatted input into XML, for example:
@@ -228,5 +228,5 @@ The `xmlMarshal` function converts JSON formatted input into XML, for example:
 <hello>world</hello>
 ```
 
-Note that in this example, Go will step through the entire data structure provided to the template. When used in the [Request]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}}) or [Response]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}}) Body Transform middleware, this would include Context Variables and Session Metadata if provided to the middleware.
+Note that in this example, Go will step through the entire data structure provided to the template. When used in the [Request]({{< ref "api-management/traffic-transformation/request-body#data-accessible-to-the-middleware" >}}) or [Response]({{< ref "api-management/traffic-transformation/request-body#data-accessible-to-the-middleware" >}}) Body Transform middleware, this would include Context Variables and Session Metadata if provided to the middleware.
 

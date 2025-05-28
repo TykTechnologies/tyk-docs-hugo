@@ -40,7 +40,7 @@ Tyk's body transform middleware uses the [Go template language](https://golang.o
 
 The Go template can be defined within the API Definition or can be read from a file that is accessible to Tyk, for example alongside your [error templates]({{< ref "api-management/gateway-events#error-templates" >}}).
 
-We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "api-management/traffic-transformation#go-templates" >}}).
+We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "api-management/traffic-transformation/go-templates" >}}).
 
 {{< note success >}}
 **Note**  
@@ -77,8 +77,8 @@ As explained in the [documentation](https://pkg.go.dev/text/template), templates
 A very common transformation that is applied in the API Gateway is to convert between XML and JSON formatted body content.
 
 The Response Body Transform supports two helper functions that you can use in your Go templates to facilitate this:
-- `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "api-management/traffic-transformation#xml-to-json-conversion-using-jsonmarshal" >}}))
-- `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "api-management/traffic-transformation#json-to-xml-conversion-using-xmlmarshal" >}}))
+- `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "api-management/traffic-transformation/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}))
+- `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "api-management/traffic-transformation/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
 
 <hr>
 

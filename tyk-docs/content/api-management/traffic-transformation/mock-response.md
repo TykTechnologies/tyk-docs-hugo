@@ -751,7 +751,7 @@ You can use the API Designer in the Tyk Dashboard to configure the Mock Response
 {{< note success >}}
 **Note**
 
-For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an [allow list]({{< ref "api-management/traffic-transformation#allow-list-using-tyk-oas" >}}). If this isn't done, then the mock will not be saved when you save your API in the designer.
+For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an [allow list]({{< ref "api-management/traffic-transformation/allow-list#allow-list-using-tyk-oas" >}}). If this isn't done, then the mock will not be saved when you save your API in the designer.
 {{< /note >}}
 
 ### Tyk Operator

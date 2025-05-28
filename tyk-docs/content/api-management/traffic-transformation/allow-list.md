@@ -215,7 +215,7 @@ The `white_list` object has the following configuration:
 - `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
-- `method_actions`: a shared object used to configure the [mock response]({{< ref "api-management/traffic-transformation#configuring-mock-response-using-tyk-dashboard-ui" >}}) middleware
+- `method_actions`: a shared object used to configure the [mock response]({{< ref "api-management/traffic-transformation/mock-response#configuring-mock-response-using-tyk-dashboard-ui" >}}) middleware
 
 The `method_actions` object should be configured as follows, with an entry created for each allowed method on the path:
 

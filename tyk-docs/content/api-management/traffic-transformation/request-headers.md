@@ -253,7 +253,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ### Combining API-level and Endpoint-level transforms
 
-If the API-level transform in the previous [example]({{< ref "api-management/traffic-transformation#api-level-transform" >}}) is applied to the same API, then because the API-level transformation is performed first, the `X-Static` header will be added (by the API-level transform) and then removed (by the endpoint-level transform) such that the overall effect of the two transforms for a call to `GET /status/200` would be to add three headers:
+If the API-level transform in the previous [example]({{< ref "api-management/traffic-transformation/request-headers#api-level-transform" >}}) is applied to the same API, then because the API-level transformation is performed first, the `X-Static` header will be added (by the API-level transform) and then removed (by the endpoint-level transform) such that the overall effect of the two transforms for a call to `GET /status/200` would be to add three headers:
  - `X-Request-ID`
  - `X-User-ID`
  - `X-Secret`
@@ -395,7 +395,7 @@ In this example the Request Header Transform middleware has been configured for 
 
 #### Combining API-level and Endpoint-level transforms
 
-If the API-level transform in the previous [example]({{< ref "api-management/traffic-transformation#api-level-transform" >}}) is applied to the same API, then because the API-level transformation is performed first, the `X-Static` header will be added (by the API-level transform) and then removed (by the endpoint-level transform) such that the overall effect of the two transforms for a call to `GET /status/200` would be to add three headers:
+If the API-level transform in the previous [example]({{< ref "api-management/traffic-transformation/request-headers#api-level-transform" >}}) is applied to the same API, then because the API-level transformation is performed first, the `X-Static` header will be added (by the API-level transform) and then removed (by the endpoint-level transform) such that the overall effect of the two transforms for a call to `GET /status/200` would be to add three headers:
 - `X-Request-ID`
 - `X-User-ID`
 - `X-Secret`
