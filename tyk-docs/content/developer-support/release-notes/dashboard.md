@@ -321,7 +321,7 @@ Tyk Dashboard now runs on Golang 1.23, bringing security and performance improve
 - removal of 3DES cipher suites
 - updates to X509KeyPair handling.
 
-**You may need to adjust your setup for compatibility**. For more detail please see the official Go [release notes](https://go.dev/doc/go1.23).
+**You may need to adjust your setup for compatibility**. For more details, please see the official Go [release notes](https://go.dev/doc/go1.23).
 </details>
 </li>
 <li>
@@ -418,11 +418,11 @@ There are no breaking changes in this release.
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.2}
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
