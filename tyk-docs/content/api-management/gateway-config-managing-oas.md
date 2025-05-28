@@ -381,10 +381,10 @@ On the Import API screen, there are three options for <b>Import Type</b>, it is 
 
     | Middleware | OpenAPI data used for configuration |
     |------------|-------------------------------------|
-    | [Request validation]({{< ref "api-management/traffic-transformation#request-schema-in-openapi-specification" >}}) | Endpoints that have `requestBody` or `schema` |
-    | [Mock response]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) | Endpoints with `examples` or `schema` |
+    | [Request validation]({{< ref "api-management/traffic-transformation/request-validation#request-schema-in-openapi-specification" >}}) | Endpoints that have `requestBody` or `schema` |
+    | [Mock response]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) | Endpoints with `examples` or `schema` |
     | [Client authentication]({{< ref "api-management/client-authentication#how-does-tyk-implement-authentication-and-authorization" >}}) | Defined in `security` and `securitySchemes` |
-    | [Allow list]({{< ref "api-management/traffic-transformation#allow-list-1" >}}) | Restrict access only to declared endpoint paths |
+    | [Allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}) | Restrict access only to declared endpoint paths |
    
 8. Select **Import API** to complete the import and create the API based on your API definition.
 
@@ -422,9 +422,9 @@ The optional parameters are:
 | `listenPath`      | Set the listen path for the API | Defaults to `/`    |
 | `upstreamURL`     | Set the upstream (target) URL   | Defaults to the first URL in the `servers` section of the [OpenAPI description]({{< ref "api-management/gateway-config-managing-oas#api-base-path" >}}) |
 | `authentication`  | Configure [client authentication]({{< ref "api-management/client-authentication#how-does-tyk-implement-authentication-and-authorization" >}}) based on `security` and `securitySchemes` | Client authentication is not configured |
-| `allowList`       | Enable [allow list]({{< ref "api-management/traffic-transformation#allow-list-1" >}}) middleware for all endpoints declared in the OpenAPI description | Allow list not configured |
-| `validateRequest` | Configure [request validation]({{< ref "api-management/traffic-transformation#request-schema-in-openapi-specification" >}}) for all endpoints with `requestBody` or `schema` defined | Request validation not configured |
-| `mockResponse`    | Configure [mock response]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) for all endpoints with `examples` or `schema` defined | Mock response not configured |
+| `allowList`       | Enable [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}) middleware for all endpoints declared in the OpenAPI description | Allow list not configured |
+| `validateRequest` | Configure [request validation]({{< ref "api-management/traffic-transformation/request-validation#request-schema-in-openapi-specification" >}}) for all endpoints with `requestBody` or `schema` defined | Request validation not configured |
+| `mockResponse`    | Configure [mock response]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) for all endpoints with `examples` or `schema` defined | Mock response not configured |
 | `apiID`           | Id to be assigned to the new API | Tyk will determine and assign a unique Id |
 | `templateId`    | Apply the selected [API template]({{< ref "api-management/dashboard-configuration#applying-a-template-when-creating-an-api-from-a-tyk-oas-api-definition" >}}) when creating the API | No template is applied |
 
@@ -467,9 +467,9 @@ The optional parameters are:
 | `listenPath`      | Set the listen path for the API | Defaults to `/`    |
 | `upstreamURL`     | Set the upstream (target) URL   | Defaults to the first URL in the `servers` section of the [OpenAPI description]({{< ref "api-management/gateway-config-managing-oas#api-base-path" >}}) |
 | `authentication`  | Configure [client authentication]({{< ref "api-management/client-authentication#how-does-tyk-implement-authentication-and-authorization" >}}) based on `security` and `securitySchemes` | Client authentication is not configured |
-| `allowList`       | Enable [allow list]({{< ref "api-management/traffic-transformation#allow-list-1" >}}) middleware for all endpoints declared in the OpenAPI description | Allow list not configured |
-| `validateRequest` | Configure [request validation]({{< ref "api-management/traffic-transformation#request-schema-in-openapi-specification" >}}) for all endpoints with `requestBody` or `schema` defined | Request validation not configured |
-| `mockResponse`    | Configure [mock response]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) for all endpoints with `examples` or `schema` defined | Mock response not configured |
+| `allowList`       | Enable [allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}) middleware for all endpoints declared in the OpenAPI description | Allow list not configured |
+| `validateRequest` | Configure [request validation]({{< ref "api-management/traffic-transformation/request-validation#request-schema-in-openapi-specification" >}}) for all endpoints with `requestBody` or `schema` defined | Request validation not configured |
+| `mockResponse`    | Configure [mock response]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) for all endpoints with `examples` or `schema` defined | Mock response not configured |
 | `apiID`           | Id to be assigned to the new API | Tyk will determine and assign a unique Id |
 
 **Check request response**
@@ -637,10 +637,10 @@ If you have an updated OpenAPI description or Tyk OAS API definition, in YAML or
 
     | Middleware | OpenAPI data used for configuration |
     |------------|-------------------------------------|
-    | [Request validation]({{< ref "api-management/traffic-transformation#request-schema-in-openapi-specification" >}}) | Endpoints that have `requestBody` or `schema` |
-    | [Mock response]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) | Endpoints with `examples` or `schema` |
+    | [Request validation]({{< ref "api-management/traffic-transformation/request-validation#request-schema-in-openapi-specification" >}}) | Endpoints that have `requestBody` or `schema` |
+    | [Mock response]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) | Endpoints with `examples` or `schema` |
     | [Client authentication]({{< ref "api-management/client-authentication#how-does-tyk-implement-authentication-and-authorization" >}}) | Defined in `security` and `securitySchemes` |
-    | [Allow list]({{< ref "api-management/traffic-transformation#allow-list-1" >}}) | Restrict access only to declared endpoint paths |
+    | [Allow list]({{< ref "api-management/traffic-transformation/allow-list" >}}) | Restrict access only to declared endpoint paths |
    
 8. Select **Import API** to complete the update.
 
