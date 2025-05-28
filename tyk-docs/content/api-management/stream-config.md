@@ -4322,7 +4322,7 @@ metrics:
 
 ### Metric Names
 
-Metrics are emitted with a prefix that can be configured with the field `prefix`. The default prefix is `benthos`. The following metrics are emitted with the respective types:
+Metrics are emitted with a prefix that can be configured with the field `prefix`. The default prefix is `bento`. The following metrics are emitted with the respective types:
 
 #### Gauges
 
@@ -4415,9 +4415,9 @@ All metrics are emitted with the following labels:
 # Common config fields, showing default values
 metrics:
   prometheus:
-    prefix: benthos
+    prefix: tyk
     push_interval: ""
-    push_job_name: benthos_push
+    push_job_name: kafka_out
     push_url: ""
 ```
 
@@ -4427,9 +4427,9 @@ metrics:
 # All config fields, showing default values
 metrics:
   prometheus:
-    prefix: benthos
+    prefix: tyk
     push_interval: ""
-    push_job_name: benthos_push
+    push_job_name: my_stream
     push_url: ""
     push_basic_auth:
       enabled: false
@@ -4449,7 +4449,7 @@ Send metrics to a Prometheus push gateway, or expose them via HTTP endpoints.
 A string prefix for all metrics.
 
 Type: `string`
-Default: `"benthos"`
+Default: `"bento"`
 
 ##### push_interval
 
@@ -4471,7 +4471,7 @@ push_interval: 1m
 A job name to attach to metrics pushed to the push gateway.
 
 Type: `string`
-Default: `"benthos_push"`
+Default: `"bento_push"`
 
 ##### push_url
 
@@ -4556,7 +4556,7 @@ metrics:
 
 ### Metric Names
 
-Metrics are emitted with a prefix that can be configured with the field `prefix`. The default prefix is `benthos`. The following metrics are emitted with the respective types:
+Metrics are emitted with a prefix that can be configured with the field `prefix`. The default prefix is `bento`. The following metrics are emitted with the respective types:
 
 #### Gauges
 
@@ -4649,9 +4649,9 @@ All metrics are emitted with the following labels:
 # Common config fields, showing default values
 metrics:
   prometheus:
-    prefix: benthos
+    prefix: tyk
     push_interval: ""
-    push_job_name: benthos_push
+    push_job_name: stream_name
     push_url: ""
 ```
 
@@ -4661,9 +4661,9 @@ metrics:
 # All config fields, showing default values
 metrics:
   prometheus:
-    prefix: benthos
+    prefix: tyk
     push_interval: ""
-    push_job_name: benthos_push
+    push_job_name: bento_push
     push_url: ""
     push_basic_auth:
       enabled: false
@@ -4683,7 +4683,7 @@ Send metrics to a Prometheus push gateway, or expose them via HTTP endpoints.
 A string prefix for all metrics.
 
 Type: `string`
-Default: `"benthos"`
+Default: `"bento"`
 
 ##### push_interval
 
@@ -4705,7 +4705,7 @@ push_interval: 1m
 A job name to attach to metrics pushed to the push gateway.
 
 Type: `string`
-Default: `"benthos_push"`
+Default: `"bento_push"`
 
 ##### push_url
 
