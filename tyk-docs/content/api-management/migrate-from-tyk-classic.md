@@ -175,12 +175,12 @@ There are some differences between the way Tyk Gateway works with Tyk Classic an
 
 2. **Location of Mock Response Middleware**
 
-    The position of mock response middleware in the request processing chain [differs between Tyk Classic and Tyk OAS]({{< ref "api-management/traffic-transformation/request-context-variables#middleware-execution-order-during-request-processing" >}}):
+    The position of mock response middleware in the request processing chain [differs between Tyk Classic and Tyk OAS]({{< ref "api-management/traffic-transformation/mock-response#middleware-execution-order-during-request-processing" >}}):
 
     - In Tyk Classic, it appears at the start of the request processing chain (before authentication)
     - In Tyk OAS, it appears at the end of the request processing chain
 
-    During migration, the system automatically adds the [ignore authentication]({{< ref "api-management/traffic-transformation/ignore-authentication#ignore-authentication" >}}) middleware to endpoints with mock responses to maintain similar behavior. Note, however, that any other middleware configured for that endpoint or at the API level will be applied for the Tyk OAS API (which was not the case for the Tyk Classic API).
+    During migration, the system automatically adds the [ignore authentication]({{< ref "api-management/traffic-transformation/ignore-authentication#ignore-authentication-overview" >}}) middleware to endpoints with mock responses to maintain similar behavior. Note, however, that any other middleware configured for that endpoint or at the API level will be applied for the Tyk OAS API (which was not the case for the Tyk Classic API).
 
 3. **Enhanced Request Validation**
 

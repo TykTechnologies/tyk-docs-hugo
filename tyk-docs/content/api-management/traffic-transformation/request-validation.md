@@ -86,7 +86,7 @@ For each parameter, a schema can be declared that defines the `type` of data tha
 
 ##### Operation (endpoint-level) parameters
 
-An operation is a combination of HTTP method and path or, as Tyk calls it, an endpoint - for example `GET /users`. Operation, or endpoint-level parameters can be defined in the OpenAPI description and will apply only to that operation within the API. These can be added or modified within Tyk Dashboard's [API designer](#api-designer-22).
+An operation is a combination of HTTP method and path or, as Tyk calls it, an endpoint - for example `GET /users`. Operation, or endpoint-level parameters can be defined in the OpenAPI description and will apply only to that operation within the API. These can be added or modified within Tyk Dashboard's [API designer](#api-designer).
 
 ##### Common (path-level) parameters
 
