@@ -4069,6 +4069,243 @@ schema_path: file://path/to/spec.avsc
 schema_path: http://localhost:8081/path/to/spec/versions/1
 ```
 
+## Tracers
+
+### Overview
+
+A tracer type represents a destination for Tyk Streams to send tracing events to such as [Jaeger](https://www.jaegertracing.io/).
+
+When a tracer is configured all messages will be allocated a root span during ingestion that represents their journey through a Streams pipeline. Many Streams processors create spans, and so tracing is a great way to analyse the pathways of individual messages as they progress through a Streams instance.
+
+Some inputs, such as `http_server` and `http_client`, are capable of extracting a root span from the source of the message (HTTP headers). This is
+a work in progress and should eventually expand so that all inputs have a way of doing so.
+
+Other inputs, such as `kafka` can be configured to extract a root span by using the `extract_tracing_map` field.
+
+A tracer config section looks like this:
+
+```yaml
+tracer:
+  jaeger:
+    agent_address: localhost:6831
+    sampler_type: const
+    sampler_param: 1
+```
+
+{{< warning success >}}
+**Note**
+
+Although the configuration spec of this component is stable the format of spans, tags and logs created by Streams is subject to change as it is tuned for improvement.
+{{< /warning >}}
+
+### Jaeger
+
+```yml
+# Common config fields, showing default values
+tracer:
+  jaeger:
+    agent_address: ""
+    collector_url: ""
+    sampler_type: const
+    flush_interval: "" # No default (optional)
+```
+
+#### Advanced
+
+```yml
+# All config fields, showing default values
+tracer:
+  jaeger:
+    agent_address: ""
+    collector_url: ""
+    sampler_type: const
+    sampler_param: 1
+    tags: {}
+    flush_interval: "" # No default (optional)
+```
+
+Send tracing events to a [Jaeger](https://www.jaegertracing.io/) agent or collector.
+
+#### Fields
+
+##### agent_address
+
+The address of a Jaeger agent to send tracing events to.
+
+Type: `string`
+Default: `""`
+
+```yml
+# Examples
+
+agent_address: jaeger-agent:6831
+```
+
+##### collector_url
+
+The URL of a Jaeger collector to send tracing events to. If set, this will override `agent_address`.
+
+Type: `string`
+Default: `""`
+
+```yml
+# Examples
+
+collector_url: https://jaeger-collector:14268/api/traces
+```
+
+##### sampler_type
+
+The sampler type to use.
+
+Type: `string`
+Default: `"const"`
+
+| Option | Summary |
+|---|---|
+| `const` | Sample a percentage of traces. 1 or more means all traces are sampled, 0 means no traces are sampled and anything in between means a percentage of traces are sampled. Tuning the sampling rate is recommended for high-volume production workloads. |
+
+##### sampler_param
+
+A parameter to use for sampling. This field is unused for some sampling types.
+
+Type: `float`
+Default: `1`
+
+##### tags
+
+A map of tags to add to tracing spans.
+
+Type: `object`
+Default: `{}`
+
+##### flush_interval
+
+The period of time between each flush of tracing spans.
+
+Type: `string`
+
+### OpenTelemetry Collector
+
+```yml
+# Common config fields, showing default values
+tracer:
+  open_telemetry_collector:
+    http: [] # No default (required)
+    grpc: [] # No default (required)
+    sampling:
+      enabled: false
+      ratio: 0.85 # No default (optional)
+```
+
+#### Advanced
+
+```yml
+# All config fields, showing default values
+tracer:
+  open_telemetry_collector:
+    http: [] # No default (required)
+    grpc: [] # No default (required)
+    tags: {}
+    sampling:
+      enabled: false
+      ratio: 0.85 # No default (optional)
+```
+
+{{< warning success >}}
+**Note**
+
+This component is experimental and therefore subject to change or removal outside of major version releases.
+{{< /warning >}}
+
+Send tracing events to an [Open Telemetry collector](https://opentelemetry.io/docs/collector/).
+
+#### Fields
+
+##### http
+
+A list of http collectors.
+
+Type: `array`
+
+##### http[].address
+
+The endpoint of a collector to send tracing events to.
+
+Type: `string`
+
+```yml
+# Examples
+
+address: localhost:4318
+```
+
+##### http[].secure
+
+Connect to the collector over HTTPS
+
+Type: `bool`
+Default: `false`
+
+##### grpc
+
+A list of grpc collectors.
+
+Type: `array`
+
+##### grpc[].address
+
+The endpoint of a collector to send tracing events to.
+
+Type: `string`
+
+```yml
+# Examples
+
+address: localhost:4317
+```
+
+##### grpc[].secure
+
+Connect to the collector with client transport security
+
+Type: `bool`
+Default: `false`
+
+##### tags
+
+A map of tags to add to all tracing spans.
+
+Type: `object`
+Default: `{}`
+
+##### sampling
+
+Settings for trace sampling. Sampling is recommended for high-volume production workloads.
+
+Type: `object`
+
+##### sampling.enabled
+
+Whether to enable sampling.
+
+Type: `bool`
+Default: `false`
+
+##### sampling.ratio
+
+Sets the ratio of traces to sample.
+
+Type: `float`
+
+```yml
+# Examples
+
+ratio: 0.85
+
+ratio: 0.5
+```
+
 ## Common Configuration
 
 ### Batching
