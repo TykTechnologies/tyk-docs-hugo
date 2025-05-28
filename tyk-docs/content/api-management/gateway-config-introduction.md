@@ -59,7 +59,7 @@ API definition objects can be compact for a basic pass-through API, and can beco
 
 ## API Definitions
 
-An *API definition* is the specification for an API proxy, providing Tyk with everything it needs to receive and process requests. Using Tyk's mock response, virtual endpoint and custom plugin functionality, you don't even need an upstream service - with a single API definition you can emulate a service entirely within Tyk, providing a [mock response]({{< ref "api-management/traffic-transformation#mock-response-1" >}}).
+An *API definition* is the specification for an API proxy, providing Tyk with everything it needs to receive and process requests. Using Tyk's mock response, virtual endpoint and custom plugin functionality, you don't even need an upstream service - with a single API definition you can emulate a service entirely within Tyk, providing a [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}).
 
 Tyk supports two types of API definition depending on the type of service that you are looking to proxy:
 
