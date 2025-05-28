@@ -4248,3 +4248,25 @@ output:
 ```
 
 If the field `threads` is set to `-1` (the default) it will automatically match the number of logical CPUs available. By default almost all Tyk Streams sources will utilize as many processing threads as have been configured, which makes horizontal scaling easy.
+
+### Metrics Configuration
+
+Tyk Streams supports metrics collection to help monitor the performance and health of your event flows.
+
+```yaml
+metrics:
+  enabled: true
+  type: prometheus
+  prometheus:
+    listen_address: ":9090"
+    path: "/metrics"
+    pushgateway:
+      enabled: true
+      url: "http://pushgateway:9091"
+      job_name: "tyk-streams"
+      push_interval: "10s"
+```
+
+Metrics are collected for various components including inputs, processors, outputs, and pipelines. These metrics help you monitor throughput, error rates, and processing times.
+
+See [Metrics]({{< ref "event-driven-apis/metrics" >}}) for more details on configuring metrics.
