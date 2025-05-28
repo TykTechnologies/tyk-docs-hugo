@@ -135,7 +135,7 @@ For example:
 
 In this example upstream authentication has been enabled (line 44). The authentication method to be used is indicated in lines 46 (OAuth) and 48 (client credentials). When a request is made to the API, Tyk will request an access token from the *authorization server* at `http://<my-auth-server>` providing client credentials and the scope `scope1`.
 
-Tyk will parse the response from the *authorization server* for the key `instance_url`, storing any value found in the *request context* were it can be accessed by other middleware as `$tyk_context.instance_url` (note the rules on accessing [request context variables from middleware]({{< ref "api-management/traffic-transformation#request-context-variables" >}})).
+Tyk will parse the response from the *authorization server* for the key `instance_url`, storing any value found in the *request context* were it can be accessed by other middleware as `$tyk_context.instance_url` (note the rules on accessing [request context variables from middleware]({{< ref "api-management/traffic-transformation/request-context-variables" >}})).
 
 On receipt of an access token from the *authorization server*, Tyk will proxy the original request to the upstream server (`https://httpbin.org/`) passing the access token in the `Authorization` header.
 
@@ -247,7 +247,7 @@ For example:
 
 In this example upstream authentication has been enabled (line 44). The authentication method to be used is indicated in lines 46 (OAuth) and 48 (password grant). When a request is made to the API, Tyk will request an access token from the *authorization server* at `http://<my-auth-server>` providing client credentials, resource owner credentials and the scope `scope1`.
 
-Tyk will parse the response from the *authorization server* for the key `instance_url`, storing any value found in the *request context* were it can be accessed by other middleware as `$tyk_context.instance_url` (note the rules on accessing [request context variables from middleware]({{< ref "api-management/traffic-transformation#request-context-variables" >}})).
+Tyk will parse the response from the *authorization server* for the key `instance_url`, storing any value found in the *request context* were it can be accessed by other middleware as `$tyk_context.instance_url` (note the rules on accessing [request context variables from middleware]({{< ref "api-management/traffic-transformation/request-context-variables" >}})).
 
 On receipt of an access token from the *authorization server*, Tyk will proxy the original request to the upstream server (`https://httpbin.org/`) passing the access token in the `Authorization` header.
 
