@@ -556,6 +556,7 @@ Adding the middleware plugin is as simple as adding it to your definition file i
 ...
 "event_handlers": {},
 "custom_middleware": {
+  "driver": "otto",
   "pre": [
     {
       "name": "sampleMiddleware",
