@@ -190,9 +190,10 @@ components:
   securitySchemes: {}
 x-tyk-api-gateway:
   info:
-    name: streams-demo
+    name: stream-demo
     state:
       active: true
+      internal: false
   middleware:
     global:
       contextVariables:
