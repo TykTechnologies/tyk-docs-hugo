@@ -309,6 +309,10 @@ menu:
           path: /transform-traffic/url-rewriting
           category: Page
           show: True
+        - title: "Streams"
+          path: /transform-traffic/streams/streams-end-to-end-example
+          category: Page
+          show: True
       - title: "Gateway Events"
         path: /api-management/gateway-events
         category: Page
