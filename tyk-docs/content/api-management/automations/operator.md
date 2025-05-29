@@ -458,9 +458,6 @@ Starting from Tyk Operator v1.2.0, `webhookPort` is deprecated in favor of `webh
 | nodeSelector                                | object | `{}`                                   |
 | podAnnotations                              | object | `{}`                                   |
 | podSecurityContext.allowPrivilegeEscalation | bool   | `false`                                |
-| rbac.image.pullPolicy                       | string | `"IfNotPresent"`                       |
-| rbac.image.repository                       | string | `"gcr.io/kubebuilder/kube-rbac-proxy"` |
-| rbac.image.tag                              | string | `"v0.8.0"`                             |
 | rbac.port                                   | int    | `8443`                                 |
 | rbac.resources                              | object | `{}`                                   |
 | replicaCount                                | int    | `1`                                    |
