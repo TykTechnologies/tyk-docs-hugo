@@ -229,5 +229,5 @@ x-tyk-api-gateway:
    ```bash
    curl "http://localhost:8282/stream-demo/get-event?user=alice"
    ```
-5. **Switch transport** – connect to `ws://localhost:8282/stream-demo/ws-in?user=alice` or set `Accept: text/event-stream`.
+5. **Switch transport** – connect via websocket `wscat -c http://127.0.0.1:8282/stream-demo/ws-in\?user\=alice`
 6. *(Optional)* **Enable metrics & tracing** – uncomment blocks, restart Gateway, explore in Grafana & Jaeger.
