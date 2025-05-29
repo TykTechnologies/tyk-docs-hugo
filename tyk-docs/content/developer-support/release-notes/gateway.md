@@ -373,7 +373,7 @@ Given the potential time difference between your upgrade and the release of this
 There are no deprecations in this release.
 
 
-#### Upgrade instructions {#upgrade-5.7.1}
+#### Upgrade instructions {#upgrade-5.7.2}
 If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
