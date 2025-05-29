@@ -167,6 +167,10 @@ menu:
           path: /api-management/stream-config
           category: Page
           show: True
+        - title: "Tyk Streams End-to-End Example"
+          path: /api-management/streams-end-to-end-example
+          category: Page
+          show: True
       - title: "GraphQL"
         path: /api-management/graphql
         category: Page
