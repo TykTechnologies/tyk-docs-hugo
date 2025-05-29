@@ -4069,6 +4069,477 @@ schema_path: file://path/to/spec.avsc
 schema_path: http://localhost:8081/path/to/spec/versions/1
 ```
 
+## Tracers
+
+### Overview
+
+A tracer type represents a destination for Tyk Streams to send tracing events to such as [Jaeger](https://www.jaegertracing.io/).
+
+When a tracer is configured all messages will be allocated a root span during ingestion that represents their journey through a Streams pipeline. Many Streams processors create spans, and so tracing is a great way to analyse the pathways of individual messages as they progress through a Streams instance.
+
+Some inputs, such as `http_server` and `http_client`, are capable of extracting a root span from the source of the message (HTTP headers). This is
+a work in progress and should eventually expand so that all inputs have a way of doing so.
+
+Other inputs, such as `kafka` can be configured to extract a root span by using the `extract_tracing_map` field.
+
+A tracer config section looks like this:
+
+```yaml
+tracer:
+  jaeger:
+    agent_address: localhost:6831
+    sampler_type: const
+    sampler_param: 1
+```
+
+{{< warning success >}}
+**Note**
+
+Although the configuration spec of this component is stable the format of spans, tags and logs created by Streams is subject to change as it is tuned for improvement.
+{{< /warning >}}
+
+### Jaeger
+
+```yml
+# Common config fields, showing default values
+tracer:
+  jaeger:
+    agent_address: ""
+    collector_url: ""
+    sampler_type: const
+    flush_interval: "" # No default (optional)
+```
+
+#### Advanced
+
+```yml
+# All config fields, showing default values
+tracer:
+  jaeger:
+    agent_address: ""
+    collector_url: ""
+    sampler_type: const
+    sampler_param: 1
+    tags: {}
+    flush_interval: "" # No default (optional)
+```
+
+Send tracing events to a [Jaeger](https://www.jaegertracing.io/) agent or collector.
+
+#### Fields
+
+##### agent_address
+
+The address of a Jaeger agent to send tracing events to.
+
+Type: `string`
+Default: `""`
+
+```yml
+# Examples
+
+agent_address: jaeger-agent:6831
+```
+
+##### collector_url
+
+The URL of a Jaeger collector to send tracing events to. If set, this will override `agent_address`.
+
+Type: `string`
+Default: `""`
+
+```yml
+# Examples
+
+collector_url: https://jaeger-collector:14268/api/traces
+```
+
+##### sampler_type
+
+The sampler type to use.
+
+Type: `string`
+Default: `"const"`
+
+| Option | Summary |
+|---|---|
+| `const` | Sample a percentage of traces. 1 or more means all traces are sampled, 0 means no traces are sampled and anything in between means a percentage of traces are sampled. Tuning the sampling rate is recommended for high-volume production workloads. |
+
+##### sampler_param
+
+A parameter to use for sampling. This field is unused for some sampling types.
+
+Type: `float`
+Default: `1`
+
+##### tags
+
+A map of tags to add to tracing spans.
+
+Type: `object`
+Default: `{}`
+
+##### flush_interval
+
+The period of time between each flush of tracing spans.
+
+Type: `string`
+
+### OpenTelemetry Collector
+
+```yml
+# Common config fields, showing default values
+tracer:
+  open_telemetry_collector:
+    http: [] # No default (required)
+    grpc: [] # No default (required)
+    sampling:
+      enabled: false
+      ratio: 0.85 # No default (optional)
+```
+
+#### Advanced
+
+```yml
+# All config fields, showing default values
+tracer:
+  open_telemetry_collector:
+    http: [] # No default (required)
+    grpc: [] # No default (required)
+    tags: {}
+    sampling:
+      enabled: false
+      ratio: 0.85 # No default (optional)
+```
+
+{{< warning success >}}
+**Note**
+
+This component is experimental and therefore subject to change or removal outside of major version releases.
+{{< /warning >}}
+
+Send tracing events to an [Open Telemetry collector](https://opentelemetry.io/docs/collector/).
+
+#### Fields
+
+##### http
+
+A list of http collectors.
+
+Type: `array`
+
+##### http[].address
+
+The endpoint of a collector to send tracing events to.
+
+Type: `string`
+
+```yml
+# Examples
+
+address: localhost:4318
+```
+
+##### http[].secure
+
+Connect to the collector over HTTPS
+
+Type: `bool`
+Default: `false`
+
+##### grpc
+
+A list of grpc collectors.
+
+Type: `array`
+
+##### grpc[].address
+
+The endpoint of a collector to send tracing events to.
+
+Type: `string`
+
+```yml
+# Examples
+
+address: localhost:4317
+```
+
+##### grpc[].secure
+
+Connect to the collector with client transport security
+
+Type: `bool`
+Default: `false`
+
+##### tags
+
+A map of tags to add to all tracing spans.
+
+Type: `object`
+Default: `{}`
+
+##### sampling
+
+Settings for trace sampling. Sampling is recommended for high-volume production workloads.
+
+Type: `object`
+
+##### sampling.enabled
+
+Whether to enable sampling.
+
+Type: `bool`
+Default: `false`
+
+##### sampling.ratio
+
+Sets the ratio of traces to sample.
+
+Type: `float`
+
+```yml
+# Examples
+
+ratio: 0.85
+
+ratio: 0.5
+```
+
+## Metrics
+
+### Overview
+
+Streams emits lots of metrics in order to expose how components configured within your pipeline are behaving. You can configure exactly where these metrics end up with the config field `metrics`, which describes a metrics format and destination. For example, if you wished to push them via the Prometheus protocol you could use this configuration:
+
+```yaml
+metrics:
+  prometheus:
+    push_interval: 1s
+    push_job_name: in
+    push_url: http://localhost:9091
+```
+
+### Metric Names
+
+Metrics are emitted with a prefix that can be configured with the field `prefix`. The default prefix is `bento`. The following metrics are emitted with the respective types:
+
+#### Gauges
+
+- `{prefix}_input_count` Number of inputs currently active.
+- `{prefix}_output_count` Number of outputs currently active.
+- `{prefix}_processor_count` Number of processors currently active.
+- `{prefix}_cache_count` Number of caches currently active.
+- `{prefix}_condition_count` Number of conditions currently active.
+- `{prefix}_input_connection_up` 1 if a particular input is connected, 0 if it is not.
+- `{prefix}_output_connection_up` 1 if a particular output is connected, 0 if it is not.
+- `{prefix}_input_running` 1 if a particular input is running, 0 if it is not.
+- `{prefix}_output_running` 1 if a particular output is running, 0 if it is not.
+- `{prefix}_processor_running` 1 if a particular processor is running, 0 if it is not.
+- `{prefix}_cache_running` 1 if a particular cache is running, 0 if it is not.
+- `{prefix}_condition_running` 1 if a particular condition is running, 0 if it is not.
+- `{prefix}_buffer_running` 1 if a particular buffer is running, 0 if it is not.
+- `{prefix}_buffer_available` The number of messages that can be read from a buffer.
+- `{prefix}_input_retry` The number of active retry attempts for a particular input.
+- `{prefix}_output_retry` The number of active retry attempts for a particular output.
+- `{prefix}_processor_retry` The number of active retry attempts for a particular processor.
+- `{prefix}_cache_retry` The number of active retry attempts for a particular cache.
+- `{prefix}_condition_retry` The number of active retry attempts for a particular condition.
+- `{prefix}_buffer_retry` The number of active retry attempts for a particular buffer.
+- `{prefix}_threads_active` The number of processing threads currently active.
+
+#### Counters
+
+- `{prefix}_input_received` Count of messages received by a particular input.
+- `{prefix}_input_batch_received` Count of batches received by a particular input.
+- `{prefix}_output_sent` Count of messages sent by a particular output.
+- `{prefix}_output_batch_sent` Count of batches sent by a particular output.
+- `{prefix}_processor_processed` Count of messages processed by a particular processor.
+- `{prefix}_processor_batch_processed` Count of batches processed by a particular processor.
+- `{prefix}_processor_dropped` Count of messages dropped by a particular processor.
+- `{prefix}_processor_batch_dropped` Count of batches dropped by a particular processor.
+- `{prefix}_processor_error` Count of errors returned by a particular processor.
+- `{prefix}_processor_batch_error` Count of batch errors returned by a particular processor.
+- `{prefix}_cache_hit` Count of cache key lookups that found a value.
+- `{prefix}_cache_miss` Count of cache key lookups that did not find a value.
+- `{prefix}_cache_added` Count of new cache entries.
+- `{prefix}_cache_err` Count of errors that occurred during a cache operation.
+- `{prefix}_condition_hit` Count of condition checks that passed.
+- `{prefix}_condition_miss` Count of condition checks that failed.
+- `{prefix}_condition_error` Count of errors that occurred during a condition check.
+- `{prefix}_buffer_added` Count of messages added to a particular buffer.
+- `{prefix}_buffer_batch_added` Count of batches added to a particular buffer.
+- `{prefix}_buffer_read` Count of messages read from a particular buffer.
+- `{prefix}_buffer_batch_read` Count of batches read from a particular buffer.
+- `{prefix}_buffer_ack` Count of messages removed from a particular buffer.
+- `{prefix}_buffer_batch_ack` Count of batches removed from a particular buffer.
+- `{prefix}_buffer_nack` Count of messages that failed to be removed from a particular buffer.
+- `{prefix}_buffer_batch_nack` Count of batches that failed to be removed from a particular buffer.
+- `{prefix}_buffer_err` Count of errors that occurred during a buffer operation.
+- `{prefix}_buffer_batch_err` Count of batch errors that occurred during a buffer operation.
+- `{prefix}_input_error` Count of errors that occurred during an input operation.
+- `{prefix}_input_batch_error` Count of batch errors that occurred during an input operation.
+- `{prefix}_output_error` Count of errors that occurred during an output operation.
+- `{prefix}_output_batch_error` Count of batch errors that occurred during an output operation.
+- `{prefix}_resource_cache_error` Count of errors that occurred during a resource cache operation.
+- `{prefix}_resource_condition_error` Count of errors that occurred during a resource condition operation.
+- `{prefix}_resource_input_error` Count of errors that occurred during a resource input operation.
+- `{prefix}_resource_processor_error` Count of errors that occurred during a resource processor operation.
+- `{prefix}_resource_output_error` Count of errors that occurred during a resource output operation.
+- `{prefix}_resource_rate_limit_error` Count of errors that occurred during a resource rate limit operation.
+
+#### Timers
+
+- `{prefix}_input_latency` Latency of a particular input.
+- `{prefix}_input_batch_latency` Latency of a particular input at the batch level.
+- `{prefix}_output_latency` Latency of a particular output.
+- `{prefix}_output_batch_latency` Latency of a particular output at the batch level.
+- `{prefix}_processor_latency` Latency of a particular processor.
+- `{prefix}_processor_batch_latency` Latency of a particular processor at the batch level.
+- `{prefix}_condition_latency` Latency of a particular condition.
+- `{prefix}_condition_batch_latency` Latency of a particular condition at the batch level.
+- `{prefix}_cache_latency` Latency of a particular cache.
+- `{prefix}_buffer_latency` Latency of a particular buffer.
+- `{prefix}_buffer_batch_latency` Latency of a particular buffer at the batch level.
+
+### Metric Labels
+
+All metrics are emitted with the following labels:
+
+- `path` The path of the component within the config.
+- `label` A custom label for the component, which is optional and falls back to the component type.
+
+### Prometheus
+
+```yml
+# Common config fields, showing default values
+metrics:
+  prometheus:
+    prefix: tyk
+    push_interval: ""
+    push_job_name: kafka_out
+    push_url: ""
+```
+
+#### Advanced
+
+```yml
+# All config fields, showing default values
+metrics:
+  prometheus:
+    prefix: tyk
+    push_interval: ""
+    push_job_name: my_stream
+    push_url: ""
+    push_basic_auth:
+      enabled: false
+      username: ""
+      password: ""
+    file_path: ""
+    use_histogram_timing: false
+    histogram_buckets: [0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1.0]
+```
+
+Send metrics to a Prometheus push gateway, or expose them via HTTP endpoints.
+
+#### Fields
+
+##### prefix
+
+A string prefix for all metrics.
+
+Type: `string`
+Default: `"bento"`
+
+##### push_interval
+
+The interval between pushing metrics to the push gateway.
+
+Type: `string`
+Default: `""`
+
+```yml
+# Examples
+
+push_interval: 1s
+
+push_interval: 1m
+```
+
+##### push_job_name
+
+A job name to attach to metrics pushed to the push gateway.
+
+Type: `string`
+Default: `"bento_push"`
+
+##### push_url
+
+The URL to push metrics to.
+
+Type: `string`
+Default: `""`
+
+```yml
+# Examples
+
+push_url: http://localhost:9091
+```
+
+##### push_basic_auth
+
+Basic authentication configuration for the push gateway.
+
+Type: `object`
+
+##### push_basic_auth.enabled
+
+Whether to use basic authentication when pushing metrics.
+
+Type: `bool`
+Default: `false`
+
+##### push_basic_auth.username
+
+The username to authenticate with.
+
+Type: `string`
+Default: `""`
+
+##### push_basic_auth.password
+
+The password to authenticate with.
+
+Type: `string`
+Default: `""`
+
+##### file_path
+
+The file path to write metrics to.
+
+Type: `string`
+Default: `""`
+
+```yml
+# Examples
+
+file_path: /tmp/metrics.txt
+```
+
+##### use_histogram_timing
+
+Whether to use histogram metrics for timing values. When set to false, summary metrics are used instead.
+
+Type: `bool`
+Default: `false`
+
+##### histogram_buckets
+
+A list of duration buckets to track when use_histogram_timing is set to true.
+
+Type: `array`
+Default: `[0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1.0]`
+
 ## Common Configuration
 
 ### Batching

@@ -249,8 +249,8 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 |------------------|-------------|---------|---------|
 | Client certifates | ✅ [Client mTLS]({{< ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition" >}}) | ✅ [Client mTLS]({{< ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Custom domain certificates | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Public keys pinning | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication#certificate-pinning" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication#using-tyk-operator-to-configure-mtls" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Public keys pinning | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#certificate-pinning" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 
 
 ## Install and Configure Tyk Operator
@@ -458,9 +458,6 @@ Starting from Tyk Operator v1.2.0, `webhookPort` is deprecated in favor of `webh
 | nodeSelector                                | object | `{}`                                   |
 | podAnnotations                              | object | `{}`                                   |
 | podSecurityContext.allowPrivilegeEscalation | bool   | `false`                                |
-| rbac.image.pullPolicy                       | string | `"IfNotPresent"`                       |
-| rbac.image.repository                       | string | `"gcr.io/kubebuilder/kube-rbac-proxy"` |
-| rbac.image.tag                              | string | `"v0.8.0"`                             |
 | rbac.port                                   | int    | `8443`                                 |
 | rbac.resources                              | object | `{}`                                   |
 | replicaCount                                | int    | `1`                                    |
