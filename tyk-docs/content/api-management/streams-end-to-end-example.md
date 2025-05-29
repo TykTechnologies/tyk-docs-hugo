@@ -95,7 +95,7 @@ info:
   version: 1.0.0
 openapi: 3.0.3
 servers:
-  - url: http://tyk-gateway:8282/bi/
+  - url: http://tyk-gateway:8282/stream-demo/
 x-tyk-streaming:
   streams:
     Worker:
@@ -202,7 +202,7 @@ x-tyk-api-gateway:
   server:
     listenPath:
       strip: true
-      value: /bi/
+      value: /stream-demo/
   upstream:
     proxy:
       enabled: false
@@ -217,13 +217,13 @@ x-tyk-api-gateway:
 2. **Launch Tyk Gateway 5.8+** with the YAML above.
 3. **Send an event**  
    ```bash
-   curl -X POST "http://localhost:8282/bi/push-event?user=alice" \
+   curl -X POST "http://localhost:8282/stream-demo/push-event?user=alice" \
         -H "Content-Type: application/json" \
         -d '{"message":"hello world"}'
    ```
 4. **Receive the result** (only *alice*’s jobs)  
    ```bash
-   curl "http://localhost:8282/bi/get-event?user=alice"
+   curl "http://localhost:8282/stream-demo/get-event?user=alice"
    ```
-5. **Switch transport** – connect to `ws://localhost:8282/bi/ws-in?user=alice` or set `Accept: text/event-stream`.
+5. **Switch transport** – connect to `ws://localhost:8282/stream-demo/ws-in?user=alice` or set `Accept: text/event-stream`.
 6. *(Optional)* **Enable metrics & tracing** – uncomment blocks, restart Gateway, explore in Grafana & Jaeger.
