@@ -38,3 +38,21 @@ In turn, when the API consumer makes a request and it is approved, the Portal is
 
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-diagram-api-providers.png" alt="Developer portal and Tyk Manager relationship" >}}
 
+## Workflows for Portal Management
+
+These workflows are designed to help organizations streamline collaboration between developers and content managers in managing the Tyk Developer Portal.
+
+### Developer Workflow
+
+For organizations with developers customizing pages layout and other technical aspects of the portal pages, we are recommending the following workflow.
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/portal-fe-develop-flow.png" alt="Developer workflow" >}}
+
+### Content Manager Workflow
+
+For organizations with content manager(s) managing the developer portal content, we are recommending the following workflow.
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/portal-content-manager-flow.png" alt="Content manager workflow" >}}
+
+The Tyk Developer portal supports the workflow of content managers who're responsible for editing and managing page content.
+The purpose of highlighting this flow is to give recommendations on how to organize effective workflows between front end engineers and content managers. Where front end engineers are building page templates and content managers are managing the pages and the content.
