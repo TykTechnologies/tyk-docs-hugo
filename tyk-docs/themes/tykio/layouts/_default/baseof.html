@@ -105,13 +105,8 @@
 
   <body class="page-documentation {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe
-    ></noscript>
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5PPWPH7"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
@@ -183,7 +178,7 @@
     <script defer src="{{ "js/chat.js" | relURL }}"></script>
 
     <!-- Cookie Notice -->
-    {{ partial "cookie_notice.html" . }}
+    <!-- {{ partial "cookie_notice.html" . }} -->
 
     {{ if .Page.Store.Get "hasMermaid" }}
     <script type="module">
