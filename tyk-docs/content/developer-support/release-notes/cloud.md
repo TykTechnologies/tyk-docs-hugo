@@ -5,11 +5,30 @@ description: "Release notes documenting updates, enhancements, and changes for T
 tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "changelog"]
 
 ---
+## 1.28.1 Release Notes
+
+### Release Date 04 June 2025
+
+### Release Highlights
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.28.0}
+
+#### Added
 
 ## 1.28.0 Release Notes
 
 ### Release Date 26 May 2025
-
 
 ### Release Highlights
 
