@@ -2,14 +2,83 @@
 title: Tyk Cloud Release Notes
 date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "changelog"]
 
 ---
+## 1.28.1 Release Notes
+
+### Release Date 03 June 2025
+
+### Release Highlights
+
+This release improves Tyk Cloud’s security, scalability, and reliability. We’ve hardened the signup and login flows, improved sensitive data handling in API responses, and enhanced Redis scalability in Control Plane deployments to support larger workloads.
+
+For a full list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.28.1" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.28.1}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Improved scalability for Redis in Control Plane Deployments</summary>
+
+The change brings more flexible Redis scaling capabilities in the Control Plane deployments. Control Planes are now able to handle more/larger API keys in storage without causing stability issues. Tyk Cloud will expand this storage using this capability when needed, but a permanent arrangement is subject to commercial terms.
+
+</details>
+</li> 
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Hardened Signup Flow Validation</summary>
+
+Improved the signup logic to prevent unintended automation and ensure tighter control over account creation, enhancing platform security and reliability.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Consistent Login Response Behavior</summary>
+
+Standardized response status codes in the login process to prevent discrepancies that could lead to information exposure through http status code.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Sanitized Sensitive Data in API Responses</summary>
+
+Resolved an issue where certain sensitive fields could be inadvertently included in API responses. The platform now enforces stricter data handling and output sanitization.
+
+</details>
+</li> 
+</ul>
 
 ## 1.28.0 Release Notes
 
 ### Release Date 26 May 2025
-
 
 ### Release Highlights
 
