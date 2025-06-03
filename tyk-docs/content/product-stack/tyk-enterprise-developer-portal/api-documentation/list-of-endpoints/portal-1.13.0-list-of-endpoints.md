@@ -1,7 +1,7 @@
 ---
-title: "List of endpoints exposed by Tyk Enterprise Developer Portal v1.13.0"
+title: "Tyk Developer Portal API"
 date: 2024-02-29
-tags: ["Tyk Developer Portal","Enterprise Portal","Endpoints","Firewall","Integration","Portal 1.13.0"]
+tags: ["Tyk Developer Portal", "Enterprise Portal", "Endpoints", "Firewall", "Integration", "Portal 1.13.0"]
 description: "Internal APIs exposed by Tyk Developer Portal"
 menu:
     main:
