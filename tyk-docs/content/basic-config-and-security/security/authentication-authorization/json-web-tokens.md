@@ -17,6 +17,8 @@ aliases:
 
 JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims to be transferred between two parties. They are commonly used in API authentication and authorization.
 
+For a comprehensive step-by-step guide on setting up JWT authentication with Tyk, see our [JWT Setup Guide]({{< ref "basic-config-and-security/security/authentication-authorization/jwt-setup-guide" >}}).
+
 ## Configuring your API to use JWT authentication
 
 The OpenAPI Specification treats JWT authentication as a variant of [bearer authentication](https://swagger.io/docs/specification/v3_0/authentication/bearer-authentication/) in the `components.securitySchemes` object using the `type: http`, `scheme: bearer` and `bearerFormat: jwt`:
