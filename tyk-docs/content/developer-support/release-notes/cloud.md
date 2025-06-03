@@ -26,6 +26,39 @@ There are no deprecations in this release.
 
 #### Added
 
+<ul>
+<li>
+<details>
+<summary>Hardened Signup Flow Validation</summary>
+
+Improved the signup logic to prevent unintended automation and ensure tighter control over account creation, enhancing platform security and reliability.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Consistent Login Response Behavior</summary>
+
+Standardized response status codes in the login process to prevent discrepancies that could lead to information exposure through http status code.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Sanitized Sensitive Data in API Responses</summary>
+
+Resolved an issue where certain sensitive fields could be inadvertently included in API responses. The platform now enforces stricter data handling and output sanitization.
+
+</details>
+</li> 
+</ul>
+
 ## 1.28.0 Release Notes
 
 ### Release Date 26 May 2025
