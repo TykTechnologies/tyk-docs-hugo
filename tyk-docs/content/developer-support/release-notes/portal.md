@@ -859,7 +859,7 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 - Extended the `DELETE /users/:id` API endpoint by adding the [?force]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) query parameter to force removal of a user even if some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable.
 - Extended the `GET /pages/:id/content-blocks/:id:` API endpoint by adding additional fields in the response body: `Content`, `MarkdownContent`, `MarkdownEnabled`, `Name`, and `PageID`.
 - Extended [filesize limit]({{< ref "portal/customization/themes#create-a-theme" >}}) for individual files in themes to 5 MB.
-- Made the organization invite email's subject configurable via [the emails settings section]({{< ref "portal/customization#supported-email-notifications" >}}).
+- Made the organization invite email's subject configurable via [the emails settings section]({{< ref "portal/customization/email-notifications#supported-email-notifications" >}}).
 
 ##### Fixed
 - Fixed the bug where it was impossible to create an ordered list in the rich text editor in the admin app due to CSS issues.
@@ -1028,7 +1028,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.7.0 or an older version we advise you to upgrade ASAP directly to this release.
 When upgrading from 1.6.0 or earlier versions, customers may experience problems when starting the portal. One of the possible issues is the following:
-- When the portal theme [manifest]({{< ref "portal/customization#manifest-file" >}}) has a reference to a template that is not present in the theme then the theme won't be loaded. This check that prevents admin users from uploading themes with potential errors was introduced in version [1.7.0]({{< ref "#content-blocks-validation" >}}).
+- When the portal theme [manifest]({{< ref "portal/customization/themes#manifest-file" >}}) has a reference to a template that is not present in the theme then the theme won't be loaded. This check that prevents admin users from uploading themes with potential errors was introduced in version [1.7.0]({{< ref "#content-blocks-validation" >}}).
 - At the same time, the default theme in version 1.6.0 of the portal had a reference in the theme manifest to the `portal_home` template that didn't exist in the theme.
 - The portal doesn't update the theme automatically because in that case any customer-made changes will be lost. Subsequently, upgrading from 1.6.0 to 1.8.0 may result in the following error when loading the theme:
 ```yaml
@@ -1163,7 +1163,7 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 ##### Fixed
 - Fixed the bug where the database credentials were printed in the logs when bootstrapping the portal.
 - Fixed the bug where the session cookie was disclosing the username and role.
-- Fixed the bug where the [Forgot Password page]({{< ref "portal/api-consumer#reset-password" >}}) did not reflect the current theme.
+- Fixed the bug where the [Forgot Password page]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password" >}}) did not reflect the current theme.
 - Fixed the bug where the DCR flow failed to create a client with policies managed by Tyk Operator.
 - Fixed the bug where an admin user couldn't upload a new theme file in Kubernetes environment.
 - Fixed the bug where the portal application went down after running for several hours in Kubernetes environment.
