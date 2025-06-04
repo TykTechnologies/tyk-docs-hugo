@@ -808,6 +808,10 @@ menu:
               path: /tyk-developer-portal/tyk-portal-classic
               category: Page
               show: True
+      - title: "Reference"
+        category: Label
+        show: True
+        menu:
         - title: "Tyk Classic Developer Portal"
           category: Directory
           show: True
@@ -1000,6 +1004,7 @@ menu:
                       path: /tyk-apis/tyk-dashboard-api/portal-policies
                       category: Page
                       show: True
+
 # TODO: We don't support having reference to a sinlge page in multiple tabs. Here release notes is referenced in both API Management and Developer Portal tabs.
       # - title: "Reference"
       #   category: Label
