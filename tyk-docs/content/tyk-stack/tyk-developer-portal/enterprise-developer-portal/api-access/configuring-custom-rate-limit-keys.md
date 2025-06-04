@@ -64,7 +64,7 @@ To achieve this, the portal, by default, populates the following attributes in t
 - **DeveloperID**: The ID of the developer who created the credential.
 - **OrganizationID**: The ID of the organization to which the developer belongs.
 
-Additionally, it's possible to attach [custom attribute values]({{< ref "portal/customization#add-custom-attributes-to-the-user-model" >}}) defined in a developer profile as metadata fields to credentials.
+Additionally, it's possible to attach [custom attribute values]({{< ref "portal/customization/user-model#add-custom-attributes-to-the-user-model" >}}) defined in a developer profile as metadata fields to credentials.
 
 When a credential is provisioned by the portal, all the fields described above are added as metadata values to the credential, making them valid options for configuring the rate limit key:
 

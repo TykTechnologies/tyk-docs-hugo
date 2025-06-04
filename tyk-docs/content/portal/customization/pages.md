@@ -7,7 +7,7 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
 ---
 
-We suggest you read the [portal concepts]({{< ref "portal/overview#developer-portal-concepts" >}}) first. If you've already done that, we will show you an example on how to:
+We suggest you read the [portal concepts]({{< ref "portal/overview/concepts" >}}) first. If you've already done that, we will show you an example on how to:
 
 - create a new layout.
 - create a new template from the file system.

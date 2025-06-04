@@ -64,7 +64,7 @@ To use the self sign up flow, you’ll need to:
 6. To generate the invite email, click **More Options** in the Overview section and then **Send invite**.
 
     The user will receive an email with a link to the registration form. This option is only available if you didn't set the password before.
-    To customize the invite email, please refer to the [Email customization section]({{< ref "portal/customization#configure-email-notifications" >}}) for guidance.
+    To customize the invite email, please refer to the [Email customization section]({{< ref "portal/customization/email-notifications" >}}) for guidance.
 
     {{< img src="/img/dashboard/portal-management/enterprise-portal/users-send-invite.png" alt="Users Send invite dialog" >}}
 

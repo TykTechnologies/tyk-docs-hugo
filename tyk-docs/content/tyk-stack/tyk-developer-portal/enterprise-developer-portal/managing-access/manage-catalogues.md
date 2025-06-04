@@ -14,9 +14,9 @@ In this section, you will learn about how catalogs work and how to create a new 
 
 **Prerequisites**
 
-- Connect to a provider [Tyk Self-Managed]({{< ref "portal/overview#connect-to-a-provider" >}})
-- Create [policies with enforced access rights]({{< ref "portal/overview#create-api-products-and-plans" >}}) (API Product in the Portal)
-- Create one or more [policies with enforced rate limit and quotas]({{< ref "portal/overview#create-api-products-and-plans" >}}) (Plan in the Portal)
+- Connect to a provider [Tyk Self-Managed]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}})
+- Create [policies with enforced access rights]({{< ref "portal/overview/getting-started#create-api-products-and-plans" >}}) (API Product in the Portal)
+- Create one or more [policies with enforced rate limit and quotas]({{< ref "portal/overview/getting-started#create-api-products-and-plans" >}}) (Plan in the Portal)
 
 ## Create a New Catalog
 

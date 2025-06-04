@@ -54,7 +54,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.13.0 or an older version, we advise you to upgrade ASAP to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.13.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.1)
@@ -132,7 +132,7 @@ While upgrading to 1.13.0,
 1. Portal will automatically migrate the new Custom IDs to most of the existing resources. For more information, please refer to the [changelog](#Changelog-v1.13.0).
 2. Users are advised to take appropriate actions in their system regarding the `Plans` API object changes as described in the [breaking changes section]({{< ref "#breaking-changes-v1.13.0" >}}).
 
-To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.13.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.0)
@@ -348,7 +348,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.11.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.12.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.12.0)
@@ -575,7 +575,7 @@ For reference, with 2 portal instances, `PORTAL_DATABASE_MAX_OPEN_CONNECTIONS` s
 #### Upgrade instructions
 If you are on 1.10.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.11.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.11.0)
@@ -672,7 +672,7 @@ The 1.10.0 addresses twenty high-priority bugs and vulnerabilities and introduce
 #### Upgrade instructions
 If you are on 1.9.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.10.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.10.0)
@@ -785,7 +785,7 @@ If you are not on v1.8.4 then there's no urgency in updating.
 #### Upgrade instructions
 If you are on 1.8.4 you should **upgrade ASAP** directly to this release. This release doesn't introduce any changes to the theme, so a theme upgrade is not required.
 
-If you are on 1.8.3 or older version please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) to upgrade the portal's themes.
+If you are on 1.8.3 or older version please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) to upgrade the portal's themes.
 
 #### Download
 - [Docker image v1.8.5](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.8.5)
@@ -815,7 +815,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -851,14 +851,14 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 | /portal/private/profile      | Profile                |
 | /auth/password/login         | Developer portal login |
 | /auth/password/new           | Password reset         |
-- Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "portal/customization#default-attributes-of-user-model" >}}).
-- Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "portal/customization#default-attributes-of-user-model" >}}).
+- Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "portal/customization/user-model" >}}).
+- Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "portal/customization/user-model" >}}).
 - Changed the behavior of the portal for 404 errors. Now whenever a user requests non-existing page both private (e.i. requiring sign-in to access) or public, the portal now always renders the `not_found.tmpl` template.
 - Changed the behavior of the `Secure` cookie attribute that is set by [PORTAL_SESSION_SECURE]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_secure" >}}) so that the `Secure` attribute is always add to the `Set-Cookie` header whenever `PORTAL_SESSION_SECURE` is set to `true` or when TLS is enabled.
 - Changed the behavior of removing a developer profile within the developers UI in the admin app. Now, when an admin tries to remove a developer profile and some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable, the portal asks the admin if they still want to remove the developer profile by displaying a modal window.
 - Extended the `DELETE /users/:id` API endpoint by adding the [?force]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) query parameter to force removal of a user even if some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable.
 - Extended the `GET /pages/:id/content-blocks/:id:` API endpoint by adding additional fields in the response body: `Content`, `MarkdownContent`, `MarkdownEnabled`, `Name`, and `PageID`.
-- Extended [filesize limit]({{< ref "portal/customization#create-a-theme" >}}) for individual files in themes to 5 MB.
+- Extended [filesize limit]({{< ref "portal/customization/themes#create-a-theme" >}}) for individual files in themes to 5 MB.
 - Made the organization invite email's subject configurable via [the emails settings section]({{< ref "portal/customization#supported-email-notifications" >}}).
 
 ##### Fixed
@@ -887,7 +887,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -930,7 +930,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -977,7 +977,7 @@ There are no deprecations in this release.
 If you are on 1.8.0 or an older version we advise you to upgrade ASAP directly to this release.
 Unlike 1.8.0, 1.8.1 fixes the broken backward compatability for the default visual theme. Therefore, the upgrade path from earlier versions are straightforward. It is enough to just pull the latest version of the portal's container.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -1566,7 +1566,7 @@ We advise you to upgrade ASAP directly to this release.
 This release introduce a variety of features to improve developer experience. Additionally, we've included support for the S3 storage type as well as some bug fixes.
 
 ##### Organization management for API Consumers
-Now API Consumers can [create organizations]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}) and securely share credentials between their teammates. In greater detail:
+Now API Consumers can [create organizations]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations" >}}) and securely share credentials between their teammates. In greater detail:
 - API Consumers can request to upgrade their account to an organizational account.
 - API Consumers can invite teammates to their organization and manage their roles.
 - API Consumers in the same organization share access credentials so that the API Consumer team will still have access to API credentials even if an admin user is on vacation or left the organization.
@@ -1574,12 +1574,12 @@ Now API Consumers can [create organizations]({{< ref "portal/api-consumer#manage
 - API Providers can manually accept, reject or configure to accept all such request to accepted by default.
  
 ##### Get started guides
-API Providers can add [Get started guides]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) to API Products for better developer experiences:
+API Providers can add [Get started guides]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products" >}}) to API Products for better developer experiences:
 - API Providers can add the **Get started guides** to API Products to speed-up onboarding of API Consumers.
 - API Providers can use HTML or Markdown editors for authoring content for API Consumers such as the Get started guides and blog posts.
 
 ##### Tags for API Products and blog posts
-API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
+API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products" >}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
 
 ##### S3 support
 We added [S3 support]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
@@ -1590,10 +1590,10 @@ We added [S3 support]({{< ref "product-stack/tyk-enterprise-developer-portal/dep
 #### Changelog
 
 ##### Added
-- Added the [organization management capability]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}) for API Consumers to safely share API access credentials between team members.
-- Added the [Get started guides]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) for API Products so that admins can explain to their consumers how use their API Products.
+- Added the [organization management capability]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations" >}}) for API Consumers to safely share API access credentials between team members.
+- Added the [Get started guides]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products" >}}) for API Products so that admins can explain to their consumers how use their API Products.
 - Added support for [S3 storage]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
-- Added [tags]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
+- Added [tags]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products" >}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
 
 
 ##### Fixed

@@ -212,7 +212,7 @@ To connect the portal to the IdP, you need to specify the following settings:
 
 First of all, select your IdP from the `Identity provider` dropdown list. Different IdPs have slightly different approaches to DCR implementation, so the portal will use a driver that is specific to your IdP. If your IdP is not present in the dropdown list, select the `Other` option. In that case, the portal will use the most standard implementation of the DCR driver, which implements the DCR flow as defined in the RFC.
 
-Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "portal/api-provider#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the `SSL secure skip verify` checkbox.
+Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#creating-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the `SSL secure skip verify` checkbox.
 
 The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below.
 
@@ -283,9 +283,9 @@ To configure API Products to work with the DCR flow, you need to:
 
 For achieving this, navigate to the `API Products` menu and select the particular API product you want to use for the DCR flow. Next, go to the ‘App registration configs’ section and enable the ‘Enable dynamic client registration’ checkbox.
 
-After that, specify the scope for this API product. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "portal/api-provider#prerequisites" >}}). If you need to specify more than one scope, you can separate them with spaces.
+After that, specify the scope for this API product. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites" >}}). If you need to specify more than one scope, you can separate them with spaces.
 
-Finally, select one or multiple types of clients that were created in [the Create client configurations]({{< ref "portal/api-provider#create-client-configurations" >}}) section of this guide to associate them with that product.
+Finally, select one or multiple types of clients that were created in [the Create client configurations]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-client-configurations" >}}) section of this guide to associate them with that product.
 
 {{< tabs_start >}}
 
@@ -315,7 +315,7 @@ From version 1.13.0, you can complete the DCR configuration for a product under 
 
 ##### Configure plans for the DCR flow
 
-The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "portal/api-provider#prerequisites" >}}). If you need to specify more than one scope, you can separate them with spaces.
+The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites" >}}). If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
 
 <br>
@@ -349,7 +349,7 @@ To approve the access request, navigate to the `Access requests` menu in the por
 {{< img src="/img/dashboard/portal-management/enterprise-portal/approve-dcr-access-request.png" alt="Approve DCR access request" >}}
 
 #### Obtain an access token
-Once the access request is approved, the developer should receive an email informing them of the approval. Please refer to [the email customization section]({{< ref "portal/customization#configure-email-notifications" >}}) if you wish to change the email template.
+Once the access request is approved, the developer should receive an email informing them of the approval. Please refer to [the email customization section]({{< ref "portal/customization/email-notifications" >}}) if you wish to change the email template.
 
 As a developer, navigate to the `My Dashboard` section in the developer portal, select the application, and copy the OAuth 2.0 credentials. 
 

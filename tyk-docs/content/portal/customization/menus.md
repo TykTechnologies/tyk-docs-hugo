@@ -11,7 +11,7 @@ The Developer portal has two types of menus:
 1. The main navigation at the top (in the header)
 2. The footer at the bottom.
 
-Both of them are defined as [partials]({{< ref "portal/customization#file-structure-of-a-theme" >}}) in the portal directory in `/themes/default/partials/`.
+Both of them are defined as [partials]({{< ref "portal/customization/themes#file-structure-of-a-theme" >}}) in the portal directory in `/themes/default/partials/`.
 
 ## Top Navigation Menu
 
@@ -24,7 +24,7 @@ Each menu item may:
 - show a dropdown list with possible navigational options:
   {{< img src="img/dashboard/portal-management/enterprise-portal/dropdown-menu-item.png" alt="Dropdown menu item" >}}
 
-Admin users can create additional navigational menus and render them on any page of the live portal. This customization requires changes to a theme and is covered in the [Full customization section]({{< ref "portal/customization#configure-menus" >}}).
+Admin users can create additional navigational menus and render them on any page of the live portal. This customization requires changes to a theme and is covered in the [Full customization section]({{< ref "portal/customization/menus" >}}).
 
 ### Manage Menu Items
 
@@ -33,7 +33,7 @@ The management of the menu items is done from the **Menus** section of the Devel
 1. Open the admin dashboard. Navigate to the **Menus** section.
    {{< img src="img/dashboard/portal-management/enterprise-portal/navigation-to-menus-section.png" alt="Navigate to the Menus section" >}}
 
-2. Select a menu that you want to modify. By default, the Developer portal has only one **Primary** menu. If you want to add more menus and render them on the live portal, please refer to [Full customization section]({{< ref "portal/customization#configure-menus" >}}).
+2. Select a menu that you want to modify. By default, the Developer portal has only one **Primary** menu. If you want to add more menus and render them on the live portal, please refer to [Full customization section]({{< ref "portal/customization/menus" >}}).
    {{< img src="img/dashboard/portal-management/enterprise-portal/select-a-menu.png" alt="Select a menu" >}}
 
 3. Click on a **menu item** to modify it. You can change the following items:

@@ -77,7 +77,7 @@ To enable API Consumer organization registration, navigate to the Settings/Gener
     <br/><br/>Notification when organization request is rejected:
     {{< img src="/img/dashboard/portal-management/enterprise-portal/org_request_rejected_email.png" alt="Organization registration request is rejected" >}}
 
-    <br/><br/>Both emails are customizable. Refer to [the email customization documentation]({{< ref "portal/customization#configure-email-notifications" >}}) for further information on the email customization.
+    <br/><br/>Both emails are customizable. Refer to [the email customization documentation]({{< ref "portal/customization/email-notifications" >}}) for further information on the email customization.
 
 3. **Invite or remove teammates**
 

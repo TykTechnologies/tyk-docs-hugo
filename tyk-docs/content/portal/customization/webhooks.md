@@ -44,19 +44,19 @@ The configuration process consists of two steps:
 ## Supported Portal Events
 
 The portal fires the following webhook events:
-- [UserRegistered]({{< ref "portal/customization#new-user-registered" >}}) when a new user is registered.
-- [UserAccountActivated]({{< ref "portal/customization#user-account-activated" >}}) when a user is activated.
-- [UserAccountDeactivated]({{< ref "portal/customization#user-account-deactivated" >}}) when a user is deactivated.
-- [PasswordReset]({{< ref "portal/customization#password-reset" >}}) when a user tries to reset a password.
-- [ApplicationRegistered]({{< ref "portal/customization#new-application-registered" >}}) when a new API consumer application is created.
-- [CredentialRegistered]({{< ref "portal/customization#new-credential-is-created" >}}) when a new API credential is created.
-- [AccessRequestCreated]({{< ref "portal/customization#new-access-request-created" >}}) when a new API access request is created.
-- [AccessRequestApproved]({{< ref "portal/customization#an-access-request-is-approved" >}}) when an API access request is approved.
-- [AccessRequestRejected]({{< ref "portal/customization#an-access-request-is-rejected" >}}) when an API access request is rejected.
-- [OrganizationRegistered]({{< ref "portal/customization#new-organization-registered" >}}) when an API consumer organization is created.
-- [OrganizationRequestCreated]({{< ref "portal/customization#new-organization-registration-request-created" >}}) when a new API consumer organization registration request is created.
-- [OrganizationRequestApproved]({{< ref "portal/customization#organization-registration-request-is-approved" >}}) when an API consumer organization registration request is approved.
-- [OrganizationRequestRejected]({{< ref "portal/customization#organization-request-is-rejected" >}}) when an API consumer organization registration request is rejected.
+- [UserRegistered]({{< ref "portal/customization/webhooks#new-user-registered" >}}) when a new user is registered.
+- [UserAccountActivated]({{< ref "portal/customization/webhooks#user-account-activated" >}}) when a user is activated.
+- [UserAccountDeactivated]({{< ref "portal/customization/webhooks#user-account-deactivated" >}}) when a user is deactivated.
+- [PasswordReset]({{< ref "portal/customization/webhooks#password-reset" >}}) when a user tries to reset a password.
+- [ApplicationRegistered]({{< ref "portal/customization/webhooks#new-application-registered" >}}) when a new API consumer application is created.
+- [CredentialRegistered]({{< ref "portal/customization/webhooks#new-credential-is-created" >}}) when a new API credential is created.
+- [AccessRequestCreated]({{< ref "portal/customization/webhooks#new-access-request-created" >}}) when a new API access request is created.
+- [AccessRequestApproved]({{< ref "portal/customization/webhooks#an-access-request-is-approved" >}}) when an API access request is approved.
+- [AccessRequestRejected]({{< ref "portal/customization/webhooks#an-access-request-is-rejected" >}}) when an API access request is rejected.
+- [OrganizationRegistered]({{< ref "portal/customization/webhooks#new-organization-registered" >}}) when an API consumer organization is created.
+- [OrganizationRequestCreated]({{< ref "portal/customization/webhooks#new-organization-registration-request-created" >}}) when a new API consumer organization registration request is created.
+- [OrganizationRequestApproved]({{< ref "portal/customization/webhooks#organization-registration-request-is-approved" >}}) when an API consumer organization registration request is approved.
+- [OrganizationRequestRejected]({{< ref "portal/customization/webhooks#organization-request-is-rejected" >}}) when an API consumer organization registration request is rejected.
 
 The complete list of events and their corresponding payloads is outlined below.
 
@@ -279,7 +279,7 @@ Sample payload:
 
 ### New Organization Registered
 
-This event is fired whenever a new consumer organization is created via the admin APIs, the live portal ([the become an organization flow]({{< ref "portal/api-consumer#self-registration" >}})) or the admin UI.
+This event is fired whenever a new consumer organization is created via the admin APIs, the live portal ([the become an organization flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers" >}})) or the admin UI.
 
 Sample payload:
 ```json
@@ -296,7 +296,7 @@ Sample payload:
 
 ### New Organization Registration Request Created
 
-This event is fired whenever a new organization request is created via the live portal ([the become an organization flow]({{< ref "portal/api-consumer#self-registration" >}})) or the admin UI.
+This event is fired whenever a new organization request is created via the live portal ([the become an organization flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers" >}})) or the admin UI.
 
 Sample payload:
 ```json

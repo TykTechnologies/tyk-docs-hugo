@@ -26,7 +26,7 @@ This section explains how to add the Get started documentation to API Products.
 
 1. **Create and publish an API Product**
 
-    To start with, create and publish an API Product. Please refer to the [Publish API Products and Plans]({{< ref "portal/overview#publish-an-api-product" >}}) page for further guidance.
+    To start with, create and publish an API Product. Please refer to the [Publish API Products and Plans]({{< ref "portal/overview/getting-started#publish-an-api-product" >}}) page for further guidance.
 
 2. **Add API Documentation to API Products**
 

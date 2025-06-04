@@ -28,7 +28,7 @@ HTML. There are also a number of global helper functions available to transform 
 The Tyk Enterprise Developer Portal uses several types of templates to render different parts of the portal:
 - Public Pages Templates: Render the portal's publicly accessible pages (such as Home, About Us, and Blog pages),
 forming the foundation of your portal's public-facing content. These can be customized through the Pages
-[section]({{< ref "portal/customization#edit-page-content" >}})
+[section]({{< ref "portal/customization/pages#edit-page-content" >}})
 of the admin dashboard.
 - Private Pages Templates: Responsible for rendering the portal's authenticated user pages, like Profile settings and
 My Apps.
@@ -1342,7 +1342,7 @@ Returns an application name given a credential ID.
 
 #### GetMenus
 
-Returns a map of all [menus]({{< ref "portal/customization#configure-menus" >}}).
+Returns a map of all [menus]({{< ref "portal/customization/menus" >}}).
 
 ##### Example Usage
 ```html
@@ -1524,7 +1524,7 @@ to its purpose.
 It's important to note that while email templates can include template data or specific template functions, they do not
 have access to the global helper functions available in other portal templates.
 
-Please refer to [email workflow]({{< ref "portal/customization#configure-email-notifications" >}})
+Please refer to [email workflow]({{< ref "portal/customization/email-notifications" >}})
 for additional detail on email notifications sent by the portal.
 
 

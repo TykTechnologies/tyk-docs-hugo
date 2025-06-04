@@ -9,10 +9,10 @@ aliases:
 
 To get started with the Enterprise Developer portal, you need to accomplish four steps:
 
-1. [Connect to a provider (Tyk Self Managed)]({{< ref "portal/overview#connect-to-a-provider" >}})
-2. [Create and import API Products and Plans in your Tyk Self Managed Instance]({{< ref "portal/overview#create-api-products-and-plans" >}})
-3. [Create catalogs and developer audiences]({{< ref "portal/overview#organization-and-catalog" >}})
-4. [Publish API Products and Plans to the Developer portal so that API consumers can access them]({{< ref "portal/overview#optional-customize-visual-appearance-of-api-products-and-plans" >}})
+1. [Connect to a provider (Tyk Self Managed)]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}})
+2. [Create and import API Products and Plans in your Tyk Self Managed Instance]({{< ref "portal/overview/getting-started#create-api-products-and-plans" >}})
+3. [Create catalogs and developer audiences]({{< ref "portal/overview/getting-started#organization-and-catalog" >}})
+4. [Publish API Products and Plans to the Developer portal so that API consumers can access them]({{< ref "portal/overview/getting-started#optional-customize-visual-appearance-of-api-products-and-plans" >}})
 
 After the last step, you can start serving APIs to your developer audience.
 
@@ -23,7 +23,7 @@ Refer the [install guide]({{< ref "portal/install#installation-options-for-enter
 ## Connect to a Provider
 
 The first step in getting started with the developer portal is to connect the portal to a provider. Currently, the Tyk Enterprise Developer Portal supports only the Tyk Dashboard as an API Provider, with the ability to connect multiple instances of the Tyk Dashboard to the portal.
-When the connection is established, the portal will import policies as API Products to the portal. The [Getting started guide]({{< ref "portal/overview#connect-to-a-provider" >}}) explains how to set up a policy and import it to the portal.
+When the connection is established, the portal will import policies as API Products to the portal. The [Getting started guide]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}}) explains how to set up a policy and import it to the portal.
 
 {{< youtube 8KJSVACD-j4 >}}
 
@@ -47,7 +47,7 @@ When the connection is established, the portal will import policies as API Produ
 | Gateway URL              | The gateway URL refers to the URL that the portal developers will use for requesting queries and accessing credentials.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 | Secret                   | The Secret can be fetched from the Tyk Self-Managed / Tyk analytics dashboard. The procedure is as follows:  Go to the Tyk Dashboard. Navigate to *Users*. Select a user with the permissions you want to bring on to the portal. You can find the secret under *API Access Credentials. (Optional)*. You can find the organization id listed under *Organization ID* if your use case requires this. Please note that the Portal will share the same permissions that the user selected to provide the secret.                                                                                                                                                                     
 | Organization ID          | The org id is required in order to connect to your installation as a provider. It can be found in the user profile within the Tyk Dashboard.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Policy tags              | This is an optional field that can be used to define which policies from Tyk will be imported to the portal. If a tag is defined here, it needs to also be defined in the Policy section in the [Tyk Dashboard]({{< ref "portal/overview#create-and-import-an-api-product-from-tyk" >}}). If this field is left empty in both this provider section and in the policies within Tyk, then all policies will be imported from the Tyk instance. How to include the label in the policy section inside Tyk, is explained in [Publish API Products and plans]({{< ref "portal/overview#publish-an-api-product" >}}) for the public-facing portal. |
+| Policy tags              | This is an optional field that can be used to define which policies from Tyk will be imported to the portal. If a tag is defined here, it needs to also be defined in the Policy section in the [Tyk Dashboard]({{< ref "portal/overview/getting-started#create-and-import-an-api-product-from-tyk" >}}). If this field is left empty in both this provider section and in the policies within Tyk, then all policies will be imported from the Tyk instance. How to include the label in the policy section inside Tyk, is explained in [Publish API Products and plans]({{< ref "portal/overview/getting-started#publish-an-api-product" >}}) for the public-facing portal. |
 
 4. Save your changes
 
@@ -69,12 +69,12 @@ There are two ways of creating API Products and Plans in the Developer Portal:
 **Prerequisites**
 
 - A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
-- Tyk Self-Managed [added as a provider]({{< ref "portal/overview#connect-to-a-provider" >}})
+- Tyk Self-Managed [added as a provider]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}})
 - Have APIs [created in your Tyk installation]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
 ### Import API Product and Plan
 
-When integrating with Tyk, the Tyk policies will be imported into the Developer Portal. Depending on the configuration that’s been set in the policy section, the policy will either be imported as an API Product or a Plan. For further details check the [portal key concepts]({{< ref "portal/overview#developer-portal-concepts" >}}) document.
+When integrating with Tyk, the Tyk policies will be imported into the Developer Portal. Depending on the configuration that’s been set in the policy section, the policy will either be imported as an API Product or a Plan. For further details check the [portal key concepts]({{< ref "portal/overview/concepts" >}}) document.
 
 #### Create and Import an API Product from Tyk
 
@@ -128,7 +128,7 @@ When creating an API Product in the Developer Portal, a partitioned policy that 
 1. From the Tyk Portal admin app, go to **API Products** and click **Add new API Product**.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-add-api-product.png" alt="Add an API Product" >}}
 
-2. Select a unique name for the API Product and complete the [product details for customization]({{< ref "portal/overview#optional-customize-visual-appearance-of-api-products-and-plans" >}}) in the **Details** tab. The product name will be the name assigned to the created policy in the Tyk Self-Managed selected provider
+2. Select a unique name for the API Product and complete the [product details for customization]({{< ref "portal/overview/getting-started#optional-customize-visual-appearance-of-api-products-and-plans" >}}) in the **Details** tab. The product name will be the name assigned to the created policy in the Tyk Self-Managed selected provider
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-details.png" alt="Add an API Product" >}}
 
 3. Select **Provider**, **Authentication**, and **APIS** in the **API's** tab.
@@ -180,8 +180,8 @@ In this section, you will learn how to publish the API products and plans to the
 **Prerequisites**
 
 - A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
-- Tyk Self-Managed [added as a provider]({{< ref "portal/overview#connect-to-a-provider" >}})
-- [Created and imported API Products and Plans from Tyk]({{< ref "portal/overview#create-api-products-and-plans" >}})
+- Tyk Self-Managed [added as a provider]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}})
+- [Created and imported API Products and Plans from Tyk]({{< ref "portal/overview/getting-started#create-api-products-and-plans" >}})
 
 ### Publish an API product
 
@@ -254,7 +254,7 @@ To achieve that, the API Provider uses two catalogs to implement their business 
 
 ### Create Organization and Team
 
-The Tyk Enterprise Developer Portal uses Organization and Catalogs to segment access to APIs and plans. Therefore, the first thing is to create an organization for your customers. If you don't want to provision organizations manually, you can leverage the [Admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) or enable the [self-service organization registration]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}).
+The Tyk Enterprise Developer Portal uses Organization and Catalogs to segment access to APIs and plans. Therefore, the first thing is to create an organization for your customers. If you don't want to provision organizations manually, you can leverage the [Admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) or enable the [self-service organization registration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations" >}}).
 In this guide, we will create the **B2B customer** organization to fulfill the above business model:
 1. To create an organization for the **B2B customer**, navigate to the **Organizations** menu and click on the **Add new organization** button.
    {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-organisations.png" alt="Navigate to the Organizations menu" >}}
@@ -323,7 +323,7 @@ To customize the visual appearance of API Products:
     - **Image**: An API Product logo that is displayed on the catalog and on the API Product pages. From version 1.13.0 you can also upload a preview image for the calalogue page.
     - **Tags**: The tags are used to match the API Product with the related blog posts that have the same tags in common.
     
-    From that page you can also manage [OAuth2.0 settings]({{< ref "portal/api-provider#dynamic-client-registration" >}}) and add [Get started guides]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) to your API Products, which is covered in the relevant sections.
+    From that page you can also manage [OAuth2.0 settings]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}) and add [Get started guides]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products" >}}) to your API Products, which is covered in the relevant sections.
     {{< img src="img/dashboard/portal-management/enterprise-portal/customize-product.png" alt="Customize visual appearance of an API Product" >}}
 
 2. Save changes by clicking on the **Save** button. You should now be able to preview how the API Product will be displayed in the catalog:
@@ -342,8 +342,8 @@ From version 1.13.0 you can customize the api product in the `Details` tab secti
 1. To customize visual appearance of plans, open the **Plans** menu and select the plan you want to customize. You can customize the following settings:
 
     - **Catalog display name**: The name of the catalog that will be displayed in the API Product page.
-    - **Scope**: Scope for the [OAuth2.0 settings]({{< ref "portal/api-provider#dynamic-client-registration" >}}). Please refer to the [OAuth2.0 documentation]({{< ref "portal/api-provider#dynamic-client-registration" >}}) for further guidance.
-    - **Catalogs**: The catalogs in which this plan is available. Catalogs and organization are [covered]({{< ref "portal/overview#organization-and-catalog" >}}) later within this getting started guide.
+    - **Scope**: Scope for the [OAuth2.0 settings]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}). Please refer to the [OAuth2.0 documentation]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}) for further guidance.
+    - **Catalogs**: The catalogs in which this plan is available. Catalogs and organization are [covered]({{< ref "portal/overview/getting-started#organization-and-catalog" >}}) later within this getting started guide.
     - **Auto-approve settings for access requests**: Determines if access requests for this plan should be approved automatically.
     - **Access request frequency**: Defines how often developers can request access to a specific plan. This way the admins can prevent developers from creating too many keys and abusing their automatically approved plans.
 
