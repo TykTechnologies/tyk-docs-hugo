@@ -64,7 +64,7 @@ There are no breaking changes in this release.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.1}
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.2}
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
