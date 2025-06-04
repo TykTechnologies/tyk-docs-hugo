@@ -119,7 +119,7 @@ The Tyk Enterprise Developer portal has two audiences:
 
 1. **Developers**:
 
-    Developers created by the sso flow are portal users that belong to an organization and team/s, if a user group mapping is not specified, they are assigned to the default organization and default team. Developers created by the sso flow are always assinged the **Consumer Super Admin** role. If part of an organization and a team, this means that the developer is a super admin for that organization. Read more about managing api consumer organizations [here]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}).
+    Developers created by the sso flow are portal users that belong to an organization and team/s, if a user group mapping is not specified, they are assigned to the default organization and default team. Developers created by the sso flow are always assinged the **Consumer Super Admin** role. If part of an organization and a team, this means that the developer is a super admin for that organization. Read more about managing api consumer organizations [here]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations" >}}).
 
 2. **Admins**:
 
