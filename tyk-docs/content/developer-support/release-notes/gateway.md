@@ -391,7 +391,7 @@ If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Data plane gateways now cache certificates in Redis</summary>
+<summary>Data plane gateway now cache certificates in Redis</summary>
 
 Resolved an issue where certificates were not cached locally due to incorrect key pattern detection, breaking functionality during MDCB outages. Gateway now reliably serve HTTPS and mTLS traffic even when MDCB is unavailable.
 </details>
