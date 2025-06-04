@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html class="no-js" lang="{{ .Site.LanguageCode }}">
+<<<<<<< HEAD
 
 <head>
   <meta charset="UTF-8">
@@ -54,6 +55,114 @@
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+=======
+  <head>
+    <style>
+      /* Basic styles for the dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 140px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        right: 0; /* Align dropdown content to the left of the button */
+        border-radius: 8px; /* Add rounded corners */
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 8px 12px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        border-radius: 8px; /* Add rounded corners */
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        cursor: pointer;
+      }
+    </style>
+
+    <meta charset="UTF-8" />
+    <title>{{ .Title }}</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ .Description }}" />
+    <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}" />
+    {{ partial "google_search_console_metadata.html" . }}
+    {{ partial "site_schema.html" . }}
+
+    {{ if eq .Params.robots "noindex" }}
+    <meta name="robots" content="noindex">
+    {{ end }}
+
+    {{ if and (isset .Params "algolia") (isset .Params.algolia "importance") }}
+    <meta name="algolia-importance" content="{{ .Params.algolia.importance }}">
+    {{ else }}
+      <meta name="algolia-importance" content="100">
+    {{ end }}
+
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet" />
+
+    {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
+    <link rel="canonical" href="{{ $canonicalLink }}" />
+    <!--{{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
+      <link rel="canonical" href="{{ .Permalink }}" />
+    {{ else }}
+      <meta name="robots" content="noindex" />
+    {{ end }}
+		-->
+
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
+    <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
+
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
+    <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
+    <script src="{{ "js/scroll_tabs_menu.js" | relURL }}"></script>
+    <script
+      type="text/javascript"
+      src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0"></script>
+    {{ if .HasShortcode "github_star_button" }}
+      <script defer src="https://buttons.github.io/buttons.js"></script>
+    {{ end }}
+
+    {{ partial "head_tracking.html" . }}
+
+    {{ $scss := resources.Get "scss/main.scss" }}
+    {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
+    {{ $css := $scss | toCSS $options }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+  </head>
+
+  <body class="page-documentation {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
+    <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+>>>>>>> 0dd3b7d04... Testing removing existing Cookie and adding Cookiebot - note using te… (#6486)
     <!-- End Google Tag Manager (noscript) -->
 
   <!-- Header -->
@@ -120,8 +229,11 @@
   <!-- Footer scripts -->
   {{ partial "footer_scripts.html" . }}
 
+<<<<<<< HEAD
   <!-- Cookie Notice -->
   {{ partial "cookie_notice.html" . }}
 </body>
+=======
+>>>>>>> 0dd3b7d04... Testing removing existing Cookie and adding Cookiebot - note using te… (#6486)
 
 </html>
