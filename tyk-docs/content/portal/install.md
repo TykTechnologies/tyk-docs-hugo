@@ -1,5 +1,5 @@
 ---
-title: "Install and Configure Tyk Enterprise Developer Portal"
+title: "Install and Configure Developer Portal"
 date: 2025-02-10
 linkTitle: API Management
 tags: ["Developer Portal", "Tyk", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
@@ -48,7 +48,7 @@ The portal deployment comprises of three main components:
 - The asset storage, which stores CMS assets such as images, themes, and OpenAPI specification files. The assets could reside in the portal's main database or separately in an S3 bucket or filesystem volume.
 
 Optionally, there could be three additional components:
-- **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "portal/api-provider#dynamic-client-registration" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
+- **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
 It's essential to note that the [Tyk Stack]({{< ref "tyk-stack" >}}) doesn't include third-party identity providers, so you should refer to your Identity Provider's documentation for instructions on configuring and deploying it.
 This component is optional and required only for enabling oAuth2.0
 - **[Tyk Identity Broker]({{< ref "api-management/external-service-integration" >}})**. You only need this component if you want to configure Single Sign-On for the Tyk Enterprise Developer Portal.
@@ -56,7 +56,7 @@ For more guidance on this topic, please consult [the Single Sign-On section]({{<
 - **Email server**. The portal is capable of sending notifications to both admin users and developers when specific events happen within the portal.
 To enable this feature, you need to specify a connection configuration to an email server or service, and configure other email settings.
 You can choose to use a server that is installed on your premises or an SMTP-compatible SaaS product.
-For step-by-step instructions, please refer to [the Email Settings section]({{< ref "portal/customization#configure-email-notifications" >}})
+For step-by-step instructions, please refer to [the Email Settings section]({{< ref "portal/customization/email-notifications" >}})
 
 ## Portal Installation Process
 
@@ -978,7 +978,7 @@ Now you have a fully functional portal.
 
 <br/>
 
-You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Enterprise Developer Portal Concepts section]({{< ref "portal/overview#developer-portal-concepts" >}}) for further guidance.
+You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Enterprise Developer Portal Concepts section]({{< ref "portal/overview/concepts" >}}) for further guidance.
 
 ## Environment Variable Reference
 
