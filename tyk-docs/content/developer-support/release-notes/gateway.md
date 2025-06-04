@@ -1884,9 +1884,9 @@ If you are upgrading to 5.3.12, please follow the detailed [upgrade instructions
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Data plane gateway now cache certificates in Redis</summary>
 
-Add changelog description 
+Resolved an issue where certificates were not cached locally due to incorrect key pattern detection. Gateway now reliably serve HTTPS and mTLS traffic even when MDCB is unavailable.
 </details>
 </li>
 </ul>
