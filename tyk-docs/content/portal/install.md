@@ -1,5 +1,5 @@
 ---
-title: "Install and Configure Tyk Enterprise Developer Portal"
+title: "Install and Configure Developer Portal"
 date: 2025-02-10
 linkTitle: API Management
 tags: ["Developer Portal", "Tyk", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]

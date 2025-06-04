@@ -8,8 +8,6 @@ description: "How to reset password in Tyk developer portal"
 aliases:
 ---
 
-## Reset Password
-
 This page goes through the reset password routine. If you have forgotten your password you can easily reset it via the portal.
 
 1. Navigate to the live portal and click **Login** and you’ll get to the login screen.

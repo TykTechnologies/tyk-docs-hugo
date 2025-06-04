@@ -655,10 +655,9 @@ menu:
   - title: "Developer Portal"
     category: Tab
     show: True
-    path: /portal/overview
+    path: /portal/overview/intro
     menu:
       - title: "Overview"
-        path: /portal/overview
         category: Label
         show: True
         menu:

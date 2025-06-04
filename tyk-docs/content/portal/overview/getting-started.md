@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Portal"
+title: "Getting Started with Developer Portal"
 date: 2025-02-10
 tags: ["Developer Portal", "Tyk"]
 keywords: ["Developer Portal", "Tyk"]
