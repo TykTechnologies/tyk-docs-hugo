@@ -85,7 +85,7 @@ The [virtual endpoint]({{< ref "api-management/traffic-transformation/virtual-en
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "virtual-endpoints-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#virtual-endpoints-using-classic" >}}) page.
 
 ### API Definition
 

@@ -655,229 +655,372 @@ menu:
   - title: "Developer Portal"
     category: Tab
     show: True
-    path: /portal/overview
+    path: /portal/overview/intro
     menu:
       - title: "Overview"
-        path: /portal/overview
-        category: Page
-        show: True
-      - title: "Install and Configure"
-        path: /portal/install
-        category: Page
-        show: True
-      - title: "API Consumer"
-        path: /portal/api-consumer
-        category: Directory
+        category: Label
         show: True
         menu:
-        - title: "Invite Codes"
-          path: /portal/api-consumer/invite-codes
+        - title: "Introduction"
+          path: /portal/overview/intro
           category: Page
           show: True
-      - title: "API Provider"
-        path: /portal/api-provider
-        category: Page
-        show: True
-      - title: "Customization"
-        path: /portal/customization
-        category: Page
-        show: True
-      - title: "Advance Configuration"
-        path: /portal/settings
-        category: Page
-        show: True
-      - title: "Tyk Classic Developer Portal"
-        category: Directory
+        - title: "Getting Started"
+          path: /portal/overview/getting-started
+          category: Page
+          show: True
+        - title: "Core Concepts"
+          path: /portal/overview/concepts
+          category: Page
+          show: True
+      - title: "Installation"
+        path: /portal/overview
+        category: Label
         show: True
         menu:
-          - title: "Overview"
-            path: /tyk-developer-portal/tyk-portal-classic
+        - title: "Install and Configure"
+          path: /portal/install
+          category: Page
+          show: True
+      - title: "API Consumer"
+        path: /portal/api-consumer
+        category: Label
+        show: True
+        menu:
+        - title: "Manage API Consumer"
+          path: /portal/api-consumer
+          category: Directory
+          show: True
+          menu:
+          - title: "Organizations"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
+            category: Directory
+            show: True
+          - title: "Users"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
+            category: Directory
+            show: True
+          - title: "Invite Codes"
+            path: /portal/api-consumer/invite-codes
             category: Page
             show: True
-          - title: "Portal Concepts"
-            path: /tyk-developer-portal/tyk-portal-classic/portal-concepts
+          - title: "Reset Password"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
             category: Page
             show: True
-          - title: "Portal API Catalogue"
-            path: /getting-started/key-concepts/api-catalogue
+        - title: "Access an API Product"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+          category: Page
+          show: True
+      - title: "API Publisher"
+        category: Label
+        show: True
+        menu:
+        - title: "Manage API Access"
+          path: /portal/api-provider
+          category: Directory
+          show: True
+          menu:
+          - title: "Provisioning Request"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
             category: Page
             show: True
-          - title: "Publish an API"
-            path: /getting-started/tutorials/publish-api
+          - title: "Dynamic Client Registration"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
             category: Page
             show: True
-          - title: "Advanced configurations"
-            category: Directory
+        - title: "Manage API Products"
+          category: Directory
+          show: True
+          menu:
+          - title: "Create Documentation"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+            category: Page
             show: True
-            menu:
-              - title: "Key Requests"
-                path: /tyk-developer-portal/tyk-portal-classic/key-requests
-                category: Page
-                show: True
-              - title: "Developer Profiles"
-                path: /tyk-developer-portal/tyk-portal-classic/developer-profiles
-                category: Page
-                show: True
-              - title: "Dynamic Client Registration (DCR)"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
-                    category: Page
-                    show: True
-                  - title: "Step by step guide using Gluu"
-                    path: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
-                    category: Page
-                    show: True
-                  - title: "Step by step guide using Keycloak"
-                    path: /tyk-developer-portal/tyk-portal-classic/keycloak-dcr
-                    category: Page
-                    show: True
-                  - title: "Step by step guide using Okta"
-                    path: /tyk-developer-portal/tyk-portal-classic/okta-dcr
-                    category: Page
-                    show: True
-                  - title: "Step by step guide using Curity"
-                    path: /tyk-developer-portal/tyk-portal-classic/curity-dcr
-                    category: Page
-                    show: True
-              - title: "Portal OAuth Clients"
-                path: /tyk-developer-portal/tyk-portal-classic/portal-oauth-clients
-                category: Page
-                show: True
-              - title: "GraphQL with Classic Portal"
-                path: /tyk-developer-portal/tyk-portal-classic/graphql
-                category: Page
-                show: True
-              - title: "Streams with Classic Portal"
-                path: /tyk-developer-portal/tyk-portal-classic/streams
-                category: Page
-                show: True
-              - title: "Monetising your APIs"
-                path: /tyk-developer-portal/tyk-portal-classic/monetise
-                category: Page
-                show: True
-              - title: "Events and Notifications"
-                path: /tyk-developer-portal/tyk-portal-classic/portal-events-notifications
-                category: Page
-                show: True
-              - title: "Outbound Email Configuration"
-                path: /configure/outbound-email-configuration
-                category: Page
-                show: True
-          - title: "Portal customisation"
-            category: Directory
+        - title: "Manage Catalogs"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
+          category: Page
+          show: True
+        - title: "Manage Applications"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
+          category: Page
+          show: True
+        - title: "Configure Rate Limits"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
+          category: Page
+          show: True
+        - title: "Customization"
+          path: /portal/customization
+          category: Directory
+          show: True
+          menu:
+          - title: "Themes"
+            path: /portal/customization/themes
+            category: Page
             show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-developer-portal/customise
-                category: Page
-                show: True
-              - title: "Customising API Visibility"
-                path: /tyk-developer-portal/customise/customize-api-visibility
-                category: Page
-                show: True
-              - title: "Customise the Portal Menus"
-                path: /tyk-developer-portal/tyk-portal-classic/customise/changing-the-navigation
-                category: Page
-                show: True
-              - title: "Creating a Custom Developer Portal"
-                path: /tyk-developer-portal/tyk-portal-classic/customise/custom-developer-portal
-                category: Page
-                show: True
-              - title: "Swap out Swagger UI for ReDoc"
-                path: /tyk-developer-portal/tyk-portal-classic/customise/customise-documentation
-                category: Page
-                show: True
-              - title: "Customise Pages with CSS and JavaScript"
-                path: /tyk-developer-portal/tyk-portal-classic/customise/customising-using-dashboard
-                category: Page
-                show: True
-              - title: "Customising using jQuery"
-                path: /tyk-developer-portal/tyk-portal-classic/customise/customize-with-jquery
-                category: Page
-                show: True
-              - title: "Customise the Developer Signup Form"
-                path: /tyk-developer-portal/tyk-portal-classic/customise/developer-meta-data
-                category: Page
-                show: True
-              - title: "Customise Page Templates"
-                path: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates
-                category: Page
-                show: True
-          - title: "API documentation"
-            category: Directory
+          - title: "Templates"
+            path: /portal/customization/templates
+            category: Page
             show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-portal-api
-                category: Page
-                show: True
-              - title: "Configuration"
-                path: /tyk-apis/tyk-portal-api/portal-configuration
-                category: Page
-                show: True
-              - title: "Developers"
-                path: /tyk-apis/tyk-portal-api/portal-developers
-                category: Page
-                show: True
-              - title: "API Publishing"
-                path: /tyk-apis/tyk-portal-api/portal-documentation
-                category: Page
-                show: True
-              - title: "Key Requests"
-                path: /tyk-apis/tyk-portal-api/portal-keys
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
+          - title: "Pages"
+            path: /portal/customization/pages
+            category: Page
             show: True
-            menu:
-              - title: "How to add, list or delete a developer using the API"
-                path: /frequently-asked-questions/add-list-delete-developer-using-api
-                category: Page
-                show: True
-              - title: "Alerts on new developer key requests"
-                path: /frequently-asked-questions/alerts-new-developer-key-requests
-                category: Page
-                show: True
-              - title: "Custom Developer Portal Options"
-                path: /frequently-asked-questions/custom-developer-portal-options
-                category: Page
-                show: True
-              - title: "“API catalogue not found“ error in the Developer Portal"
-                path: /troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal
-                category: Page
-                show: True
-              - title: "CORS issues on developer portal"
-                path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
-                category: Page
-                show: True
-              - title: "“Not Found“ error in the Developer Portal"
-                path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
-                category: Page
-                show: True
-              - title: "Receive a CSRF error in the Developer Portal"
-                path: /troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal
-                category: Page
-                show: True
-          - title: "Dashboard API"
-            category: Directory
+          - title: "Menus"
+            path: /portal/customization/menus
+            category: Page
             show: True
-            menu:
-              - title: "Classic Portal"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Portal Key Requests"
-                    path: /tyk-apis/tyk-dashboard-api/manage-key-requests
-                    category: Page
-                    show: True
-                  - title: "Portal Policies"
-                    path: /tyk-apis/tyk-dashboard-api/portal-policies
-                    category: Page
-                    show: True
+          - title: "Branding"
+            path: /portal/customization/branding
+            category: Page
+            show: True
+          - title: "Sign Up Form"
+            path: /portal/customization/sign-up
+            category: Page
+            show: True
+          - title: "Email Notifications"
+            path: /portal/customization/email-notifications
+            category: Page
+            show: True
+          - title: "User Model"
+            path: /portal/customization/user-model
+            category: Page
+            show: True
+          - title: "Webhooks"
+            path: /portal/customization/webhooks
+            category: Page
+            show: True
+        - title: "Administration"
+          path: /portal/settings
+          category: Page
+          show: True
+          menu:
+            - title: "Single Sign On"
+              path: /tyk-developer-portal/tyk-portal-classic
+              category: Page
+              show: True
+            - title: "Email Settings"
+              path: /tyk-developer-portal/tyk-portal-classic
+              category: Page
+              show: True
+            - title: "Resource Migration"
+              path: /tyk-developer-portal/tyk-portal-classic
+              category: Page
+              show: True
+      - title: "Reference"
+        category: Label
+        show: True
+        menu:
+        - title: "Tyk Classic Developer Portal"
+          category: Directory
+          show: True
+          menu:
+            - title: "Overview"
+              path: /tyk-developer-portal/tyk-portal-classic
+              category: Page
+              show: True
+            - title: "Portal Concepts"
+              path: /tyk-developer-portal/tyk-portal-classic/portal-concepts
+              category: Page
+              show: True
+            - title: "Portal API Catalogue"
+              path: /getting-started/key-concepts/api-catalogue
+              category: Page
+              show: True
+            - title: "Publish an API"
+              path: /getting-started/tutorials/publish-api
+              category: Page
+              show: True
+            - title: "Advanced configurations"
+              category: Directory
+              show: True
+              menu:
+                - title: "Key Requests"
+                  path: /tyk-developer-portal/tyk-portal-classic/key-requests
+                  category: Page
+                  show: True
+                - title: "Developer Profiles"
+                  path: /tyk-developer-portal/tyk-portal-classic/developer-profiles
+                  category: Page
+                  show: True
+                - title: "Dynamic Client Registration (DCR)"
+                  category: Directory
+                  show: True
+                  menu:
+                    - title: "Overview"
+                      path: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
+                      category: Page
+                      show: True
+                    - title: "Step by step guide using Gluu"
+                      path: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
+                      category: Page
+                      show: True
+                    - title: "Step by step guide using Keycloak"
+                      path: /tyk-developer-portal/tyk-portal-classic/keycloak-dcr
+                      category: Page
+                      show: True
+                    - title: "Step by step guide using Okta"
+                      path: /tyk-developer-portal/tyk-portal-classic/okta-dcr
+                      category: Page
+                      show: True
+                    - title: "Step by step guide using Curity"
+                      path: /tyk-developer-portal/tyk-portal-classic/curity-dcr
+                      category: Page
+                      show: True
+                - title: "Portal OAuth Clients"
+                  path: /tyk-developer-portal/tyk-portal-classic/portal-oauth-clients
+                  category: Page
+                  show: True
+                - title: "GraphQL with Classic Portal"
+                  path: /tyk-developer-portal/tyk-portal-classic/graphql
+                  category: Page
+                  show: True
+                - title: "Streams with Classic Portal"
+                  path: /tyk-developer-portal/tyk-portal-classic/streams
+                  category: Page
+                  show: True
+                - title: "Monetising your APIs"
+                  path: /tyk-developer-portal/tyk-portal-classic/monetise
+                  category: Page
+                  show: True
+                - title: "Events and Notifications"
+                  path: /tyk-developer-portal/tyk-portal-classic/portal-events-notifications
+                  category: Page
+                  show: True
+                - title: "Outbound Email Configuration"
+                  path: /configure/outbound-email-configuration
+                  category: Page
+                  show: True
+            - title: "Portal customisation"
+              category: Directory
+              show: True
+              menu:
+                - title: "Overview"
+                  path: /tyk-developer-portal/customise
+                  category: Page
+                  show: True
+                - title: "Customising API Visibility"
+                  path: /tyk-developer-portal/customise/customize-api-visibility
+                  category: Page
+                  show: True
+                - title: "Customise the Portal Menus"
+                  path: /tyk-developer-portal/tyk-portal-classic/customise/changing-the-navigation
+                  category: Page
+                  show: True
+                - title: "Creating a Custom Developer Portal"
+                  path: /tyk-developer-portal/tyk-portal-classic/customise/custom-developer-portal
+                  category: Page
+                  show: True
+                - title: "Swap out Swagger UI for ReDoc"
+                  path: /tyk-developer-portal/tyk-portal-classic/customise/customise-documentation
+                  category: Page
+                  show: True
+                - title: "Customise Pages with CSS and JavaScript"
+                  path: /tyk-developer-portal/tyk-portal-classic/customise/customising-using-dashboard
+                  category: Page
+                  show: True
+                - title: "Customising using jQuery"
+                  path: /tyk-developer-portal/tyk-portal-classic/customise/customize-with-jquery
+                  category: Page
+                  show: True
+                - title: "Customise the Developer Signup Form"
+                  path: /tyk-developer-portal/tyk-portal-classic/customise/developer-meta-data
+                  category: Page
+                  show: True
+                - title: "Customise Page Templates"
+                  path: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates
+                  category: Page
+                  show: True
+            - title: "API documentation"
+              category: Directory
+              show: True
+              menu:
+                - title: "Overview"
+                  path: /tyk-portal-api
+                  category: Page
+                  show: True
+                - title: "Configuration"
+                  path: /tyk-apis/tyk-portal-api/portal-configuration
+                  category: Page
+                  show: True
+                - title: "Developers"
+                  path: /tyk-apis/tyk-portal-api/portal-developers
+                  category: Page
+                  show: True
+                - title: "API Publishing"
+                  path: /tyk-apis/tyk-portal-api/portal-documentation
+                  category: Page
+                  show: True
+                - title: "Key Requests"
+                  path: /tyk-apis/tyk-portal-api/portal-keys
+                  category: Page
+                  show: True
+            - title: "Troubleshooting"
+              category: Directory
+              show: True
+              menu:
+                - title: "How to add, list or delete a developer using the API"
+                  path: /frequently-asked-questions/add-list-delete-developer-using-api
+                  category: Page
+                  show: True
+                - title: "Alerts on new developer key requests"
+                  path: /frequently-asked-questions/alerts-new-developer-key-requests
+                  category: Page
+                  show: True
+                - title: "Custom Developer Portal Options"
+                  path: /frequently-asked-questions/custom-developer-portal-options
+                  category: Page
+                  show: True
+                - title: "“API catalogue not found“ error in the Developer Portal"
+                  path: /troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal
+                  category: Page
+                  show: True
+                - title: "CORS issues on developer portal"
+                  path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
+                  category: Page
+                  show: True
+                - title: "“Not Found“ error in the Developer Portal"
+                  path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
+                  category: Page
+                  show: True
+                - title: "Receive a CSRF error in the Developer Portal"
+                  path: /troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal
+                  category: Page
+                  show: True
+            - title: "Dashboard API"
+              category: Directory
+              show: True
+              menu:
+                - title: "Classic Portal"
+                  category: Directory
+                  show: True
+                  menu:
+                    - title: "Portal Key Requests"
+                      path: /tyk-apis/tyk-dashboard-api/manage-key-requests
+                      category: Page
+                      show: True
+                    - title: "Portal Policies"
+                      path: /tyk-apis/tyk-dashboard-api/portal-policies
+                      category: Page
+                      show: True
+
+# TODO: We don't support having reference to a sinlge page in multiple tabs. Here release notes is referenced in both API Management and Developer Portal tabs.
+      # - title: "Reference"
+      #   category: Label
+      #   show: True
+      #   menu:
+      #     - title: "API Documentation"
+      #       path: "/product-stack/tyk-enterprise-developer-portal/deploy/configuration"
+      #       category: Page
+      #       show: True
+      #     - title: "Environment Variables"
+      #       path: ""
+      #       category: Page
+      #       show: True
+      #     - title: "Release Notes"
+      #       path: "/developer-support/release-notes/portal"
+      #       category: Page
+      #       show: True
   - title: "AI Management"
     category: Tab
     path: /ai-management/overview
