@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "Webhooks"]
 description: "How to customize webhooks in developer portal"
 aliases:
-
+  - /product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks
 ---
 
 In this section, you will learn how to configure webhooks for events that occur within the portal.

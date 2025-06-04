@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "Pages"]
 description: "How to customize pages in developer portal"
 aliases:
-
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
 ---
 
 We suggest you read the [portal concepts]({{< ref "portal/overview#developer-portal-concepts" >}}) first. If you've already done that, we will show you an example on how to:

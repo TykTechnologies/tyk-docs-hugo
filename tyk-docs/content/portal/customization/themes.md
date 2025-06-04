@@ -4,7 +4,8 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "Themes"]
 description: "How to customize themes in developer portal"
 aliases:
-
+  - /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
+  
 ---
 
 ## What is a Theme?

@@ -4,6 +4,8 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "Templates"]
 description: "How to customize templates in developer portal"
 aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/templates
 
 ---
 

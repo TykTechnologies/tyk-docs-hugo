@@ -6,15 +6,6 @@ tags: ["Developer Portal", "Tyk", "API Consumer", "Developer", "Organization", "
 keywords: ["Developer Portal", "Tyk", "API Consumer", "Developer", "Organization", "Invite Codes", "Consumer Registration"]
 description: "How to configure API Consumers in Tyk developer portal"
 aliases:
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
-  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
-  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/add-organisations
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
   - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
 ---

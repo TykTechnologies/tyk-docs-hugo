@@ -6,6 +6,7 @@ tags: ["Developer Portal", "Tyk", "API Consumer", "Organization"]
 keywords: ["Developer Portal", "Tyk", "API Consumer", "Organization"]
 description: "How to manage organizations in Tyk developer portal"
 aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/add-organisations
 ---
 
 ## Introduction

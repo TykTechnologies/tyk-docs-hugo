@@ -6,6 +6,9 @@ tags: ["Developer Portal", "Tyk", "API Consumer", "Users", "Self Registration", 
 keywords: ["Developer Portal", "Tyk", "API Consumer", "Users", "Self Registration", "Invite Users", "Approve Requests"]
 description: "How to manage users in Tyk developer portal"
 aliases:
+  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
 ---
 
 ## Register a New API User

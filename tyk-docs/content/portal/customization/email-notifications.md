@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "Email Notification"]
 description: "How to customize email notification in developer portal"
 aliases:
-
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
 ---
 
 The Tyk Enterprise Developer Portal enables admin users to customize emails that are sent to the API consumers and admin users upon certain events that happen on the portal.

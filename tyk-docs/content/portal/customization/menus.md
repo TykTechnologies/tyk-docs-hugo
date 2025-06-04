@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "Menus"]
 description: "How to customize menus in developer portal"
 aliases:
-
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
 ---
 
 The Developer portal has two types of menus:

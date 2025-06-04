@@ -743,7 +743,7 @@ menu:
           category: Page
           show: True
         - title: "Manage Applications"
-          path: /tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
           category: Page
           show: True
         - title: "Configure Rate Limits"

@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "User Model"]
 description: "How to customize user model in developer portal"
 aliases:
-
+  - /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
 ---
 
 A **Model** in developer portal represents an physical entity. Currenlty, we only have the User model, which represent a user who will be consuming the API by signing up.

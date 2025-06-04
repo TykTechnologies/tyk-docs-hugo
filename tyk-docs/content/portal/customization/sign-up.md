@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["Developer Portal", "Tyk", "Customization", "Sign Up Form"]
 description: "How to customize sign up form in developer portal"
 aliases:
-
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/customize-sign-up-form
 ---
 
 In this section, you will learn how to customize the sign-up form for your API Consumers and extend the data stored in the user profile.
