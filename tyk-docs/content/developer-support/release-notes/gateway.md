@@ -3735,7 +3735,7 @@ that code ranges defined as 1XX, 2XX, etc will be correctly converted by the too
 <summary>Added support for custom rate limit keys</summary>
 
 We have added the capability for users to define a [custom rate limit
-key]({{< ref "portal/api-provider#configure-rate-limits" >}})
+key]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys" >}})
 within session metadata. This increases flexibility with rate limiting, as the rate limit can be assigned to different entities
 identifiable from the session metadata (such as a client app or organization) and is particularly useful for users of Tyk's
 Enterprise Developer Portal.

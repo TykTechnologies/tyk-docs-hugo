@@ -4,6 +4,7 @@ description: How to configure basic authentication in Tyk?
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs", "Basic Authentication"]
 aliases:
   - /basic-config-and-security/security/authentication-authorization/basic-auth
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
 ---
 
 ## Invite Codes
