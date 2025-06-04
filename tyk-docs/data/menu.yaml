@@ -667,7 +667,7 @@ menu:
           category: Page
           show: True
         - title: "Getting Started"
-          path: /portal/overview/quick-start
+          path: /portal/overview/getting-started
           category: Page
           show: True
         - title: "Core Concepts"
