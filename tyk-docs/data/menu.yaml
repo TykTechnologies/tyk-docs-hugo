@@ -688,8 +688,29 @@ menu:
         category: Label
         show: True
         menu:
-        - title: "Invite Codes"
-          path: /portal/api-consumer/invite-codes
+        - title: "Manage API Consumer"
+          path: /portal/api-consumer
+          category: Directory
+          show: True
+          menu:
+          - title: "Organizations"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
+            category: Directory
+            show: True
+          - title: "Users"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
+            category: Directory
+            show: True
+          - title: "Invite Codes"
+            path: /portal/api-consumer/invite-codes
+            category: Page
+            show: True
+          - title: "Reset Password"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
+            category: Page
+            show: True
+        - title: "Access an API Product"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
           category: Page
           show: True
       - title: "API Publisher"
@@ -718,7 +739,7 @@ menu:
             category: Page
             show: True
         - title: "Manage Catalogs"
-          path: /portal/customization
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
           category: Page
           show: True
         - title: "Manage Applications"
