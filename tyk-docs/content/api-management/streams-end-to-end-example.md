@@ -5,9 +5,6 @@ description: "A comprehensive end-to-end example of Tyk Streams implementation"
 tags: ["Tyk Streams", "Event-Driven APIs", "Kafka", "WebSockets", "SSE", "Correlation IDs"]
 ---
 
-# Tyk Streams — End-to-End Event-Driven Demo
-
-
 <div style="position: relative; padding-bottom: 64.6900269541779%; height: 0;"><iframe src="https://www.loom.com/embed/4f5a017aa33648c9abb75d01a739a96f?sid=756a81af-170a-48e5-af62-09b26d9b2c26" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Why Tyk Streams?
