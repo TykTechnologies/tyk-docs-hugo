@@ -543,7 +543,7 @@ A UNIX timestamp that represents the time the session was last updated. Applicab
 This is a UNIX timestamp that signifies when a cached key or ID will expire. This relates to custom authentication, where authenticated keys can be cached to save repeated requests to the gRPC server. See [id_extractor]({{< ref "api-management/plugins/plugin-types#plugin-caching-mechanism" >}}) and [Auth Plugins]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}) for additional information.
 
 `session_lifetime`
-UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "api-management/client-authentication#set-physical-key-expiry-and-deletion" >}}) for more information.
+UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "api-management/policies#set-physical-key-expiry-and-deletion" >}}) for more information.
 
 ---
 
