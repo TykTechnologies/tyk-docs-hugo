@@ -1,8 +1,8 @@
 ---
 title: Combine Authentication Methods
-description: ""
-tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Mutual TLS", "mTLS", "Client mTLS"]
-keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Mutual TLS", "mTLS", "Client mTLS"]
+description: "How to combine multiple authentication methods in Tyk to enhance security and flexibility."
+tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Multi Authentication", "Chained Authentication"]
+keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Multi Authentication", "Chained Authentication"]
 aliases:
 ---
 

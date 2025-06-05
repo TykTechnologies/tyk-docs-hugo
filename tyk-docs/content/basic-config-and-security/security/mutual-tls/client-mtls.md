@@ -1,6 +1,6 @@
 ---
 title: Authentication using Mutual TLS
-description: ""
+description: "How to configure Mutual TLS (mTLS) for client authentication in Tyk."
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Mutual TLS", "mTLS", "Client mTLS"]
 keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Mutual TLS", "mTLS", "Client mTLS"]
 aliases:

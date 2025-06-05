@@ -1,8 +1,8 @@
 ---
 title: Open (No Authentication)
-description: ""
-tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Mutual TLS", "mTLS", "Client mTLS"]
-keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Mutual TLS", "mTLS", "Client mTLS"]
+description: "How to configure open or keyless authentication in Tyk."
+tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Open Authentication", "Keyless Authentication"]
+keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Open Authentication", "Keyless Authentication"]
 aliases:
 ---
 

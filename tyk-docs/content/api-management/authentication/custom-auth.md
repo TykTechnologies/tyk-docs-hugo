@@ -1,6 +1,6 @@
 ---
 title: Custom Authentication
-description: ""
+description: "How to implement custom authentication in Tyk using Go plugins, Python CoProcess, and JSVM plugins."
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Go Plugins", "Python CoProcess", "JSVM Plugin"]
 keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Go Plugins", "Python CoProcess", "JSVM Plugin"]
 aliases:
