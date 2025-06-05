@@ -11,6 +11,7 @@ aliases:
   - /basic-config-and-security/security/authentication-&-authorization
   - /security/your-apis
   - /security/your-apis/openid-connect
+  - /api-management/client-authentication.md
   - /api-management/authentication-authorization
 ---
 
@@ -71,7 +72,7 @@ Secure APIs with username and password credentials.
 Implement token-based authentication for API access.
 {{< /badge >}}
 
-{{< badge title="mTLS" href="api-management/client-authentication/#use-mutual-tls" >}}
+{{< badge title="mTLS" href="basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}
 Establish secure channels with two-way certificate verification.
 {{< /badge >}}
 
@@ -85,11 +86,11 @@ Verify message integrity using shared secret certificates.
 {{< /badge >}}
 -->
 
-{{< badge title="Custom Authentication" href="api-management/client-authentication/#custom-authentication" >}}
+{{< badge title="Custom Authentication" href="api-management/authentication/custom-auth" >}}
 Create custom plugins to implement specific authentication requirements.
 {{< /badge >}}
 
-{{< badge title="Open Access" href="api-management/client-authentication/#open-no-authentication" >}}
+{{< badge title="Open Access" href="basic-config-and-security/security/authentication-authorization/open-keyless" >}}
 Allow unrestricted access for public APIs.
 {{< /badge >}}
 
