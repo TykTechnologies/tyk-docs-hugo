@@ -8,6 +8,8 @@ tags:
     - mutual tls
 description: How to authenticate upstream service using mutual tls
 date: "2025-04-15"
+aliases:
+  - /basic-config-and-security/security/mutual-tls/upstream-mtls
 ---
 
 ## Mutual TLS (mTLS)
