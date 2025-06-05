@@ -31,7 +31,7 @@ In this example the username is `john@smith.com` and the password is `1234567` (
 
 ### The Problem with Basic Authentication
 
-With Basic Authentication, the authentication credentials are transferred from client to server as encoded plain text. This is not a particularly secure way to transfer the credentials as it is highly susceptible to intercept; as the security of user authentication is usually of critical importance to API owners, Tyk recommends that Basic Authentication should only ever be used in conjunction with additional measures, such as [mTLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
+With Basic Authentication, the authentication credentials are transferred from client to server as encoded plain text. This is not a particularly secure way to transfer the credentials as it is highly susceptible to intercept; as the security of user authentication is usually of critical importance to API owners, Tyk recommends that Basic Authentication should only ever be used in conjunction with additional measures, such as [mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}).
 
 ## Configuring your API to use Basic Authentication
 
