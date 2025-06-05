@@ -391,9 +391,9 @@ If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Data plane gateway now cache certificates in Redis</summary>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
 
-Resolved an issue where certificates were not cached locally due to incorrect key pattern detection. Gateway now reliably serve HTTPS and mTLS traffic even when MDCB is unavailable.
+Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
 </details>
 </li>
 </ul>
