@@ -8,11 +8,13 @@ tags:
     - mutual tls
 description: How to authenticate upstream service using mutual tls
 date: "2025-04-15"
+aliases:
+  - /basic-config-and-security/security/mutual-tls/upstream-mtls
 ---
 
 ## Mutual TLS (mTLS)
 
-If your upstream API is protected with [mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) then Tyk must provide a certificate when connecting to the upstream service and also will need to verify the certificate presented by the upstream. This ensures secure communication between Tyk and your upstream services.
+If your upstream API is protected with [mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) then Tyk must provide a certificate when connecting to the upstream service and also will need to verify the certificate presented by the upstream. This ensures secure communication between Tyk and your upstream services.
 
 When Tyk performs an mTLS handshake with an upstream, it needs to know:
 
