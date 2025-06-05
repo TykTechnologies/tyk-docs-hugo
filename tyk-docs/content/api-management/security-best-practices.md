@@ -44,7 +44,7 @@ It is the responsibility of the API to handle this form of attack since it can a
 Authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken Authentication* posing a significant risk to both API providers and data.
 
 Tyk provides the following features and authentication mechanisms:
--  Prioritize secure methods, like [mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}), over [basic authentication]({{< ref "api-management/authentication/basic-authentication" >}}) wherever feasible.
+-  Prioritize secure methods, like [mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}), over [basic authentication]({{< ref "api-management/authentication/basic-authentication" >}}) wherever feasible.
 - API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}), [OAuth 2.0]({{< ref "api-management/authentication/oauth-2#using-the-authorization-code-grant" >}}) or [JSON Web Tokens]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 - [Single Sign-On]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) can be used for a centralized and trusted authentication source. API operators can choose from common authentication methods such as OAuth 2.0, LDAP, and SAML.
 - [Dynamic Client Registration]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration#oauth-20-dynamic-client-registration-protocol-dcr" >}}), enables third-party authorization servers to issue client credentials via the Tyk Developer Portal. This streamlines Identity Management, eliminating the need to manage credentials across multiple systems.
@@ -111,7 +111,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - Use [response header manipulation]({{< ref "api-management/traffic-transformation/response-headers" >}}) to remove or modify API sensitive information.
 - Use [response body manipulation]({{< ref "api-management/traffic-transformation/response-body" >}}) to remove or modify parts containing sensitive information.
 - [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
-- [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
+- [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "api-management/gateway-events#error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
 - [CORS functionality]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 - [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
@@ -321,7 +321,7 @@ Modern APIs are often backed by large technology stacks composed of numerous com
 **Secure Connections**
 
 
-Use [transport layer security]({{< ref "api-management/certificates" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
+Use [transport layer security]({{< ref "api-management/certificates" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}).
 
 **Limit Functionality**
 
@@ -404,7 +404,7 @@ Tyk supports TLS connections and Mutual TLS. All TLS connections also support HT
 **Trusted Certificates**
 
 
-As part of using Mutual TLS, you can create a list of [trusted certificates]({{< ref "api-management/client-authentication#how-does-mutual-tls-work" >}}).
+As part of using Mutual TLS, you can create a list of [trusted certificates]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#how-does-mutual-tls-work" >}}).
 
 **Certificate Pinning**
 
