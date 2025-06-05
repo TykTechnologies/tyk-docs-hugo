@@ -56,7 +56,7 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
     - **Auth Key Header Name**: The header parameter that will hold the authentication token (or key) for requests to this API; the default for this is `Authorization`.
     - **Allow query parameter as well as header**: This option allows the authentication token to be set in the query parameter, not just in the Request Header. For this tutorial, leave this unchecked.
     - **Use Cookie Value**: Tyk also supports the use of a cookie value as an alternative authentication token location. For this tutorial, leave this unchecked.
-    - **Enable client certificate**: Tyk supports the use of Mutual TLS to authenticate requests to your API; you would use this checkbox to enable this mode. See [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) for details on implementing this feature. For this tutorial, leave this unchecked.
+    - **Enable client certificate**: Tyk supports the use of Mutual TLS to authenticate requests to your API; you would use this checkbox to enable this mode. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) for details on implementing this feature. For this tutorial, leave this unchecked.
 
 5. **Save the API**
 
