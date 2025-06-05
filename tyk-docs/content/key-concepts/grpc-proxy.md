@@ -32,7 +32,7 @@ For scenarios where you want to connect two services calling each other or just 
 Tyk supports all kinds of gRPC streaming (client streaming, server streaming and bidirectional streaming). It requires you to set a low value for `flush_interval`, this is required in order to forward data to the downstream target as soon as the upstream target replies. A high flush interval will delay this communication. We recommend the lowest possible value: 1 (1 millisecond). You set this value in your `tyk.conf` file in the `http_server_options.flush_interval` option.
 
 ## Mutual Authentication
-Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) to configure Mutual Authentication in Tyk. 
+Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) to configure Mutual Authentication in Tyk. 
 
 ## Basic Authentication
 Tyk supports Basic Authentication in gRPC. See [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}) to configure Basic Authentication in Tyk. 
