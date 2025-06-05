@@ -44,7 +44,7 @@ When it comes to authorization, it is enough for the server that has a public cl
 
 Using Tyk, you have two main certificate use cases:
 
-1. Certificates without public keys used for [client authorization and authentication]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
+1. Certificates without public keys used for [client authorization and authentication]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
 2. Certificates with private keys used for [upstream access]({{< ref "api-management/upstream-authentication/mtls" >}}), and server certificates (in other words when we need to sign and encrypt the request or response).
 
 ### PEM format
@@ -385,7 +385,7 @@ You may notice that you can't get the raw certificate back, only its meta inform
 
 ### Using Tyk Certificate Storage
 
-In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
+In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
 
 In order to add new server certificates to the Gateway:
 

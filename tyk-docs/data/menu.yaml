@@ -375,6 +375,22 @@ menu:
                 path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
                 category: Page
                 show: True
+              - title: "Mutual TLS"
+                path: /basic-config-and-security/security/mutual-tls/client-mtls
+                category: Page
+                show: True
+              - title: "Custom Authentication"
+                path: /api-management/authentication/custom-auth
+                category: Page
+                show: True
+              - title: "No Authentication"
+                path: /basic-config-and-security/security/authentication-authorization/open-keyless
+                category: Page
+                show: True
+              - title: "Combine Authentication"
+                path: /basic-config-and-security/security/authentication-authorization/multiple-auth
+                category: Page
+                show: True
             - title: "Upstream Authentication"
               path: /api-management/upstream-authentication
               category: Directory
