@@ -127,6 +127,3 @@ In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will
 * Ensure that the client application has the server address pointing to Tyk, for this example: `https://tyk.com:8000`.
 * Now you are ready to test the solution. Run the client application and it should send and receive data simultaneously.
 
-Currently load balancing is not supported for gRPC.
-
-
