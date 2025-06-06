@@ -1373,7 +1373,7 @@ Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-
 
 ##### Root CA Support for Client Certificates
 
-Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "api-management/client-authentication#faq" >}}).
+Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#faq" >}}).
 
 ##### Optimised AST Document Handling
 
