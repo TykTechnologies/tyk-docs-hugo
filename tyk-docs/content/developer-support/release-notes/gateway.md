@@ -335,7 +335,7 @@ Resolved an issue where the gateway incorrectly selected the OAuth upstream auth
 
 ### 5.7.3 Release Notes
 
-#### Release Date xxx
+#### Release Date 05 June 2025
 
 #### Release Highlights
 
@@ -347,19 +347,19 @@ This patch release contains a bug fix. For a comprehensive list of changes, plea
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.7.3 | MDCB v2.8.1     | MDCB v2.8.1 |
-|         | Operator v1.2.0  | Operator v0.17 |
-|         | Sync v2.1.0    | Sync v2.1.0 |
-|         | Helm Chart v3.0  | Helm all versions |
-| | EDP v1.13 | EDP all versions |
-| | Pump v1.12.0 | Pump all versions |
-| | TIB (if using standalone) v1.7.0 | TIB all versions |
+| 5.7.3 | MDCB v2.7.2     | MDCB v2.4.2 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.2    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
 
 ##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
-| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
 
@@ -380,7 +380,7 @@ If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.7.3
     ``` 
 - Helm charts
-  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
