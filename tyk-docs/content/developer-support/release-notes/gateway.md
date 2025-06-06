@@ -44,6 +44,73 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.7 Release Notes
 
+### 5.7.3 Release Notes
+
+#### Release Date 05 June 2025
+
+#### Release Highlights
+
+This patch release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.3" >}}) below.
+
+#### Dependencies {#dependencies-5.7.3}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.7.3 | MDCB v2.7.2     | MDCB v2.4.2 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.2    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.7.3}
+
+If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.7.3)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.7.3
+    ``` 
+- Helm charts
+  - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.7.3}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
+
+Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.7.2 Release Notes
 
 #### Release Date 19 February 2025
