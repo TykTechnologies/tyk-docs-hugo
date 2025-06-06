@@ -1,7 +1,10 @@
 openapi: 3.1.0
 info:
-  title: Tyk Enterprise Developer Portal Management API
+  title: Tyk Developer Portal
   description: >-
+    
+    <img src="https://tyk.io/docs/img/developer_portal_swagger_image.png" width="963" height="250">
+    
     ## <a name="introduction"></a> Introduction
 
     The Tyk Enterprise Developer Portal Management API offers programmatic
@@ -15,7 +18,7 @@ info:
 
     This API requires an admin authorisation token that is available for admin
     users of the portal in the profile page.
-  version: v1.13.0
+  version: 1.8.0
 servers:
   - url: http://localhost:3001/portal-api
 tags:
