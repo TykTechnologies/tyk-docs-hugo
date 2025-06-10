@@ -14,7 +14,6 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
-  - /product-stack/tyk-enterprise-developer-portal/deploy/configuration
   - /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
   - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
   - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
