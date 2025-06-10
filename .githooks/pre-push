@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Pre-push hook to prevent direct pushes to master/main branch
+# This hook is called with the following parameters:
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+
+protected_branch='master'
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+remote="$1"
+url="$2"
+
+if [ "$current_branch" = "$protected_branch" ]; then
+    echo "🚫 PUSH REJECTED!"
+    echo "═══════════════════════════════════════════════════════════════"
+    echo "You're trying to push directly to the '$protected_branch' branch."
+    echo "This is not allowed to prevent accidental commits to master."
+    echo ""
+    echo "Instead, please:"
+    echo "1. Create a feature branch: git checkout -b feature/your-feature-name"
+    echo "2. Push your changes to the feature branch: git push origin feature/your-feature-name"
+    echo "3. Create a Pull Request on GitHub"
+    echo ""
+    echo "If you REALLY need to push to master (emergency), you can:"
+    echo "git push --no-verify origin master"
+    echo "═══════════════════════════════════════════════════════════════"
+    echo ""
+    exit 1
+fi
+
+# Allow push to other branches
+exit 0

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Commit message hook to warn about being on master branch
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+if [ "$current_branch" = "master" ]; then
+    echo "⚠️  WARNING: You're committing directly to the 'master' branch!"
+    echo "═══════════════════════════════════════════════════════════════"
+    echo "Are you sure you want to commit to master? (y/N)"
+    read -r response
+    
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            echo "✅ Proceeding with commit to master..."
+            ;;
+        *)
+            echo "🚫 Commit cancelled. Consider:"
+            echo "1. git checkout -b feature/your-feature-name"
+            echo "2. git cherry-pick HEAD"
+            echo "3. git checkout master && git reset --hard HEAD~1"
+            exit 1
+            ;;
+    esac
+fi
+
+exit 0
