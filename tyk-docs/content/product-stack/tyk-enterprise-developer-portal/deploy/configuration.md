@@ -473,18 +473,18 @@ PORTAL_DATABASE_CONNECTION_MAX_LIFETIME=180000
 
 ### PORTAL_DATABASE_MAXRETRIES
 **Config file:** Database.MaxRetries <br/>
-**Type:** `boolean` <br/>
+**Type:** `int` <br/>
 **Description**: Defines how many times the portal will retry to connect to the database. Optional, the default value is 3.
 
 ### PORTAL_DATABASE_RETRYDELAY
-**Config file:** Database.MaxRetries <br/>
-**Type:** `boolean` <br/>
-**Description**: Defines delay between connect attempts (in milliseconds). Optional, the default value is 5000.
+**Config file:** Database.RetryDelay <br/>
+**Type:** `int` <br/>
+**Description**: Defines the delay between connect attempts (in milliseconds). Optional. Default value: 5000.
 
 ### PORTAL_DATABASE_MAX_OPEN_CONNECTIONS
 **Config file:** Database.MaxOpenConnections <br/>
 **Type:** `int` <br/>
-**Description**: Defines the maximum number of concurrent connections that the database can handle from the application. When the number of open connections reaches this limit, new requests will wait until a connection becomes available. Optional, the default value is unlimited.
+**Description**: Defines the maximum number of concurrent connections that the database can handle from the application. When the number of open connections reaches this limit, new requests will wait until a connection becomes available. Optional. Default value: unlimited.
 
 ### PORTAL_DATABASE_MAX_IDLE_CONNECTIONS
 **Config file:** Database.MaxIdleConnections <br/>
