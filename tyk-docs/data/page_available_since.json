@@ -1473,11 +1473,6 @@
             "/docs/3.1/": "/basic-config-and-security/security/tls-and-ssl/",
             "/docs/3-lts/": "/basic-config-and-security/security/tls-and-ssl/"
         },
-        "/api-management/client-authentication.md/": {
-            "/docs/": "/api-management/client-authentication/",
-            "/docs/5.7/": "/api-management/client-authentication/",
-            "/docs/nightly/": "/api-management/client-authentication/"
-        },
         "/api-management/client-authentication/": {
             "/docs/": "/api-management/client-authentication/",
             "/docs/5.7/": "/api-management/client-authentication/",
