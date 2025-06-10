@@ -2082,11 +2082,6 @@
             "/docs/3.1/": "/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/",
             "/docs/3-lts/": "/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/"
         },
-        "/api-management/troubleshotting-debugging/": {
-            "/docs/": "/api-management/troubleshooting-debugging/",
-            "/docs/5.7/": "/api-management/troubleshooting-debugging/",
-            "/docs/nightly/": "/api-management/troubleshooting-debugging/"
-        },
         "/api-management/tyk-pump/": {
             "/docs/": "/api-management/tyk-pump/",
             "/docs/5.7/": "/api-management/tyk-pump/",
