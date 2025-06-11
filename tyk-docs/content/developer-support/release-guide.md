@@ -4,6 +4,10 @@ description: "Guide to releasing Tyk documentation"
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs", "client"]
 ---
 
+## Introduction
+
+This document outlines the process for releasing Tyk documentation, including patch and major/minor releases. It provides a clear understanding of the versioning system, the release workflow, and the steps required to ensure that documentation is up-to-date.
+
 ## Types of Releases
 
 Tyk has two types of releases:
@@ -34,6 +38,46 @@ Documentation content is always merged into the `master` branch first, and then 
 
 The `stable` branch automatically replicates changes from the latest release branch (e.g., `release-5.7`) to ensure that the live site always reflects the most recent stable version. So at tyk.io/docs and tyk.io/docs/5.7, you will see the same content.
 
+```mermaid
+graph TD;
+
+    classDef repoStyle fill:#E1D5E7,stroke:#9673A6,stroke-width:2px,font-weight:bold;
+    classDef branchStyle fill:#D1E8FF,stroke:#007BFF,stroke-width:2px;
+    classDef urlStyle fill:#E2F0D9,stroke:#548235,stroke-width:2px;
+    classDef inputStyle fill:#FFF2CC,stroke:#D6B656,stroke-width:1px;
+
+    Repo["GitHub: TykTechnologies/tyk-docs"]
+    class Repo repoStyle;
+
+    NewContent["New Documentation Content / Changes"]
+    class NewContent inputStyle;
+
+    subgraph SpecialBranches [Special Branches in Repository]
+        direction TB
+        master["<strong>master</strong><br/>Holds docs for nightly build"]
+        release_xy["<strong>release-x.y</strong><br/>(e.g., release-5.7)<br/>Docs for specific version x.y<br/>and its patch versions (x.y.z)"]
+        stable["<strong>stable</strong><br/>Holds the latest release docs"]
+    end
+    class master,release_xy,stable branchStyle;
+
+    subgraph PublishedURLs [Published Documentation URLs]
+        direction TB
+        url_nightly["<code>tyk.io/docs/nightly</code>"]
+        url_version["<code>tyk.io/docs/x.y</code><br/>(e.g., tyk.io/docs/5.7)"]
+        url_stable["<code>tyk.io/docs</code><br/>(Live site / Latest stable)"]
+    end
+    class url_nightly,url_version,url_stable urlStyle;
+
+    Repo --> master;
+    NewContent -- "Step 1. Content merged first into" --> master;
+    master -- "Step 2. Changes propagated/<br/>backported (as needed)" --> release_xy;
+    release_xy -- "Step 3. LATEST <code>release-x.y</code><br/>automatically replicates to" --> stable;
+
+    master -. "Publishes to" .-> url_nightly;
+    release_xy -. "Publishes to" .-> url_version;
+    stable -. "Publishes to" .-> url_stable;
+```
+
 ### Previous Releases
 
 Tyk has some versions that are on LTS. During some releases, we need to update the LTS release alongside the latest version. For example, you might have to maintain 5.7.2 (latest) and 5.3.2 (LTS). Due to structural changes in the documentation across versions, this cannot be done directly, and a separate PR must be created from the latest RNs and config PR. This process has to be done manually and will require the help of DX.
@@ -44,7 +88,7 @@ To release a patch version, we follow a simple process that involves merging the
 
 ### Pre-Requisites:
 
-Ensure you have PRs for documentation and release notes that have already been approved.
+Ensure the PRs for documentation, configuration, and release notes have already been approved.
 
 **Note:** For release notes ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
 
@@ -56,7 +100,7 @@ Ensure you have PRs for documentation and release notes that have already been a
 2.  **Verify**\
     **Description:** After merging the PRs on the version branch (release-5.7), it usually takes 5 minutes to reflect the same on the live website. Verify these changes after release.
 
-Note: We can also have patch release for previous versions. For example, if the latest version is 5.7.2 and the new patch is 5.7.3, and a patch for LTS version 5.3.3 is also needs to be released, then you will have to merge the PRs for both versions.
+**Note:** We can also have patch release for previous versions. For example, if the latest version is 5.7.2 and the new patch is 5.7.3, and a patch for LTS version 5.3.3 is also needs to be released, then you will have to merge the PRs for both versions.
 
 ## Major/Minor Release
 
@@ -64,24 +108,30 @@ To release a major or minor version, we follow a series of steps to ensure that 
 
 ### Pre-Requisites:
 
-1. Mintlify is updated with docs.json (has versions and redirects)
+Ensure the PRs for documentation, configuration, and release notes have already been approved.
+
+**Note:** For release notes ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
+
 
 ### Instructions
 
-1.  **Add the latest version in Python Script:**\
-    **Description:** Over time, the content of pages is moved to new pages and deleted. This script is used to maintain a one-to-one mapping of which page is compatible with which version.\
-    **Automation:** This [Github Action](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) generates this page.\
-    **Example**: <https://github.com/TykTechnologies/tyk-docs/pull/5376>\
-    **Steps:**
+1.  **Deploy release: Merge all RNs, Docs & Config PRs**\
+    **Description:** The PRs mentioned in the prerequisites can now be merged in master.
 
-    1.  Invoke this [Github Action](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) with the following values. Ensure you follow the naming convention of release branches (release-x.y)
+2.  **Make the following changes in the versions.json file:**
 
-    2.  This will create 3 PRs. The one we are interested in will be named Update version.json
+    Example migration from 5.7 to 5.8:
 
-    3.  Merge the PR into master
+    -  Rename `5.7 - Latest` to `5.7`
+    -  Replicate the nighlty json object and update the version number to `5.8 - Latest`.
 
-2.  **Update stable branch updater**\
-    **Description:** We are updating a GitHub Action here. This action ensures that anything we merge into the version branch (release-5.7) is also merged into the stable branch, which directly reflects our live site.\
+    Question: Will automapping will be maintained?
+
+2.  **Create a new release branch**
+    **Description:** This step creates a new branch from the master branch, which will be used to maintain the documentation for the new version. Ensure the new release branch has branch protection enabled.
+
+3.  **Update stable branch updater**
+    **Description:** We are updating a GitHub Action here. This action ensures that anything we merge into the version branch (release-5.7) is also merged into the stable branch, which directly reflects our live site.
     **Automation:** This [Github](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) Action generates this page.\
     **Example**: <https://github.com/TykTechnologies/tyk-docs/pull/5377>\
     **Steps:**
@@ -92,60 +142,18 @@ To release a major or minor version, we follow a series of steps to ensure that 
 
     3.  Merge the PR into master, current latest till release-5. **We need to merge the PR to all the way to previous branches.**
 
-4.  **Add GitHub Branch Protection to** release-5.8 **branch**\
-    **Description:**\
-    **Automation:** Not Available\
-    **Steps:**
-
-    1.  Go to Github settings.
-
-    2.  Copy branch protection rules of the previous release branch to this release.
-
-5.  **Update the previous version URL to be versioned once 5.8. released**\
-    Description: This change ensure that our current latest version is now available at the URL prefix /5.7\
-    **Steps:**
-
-    1.  Invoke this [Github Action](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) with the following values. Ensure you follow the naming convention of release branches (release-x.y)
-
-    2.  This will create 3 PRs. The one we are interested in will be named Update baseURL to //tyk.io/docs/5.7/ this needs to be merged in current version.
-
-6.  **Deploy release: Merge all RNs, Docs & Config PRs**\
-    Description: The PRs mentioned in the prerequisites can now be merged in master and latest branch that was created in the previous steps.
-
-7.  **Update release notes landing page for 5.8.0 release**\
-    **Description:** This step ensures we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/). This should already be taken care of in the pre-requisite PRs. If not, then create a PR for the same.
-
-8.  **Deploy versions Drop Down LIsts**\
-    **Description:** This step updates the version dropdown on the docs site.\
-    **Automation:** This [Github Action](https://github.com/TykTechnologies/tyk-docs/actions/workflows/page_available_since.yml) will generate the required PR.\
-    **Example:** <https://github.com/TykTechnologies/tyk-docs/pull/5545>\
-    **Steps:**
-
-    1.  Run the Github action from master, this will generate a PR. **Github Action:** <https://github.com/TykTechnologies/tyk-docs/actions/workflows/page_available_since.yml>
-
-    2.  This PR has to be merged to master all previous versions till you get a merge conflict.
-
-9.  **Verify that Everything is working**\
+4.  **Verify that Everything is working**\
     **Steps:**
 
     1.  Go to the latest [https://tyk.io/docs](https://tyk.io/docs/) URL and navigate through the docs to ensure it is not redirecting to some other URL.
 
     2.  Go to the previous URL, <https://tyk.io/docs/5.7>, and navigate through the docs to ensure it is not redirected to some other URL.
 
-10. **Rerun Algolia Search Index**\
-    **Description:** To enable instant search on the latest documents without relying on the CRON job, we need to manually index the new pages.\
-    **Automation:** We have a CRON job that runs daily to update the index.\
-    **Steps:**
+5. **Force Re-Index Mintlify Search? when merged to stable**
 
-    1.  Login to algolia
+6. **Force Re-Index AI Search? when merged to stable**
 
-    2.  Select the latest project
-
-    3.  Click on Datashource → crawler → select tyk- crawler
-
-    4.  Click on Resume Crawling
-
-11. **Update Postman Collections**\
+7. **Update Postman Collections**\
     **Description:** We maintain a postman collection for the following Tyk Componets. After a\
     **Automation:** Not Available\
     **Steps:**\
@@ -161,14 +169,14 @@ To release a major or minor version, we follow a series of steps to ensure that 
 
     5.  Add the latest prefix and remove the previous one. This ensures that the latest version is always displayed at the top.
 
-12. **Update the HubSpot Banner to indicate the release of 5.8 on old docs pages.**\
+8. **Update the HubSpot Banner to indicate the release of 5.8 on old docs pages.**\
     **Description:** We use HubSpot to display a banner at the top of our docs page, which indicates that you are viewing old documentation and points to the latest version.\
     Here is a sample banner you can view on this [page](https://tyk.io/docs/4.0/getting-started/key-concepts/graphql-subscriptions/).
 
     **Automation:** Not Available\
     **Steps:** Inform @Jennifer Craig to release the new banner.
 
-13. **Add a reference to release notes in Github Releases.**\
+9. **Add a reference to release notes in Github Releases.**\
     **Description:** Developers usually refer to the release tags to view the changelog. These release tags should point to the release notes in the docs.\
     **Automation:** Not Available\
     **Steps:** Modify the release tags of all components modified in a release.\
