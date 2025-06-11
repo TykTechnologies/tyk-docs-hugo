@@ -9,7 +9,6 @@ aliases:
   - /basic-config-and-security/security/authentication-authorization/physical-token-expiry
   - /getting-started/key-concepts/what-is-a-session-object
   - /getting-started/key-concepts/session-meta-data
-  - /advanced-configuration/transform-traffic/looping
   - /concepts/session-meta-data
   - /concepts/what-is-a-session-object
   - /security/security-policies
