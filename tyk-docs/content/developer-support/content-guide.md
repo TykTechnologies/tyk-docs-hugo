@@ -4,12 +4,19 @@ description: "Guide to releasing Tyk documentation"
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs", "client"]
 ---
 
+## Introduction
+
+### Versioning in Tyk Docs
+
+
 ## Latest Version
 
-## Create New Content
+### Create New Documentation
 
-## Update Existing Content
+### Update Existing Documentation
 
-## Delete Content
+### Delete Documentation
 
-## Previous Version (LTS)
+## Previous Version
+
+
