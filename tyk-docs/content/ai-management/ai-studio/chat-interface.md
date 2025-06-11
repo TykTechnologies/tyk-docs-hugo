@@ -28,7 +28,7 @@ The main goals of the Chat Interface are:
 *   **System Prompts:** Administrators can define specific system prompts for different Chat Experiences to guide the LLM's persona, tone, and behavior.
 *   **History:** Users can view their past chat sessions.
 *   **File Upload (Context):** Users might be able to upload files directly within a chat to provide temporary context for the LLM (depending on configuration).
-*   **Access Control:** Users only see and can interact with Chat Experiences assigned to their [Teams]({{< ref "ai-management/ai-studio/teams" >}}).
+*   **Access Control:** Users only see and can interact with Chat Experiences assigned to their Teams.
 
 ## Using the Chat Interface
 
@@ -50,7 +50,7 @@ Administrators configure the available "Chat Experiences" (formerly known as Cha
 *   **Enabling Data Sources:** Selecting which [Data Source Catalogues]({{< ref "ai-management/ai-studio/datasources-rag" >}}) are available.
 *   **Setting System Prompt:** Defining the guiding prompt for the LLM.
 *   **Applying Filters:** Associating specific [Filters]({{< ref "ai-management/ai-studio/filters" >}}) for governance.
-*   **Assigning Groups:** Determining which [Teams]({{< ref "ai-management/ai-studio/teams" >}}) can access this Chat Experience.
+*   **Assigning Groups:** Determining which Teams can access this Chat Experience.
 *   **Enabling/Disabling Features:** Toggling features like file uploads or direct tool usage.
 
     {{< img src="/img/ai-management/chat-experience-config.png" alt="Chat Config" >}}
