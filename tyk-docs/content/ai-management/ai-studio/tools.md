@@ -64,7 +64,7 @@ Administrators define and manage Tools via the UI or API:
 ## Organizing & Assigning Tools (Admin)
 
 *   **Create Catalogues:** Group related tools into Tool Catalogues (e.g., "CRM Tools", "Search Tools").
-*   **Assign to Groups:** Assign Tool Catalogues to specific [Teams]({{< ref "ai-management/ai-studio/teams" >}}). This grants users in those groups *potential* access to the tools within the catalogue.
+*   **Assign to Groups:** Assign Tool Catalogues to specific Teams. This grants users in those groups *potential* access to the tools within the catalogue.
 
     {{< img src="/img/ai-management/tool-catalog-config.png" alt="Catalogue Config" >}}
 
