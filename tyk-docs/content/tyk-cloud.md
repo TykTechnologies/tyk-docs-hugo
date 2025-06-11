@@ -86,6 +86,7 @@ aliases:
   - /tyk-cloud/troubleshooting-support/tyk-cloud-mdcb-supported-versions
   - /tyk-cloud/using-plugins
   - /tyk-cloud/what-is-tyk-cloud
+  - /tyk-cloud/audit-logs
   - /deployment-and-operations/tyk-cloud-platform/quick-start
   - /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
   - /frequently-asked-questions/custom-domain-for-portal-cloud-multi-cloud
@@ -2578,6 +2579,46 @@ The sampling level can be configured at both the organization level (while setti
     {{< img src="/img/cloud/tyk-cloud-data-plane-enable-telemetry.png" alt="Tyk Cloud Data Plane Telemetry Enabled" >}}
 
 
+### Audit Logs
+
+Tyk Cloud provides comprehensive audit logging capabilities for Control Plane deployments, allowing you to track and monitor all administrative actions performed within your Tyk Dashboard. This feature is essential for compliance and security.
+
+#### What are Audit Logs?
+
+Audit logs capture detailed records of all requests made to endpoints under the `/api` route in your Tyk Dashboard. These logs include information about:
+
+- User actions and administrative operations
+- API changes and configurations
+- Authentication and authorisation events
+- System access and modifications
+- Response status codes and timestamps
+
+#### Enabling Audit Logs for Control Plane Deployments
+
+{{< note success >}}**Note**
+
+The audit log feature is available for Control Plane versions v5.7.0 or later.
+{{< /note >}}
+
+##### How to Enable Audit Logging
+
+1. **Contact Your Account Manager**: Audit logging must be enabled at the subscription level. Reach out to your Tyk account manager to add this feature to your plan.
+
+2. **Enable via Tyk Cloud UI**: Once the feature is available in your subscription, you can enable audit logging directly from the Tyk Cloud console:
+   - Navigate to your Control Plane deployment
+   - Select **Edit** from the deployment options
+   - Enable the **Audit Logging** option
+   - Save and redeploy your Control Plane
+
+Audit logs will be stored in your Control Plane's database for easy access and management.
+
+#### Storage Size Caps
+
+Tyk Cloud enforces audit log storage size caps based on your subscription terms:
+
+- **Storage Limits**: A size cap is applied to audit logs based on your subscription plan
+- **Automatic Cleanup**: When the storage limit is reached, the oldest logs are automatically removed to make space for new entries.
+
 ### Tyk Cloud MDCB Supported versions
 
 This section lists the supported MDCB version for hybrid setup
@@ -2831,4 +2872,3 @@ Can do everything within the scope of the one team they have access to.
 **Team Member**
 
 Can only view and manage the overview, environments and deployments.
-
