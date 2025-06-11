@@ -7,7 +7,6 @@ keywords: ["Policies", "Security", "Security Policy", "Access Key", "API Key"]
 aliases:
   - /getting-started/key-concepts/what-is-a-session-object
   - /getting-started/key-concepts/session-meta-data
-  - /advanced-configuration/transform-traffic/looping
   - /concepts/session-meta-data
   - /concepts/what-is-a-session-object
   - /security/security-policies

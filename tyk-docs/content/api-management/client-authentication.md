@@ -34,6 +34,7 @@ aliases:
   - /security/your-apis
   - /security/your-apis/bearer-tokens
   - /security/your-apis/openid-connect
+<<<<<<< HEAD
   - /basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant
   - /basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant
   - /basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant
@@ -45,6 +46,8 @@ aliases:
   - /security/tls-and-ssl/mutual-tls
   - /security/your-apis/oauth-2-0
   - /api-management/client-authentication.md
+=======
+>>>>>>> 940c172d8... remove aliases if file exists (#6515)
   - /api-management/authentication-authorization
 
 

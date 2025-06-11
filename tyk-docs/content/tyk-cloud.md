@@ -4,8 +4,7 @@ description: "This page serves as a comprehensive guide to migrating workloads t
 tags: ["Tyk Cloud", "Migration"]
 aliases:
   - /tyk-cloud/telemetry/enable-telemetry
-  - /tyk-cloud/telemetry/
-  - /tyk-cloud
+  - /tyk-cloud/telemetry
   - /tyk-cloud/account--billing/plans
   - /tyk-cloud/account--billing/retirement
   - /tyk-cloud/account-and-billing/add-payment-method
