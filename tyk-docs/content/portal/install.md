@@ -14,7 +14,6 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
-  - /product-stack/tyk-enterprise-developer-portal/deploy/configuration
   - /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
   - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
   - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
@@ -52,7 +51,7 @@ Optionally, there could be three additional components:
 It's essential to note that the [Tyk Stack]({{< ref "tyk-stack" >}}) doesn't include third-party identity providers, so you should refer to your Identity Provider's documentation for instructions on configuring and deploying it.
 This component is optional and required only for enabling oAuth2.0
 - **[Tyk Identity Broker]({{< ref "api-management/external-service-integration" >}})**. You only need this component if you want to configure Single Sign-On for the Tyk Enterprise Developer Portal.
-For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "portal/settings#configure-developer-portal-sso" >}}) of the documentation
+For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso" >}}) of the documentation
 - **Email server**. The portal is capable of sending notifications to both admin users and developers when specific events happen within the portal.
 To enable this feature, you need to specify a connection configuration to an email server or service, and configure other email settings.
 You can choose to use a server that is installed on your premises or an SMTP-compatible SaaS product.
