@@ -62,6 +62,10 @@ Note: We can also have patch release for previous versions. For example, if the 
 
 To release a major or minor version, we follow a series of steps to ensure that the documentation is updated, the latest version is deployed, and the previous versions are maintained correctly. The following steps outline the process:
 
+### Pre-Requisites:
+
+1. Mintlify is updated with docs.json (has versions and redirects)
+
 ### Instructions
 
 1.  **Add the latest version in Python Script:**\
@@ -87,19 +91,6 @@ To release a major or minor version, we follow a series of steps to ensure that 
     2.  This will create 3 PRs. The one we are interested in will be named Update stable-updater.yaml to use release-5.8
 
     3.  Merge the PR into master, current latest till release-5. **We need to merge the PR to all the way to previous branches.**
-
-3.  **TODO: Create release 5.8 branch with _redirects and baseURL in config.toml**
-
-    Description:\
-    **Automation:** This [Github](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) Action generates this page.\
-    **Example**: <https://github.com/TykTechnologies/tyk-docs/pull/5544>\
-    **Steps:**
-
-    1.  Invoke this [Github Action](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) with the following values. Ensure you follow the naming convention of release branches (release-x.y)
-
-    2.  Merge the PR into release-5.7
-
-        **Note:** Ensure that Netlify has release-5.8 (latest branch) as a deploy branch and then push the branch, validating that the URL can be browsed to correctly
 
 4.  **Add GitHub Branch Protection to** release-5.8 **branch**\
     **Description:**\
