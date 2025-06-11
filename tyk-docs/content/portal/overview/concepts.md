@@ -5,6 +5,8 @@ tags: ["Developer Portal", "Tyk"]
 keywords: ["Developer Portal", "Tyk"]
 description: "Understand the fundamental concepts behind the Tyk Developer Portal, including APIs, access control, and customisation."
 aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+  - /concepts/tyk-components/developer-portal
 ---
 
 This section provides an overview of the most common concepts for the Developer Portal. When starting out with the Developer Portal, we recommend reading this through, ensuring you have a basic understanding of what these terms refer to.
