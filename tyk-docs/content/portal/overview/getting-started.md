@@ -5,6 +5,18 @@ tags: ["Developer Portal", "Tyk"]
 keywords: ["Developer Portal", "Tyk"]
 description: "Get started quickly with setting up and using the Tyk Developer Portal."
 aliases:
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/getting-started-with-enterprise-portal
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/getting-started-with-enterprise-portal
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
+  - /getting-started/tyk-components/developer-portal
 ---
 
 To get started with the Enterprise Developer portal, you need to accomplish four steps:
