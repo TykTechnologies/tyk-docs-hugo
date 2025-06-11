@@ -2207,6 +2207,7 @@ From the `status` field, you can see that this security policy has been linked t
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #### Security Policy Example
 <<<<<<< HEAD
 ##### Key-Level Per-API Rate Limits and Quota
@@ -2217,6 +2218,11 @@ From the `status` field, you can see that this security policy has been linked t
 >>>>>>> 5b9601c30... [TT-14701] FixTypo in the portal config for enabling tib (#6513)
 ##### Key-Level Per-API Rate Limits and Quota {#key-level-per-api-rate-limits-and-quotas}
 >>>>>>> 1752719f4... Portal fixes (#6517)
+=======
+#### Security policy example {#security-policy-example}
+
+##### Key-level per-API rate limits and quota {#key-level-per-api-rate-limits-and-quotas}
+>>>>>>> bef99a5c0... Fix anchors (#6530)
 
 By configuring per-API limits, you can set specific rate limits, quotas, and throttling rules for each API in the access rights array. When these per-API settings are enabled, the API inherits the global limit settings unless specific limits and quotas are set in the `limit` field for that API.
 
@@ -2281,7 +2287,11 @@ Global Rate Limits and Quota:
 
 By setting per-API rate limits and quotas, you gain granular control over how each API is accessed and used, allowing you to apply different limits for different APIs as needed. This configuration is particularly useful when you want to ensure that critical APIs have stricter controls while allowing more flexibility for others. Use this example as a guideline to tailor your security policies to your specific requirements.
 
+<<<<<<< HEAD
 **Key-Level Per-Endpoint Rate Limits{#per-endpoint-rate-limit}**
+=======
+##### Key-level per-endpoint rate limits {#per-endpoint-rate-limit}
+>>>>>>> bef99a5c0... Fix anchors (#6530)
 
 By configuring key-level per-endpoint limits, you can restrict the request rate for specific API clients to a specific endpoint of an API.
 
@@ -2345,7 +2355,11 @@ spec:
   quota_renewal_rate: 60                # Quota renewal rate in seconds (1 minute)
 ```
 
+<<<<<<< HEAD
 **Path based permissions{#path-based-permissions}**
+=======
+##### Path based permissions {#path-based-permissions}
+>>>>>>> bef99a5c0... Fix anchors (#6530)
 
 You can secure your APIs by specifying [allowed URLs]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) (methods and paths) for each API within a security policy. This is done using the `allowed_urls` field under `access_rights_array`.
 
@@ -2401,7 +2415,7 @@ With this security policy applied:
         { "error": "Access to this resource has been disallowed" }
     ```
 
-**Partitioned policies{#partitioned-policies}**
+##### Partitioned policies {#partitioned-policies}
 
 [Partitioned policies]({{< ref "api-management/policies#partitioned-policies" >}}) allow you to selectively enforce different segments of a security policy, such as quota, rate limiting, access control lists (ACL), and GraphQL complexity rules. This provides flexibility in applying different security controls as needed.
 
