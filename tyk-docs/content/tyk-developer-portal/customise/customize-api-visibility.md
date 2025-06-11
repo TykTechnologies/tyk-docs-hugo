@@ -4,8 +4,6 @@ title: Customizing API Visibility
 linktitle: Customizing API Visibility
 description: "A walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers."
 tags: ["customizing EDP", EDP, "customizing APIs EDP"]
-aliases:
-  - /tyk-developer-portal/customise/customize-api-visibility/
 robots: "noindex"
 algolia:
   importance: 0
