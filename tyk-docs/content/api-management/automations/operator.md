@@ -2206,7 +2206,8 @@ Events:         <none>
 From the `status` field, you can see that this security policy has been linked to `httpbin`, `petstore`, and `http-to-kafka` APIs.
 
 
-#### Security Policy Example
+#### Security Policy Example {#security-policy-example}
+
 ##### Key-Level Per-API Rate Limits and Quota {#key-level-per-api-rate-limits-and-quotas}
 
 By configuring per-API limits, you can set specific rate limits, quotas, and throttling rules for each API in the access rights array. When these per-API settings are enabled, the API inherits the global limit settings unless specific limits and quotas are set in the `limit` field for that API.
