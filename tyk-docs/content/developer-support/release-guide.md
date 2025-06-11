@@ -6,7 +6,7 @@ tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorizati
 
 ## Types of Releases
 
-Tyk Documentation has two types of releases:
+Tyk has two types of releases:
 
 1.  **Patch Release:** e.g → 5.3.5, 5.3.6, 5.7.1, 5.7.2
 
@@ -15,6 +15,10 @@ Tyk Documentation has two types of releases:
 2.  **Major/Minor Release:** e.g → 4.1, 4.2, 5.3, 5.4
 
     A major or minor release includes new features, improvements, and potentially breaking changes.
+
+### Versioning in Tyk Docs
+
+Tyk Docs uses a versioning system that aligns with the Tyk components. The versioning follows the Semantic Versioning of Tyk [Gateway]({{< ref "developer-support/release-notes/gateway" >}}).
 
 ## Understanding the Release Workflow
 
@@ -26,9 +30,13 @@ Tyk Documentation is maintained in a [GitHub](https://github.com/TykTechnologies
 | `release-x.y`             | Holds docs for that specific version. For example, `release-5.7` holds docs for 5.7 and its patch versions (5.7.1, 5.7.2, etc.). | [tyk.io/docs/5.7](https://tyk.io/docs/5.7) |
 | `stable`                  | Holds the latest release. | [tyk.io/docs](https://tyk.io/docs) |
 
-Documentation content is always merged into the `master` branch first, and then the changes are made to the `release-x.y` branches as needed. The `stable` branch is updated with the latest release.
+Documentation content is always merged into the `master` branch first, and then the changes are made to the `release-x.y` branches as needed.
 
-Note: The stable branch automatically replicates changes from the latest release branch (e.g., `release-5.7`) to ensure that the live site always reflects the most recent stable version. So at tyk.io/docs and tyk.io/docs/5.7, you will see the same content.
+The `stable` branch automatically replicates changes from the latest release branch (e.g., `release-5.7`) to ensure that the live site always reflects the most recent stable version. So at tyk.io/docs and tyk.io/docs/5.7, you will see the same content.
+
+### Previous Releases
+
+Tyk has some versions that are on LTS. During some releases, we need to update the LTS release alongside the latest version. For example, you might have to maintain 5.7.2 (latest) and 5.3.2 (LTS). Due to structural changes in the documentation across versions, this cannot be done directly, and a separate PR must be created from the latest RNs and config PR. This process has to be done manually and will require the help of DX.
 
 ## Patch Release
 
@@ -36,11 +44,9 @@ To release a patch version, we follow a simple process that involves merging the
 
 ### Pre-Requisites:
 
-Ensure you have PRs for documentation and release notes that have already been approved. At most, two PRs should be available for each release 5.7, 5.3.5. Sometimes, you may not have a docs PR and only have release notes. Check the example PRs below:
+Ensure you have PRs for documentation and release notes that have already been approved.
 
-1.  [Docs](https://github.com/TykTechnologies/tyk-docs/pull/6076)
-2.  [Release Notes]()This step ensures we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/). This should already be taken care of in the pre-requisite PRs. If not, then create a PR for the same.
-
+**Note:** For release notes ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
 
 ### Instructions
 
@@ -50,13 +56,13 @@ Ensure you have PRs for documentation and release notes that have already been a
 2.  **Verify**\
     **Description:** After merging the PRs on the version branch (release-5.7), it usually takes 5 minutes to reflect the same on the live website. Verify these changes after release.
 
-Note: We can also have patch release for previous versions. For example, if the latest version is 5.7.2 and the new patch is 5.7.3, and a patch for LTS version 5.3.3 is also releases, then you will have to merge the PRs for both versions. The process is the same as above, but you will have to create a separate PR for the LTS version.
+Note: We can also have patch release for previous versions. For example, if the latest version is 5.7.2 and the new patch is 5.7.3, and a patch for LTS version 5.3.3 is also needs to be released, then you will have to merge the PRs for both versions.
 
 ## Major/Minor Release
 
-### Instructions
-
 To release a major or minor version, we follow a series of steps to ensure that the documentation is updated, the latest version is deployed, and the previous versions are maintained correctly. The following steps outline the process:
+
+### Instructions
 
 1.  **Add the latest version in Python Script:**\
     **Description:** Over time, the content of pages is moved to new pages and deleted. This script is used to maintain a one-to-one mapping of which page is compatible with which version.\
@@ -178,9 +184,3 @@ To release a major or minor version, we follow a series of steps to ensure that 
     **Example:** <https://github.com/TykTechnologies/tyk/releases/tag/v5.3.8>
 
 ---
-
-Note on maintaining the previous releases
-=========================================
-
-Tyk has some versions that are on LTS. During some releases, we need to update the LTS release alongside the latest version. For example, you might have to maintain 5.7.2 (latest) and 5.3.2 (LTS). Due to structural changes in the documentation across versions, this cannot be done directly, and a separate PR must be created from the latest RNs and config PR. This process has to be done manually and will require the help of DX.
-
