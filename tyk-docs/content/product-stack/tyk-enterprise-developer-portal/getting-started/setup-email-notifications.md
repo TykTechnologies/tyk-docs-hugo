@@ -5,6 +5,7 @@ tags: ["Tyk Developer Portal","Enterprise Portal","Email","Notifications"]
 aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
   - /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
+  - /portal/settings
 description: "Learn how to set up email notifications in the Tyk Enterprise Developer Portal."
 ---
 
