@@ -2207,7 +2207,11 @@ From the `status` field, you can see that this security policy has been linked t
 
 
 #### Security Policy Example
+<<<<<<< HEAD
 ##### Key-Level Per-API Rate Limits and Quota
+=======
+##### Key-Level Per-API Rate Limits and Quota {#key-level-per-api-rate-limits-and-quotas}
+>>>>>>> 1752719f4... Portal fixes (#6517)
 
 By configuring per-API limits, you can set specific rate limits, quotas, and throttling rules for each API in the access rights array. When these per-API settings are enabled, the API inherits the global limit settings unless specific limits and quotas are set in the `limit` field for that API.
 
