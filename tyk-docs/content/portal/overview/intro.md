@@ -9,6 +9,7 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
   - /tyk-developer-portal/tyk-enterprise-developer-portal
   - /tyk-developer-portal
+  - /portal/overview
 ---
 
 
