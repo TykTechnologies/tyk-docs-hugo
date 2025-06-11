@@ -5,6 +5,11 @@ tags: ["Developer Portal", "Tyk"]
 keywords: ["Developer Portal", "Tyk"]
 description: "Learn what the Tyk Developer Portal is, its key features, and how it supports API management."
 aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+  - /tyk-developer-portal/tyk-enterprise-developer-portal
+  - /tyk-developer-portal
+  - /portal/overview
 ---
 
 
