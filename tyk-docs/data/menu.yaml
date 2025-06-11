@@ -690,7 +690,6 @@ menu:
           category: Page
           show: True
       - title: "Installation"
-        path: /portal/overview
         category: Label
         show: True
         menu:
@@ -699,7 +698,6 @@ menu:
           category: Page
           show: True
       - title: "API Consumer"
-        path: /portal/api-consumer
         category: Label
         show: True
         menu:
