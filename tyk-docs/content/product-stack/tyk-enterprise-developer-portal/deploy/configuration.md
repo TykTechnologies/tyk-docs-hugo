@@ -271,7 +271,7 @@ Values for TLS Versions:
 ### PORTAL_API_SECRET
 **Config file:** PortalAPISecret <br/>
 **Type:** `string` <br/>
-**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "portal/settings#configure-developer-portal-sso" >}}) with the Tyk Identity Broker.
+**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso" >}}) with the Tyk Identity Broker.
 You can specify any string value in this setting. Omit this setting if you don't require SSO. 
 
 ## Response Headers Configuration
