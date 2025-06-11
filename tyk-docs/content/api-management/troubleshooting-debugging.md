@@ -11,7 +11,6 @@ aliases:
     - /error-response-codes
     - /frequently-asked-questions/capping-analytics-data-storage
     - /tyk-stack/dependencies/mongodb/x509-client-auth
-    - /api-management/troubleshotting-debugging
     - /debugging-series/debugging-series
     - /debugging-series/mongodb-debugging
     - /developer-support/debugging-series/debugging-selfmanaged
