@@ -1473,11 +1473,6 @@
             "/docs/3.1/": "/basic-config-and-security/security/tls-and-ssl/",
             "/docs/3-lts/": "/basic-config-and-security/security/tls-and-ssl/"
         },
-        "/api-management/client-authentication.md/": {
-            "/docs/": "/api-management/client-authentication/",
-            "/docs/5.7/": "/api-management/client-authentication/",
-            "/docs/nightly/": "/api-management/client-authentication/"
-        },
         "/api-management/client-authentication/": {
             "/docs/": "/api-management/client-authentication/",
             "/docs/5.7/": "/api-management/client-authentication/",
@@ -2081,11 +2076,6 @@
             "/docs/3.2/": "/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/",
             "/docs/3.1/": "/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/",
             "/docs/3-lts/": "/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/"
-        },
-        "/api-management/troubleshotting-debugging/": {
-            "/docs/": "/api-management/troubleshooting-debugging/",
-            "/docs/5.7/": "/api-management/troubleshooting-debugging/",
-            "/docs/nightly/": "/api-management/troubleshooting-debugging/"
         },
         "/api-management/tyk-pump/": {
             "/docs/": "/api-management/tyk-pump/",
