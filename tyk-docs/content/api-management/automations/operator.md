@@ -2206,10 +2206,15 @@ Events:         <none>
 From the `status` field, you can see that this security policy has been linked to `httpbin`, `petstore`, and `http-to-kafka` APIs.
 
 
+<<<<<<< HEAD
 #### Security Policy Example
 <<<<<<< HEAD
 ##### Key-Level Per-API Rate Limits and Quota
 =======
+=======
+#### Security Policy Example {#security-policy-example}
+
+>>>>>>> 5b9601c30... [TT-14701] FixTypo in the portal config for enabling tib (#6513)
 ##### Key-Level Per-API Rate Limits and Quota {#key-level-per-api-rate-limits-and-quotas}
 >>>>>>> 1752719f4... Portal fixes (#6517)
 
