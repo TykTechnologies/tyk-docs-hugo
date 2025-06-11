@@ -271,7 +271,7 @@ Values for TLS Versions:
 ### PORTAL_API_SECRET
 **Config file:** PortalAPISecret <br/>
 **Type:** `string` <br/>
-**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "portal/settings#configure-developer-portal-sso" >}}) with the Tyk Identity Broker.
+**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso" >}}) with the Tyk Identity Broker.
 You can specify any string value in this setting. Omit this setting if you don't require SSO. 
 
 ## Response Headers Configuration
@@ -473,23 +473,24 @@ PORTAL_DATABASE_CONNECTION_MAX_LIFETIME=180000
 
 ### PORTAL_DATABASE_MAXRETRIES
 **Config file:** Database.MaxRetries <br/>
-**Type:** `boolean` <br/>
+**Type:** `int` <br/>
 **Description**: Defines how many times the portal will retry to connect to the database. Optional, the default value is 3.
 
 ### PORTAL_DATABASE_RETRYDELAY
-**Config file:** Database.MaxRetries <br/>
-**Type:** `boolean` <br/>
-**Description**: Defines the delay between connect attempts (in milliseconds). Optional, the default value is 5000.
+**Config file:** Database.RetryDelay <br/>
+**Type:** `int` <br/>
+**Description**: Defines the delay between connect attempts (in milliseconds). Optional. Default value: 5000.
 
 ### PORTAL_DATABASE_MAX_OPEN_CONNECTIONS
 **Config file:** Database.MaxOpenConnections <br/>
 **Type:** `int` <br/>
-**Description**: Defines the maximum number of concurrent connections that the database can handle from the application. When the number of open connections reaches this limit, new requests will wait until a connection becomes available. Optionally, the default value is unlimited.
+**Description**: Defines the maximum number of concurrent connections that the database can handle from the application. When the number of open connections reaches this limit, new requests will wait until a connection becomes available. Optional. Default value: unlimited.
+
 
 ### PORTAL_DATABASE_MAX_IDLE_CONNECTIONS
 **Config file:** Database.MaxIdleConnections <br/>
 **Type:** `int` <br/>
-**Description**: Defines the maximum number of idle connections in the database connection pool. Idle connections are open but not currently being used. Keeping some idle connections can improve performance by reducing the time it takes to establish a new connection when demand increases. Optionally, the default value is 2.
+**Description**: Defines the maximum number of idle connections in the database connection pool. Idle connections are open but not currently being used. Keeping some idle connections can improve performance by reducing the time it takes to establish a new connection when demand increases. Optional. Default value: 2.
 
 ### PORTAL_DATABASE_CONNECTION_MAX_LIFETIME
 **Config file:** Database.ConnectionMaxLifetime <br/>
@@ -660,6 +661,5 @@ PORTAL_DATABASE_DIALECT="mysql"
 PORTAL_DATABASE_CONNECTIONSTRING="admin:secr3t@(localhost:3308)/portal?charset=utf8&parseTime=True&loc=Local"
 PORTAL_DATABASE_ENABLELOGS=true
 PORTAL_DATABASE_MAXRETRIES=3
-PORTAL_DATABASE_RETRYDELAY=5000
 PORTAL_TIB_ENABLE=true
 ```

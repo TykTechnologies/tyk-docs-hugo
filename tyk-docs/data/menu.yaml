@@ -690,7 +690,6 @@ menu:
           category: Page
           show: True
       - title: "Installation"
-        path: /portal/overview
         category: Label
         show: True
         menu:
@@ -699,7 +698,6 @@ menu:
           category: Page
           show: True
       - title: "API Consumer"
-        path: /portal/api-consumer
         category: Label
         show: True
         menu:
@@ -807,20 +805,19 @@ menu:
             category: Page
             show: True
         - title: "Administration"
-          path: /portal/settings
-          category: Page
+          category: Directory
           show: True
           menu:
             - title: "Single Sign On"
-              path: /tyk-developer-portal/tyk-portal-classic
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
               category: Page
               show: True
             - title: "Email Settings"
-              path: /tyk-developer-portal/tyk-portal-classic
+              path: /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
               category: Page
               show: True
             - title: "Resource Migration"
-              path: /tyk-developer-portal/tyk-portal-classic
+              path: /portal/resource-migration
               category: Page
               show: True
       - title: "Reference"

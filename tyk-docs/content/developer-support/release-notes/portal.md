@@ -1158,7 +1158,7 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 
 ##### Changed
 - Display an actual item title instead of a generic iterative name in the Pages and the Providers UI (e.g. "HeaderButtonLabel" instead of "ContentBlock 1" in the Pages menu).
-- When [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_dcr_log_enabled" >}}) is enabled the portal now returns not only the status and status code of the request to the IdP but also actual payload returned by the IdP
+- When [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_dcr_log_enabled" >}}) is enabled the portal now returns not only the status and status code of the request to the IdP but also actual payload returned by the IdP
 
 ##### Fixed
 - Fixed the bug where the database credentials were printed in the logs when bootstrapping the portal.
@@ -1508,7 +1508,7 @@ This release is primarily focused on improved deployment support for Kubernetes 
 The Tyk Enterprise Developer Portal is now available in Kubernetes and customer can launch it using our [helm charts]({{< ref "portal/install#using-legacy-helm-chart" >}}). This feature makes the portal Kubernetes friendly by adding liveness, readiness probes, graceful shutdown and changing the portal lifecycle so that it's possible to set an initial user and bootstrap the portal via APIs.
 
 ##### SSO for API Consumers and admins
-API Providers can [configure Single Sign-on]({{< ref "portal/settings#configure-developer-portal-sso" >}}) for the Enterprise developer portal so that it's possible to login developers and admins to the portal user 3rd party IdP.
+API Providers can [configure Single Sign-on]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso" >}}) for the Enterprise developer portal so that it's possible to login developers and admins to the portal user 3rd party IdP.
 
 ##### API Analytics for API Consumers
 This capability enables API Providers to get aggregated statistics about consumption of their APIs using Tyk Pump. In 1.2.0, we enabled the portal to attach the following tags to API Keys and oAuth clients:
@@ -1534,7 +1534,7 @@ This new setting allows API Providers to set the logging [level]({{< ref "produc
 
 ##### Added
 - Added Kubernetes support and [helm charts]({{< ref "portal/install#using-legacy-helm-chart" >}}).
-- Added [Single Sign-on]({{< ref "portal/settings#configure-developer-portal-sso" >}}) for API Consumers and admin users so that they can use their IdPs for managing admin users and developers.
+- Added [Single Sign-on]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso" >}}) for API Consumers and admin users so that they can use their IdPs for managing admin users and developers.
 - Added organization and application metadata to auth tokens and OAuth2.0 clients so that API Providers can use Tyk Pump to create aggregated reports based on the metadata from tokens and OAuth2.0 clients.
 - Added Admin APIs for API Products to enable API Providers to update API Products using CI/CD pipelines.
 - Added [TLS]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}) support for the portal's UI.
