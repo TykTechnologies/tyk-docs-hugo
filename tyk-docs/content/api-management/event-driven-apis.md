@@ -586,7 +586,7 @@ sequenceDiagram
 1.  **Request Arrival & Gateway Pre-processing**: A client sends a request to an API endpoint managed by Tyk Gateway. The request passes through the initial middleware, such as authentication, key validation, and rate limiting.
 2.  **Streaming Middleware Interception**: The request reaches the `Stream Middleware`. It checks the request path against the stream routes defined in the API configuration.
 3.  **Path Matching**:
-    *   **If No Match**: The request is not destined for a stream. The `Stream Middleware` does nothing, and the request continues down the standard Tyk middleware chain, typically being proxied to the configured upstream service. <!-- TODO: this behavior is true until 5.8.x. From 5.9.0 onwards it will return 404 Not Found. -->
+    *   **If No Match**: The `Stream Middleware` will respond with a `404 Not Found` status code.
     *   **If Match**: The request is intended for a stream. The `Stream Middleware` takes control of the request handling.
 4.  **Stream Manager Coordination**: The middleware interacts with the `Stream Manager` associated with the API's stream configuration. The `Stream Manager` ensures the required `Stream Instance`(s) are initialized and running based on the loaded configuration. This might involve creating a new instance or reusing a cached one.
 5.  **Stream Instance Execution**: The instance then executes its defined logic, interacting with the configured `Upstream Service / Event Broker` (e.g., publishing a message to Kafka, subscribing to an MQTT topic, forwarding data over a WebSocket).
