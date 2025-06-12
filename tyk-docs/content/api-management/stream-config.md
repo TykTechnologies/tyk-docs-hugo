@@ -290,7 +290,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -304,7 +303,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -1857,7 +1855,6 @@ A maximum estimate for the time taken to process a message, this is used for tun
 Type: `string`
 Default: `"100ms"`
 
-<!-- TODO: when bloblang is supported
 ##### extract_tracing_map
 
 A Bloblang mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
@@ -1873,7 +1870,6 @@ extract_tracing_map: root = @
 
 extract_tracing_map: root = this.meta.span
 ```
--->
 
 ##### group
 
@@ -1980,7 +1976,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -1993,7 +1988,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -2193,7 +2187,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -2207,7 +2200,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -3732,7 +3724,6 @@ Provide a list of explicit metadata key prefixes to be excluded when adding meta
 Type: `array`
 Default: `[]`
 
-<!-- TODO: when bloblang is supported
 ##### inject_tracing_map
 
 A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
@@ -3748,7 +3739,6 @@ inject_tracing_map: meta = @.merge(this)
 
 inject_tracing_map: root.meta.span = this
 ```
--->
 
 ##### max_in_flight
 
@@ -3857,7 +3847,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -3871,7 +3860,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -4068,6 +4056,55 @@ schema_path: file://path/to/spec.avsc
 
 schema_path: http://localhost:8081/path/to/spec/versions/1
 ```
+
+### Mapping
+
+Executes a Bloblang mapping on messages, creating a new document that replaces (or filters) the original message.
+
+Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks. For more information check out the [Bloblang docs](https://warpstreamlabs.github.io/bento/docs/guides/bloblang/about/).
+
+```yml
+label: ""
+mapping: "" # No default (required)
+```
+
+#### Example
+
+Given a JSON document with US location names and their states they are located in:
+```json
+{
+  "locations": [
+    {"name": "Seattle", "state": "WA"},
+    {"name": "New York", "state": "NY"},
+    {"name": "Bellevue", "state": "WA"},
+    {"name": "Olympia", "state": "WA"}
+  ]
+}
+```
+
+If we want to collapse the location names from the state Washington into a field `Cities`:
+
+```json
+{"Cities": "Bellevue, Olympia, Seattle"}
+```
+
+We could use following bloblang mapping:
+
+```yml
+pipeline:
+  processors:
+    - mapping: |
+        root.Cities = this.locations.
+                        filter(loc -> loc.state == "WA").
+                        map_each(loc -> loc.name).
+                        sort().join(", ")
+```
+
+#### Considerations
+
+ - If a mapping fails the message remains unchanged. However Bloblang itself provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour. See [this section of the Bloblang docs](https://warpstreamlabs.github.io/bento/docs/configuration/error_handling/).
+ - Mapping operates by creating an entirely new object during assignments, this has the advantage of treating the original referenced document as immutable and therefore queryable at any stage of your mapping. As a result, the `Cities` JSON document in the above example exists as a new, separate copy from the original document, which remains unchanged.
+
 
 ## Tracers
 

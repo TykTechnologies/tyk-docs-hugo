@@ -846,17 +846,6 @@ pipeline:
         root = this.merge({ "high_value_order": true })
 ```
 
-{{< note success >}}
-**Note:**
-
-The `Mapping` processor is currently available and working, but it will be officially supported starting from version 5.9.0.
-
-You’re welcome to explore and experiment with this feature in non-production environments today. For production use, we recommend waiting for the official release in 5.9.0 to ensure full support.
-{{< /note >}}
-<!--
-TODO: Official bloblang support from 5.9.0 onwards
--->
-
 In this example:
 
 - **Tyk Streams Setup**: Consumes events from a Kafka topic called *orders*.
