@@ -163,7 +163,7 @@ You can find more information about enabling OpenTelemetry [here]({{< ref "api-m
 DetailedTracing must be enabled in the API definition to see the plugin spans in the traces.
 {{< /note >}}
 
-In order to instrument our plugins we will be using Tyk’s OpenTelemetry library implementation.
+In order to instrument our plugins we will be using Tyk's OpenTelemetry library implementation.
 You can import it by running the following command:
 
 ```console
@@ -184,7 +184,7 @@ In this case, we are using our own OpenTelemetry library for convenience. You ca
 
 The function takes three parameters:
 
-1. `Context`: This is usually the current request’s context. However, you can also derive a new context from it, complete with timeouts and cancelations, to suit your specific needs.
+1. `Context`: This is usually the current request's context. However, you can also derive a new context from it, complete with timeouts and cancelations, to suit your specific needs.
 2. `TracerName`: This is the identifier of the tracer that will be used to create the span. If you do not provide a name, the function will default to using the `tyk` tracer.
 3. `SpanName`: This parameter is used to set an initial name for the child span that is created. This name can be helpful for later identifying and referencing the span.
 
@@ -212,7 +212,7 @@ In your exporter (in this case, Jaeger) you should see something like this:
 
 {{< img src="/img/plugins/span_from_context.png" alt="OTel Span from context" >}}
 
-As you can see, the name we set is present: `GoPlugin_first-span` and it’s the first child of the `GoPluginMiddleware` span.
+As you can see, the name we set is present: `GoPlugin_first-span` and it's the first child of the `GoPluginMiddleware` span.
 
 ### Modifying span name and set status
 
@@ -403,7 +403,6 @@ import (
 	"context"
 	"log"
 	"net"
-	"net/http"
 	"os"
 	"os/signal"
 	"sync/atomic"
@@ -412,42 +411,17 @@ import (
 
 	"github.com/TykTechnologies/tyk/coprocess"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
 )
 
 const (
 	ListenAddress = ":50051"
-	HealthAddress = ":8080"
 )
 
 func main() {
 	// Track server readiness
 	var isReady int32
-
-	// Start HTTP server for health checks
-	go func() {
-		mux := http.NewServeMux()
-
-		// Readiness probe endpoint
-		mux.HandleFunc("/ready", func(w http.ResponseWriter, r *http.Request) {
-			if atomic.LoadInt32(&isReady) == 1 {
-				w.WriteHeader(http.StatusOK)
-				w.Write([]byte("Ready"))
-			} else {
-				w.WriteHeader(http.StatusServiceUnavailable)
-				w.Write([]byte("Not ready"))
-			}
-		})
-
-		// Liveness probe endpoint
-		mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
-			w.WriteHeader(http.StatusOK)
-			w.Write([]byte("Healthy"))
-		})
-
-		if err := http.ListenAndServe(HealthAddress, mux); err != nil {
-			log.Fatalf("Failed to start health server: %v", err)
-		}
-	}()
 
 	lis, err := net.Listen("tcp", ListenAddress)
 	if err != nil {
@@ -456,7 +430,17 @@ func main() {
 
 	log.Printf("starting grpc server on %v", ListenAddress)
 	s := grpc.NewServer()
+	
+	// Register the main coprocess service
 	coprocess.RegisterDispatcherServer(s, &Dispatcher{})
+	
+	// Register health service
+	healthServer := health.NewServer()
+	grpc_health_v1.RegisterHealthServer(s, healthServer)
+	
+	// Initially mark all services as not serving
+	healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+	healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
 
 	// Channel to listen for errors coming from the listener.
 	serverErrors := make(chan error, 1)
@@ -465,6 +449,11 @@ func main() {
 	go func() {
 		// Mark as ready once server is initialized
 		atomic.StoreInt32(&isReady, 1)
+		
+		// Set health status to serving
+		healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_SERVING)
+		healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_SERVING)
+		
 		log.Printf("gRPC server is ready to accept connections")
 		serverErrors <- s.Serve(lis)
 	}()
@@ -477,10 +466,18 @@ func main() {
 	select {
 	case err := <-serverErrors:
 		atomic.StoreInt32(&isReady, 0)
+		// Mark services as not serving
+		healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+		healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
 		log.Fatalf("Server error: %v", err)
 	case sig := <-shutdown:
 		atomic.StoreInt32(&isReady, 0)
 		log.Printf("Received signal: %v", sig)
+		
+		// Mark services as not serving during shutdown
+		healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+		healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+		
 		// Give outstanding requests 5 seconds to complete.
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
@@ -533,14 +530,12 @@ spec:
         ports:
         - containerPort: 50051
           name: grpc
-        - containerPort: 8080
-          name: http-health
         
         # Readiness probe - determines when pod is ready for traffic
         readinessProbe:
-          httpGet:
-            path: /ready
-            port: 8080
+          grpc:
+            port: 50051
+            service: coprocess.Dispatcher
           initialDelaySeconds: 5
           periodSeconds: 10
           timeoutSeconds: 5
@@ -549,9 +544,8 @@ spec:
         
         # Liveness probe - determines when to restart pod
         livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
+          grpc:
+            port: 50051
           initialDelaySeconds: 15
           periodSeconds: 20
           timeoutSeconds: 5
@@ -559,9 +553,8 @@ spec:
         
         # Startup probe - gives more time for initial startup
         startupProbe:
-          httpGet:
-            path: /health
-            port: 8080
+          grpc:
+            port: 50051
           initialDelaySeconds: 10
           periodSeconds: 5
           timeoutSeconds: 5
@@ -580,12 +573,41 @@ spec:
     port: 50051
     targetPort: 50051
     protocol: TCP
-  - name: http-health
-    port: 8080
-    targetPort: 8080
-    protocol: TCP
   type: ClusterIP
 ```
+
+## gRPC Health Checking Protocol
+
+The modified example uses the [gRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md) instead of HTTP endpoints. This approach offers several advantages:
+
+### Benefits of gRPC Health Probes
+
+1. **Native Integration**: Uses the same transport protocol as your main service
+2. **Service-Specific Checks**: Can check health of individual gRPC services
+3. **Better Resource Utilization**: No need for separate HTTP server
+4. **Consistent Protocol**: Maintains gRPC throughout the stack
+
+### Health Check Implementation Details
+
+The health server manages two service states:
+- `""` (empty string): Overall server health
+- `"coprocess.Dispatcher"`: Specific service health for readiness checks
+
+Health states transition as follows:
+- **Startup**: `NOT_SERVING` → `SERVING` (when ready)
+- **Shutdown**: `SERVING` → `NOT_SERVING` (immediate)
+- **Error**: `SERVING` → `NOT_SERVING` (on failure)
+
+### Required Dependencies
+
+Add this to your `go.mod`:
+```go
+require (
+    google.golang.org/grpc v1.50.0 // or later
+)
+```
+
+The health checking service is included in the standard gRPC Go library.
 
 ## Key Benefits for Rolling Updates
 
