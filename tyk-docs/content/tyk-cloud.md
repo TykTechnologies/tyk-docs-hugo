@@ -2577,7 +2577,7 @@ The sampling level can be configured at both the organization level (while setti
     {{< img src="/img/cloud/tyk-cloud-data-plane-enable-telemetry.png" alt="Tyk Cloud Data Plane Telemetry Enabled" >}}
 
 
-### Audit Logs
+### Tyk Dashboard Audit Logs
 
 Tyk Cloud provides comprehensive audit logging capabilities for Control Plane deployments, allowing you to track and monitor all administrative actions performed within your Tyk Dashboard. This feature is essential for compliance and security.
 
@@ -2609,6 +2609,12 @@ The audit log feature is available for Control Plane versions v5.7.0 or later.
    - Save and redeploy your Control Plane
 
 Audit logs will be stored in your Control Plane's database for easy access and management.
+
+##### Viewing and Accessing Audit Logs
+
+Once audit logging is enabled, you can retrieve the logs via the Tyk Dashboard API. 
+
+For details on the API endpoints and usage, see [Retrieving Audit Logs via API]({{< ref "api-management/dashboard-configuration#retrieving-audit-logs-via-api" >}}).
 
 #### Storage Size Caps
 
