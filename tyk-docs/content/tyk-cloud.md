@@ -85,7 +85,6 @@ aliases:
   - /tyk-cloud/troubleshooting-support/tyk-cloud-mdcb-supported-versions
   - /tyk-cloud/using-plugins
   - /tyk-cloud/what-is-tyk-cloud
-  - /tyk-cloud/audit-logs
   - /deployment-and-operations/tyk-cloud-platform/quick-start
   - /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
   - /frequently-asked-questions/custom-domain-for-portal-cloud-multi-cloud
