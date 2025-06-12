@@ -277,7 +277,7 @@ governanceDashboard:
     # The gRPC endpoint URL of the Tyk Governance service
     # Format: hostname:port (without protocol)
     # This is in the format of prefixing "grpc-" to your Governance Hub URL.
-    url: "grpc-your-governance-instance.tyk.io:50051"
+    url: "grpc-your-governance-instance.tyk.io:443"
   
   auth:
     # Authentication token for this agent
