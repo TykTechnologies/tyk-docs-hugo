@@ -2579,7 +2579,7 @@ The sampling level can be configured at both the organization level (while setti
 
 ### Tyk Dashboard Audit Logs
 
-Tyk Cloud provides comprehensive audit logging capabilities for Control Plane deployments, allowing you to track and monitor all administrative actions performed within your Tyk Dashboard. This feature is essential for compliance and security.
+Tyk Cloud provides comprehensive audit logging capabilities to track and monitor all administrative actions performed within your Tyk Dashboard. This feature is essential for compliance and security.
 
 #### What are Audit Logs?
 
