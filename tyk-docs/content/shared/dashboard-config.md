@@ -1368,6 +1368,18 @@ Type: `bool`<br />
 
 This flag enables the Tyk Streaming feature.
 
+### streaming.enable_all_experimental
+ENV: <b>TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL</b><br />
+Type: `bool`<br />
+
+This flag enables all experimental inputs, outputs and processors in Tyk Streaming. Defaults to `false`.
+
+{{< warning success >}}
+**Warning**
+
+This flag should not be enabled in production environments.
+{{< /warning >}}
+
 ### labs
 Experimental and beta features configuration settings
 
@@ -1376,4 +1388,3 @@ ENV: <b>TYK_DB_DISABLETELEMETRY</b><br />
 Type: `bool`<br />
 
 Enable or disable sending telemetry data such as analytics, API configurations, etc.
-
