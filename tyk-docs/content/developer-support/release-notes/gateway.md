@@ -406,7 +406,7 @@ Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Pla
 
 #### Release Highlights
 
-Gateway 5.7.2 was version bumped only to align with Dashboard 5.7.2. Subsequently, no changes were made in this release. For further information, please see the release notes for [Dashboard v5.7.2]({{< ref "developer-support/release-notes/dashboard#572-release-notes" >}})
+This patch release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.2" >}}) below.
 
 #### Breaking Changes
 There are no breaking changes in this release.
@@ -455,7 +455,17 @@ If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.7.2} 
 
-Since this release was version bumped only to align with Dashboard v5.7.2, no changes were made in this release.
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Gateway crash loop on restart without MDCB in Kubernetes</summary>
+
+Resolved a bug where Gateway pods in Kubernetes would enter a crash loop on restart if MDCB was down. The issue occurred due to the HTTP router failing to initialize properly during cold start. This fix ensures stable Gateway recovery even when MDCB is offline. 
+</details>
+</li>
+</ul>
 
 ---
 
