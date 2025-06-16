@@ -47,7 +47,7 @@ Get your free account [here](https://tyk.io/sign-up/).
 
 ### Open Source (OSS)
 
-The Tyk Gateway is the backbone of all our solutions and can be deployed for free, forever. It offers various [installation options]({{< ref "tyk-open-source#installation-options-for-tyk-gateway" >}}) to suit different needs.
+The Tyk Gateway is the backbone of all our solutions and can be deployed for free, forever. It offers various [installation options]({{< ref "apim/open-source/installation" >}}) to suit different needs.
 
 Visit the [OSS section]({{< ref "tyk-open-source" >}}) for more information on it and other open source components.
 

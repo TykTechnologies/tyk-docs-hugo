@@ -24,13 +24,13 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{< ref "tyk-open-source#quick-start-with-helm-chart" >}}).
+For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{< ref "apim/open-source/installation#quick-start-with-helm-chart" >}}).
 
 ## Prerequisites
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis]({{< ref "tyk-open-source#configuration-options-for-redis" >}}) should already be installed or accessible by the gateway. 
+* [Redis]({{< ref "tyk-configuration-reference/redis-cluster-sentinel" >}}) should already be installed or accessible by the gateway. 
 
 ## Tyk OSS Installations
 ### Installing the Chart
