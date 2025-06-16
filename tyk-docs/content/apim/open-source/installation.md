@@ -3,8 +3,6 @@ title: "Installation Options for Tyk Gateway"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk Open Source"
 tags: ["installation", "migration", "open source"]
 aliases:
-  - /apim/open-source/installation
-  - /deployment-and-operations/tyk-open-source-api-gateway/quick-start
   - /tyk-oss/ce-centos
   - /tyk-oss/ce-debian-ubuntu
   - /tyk-oss/ce-kubernetes-ingress
@@ -17,10 +15,6 @@ aliases:
   - /tyk-oss/ce-github
   - /tyk-oss/ce-helm-chart
   - /tyk-oss/ce-kubernetes
-  - /tyk-configuration-reference/redis-cluster-sentinel
-  - /tyk-stack/tyk-gateway/configuration/redis-sentinel
-  - /apim/open-source
-  - /tyk-stack/tyk-gateway/configuration/redis-cluster
   - /apim/open-source/getting-started
   - /getting-started/installation
   - /try-out-tyk/tutorials/tutorials

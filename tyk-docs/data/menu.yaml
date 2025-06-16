@@ -454,7 +454,7 @@ menu:
             show: True
           - title: "Tyk Open Source"
             path: /tyk-open-source
-            category: Page
+            category: Directory
             show: True
             menu:
             - title: "Quick Start"
