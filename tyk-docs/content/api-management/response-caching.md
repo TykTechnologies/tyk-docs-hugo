@@ -757,7 +757,7 @@ For example:
 }
 ```
 
-The configuration of the separate Redis Cache is the same (and uses the same underlying driver) as the regular configuration, so [Redis Cluster]({{< ref "tyk-open-source#configure-redis-cluster" >}}) is fully supported. If you set `enable_cluster` to `false`, you only need to set one entry in `addrs`.
+The configuration of the separate Redis Cache is the same (and uses the same underlying driver) as the regular configuration, so [Redis Cluster]({{< ref "tyk-configuration-reference/redis-cluster-sentinel#configure-redis-cluster" >}}) is fully supported. If you set `enable_cluster` to `false`, you only need to set one entry in `addrs`.
 
 {{< note success >}}
 **Note**  
