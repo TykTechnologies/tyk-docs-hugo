@@ -460,9 +460,9 @@ If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Fixed Gateway crash loop on restart without MDCB in Kubernetes</summary>
+<summary>Resolved gateway not entering "emergency" mode</summary>
 
-Resolved a bug where Gateway pods in Kubernetes would enter a crash loop on restart if MDCB was down. The issue occurred due to the HTTP router failing to initialize properly during cold start. This fix ensures stable Gateway recovery even when MDCB is offline. 
+Fixed an issue where the gateway stopped processing traffic when restarted while MDCB was unavailable. Instead of entering “emergency” mode and loading APIs and policies from the Redis backup, the gateway remained unresponsive, continuously attempting to reconnect. With this fix, the gateway detects connection failure and enters emergency mode, ensuring traffic processing resumes even when MDCB is down.
 </details>
 </li>
 </ul>
