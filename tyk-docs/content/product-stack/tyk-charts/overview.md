@@ -7,7 +7,7 @@ tags: ["Tyk charts", "helm charts", "helm", "charts", "kubernetes", "k8s"]
 Tyk is working to provide a new set of helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and Tyk Self Managed users. Please check out the latest status from our [Github repository](https://github.com/TykTechnologies/tyk-charts).
 
 ## Quick start guides
-- [Quick Start with Tyk OSS Chart]({{< ref "tyk-open-source#quick-start-with-helm-chart" >}})
+- [Quick Start with Tyk OSS Chart]({{< ref "apim/open-source/installation#quick-start-with-helm-chart" >}})
 - [Quick Start with Tyk Data Plane Chart for Cloud Hybrid Gateways]({{< ref "tyk-cloud#deploy-hybrid-gateways" >}})
 - [Quick Start with Tyk Stack Chart and PostgreSQL]({{< ref "tyk-self-managed#install-tyk-stack-with-helm-chart-postgresql" >}})
 - [Quick Start with Tyk Stack Chart and MongoDB]({{< ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb" >}})
