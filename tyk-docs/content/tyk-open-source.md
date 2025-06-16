@@ -4,9 +4,6 @@ description: "This page serves as a comprehensive guide to Tyk Open Source"
 tags: ["installation", "migration", "open source"]
 aliases:
   - /apim/open-source
-  - /tyk-configuration-reference/redis-cluster-sentinel
-  - /tyk-stack/tyk-gateway/configuration/redis-sentinel
-  - /tyk-stack/tyk-gateway/configuration/redis-cluster
 ---
 
 ## What is Tyk Open Source
