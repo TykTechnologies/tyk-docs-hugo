@@ -9,7 +9,7 @@ aliases:
 
 New to Tyk Gateway? On this page you'll get started with the basics - install Tyk and test it live in less than 2 minutes.
 
-We recommend [Tyk Gateway docker compose](https://github.com/TykTechnologies/tyk-gateway-docker) as the quickest way to get started. If you want to deploy it in a specific platform check our [installation options]({{< ref "#installation-options-for-tyk-gateway" >}}) page.
+We recommend [Tyk Gateway docker compose](https://github.com/TykTechnologies/tyk-gateway-docker) as the quickest way to get started. If you want to deploy it in a specific platform check our [installation options]({{< ref "apim/open-source/installation" >}}) page.
 
 **Step 1 - Clone the docker-compose repository**
 ```

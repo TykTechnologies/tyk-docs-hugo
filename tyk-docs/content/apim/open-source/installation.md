@@ -1,6 +1,6 @@
 ---
 title: "Installation Options for Tyk Gateway"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk Open Source"
+description: "This page serves as a comprehensive guide to installing Tyk Gateway Open Source"
 tags: ["installation", "migration", "open source"]
 aliases:
   - /tyk-oss/ce-centos
@@ -27,23 +27,23 @@ The backbone of all our products is our open source Gateway. You can install our
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-with-docker" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="#install-tyk-gateway-with-docker" image="/img/docker.png" alt="Docker install">}}
 Install with Docker. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-with-kubernetes" image="/img/k8s.png" alt="Kubernetes Install">}}
+{{< badge read="10 mins" href="#install-tyk-gateway-with-kubernetes" image="/img/k8s.png" alt="Kubernetes Install">}}
 Install with K8s. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-with-ansible" image="/img/ansible.png" alt="Ansible install">}}
+{{< badge read="10 mins" href="#install-tyk-gateway-with-ansible" image="/img/ansible.png" alt="Ansible install">}}
 Install with Ansible. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Redhat / CentOS install">}}
+{{< badge read="10 mins" href="#install-tyk-gateway-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Redhat / CentOS install">}}
 Install on RHEL / CentOS. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-with-ubuntu" image="/img/debian-nd-753.png" alt="Debian / Ubuntu install">}}
+{{< badge read="10 mins" href="#install-tyk-gateway-with-ubuntu" image="/img/debian-nd-753.png" alt="Debian / Ubuntu install">}}
 Install on Debian / Ubuntu. 
 {{< /badge >}}
 
@@ -230,7 +230,7 @@ Copy the following commands to add it:
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get a list of [supported versions]({{< ref "#supported-versions" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get a list of [supported versions]({{< ref "tyk-configuration-reference/redis-cluster-sentinel#supported-versions" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -575,7 +575,7 @@ The Tyk Gateway can be installed following different installation methods includ
 Before you begin the installation process, make sure you have the following:
 
 *   Ensure port `8080` is open for Gateway traffic (the API traffic to be proxied).
-*   The Tyk Gateway has a [dependency](#supported-versions) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
+*   The Tyk Gateway has a [dependency]({{< ref "tyk-configuration-reference/redis-cluster-sentinel#supported-versions" >}}) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
 #### Steps for Installation 
 1. **Create Tyk Gateway Repository Configuration**

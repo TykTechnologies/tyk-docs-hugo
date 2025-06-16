@@ -1,17 +1,14 @@
 ---
-title: "Redis Configuration Reference"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk Open Source"
-tags: ["installation", "migration", "open source"]
+title: "Configure Redis Cluster and Sentinel"
+description: "This page provides guidance on configuring Tyk to work with Redis Cluster and Sentinel, including TLS encryption and troubleshooting tips."
+tags: ["configuration", "redis", "cluster", "sentinel", "tyk-gateway", "tyk-dashboard", "tyk-pump"]
 draft: true
 aliases:
-  - /tyk-configuration-reference/redis-cluster-sentinel
   - /tyk-stack/tyk-gateway/configuration/redis-sentinel
   - /tyk-stack/tyk-gateway/configuration/redis-cluster
 ---
 
-## Configuration Options for Redis
-
-### Configure Redis Cluster
+## Configure Redis Cluster
 
 Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redis Cluster allows data to be automatically sharded across multiple Redis Nodes. To setup Redis Cluster correctly, we recommend you read the [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial). You must use the same settings across the Gateway, Dashboard and Pump.
 
@@ -21,12 +18,12 @@ Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redi
 Redis Cluster operates differently from a Redis setup where one instance serves as the primary and others as replicas.
 {{< /note >}}
 
-#### Supported Versions
+### Supported Versions
 - Tyk 5.3 supports Redis 6.2.x, 7.0.x, and 7.2.x
 - Tyk 5.2.x and earlier supports Redis 6.0.x and Redis 6.2.x only.
 
 
-#### Redis Cluster and Tyk Gateway 
+### Redis Cluster and Tyk Gateway 
 
 To configure the Tyk Gateway to work with your Redis Cluster, set `enable_cluster` to `true` and list your servers under `addrs` in your `tyk.conf` file.
 
@@ -56,7 +53,7 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
 },
 ```
 
-#### Redis Cluster and Tyk Dashboard
+### Redis Cluster and Tyk Dashboard
 
 {{< note success >}}
 **Note**  
@@ -77,7 +74,7 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
 To configure the Tyk Dashboard to work with your Redis Cluster, add the Redis address information to your `tyk_analytics.conf` file:
 
 
-#### Redis Cluster and Tyk Pump
+### Redis Cluster and Tyk Pump
 
 To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` to `true` and list your servers under `addrs` in your `pump.conf` file.
 
@@ -105,7 +102,7 @@ To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` 
 },
 ```
 
-#### Redis Cluster with Docker
+### Redis Cluster with Docker
 
 For Redis clustered mode to work with Tyk using Docker and Amazon ElastiCache, follow these two steps:
 
@@ -140,7 +137,7 @@ TYK_GW_STORAGE_MAXACTIVE=10000
 These are suggested settings, please verify them by load testing.
 {{< /note >}}
 
-##### Redis Cluster with TLS
+#### Redis Cluster with TLS
 
 If you are using TLS for Redis connections, set `use_ssl` to `true` for Gateway and Pump, and `redis_use_ssl` to `true` for the dashboard.
 Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from version 6 as an optional feature, enhancing the security of data in transit. Similarly, Amazon ElastiCache offers encryption in transit and at rest. To configure TLS or mTLS connections between an application and Redis, consider the following settings in Tyk's configuration files:
@@ -193,7 +190,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
 }
 ```
 
-##### Troubleshooting Redis Cluster
+#### Troubleshooting Redis Cluster
 
 If you find that Tyk components fail to initialise when using Redis clustering, for example the application does not start and the last log file entry shows a message such as `Using clustered mode`, try setting the environment variable `REDIGOCLUSTER_SHARDCOUNT` to `128` on all hosts which connect to the Redis Cluster i.e. Gateway, Dashboard, Pump, MDCB. E.g.
 
@@ -202,7 +199,7 @@ If you find that Tyk components fail to initialise when using Redis clustering, 
 If setting to `128` does not resolve the issue, try `256` instead.
 
 
-### Configure Redis Sentinel
+## Configure Redis Sentinel
 
 From v2.9.3 Redis Sentinel is supported.
 
@@ -210,12 +207,12 @@ Similar to Redis Cluster, our Gateway, Dashboard and Pump all support integratio
 
 To configure Tyk to work with Redis Sentinel, list your servers under `addrs` and set the master name in your Gateway, Dashboard, Pump and MDCB config. Unlike Redis Cluster, `enable_cluster` should **not** be set.  Indicative config snippets as follows:
 
-#### Supported Versions
+### Supported Versions
 - Tyk 5.3 supports Redis 6.2.x, 7.0.x, and 7.2.x
 - Tyk 5.2.x and earlier supports Redis 6.0.x and Redis 6.2.x only.
 
 
-#### Redis Sentinel and Gateway
+### Redis Sentinel and Gateway
 
 ```json
 "storage": {
@@ -235,7 +232,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 },
 ```
 
-#### Redis Sentinel and Dashboard
+### Redis Sentinel and Dashboard
 
 ```json
 "redis_addrs": [
@@ -246,7 +243,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 "redis_master_name": "mymaster"
 ```
 
-#### Redis Sentinel and Pump
+### Redis Sentinel and Pump
 
 ```json
 "analytics_storage_config": {
@@ -272,7 +269,7 @@ When using Bitnami charts to install Redis Sentinel in k8s, a Redis service is e
 
 {{< /warning >}}
 
-#### Support for Redis Sentinel AUTH
+### Support for Redis Sentinel AUTH
 
 To support the use of Redis Sentinel AUTH (introduced in Redis 5.0.1) we have added the following global config settings in Tyk v3.0.2:
 
@@ -286,7 +283,7 @@ These settings allow you to support Sentinel password-only authentication in Red
 
 See the Redis and Sentinel authentication section of the [Redis Sentinel docs](https://redis.io/topics/sentinel) for more details.
 
-#### Configure Redis TLS Encryption
+### Configure Redis TLS Encryption
 Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from version 6 as an optional feature, enhancing the security of data in transit. To configure TLS or mTLS connections between an application and Redis, consider the following settings in Tyk's configuration files:
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.

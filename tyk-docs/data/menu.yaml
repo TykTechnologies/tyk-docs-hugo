@@ -467,8 +467,17 @@ menu:
               show: True
           - title: "Tyk Self Managed"
             path: /tyk-self-managed
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Configuration"
+              category: Directory
+              show: True
+              menu:
+              - title: "Redis"
+                path: /tyk-configuration-reference/redis-cluster-sentinel
+                category: Page
+                show: True
           - title: "Tyk Helm Charts"
             category: Directory
             show: True
