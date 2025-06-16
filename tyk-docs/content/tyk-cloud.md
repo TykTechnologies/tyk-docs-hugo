@@ -4,8 +4,7 @@ description: "This page serves as a comprehensive guide to migrating workloads t
 tags: ["Tyk Cloud", "Migration"]
 aliases:
   - /tyk-cloud/telemetry/enable-telemetry
-  - /tyk-cloud/telemetry/
-  - /tyk-cloud
+  - /tyk-cloud/telemetry
   - /tyk-cloud/account--billing/plans
   - /tyk-cloud/account--billing/retirement
   - /tyk-cloud/account-and-billing/add-payment-method
@@ -162,7 +161,7 @@ Paid plans and Enterprise trials allow users to select one of 6 AWS locations as
 **Note**
 
 The Tyk Cloud trial is limited to 48 hours. After this period, your data will be deleted.
-The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview#" >}}).
+The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview/intro" >}}).
 To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
 {{< /note >}}
 

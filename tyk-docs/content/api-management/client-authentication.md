@@ -11,7 +11,6 @@ aliases:
   - /basic-config-and-security/security/authentication-&-authorization
   - /security/your-apis
   - /security/your-apis/openid-connect
-  - /api-management/client-authentication.md
   - /api-management/authentication-authorization
 ---
 
