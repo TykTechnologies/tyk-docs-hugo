@@ -155,7 +155,7 @@ To successfully install the Tyk Enterprise Developer Portal with Docker, you sho
     **Note**
 
     {{< warning success >}}
-    The above PostgreSQL configuration is an example. You can customize deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
+The above PostgreSQL configuration is an example. You can customize deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
     {{< /warning >}}
 
 4. **Create an environment variables file**
@@ -239,17 +239,17 @@ To successfully install the Tyk Enterprise Developer Portal with Docker, you sho
     mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode=ALLOW_INVALID_DATES
     ```
     {{< warning success >}}
-    **Note**  
+**Note**  
 
-    The above MySQL configuration is an example. You can customize deployment of your MySQL instance.
+The above MySQL configuration is an example. You can customize deployment of your MySQL instance.
 
-    Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
+Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
     {{< /warning >}}
 
     {{< note success >}}
-    **Note** 
+**Note** 
 
-    SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
     {{< /note >}}
 
 3. **Create an environment variables file**
@@ -754,9 +754,9 @@ This guide provides a clear and concise, step-by-step recipe for installing the 
 2. **Config settings**
 
     {{< note success >}}
-    **Note** 
+**Note** 
 
-    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
@@ -830,9 +830,9 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
 3. **Update the configuration file with your license**
 
     {{< note success >}}
-    **Note** 
+**Note** 
 
-    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.

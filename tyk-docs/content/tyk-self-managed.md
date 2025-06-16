@@ -3425,7 +3425,7 @@ Elasticsearch and starts up Tyk pump to push analytics data from the Tyk platfor
   - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
   - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-jwt-hmac): starts up API examples using the tyk-operator to demonstrate JWT HMAC auth.
   - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-udg): starts up Universal Data Graph API examples using the tyk-operator.
-- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "portal/overview" >}}) as well as its dependency PostgreSQL.
+- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "portal/overview/intro" >}}) as well as its dependency PostgreSQL.
 - [prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus): deploys Prometheus and starts up Tyk Pump to push analytics data from the Tyk platform to Prometheus.
   - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
 - [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/vault): deploys Vault Operator and a Vault instance.
@@ -3646,7 +3646,7 @@ This demo is NOT intended for production use or performance testing, since it us
 {{< note success >}}
 **Note**  
 
-The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "portal/overview#" >}}).
+The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "portal/overview/intro" >}}).
 {{< /note >}}
 
 #### Prerequisites
