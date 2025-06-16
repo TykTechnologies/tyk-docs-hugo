@@ -1098,7 +1098,7 @@ $ docker run \
   docker.tyk.io/tyk-gateway/tyk-gateway:v5.3
 ```
 
-For full installation details, check the usual [installation page]({{< ref "tyk-open-source#install-tyk-gateway-with-docker" >}}).
+For full installation details, check the usual [installation page]({{< ref "apim/open-source/installation#install-tyk-gateway-with-docker" >}}).
 
 **Docker compose upgrade in a simple environment**
 
