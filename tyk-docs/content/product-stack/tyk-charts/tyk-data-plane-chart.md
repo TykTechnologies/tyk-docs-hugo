@@ -33,7 +33,7 @@ For a quick start guide, please see [deploy hybrid gateway]({{< ref "tyk-cloud#d
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
-- [Redis]({{< ref "tyk-open-source#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway.
+- [Redis]({{< ref "apim/open-source/installation#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway.
 - Connection details to remote control plane. See below for how to obtain them from Tyk Cloud or Tyk Control Plane chart.
 
 ## Obtain Remote Control Plane Connection details from Tyk Cloud
