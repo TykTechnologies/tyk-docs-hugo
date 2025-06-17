@@ -4061,7 +4061,7 @@ schema_path: http://localhost:8081/path/to/spec/versions/1
 
 Executes a Bloblang mapping on messages, creating a new document that replaces (or filters) the original message.
 
-Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks. For more information check out the [Bloblang docs](https://warpstreamlabs.github.io/bento/docs/guides/bloblang/about/).
+Bloblang is a powerful language that enables various mapping, transformation, and filtering tasks. For more information, check out the [Bloblang docs](https://warpstreamlabs.github.io/bento/docs/guides/bloblang/about/).
 
 ```yml
 label: ""
@@ -4070,7 +4070,7 @@ mapping: "" # No default (required)
 
 #### Example
 
-Given a JSON document with US location names and their states they are located in:
+Given a JSON document with US location names and the states they are located in:
 ```json
 {
   "locations": [
@@ -4082,13 +4082,13 @@ Given a JSON document with US location names and their states they are located i
 }
 ```
 
-If we want to collapse the location names from the state Washington into a field `Cities`:
+If we want to collapse the location names from the state of Washington into a field `Cities`:
 
 ```json
 {"Cities": "Bellevue, Olympia, Seattle"}
 ```
 
-We could use following bloblang mapping:
+We could use the following bloblang mapping:
 
 ```yml
 pipeline:
@@ -4102,9 +4102,8 @@ pipeline:
 
 #### Considerations
 
- - If a mapping fails the message remains unchanged. However Bloblang itself provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour. See [this section of the Bloblang docs](https://warpstreamlabs.github.io/bento/docs/configuration/error_handling/).
- - Mapping operates by creating an entirely new object during assignments, this has the advantage of treating the original referenced document as immutable and therefore queryable at any stage of your mapping. As a result, the `Cities` JSON document in the above example exists as a new, separate copy from the original document, which remains unchanged.
-
+ - If a mapping fails, the message remains unchanged. However, Bloblang provides powerful ways to ensure your mappings do not fail by specifying desired fallback behaviour. See [this section of the Bloblang docs](https://warpstreamlabs.github.io/bento/docs/configuration/error_handling/).
+ - Mapping operates by creating an entirely new object during assignments. This has the advantage of treating the original referenced document as immutable and, therefore, queryable at any stage of your mapping. As a result, the `Cities` JSON document in the above example is a new, separate copy of the original document, which remains unchanged.
 
 ## Tracers
 
