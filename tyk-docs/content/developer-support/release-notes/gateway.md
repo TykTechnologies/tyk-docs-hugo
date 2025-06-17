@@ -300,9 +300,9 @@ Resolved initialization errors that caused unnecessary error logging during gate
 </li>
 <li>
 <details>
-<summary>Edge Gateways Now Enter Emergency Mode when Disconnected from MDCB</summary>
+<summary>Resolved gateway not entering "emergency" mode</summary>
 
-Fixed an issue where edge gateways failed to enter emergency mode when disconnected from MDCB, preventing traffic from being processed. Now, gateways properly load APIs and policies from the Redis backup when MDCB is unavailable.
+Fixed an issue where the gateway stopped processing traffic when restarted while MDCB was unavailable. Instead of entering “emergency” mode and loading APIs and policies from the Redis backup, the gateway remained unresponsive, continuously attempting to reconnect. With this fix, the gateway detects connection failure and enters emergency mode, ensuring traffic processing resumes even when MDCB is down.
 </details>
 </li>
 <li>
