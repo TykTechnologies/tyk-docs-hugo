@@ -38,9 +38,9 @@ Configuring SSO with Embedded TIB is a four-step process:
 
 ### Enabling Embedded TIB
 
-To enable Embedded TIB in the portal, add the `PORTAL_TIB_ENABLE` variable to [the portal .env file]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#sample-env-file" >}}):
+To enable Embedded TIB in the portal, add the `PORTAL_TIB_ENABLED` variable to [the portal .env file]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#sample-env-file" >}}):
 ```.ini
-PORTAL_TIB_ENABLE=true
+PORTAL_TIB_ENABLED=true
 ```
 
 {{< note info >}}
