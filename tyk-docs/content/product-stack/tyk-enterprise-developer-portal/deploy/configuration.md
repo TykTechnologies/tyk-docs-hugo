@@ -631,7 +631,7 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
     "RetryDelay": 2000
   },
   "TIB": {
-    "Enabled": true
+    "Enable": true
   }
 }
 ```
