@@ -44,7 +44,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release is focused mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.2) below.
+This patch release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.2) below.
 
 #### Breaking Changes
 
