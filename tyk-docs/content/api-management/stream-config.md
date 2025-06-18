@@ -1610,10 +1610,6 @@ Requires version 3.45.0 or newer
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
-<!-- TO DO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
-
 
 Type: `string`
 Default: `""`
@@ -1672,10 +1668,6 @@ Default: `""`
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
-
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -1754,9 +1746,6 @@ user: ${USER}
 ##### sasl.password
 
 A PLAIN password. It is recommended that you use environment variables to populate this field.
-<!-- TODO add secret link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -2078,7 +2067,7 @@ This input adds the following metadata fields to each message:
 - mqtt_message_id
 ```
 
-You can access these metadata fields using [function interpolation](/docs/configuration/interpolation#bloblang-queries).
+You can access these metadata fields using function interpolation.
 
 #### Fields
 
@@ -3674,7 +3663,7 @@ output:
 
 The config field `ack_replicas` determines whether we wait for acknowledgment from all replicas or just a single broker.
 
-<!-- Add links to bloblang queries : Both the `key` and `topic` fields can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries). -->
+<!-- Add links to bloblang queries : Both the `key` and `topic` fields can be dynamically set using function interpolations. -->
 
 Metadata will be added to each message sent as headers (version 0.11+), but can be restricted using the field [metadata](#metadata).
 
@@ -3756,9 +3745,6 @@ Default: `false`
 ##### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -3818,9 +3804,6 @@ Default: `""`
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
-<!-- TODO: add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -3899,9 +3882,6 @@ user: ${USER}
 ##### sasl.password
 
 A PLAIN password. It is recommended that you use environment variables to populate this field.
-<!-- TODO add secret link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -4625,7 +4605,7 @@ password: ${KEY_PASSWORD}
 ##### topic
 
 The topic to publish messages to.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports interpolation functions.
 
 
 Type: `string`
@@ -4666,7 +4646,7 @@ Default: `false`
 ##### retained_interpolated
 
 Override the value of `retained` with an interpolable value, this allows it to be dynamically set based on message contents. The value must resolve to either `true` or `false`.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports interpolation functions.
 
 
 Type: `string`
