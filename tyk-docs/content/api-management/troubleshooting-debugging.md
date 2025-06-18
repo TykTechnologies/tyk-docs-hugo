@@ -11,10 +11,8 @@ aliases:
     - /error-response-codes
     - /frequently-asked-questions/capping-analytics-data-storage
     - /tyk-stack/dependencies/mongodb/x509-client-auth
-    - /api-management/troubleshotting-debugging
     - /debugging-series/debugging-series
     - /debugging-series/mongodb-debugging
-    - /developer-support/debugging-series/.placehol
     - /developer-support/debugging-series/debugging-selfmanaged
     - /frequently-asked-questions/api-definition-url-case-sensitive
     - /frequently-asked-questions/dashboard-bootstrap-error
@@ -930,7 +928,7 @@ We also support limited customisation of the error codes and messages returned b
     As AWS DocumentDB runs with TLS enabled, we require a way to run it without disabling the TLS verification.
     DocumentDB uses self-signed certs for verification, and provides a bundle with root certificates for this purpose, so we need a way to load this bundle.
 
-    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) enabled.
+    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) enabled.
 
     So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}):
 
@@ -1001,7 +999,7 @@ We also support limited customisation of the error codes and messages returned b
 
 16. ##### How to rename or move existing headers in a request
 
-    To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
+    To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
 
     We do this by setting the following in our API Definition Version section:
     ```{.copyWrapper}

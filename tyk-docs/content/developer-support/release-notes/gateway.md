@@ -300,9 +300,9 @@ Resolved initialization errors that caused unnecessary error logging during gate
 </li>
 <li>
 <details>
-<summary>Edge Gateways Now Enter Emergency Mode when Disconnected from MDCB</summary>
+<summary>Resolved gateway not entering "emergency" mode</summary>
 
-Fixed an issue where edge gateways failed to enter emergency mode when disconnected from MDCB, preventing traffic from being processed. Now, gateways properly load APIs and policies from the Redis backup when MDCB is unavailable.
+Fixed an issue where the gateway stopped processing traffic when restarted while MDCB was unavailable. Instead of entering “emergency” mode and loading APIs and policies from the Redis backup, the gateway remained unresponsive, continuously attempting to reconnect. With this fix, the gateway detects connection failure and enters emergency mode, ensuring traffic processing resumes even when MDCB is down.
 </details>
 </li>
 <li>
@@ -333,13 +333,80 @@ Resolved an issue where the gateway incorrectly selected the OAuth upstream auth
 ---
 ## 5.7 Release Notes
 
+### 5.7.3 Release Notes
+
+#### Release Date 05 June 2025
+
+#### Release Highlights
+
+This patch release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.3" >}}) below.
+
+#### Dependencies {#dependencies-5.7.3}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.7.3 | MDCB v2.7.2     | MDCB v2.4.2 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.2    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.7.3}
+
+If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.7.3)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.7.3
+    ``` 
+- Helm charts
+  - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.7.3}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
+
+Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.7.2 Release Notes
 
 #### Release Date 19 February 2025
 
 #### Release Highlights
 
-Gateway 5.7.2 was version bumped only to align with Dashboard 5.7.2. Subsequently, no changes were made in this release. For further information, please see the release notes for [Dashboard v5.7.2]({{< ref "developer-support/release-notes/dashboard#572-release-notes" >}})
+This patch release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.2" >}}) below.
 
 #### Breaking Changes
 There are no breaking changes in this release.
@@ -363,7 +430,7 @@ There are no breaking changes in this release.
 
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
-| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
 
@@ -373,7 +440,7 @@ Given the potential time difference between your upgrade and the release of this
 There are no deprecations in this release.
 
 
-#### Upgrade instructions {#upgrade-5.7.1}
+#### Upgrade instructions {#upgrade-5.7.2}
 If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
@@ -388,7 +455,17 @@ If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.7.2} 
 
-Since this release was version bumped only to align with Dashboard v5.7.2, no changes were made in this release.
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Resolved gateway not entering "emergency" mode</summary>
+
+Fixed an issue where the gateway stopped processing traffic when restarted while MDCB was unavailable. Instead of entering “emergency” mode and loading APIs and policies from the Redis backup, the gateway remained unresponsive, continuously attempting to reconnect. With this fix, the gateway detects connection failure and enters emergency mode, ensuring traffic processing resumes even when MDCB is down.
+</details>
+</li>
+</ul>
 
 ---
 
@@ -1306,7 +1383,7 @@ Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-
 
 ##### Root CA Support for Client Certificates
 
-Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "api-management/client-authentication#faq" >}}).
+Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#faq" >}}).
 
 ##### Optimised AST Document Handling
 
@@ -3735,7 +3812,7 @@ that code ranges defined as 1XX, 2XX, etc will be correctly converted by the too
 <summary>Added support for custom rate limit keys</summary>
 
 We have added the capability for users to define a [custom rate limit
-key]({{< ref "portal/api-provider#configure-rate-limits" >}})
+key]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys" >}})
 within session metadata. This increases flexibility with rate limiting, as the rate limit can be assigned to different entities
 identifiable from the session metadata (such as a client app or organization) and is particularly useful for users of Tyk's
 Enterprise Developer Portal.
@@ -4429,7 +4506,7 @@ Removed the extra chunked transfer encoding that was added unnecessarily to `raw
 <details>
 <summary>Reponse body transformation not execute when Persist GraphQL middleware used</summary>
 
-Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "api-management/graphql#persisting-graphql-queries" >}}) was used in combination with [Response Body Transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}}), the response's body transformation was not being executed.
+Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "api-management/graphql#persisting-graphql-queries" >}}) was used in combination with [Response Body Transform]({{< ref "api-management/traffic-transformation/response-body" >}}), the response's body transformation was not being executed.
 {{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
 </details>
 </li>
@@ -4469,7 +4546,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation/request-body" >}}) and [response]({{< ref "api-management/traffic-transformation/response-body" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
 
 ##### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
 
@@ -4575,7 +4652,7 @@ Added a new [timeout option]({{< ref "api-management/response-caching#configurin
 <details>
 <summary>Enable request context variables in UDG global or data source headers</summary>
 
-Added support for using [request context variables]({{< ref "api-management/traffic-transformation#available-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "api-management/data-graph#header-management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
+Added support for using [request context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "api-management/data-graph#header-management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
 </details>
 </li>
 <li>
@@ -4699,7 +4776,7 @@ requests that might affect your Tyk Gateways or upstream services. Of course,
 being Tyk, we also provide the flexibility to configure API-level and
 per-endpoint size limits so you can be as granular as you need to protect and
 optimize your services. Check out our improved documentation for full
-description of how to use these powerful [features]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}).
+description of how to use these powerful [features]({{< ref "api-management/traffic-transformation/request-size-limits" >}}).
 
 #### Changed default RPC pool size for MDCB deployments
 
@@ -5122,7 +5199,7 @@ Tyk OSS Gateway now looking after the maintenance of the list of versions associ
 also added a new endpoint on the Tyk API that will return details of the versions for a given API.
 
 We’ve improved support for [OAS
-Mock Responses]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}), with the Tyk OAS API
+Mock Responses]({{< ref "api-management/traffic-transformation/mock-response" >}}), with the Tyk OAS API
 definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing
 flexibility.
 
@@ -5165,7 +5242,7 @@ for your PRs that further improve the quality of Tyk OSS Gateway!
 
 ##### Mock Responses with Tyk OAS API Definitions
 
-Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "api-management/traffic-transformation#mock-response-overview" >}})
+Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "api-management/traffic-transformation/mock-response" >}})
 
 ##### External OAuth - 3rd party OAuth IDP integration
 

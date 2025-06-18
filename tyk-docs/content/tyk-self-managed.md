@@ -3425,7 +3425,7 @@ Elasticsearch and starts up Tyk pump to push analytics data from the Tyk platfor
   - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
   - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-jwt-hmac): starts up API examples using the tyk-operator to demonstrate JWT HMAC auth.
   - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-udg): starts up Universal Data Graph API examples using the tyk-operator.
-- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "portal/overview" >}}) as well as its dependency PostgreSQL.
+- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "portal/overview/intro" >}}) as well as its dependency PostgreSQL.
 - [prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus): deploys Prometheus and starts up Tyk Pump to push analytics data from the Tyk platform to Prometheus.
   - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
 - [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/vault): deploys Vault Operator and a Vault instance.
@@ -3646,7 +3646,7 @@ This demo is NOT intended for production use or performance testing, since it us
 {{< note success >}}
 **Note**  
 
-The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "portal/overview#" >}}).
+The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "portal/overview/intro" >}}).
 {{< /note >}}
 
 #### Prerequisites
@@ -4183,11 +4183,11 @@ If the latency between Tyk and your Upstream is around 50ms, then a single conne
 
 #### Protect Redis from overgrowing
 
-Please read carefully through this [doc]({{< ref "api-management/client-authentication#set-physical-key-expiry-and-deletion" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis until you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't - and especially in scenarios that your flow creates many keys or access tokens for every user or even per call - your Redis can quickly get cluttered with obsolete tokens and eventually affect the performance of the Tyk Gateway.
+Please read carefully through this [doc]({{< ref "api-management/policies#set-physical-key-expiry-and-deletion" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis until you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't - and especially in scenarios that your flow creates many keys or access tokens for every user or even per call - your Redis can quickly get cluttered with obsolete tokens and eventually affect the performance of the Tyk Gateway.
 
 #### Analytics Optimizations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#traffic-logs" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#traffic-logs" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation/do-not-track#do-not-track-using-tyk-oas" >}}).
 
 ##### Protobuf Serialisation
 
@@ -5984,7 +5984,7 @@ Securely store sensitive information like API keys, passwords, and certificates 
 
 ##### Support per-machine variables
 
-Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "api-management/traffic-transformation#" >}}).
+Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "api-management/traffic-transformation" >}}).
 
 #### How external Key-Value storage works
 
@@ -6111,11 +6111,11 @@ From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full 
 ###### Transformation middleware
 
 Key-value references can be included in the following middleware, with the values retrieved dynamically when the middleware is called (during processing of an API request or response):
-- [request body transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
-- [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}})
+- [request body transform]({{< ref "api-management/traffic-transformation/request-body" >}})
+- [request header transform]({{< ref "api-management/traffic-transformation/request-headers" >}})
 - [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}})
-- [response body transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}})
-- [response header transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}})
+- [response body transform]({{< ref "api-management/traffic-transformation/response-body" >}})
+- [response header transform]({{< ref "api-management/traffic-transformation/response-headers" >}})
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from these middleware use the following notation:
 - Consul: `$secret_consul.key`

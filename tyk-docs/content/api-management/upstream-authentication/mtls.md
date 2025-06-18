@@ -8,11 +8,13 @@ tags:
     - mutual tls
 description: How to authenticate upstream service using mutual tls
 date: "2025-04-15"
+aliases:
+  - /basic-config-and-security/security/mutual-tls/upstream-mtls
 ---
 
 ## Mutual TLS (mTLS)
 
-If your upstream API is protected with [mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) then Tyk must provide a certificate when connecting to the upstream service and also will need to verify the certificate presented by the upstream. This ensures secure communication between Tyk and your upstream services.
+If your upstream API is protected with [mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) then Tyk must provide a certificate when connecting to the upstream service and also will need to verify the certificate presented by the upstream. This ensures secure communication between Tyk and your upstream services.
 
 When Tyk performs an mTLS handshake with an upstream, it needs to know:
 
@@ -23,7 +25,7 @@ We use a system of [mapping certificates]({{< ref "#mapping-certificates-to-doma
 
 #### Upstream mTLS for Tyk middleware and plugins
 
-If upstream mTLS certificates are configured for an API, they will not be used for direct proxies to the upstream and will also automatically be used for any HTTP requests made from the [JavaScript Virtual Endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints" >}}) middleware. They will **not** be used for HTTP requests from custom plugins.
+If upstream mTLS certificates are configured for an API, they will not be used for direct proxies to the upstream and will also automatically be used for any HTTP requests made from the [JavaScript Virtual Endpoint]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}}) middleware. They will **not** be used for HTTP requests from custom plugins.
 
 
 #### Upstream mTLS for Tyk Cloud

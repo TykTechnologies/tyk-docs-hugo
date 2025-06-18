@@ -1,5 +1,5 @@
 ---
-title: "Install and Configure Tyk Enterprise Developer Portal"
+title: "Install and Configure Developer Portal"
 date: 2025-02-10
 linkTitle: API Management
 tags: ["Developer Portal", "Tyk", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
@@ -14,7 +14,6 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
-  - /product-stack/tyk-enterprise-developer-portal/deploy/configuration
   - /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
   - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
   - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
@@ -48,15 +47,15 @@ The portal deployment comprises of three main components:
 - The asset storage, which stores CMS assets such as images, themes, and OpenAPI specification files. The assets could reside in the portal's main database or separately in an S3 bucket or filesystem volume.
 
 Optionally, there could be three additional components:
-- **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "portal/api-provider#dynamic-client-registration" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
+- **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
 It's essential to note that the [Tyk Stack]({{< ref "tyk-stack" >}}) doesn't include third-party identity providers, so you should refer to your Identity Provider's documentation for instructions on configuring and deploying it.
 This component is optional and required only for enabling oAuth2.0
 - **[Tyk Identity Broker]({{< ref "api-management/external-service-integration" >}})**. You only need this component if you want to configure Single Sign-On for the Tyk Enterprise Developer Portal.
-For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "portal/settings#configure-developer-portal-sso" >}}) of the documentation
+For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso" >}}) of the documentation
 - **Email server**. The portal is capable of sending notifications to both admin users and developers when specific events happen within the portal.
 To enable this feature, you need to specify a connection configuration to an email server or service, and configure other email settings.
 You can choose to use a server that is installed on your premises or an SMTP-compatible SaaS product.
-For step-by-step instructions, please refer to [the Email Settings section]({{< ref "portal/customization#configure-email-notifications" >}})
+For step-by-step instructions, please refer to [the Email Settings section]({{< ref "portal/customization/email-notifications" >}})
 
 ## Portal Installation Process
 
@@ -156,7 +155,7 @@ To successfully install the Tyk Enterprise Developer Portal with Docker, you sho
     **Note**
 
     {{< warning success >}}
-    The above PostgreSQL configuration is an example. You can customize deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
+The above PostgreSQL configuration is an example. You can customize deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
     {{< /warning >}}
 
 4. **Create an environment variables file**
@@ -240,17 +239,17 @@ To successfully install the Tyk Enterprise Developer Portal with Docker, you sho
     mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode=ALLOW_INVALID_DATES
     ```
     {{< warning success >}}
-    **Note**  
+**Note**  
 
-    The above MySQL configuration is an example. You can customize deployment of your MySQL instance.
+The above MySQL configuration is an example. You can customize deployment of your MySQL instance.
 
-    Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
+Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
     {{< /warning >}}
 
     {{< note success >}}
-    **Note** 
+**Note** 
 
-    SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
     {{< /note >}}
 
 3. **Create an environment variables file**
@@ -755,9 +754,9 @@ This guide provides a clear and concise, step-by-step recipe for installing the 
 2. **Config settings**
 
     {{< note success >}}
-    **Note** 
+**Note** 
 
-    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
@@ -831,9 +830,9 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
 3. **Update the configuration file with your license**
 
     {{< note success >}}
-    **Note** 
+**Note** 
 
-    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.
@@ -978,7 +977,7 @@ Now you have a fully functional portal.
 
 <br/>
 
-You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Enterprise Developer Portal Concepts section]({{< ref "portal/overview#developer-portal-concepts" >}}) for further guidance.
+You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Enterprise Developer Portal Concepts section]({{< ref "portal/overview/concepts" >}}) for further guidance.
 
 ## Environment Variable Reference
 

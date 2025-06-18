@@ -247,7 +247,7 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 
 | Certificate Type | Supported in ApiDefinition | Supported in TykOasApiDefinition | Supported in TykStreamsApiDefinition |
 |------------------|-------------|---------|---------|
-| Client certifates | ✅ [Client mTLS]({{< ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition" >}}) | ✅ [Client mTLS]({{< ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Client certifates | ✅ [Client mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition" >}}) | ✅ [Client mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Custom domain certificates | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Public keys pinning | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#certificate-pinning" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Upstream mTLS | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
@@ -458,9 +458,6 @@ Starting from Tyk Operator v1.2.0, `webhookPort` is deprecated in favor of `webh
 | nodeSelector                                | object | `{}`                                   |
 | podAnnotations                              | object | `{}`                                   |
 | podSecurityContext.allowPrivilegeEscalation | bool   | `false`                                |
-| rbac.image.pullPolicy                       | string | `"IfNotPresent"`                       |
-| rbac.image.repository                       | string | `"gcr.io/kubebuilder/kube-rbac-proxy"` |
-| rbac.image.tag                              | string | `"v0.8.0"`                             |
 | rbac.port                                   | int    | `8443`                                 |
 | rbac.resources                              | object | `{}`                                   |
 | replicaCount                                | int    | `1`                                    |
@@ -1203,7 +1200,7 @@ Client to Gateway Authentication in Tyk ensures secure communication between cli
 
 #### Keyless (Open)
 
-This configuration allows [keyless (open)]({{< ref "api-management/client-authentication#open-no-authentication" >}}) access to the API without any authentication.
+This configuration allows [keyless (open)]({{< ref "basic-config-and-security/security/authentication-authorization/open-keyless" >}}) access to the API without any authentication.
 
 ```yaml {hl_lines=["7-7"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1450,9 +1447,9 @@ spec:
 
 #### Multiple (Chained) Auth
 
-This setup allows for [multiple authentication]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) methods to be chained together, requiring clients to pass through each specified authentication provider.
+This setup allows for [multiple authentication]({{< ref "basic-config-and-security/security/authentication-authorization/multiple-auth" >}}) methods to be chained together, requiring clients to pass through each specified authentication provider.
 
-To enable multiple (chained) auth, you should set `base_identity_provided_by` field to one of the supported chained enums. Consult the [Multi (Chained) Authentication]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) section for the supported auths.
+To enable multiple (chained) auth, you should set `base_identity_provided_by` field to one of the supported chained enums. Consult the [Multi (Chained) Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/multiple-auth" >}}) section for the supported auths.
 
 In this example, we are creating an API definition with basic authentication and mTLS with basic authentication as base identity for `httpbin-multiple-authentications`.
 
@@ -2209,8 +2206,9 @@ Events:         <none>
 From the `status` field, you can see that this security policy has been linked to `httpbin`, `petstore`, and `http-to-kafka` APIs.
 
 
-#### Security Policy Example
-##### Key-Level Per-API Rate Limits and Quota
+#### Security policy example {#security-policy-example}
+
+##### Key-level per-API rate limits and quota {#key-level-per-api-rate-limits-and-quotas}
 
 By configuring per-API limits, you can set specific rate limits, quotas, and throttling rules for each API in the access rights array. When these per-API settings are enabled, the API inherits the global limit settings unless specific limits and quotas are set in the `limit` field for that API.
 
@@ -2275,7 +2273,7 @@ Global Rate Limits and Quota:
 
 By setting per-API rate limits and quotas, you gain granular control over how each API is accessed and used, allowing you to apply different limits for different APIs as needed. This configuration is particularly useful when you want to ensure that critical APIs have stricter controls while allowing more flexibility for others. Use this example as a guideline to tailor your security policies to your specific requirements.
 
-**Key-Level Per-Endpoint Rate Limits{#per-endpoint-rate-limit}**
+##### Key-level per-endpoint rate limits {#per-endpoint-rate-limit}
 
 By configuring key-level per-endpoint limits, you can restrict the request rate for specific API clients to a specific endpoint of an API.
 
@@ -2339,7 +2337,7 @@ spec:
   quota_renewal_rate: 60                # Quota renewal rate in seconds (1 minute)
 ```
 
-**Path based permissions{#path-based-permissions}**
+##### Path based permissions {#path-based-permissions}
 
 You can secure your APIs by specifying [allowed URLs]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) (methods and paths) for each API within a security policy. This is done using the `allowed_urls` field under `access_rights_array`.
 
@@ -2395,7 +2393,7 @@ With this security policy applied:
         { "error": "Access to this resource has been disallowed" }
     ```
 
-**Partitioned policies{#partitioned-policies}**
+##### Partitioned policies {#partitioned-policies}
 
 [Partitioned policies]({{< ref "api-management/policies#partitioned-policies" >}}) allow you to selectively enforce different segments of a security policy, such as quota, rate limiting, access control lists (ACL), and GraphQL complexity rules. This provides flexibility in applying different security controls as needed.
 

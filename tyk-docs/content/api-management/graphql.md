@@ -130,7 +130,7 @@ In order to complete the next steps, you need to have [Tyk Self Managed installe
     - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
     - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. **This is a setting that might be important if your GQL includes subscription operations**.
     - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. 
-    - **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) for details on implementing mutual TLS.
+    - **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) for details on implementing mutual TLS.
 
 5. **Save the API**
 
@@ -958,7 +958,7 @@ You can enrich any GraphQL request proxied through Tyk Gateway with additional i
 
 {{< img src="/img/dashboard/graphql/headers-gql-request.png" alt="Request headers" >}}
 
-**Request headers** values can be defined as context variables. To know how to refer to request context variables check [this page]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+**Request headers** values can be defined as context variables. To know how to refer to request context variables check [this page]({{< ref "api-management/traffic-transformation/request-context-variables" >}}).
 
 Any header key/value pair defined in **Request headers** will only be used to inject headers into requests proxied through the Gateway. It will not be used to introspect the upstream schema from Tyk Dashboard.
 
@@ -1110,7 +1110,7 @@ If you run a request to your proxy, you should get a response similar to this:
 
 #### Dynamic variables
 
-We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
+We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{< ref "api-management/traffic-transformation/request-context-variables" >}})
 
 Below is an examples of using an incoming `code` header value as a variable in `persist_graphql` middleware configuration:
 

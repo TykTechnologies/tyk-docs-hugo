@@ -4,8 +4,7 @@ description: "This page serves as a comprehensive guide to migrating workloads t
 tags: ["Tyk Cloud", "Migration"]
 aliases:
   - /tyk-cloud/telemetry/enable-telemetry
-  - /tyk-cloud/telemetry/
-  - /tyk-cloud
+  - /tyk-cloud/telemetry
   - /tyk-cloud/account--billing/plans
   - /tyk-cloud/account--billing/retirement
   - /tyk-cloud/account-and-billing/add-payment-method
@@ -162,7 +161,7 @@ Paid plans and Enterprise trials allow users to select one of 6 AWS locations as
 **Note**
 
 The Tyk Cloud trial is limited to 48 hours. After this period, your data will be deleted.
-The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview#" >}}).
+The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview/intro" >}}).
 To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
 {{< /note >}}
 
@@ -1245,7 +1244,7 @@ From there you have access to the full scope of Tyk API management functionality
 * Applying Quotas and Rate limits via [Security Policies]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) and [Keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}})
 * [Securing]({{< ref "api-management/security-best-practices#securing-apis-with-tyk" >}}) your APIs
 * Viewing granular [Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) for your Tyk managed APIs
-* [Transform traffic]({{< ref "api-management/traffic-transformation#" >}}) with the Tyk API Designer
+* [Transform traffic]({{< ref "api-management/traffic-transformation" >}}) with the Tyk API Designer
 * Add integration options such as [SSO]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) and [3rd Party IdentityProviders]({{< ref "api-management/external-service-integration" >}})
 * [Adding Segment Tags]({{< ref "#faqs" >}})
 
@@ -2578,6 +2577,52 @@ The sampling level can be configured at both the organization level (while setti
     {{< img src="/img/cloud/tyk-cloud-data-plane-enable-telemetry.png" alt="Tyk Cloud Data Plane Telemetry Enabled" >}}
 
 
+### Tyk Dashboard Audit Logs
+
+Tyk Cloud provides comprehensive audit logging capabilities to track and monitor all administrative actions performed within your Tyk Dashboard. This feature is essential for compliance and security.
+
+#### What are Audit Logs?
+
+Audit logs capture detailed records of all requests made to endpoints under the `/api` route in your Tyk Dashboard. These logs include information about:
+
+- User actions and administrative operations
+- API changes and configurations
+- Authentication and authorisation events
+- System access and modifications
+- Response status codes and timestamps
+
+#### Enabling Audit Logs for Control Plane Deployments
+
+{{< note success >}}**Note**
+
+The audit log feature is available for Control Plane versions v5.7.0 or later.
+{{< /note >}}
+
+##### How to Enable Audit Logging
+
+1. **Contact Your Account Manager**: Audit logging must be enabled at the subscription level. Reach out to your Tyk account manager to add this feature to your plan.
+
+2. **Enable via Tyk Cloud UI**: Once the feature is available in your subscription, you can enable audit logging directly from the Tyk Cloud console:
+   - Navigate to your Control Plane deployment
+   - Select **Edit** from the deployment options
+   - Enable the **Audit Logging** option
+   - Save and redeploy your Control Plane
+
+Audit logs will be stored in your Control Plane's database for easy access and management.
+
+##### Viewing and Accessing Audit Logs
+
+Once audit logging is enabled, you can retrieve the logs via the Tyk Dashboard API. 
+
+For details on the API endpoints and usage, see [Retrieving Audit Logs via API]({{< ref "api-management/dashboard-configuration#retrieving-audit-logs-via-api" >}}).
+
+#### Storage Size Caps
+
+Tyk Cloud enforces audit log storage size caps based on your subscription terms:
+
+- **Storage Limits**: A size cap is applied to audit logs based on your subscription plan
+- **Automatic Cleanup**: When the storage limit is reached, the oldest logs are automatically removed to make space for new entries.
+
 ### Tyk Cloud MDCB Supported versions
 
 This section lists the supported MDCB version for hybrid setup
@@ -2831,4 +2876,3 @@ Can do everything within the scope of the one team they have access to.
 **Team Member**
 
 Can only view and manage the overview, environments and deployments.
-

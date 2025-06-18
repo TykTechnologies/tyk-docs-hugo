@@ -321,7 +321,7 @@ Tyk Dashboard now runs on Golang 1.23, bringing security and performance improve
 - removal of 3DES cipher suites
 - updates to X509KeyPair handling.
 
-**You may need to adjust your setup for compatibility**. For more detail please see the official Go [release notes](https://go.dev/doc/go1.23).
+**You may need to adjust your setup for compatibility**. For more details, please see the official Go [release notes](https://go.dev/doc/go1.23).
 </details>
 </li>
 <li>
@@ -392,6 +392,64 @@ Users can now always access their own Dashboard API credentials, regardless of p
 
 ## 5.7 Release Notes
 
+### 5.7.3 Release Notes
+
+#### Release Date 05 June 2025
+
+#### Release Highlights
+
+This is a version bump to align with Gateway v5.7.3, no changes have been implemented in this release.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.7.3}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.7.3 | MDCB v2.7.2     | MDCB v2.5.1 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.2    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.3}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.7.3}
+
+If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.7.3)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.7.3
+    ```
+- Helm charts
+  - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+#### Changelog {#Changelog-v5.7.3}
+
+No changes in this release.
+
+
 ### 5.7.2 Release Notes
 
 #### Release Date 19 February 2025
@@ -418,11 +476,11 @@ There are no breaking changes in this release.
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.2}
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
@@ -752,7 +810,7 @@ Removed an unnecessary field from the API Designer page under the Streams sectio
 <details>
 <summary>Automatic configuration of request validation for path-level parameters during import of OpenAPI description</summary>
 
-Tyk will now detect path-level parameters in the OpenAPI description and can be set to enable and configure the [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware automatically for these. Previously this automatic detection only worked for method-level parameters in the OpenAPI description.
+Tyk will now detect path-level parameters in the OpenAPI description and can be set to enable and configure the [Request Validation]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}) middleware automatically for these. Previously this automatic detection only worked for method-level parameters in the OpenAPI description.
 </details>
 </li>
 <li>
@@ -3227,7 +3285,7 @@ Fixed an issue when importing reasonably large OpenAPI documents via the Dashboa
 <details>
 <summary>Removed the need for a Description to be provided in the OpenAPI schema when autogenerating a Tyk OAS mock response</summary>
 
-Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) is now even easier.
+Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) is now even easier.
 </details>
 </li>
 <li>
@@ -3686,7 +3744,7 @@ We’ve added the ability to [configure]({{< ref "api-management/response-cachin
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation/request-body" >}}) and [response]({{< ref "api-management/traffic-transformation/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
 ##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
@@ -4171,7 +4229,7 @@ Tyk Dashboard has been enhanced with **all the custom middleware options** for T
 
 Tyk Dashboard hasn’t been left out, we’ve implemented a brand new version management UI for Tyk OAS APIs, to make it as easy as possible for you to manage those API versions as you develop and extend your API products with Tyk.
 
-We’ve improved support for [OAS Mock Responses]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
+We’ve improved support for [OAS Mock Responses]({{< ref "api-management/traffic-transformation/mock-response" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
 
 Another new feature in the Tyk OAS API Designer is that you can now update (PATCH) your existing Tyk OAS APIs through the Dashboard API without having to resort to curl. That should make life just that little bit easier.
 Of course, we’ve also addressed some bugs and usability issues as part of our ongoing ambition to make Tyk OAS API the best way for you to create and manage your APIs.
