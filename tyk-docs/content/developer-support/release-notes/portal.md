@@ -74,9 +74,9 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 <ul>
 <li>
 <details>
-<summary>Add a changelog summary</summary>
+<summary>Preserved JWT Scope Mappings When Enabling DCR</summary>
 
-Add change log description 
+Enabling DCR no longer deletes jwt_scope_to_policy_mapping entries from APIs in the Tyk Dashboard.Scopes are now merged, sorted, deduplicated, and preserved during all sync and DCR operations.
 </details>
 </li>
 </ul>
