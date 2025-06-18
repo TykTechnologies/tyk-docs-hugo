@@ -38,54 +38,53 @@ Here's a table summarizing the UI features available for Tyk documentation:
 
 | Name | Description | Use Cases |
 |------|-------------|------|
-| Code Blocks | Documentation for Tyk |  |
-| Accordions | Documentation for Tyk |  |
-| Callouts | Documentation for Tyk |  |
-| Cards | Documentation for Tyk |  |
-| Expandables | Documentation for Tyk |  |
-| Tabs | Documentation for Tyk |  |
-| Mermaid | Documentation for Tyk |  |
-| Steps | Documentation for Tyk |  |
-| Snippter | A custom component written by us. TODO |  |
+| [Code Blocks](https://mintlify.com/docs/code) | Display inline code and code blocks |  |
+| [Accordions](https://mintlify.com/docs/components/accordions) | A dropdown component to toggle content visibility |  |
+| [Callouts](https://mintlify.com/docs/components/callouts) | Use callouts to add eye-catching context to your content |  |
+| [Cards](https://mintlify.com/docs/components/cards) | Highlight main points or links with customizable icons |  |
+| [Expandables](https://mintlify.com/docs/components/expandables) | Toggle to display nested properties. |  |
+| [Tabs](https://mintlify.com/docs/components/tabs) | Toggle content using the Tabs component |  |
+| [Mermaid](https://mintlify.com/docs/components/mermaid-diagrams) | Display diagrams using Mermaid |  |
+| [Steps](https://mintlify.com/docs/components/steps) | Sequence content using the Steps component |  |
+| Snipptet | A custom component written by us. TODO |  |
 
 Note: The above components is a list of mostly used components in Tyk documentation. To see the complete list of components, refer to the [Mintlify documentation](https://docs.mintlify.com/docs/components).
 
----
-
 ## Creating a New Page
 
-To create a new page in Tyk documentation, follow these steps:
+To add a new page to the Tyk documentation, follow the steps below.
 
-### Pre-requisites
+### Prerequisites
 
-- You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
-- You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
-- You’re familiar with Git and Markdown syntax.
+* You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
+* You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
+* You’re familiar with Git and Markdown syntax.
 
 ### Instructions
 
-1. Ensure you are on the `main` branch and have the latest changes:
+1. **Switch to the `main` branch and pull the latest changes:**
+
    ```bash
    git checkout main
    git pull origin main
    ```
 
-2. Create a new branch from `main`:
+2. **Create a new branch:**
+
    ```bash
    git checkout -b <branch-name>
    ```
 
-3. Creating a new page:
+3. **Create the new page:**
 
-   The docs repository stores all the content in the `root` directory across multiple folders. The folder structure is organized according to the website's navigation (tabs, groups, etc.), so choose the folder that best fits your new page.
+   The content is organized into folders under the root directory, reflecting the website's navigation structure (tabs, groups, etc.). Choose the appropriate folder for your new page.
 
-   Add the new page as a markdown file with the `.mdx` extension. For example, if you are creating a new page called “API Versioning", create a file named `api-versioning.mdx`.
+   * Create a new `.mdx` file for the page. For example, for a page titled “API Versioning,” you might create a file named `api-versioning.mdx`.
+   * Add [front matter](https://mintlify.com/docs/pages#frontmatter) to the top of the file. This is a YAML block containing metadata like the title, description, and tags.
 
-   Add the front matter to the top of the markdown file. The front matter is a YAML block that contains metadata about the page, such as title, date, tags, and description. 
-   
-   Example front matter for a page:
+   **Example front matter:**
 
-   ```markdown
+   ```mdx
    ---
    title: "API Versioning"
    description: "Create and manage multiple versions of an API"
@@ -94,45 +93,50 @@ To create a new page in Tyk documentation, follow these steps:
    ---
    ```
 
-   Add your content below the front matter using Markdown syntax. To enhance the documentation, you can use Mintlify's UI components, such as accordions, callouts, and code blocks.
+   * Write your content using Markdown. You can also use Mintlify UI components (e.g., accordions, callouts, code blocks) to improve readability and user experience.
 
-4. Update docs.json
-   
-   To ensure your new page is included in the documentation navigation, you need to update the `docs.json` file located in the root directory. This file defines the structure of the documentation navigation.
+4. **Update `docs.json`:**
 
-   The below example show how to add a new page under the "API Management" tab in the "Overview" group:
+   To make your new page appear in the navigation, update the `docs.json` file in the root directory.
+
+   **Example**: Adding a new page under the *"API Management"* tab in the *"Overview"* group.
+
    ```json
-    {
-      ...
-      "navigation": {
-        "tabs": [
-          {
-            "tab": "API Management",
-            "groups": [
-              {
-                "group": "Overview",
-                "pages": [
-                  "tyk-overview",
-                  "tyk-components",
-                  "apim",
-                  "api-versioning"  // New page added here
-                ]
-              }
-            ]
-          }
-        ]
-      }
-      ...
-    }
+   {
+     ...
+     "navigation": {
+       "tabs": [
+         {
+           "tab": "API Management",
+           "groups": [
+             {
+               "group": "Overview",
+               "pages": [
+                 "tyk-overview",
+                 "tyk-components",
+                 "apim",
+                 "api-versioning"  // New page added here
+               ]
+             }
+           ]
+         }
+       ]
+     }
+     ...
+   }
    ```
-5. Push your changes to the remote repository:
+
+5. **Commit and push your changes:**
+
    ```bash
    git add -A
    git commit -m "Add new page: <page-name>"
    git push origin <branch-name>
    ```
-6. Create a pull request on GitHub to merge your changes into the `main` branch.
-7. Check out the preview link provided by Mintlify to review your changes before merging.
+
+6. **Create a pull request** on GitHub to merge your changes into `main`.
+
+7. **Preview your changes** using the link provided by Mintlify before merging.
 
 ## Updating an Existing Page
 
