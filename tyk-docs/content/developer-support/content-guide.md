@@ -30,26 +30,6 @@ This secion provides instructions for setting up your local environment to work 
    ```
 5. Open your browser and go to `http://localhost:3000` to view the documentation.
 
-## Guide for UI features
-
-Apart from the basic markdown writing, Tyk documentation also support UI components like accordions, callouts, cards, expandables, tabs etc. These components help in  enhance the documentation's usability and readability.
-
-Here's a table summarizing the UI features available for Tyk documentation:
-
-| Name | Description | Use Cases |
-|------|-------------|------|
-| [Code Blocks](https://mintlify.com/docs/code) | Display inline code and code blocks |  |
-| [Accordions](https://mintlify.com/docs/components/accordions) | A dropdown component to toggle content visibility |  |
-| [Callouts](https://mintlify.com/docs/components/callouts) | Use callouts to add eye-catching context to your content |  |
-| [Cards](https://mintlify.com/docs/components/cards) | Highlight main points or links with customizable icons |  |
-| [Expandables](https://mintlify.com/docs/components/expandables) | Toggle to display nested properties. |  |
-| [Tabs](https://mintlify.com/docs/components/tabs) | Toggle content using the Tabs component |  |
-| [Mermaid](https://mintlify.com/docs/components/mermaid-diagrams) | Display diagrams using Mermaid |  |
-| [Steps](https://mintlify.com/docs/components/steps) | Sequence content using the Steps component |  |
-| Snipptet | A custom component written by us. TODO |  |
-
-Note: The above components is a list of mostly used components in Tyk documentation. To see the complete list of components, refer to the [Mintlify documentation](https://docs.mintlify.com/docs/components).
-
 ## Creating a New Page
 
 To add a new page to the Tyk documentation, follow the steps below.
@@ -230,3 +210,24 @@ To delete a page from the Tyk documentation, follow these steps:
 6. **Create a pull request** on GitHub to merge your branch into `main`.
 
 7. **Review the preview link** provided by Mintlify to ensure your changes appear as expected before merging.
+
+## Guide for UI features
+
+Apart from the basic markdown writing, Tyk documentation also support UI components like accordions, callouts, cards, expandables, tabs etc. These components help in  enhance the documentation's usability and readability.
+
+Here's a table summarizing the UI features available for Tyk documentation:
+
+| Name | Description | Use Cases |
+|------|-------------|------|
+| [Code Blocks](https://mintlify.com/docs/code) | Display inline code and code blocks |  |
+| [Accordions](https://mintlify.com/docs/components/accordions) | A dropdown component to toggle content visibility |  |
+| [Callouts](https://mintlify.com/docs/components/callouts) | Use callouts to add eye-catching context to your content |  |
+| [Cards](https://mintlify.com/docs/components/cards) | Highlight main points or links with customizable icons |  |
+| [Expandables](https://mintlify.com/docs/components/expandables) | Toggle to display nested properties. |  |
+| [Tabs](https://mintlify.com/docs/components/tabs) | Toggle content using the Tabs component |  |
+| [Mermaid](https://mintlify.com/docs/components/mermaid-diagrams) | Display diagrams using Mermaid |  |
+| [Steps](https://mintlify.com/docs/components/steps) | Sequence content using the Steps component |  |
+| Snipptet | A custom component written by us. TODO |  |
+
+Note: The above components is a list of mostly used components in Tyk documentation. To see the complete list of components, refer to the [Mintlify documentation](https://docs.mintlify.com/docs/components).
+
