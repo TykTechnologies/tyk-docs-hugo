@@ -577,7 +577,7 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
 **Type:** `boolean` <br/>
 **Description**: Indicates whether the request can include user credentials like cookies, HTTP authentication, or client-side SSL certificates. The default is `false`.
 
-### PORTAL_TIB_ENABLE
+### PORTAL_TIB_ENABLED
 **Config file:** TIB.Enable <br/>
 **Type:** `boolean` <br/>
 **Description**: Enables or disables the Tyk Identity Broker (TIB) integration. When disabled, it will not appear in the UI. The default value is `false`.
@@ -661,5 +661,5 @@ PORTAL_DATABASE_DIALECT="mysql"
 PORTAL_DATABASE_CONNECTIONSTRING="admin:secr3t@(localhost:3308)/portal?charset=utf8&parseTime=True&loc=Local"
 PORTAL_DATABASE_ENABLELOGS=true
 PORTAL_DATABASE_MAXRETRIES=3
-PORTAL_TIB_ENABLE=true
+PORTAL_TIB_ENABLED=true
 ```
