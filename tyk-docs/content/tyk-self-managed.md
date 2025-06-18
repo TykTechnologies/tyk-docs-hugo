@@ -2231,7 +2231,7 @@ If you don't complete this step, you won't see any analytics in your Dashboard, 
 {{< note success >}}
 **Note**
 
-You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Mongo IP Address>`, `<Mongo Port>` ` for `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/` with your own values to run this script.
+You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Mongo IP Address>`, `<Mongo Port>`  for `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/` with your own values to run this script.
 {{< /note >}}
 
 ```bash
@@ -4410,9 +4410,6 @@ MDCB and Multi-Cloud clients - the Gateways write the data to a temporary Redis 
 **Redis RAM Calculator**
 You can calculate your Redis RAM requirements by entering your known values in the middle section of the calculator settings below:
 
-{{< redis-calculator >}}
-
-
 #### MongoDB
 
 ##### Supported Versions
@@ -4531,7 +4528,7 @@ For 90 days: 140MB × 90 = ~12.6GB
 **MongoDB Database Storage Calculator**
 You can calculate your MongoDB storage requirements by entering your known values in the middle section of the calculator settings below:
 
-{{< database-calculator >}}
+
 
 
 #### PostgreSQL
@@ -4592,7 +4589,7 @@ Per month: 30GB request logs + 30MB aggregate logs
 **PostgreSQL Database Storage Calculator**
 You can calculate your PostgreSQL storage requirements by entering your known values in the middle section of the calculator settings below:
 
-{{< database-calculator >}}
+
 
 
 ### Ensure High Availability

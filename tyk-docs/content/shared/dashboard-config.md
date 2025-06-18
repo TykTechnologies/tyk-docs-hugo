@@ -1097,7 +1097,7 @@ When using external TIB, this is the URL where it's reachable
 ENV: <b>TYK_DB_TIB_HOST_CONNECTIONSTRING</b><br />
 Type: `string`<br />
 
-The URL to the host. It must be in the form: http://domain:port.
+The URL to the host. It must be in the form: `http://domain:port`.
 Set this value only if you need to use external Tyk Identity Broker
 
 ### identity_broker.host.secret

@@ -17,11 +17,7 @@ started and understand the capabilities of our products.
 
 {{< grid >}}
 
-{{< badge
-    href="https://www.postman.com/tyk-technologies/workspace/379673ec-4cc5-4b8e-bef5-8a6a988071cb/overview"
-    title="Postman" titleStyle="justify-content: center"
-    image="img/logos/Postman-logo-vertical-orange-2021.svg" imageStyle="object-fit:contain" alt="Postman Logo"
->}}
+{{< badge href="https://www.postman.com/tyk-technologies/workspace/379673ec-4cc5-4b8e-bef5-8a6a988071cb/overview" title="Postman" titleStyle="justify-content: center" image="img/logos/Postman-logo-vertical-orange-2021.svg" imageStyle="object-fit:contain" alt="Postman Logo">}}
 Tyk Public Workspace
 {{< /badge >}}
 
@@ -34,9 +30,7 @@ information you need to integrate Tyk's products seamlessly into your projects.
 
 {{< grid >}}
 
-{{< badge href="tyk-dashboard-api" title="OpenAPI"
-titleStyle="justify-content: center"
-image="img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:scale-down" alt="Tyk Dashboard Logo">}}
+{{< badge href="tyk-dashboard-api" title="OpenAPI" titleStyle="justify-content: center" image="img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:scale-down" alt="Tyk Dashboard Logo">}}
 Manage the Tyk platform
 {{< /badge >}}
 
@@ -70,9 +64,7 @@ Enterprise Portal API
 
 {{< grid >}}
 
-{{< badge href="tyk-gateway-api" title="OpenAPI"
-titleStyle="justify-content: center"
-image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway OSS Logo">}}
+{{< badge href="tyk-gateway-api" title="OpenAPI" titleStyle="justify-content: center" image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway OSS Logo">}}
 Configure & control Tyk GW
 {{< /badge >}}
 

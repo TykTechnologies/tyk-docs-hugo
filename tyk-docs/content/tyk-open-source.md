@@ -257,11 +257,12 @@ The following are required for a Tyk OSS installation:
 ##### Steps for Installation
 
 As well as our official OSS Helm repo, you can also find it in [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
-<div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/tyk-helm/tyk-headless" data-theme="light"
-data-header="true" data-responsive="true"><blockquote><p lang="{{ .Site.LanguageCode }}" dir="ltr">
-<b>tyk-headless</b>: This chart deploys the open-source Tyk Gateway. Tyk Gateway is a fully open-source Enterprise API Gateway, supporting REST, GraphQL, TCP, and gRPC protocols. Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. It enables organizations and businesses around the world to protect, secure, and process APIs as well as review and audit the consumed APIs.
-</p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/tyk-helm/tyk-headless">Artifact Hub</a></blockquote>
-</div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
+As well as our official OSS Helm repo, you can also find it on [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
+
+> **tyk-headless**: This chart deploys the open-source Tyk Gateway. Tyk Gateway is a fully open-source Enterprise API Gateway, supporting REST, GraphQL, TCP, and gRPC protocols. It is ‘Batteries-included’, with no feature lockout. It enables organizations and businesses around the world to protect, secure, and process APIs as well as review and audit the consumed APIs.
+
+👉 [Open in ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless)
+
 
 If you are interested in contributing to our charts, suggesting changes, creating PRs, or any other way,
 please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-headless)
