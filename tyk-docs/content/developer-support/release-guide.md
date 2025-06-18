@@ -88,11 +88,9 @@ To release a patch version, we follow a simple process that involves merging the
 
 ### Pre-Requisites:
 
-1. Ensure the PRs for documentation, configuration, and release notes have already been approved.
+Ensure the PRs for documentation, configuration, and release notes have already been approved.
 
-    **Note:** For release notes ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
-
-2. Good understanding of the docs.json file and how it [works]({{< ref "developer-support/content-guide#versioning-in-tyk-docs" >}}) in Mintlify.
+**Note:** For release notes ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
 
 ### Instructions
 
