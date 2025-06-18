@@ -1327,7 +1327,7 @@ Type: `object`
 ##### sync_response.status
 
 Specify the status code to return with synchronous responses. This is a string value, which allows you to customize it based on resulting payloads and their metadata.
-<!-- TODO: when inerpolation supported:
+<!-- TODO: when interpolation supported:
 This field supports interpolation functions.
 -->
 
@@ -4605,7 +4605,9 @@ password: ${KEY_PASSWORD}
 ##### topic
 
 The topic to publish messages to.
+<!-- TODO: when interpolation supported:
 This field supports interpolation functions.
+-->
 
 
 Type: `string`
@@ -4646,7 +4648,9 @@ Default: `false`
 ##### retained_interpolated
 
 Override the value of `retained` with an interpolable value, this allows it to be dynamically set based on message contents. The value must resolve to either `true` or `false`.
+<!-- TODO: when interpolation supported:
 This field supports interpolation functions.
+-->
 
 
 Type: `string`
