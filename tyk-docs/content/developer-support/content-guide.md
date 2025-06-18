@@ -52,57 +52,177 @@ Note: The above components is a list of mostly used components in Tyk documentat
 
 ---
 
-## Creating New Page
-
-Pre-requisites:
-- TODO: Basic markdown Pages and Navigation is important for the Tyk documentation. This guide provides instructions on how to create and manage content effectively.
+## Creating a New Page
 
 To create a new page in Tyk documentation, follow these steps:
 
-1. Ensure you are on the main branch of the repository and have the latest changes:
+### Pre-requisites
+
+- You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
+- You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
+- You’re familiar with Git and Markdown syntax.
+
+### Instructions
+
+1. Ensure you are on the `main` branch and have the latest changes:
    ```bash
    git checkout main
    git pull origin main
    ```
-1. Create a branch from the `main` branch:
+
+2. Create a new branch from `main`:
    ```bash
    git checkout -b <branch-name>
    ```
-1. **Navigate to the appropriate section** in the `content` directory where you want to create the new page.
 
+3. Creating a new page:
 
-### Front Matter
+   The docs repository stores all the content in the `root` directory across multiple folders. The folder structure is organized according to the website's navigation (tabs, groups, etc.), so choose the folder that best fits your new page.
 
-For each new file created via `hugo new`, the following YAML formatted [Front Matter](http://gohugo.io/content-management/front-matter/) is added:
+   Add the new page as a markdown file with the `.mdx` extension. For example, if you are creating a new page called “API Versioning", create a file named `api-versioning.mdx`.
 
-```markdown
----
-title: "New Section"
-date: 2024-07-31
-tags: ["example-tag1", "example-tag2"]
-description: "Enter a brief description of the section here."
----
+   Add the front matter to the top of the markdown file. The front matter is a YAML block that contains metadata about the page, such as title, date, tags, and description. 
+   
+   Example front matter for a page:
 
-**Insert Lead paragraph here.**
-```
+   ```markdown
+   ---
+   title: "API Versioning"
+   description: "Create and manage multiple versions of an API"
+   sidebarTitle: "API Versioning"
+   tags: ['API versioning', 'version', 'Tyk Classic', 'Tyk OAS', 'API', 'versioning']
+   ---
+   ```
 
-- `title` is taken from the name of the markdown file created
-- `date` is auto populated in a year-month-day format
-- `tags` are used to create meta keywords in the HTML output, and are added in the following format - `tags: ["tag 1", "tag 2", "tag 3"]`
-- `description` is used for the meta description in the HTML output
+   Add your content below the front matter using Markdown syntax. To enhance the documentation, you can use Mintlify's UI components, such as accordions, callouts, and code blocks.
 
-Example front matter for a page:
+4. Update docs.json
+   
+   To ensure your new page is included in the documentation navigation, you need to update the `docs.json` file located in the root directory. This file defines the structure of the documentation navigation.
 
-```markdown
----
-title: "Test"
-date: 2021-02-10
-tags: ["Tyk", "advanced-configuration", "Dashboard"]
-description: "Testing the description and tagging functionality in Tyk"
----
-```
+   The below example show how to add a new page under the "API Management" tab in the "Overview" group:
+   ```json
+    {
+      ...
+      "navigation": {
+        "tabs": [
+          {
+            "tab": "API Management",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "tyk-overview",
+                  "tyk-components",
+                  "apim",
+                  "api-versioning"  // New page added here
+                ]
+              }
+            ]
+          }
+        ]
+      }
+      ...
+    }
+   ```
+5. Push your changes to the remote repository:
+   ```bash
+   git add -A
+   git commit -m "Add new page: <page-name>"
+   git push origin <branch-name>
+   ```
+6. Create a pull request on GitHub to merge your changes into the `main` branch.
+7. Check out the preview link provided by Mintlify to review your changes before merging.
 
+## Updating an Existing Page
 
-## Updating Existing Page
+To make changes to an existing page in the Tyk documentation, follow these steps:
+
+### Prerequisites
+
+- You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
+- You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
+- You’re familiar with Git and Markdown syntax.
+
+### Instructions
+
+1. **Switch to the `main` branch and pull the latest changes:**
+
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+
+2. **Create a new branch:**
+
+   ```bash
+   git checkout -b <branch-name>
+   ```
+
+3. **Locate and edit the page:**
+
+   * Navigate to the appropriate folder in the repository where the `.mdx` file for the page is located.
+   * Open the file and make your changes using Markdown syntax. You can enhance content using Mintlify UI components like callouts, accordions, tabs, and code blocks.
+   * If needed, update the front matter (e.g., `title`, `description`, `tags`) at the top of the file.
+
+4. **Preview your changes locally** to ensure formatting and layout appear as expected.
+
+   ```bash
+   mintlify dev
+   ```
+
+5. **Commit and push your changes:**
+
+   ```bash
+   git add .
+   git commit -m "Update page: <page-name> – <short-description-of-change>"
+   git push origin <branch-name>
+   ```
+
+6. **Create a pull request** on GitHub to merge your branch into `main`.
+
+7. **Review the preview link** provided in the pull request to verify your changes before merging.
 
 ## Deleting a Page
+
+To delete a page from the Tyk documentation, follow these steps:
+
+### Pre-requisites
+
+- You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
+- You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
+- You’re familiar with Git and Markdown syntax.
+
+### Instructions
+
+1. **Switch to the `main` branch and pull the latest changes:**
+
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+
+2. **Create a new branch from `main`:**
+
+   ```bash
+   git checkout -b <branch-name>
+   ```
+
+3. **Delete the relevant Markdown file** corresponding to the page you want to remove.
+
+4. **Update `docs.json`:**
+
+   * Remove the entry for the deleted page from the `navigation` section.
+   * Add a redirect in the `redirect` section to point users to a relevant page. This prevents 404 errors when the deleted page is accessed.
+
+5. **Commit and push your changes:**
+
+   ```bash
+   git add .
+   git commit -m "Delete page: <page-name>"
+   git push origin <branch-name>
+   ```
+
+6. **Create a pull request** on GitHub to merge your branch into `main`.
+
+7. **Review the preview link** provided by Mintlify to ensure your changes appear as expected before merging.
