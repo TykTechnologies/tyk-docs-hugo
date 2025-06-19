@@ -482,6 +482,46 @@ menu:
               category: Directory
               show: True
               menu:
+              - title: "Planning for Production"
+                path: /planning-for-production
+                category: Page
+                show: True
+              - title: "Database Management"
+                path: /planning-for-production/database-settings
+                category: Page
+                show: True
+              - title: "Circuit Breakers"
+                path: /planning-for-production/ensure-high-availability/circuit-breakers
+                category: Page
+                show: True
+              - title: "Enforced Timeouts"
+                path: /planning-for-production/ensure-high-availability/enforced-timeouts
+                category: Page
+                show: True
+              - title: "Health Checks"
+                path: /planning-for-production/ensure-high-availability/health-check
+                category: Page
+                show: True
+              - title: "Load Balancing"
+                path: /planning-for-production/ensure-high-availability/load-balancing
+                category: Page
+                show: True
+              - title: "Service Discovery"
+                path: /planning-for-production/ensure-high-availability/service-discovery
+                category: Page
+                show: True
+              - title: "Uptime Tests"
+                path: /tyk-configuration-reference/redis-cluster-sentinel
+                category: Page
+                show: True
+              - title: "Multi Environment"
+                path: /tyk-configuration-reference/redis-cluster-sentinel
+                category: Page
+                show: True
+              - title: "Monitoring"
+                path: /planning-for-production/monitoring/tyk-components
+                category: Page
+                show: True
               - title: "Redis"
                 path: /tyk-configuration-reference/redis-cluster-sentinel
                 category: Page
