@@ -1345,7 +1345,7 @@ This also resets the user's Dashboard API credentials.
 | Resource URL | `/api/users/{USER_ID}/actions/key/reset`   |
 | Method       | PUT                                        |
 | Type         | None                                       |
-| Body         | {"userId":"{USER_ID}"}                     |
+| Body         | `{"userId":"{USER_ID}"}`                     |
 | Param        | None                                       |
 
 **Sample Request**
@@ -5567,7 +5567,7 @@ TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING=user=postgres password=topsecre
 
 ##### Mongo Database
 
-Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named *z_tyk_analyticz_aggregate_{ORG ID}*, where *ORG_ID* corresponds to the ID of your organization assigned by Tyk.
+Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named `z_tyk_analyticz_aggregate_{ORG ID}`, where *ORG_ID* corresponds to the ID of your organization assigned by Tyk.
 
 The following environment variables can be used as a minimum to manage this configuration:
 
