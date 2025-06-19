@@ -1041,7 +1041,7 @@ outputs:
       secret: <portal-api-secret>
 ```
 
-Replace *<portal-api-secret>* with the secret key for signing the webhook messages.
+Replace `<portal-api-secret>` with the secret key for signing the webhook messages.
 
 Enabling webhook subscriptions allows developers to easily integrate real-time updates and notifications from async APIs into their applications, enhancing the overall developer experience and facilitating seamless communication between systems.
 <!-- [Placeholder for a diagram illustrating the flow of webhook subscriptions and event notifications] -->
