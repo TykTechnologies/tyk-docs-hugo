@@ -263,7 +263,31 @@ Certificate contains the certificate mapped to the domain.
 ### **CertificatePinning**
 
 **Field: `enabled` (`boolean`)**
+<<<<<<< HEAD
 Enabled is a boolean flag, if set to `true`, it enables certificate pinning for the API.
+=======
+Enabled activates preserving the trailing slash when routing requests.
+
+### **TLSTransport**
+
+TLSTransport contains the configuration for TLS transport settings.
+This struct allows you to specify a custom proxy and set the minimum TLS versions and any SSL ciphers.
+
+Example:
+
+	``` 
+	{
+	  "proxy_url": "http(s)://proxy.url:1234",
+	  "minVersion": "1.0",
+	  "maxVersion": "1.0",
+	  "ciphers": [
+	    "TLS_RSA_WITH_AES_128_GCM_SHA256",
+	    "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+	  ],
+	  "insecureSkipVerify": true,
+	  "forceCommonNameCheck": false
+	} ```
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 Tyk classic API definition: `certificate_pinning_disabled`.
 

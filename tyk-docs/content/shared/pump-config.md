@@ -2628,8 +2628,13 @@ prevent discovery, such as with SSH tunneling. Default is false.
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_USEMIXEDCOLLECTION</b><br />
 Type: `bool`<br />
 
+<<<<<<< HEAD
 If set to `true` your pump will store analytics to both your organisation defined
 collections z_tyk_analyticz_aggregate_{ORG ID} and your org-less tyk_analytics_aggregates
+=======
+If set to `true` your pump will store analytics to both your organization defined
+collections `z_tyk_analyticz_aggregate_{ORG ID}` and your org-less tyk_analytics_aggregates
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 collection. When set to 'false' your pump will only store analytics to your org defined
 collection.
 
