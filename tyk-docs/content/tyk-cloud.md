@@ -1114,7 +1114,7 @@ This example comes with a Redis instance pre-configured and deployed with Docker
 
 **4. Update docker compose file**
 
-Edit the <docker-compose.yml> file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
+Edit the `<docker-compose.yml>` file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
 
 From:
 
@@ -2474,7 +2474,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-datadog.png" alt="Tyk Cloud Telemetry Datadog" >}}
 
-    {{< tab_end "Datadog" >}}
+    {{< tab_end >}}
 
     {{< tab_start "Dynatrace" >}}
 
@@ -2489,7 +2489,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-dynatrace.png" alt="Tyk Cloud Telemetry Dynatrace" >}}
 
-    {{< tab_end "Dynatrace" >}}
+    {{< tab_end  >}}
 
     {{< tab_start "New Relic" >}}
 
@@ -2504,7 +2504,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-newrelic.png" alt="Tyk Cloud Telemetry NewRelic" >}}
 
-    {{< tab_end "New Relic" >}}
+    {{< tab_end >}}
 
     {{< tab_start "Elastic" >}}
 
@@ -2519,7 +2519,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-elastic.png" alt="Tyk Cloud Telemetry Elastic" >}}
 
-    {{< tab_end "Elastic" >}}
+    {{< tab_end >}}
 
     {{< tab_start "Custom" >}}
 
@@ -2539,7 +2539,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-custom.png" alt="Tyk Cloud Telemetry Custom" >}}
 
-    {{< tab_end "Custom" >}}
+    {{< tab_end >}}
 
     {{< tabs_end >}}
 
