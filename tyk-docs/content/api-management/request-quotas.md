@@ -154,7 +154,7 @@ In this tutorial, we will configure Request Quotas on a Tyk Security Policy to l
 
     As the Dashboard UI doesn't allow setting a shorter duration, we will set the Quota reset period to a value of 1 minute for testing purposes. The following commands search for the policy, modify its `quota_renewal_rate` to 60 seconds, and update the API.
 
-    **Note:** Obtain your Dashboard API key by clicking on the User profile at the top right corner, then click on `Edit Profile`, and select the key available under `Tyk Dashboard API Access Credentials`. Now in the below command replace <your-api-key> with the API key you obtained from the Dashboard UI.
+    **Note:** Obtain your Dashboard API key by clicking on the User profile at the top right corner, then click on `Edit Profile`, and select the key available under `Tyk Dashboard API Access Credentials`. Now in the below command replace `<your-api-key>` with the API key you obtained from the Dashboard UI.
 
     ```
     curl -s --location 'http://localhost:3000/api/portal/policies/search?q=Request%20Quota%20Policy' \
@@ -751,7 +751,7 @@ To resolve this, ensure all gateways are configured to use the same Redis databa
 
 <details> <summary><b>Why do I see "Quota disabled" error logs when I've intentionally disabled quotas?</b></summary>
 
-In some older versions of Tyk, setting `quota_max` to -1 (to disable quotas) would generate an error log message: "Quota disabled: quota max <= 0". This was a known issue that has been fixed in more recent versions.
+In some older versions of Tyk, setting `quota_max` to -1 (to disable quotas) would generate an error log message: `Quota disabled: quota max <= 0`. This was a known issue that has been fixed in more recent versions.
 
 If you're still seeing these logs, consider:
 1. Upgrading to the latest version of Tyk
