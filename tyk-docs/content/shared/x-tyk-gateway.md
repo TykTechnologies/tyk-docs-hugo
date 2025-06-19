@@ -393,6 +393,109 @@ BasicAuth holds the basic authentication configuration for upstream API authenti
 **Field: `oauth` ([UpstreamOAuth](#upstreamoauth))**
 OAuth contains the configuration for OAuth2 Client Credentials flow.
 
+<<<<<<< HEAD
+=======
+**Field: `requestSigning` ([UpstreamRequestSigning](#upstreamrequestsigning))**
+RequestSigning holds the configuration for generating signed requests to an upstream API.
+
+### **LoadBalancing**
+
+LoadBalancing represents the configuration for load balancing between multiple upstream targets.
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if load balancing is active.
+
+**Field: `skipUnavailableHosts` (`boolean`)**
+SkipUnavailableHosts determines whether to skip unavailable hosts during load balancing based on uptime tests.
+Tyk classic field: `proxy.check_host_against_uptime_tests`
+
+**Field: `targets` ([[]LoadBalancingTarget](#loadbalancingtarget))**
+Targets defines the list of targets with their respective weights for load balancing.
+
+### **PreserveHostHeader**
+
+PreserveHostHeader holds the configuration for preserving the host header.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates preserving the host header.
+
+### **PreserveTrailingSlash**
+
+PreserveTrailingSlash holds the configuration for preserving the
+trailing slash when routed to upstream services.
+
+The default behaviour of Tyk is to strip any trailing slash (/) from
+the target URL when proxying the request upstream. In some use cases the
+upstream might expect the trailing slash - or might consider /users/ to
+be a different endpoint from /users (for example).
+
+**Field: `enabled` (`boolean`)**
+Enabled activates preserving the trailing slash when routing requests.
+
+### **TLSTransport**
+
+TLSTransport contains the configuration for TLS transport settings.
+This struct allows you to specify a custom proxy and set the minimum TLS versions and any SSL ciphers.
+
+Example:
+
+	``` 
+	{
+	  "proxy_url": "http(s)://proxy.url:1234",
+	  "minVersion": "1.0",
+	  "maxVersion": "1.0",
+	  "ciphers": [
+	    "TLS_RSA_WITH_AES_128_GCM_SHA256",
+	    "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+	  ],
+	  "insecureSkipVerify": true,
+	  "forceCommonNameCheck": false
+	} ```
+
+Tyk classic API definition: `proxy.transport`
+
+**Field: `insecureSkipVerify` (`boolean`)**
+InsecureSkipVerify controls whether a client verifies the server's certificate chain and host name.
+If InsecureSkipVerify is true, crypto/tls accepts any certificate presented by the server and any host name in that certificate.
+In this mode, TLS is susceptible to machine-in-the-middle attacks unless custom verification is used.
+This should be used only for testing or in combination with VerifyConnection or VerifyPeerCertificate.
+
+
+Tyk classic API definition: `proxy.transport.ssl_insecure_skip_verify`.
+
+**Field: `ciphers` (`[]string`)**
+Ciphers is a list of SSL ciphers to be used. If unset, the default ciphers will be used.
+
+
+Tyk classic API definition: `proxy.transport.ssl_ciphers`.
+
+**Field: `minVersion` (`string`)**
+MinVersion is the minimum SSL/TLS version that is acceptable.
+
+Tyk classic API definition: `proxy.transport.ssl_min_version`.
+
+**Field: `maxVersion` (`string`)**
+MaxVersion is the maximum SSL/TLS version that is acceptable.
+
+**Field: `forceCommonNameCheck` (`boolean`)**
+ForceCommonNameCheck forces the validation of the hostname against the certificate Common Name.
+
+
+Tyk classic API definition: `proxy.transport.ssl_force_common_name_check`.
+
+### **Proxy**
+
+Proxy contains the configuration for an internal proxy.
+
+Tyk classic API definition: `proxy.proxy_url`
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if the proxy is active.
+
+**Field: `url` (`string`)**
+URL specifies the URL of the internal proxy.
+
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 ### **ListenPath**
 
 ListenPath is the base path on Tyk to which requests for this API

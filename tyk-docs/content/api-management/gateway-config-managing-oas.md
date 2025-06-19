@@ -74,7 +74,11 @@ With the addition of OpenAPI support, we have added a new [API Designer]({{< ref
 Even if you plan to use an editor most of the time, the Tyk Dashboard is a great way to try out functions. You can also export anything you create in the Dashboard as a file or copy it straight out of the raw editor and load that into your editor to speed up creating subsequent APIs.
 {{< /note >}}
 
+<<<<<<< HEAD
 ##### Using your own code editor to create Tyk OAS APIs
+=======
+The API definition is often generated either from the codebase or using API design tools (such as [Swagger Editor](https://editor.swagger.io/), [Postman](https://www.postman.com/) and [Stoplight](https://stoplight.io/)).
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 To enjoy writing a *Tyk OAS API definition* as if it is [a native programming language](https://tyk.io/blog/get-productive-with-the-tyk-intellisense-extension/), you can add the [Tyk OAS API definition schema](https://raw.githubusercontent.com/TykTechnologies/tyk-schemas/main/JSON/draft-04/schema_TykOasApiDef_3.0.x.json) to your favorite IDE or editor. We have published a Tyk VS Code extension that provides Tyk API schema validation and auto-completion (both OAS and other schemas) in the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=TykTechnologiesLimited.tyk-schemas). You can use it to create Tyk objects in your IDE (Tyk API definitions, Key and Tyk config file).
 
@@ -124,7 +128,45 @@ To create the API in Tyk, you simply send your Tyk OAS API Definition to the `ap
 | Method       | `POST`                   |
 | Type         | None                     |
 | Body         | Tyk OAS API Definition   |
+<<<<<<< HEAD
 | Parameters   | None                     |
+=======
+| Parameters   | Query: `templateID`      |
+
+Using [this](https://bit.ly/39jUnuq) API definition it is possible to create a Tyk OAS API on your Tyk Gateway that forwards requests to the [Swagger Petstore](https://petstore3.swagger.io) request/response service.
+
+```
+curl -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_URL}/apis/oas -d "$(wget -qO- https://bit.ly/39jUnuq)"
+```
+
+**Check request response**
+
+If the command succeeds, you will see the following response, where `Meta` contains the unique identifier (`id`) for the API you have just created. If you did not provide a value in the `id` field, then Tyk will automatically assign one.
+
+```
+{
+    "Status": "OK",
+    "Message": "API created",
+    "Meta": {NEW-API-ID}
+}
+```
+
+What you have done is to send a Tyk OAS API definition to Tyk Dashboard's `/api/apis/oas` endpoint resulting in the creation of the API in your Tyk Dashboard which will automatically deploy it to your Gateway.
+
+You can use the optional `templateId` parameter to apply an [API Template]({{< ref "api-management/dashboard-configuration#applying-a-template-when-creating-an-api-from-a-tyk-oas-api-definition" >}}) to your API definition when creating the API.
+
+{{< tab_end >}}
+
+{{< tab_start "Gateway API" >}}
+
+When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
+
+| Interface       | Port | Authorization Header  | Authorization credentials        |
+|-----------------|------|-----------------------|----------------------------------|
+| Tyk Gateway API | 8080 | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
+
+To create the API in Tyk, you simply send your Tyk OAS API Definition in the payload to the `POST /tyk/apis/oas` endpoint of your Tyk Gateway API. 
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 Using [this](https://bit.ly/39tnXgO) minimal API definition it is possible to create a Tyk OAS API on your Tyk Gateway using only 30 lines:
 

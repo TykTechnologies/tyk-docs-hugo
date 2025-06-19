@@ -44,7 +44,11 @@ You can also optionally define:
 
 These are the URLs you would use to access an API. Once an API is added to Tyk, you will be using a URL that points at the Tyk Gateway itself, plus optionally, an additional listen path on the end of the URL. As part of an import, where possible, Tyk will aim to take the current server in the OAS API Specification provided and make that the Upstream in the Tyk OAS API Specification that is created. That way, Tyk will forward requests to the same place a user would have sent requests to before a gateway was in place. At the same time, the Tyk Gateway will be made the Server. This has the effect of automatically inserting Tyk into your API flow.
 
+<<<<<<< HEAD
 #### Import OAS Definition
+=======
+There are many great explanations of the features and capabilities of the OpenAPI Specification so we won't repeat it all here. A good place to start learning is from the maintainers of the specification: the [OpenAPI Initiative](https://learn.openapis.org/). The minimal set of elements that must be defined
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 When you import an OAS API definition, Tyk analyzes the `servers` section of the definition so that it can automatically configure the upstream URL and the listen path for the Tyk API, as follows:
 

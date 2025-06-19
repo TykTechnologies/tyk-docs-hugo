@@ -1108,7 +1108,7 @@ This example comes with a Redis instance pre-configured and deployed with Docker
 
 **4. Update docker compose file**
 
-Edit the <docker-compose.yml> file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
+Edit the `<docker-compose.yml>` file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
 
 From:
 
@@ -2445,7 +2445,11 @@ Beyond the basic settings, you can customize your telemetry with two optional fe
 2. **Fields to Filter :**
    Specify which data fields should be excluded from your telemetry. This is useful for ensuring sensitive information doesn't get sent to your monitoring platform.
 
+<<<<<<< HEAD
 **Step 4. Configuring Provider-Specific Configuration**
+=======
+    {{< tab_end >}}
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 Each monitoring platform has its own requirements for connection. Let's explore what you'll need for each:
 
@@ -2460,7 +2464,11 @@ Each monitoring platform has its own requirements for connection. Let's explore 
   API Key: your-datadog-api-key
   ```
 
+<<<<<<< HEAD
 {{< img src="/img/cloud/telemetry-datadog.png" alt="Tyk Cloud Telemetry Datadog" >}}
+=======
+    {{< tab_end  >}}
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 ###### Configuring Dynatrace Provider {#configuring-dynatrace-provider}
 
@@ -2475,7 +2483,11 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 {{< img src="/img/cloud/telemetry-dynatrace.png" alt="Tyk Cloud Telemetry Dynatrace" >}}
 
+<<<<<<< HEAD
 ###### Configuring New Relic Provider {#configuring-new-relic-provider}
+=======
+    {{< tab_end >}}
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 - **Provider Endpoint:** Your New Relic HTTP endpoint
 - **API Token:** Your New Relic license key
@@ -2488,7 +2500,11 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 {{< img src="/img/cloud/telemetry-newrelic.png" alt="Tyk Cloud Telemetry NewRelic" >}}
 
+<<<<<<< HEAD
 ###### Configuring Elastic Provider {#configuring-elastic-provider}
+=======
+    {{< tab_end >}}
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 - **Provider Endpoint:** Your Elastic APM server address
 - **Secret Token:** Your Elastic APM authentication token
@@ -2509,6 +2525,7 @@ For when you need to connect to a different monitoring system:
 - **Provider Endpoint:** Your monitoring system URL
 - **Authorization:** Configure how Tyk should authenticate with your system
 
+<<<<<<< HEAD
   Example custom configuration:
   ```
   Exporter: gRPC/HTTP
@@ -2516,6 +2533,9 @@ For when you need to connect to a different monitoring system:
   Authorization Header Name: Authorization
   Authorization Header Value: Bearer your-token
   ```
+=======
+    {{< tab_end >}}
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 {{< img src="/img/cloud/telemetry-custom.png" alt="Tyk Cloud Telemetry Custom" >}}
 

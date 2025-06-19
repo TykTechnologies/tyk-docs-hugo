@@ -1055,7 +1055,7 @@ In this release, we introduced the config options to set up CORS settings such a
 - max-age of the preflight request cache
 
 These settings are useful when the portal sits behind a proxy or a CDN and the portal admin needs to configure the CORS settings on the portal side so that the incoming call from a third-party origin (e.g. a CDN or a proxy) are not rejected by the browser.
-To set the CORS configuration please refer to the Portal's [configuration documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#cors-settings" >}}).
+To set the CORS configuration please refer to the Portal's [configuration documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#cors-settings" >}}).
 
 ##### Connection testing to OAuth2.0 Identity providers
 We enhanced our OAuth2.0 support by adding the capability to test connections to OAuth2.0 Identity providers (IdPs) when setting up OAuth2.0 with the Tyk Enterprise Developer Portal.
@@ -1065,7 +1065,7 @@ This way, you can make sure the Portal has connectivity with the IdP before savi
 
 ##### Verbose logs for the DCR flow
 In addition to the new connection testing functionality, we added one more tool to help customers resolve complex integration issues when integrating with OAuth2.0 providers.
-Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_dcr_log_enabled" >}}) environment variable is set to `true`, the portal will output not only the status and status code of the request to the IdP, but also actual payload returned by the IdP: 
+Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_dcr_log_enabled" >}}) environment variable is set to `true`, the portal will output not only the status and status code of the request to the IdP, but also actual payload returned by the IdP: 
 ```yaml
 {"level":"error","time":"2023-10-10T17:02:27.484+0200","caller":"client/dcr-helpers.go:152","message":"IdPResponse: {\"error\":\"insufficient_scope\",\"error_description\":\"Policy 'Allowed Client Scopes' rejected request to client-registration service. Details: Not permitted to use specified clientScope\"}
 ```
@@ -1325,7 +1325,7 @@ Until recently, SQL storage was not supported for the portal's assets: OAS files
 - Filesystem or S3 for assets (pictures, themes, etc).
 
 This is especially inconvenient in Kubernetes environment when customers had to use persistent volumes.
-With this new feature, customers can simply use the same SQL database (MySQL, MariaDB and PostgreSQL) for both assets and metadata. To use the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_storage" >}}) just set the `PORTAL_STORAGE=db` for environment variables or `"Storage": "db"` in a config file and you are good to go!
+With this new feature, customers can simply use the same SQL database (MySQL, MariaDB and PostgreSQL) for both assets and metadata. To use the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) just set the `PORTAL_STORAGE=db` for environment variables or `"Storage": "db"` in a config file and you are good to go!
 
 ##### Response status code added to API analytics filters
 API Consumers now can filter API analytics by response status codes. This allows them to analyze traffic and error rate for specific response code for their API Products.

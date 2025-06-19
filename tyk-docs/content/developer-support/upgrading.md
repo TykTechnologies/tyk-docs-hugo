@@ -1187,7 +1187,7 @@ go mod vendor
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
 
-- **Target Version <= v4.2.0**  
+- **`Target Version <= v4.2.0`**  
     ```bash
     go get github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
     # Tyk Gateway versions < 4.2 have a dependency on graphql-go-tools

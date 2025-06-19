@@ -495,6 +495,7 @@ Before you begin, make sure you have:
 
    - Review the applied limits for the API.
 
+<<<<<<< HEAD
 3. Click **Create Key**.  
 
    - A popup will display the **Key Hash** and **Key ID**.  
@@ -509,6 +510,9 @@ By completing the steps outlined above, you will have:
 - Policies and keys for authentication and access control.
 
 You can now use the **Key ID** to securely access the API for your applications.
+=======
+Replace `<portal-api-secret>` with the secret key for signing the webhook messages.
+>>>>>>> ad329cdc7... fix-issues-with-docs-new (#6561)
 
 
 
