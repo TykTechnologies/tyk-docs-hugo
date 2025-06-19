@@ -95,19 +95,7 @@ Developers often recreate APIs because they're unaware of existing ones. A compl
 - **Establish clear ownership** for each API to ensure accountability for governance and maintenance
 
 ## FAQs
-<!--
-<details> <summary><b>How does the system handle duplicate APIs discovered from different sources?</b></summary>
 
-The system uses a combination of API path, name, and other metadata to identify potential duplicates. These are flagged for review in the dashboard, allowing administrators to merge or manage them appropriately.
-
-</details> 
-
-<details> <summary><b>Can I customize the metadata extracted during discovery?</b></summary>
-
-Yes, the governance agent can be configured to extract additional custom metadata fields specific to your organization's needs.
-
-</details> 
--->
 <details> <summary><b>How secure is the API discovery process?</b></summary>
 
 The discovery process uses secure authentication methods for each provider and transmits data via encrypted channels. The agent requires minimal permissions—just enough to read API configurations.
