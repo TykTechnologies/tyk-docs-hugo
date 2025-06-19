@@ -520,7 +520,8 @@ This struct allows you to specify a custom proxy and set the minimum TLS version
 
 Example:
 
-	``` {
+	``` 
+	{
 	  "proxy_url": "http(s)://proxy.url:1234",
 	  "minVersion": "1.0",
 	  "maxVersion": "1.0",
