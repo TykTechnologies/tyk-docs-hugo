@@ -1,5 +1,5 @@
 ---
-title: "Install Tyk Self Managed"
+title: "Tyk Self Managed"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk Self Managed"
 tags: ["installation", "migration", "self managed"]
 aliases:

@@ -16,7 +16,7 @@ aliases:
   - /analytics-and-reporting/redis-mongodb-sizing
 ---
 
-Visit the following pages to see how to configure the Database for Production:
+Visit the following sections to see how to configure the Database for Production:
 * [Redis]({{< ref "planning-for-production/database-settings#redis" >}})
 * [MongoDB]({{< ref "planning-for-production/database-settings#mongodb-sizing-guidelines" >}})
 * [PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}})

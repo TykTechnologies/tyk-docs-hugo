@@ -7,7 +7,7 @@ aliases:
 
 ---
 
-Tyk Self-Managed consists of multiple components, as described above. While the OSS Gateway and Pump are available without a license, the remaining components require one. To experience the full capabilities of our Full Lifecycle API Management solution within your own infrastructure, please obtain a license by contacting our support team.
+Tyk Self-Managed consists of multiple components, [as described]({{< ref "tyk-self-managed" >}}). While the OSS Gateway and Pump are available without a license, the remaining components require one. To experience the full capabilities of our Full Lifecycle API Management solution within your own infrastructure, please obtain a license by contacting our support team.
 
 {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
