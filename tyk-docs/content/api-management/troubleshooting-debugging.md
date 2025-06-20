@@ -126,7 +126,7 @@ aliases:
 
     When it happens on the high load, it can be a lot of different reasons.
     For example your OS is running out of system limits, like number of opened sockets, and to validate it, you need to try your system limits.
-    See [this guide]({{< ref "tyk-self-managed#resource-limits" >}}).
+    See [this guide]({{< ref "planning-for-production" >}}).
 
     Additionally, it can be CPU bottleneck: you can't process more than your machine  can do.
     And note that it is not only about the actual utilization %, it is also about context switches it has to do. 
@@ -1029,7 +1029,7 @@ We also support limited customisation of the error codes and messages returned b
 
 18. ##### How to run two Gateways with docker-compose
 
-    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-self-managed#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
+    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
     You will need to make some minor modifications to `docker-compose.yml` and start your services as usual with `docker-compose up`.
 
     {{< note success >}}
@@ -1323,7 +1323,7 @@ Here, we'll outline the following:
 
     We advise everyone to cap every collection in Mongo, as this prevents collections from growing out of control and bringing your dashboard down by hitting resource limits.
 
-    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}).
+    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "planning-for-production/database-settings#mongodb-sizing-guidelines" >}}).
 
     Here’s more information on how and why you want to [cap your collections](https://www.mongodb.com/docs/manual/core/capped-collections/).
 

@@ -3543,7 +3543,7 @@ The **Core Settings** tab provides access to configure basic settings for the AP
    - [API Categories]({{< ref "#governance-using-api-categories" >}})
 - Upstream settings including
    - Upstream service (target) URL
-   - [Service Discovery]({{< ref "tyk-self-managed#service-discovery" >}})
+   - [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}})
 - [API Ownership]({{< ref "api-management/user-management#api-ownership" >}})
 - [API level rate limiting]({{< ref "api-management/rate-limit#configuring-the-rate-limiter-at-the-api-level" >}})
 - [Authentication]({{< ref "api-management/client-authentication" >}})
