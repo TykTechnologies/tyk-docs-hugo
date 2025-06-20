@@ -21,7 +21,7 @@ In this page, we’ll walk through the primary tools for automating API manageme
 Before diving into lifecycle automations with Tyk, ensure you have the following:
 
 - **A Tyk installation** (Self-Managed or Cloud)
-  - If you don't have Tyk installed, follow our [installation guide]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
+  - If you don't have Tyk installed, follow our [installation guide]({{< ref "tyk-self-managed/install" >}})
   - For Tyk Cloud, sign up [here](https://tyk.io/sign-up/)
   - Tyk Operator license key. Starting from Tyk Operator v1.0, a valid license key is required.
 
