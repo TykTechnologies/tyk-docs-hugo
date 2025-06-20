@@ -44,7 +44,7 @@ Some features can be configured at multiple levels. Where this is the case, spec
 
 Gateway level settings are stored in a file (typically `tyk.conf`) that is applied when the Gateway starts up, affecting all API proxies deployed on Tyk. They can also be configured using the equivalent environment variables. The Gateway level settings are documented [here]({{< ref "tyk-oss-gateway/configuration" >}}).
 
-If you are using a config file you can store settings, typically secrets, in environment variables or an external key-value store and provide references to the stored keys within the configuration file. This is explained [here]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}).
+If you are using a config file you can store settings, typically secrets, in environment variables or an external key-value store and provide references to the stored keys within the configuration file. This is explained [here]({{< ref "tyk-configuration-reference/kv-store" >}}).
 
 ### API and endpoint level settings
 
@@ -52,7 +52,7 @@ API and endpoint level settings are configured using an *API definition*.
 
 This is a structured JSON object that encapsulates all of the details that apply specifically to that API, including the listen path, upstream target details, valid endpoints and operations, rate limits, authentication, versioning, and both built-in and custom middleware.
 
-You can store settings, typically secrets, in environment variables or an external key-value store and provide references to the stored keys within the API definition. This is explained [here]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}).
+You can store settings, typically secrets, in environment variables or an external key-value store and provide references to the stored keys within the API definition. This is explained [here]({{< ref "tyk-configuration-reference/kv-store" >}}).
 
 API definition objects can be compact for a basic pass-through API, and can become very complex and large for APIs that require significant processing to be completed both before the request is proxied to the upstream service and once the response is received.
 
