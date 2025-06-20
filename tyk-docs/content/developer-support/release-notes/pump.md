@@ -39,7 +39,7 @@ This release removes support for SQLite in Pump, aligning with the broader remov
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -121,7 +121,7 @@ This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -187,7 +187,7 @@ This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -246,7 +246,7 @@ This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -307,7 +307,7 @@ This release has no breaking changes.
 
 #### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
