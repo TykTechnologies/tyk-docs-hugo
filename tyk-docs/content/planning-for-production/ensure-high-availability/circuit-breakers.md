@@ -51,13 +51,13 @@ Thus, if the _sample size_ is set to 100 and the _failure rate_ is set to 0.5 (5
 
 Once the breaker has been tripped it will remain _open_, blocking calls to the endpoint until a configurable cooldown (or return-to-service) period has elapsed. While the breaker is _open_, requests to the endpoint will return `HTTP 503 Service temporarily unavailable`.
 
-**Half-open mode**
+### Half-open mode
 
 In some scenarios the upstream service might recover more quickly than the configured cooldown period. The middleware supports a _half-open_ mode that facilitates an early return-to-service so that API clients do not have to wait until the end of the cooldown before the circuit breaker is reset.
 
 In the _half-open_ mode, Tyk will periodically issue requests to the upstream service to check whether the path has been restored (while continuing to block client requests). If the Gateway detects that the path has been reconnected, the circuit breaker will be automatically reset (following the electrical circuit analogy, the circuit breaker is _closed_) and requests will be passed to the upstream again.
 
-**Configuring the circuit breaker**
+### Configuring the circuit breaker
 
 The circuit breaker is configured using only three parameters:
 - sample size
@@ -76,15 +76,15 @@ There is also an option to enable or disable the _half-open_ state if this would
 If you are using the Service Discovery module, every time the breaker trips, Tyk will attempt to refresh the Gateway list.
 {{< /note >}}
 
-**Using the circuit breaker with multiple upstream hosts**
+### Using the circuit breaker with multiple upstream hosts
 
 The circuit breaker works at the endpoint level independent of the number of upstream hosts are servicing the requests. Thus, if you have multiple upstream targets for an API, the sample and failure counts are accumulated across **all** upstream requests. If the failure rate exceeds the threshold, the circuit breaker will trip even if only some of your upstream hosts are failing. Operating in _half-open_ mode will of course cause the breaker to reset if a responsive upstream receives a request, but the `BreakerTripped` (or `BreakerTriggered`) event should alert you to the fact that at least one host is failing.
 
-**Using the circuit breaker with multiple Tyk Gateways**
+### Using the circuit breaker with multiple Tyk Gateways
 
 Circuit breakers operate on a single Tyk Gateway, they do not centralise or pool back-end data. This ensures optimum speed of response and resilience to Gateway failure. Subsequently, in a load balanced environment where multiple Tyk Gateways are used, some traffic can spill through even after the circuit breaker has tripped on one Gateway as other Gateways continue to serve traffic to the upstream before their own breakers trip.
 
-**Circuit breaker events**
+### Circuit breaker events
 
 The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "api-management/gateway-events#event-categories" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
 
@@ -96,7 +96,7 @@ For the generic `BreakerTriggered` event, the state change will be indicated in 
 - when a breaker trips `CircuitEvent = 0`
 - when a breaker resets `CircuitEvent = 1`
 
-**API-level circuit breaker**
+### API-level circuit breaker
 
 Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
 
@@ -116,7 +116,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 **Using the Circuit Breaker middleware with Tyk OAS APIs**
 
 
-Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
+Tyk's circuit breaker middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
 
 When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -133,7 +133,7 @@ The `circuitBreaker` object has the following configuration:
 - `threshold`: the proportion of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0
 - `sampleSize`: the minimum number of requests that must be received during the rolling sampling window before the circuit breaker can trip
 - `coolDownPeriod`: the period for which the breaker will remain _open_ after being tripped before returning to service (seconds)
-- `halfOpenStateEnabled`: if set to `true` then the circuit breaker will operate in [half-open mode]({{< ref "#circuit-breakers" >}}) once it has been tripped
+- `halfOpenStateEnabled`: if set to `true` then the circuit breaker will operate in [half-open mode]({{< ref "#half-open-mode" >}}) once it has been tripped
 
 ```json {hl_lines=["39-45"],linenos=true, linenostart=1}
 {
@@ -190,7 +190,7 @@ The `circuitBreaker` object has the following configuration:
 
 In this example Tyk OAS API Definition the circuit breaker has been configured to monitor requests to the `GET /status/200` endpoint.
 
-It will configure the circuit breaker so that if a minimum of 10 requests (`sampleSize`) to this endpoint are received during the [rolling sampling window]({{< ref "#circuit-breakers" >}}) then it will calculate the ratio of failed requests (those returning `HTTP 500` or above) within that window.
+It will configure the circuit breaker so that if a minimum of 10 requests (`sampleSize`) to this endpoint are received during the [rolling sampling window]({{< ref "#how-the-circuit-breaker-works" >}}) then it will calculate the ratio of failed requests (those returning `HTTP 500` or above) within that window.
 - if the ratio of failed requests exceeds 50% (`threshold = 0.5`) then the breaker will be tripped
 - after it has tripped, the circuit breaker will remain _open_ for 60 seconds (`coolDownPeriod`)
 - further requests to `GET /status/200` will return `HTTP 503 Service temporarily unavailable`
@@ -222,9 +222,9 @@ Select **ADD MIDDLEWARE** and choose the **Circuit Breaker** middleware from the
 
 Set the circuit breaker configuration parameters so that Tyk can protect your upstream service if it experiences failure:
 - threshold failure rate for the proportion of requests that can error before the breaker is tripped (a value between 0.0 and 1.0)
-- the minimum number of requests that must be received during the [rolling sampling window]({{< ref "#circuit-breakers" >}}) before the circuit breaker can trip
+- the minimum number of requests that must be received during the [rolling sampling window]({{< ref "#how-the-circuit-breaker-works" >}}) before the circuit breaker can trip
 - the cooldown period for which the breaker will remain _open_ after being tripped before returning to service (in seconds)
-- optionally enable [half-open mode]({{< ref "#circuit-breakers" >}}) for upstream services with variable recovery times
+- optionally enable [half-open mode]({{< ref "#half-open-mode" >}}) for upstream services with variable recovery times
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-circuit-breaker-config.png" alt="Configuring the circuit breaker for the endpoint" >}}
 
@@ -238,7 +238,7 @@ Select **SAVE API** to apply the changes to your API.
 ## Using the Circuit Breaker middleware with Tyk Classic APIs
 
 
-Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
+Tyk's circuit breaker middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
 
 When working with Tyk Classic APIs the circuit breaker is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -254,7 +254,7 @@ To configure the circuit breaker you must add a new `circuit_breakers` object to
 - `threshold_percent`: the proportion of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0
 - `samples`: the minimum number of requests that must be received during the rolling sampling window before the circuit breaker can trip
 - `return_to_service_after`: the period for which the breaker will remain _open_ after being tripped before returning to service (seconds)
-- `disable_half_open_state`: by default the Tyk circuit breaker will operate in [half-open mode]({{< ref "#circuit-breakers" >}}) when working with Tyk Classic APIs, set this to `true` if you want Tyk to wait the full cooldown period before closing the circuit
+- `disable_half_open_state`: by default the Tyk circuit breaker will operate in [half-open mode]({{< ref "#half-open-mode" >}}) when working with Tyk Classic APIs, set this to `true` if you want Tyk to wait the full cooldown period before closing the circuit
  
 For example:
 ```json  {linenos=true, linenostart=1}

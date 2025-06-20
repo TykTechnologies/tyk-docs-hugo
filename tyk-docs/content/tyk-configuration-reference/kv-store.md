@@ -38,7 +38,7 @@ There are two parts to external Key-Value storage - the KV store and the Tyk con
 
 Most Key-Value references are only retrieved when the configuration object (Gateway or API) is loaded, as explained above: changes to the externally stored value will not be detected until a subsequent gateway hot-reload.
 
-The exception to this is for specific [transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) where the value will be retrieved for each call to the API, during the processing of the API request or response.
+The exception to this is for specific [transformation middleware]({{< ref "#transformation-middleware" >}}) where the value will be retrieved for each call to the API, during the processing of the API request or response.
 
 {{< note success >}}
 **Note**  
@@ -53,25 +53,25 @@ Tyk Gateway supports the following locations for storage of key-value data, prov
 ### Consul
 
 HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centers.
-- to retrieve the value assigned to a `KEY` in Consul you will use `consul://KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in Consul you will use `consul://KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "#how-to-access-the-externally-stored-data" >}}) of the reference
 
 ### Vault
 
 [Vault](https://vaultproject.io) from Hashicorp is a tool for securely accessing secrets. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log. Tyk Gateway can use Vault to manage and retrieve sensitive secrets such as API keys and passwords.
-- to retrieve the value assigned to a `KEY` in Vault you will use `vault://KEY` or `$secret_vault.KEY` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in Vault you will use `vault://KEY` or `$secret_vault.KEY` notation depending on the [location]({{< ref "#how-to-access-the-externally-stored-data" >}}) of the reference
 
 **Tyk Gateway config file**
 
 The `secrets` section in the [Tyk Gateway configuration file]({{< ref "tyk-oss-gateway/configuration#secrets" >}}) allows you to store settings that are specific to a single Tyk Gateway instance. This is useful for storing instance-specific configuration to be injected into API middleware or if you prefer using configuration files.
-- to retrieve the value assigned to a `KEY` in the `secrets` config you will use `secrets://KEY` or `$secret_conf.KEY` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in the `secrets` config you will use `secrets://KEY` or `$secret_conf.KEY` notation depending on the [location]({{< ref "tyk-oss-gateway/configuration#secrets" >}}) of the reference
 
 **Environment variables**
 
 Tyk Gateway can access data declared in environment variables. This is a simple and straightforward way to manage secrets, especially in containerised environments like Docker or Kubernetes.
-- if you want to set the local "secrets" section (equivalent to the `secrets` section in the [Gateway config file]({{< ref "#store-configuration-with-key-value-store" >}})) using environment variables, you should use the following notation: `TYK_GW_SECRETS=key:value,key2:value2`
+- if you want to set the local "secrets" section (equivalent to the `secrets` section in the [Gateway config file]({{< ref "#how-to-access-the-externally-stored-data" >}})) using environment variables, you should use the following notation: `TYK_GW_SECRETS=key:value,key2:value2`
 - if you’re using a different key value secret store not explicitly supported by Tyk but can map it to `TYK_GW_SECRETS`
 then this will allow you to access those KV data
-- to retrieve the value assigned to an environment variable `VAR_NAME` you will use `env://VAR_NAME` or `$secret_env.VAR_NAME` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to an environment variable `VAR_NAME` you will use `env://VAR_NAME` or `$secret_env.VAR_NAME` notation depending on the [location]({{< ref "#how-to-access-the-externally-stored-data" >}}) of the reference
 
 ## How to access the externally stored data
 
@@ -115,7 +115,7 @@ Note that all of these references are read (and replaced with the values read fr
 
 ### From API Definitions
 
-From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "#store-configuration-with-key-value-store" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "#store-configuration-with-key-value-store" >}}) fields and [certain transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) configurations were supported. 
+From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "#other-string-fields" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "#target-url-and-listen-path" >}}) fields and [certain transformation middleware]({{< ref "#transformation-middleware" >}}) configurations were supported. 
 
 **Target URL and Listen Path**
 
@@ -162,7 +162,7 @@ To reference the *Value* assigned to a *Key* in one of the KV stores from these 
 - Consul: `$secret_consul.key`
 - Vault: `$secret_vault.key`
 - Tyk config secrets: `$secret_conf.key`
-- Environment variables: `$secret_env.key` or `env://key` (see [here]({{< ref "#store-configuration-with-key-value-store" >}}))
+- Environment variables: `$secret_env.key` or `env://key` (see [here]({{< ref "#using-environment-variables-with-transformation-middleware" >}}))
 
 This notation is used to avoid ambiguity in the middleware parsing (for example where a KV secret is used in a URL rewrite path).
 
@@ -238,7 +238,7 @@ These references are read (and replaced with the values read from the KV locatio
 {{< note success >}}
 **Notes**  
 
-When accessing KV references from the `/tyk-apis` directory on Consul or Vault, you should not provide the `path/to/` the key except for Target URL and Listen Path (as described [above]({{< ref "#store-configuration-with-key-value-store" >}})).
+When accessing KV references from the `/tyk-apis` directory on Consul or Vault, you should not provide the `path/to/` the key except for Target URL and Listen Path (as described [above]({{< ref "#target-url-and-listen-path" >}})).
 {{< /note >}}
 
 For example, if you create a Key-Value pair in the `secrets` section of the `tyk.conf` file with the *Key* `auth_header_name`:
@@ -327,7 +327,7 @@ The notation used to refer to a KV pair stored in Consul depends upon the locati
 
 **Tyk Gateway configuration file**
 
-As described [here]({{< ref "#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
+As described [here]({{< ref "#from-the-tyk-gateway-configuration-file" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
 - `consul://path/to/KEY`
 
 **API definition**
@@ -335,7 +335,7 @@ As described [here]({{< ref "#store-configuration-with-key-value-store" >}}), fr
 The **Target URL** and **Listen Path** key-value pairs can be stored in any directory in the Consul KV store as they are accessed using a different mechanism than other fields in the API definition. If storing these in a sub-directory, you can retrieve the values from Consul by providing the directory path within Consul KV using the following notation:
 - `consul://path/to/KEY`
 
-For [certain transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
+For [certain transformation middleware]({{< ref "#transformation-middleware" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
 - `$secret_consul.KEY`
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Consul KV store. You can retrieve these values from Consul, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:
@@ -436,7 +436,7 @@ The notation used to refer to a key-value pair stored in Vault depends upon the 
 
 **Tyk Gateway configuration file**
 
-As described [here]({{< ref "#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Vault using the following notation:
+As described [here]({{< ref "#from-the-tyk-gateway-configuration-file" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Vault using the following notation:
 - `vault://path/to/secret.KEY`
 
 **API definition**
@@ -444,7 +444,7 @@ As described [here]({{< ref "#store-configuration-with-key-value-store" >}}), fr
 The **Target URL** and **Listen Path** key-value pairs can be stored in any directory in the Vault KV store as they are accessed using a different mechanism than other fields in the API definition. If storing these in a sub-directory, you can retrieve the values from Vault by providing the directory path within Consul KV using the following notation:
 - `vault://path/to/secret.KEY`
 
-For [certain transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Vault:
+For [certain transformation middleware]({{< ref "#transformation-middleware" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Vault:
 - `$secret_vault.KEY`
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Vault KV store. You can retrieve these values from Vault, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:
