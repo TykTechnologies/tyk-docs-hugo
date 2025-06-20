@@ -117,7 +117,7 @@ Note that all of these references are read (and replaced with the values read fr
 
 From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "#other-string-fields" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "#target-url-and-listen-path" >}}) fields and [certain transformation middleware]({{< ref "#transformation-middleware" >}}) configurations were supported. 
 
-**Target URL and Listen Path**
+#### Target URL and Listen Path
 
 To reference the *Value* assigned to a *Key* in one of the KV stores for **Target URL** or **Listen Path** use the following notation:
 - Consul: `consul://path/to/key`
@@ -189,7 +189,7 @@ When a call is made to `GET /anything`, Tyk will retrieve the *Value* assigned t
 
 These references are read (and replaced with the values read from the KV location) during the processing of the API request or response.
 
-**Using environment variables with transformation middleware**
+##### Using environment variables with transformation middleware
 
 There are some subtleties with the use of environment variables as KV storage for the transformation middleware.
 
@@ -225,7 +225,7 @@ or
 ````
 {{< /note >}}
 
-**Other `string` fields**
+#### Other `string` fields
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from the API Definition use the following notation:
 - Consul: `consul://key`
