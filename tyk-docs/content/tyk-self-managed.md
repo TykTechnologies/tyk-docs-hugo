@@ -6,6 +6,7 @@ aliases:
   - /planning-for-production/benchmarks
   - /planning-for-production/ensure-high-availability
   - /getting-started/licencing
+  - /getting-started/licensing
 ---
 
 ## What is Tyk Self-Managed

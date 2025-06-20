@@ -515,7 +515,7 @@ menu:
                 category: Page
                 show: True
               - title: "Uptime Tests"
-                path: /tyk-configuration-reference/redis-cluster-sentinel
+                path: /planning-for-production/ensure-high-availability/uptime-tests
                 category: Page
                 show: True
               - title: "Key Value Store"
