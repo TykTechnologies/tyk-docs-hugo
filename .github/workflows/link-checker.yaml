@@ -22,12 +22,12 @@ jobs:
           echo "Base PR commit: $commit_before_pull_request"
           
           cd tyk-docs && bash ../scripts/urlcheck.sh $commit_before_pull_request
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: urlcheck-new
           path: /tmp/urlcheck.new.json
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: urlcheck-prev
