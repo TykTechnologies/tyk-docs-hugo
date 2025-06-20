@@ -24,7 +24,7 @@ If your **upstream service** is protected using Basic Authentication then simila
 
 ### How to use Upstream Basic Authentication
 
-If your upstream service requires that Tyk authenticates using Basic Authentication, you will first need to obtain a valid username and password from the server. To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only references included in the API definition.
+If your upstream service requires that Tyk authenticates using Basic Authentication, you will first need to obtain a valid username and password from the server. To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-self-managed/install" >}}), with only references included in the API definition.
 
 If the incoming request from the client already has credentials in the `Authorization` header, then Tyk will replace those with the basic auth credentials before proxying onwards to the upstream.
 
