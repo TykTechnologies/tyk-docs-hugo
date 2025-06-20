@@ -95,8 +95,13 @@
 
   <body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
     <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
@@ -162,18 +167,5 @@
     <!-- Footer scripts -->
     {{ partial "footer_scripts.html" . }}
 
-
-<<<<<<< HEAD
-    <!-- Cookie Notice -->
-    {{ partial "cookie_notice.html" . }}
-=======
-
-    {{ if .Page.Store.Get "hasMermaid" }}
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
-    {{ end }}
->>>>>>> 0dd3b7d04... Testing removing existing Cookie and adding Cookiebot - note using te… (#6486)
   </body>
 </html>
