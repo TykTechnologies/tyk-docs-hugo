@@ -4,7 +4,6 @@ date: 2025-02-10
 keywords: ["uptime tests", "health check", "Tyk Gateway", "Tyk Dashboard", "uptime awareness", "liveness health check"]
 description: "How to configure uptime tests"
 aliases:
-
 ---
 
 ## Introuduction

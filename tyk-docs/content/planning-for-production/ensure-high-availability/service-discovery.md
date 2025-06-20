@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["service discovery", "Tyk Gateway", "Tyk Dashboard", "dynamic upstreams", "load balancing", "circuit breaker"]
 description: "How to configure service discovery in Tyk"
 aliases:
-
+  - /planning-for-production/ensure-high-availability/service-discovery/examples
 ---
 
 ## Introduction

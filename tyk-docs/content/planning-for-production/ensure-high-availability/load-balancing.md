@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["load balancing", "round-robin load balancing", "Tyk Gateway", "Tyk Dashboard", "service discovery", "API Definition"]
 description: "How to set up round-robin load balancing in Tyk Gateway and Dashboard, including dynamic load balancing with service discovery."
 aliases:
-
+  - /ensure-high-availability/load-balancing
 ---
 
 ## Introduction

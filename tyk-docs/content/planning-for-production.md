@@ -4,7 +4,7 @@ date: 2025-02-10
 keywords: ["Planning for Production", "Tyk Gateway", "Tyk Dashboard", "Tyk Pump", "Performance", "Monitoring"]
 description: "How to plan for production deployment of Tyk Gateway"
 aliases:
-
+  - /deploy-tyk-premise-production
 ---
 
 So you want to deploy Tyk to production?

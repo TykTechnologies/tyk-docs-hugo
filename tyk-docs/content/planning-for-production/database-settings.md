@@ -8,6 +8,12 @@ aliases:
   - /planning-for-production/database-settings/sql
   - /planning-for-production/database-settings/mongodb
   - /planning-for-production/database-settings/mongodb-sizing
+  - /planning-for-production/redis-mongodb
+  - /planning-for-production/redis-mongodb-sizing
+  - /planning-for-production/redis-sizing
+  - /analyse/redis-mongodb-sizing
+  - /planning-for-production/redis
+  - /analytics-and-reporting/redis-mongodb-sizing
 ---
 
 Visit the following pages to see how to configure the Database for Production:
