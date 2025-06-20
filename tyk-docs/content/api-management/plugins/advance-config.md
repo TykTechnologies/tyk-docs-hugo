@@ -378,11 +378,11 @@ In the above code, the `NewFuncWithError` function demonstrates error handling i
 {{< img src="/img/plugins/span_error_handling.png" alt="OTel Span error handling" >}}
 
 
-# Highly Available gRPC Servers in Kubernetes
+## Highly Available gRPC Servers in Kubernetes
 
 When deploying gRPC servers as Tyk Gateway coprocess middlewares in Kubernetes, implementing proper health checks is crucial for achieving high availability and enabling seamless rolling updates. Not having them could lead to situations in which your calls that are going through Tyk erroring out due to the gRPC client being unable to connect and correctly execute the coprocessing middleware.
 
-## Why Health Probes Matter for gRPC Servers
+### Why Health Probes Matter for gRPC Servers
 
 Kubernetes needs to know when your gRPC server is ready to accept traffic and when it's still alive. Without proper health checks:
 - Rolling deployments can cause service disruption
@@ -392,9 +392,9 @@ Kubernetes needs to know when your gRPC server is ready to accept traffic and wh
 
 For Tyk Gateway coprocess middlewares, this is especially important since the gateway depends on these gRPC services to process requests.
 
-## Implementation
+### Implementation
 
-### main.go Setup
+#### main.go Setup
 
 ```go
 package main
@@ -500,7 +500,7 @@ func main() {
 
 ```
 
-### Kubernetes Deployment
+#### Kubernetes Deployment
 
 ```yaml
 apiVersion: apps/v1
@@ -531,7 +531,7 @@ spec:
         - containerPort: 50051
           name: grpc
         
-        # Readiness probe - determines when pod is ready for traffic
+        ## Readiness probe - determines when pod is ready for traffic
         readinessProbe:
           grpc:
             port: 50051
@@ -542,7 +542,7 @@ spec:
           failureThreshold: 3
           successThreshold: 1
         
-        # Liveness probe - determines when to restart pod
+        ## Liveness probe - determines when to restart pod
         livenessProbe:
           grpc:
             port: 50051
@@ -551,7 +551,7 @@ spec:
           timeoutSeconds: 5
           failureThreshold: 3
         
-        # Startup probe - gives more time for initial startup
+        ## Startup probe - gives more time for initial startup
         startupProbe:
           grpc:
             port: 50051
@@ -576,18 +576,18 @@ spec:
   type: ClusterIP
 ```
 
-## gRPC Health Checking Protocol
+### gRPC Health Checking Protocol
 
 The modified example uses the [gRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md) instead of HTTP endpoints. This approach offers several advantages:
 
-### Benefits of gRPC Health Probes
+#### Benefits of gRPC Health Probes
 
 1. **Native Integration**: Uses the same transport protocol as your main service
 2. **Service-Specific Checks**: Can check health of individual gRPC services
 3. **Better Resource Utilization**: No need for separate HTTP server
 4. **Consistent Protocol**: Maintains gRPC throughout the stack
 
-### Health Check Implementation Details
+#### Health Check Implementation Details
 
 The health server manages two service states:
 - `""` (empty string): Overall server health
@@ -598,7 +598,7 @@ Health states transition as follows:
 - **Shutdown**: `SERVING` → `NOT_SERVING` (immediate)
 - **Error**: `SERVING` → `NOT_SERVING` (on failure)
 
-### Required Dependencies
+#### Required Dependencies
 
 Add this to your `go.mod`:
 ```go
@@ -609,28 +609,28 @@ require (
 
 The health checking service is included in the standard gRPC Go library.
 
-## Key Benefits for Rolling Updates
+### Key Benefits for Rolling Updates
 
-### 1. Zero-Downtime Deployments
+1. **Zero-Downtime Deployments**
 - Readiness probes ensure new pods are fully ready before receiving traffic
 - Old pods continue serving until new ones are ready
 - Traffic is never routed to non-functional pods
 
-### 2. Graceful Shutdown
+2. **Graceful Shutdown**
 - SIGTERM triggers immediate graceful shutdown sequence
 - Health status changes to "not serving" during shutdown
 - gRPC server stops gracefully, finishing in-flight requests
 - 30-second timeout ensures forced shutdown if graceful shutdown hangs
 
-### 3. Failure Recovery
+3. **Failure Recovery**
 - Liveness probes detect and restart unhealthy pods
 - Startup probes give adequate time for slow-starting services
 - Failed deployments are automatically rolled back
 
-## How to do load balancing
-Starting with Tyk 5.8.2, you can also put your gRPC servers behind a load balancer and use the dns:/// (yes, triple slash) 
-protocol in the ENV VAR "TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER" in order to evenly distribute traffic. 
-For more info please visit https://github.com/grpc/grpc/blob/master/doc/naming.md.
+### How to do load balancing
+Starting with Tyk 5.8.2, you can also put your gRPC servers behind a load balancer and use the `dns:///` (yes, triple slash) 
+protocol in the ENV VAR `TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER` in order to evenly distribute traffic. 
+For more info please [visit](https://github.com/grpc/grpc/blob/master/doc/naming.md).
 
 
 
