@@ -61,7 +61,7 @@ If you are on 1.13.1 or an older version, we advise you to upgrade ASAP to this 
 To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
-- [Docker image v1.13.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.2)
+- [Docker image v1.13.2](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.2)
   - ```bash
     docker pull tykio/portal:v1.13.2
     ```
