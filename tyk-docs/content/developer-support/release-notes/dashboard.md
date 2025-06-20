@@ -4764,7 +4764,7 @@ At the moment the Response hook is supported for [Python and gRPC plugins]({{< r
 Now the standard Health Check API response include information about health of the dashboard, redis and mdcb connections.
 You can configure notifications or load balancer rules, based on new data. For example, you can be notified if your Tyk Gateway can’t connect to the Dashboard (or even if it was working correctly with the last known configuration).
 
-[Read More]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}})
+[Read More]({{< ref "planning-for-production/ensure-high-availability/health-check" >}})
 
 ##### Enhanced Detailed logging
 Detailed logging is used in a lot of the cases for debugging issues. Now as well as enabling detailed logging globally (which can cause a huge overhead with lots of traffic), you can enable it for a single key, or specific APIs. 

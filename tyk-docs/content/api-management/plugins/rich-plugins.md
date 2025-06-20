@@ -2302,7 +2302,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 - Configure an appropriate web server and path to serve your plugin bundles.
 
-[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
+[1]: /tyk-self-managed/install
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/api_settings.png
 [4]: /img/dashboard/system-management/plugin_options.png
@@ -2601,7 +2601,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 - Configure an appropriate web server and path to serve your plugin bundles.
 - See the following [GitHub repo](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet) for a gRPC based .NET plugin that incorporates authentication based on Microsoft SQL Server. 
 
-[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
+[1]: /tyk-self-managed/install
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/plugin_options.png
 [4]: /img/dashboard/system-management/plugin_auth_mode.png
@@ -2799,7 +2799,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 - Configure an appropriate web server and path to serve your plugin bundles.
 
-[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
+[1]: /tyk-self-managed/install
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/plugin_options.png
 [4]: /img/dashboard/system-management/plugin_auth_mode.png

@@ -31,7 +31,7 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{< ref "tyk-self-managed#install-tyk-stack-with-helm-chart-postgresql" >}}) or [Quick Start with Helm Chart and MongoDB]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-mongodb" >}}).
+For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-postgresql" >}}) or [Quick Start with Helm Chart and MongoDB]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-mongodb" >}}).
 
 ## Prerequisites
 
