@@ -1313,7 +1313,7 @@ Here, we'll outline the following:
 
 3. ##### Mongo version
 
-    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "tyk-self-managed#mongodb" >}}).
+    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "planning-for-production/database-settings#mongodb" >}}).
 
 4. ##### Capped collections
 

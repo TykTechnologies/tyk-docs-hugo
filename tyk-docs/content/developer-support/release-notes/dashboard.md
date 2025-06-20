@@ -2131,10 +2131,10 @@ When upgrading to 5.3.6, please follow the [detailed upgrade instructions](#upgr
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -2303,10 +2303,10 @@ When upgrading to 5.3.5, please follow the [detailed upgrade instructions](#upgr
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -2376,10 +2376,10 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -2490,10 +2490,10 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -2627,9 +2627,9 @@ Version compatibility with other components in the Tyk stack. This takes the for
 3rd party dependencies and tools -->
 
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -2767,7 +2767,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.1).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.1).
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -3238,7 +3238,7 @@ If internal TIB is enabled in Dashboard and the TYK_IB_SESSION_SECRET environmen
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
 
-Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. The [MongoDB supported versions]({{< ref "tyk-self-managed#supported-versions" >}}) page provides details on how to configure MongoDB drivers in Tyk.
+Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. The [MongoDB supported versions]({{< ref "planning-for-production/database-settings#supported-versions" >}}) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
 </li>
 </ul>
@@ -3873,7 +3873,7 @@ Fixed an issue in the *API Activity* dashboard where users were unable to view r
 <details>
 <summary>Enforced timeout configuration parameter for an API endpoint was not validated</summary>
 
-Fixed an issue where the [Enforced Timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts/" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 </details>
 </li>
 <li>
@@ -4159,7 +4159,7 @@ The driver setting defines the driver type to use for MongoDB. It can be one of 
 - [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions `<= v4.x` (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
 - [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official MongoDB driver. This driver supports MongoDB versions >= v4.x (greater or equal to v4.x). You can get more information about this driver in [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) GH repository.
 
-See how to [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-driver" >}})
+See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings#choose-a-mongodb-driver" >}})
 
 **Note: Tyk Pump 1.8.0 and MDCB 2.2 releases have been updated to support the new driver option**
 
@@ -4332,7 +4332,7 @@ Tyk Dashboard 4.3 ([docker images](https://hub.docker.com/r/tykio/tyk-dashboard/
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
 {{< note success >}}
 **Note**  
@@ -4469,7 +4469,7 @@ Tyk Dashboard 4.2
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
 ## 4.1 Release Notes
 ### 4.1.0 Release Notes
@@ -4530,7 +4530,7 @@ Tyk MDCB 2.0.1
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
 ## 4.0 Release Notes
 ### 4.0.0 Release Notes
@@ -4562,10 +4562,10 @@ Until now, Tyk Dashboard has used MongoDB for storing everything from data such 
 
 From version 4.0, Tyk Dashboard and Tyk Pump will support four data storage layers, which can be configured separately, each with a different officially supported database solution (if needed). All data stored in SQL databases will provide the same information in the Dashboard that MongoDB did.
 
-While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "tyk-self-managed#postgresql" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
+While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "planning-for-production/database-settings#postgresql" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
 
 As part of SQL support we are also providing tooling to perform seamless migration of your Dashboard data from Mongo to SQL. However, at the moment migration of analytics data is not supported.
-[MongoDB to SQL migration docs]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}})
+[MongoDB to SQL migration docs]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}})
 
 #### Changelog
 - Now it is possible to configure GraphQL upstream authentification, in order for Tyk to work with its schema
@@ -4580,7 +4580,7 @@ Tyk Pump 1.5
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
 ## 3.2 Release Notes
 ### 3.2.0 Release Notes
@@ -4749,7 +4749,7 @@ See [updated flow details]({{< ref "api-management/external-service-integration#
 
 Want to reference secrets from a KV store in your API definitions? We now have native Vault & Consul integration. You can even pull from a tyk.conf dictionary or environment variable file.
 
-[Read more]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}})
+[Read more]({{< ref "tyk-configuration-reference/kv-store/" >}})
 
 
 ##### Co-Process Response Plugins
@@ -4783,7 +4783,7 @@ The Tyk Dashboard now allows you to control weighting of the upstreams, when usi
 
 This enables you to perform Canary or A/B tests of their APIs and services. Similarly, if caches require warming, then we can send a low % of traffic to these services, and when confident that they can handle the load, start incrementally sending a higher % of traffic to these services.
 
-[Read More]({{< ref "tyk-self-managed#configure-load-balancing-and-weighting-via-the-dashboard" >}})
+[Read More]({{< ref "planning-for-production/ensure-high-availability/load-balancing#configure-load-balancing-and-weighting-via-the-dashboard" >}})
 
 ##### Ability to shard analytics to different data-sinks
 

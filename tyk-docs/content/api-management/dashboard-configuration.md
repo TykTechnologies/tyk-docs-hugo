@@ -5351,7 +5351,7 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 #### Configuring MongoDB
 
-Please check [here]({{< ref "tyk-self-managed#mongodb" >}}) for MongoDB driver and production configurations.
+Please check [here]({{< ref "planning-for-production/database-settings#mongodb" >}}) for MongoDB driver and production configurations.
 
 ### PostgreSQL Supported Versions
 
@@ -5379,7 +5379,7 @@ All data stored in SQL platforms will be identical to our existing MongoDB suppo
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 We recommend the following:
@@ -5548,7 +5548,7 @@ Aggregated analytics corresponds to data that is used for the display of charts 
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 Storage of aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:

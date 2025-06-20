@@ -72,35 +72,35 @@ aliases:
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-with-docker" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-with-docker" image="/img/docker.png" alt="Docker install">}}
 Install with Docker 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-on-kubernetes" image="/img/k8s.png" alt="Kubernetes install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-on-kubernetes" image="/img/k8s.png" alt="Kubernetes install">}}
 Install on K8s 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-with-ansible" image="/img/ansible.png" alt="Ansible install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-with-ansible" image="/img/ansible.png" alt="Ansible install">}}
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-redhat-rhel-centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-tyk-on-redhat-rhel-centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-debian-or-ubuntu" image="/img/debian-nd-753.png" alt="Ubuntu install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-tyk-on-debian-or-ubuntu" image="/img/debian-nd-753.png" alt="Ubuntu install">}}
 Install on Ubuntu 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-on-aws-marketplace" image="/img/aws.png" alt="Amazon AWS install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-on-aws-marketplace" image="/img/aws.png" alt="Amazon AWS install">}}
 Install on Amazon AWS 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-on-heroku" image="/img/heroku-logo.png" alt="Heroku install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-on-heroku" image="/img/heroku-logo.png" alt="Heroku install">}}
 Install Tyk on Heroku 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-on-microsoft-azure" image="/img/azure-2.png" alt="Azure install">}}
+{{< badge read="10 mins" href="tyk-self-managed/install#install-on-microsoft-azure" image="/img/azure-2.png" alt="Azure install">}}
 Install on Microsoft Azure 
 {{< /badge >}}
 
@@ -115,7 +115,7 @@ to our teams on support or the cummunity forum if you have questions, requests o
 Get started with one of our quick start guides:
 
 - [Quick Start with PostgreSQL]({{< ref "#install-tyk-stack-with-helm-chart-postgresql" >}})
-- [Quick Start with MongoDB]({{< ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb" >}})
+- [Quick Start with MongoDB]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-mongodb" >}})
 
 Or go to [Tyk Stack helm chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) for detailed installation instructions and configuration options.
 
@@ -294,7 +294,7 @@ The Bitnami chart also creates a secret `tyk-redis` which stores the connection 
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/database-settings#redis" >}}).
 {{< /note >}}
 
 **3. Install MongoDB (if you don't have a MongoDB instance)**
@@ -373,7 +373,7 @@ Installing Tyk on Kubernetes requires a multi-node Tyk license. If you are evalu
 {{< warning success >}}
 **Warning**  
 
-This deployment is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
+This deployment is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "tyk-self-managed/install" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
 
 This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL databases]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 
@@ -442,7 +442,7 @@ The helm chart `tyk-helm/tyk-pro` will install full Tyk platform with **Tyk Mana
                 You can find instructions for a simple Redis installation bellow.
     - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
 
-    You can find supported MongoDB and SQL versions [here]({{< ref "#database-management" >}}).
+    You can find supported MongoDB and SQL versions [here]({{< ref "planning-for-production/database-settings" >}}).
 
     Installation instructions for Redis and MongoDB/SQL are detailed below.
 
@@ -499,7 +499,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/database-settings#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -914,7 +914,7 @@ wget https://raw.githubusercontent.com/sedkis/tyk/master/scripts/bootstrap-ssl.s
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "#planning-for-production" >}}) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) For more details.
 {{< /note >}}
 
 **Supported Distributions**
@@ -1072,7 +1072,7 @@ All three are required for a full deployment. We recommend that each container i
 
 From v5.5.0 onwards, these images are based on [distroless](https://github.com/GoogleContainerTools/distroless). This means that you will not be able to obtain a shell with `docker run --rm -it tykio/tyk-gateway:v5.5.0 sh`. The image can be inspected with tools like [dive](https://github.com/wagoodman/dive) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
-We also have a [Docker Tyk Pro Demo]({{< ref "#docker-compose-setup" >}}), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.
+We also have a [Docker Tyk Pro Demo]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-compose-setup" >}}), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.
 
 
 ## Install on Heroku
@@ -1514,8 +1514,8 @@ Azure allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server on Azure.
-2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Azure's Docker support.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed/install#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server on Azure.
+2. Via our [Docker Installation]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-compose-setup" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
 
@@ -1536,8 +1536,8 @@ Google Cloud allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server within Google Cloud.
-2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Google Cloud's Docker support.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed/install#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server within Google Cloud.
+2. Via our [Docker Installation]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-compose-setup" >}}) using Google Cloud's Docker support.
 
 **Tyk Pump on GCP**
 
@@ -1571,16 +1571,16 @@ There are 4 components which needs to be installed. Each can be installed via sh
 
 **Redis**
 
-Tyk Gateway has a [dependency]({{< ref "#redis-1" >}}) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
+Tyk Gateway has a [dependency]({{< ref "planning-for-production/database-settings#redis" >}}) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
 **Storage Database**
 
-Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) or [MongoDB]({{< ref "#mongodb-sizing-guidelines" >}}).
+Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) or [MongoDB]({{< ref "planning-for-production/database-settings#mongodb-sizing-guidelines" >}}).
   
 
 **Option 1: Install PostgreSQL**
 
-Check the PostgreSQL supported [versions]({{< ref "tyk-self-managed#postgresql" >}}). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
+Check the PostgreSQL supported [versions]({{< ref "planning-for-production/database-settings#postgresql" >}}). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
 
 Configure PostgreSQL
 
@@ -1613,7 +1613,7 @@ sudo -u tyk createdb tyk_analytics
 ```
 **Option 2: Install MongoDB**
 <br>
-Check the MongoDB supported [versions]({{< ref "#mongodb-sizing-guidelines" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
+Check the MongoDB supported [versions]({{< ref "planning-for-production/database-settings#mongodb-sizing-guidelines" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
 
 Optionally initialize the database and enable automatic start:
 ```console
@@ -1635,7 +1635,7 @@ The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a 
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard and Tyk Pump are installed on separate machines. If installing multiple Tyk Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "#planning-for-production" >}}) for more details.
+For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard and Tyk Pump are installed on separate machines. If installing multiple Tyk Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) for more details.
 {{< /note >}}
 
 **Supported Distributions**
@@ -2378,7 +2378,7 @@ You should follow the [online tutorial for installing PostgreSQL](https://www.po
 5. Start PostgreSQL
 6. Check the `postgresql` service is running
 
-See [SQL configuration]({{< ref "tyk-self-managed#postgresql" >}}) for details on installing SQL in a production environment.
+See [SQL configuration]({{< ref "planning-for-production/database-settings#postgresql" >}}) for details on installing SQL in a production environment.
 {{< tab_end >}}
 {{< tabs_end >}}
 
@@ -2394,14 +2394,14 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "tyk-self-managed#Debian-Ubuntu-install-dashboard" >}})
-- [Pump]({{< ref "tyk-self-managed#Debian-Ubuntu-install-pump" >}})
-- [Gateway]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}})
+- [Dashboard]({{< ref "tyk-self-managed/install#Debian-Ubuntu-install-dashboard" >}})
+- [Pump]({{< ref "tyk-self-managed/install#Debian-Ubuntu-install-pump" >}})
+- [Gateway]({{< ref "tyk-self-managed/install#debian-ubuntu-install-gateway" >}})
 
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "tyk-self-managed#planning-for-production" >}}) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) For more details.
 {{< /note >}}
 
 

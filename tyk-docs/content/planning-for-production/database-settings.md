@@ -17,9 +17,9 @@ aliases:
 ---
 
 Visit the following pages to see how to configure the Database for Production:
-* [Redis]({{< ref "#redis-1" >}})
-* [MongoDB]({{< ref "#mongodb-sizing-guidelines" >}})
-* [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}})
+* [Redis]({{< ref "planning-for-production/database-settings#redis" >}})
+* [MongoDB]({{< ref "planning-for-production/database-settings#mongodb-sizing-guidelines" >}})
+* [PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}})
 
 Please consult the [data storage configuration]({{< ref "api-management/dashboard-configuration#data-storage-solutions" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
 

@@ -807,7 +807,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 
 #### Requirements
 
-* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) for more installation options.
+* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
 
 ##### Dependencies
 
@@ -2616,7 +2616,7 @@ The sample code that we'll use implements a very simple authentication layer usi
 
 #### Requirements
 
-- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "/tyk-self-managed#installation-options-for-tyk-self-managed" >}}) for more installation options.
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
 - The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
 - In Tyk 2.8 and upwards the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 - NodeJS v6.x.x [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 

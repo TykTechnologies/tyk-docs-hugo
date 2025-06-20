@@ -17,5 +17,5 @@ Once you have obtained your license, you can proceed with the installation optio
 
 ## Tyk Demo 
 
-Head over to our **Tyk Demo** guides in [Kubernetes]({{< ref "tyk-self-managed#kubernetes-demo" >}}) or [Docker]({{< ref "tyk-self-managed#docker-demo" >}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
+Head over to our **Tyk Demo** guides in [Kubernetes]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#kubernetes-demo" >}}) or [Docker]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-demo" >}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
 
