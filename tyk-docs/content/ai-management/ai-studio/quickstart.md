@@ -10,6 +10,9 @@ This guide will help you get started with the Tyk AI Studio using Docker Compose
 
 ## Prerequisites
 
+### License Requirement
+- A valid Tyk AI Studio license from Tyk Technologies. Contact support@tyk.io or your account manager to obtain your license.
+
 ### For Docker Compose Installation
 - Docker and Docker Compose installed on your system
 - PostgreSQL database (recommended for production) - if not provided, SQLite will be used as fallback
@@ -168,8 +171,11 @@ docker compose down
    ```env
    DATABASE_URL=postgres://username:password@localhost:5432/tyk_ai_studio
    DATABASE_TYPE=postgres
+   TYK_AI_LICENSE=your-license-key-here
    # ... other configuration options
    ```
+   
+   > **Note:** The `TYK_AI_LICENSE` environment variable is required for the service to start. Contact support@tyk.io or your account manager if you need to obtain a license.
 
 4. Start the service:
    ```bash
