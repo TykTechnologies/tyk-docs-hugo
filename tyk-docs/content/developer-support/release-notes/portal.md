@@ -40,7 +40,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 1.13.2 Release Notes
 
-#### Release Date XXX
+#### Release Date 20 June 2025
 
 #### Release Highlights
 
