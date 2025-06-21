@@ -9,6 +9,10 @@ aliases:
 
 Tyk AI Studio is a comprehensive platform that enables platform teams to manage and deploy AI applications with enterprise-grade governance, security, and control.
 
+## Prerequisites
+
+Before getting started with Tyk AI Studio, you need to obtain a license from Tyk Technologies. Contact support@tyk.io or your account manager to request your AI Studio license.
+
 ## Key Features
 
 {{< feature-cards dataFile="ai-studio-features" >}}
@@ -94,7 +98,11 @@ Proxying LLM traffic through the AI Gateway delivers control, visibility, and sc
 
 ## MCP servers in AI Studio
 
-[Remote MCP server capabilities]({{<ref "ai-management/mcps/overview#mcp-for-enterprise-use" >}}) - AI Studio can expose a remote MCP server, making it simple for enterprises to connect their internal APIs and tools securely and centrally, without relying on makeshift solutions or unauthorized local installations.
+AI Studio provides comprehensive [MCP (Model Context Protocol) capabilities]({{<ref "ai-management/mcps/overview#mcp-for-enterprise-use" >}}) including:
+
+- **Remote MCP catalogues and server support** – Expose internal APIs and tools to AI assistants securely without requiring local installations
+- **Secure local MCP server deployment** – Deploy MCP servers within controlled environments, integrated with Tyk AI Gateway for monitoring and governance  
+- **Ready-to-use MCP integrations** – Including API to MCP conversion, Dashboard API access, and searchable documentation access
 
 For more details about Model Context Protocol (MCP) integration, please visit the [Tyk MCPs overview]({{< ref "ai-management/mcps/overview" >}}) page.
 
