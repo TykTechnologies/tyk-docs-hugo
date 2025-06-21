@@ -12,7 +12,7 @@ This guide explains how to deploy Tyk AI Studio, a secure and extensible AI gate
 
 - Kubernetes 1.16+
 - kubectl configured with access to your cluster
-- A `tykAiLicense` string from Tyk Technologies
+- A `TYK_AI_LICENSE` string from Tyk Technologies (contact support@tyk.io or your account manager to obtain)
 - A securely generated `TYK_AI_SECRET_KEY` string for secrets encryption
 - If using SSL/TLS: cert-manager installed in your cluster
 
