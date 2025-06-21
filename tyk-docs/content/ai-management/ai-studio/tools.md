@@ -70,10 +70,41 @@ Administrators define and manage Tools via the UI or API:
 
 ## Using Tools (User)
 
-Tools become available to end-users within the [Chat Interface]({{< ref "ai-management/ai-studio/chat-interface" >}}) if:
+Tools become available to end-users through multiple access methods:
+
+### Chat Interface Access
+
+Tools become available within the [Chat Interface]({{< ref "ai-management/ai-studio/chat-interface" >}}) if:
 
 1.  The specific Chat Experience configuration includes the relevant Tool Catalogue.
 2.  The user belongs to a Team that has been assigned that Tool Catalogue.
 3.  The Tool's privacy level is compatible with the LLM being used in the Chat Experience.
 
 The LLM will then automatically decide when to use these available tools based on the conversation.
+
+### AI Portal Tool Catalogue
+
+The [AI Portal]({{< ref "ai-management/ai-studio/ai-portal" >}}) provides a dedicated **Tool Catalogue** where users can:
+
+*   **Browse Available Tools:** View all tools they have access to, similar to how they can browse LLMs and Data Sources.
+*   **Subscribe to Tools:** Add tools to their applications as part of the app creation process.
+*   **Access Documentation:** View tool-specific documentation and usage guidelines.
+*   **Manage Subscriptions:** Control which tools are included in their various applications.
+
+### API Access
+
+Developers can access tools programmatically through the Tyk AI Studio APIs:
+
+*   **Tool Discovery API:** Retrieve lists of available tools and their specifications.
+*   **Tool Invocation API:** Execute tool operations directly via REST endpoints.
+*   **Application Integration:** Include tools in [Apps]({{< ref "ai-management/ai-studio/apps" >}}) for streamlined API access.
+
+### MCP (Model Context Protocol) Access
+
+Tools can also be accessed through the **Model Context Protocol (MCP)**, providing:
+
+*   **Standardized Interface:** Use MCP-compatible clients to interact with tools in a vendor-neutral way.
+*   **Enhanced Integration:** Connect tools to MCP-enabled applications and AI frameworks.
+*   **Protocol Compliance:** Leverage the growing ecosystem of MCP-compatible tools and clients.
+
+This multi-access approach ensures that tools can be utilized across different interfaces and integration patterns, from simple chat interactions to complex programmatic integrations.

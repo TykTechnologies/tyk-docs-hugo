@@ -6,7 +6,7 @@ description: "Configuration of Tyk AI Studio"
 keywords: ["AI Studio", "AI Management"]
 ---
 
-This guide covers the essential first steps to take within the Tyk AI Studio UI after successfully deploying the platform using the [Installation Guide]({{< ref "ai-management/ai-studio/deployment-helm-k8s" >}}).
+This guide covers the essential first steps to take within the Tyk AI Studio UI after successfully deploying the platform using the [Installation Guide]({{< ref "ai-management/ai-studio/deployment-k8s" >}}).
 
 ## 1. First Login
 
@@ -62,7 +62,7 @@ Remember that fundamental system parameters are typically set via environment va
 *   Email Server Settings (`SMTP_*`, `FROM_EMAIL`, `ADMIN_EMAIL`)
 *   Registration Settings (`ALLOW_REGISTRATIONS`, `FILTER_SIGNUP_DOMAINS`)
 
-Refer to the **Configuration Options** detailed within the [Installation Guide]({{< ref "ai-management/ai-studio/deployment-helm-k8s" >}}) for specifics on setting these values during the deployment process.
+Refer to the **Configuration Options** detailed within the [Installation Guide]({{< ref "ai-management/ai-studio/deployment-k8s" >}}) for specifics on setting these values during the deployment process.
 
 ## Next Steps
 
