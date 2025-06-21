@@ -1159,9 +1159,9 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Installation (Helm/K8s)"
+              - title: "Installation (Kubernetes)"
                 category: Page
-                path: /ai-management/ai-studio/deployment-helm-k8s
+                path: /ai-management/ai-studio/deployment-k8s
                 show: True
               - title: "Initial Configuration"
                 category: Page
