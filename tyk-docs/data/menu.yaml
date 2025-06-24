@@ -560,39 +560,10 @@ menu:
             category: Page
             show: True
 
-      - title: "Developer Support"
+      - title: "Reference"
         category: Label
         show: True
-        path: /developer-support/community
         menu:
-          - title: "Community Support"
-            path: /developer-support/community
-            category: Page
-            show: True
-          - title: "Support SLA"
-            path: /developer-support/support
-            category: Page
-            show: True
-          - title: "Tyk Release Types"
-            category: Directory
-            show: True
-            menu:
-              - title: "Long Term Support Release"
-                path: /developer-support/release-types/long-term-support
-                category: Page
-                show: True
-              - title: "Early access feature"
-                path: /developer-support/release-types/early-access-feature
-                category: Page
-                show: True
-              - title: "Lab Release"
-                path: /developer-support/release-types/lab-release
-                category: Page
-                show: True
-              - title: "FIPS Release"
-                path: /developer-support/release-types/fips-release
-                category: Page
-                show: True
           - title: "Environment Variables and Configs"
             category: Directory
             show: True
@@ -657,6 +628,11 @@ menu:
               path: /tyk-identity-broker/tib-rest-api
               category: Page
               show: True
+
+      - title: "Developer Support"
+        category: Label
+        show: True
+        menu:
           - title: "Release Notes"
             category: Directory
             show: True
@@ -709,10 +685,6 @@ menu:
               path: /developer-support/release-notes/archived
               category: Page
               show: True
-          - title: "Deprecation"
-            path: /developer-support/deprecation
-            category: Page
-            show: True
           - title: "Upgrading Guide"
             path: /developer-support/upgrading
             category: Page
@@ -721,11 +693,50 @@ menu:
             path: /developer-support/faq
             category: Page
             show: True
-          - title: "Docs Contribution"
-            path: /developer-support/contributing
+          - title: "Tyk Releases Policy"
             category: Directory
             show: True
             menu:
+              - title: "Long Term Support Release"
+                path: /developer-support/release-types/long-term-support
+                category: Page
+                show: True
+              - title: "Early access feature"
+                path: /developer-support/release-types/early-access-feature
+                category: Page
+                show: True
+              - title: "Lab Release"
+                path: /developer-support/release-types/lab-release
+                category: Page
+                show: True
+              - title: "FIPS Release"
+                path: /developer-support/release-types/fips-release
+                category: Page
+                show: True
+          - title: "Deprecation and EOL Policy"
+            path: /developer-support/deprecation
+            category: Page
+            show: True
+          - title: "Support SLA Policy"
+            path: /developer-support/support
+            category: Page
+            show: True
+          - title: "Community Support"
+            path: /developer-support/community
+            category: Page
+            show: True
+          - title: "Inclusive Naming Policy"
+            path: /developer-support/inclusive-naming-policy
+            category: Page
+            show: True
+          - title: "Contributing to Tyk docs"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /developer-support/contributing
+                category: Page
+                show: True
               - title: "UI Example: Pill Label shortcode"
                 path: /ui-examples/test-pill-label
                 category: Page

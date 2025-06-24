@@ -2297,7 +2297,7 @@ To publish the plugin, copy or upload `bundle.zip` to a local web server like Ng
 
 {{< include "grpc-include" >}}
 
-#### <a name="next"></a>What's Next?
+#### What's Next? {what-is-next}
 
 In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
 
@@ -2308,7 +2308,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 [3]: /img/dashboard/system-management/api_settings.png
 [4]: /img/dashboard/system-management/plugin_options.png
 
-### Create Custom Authentication Plugin with .NET
+### Create Custom Authentication Plugin with .NET {#create-custom-auth-plugin-with-dotnet}
 
 This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin with .NET and C#. For additional information check the official gRPC [documentation](https://grpc.io/docs/guides/index.html).
 
@@ -2326,7 +2326,7 @@ The sample code that we’ll use implements a very simple authentication layer u
 
 #### Create the Plugin
 
-##### Create .NET Project
+##### Create .NET Project {#create-dotnet-project}
 
 We use the .NET CLI tool to generate the initial files for our project:
 
@@ -2349,7 +2349,7 @@ dotnet add package Google.Protobuf --version 3.4.0
 - The `ThreadPool` package is used by `Grpc`.
 - The `Protobuf` package will be used by our gRPC bindings.
 
-##### Install the gRPC Tools
+##### Install the gRPC Tools {#install-grpc-tools}
 
 We need to install the gRPC tools to generate the bindings. We recommended you follow the official guide here: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code.
 
