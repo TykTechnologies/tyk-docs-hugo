@@ -18,7 +18,7 @@ This secion provides instructions for setting up your local environment to work 
    ```
 2. **Clone the Tyk Docs repository**:
    ```bash
-   git clone <TODO>
+   git clone main
    ```
 3. **Navigate to the Tyk Docs directory**:
    ```bash
