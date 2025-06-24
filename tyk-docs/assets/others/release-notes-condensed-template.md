@@ -8,7 +8,15 @@ tags: ["Tyk Dashboard", "Release notes", "changelog", "vX.Y", "X.Y.0", "X.Y", "X
 **This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
 
 ## Support Lifetime
-Our minor releases are supported until our next minor comes out. This would be <vX.Y+1> scheduled in Q<1-4> if this goes ahead as planned. If not, X.Y will remain in support until our next LTS version comes out in March 2024.
+<!--
+Please add one of the following messagings to the release notes you are writing:
+
+For non-LTS releases:
+This release supersedes all previous non-LTS releases, which are no longer supported. The [current LTS release](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline) remains supported alongside this version. For more information about our release types and support policy, please refer to our [release support documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
+
+For LTS releases:
+This LTS release is supported according to our [Long Term Support policy](https://tyk.io/docs/developer-support/release-types/long-term-support/). For more information about our release types and support policy, please refer to our [release support documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
+-->
 
 ---
 
