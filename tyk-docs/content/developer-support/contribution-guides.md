@@ -1,7 +1,7 @@
 ---
-title: "Contributing to Tyk Docs"
+title: "Contributing Guides"
 description: "Guide to releasing Tyk documentation"
-tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs", "client"]
+tags: ["Guides", "Contribution to Tyk", "Open source contribution guide"]
 ---
 
 ## Introduction
