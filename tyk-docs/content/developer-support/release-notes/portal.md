@@ -74,16 +74,16 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 <ul>
 <li>
 <details>
-<summary>Preserved JWT Scope Mappings When Enabling DCR</summary>
+<summary>Preserved JWT scope mappings when enabling DCR</summary>
 
 Fixed an issue where enabling DCR for an API would delete scope-to-policy mappings from the API definition, invalidating access tokens containing the expected scopes. Scope-to-policy mappings are now correctly managed when modified on Tyk Portal or Tyk Dashboard, with the source of truth being the API definition registered with the Dashboard.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed API Middleware Error from Dashboard–Portal Mismatch</summary>
+<summary>Fixed API middleware error from dashboard–portal mismatch</summary>
 
-Fixed an issue where middleware configuration for an API could be corrupted (for example, [Request header transform middleware]({{<ref "api-management/traffic-transformation/#request-header-transform" >}})) when settings were changed in Developer Portal. This was due to a misalignment between Dashboard and Developer Portal in their interpretation of the API definition and has now been corrected.
+Fixed an issue where middleware configuration for an API could be corrupted (for example, [Request header transform middleware]({{<ref "api-management/traffic-transformation#request-header-transform" >}}) settings were changed in Developer Portal. This was due to a misalignment between Dashboard and Developer Portal in their interpretation of the API definition and has now been corrected.
 </details>
 </li>
 </ul>
@@ -121,28 +121,28 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 <ul>
 <li>
 <details>
-<summary>Revoking One Client Credential No Longer Deletes All from Keycloak</summary>
+<summary>Revoking one client credential no longer deletes all from Keycloak</summary>
 
 Fixed an issue where all client credentials associated with an app would be incorrectly removed from Keycloak when credentials are revoked in the Tyk Portal. This would lead to credentials existing in the Tyk Developer Portal but not in Keycloak. Now, when an app with multiple client credentials has one set of credentials revoked in the Tyk Developer Portal, only those credentials will be removed from Keycloak, with the others remaining valid.
 </details>
 </li>
 <li>
 <details>
-<summary>SSO Now Works Properly with Multiple Portal Replicas</summary>
+<summary>SSO now works properly with multiple portal replicas</summary>
 
 Fixed an issue where users couldn't log in via SSO when multiple instances (replicas) of Portal were deployed
 </details>
 </li>
 <li>
 <details>
-<summary>Password No Longer Overwritten on User Profile Updates</summary>
+<summary>Password no longer overwritten on user profile updates</summary>
 
 Addressed an issue where editing and saving a user’s profile in the admin portal would unintentionally change their password due to double encryption. Admins can now safely update user details without affecting login credentials. Passwords will only change when explicitly updated.
 </details>
 </li>
 <li>
 <details>
-<summary>API Description Field Restored</summary>
+<summary>API description field restored</summary>
 
 Resolved a regression introduced in v1.13.0 that removed the ability to view or edit API descriptions on the API Product page. The API description field is now visible and editable again, restoring parity with earlier versions and ensuring API documentation remains complete and user-friendly.
 </details>
@@ -198,7 +198,7 @@ To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref 
 <ul>
 <li>
 <details>
-<summary>Improved UX for Products and Plan listing</summary>
+<summary>Improved UX for products and plan listing</summary>
 
 The portal now provides an enhanced UI for browsing and managing products and plans, making it easier for administrators to organize and maintain their API offerings.
 
@@ -206,7 +206,7 @@ The portal now provides an enhanced UI for browsing and managing products and pl
 </li>
 <li>
 <details>
-<summary>Product and Plan Management</summary>
+<summary>Product and plan management</summary>
 
 Administrators can now create, edit, and remove `Products` and `Plans` directly from the portal admin UI, eliminating the need to manage these through the Tyk Dashboard. The new features include the following:
 
@@ -221,7 +221,7 @@ With the added features, Portal provides greater control over the API lifecycle 
 </li>
 <li>
 <details>
-<summary>Documentation-only Products</summary>
+<summary>Documentation-only products</summary>
 
 Added support for creating documentation-only products in the Enterprise Developer Portal. This feature allows API Providers to:
 
@@ -235,7 +235,7 @@ This is particularly useful for scenarios where APIs are in development or when 
 </li>
 <li>
 <details>
-<summary>Custom ID Support for Resources</summary>
+<summary>Custom ID support for resources</summary>
 
 EDP Resources now supports custom IDs (in addition to auto-increment integer IDs) to facilitate migration and reference between environments. This feature covers:
 
@@ -249,7 +249,7 @@ This enhancement makes it easier to maintain consistency across different enviro
 </li>
 <li>
 <details>
-<summary>Enhanced Login Controls</summary>
+<summary>Enhanced login controls</summary>
 
 Admins can now configure more enhanced login controls, such as limits, expiration and intervals.
 
@@ -258,7 +258,7 @@ These settings can be adjusted in the General Settings section of the portal adm
 </li>
 <li>
 <details>
-<summary>SSO Profile Management APIs</summary>
+<summary>SSO profile management APIs</summary>
 
 Added new APIs for managing SSO profiles, enabling programmatic control over SSO configurations. These APIs allow administrators to:
 
@@ -280,7 +280,7 @@ This addition complements the embedded Tyk Identity Broker functionality introdu
 </li>
 <li>
 <details>
-<summary>Product and Plan Management APIs</summary>
+<summary>Product and plan management APIs</summary>
 
 Added new APIs for managing Products and Plans programmatically, enabling automation of the product lifecycle. These APIs include:
 
@@ -313,7 +313,7 @@ These APIs complement the UI-based product management capabilities, enabling aut
 <ul>
 <li>
 <details>
-<summary>App edit CSRF Token Validation</summary>
+<summary>App edit CSRF token validation</summary>
 
 Fixed an issue where CSRF token validation was failing during application edits, which prevented users from saving changes to their applications. This has been resolved by implementing proper token lifecycle management and validation.
 
@@ -321,7 +321,7 @@ Fixed an issue where CSRF token validation was failing during application edits,
 </li>
 <li>
 <details>
-<summary>Fixed MySQL SSO Profile handling</summary>
+<summary>Fixed MySQL SSO profile handling</summary>
 
 Fixed an issue where EDP embedded Tyk Identity Broker profiles weren't being properly handled in MySQL environments, which caused storing SSO profiles failures. This has been resolved by correcting the database query handling for SSO profile data.
 
@@ -329,7 +329,7 @@ Fixed an issue where EDP embedded Tyk Identity Broker profiles weren't being pro
 </li>
 <li>
 <details>
-<summary>Custom Attribute deletion</summary>
+<summary>Custom attribute deletion</summary>
 
 Fixed an issue where deleting a single custom attribute would inadvertently remove all user custom attributes, which caused loss of user profile data. This has been resolved by implementing proper scoping for attribute deletion operations.
 
@@ -337,7 +337,7 @@ Fixed an issue where deleting a single custom attribute would inadvertently remo
 </li>
 <li>
 <details>
-<summary>Catalog Deletion Impact</summary>
+<summary>Catalog deletion impact</summary>
 
 Fixed an issue where removing an active catalog would cause UI rendering problems for developers, which resulted in a poor user experience. This has been resolved by implementing proper cascading deletion of catalog resources.
 
@@ -345,7 +345,7 @@ Fixed an issue where removing an active catalog would cause UI rendering problem
 </li>
 <li>
 <details>
-<summary>Theme Upload Validation</summary>
+<summary>Theme upload validation</summary>
 
 Fixed an issue where uploading themes containing nested theme directories would corrupt the original theme, which caused theme installation failures. This has been resolved by implementing validation to detect and prevent nested theme uploads.
 
@@ -429,7 +429,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Embedded Tyk Identity Broker</summary>
+<summary>Embedded Tyk Identity Broker (TIB)</summary>
 
 From this release, you can configure the portal to serve an internal Tyk Identity Broker. This means that you don't need to deploy a separate Tyk Identity Broker service to SSO into the portal.
 This enables a new section under the portal admin UI where admins can manage SSO profiles for admins and developers.
@@ -446,7 +446,7 @@ You can read more about the supported SSO providers [here]({{< ref "tyk-identity
 </li>
 <li>
 <details>
-<summary>Creation of Apps and Credentials</summary>
+<summary>Creation of apps and credentials</summary>
 
 Admins now have enhanced control over application and credential creation in the portal, streamlining the onboarding process and reducing the need for API-based setups. With this update, admins can create applications and assign them to specific users, making it easier to onboard developers who aren't using self-service options.
 
@@ -498,7 +498,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Upgrade to Go 1.22 </summary>
+<summary>Upgrade to Go 1.22</summary>
 
 The Enterprise Developer Portal has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance,
 strengthened security, and access to the latest features available in the new Golang release.
