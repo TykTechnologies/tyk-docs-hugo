@@ -142,7 +142,7 @@ of requests could lead to exhaustion of the limit on some gateways before others
 
 ### Redis Rate Limiter
 
-This algorithm implements a sliding window log algorithm and can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}) configuration option.
+This algorithm implements a sliding window log algorithm and can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration#enable_redis_rolling_limiter" >}}) configuration option.
 
 The characteristics of the Redis Rate Limiter (RRL) are:
 
@@ -232,13 +232,13 @@ effect for a minimum of the configured window duration (`per`). Gateway and Redi
 resource usage is increased with this option.
 
 This option can be enabled using the following configuration option
-[enable_sentinel_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_sentinel_rate_limiter" >}}).
+[enable_sentinel_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_sentinel_rate_limiter" >}}).
 
 To optimize performance, you may configure your rate limits with shorter
 window duration values (`per`), as that will cause Redis to hold less
 data at any given moment.
 
-Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
+Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
 
 Please consider the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm as an alternative, if Redis performance is an issue.
 
@@ -264,7 +264,7 @@ window and removed when the window elapses. Regardless of the traffic
 received, Redis is not impacted in a negative way, resource usage remains
 constant.
 
-This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_fixed_window_rate_limiter" >}}).
+This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_fixed_window_rate_limiter" >}}).
 
 If you need spike arrest behavior, the [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}) should be used.
 
@@ -295,7 +295,7 @@ gateways, the DRL algorithm will be used if the rate limit exceeds 10
 requests per second. If it is 10 or fewer, the system will fall back to
 the Redis Rate Limiter.
 
-See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration.md#drl_threshold" >}}) for details on how to configure this feature.
+See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration#drl_threshold" >}}) for details on how to configure this feature.
 
 
 ## Rate Limiting Layers
@@ -373,7 +373,7 @@ If no per-endpoint rate limit is defined, the endpoint will inherit the key-leve
 {{< note success >}}
 **Note**  
 The following assumptions are made:
- - The [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware should not be enabled for the relevant endpoints.
+ - The [ignore authentication]({{< ref "api-management/traffic-transformation/ignore-authentication" >}}) middleware should not be enabled for the relevant endpoints.
  - If [path-based permissions]({{< ref "api-management/gateway-config-managing-classic#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
 {{< /note >}}
 

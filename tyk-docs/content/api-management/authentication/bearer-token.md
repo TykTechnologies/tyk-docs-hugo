@@ -68,7 +68,7 @@ x-tyk-api-gateway:
 ```
 
 ## Dynamic mTLS with Auth Token
-The Auth Token method can support [Dynamic mTLS]({{< ref "api-management/client-authentication#dynamic-mtls" >}}) where the client can provide a TLS certificate in lieu of a standard Auth Token. This can be configured for an API using the [enableClientCertificate]({{< ref "api-management/gateway-config-tyk-oas#token" >}})  option (Tyk Classic: `auth.use_certificate`).
+The Auth Token method can support [Dynamic mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#dynamic-mtls" >}}) where the client can provide a TLS certificate in lieu of a standard Auth Token. This can be configured for an API using the [enableClientCertificate]({{< ref "api-management/gateway-config-tyk-oas#token" >}})  option (Tyk Classic: `auth.use_certificate`).
 
 ## Auth Token with Signature
 
@@ -94,7 +94,7 @@ Using the Tyk Dashboard, you can configure the Auth Token authentication method 
 - select the location(s) where Tyk should look for the token
 - provide the key name for each location (we prefill the default `Authorization` for the *header* location, but you can replace this if required)
 - select **Strip authorization data** to remove the auth token locations from the request prior to proxying to the upstream, as described [here]({{< ref "api-management/client-authentication#managing-authorization-data" >}})
-- optionally select **Enable client certificate** to enable [Dynamic mTLS]({{< ref "api-management/client-authentication#dynamic-mtls" >}}) for the API, so the client can provide a certificate in place of the token
+- optionally select **Enable client certificate** to enable [Dynamic mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#dynamic-mtls" >}}) for the API, so the client can provide a certificate in place of the token
 
 Note that the [auth token + signature]({{< ref "api-management/authentication/bearer-token#auth-token-with-signature" >}}) option is not available in the Tyk Dashboard API Designer.
 

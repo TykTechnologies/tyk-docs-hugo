@@ -95,12 +95,12 @@ The difference is that with DataSources you simply configure how the engine shou
 
 DataSources can be internal as well as external.
 
-Internal DataSources are those APIs that are already managed by tyk, e.g. REST or SOAP APIs which you already manage through the Dashboard.
-You can make use of the rich ecosystem of middlewares for internal DataSources to validate and transform requests and responses.
+Internal DataSources are APIs that are already managed by Tyk, such as REST or SOAP services configured through the Dashboard.
+You can take advantage of Tyk’s rich middleware ecosystem to validate and transform requests and responses for these internal DataSources.
 
-External DataSources are those APIs that you're not (yet) managing through tyk.
-For simplicity reasons you can also add these to your data graph without previously adding them as a dedicated API to tyk.
-If you later decide you want to add additional middlewares to one of them you can always make the transition from external to internal API.
+External DataSources are APIs that you’re not currently managing through Tyk.
+For simplicity, you can add them to your data graph without first configuring them as dedicated APIs in Tyk.
+If you later decide to apply middleware or other policies, you can easily transition an external DataSource into a managed internal API.
 
 Head over to the [connect data source]({{< ref "api-management/data-graph#udg" >}}) section to learn about the supported data sources and how to connect them to Tyk.
 
@@ -125,7 +125,7 @@ We assume you already have your DataSource attached and now want to configure it
 You need to tell the GraphQL engine that when it comes to resolving the field "user", take the argument with the name "id" and use it in the URL to make the request to the REST API.
 You do this by using templating syntax to inject it into the URL.
 This is done from the "Configure data source" tab, which will show after clicking a schema argument or object field.
-Typing an opening curly brace ( { ) will produce a dropdown that contains all available fields and arguments.
+Typing an opening curly brace ( `{` ) will produce a dropdown that contains all available fields and arguments.
 
 ```html
 https://example.com/user/{{ .arguments.id }}
@@ -396,7 +396,7 @@ Global headers can be configured via Tyk API Definition. The correct place to do
 }
 ```
 
-Global headers now have access to all [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+Global headers now have access to all [request context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}).
 
 By default, any header that is configured as a global header, will be forwarded to all data sources of the UDG.
 
@@ -421,7 +421,7 @@ Data source headers can be configured via Tyk API Definition and via Tyk Dashboa
 }
 ```
 
-Data source headers now have access to all [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+Data source headers now have access to all [request context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}).
 
 #### Headers priority order
 

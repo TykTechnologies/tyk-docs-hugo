@@ -67,7 +67,7 @@ An example is shown below that composes two different data sources:
 All the GraphQL configuration is gathered in the `graphql` object.
 
 **Field: `graphql.enabled`**
-If set to `true`, this means the API definition describes a GraphQL API. Tyk GraphQL middlewares will be enabled.
+If set to `true`, this means the API definition describes a GraphQL API. Tyk GraphQL middleware will be enabled.
     
 **Field: `graphql.execution_mode`**
 The mode of a GraphQL API. There are two options:

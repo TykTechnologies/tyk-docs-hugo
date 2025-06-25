@@ -24,7 +24,7 @@ Developer Portal* please use the latest
 **Future deprecation of Tyk Classic Portal**
 
 This product is no longer actively developed as it
-has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview/intro" >}}).
 </br>
 Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
 [support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
@@ -46,7 +46,7 @@ The user journey is as follow:
 ### Requirements
 
 - A Gluu installation, more details [here](https://gluu.org/get-started/).
-- A [Tyk Self Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
+- A [Tyk Self Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
 
 ### Getting started with Gluu
 

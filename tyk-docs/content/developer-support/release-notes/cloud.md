@@ -2,9 +2,151 @@
 title: Tyk Cloud Release Notes
 date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "changelog"]
 
 ---
+## 1.28.1 Release Notes
+
+### Release Date 03 June 2025
+
+### Release Highlights
+
+This release improves Tyk Cloud’s security, scalability, and reliability. We’ve hardened the signup and login flows, improved sensitive data handling in API responses, and enhanced Redis scalability in Control Plane deployments to support larger workloads.
+
+For a full list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.28.1" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.28.1}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Improved scalability for Redis in Control Plane Deployments</summary>
+
+The change brings more flexible Redis scaling capabilities in the Control Plane deployments. Control Planes are now able to handle more/larger API keys in storage without causing stability issues. Tyk Cloud will expand this storage using this capability when needed, but a permanent arrangement is subject to commercial terms.
+
+</details>
+</li> 
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Hardened Signup Flow Validation</summary>
+
+Improved the signup logic to prevent unintended automation and ensure tighter control over account creation, enhancing platform security and reliability.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Consistent Login Response Behavior</summary>
+
+Standardized response status codes in the login process to prevent discrepancies that could lead to information exposure through http status code.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Sanitized Sensitive Data in API Responses</summary>
+
+Resolved an issue where certain sensitive fields could be inadvertently included in API responses. The platform now enforces stricter data handling and output sanitization.
+
+</details>
+</li> 
+</ul>
+
+## 1.28.0 Release Notes
+
+### Release Date 26 May 2025
+
+### Release Highlights
+
+This release focuses on further enhancing Tyk Cloud’s stability, security, and overall user experience. We've resolved several UI issues, improved input validation, standardized security defaults across versions, and strengthened core platform behavior. Additionally, we’ve introduced new 2025 pricing plans!
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.28.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.28.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>2025 Tyk Cloud Pricing Plans Introduced</summary>
+
+Tyk Cloud has introduced the 2025 base pricing plans, featuring new Core, Professional, and Enterprise tiers. These changes provide clearer value differentiation across plans while maintaining flexibility for both SaaS and Hybrid deployments. The "Account" section is now hidden for new customers, though existing customers remain unaffected. Usage and quota are still available in the "System Usage" and "Monitoring" sections. For more information, please check the [Pricing & Plans](https://tyk.io/pricing/)
+
+</details>
+</li> 
+</ul>
+
+#### Fixed
+
+<ul>
+  
+<li>
+<details>
+<summary>Improved Validation for Hybrid Data Plane Names</summary>
+
+We’ve fixed an issue where pasting invalid characters, such as tabs and spaces, into the hybrid data plane name field would break the registration flow in Ara. The system now includes input validation on both the frontend and backend, ensuring only valid characters are accepted. This prevents configuration issues and improves the reliability of the hybrid data plane creation process.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Login Handling in Tyk Cloud</summary>
+
+We’ve made backend improvements to the Tyk Cloud login functionality to enhance its security and resilience against automated attacks. These changes help ensure a more consistent and secure authentication experience.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Secure Defaults Aligned Across Dashboard Versions</summary>
+
+We’ve fixed an issue where secure configuration defaults for the Tyk Dashboard admin view were not properly applied in older versions (v5.3). These settings now default to true in v5.8+ as intended, while remaining false in v5.3 to preserve backward compatibility. This ensures consistent and expected security behavior across versions.
+
+**Note:** Changes in deployment configurations are applied during a redeployment, triggered by the user or system. In addition, defaults can be changed individually by creating a support ticket.
+
+</details>
+</li>
+
+</ul>
+
 ## 1.27.0 Release Notes
 
 ### Release Date 23 April 2025

@@ -4,8 +4,7 @@ description: "This page serves as a comprehensive guide to migrating workloads t
 tags: ["Tyk Cloud", "Migration"]
 aliases:
   - /tyk-cloud/telemetry/enable-telemetry
-  - /tyk-cloud/telemetry/
-  - /tyk-cloud
+  - /tyk-cloud/telemetry
   - /tyk-cloud/account--billing/plans
   - /tyk-cloud/account--billing/retirement
   - /tyk-cloud/account-and-billing/add-payment-method
@@ -162,7 +161,7 @@ Paid plans and Enterprise trials allow users to select one of 6 AWS locations as
 **Note**
 
 The Tyk Cloud trial is limited to 48 hours. After this period, your data will be deleted.
-The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview#" >}}).
+The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview/intro" >}}).
 To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
 {{< /note >}}
 
@@ -1115,7 +1114,7 @@ This example comes with a Redis instance pre-configured and deployed with Docker
 
 **4. Update docker compose file**
 
-Edit the <docker-compose.yml> file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
+Edit the `<docker-compose.yml>` file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
 
 From:
 
@@ -1245,7 +1244,7 @@ From there you have access to the full scope of Tyk API management functionality
 * Applying Quotas and Rate limits via [Security Policies]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) and [Keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}})
 * [Securing]({{< ref "api-management/security-best-practices#securing-apis-with-tyk" >}}) your APIs
 * Viewing granular [Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) for your Tyk managed APIs
-* [Transform traffic]({{< ref "api-management/traffic-transformation#" >}}) with the Tyk API Designer
+* [Transform traffic]({{< ref "api-management/traffic-transformation" >}}) with the Tyk API Designer
 * Add integration options such as [SSO]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) and [3rd Party IdentityProviders]({{< ref "api-management/external-service-integration" >}})
 * [Adding Segment Tags]({{< ref "#faqs" >}})
 
@@ -2171,7 +2170,7 @@ We are going to configure an Tyk Cloud Control Plane to use a custom authenticat
 
 Here are the requirements:
 
-1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "tyk-self-managed#install-tyk-on-debian-or-ubuntu" >}}).
+1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "tyk-self-managed/install#install-tyk-on-debian-or-ubuntu" >}}).
 2. Ensure you have a currently stable [Python 3.x version](https://www.python.org/downloads/) installed 
 3. You need install the build tools `apt-get install -y build-essential`
 4. Install our required modules:
@@ -2238,7 +2237,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -2475,7 +2474,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-datadog.png" alt="Tyk Cloud Telemetry Datadog" >}}
 
-    {{< tab_end "Datadog" >}}
+    {{< tab_end >}}
 
     {{< tab_start "Dynatrace" >}}
 
@@ -2490,7 +2489,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-dynatrace.png" alt="Tyk Cloud Telemetry Dynatrace" >}}
 
-    {{< tab_end "Dynatrace" >}}
+    {{< tab_end  >}}
 
     {{< tab_start "New Relic" >}}
 
@@ -2505,7 +2504,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-newrelic.png" alt="Tyk Cloud Telemetry NewRelic" >}}
 
-    {{< tab_end "New Relic" >}}
+    {{< tab_end >}}
 
     {{< tab_start "Elastic" >}}
 
@@ -2520,7 +2519,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-elastic.png" alt="Tyk Cloud Telemetry Elastic" >}}
 
-    {{< tab_end "Elastic" >}}
+    {{< tab_end >}}
 
     {{< tab_start "Custom" >}}
 
@@ -2540,7 +2539,7 @@ Only a single provider/backend can be configured at any given time.
 
       {{< img src="/img/cloud/telemetry-custom.png" alt="Tyk Cloud Telemetry Custom" >}}
 
-    {{< tab_end "Custom" >}}
+    {{< tab_end >}}
 
     {{< tabs_end >}}
 
@@ -2577,6 +2576,52 @@ The sampling level can be configured at both the organization level (while setti
 
     {{< img src="/img/cloud/tyk-cloud-data-plane-enable-telemetry.png" alt="Tyk Cloud Data Plane Telemetry Enabled" >}}
 
+
+### Tyk Dashboard Audit Logs
+
+Tyk Cloud provides comprehensive audit logging capabilities to track and monitor all administrative actions performed within your Tyk Dashboard. This feature is essential for compliance and security.
+
+#### What are Audit Logs?
+
+Audit logs capture detailed records of all requests made to endpoints under the `/api` route in your Tyk Dashboard. These logs include information about:
+
+- User actions and administrative operations
+- API changes and configurations
+- Authentication and authorisation events
+- System access and modifications
+- Response status codes and timestamps
+
+#### Enabling Audit Logs for Control Plane Deployments
+
+{{< note success >}}**Note**
+
+The audit log feature is available for Control Plane versions v5.7.0 or later.
+{{< /note >}}
+
+##### How to Enable Audit Logging
+
+1. **Contact Your Account Manager**: Audit logging must be enabled at the subscription level. Reach out to your Tyk account manager to add this feature to your plan.
+
+2. **Enable via Tyk Cloud UI**: Once the feature is available in your subscription, you can enable audit logging directly from the Tyk Cloud console:
+   - Navigate to your Control Plane deployment
+   - Select **Edit** from the deployment options
+   - Enable the **Audit Logging** option
+   - Save and redeploy your Control Plane
+
+Audit logs will be stored in your Control Plane's database for easy access and management.
+
+##### Viewing and Accessing Audit Logs
+
+Once audit logging is enabled, you can retrieve the logs via the Tyk Dashboard API. 
+
+For details on the API endpoints and usage, see [Retrieving Audit Logs via API]({{< ref "api-management/dashboard-configuration#retrieving-audit-logs-via-api" >}}).
+
+#### Storage Size Caps
+
+Tyk Cloud enforces audit log storage size caps based on your subscription terms:
+
+- **Storage Limits**: A size cap is applied to audit logs based on your subscription plan
+- **Automatic Cleanup**: When the storage limit is reached, the oldest logs are automatically removed to make space for new entries.
 
 ### Tyk Cloud MDCB Supported versions
 
@@ -2831,4 +2876,3 @@ Can do everything within the scope of the one team they have access to.
 **Team Member**
 
 Can only view and manage the overview, environments and deployments.
-

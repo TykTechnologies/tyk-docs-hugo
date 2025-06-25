@@ -8,7 +8,7 @@ description: "API Migration: Converting Tyk Classic APIs to Tyk OAS Format"
 
 ## Overview
 
-From Tyk 5.8.0, you can convert your existing [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic.md" >}}) to the recommended [Tyk OAS API]({{< ref "api-management/gateway-config-tyk-oas" >}}) format.
+From Tyk 5.8.0, you can convert your existing [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic" >}}) to the recommended [Tyk OAS API]({{< ref "api-management/gateway-config-tyk-oas" >}}) format.
 
 The API Migration feature provides a powerful way to convert your existing Tyk Classic API definitions to the newer Tyk OAS format with various options to ensure a smooth transition. We've built support into the Tyk Dashboard's [API Designer]({{< ref "api-management/migrate-from-tyk-classic#using-the-api-designer" >}}) to convert individual Tyk Classic APIs one by one. The Tyk Dashboard API [migrate endpoint]({{< ref "api-management/migrate-from-tyk-classic#using-the-migration-api" >}}) allows you to migrate individual APIs or perform bulk migrations.
 
@@ -171,20 +171,20 @@ There are some differences between the way Tyk Gateway works with Tyk Classic an
     - In Tyk Classic, the Gateway only routes requests matching the regex pattern
     - In Tyk OAS, the Gateway routes all requests matching the pattern structure by default
 
-    Recommended action: Enable the [Validate Request]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware in your migrated Tyk OAS API to maintain the same behavior.
+    Recommended action: Enable the [Validate Request]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}) middleware in your migrated Tyk OAS API to maintain the same behavior.
 
 2. **Location of Mock Response Middleware**
 
-    The position of mock response middleware in the request processing chain [differs between Tyk Classic and Tyk OAS]({{< ref "api-management/traffic-transformation#middleware-execution-order-during-request-processing" >}}):
+    The position of mock response middleware in the request processing chain [differs between Tyk Classic and Tyk OAS]({{< ref "api-management/traffic-transformation/mock-response#middleware-execution-order-during-request-processing" >}}):
 
     - In Tyk Classic, it appears at the start of the request processing chain (before authentication)
     - In Tyk OAS, it appears at the end of the request processing chain
 
-    During migration, the system automatically adds the [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-1" >}}) middleware to endpoints with mock responses to maintain similar behavior. Note, however, that any other middleware configured for that endpoint or at the API level will be applied for the Tyk OAS API (which was not the case for the Tyk Classic API).
+    During migration, the system automatically adds the [ignore authentication]({{< ref "api-management/traffic-transformation/ignore-authentication#ignore-authentication-overview" >}}) middleware to endpoints with mock responses to maintain similar behavior. Note, however, that any other middleware configured for that endpoint or at the API level will be applied for the Tyk OAS API (which was not the case for the Tyk Classic API).
 
 3. **Enhanced Request Validation**
 
-    Tyk OAS uses the more advanced [Validate Request]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware, whereas Tyk Classic is limited to the [Validate JSON]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) middleware. The migration will configure Validate Request to check the request body (as performed by Validate JSON).
+    Tyk OAS uses the more advanced [Validate Request]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}) middleware, whereas Tyk Classic is limited to the [Validate JSON]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-classic" >}}) middleware. The migration will configure Validate Request to check the request body (as performed by Validate JSON).
 
 ## Recommended Migration Strategy
 

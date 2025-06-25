@@ -124,7 +124,7 @@ When Tyk generates an [event]({{< ref "api-management/gateway-events#event-types
 {{< note success >}}
 **Note**  
 
-Circuit breaker events provide different metadata, see [Circuit Breakers]({{< ref "tyk-self-managed#circuit-breakers" >}}) to see what is provided when the `BreakerTripped`, `BreakerReset` or `BreakerTriggered` events are generated.
+Circuit breaker events provide different metadata, see [Circuit Breakers]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers/" >}}) to see what is provided when the `BreakerTripped`, `BreakerReset` or `BreakerTriggered` events are generated.
 {{< /note >}}
 
 ### Using the metadata
@@ -228,7 +228,7 @@ It is very likely that an `AuthFailure` event will fire on the same endpoint mor
 
 ##### Webhook payload
 
-When your webhook event handler is triggered, it will send an HTTP request to the configured target. For HTTP methods that support a request body, for example `POST`, the event handler will process a [Go template]({{< ref "api-management/traffic-transformation#go-templates" >}}) to produce the payload.
+When your webhook event handler is triggered, it will send an HTTP request to the configured target. For HTTP methods that support a request body, for example `POST`, the event handler will process a [Go template]({{< ref "api-management/traffic-transformation/go-templates" >}}) to produce the payload.
 
 If no template is provided in the webhook event handler configuration in the API definition, Tyk Gateway will look for the default file `templates/default_webhook.json`. Any text file accessible to the Gateway can be used to store the Go template to be used by the event handler when constructing the payload.
 
