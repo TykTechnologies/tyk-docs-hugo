@@ -731,7 +731,7 @@ menu:
                 category: Page
                 show: true
               - title: "Content Guide"
-                path: /developer-support/content-guide
+                path: /developer-support/contribution-guides
                 category: Page
                 show: true
               - title: "UI Example: Pill Label shortcode"
