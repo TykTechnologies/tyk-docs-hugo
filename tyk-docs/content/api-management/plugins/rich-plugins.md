@@ -17,7 +17,7 @@ aliases:
   - /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
   - /plugins/supported-languages/rich-plugins/grpc/getting-started-python
   - /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
-  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-
   - /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
   - /plugins/supported-languages/rich-plugins/grpc/custom-auth-python
   - /plugins/supported-languages/rich-plugins/grpc/performance
@@ -1482,7 +1482,7 @@ This guide has explained the key concepts and processes for writing gRPC plugins
 #### What's Next?
 
 - Consult the [Protocol Buffer messages]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) that Tyk Gateway uses when making a request to a gRPC server.
-- Visit tutorial guides that explain how to implement a [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotne" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotnet" >}}) gRPC server.
+- Visit tutorial guides that explain how to implement a [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotnet" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotnet" >}}) gRPC server.
 - Visit our [plugins hub]({{< ref "api-management/plugins/overview#plugins-hub" >}}) to explore further gRPC development examples and resources.
 
 ---
