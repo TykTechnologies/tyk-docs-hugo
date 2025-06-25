@@ -2,7 +2,11 @@ name: Probe Engineer handler
 
 on:
   issue_comment:
-    types: [created]          
+    types: [created]     
+  issues:
+    types: [opened] #[opened, labeled]
+  pull_request:
+    types: [opened] #[opened , labeled]
 
 # Define permissions needed for the workflow
 permissions:
