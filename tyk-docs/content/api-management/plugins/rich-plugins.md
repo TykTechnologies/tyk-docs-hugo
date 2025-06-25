@@ -138,7 +138,8 @@ type CoProcessObject struct {
 
 `Coprocess.Dispatcher` describes a very simple interface for implementing the dispatcher logic, the required methods are: `Dispatch`, `DispatchEvent` and `Reload`.
 
-`Dispatch` accepts a pointer to a `struct CoProcessObject` (as described above) and must return an object of the same type. This method will be called for every configured hook on every request. Traditionally this method will perform a single function call on the target language side (like `Python_DispatchHook` in `coprocess_python`), and the corresponding logic will be handled from there (mostly because different languages have different ways of loading, referencing or calling middlewares).
+`Dispatch` accepts a pointer to a struct `CoProcessObject` (as described above) and must return an object of the same type. This method is called for every configured hook on every request.
+Typically, it performs a single function call in the target language (such as `Python_DispatchHook` in `coprocess_python`), where the corresponding logic is handled—mainly because different languages have different ways of loading, referencing, or calling middleware.
 
 `DispatchEvent` provides a way of dispatching Tyk events to a target language. This method doesn't return any variables but does receive a JSON-encoded object containing the event data. For extensibility purposes, this method doesn't use Protocol Buffers, the input is a `[]byte`, the target language will take this (as a `char`) and perform the JSON decoding operation.
 
@@ -146,7 +147,7 @@ type CoProcessObject struct {
 
 ### Coprocess Dispatcher - Hooks
 
-This component is in charge of dispatching your HTTP requests to the custom middlewares. The list, from top to bottom, shows the order of execution. The dispatcher follows the standard middleware chain logic and provides a simple mechanism for "hooking" your custom middleware behavior, the supported hooks are:
+This component is in charge of dispatching your HTTP requests to the custom middleware. The list, from top to bottom, shows the order of execution. The dispatcher follows the standard middleware chain logic and provides a simple mechanism for "hooking" your custom middleware behavior, the supported hooks are:
 
 *   **Pre**: gets executed before the request is sent to your upstream target and before any authentication information is extracted from the header or parameter list of the request. When enabled, this applies to both keyless and protected APIs.
 *   **AuthCheck**: gets executed as a custom authentication middleware, instead of the standard ones provided by Tyk. Use this to provide your own authentication mechanism.
