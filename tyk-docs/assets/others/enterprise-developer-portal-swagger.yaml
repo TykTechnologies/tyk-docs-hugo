@@ -1,7 +1,10 @@
 openapi: 3.1.0
 info:
-  title: Tyk Enterprise Developer Portal Management API
+  title: Tyk Developer Portal
   description: >-
+    
+    <img src="https://tyk.io/docs/img/developer_portal_swagger_image.png" width="963" height="250">
+    
     ## <a name="introduction"></a> Introduction
 
     The Tyk Enterprise Developer Portal Management API offers programmatic
@@ -15,7 +18,7 @@ info:
 
     This API requires an admin authorisation token that is available for admin
     users of the portal in the profile page.
-  version: v1.13.0
+  version: 1.14.0
 servers:
   - url: http://localhost:3001/portal-api
 tags:
@@ -63,6 +66,8 @@ tags:
     description: Posts management
   - name: SSO Profiles
     description: SSO Profiles management
+  - name: Tags
+    description: Tags management
 paths:
   /access_requests:
     get:
@@ -4177,6 +4182,7 @@ paths:
   /webhooks:
     get:
       summary: List all webhooks
+      description: List all webhooks
       operationId: list-webhooks
       tags:
         - Webhooks
@@ -4189,6 +4195,7 @@ paths:
                 $ref: "#/components/schemas/Webhook-index"
     post:
       summary: Create a new webhook
+      description: Create a new webhook
       operationId: create-webhook
       tags:
         - Webhooks
@@ -4215,6 +4222,7 @@ paths:
   /webhooks/{webhook_id}:
     get:
       summary: Get a webhook by ID
+      description: Get a webhook by ID
       operationId: get-webhook
       tags:
         - Webhooks
@@ -4239,6 +4247,7 @@ paths:
           description: Bad request
     put:
       summary: Update a webhook by ID
+      description: Update a webhook by ID
       operationId: update-webhook
       tags:
         - Webhooks
@@ -4270,6 +4279,7 @@ paths:
           description: Bad request
     delete:
       summary: Delete a webhook by ID
+      description: Delete a webhook by ID
       operationId: delete-webhook
       tags:
         - Webhooks
@@ -4295,6 +4305,7 @@ paths:
   /webhooks/{webhook_id}/headers:
     get:
       summary: List all headers for a webhook
+      description: List all headers for a webhook
       operationId: list-webhook-headers
       tags:
         - Webhooks
@@ -4319,6 +4330,7 @@ paths:
           description: Bad request
     post:
       summary: Add a new header to a webhook
+      description: Add a new header to a webhook
       operationId: create-webhook-header
       tags:
         - Webhooks
@@ -4351,6 +4363,7 @@ paths:
   /webhooks/{webhook_id}/headers/{header_id}:
     get:
       summary: Get a header by ID for a specific webhook
+      description: Get a header by ID for a specific webhook
       operationId: get-webhook-header
       tags:
         - Webhooks
@@ -4380,6 +4393,7 @@ paths:
           description: Bad request
     put:
       summary: Update a header by ID for a specific webhook
+      description: Update a header by ID for a specific webhook
       operationId: update-webhook-header
       tags:
         - Webhooks
@@ -4422,6 +4436,7 @@ paths:
           description: Validation error
     delete:
       summary: Delete a header by ID for a specific webhook
+      description: Delete a header by ID for a specific webhook
       operationId: delete-webhook-header
       tags:
         - Webhooks
@@ -5870,6 +5885,15 @@ components:
           type: integer
           description: UID of a user to whom this application will belong
           example: 1
+        Visibility:
+          type: string
+          description: Visibility of this application
+          enum:
+            - personal
+            - team
+            - organisation
+          example: personal
+          default: organisation
       type: object
     Client-ID-attributes:
       properties:
