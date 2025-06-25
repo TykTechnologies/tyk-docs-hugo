@@ -17,7 +17,7 @@ aliases:
   - /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
   - /plugins/supported-languages/rich-plugins/grpc/getting-started-python
   - /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
-  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
   - /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
   - /plugins/supported-languages/rich-plugins/grpc/custom-auth-python
   - /plugins/supported-languages/rich-plugins/grpc/performance
