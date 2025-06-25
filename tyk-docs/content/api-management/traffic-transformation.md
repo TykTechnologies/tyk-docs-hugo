@@ -1,5 +1,5 @@
 ---
-title: "Transform Traffic by using Tyk Middlewares"
+title: "Transform Traffic by using Tyk Middleware"
 date: 2025-02-10
 tags: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "Virtual Endpoints", "Go Templates", "JQ Transforms", "Request Context Variables"]
 description: ""
