@@ -520,7 +520,6 @@ This struct allows you to specify a custom proxy and set the minimum TLS version
 
 Example:
 
-	``` 
 	{
 	  "proxy_url": "http(s)://proxy.url:1234",
 	  "minVersion": "1.0",
@@ -531,7 +530,7 @@ Example:
 	  ],
 	  "insecureSkipVerify": true,
 	  "forceCommonNameCheck": false
-	} ```
+	}
 
 Tyk classic API definition: `proxy.transport`
 
@@ -1416,7 +1415,7 @@ Tyk classic API definition: `version_data.versions..extended_paths.transform_hea
 ContextVariables holds the configuration related to Tyk context variables.
 
 **Field: `enabled` (`boolean`)**
-Enabled enables context variables to be passed to Tyk middleware.
+Enabled enables context variables to be passed to Tyk middlewares.
 
 
 Tyk classic API definition: `enable_context_vars`.
@@ -2067,6 +2066,22 @@ Used when With is set to "xpath".
 
 Tyk classic API definition: `custom_middleware.id_extractor.extractor_config.xpath_expression`.
 
+### **Builder**
+
+Builder OAS builder is responsible for providing methods for building valid OAS object.
+
+### **BuilderOption**
+
+BuilderOption optional parameter should be used to define builder options in declarative way.
+
+### **EndpointBuilder**
+
+EndpointBuilder OAS endpoint builder should be used for building endpoint and binding middlewares to it.
+
+### **EndpointFactory**
+
+EndpointFactory factory method in which endpoint builder should be used.
+
 ### **Allowance**
 
 Allowance describes allowance actions and behaviour.
@@ -2254,7 +2269,7 @@ Tyk classic API definition: `version_data.versions..extended_paths.hard_timeouts
 ### **ExternalOAuth**
 
 ExternalOAuth holds configuration for an external OAuth provider.
-ExternalOAuth support will be deprecated starting from 5.7.0.
+Deprecated: ExternalOAuth support has been deprecated from 5.7.0.
 To avoid any disruptions, we recommend that you use JSON Web Token (JWT) instead,
 as explained in https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/.
 
@@ -2385,6 +2400,12 @@ Source contains the source for the JWT.
 
 
 Tyk classic API definition: `jwt_source`.
+
+**Field: `jwksURIs` (`[]apidef.JWK`)**
+JwksURIs contains a list of whitelisted JWK endpoints.
+
+
+Tyk classic API definition: `jwt_jwks_uris`.
 
 **Field: `signingMethod` (`string`)**
 SigningMethod contains the signing method to use for the JWT.
