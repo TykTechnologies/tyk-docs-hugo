@@ -482,7 +482,7 @@ There are no deprecations in this release.
 #### Release Highlights
 The v1.11.0 release includes the following new features and improvements:
 - New Portal admin UI.
-- Closer to API Parity: APIs for Tags, Blogposts, Product images, Webhooks, and rotate credentials. A total of 23 new endpoints. 
+- Closer to API Parity: APIs for Tags, blog posts, Product images, Webhooks, and rotate credentials. A total of 23 new endpoints.
 - [22 bugs fixed](#fixed)
 - [19 CVEs fixed](#fixed)
 - CSRF protection, new TLS configuration and better recovery link security.

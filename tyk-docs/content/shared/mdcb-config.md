@@ -27,7 +27,7 @@ Type: `int`<br />
 The HTTP port exposes different endpoints for monitoring and debugging MDCB. The default value is 8181.
 Exposed endpoints include:
 * /health - Provides the health status of MDCB.
-* /dataplanes - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
+* /dataplanes - Provides information about the data planes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
 * /debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
 
 ### enable_http_profiler
@@ -134,7 +134,7 @@ Type: `bool`<br />
 
 `EnableHTTPSecureEndpoints` controls the availability of HTTP endpoints for monitoring and debugging MDCB. These endpoints provide critical system information and are disabled by default for security reasons. Access to these endpoints requires a secret, defined in the `security.secret` configuration field.
 Available endpoints include:
-- /dataplanes - Provides information about the dataplanes connected to MDCB.
+- /dataplanes - Provides information about the data planes connected to MDCB.
 - /config - Provides information about the current settings of the MDCB instance in JSON format
 
 ### security.secret

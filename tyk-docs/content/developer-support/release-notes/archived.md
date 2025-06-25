@@ -1091,11 +1091,11 @@ Example:
 [Docs]({{< ref "api-management/external-service-integration" >}})
 
 #### Set custom login pages for portal and dashboard
-If you are using 3-rd party authentification like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
+If you are using 3-rd party authentication like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
 
 [Docs]({{< ref "api-management/external-service-integration" >}})
 
-#### Added new set of APIs for custom dashboard authentification
+#### Added new set of APIs for custom dashboard authentication
 Added new `/admin/sso` endpoint for custom integration. In fact, the same API is used by our own Tyk Identity Broker. 
 
 [Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})

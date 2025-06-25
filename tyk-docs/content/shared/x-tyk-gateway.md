@@ -1009,7 +1009,7 @@ Add specifies headers to be added to the request/response.
 ContextVariables holds the configuration related to Tyk context variables.
 
 **Field: `enabled` (`boolean`)**
-Enabled enables context variables to be passed to Tyk middlewares.
+Enabled enables context variables to be passed to Tyk middleware.
 
 Tyk classic API definition: `enable_context_vars`.
 
