@@ -347,7 +347,7 @@ Fixed an issue where removing an active catalog would cause UI rendering problem
 <details>
 <summary>Theme upload validation</summary>
 
-Fixed an issue where middleware configuration for an API could be corrupted (for example, [Request header transform middleware]({{<ref "api-management/traffic-transformation#request-header-transform" >}})) when settings were changed in Developer Portal. This was due to a misalignment between Dashboard and Developer Portal in their interpretation of the API definition and has now been corrected.
+Fixed an issue where uploading themes containing nested theme directories would corrupt the original theme, which caused theme installation failures. This has been resolved by implementing validation to detect and prevent nested theme uploads.
 
 </details>
 </li>
