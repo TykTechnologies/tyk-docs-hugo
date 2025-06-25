@@ -2091,8 +2091,6 @@ This input adds the following metadata fields to each message:
 
 All existing message headers, including nested headers prefixed with the key of their respective parent, can be added.
 
-You can access these metadata fields using [function interpolation](/docs/configuration/interpolation#bloblang-queries).
-
 #### Fields
 
 ##### urls
