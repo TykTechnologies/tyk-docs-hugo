@@ -4297,7 +4297,7 @@ max_elapsed_time: 1m
 max_elapsed_time: 1h
 ```
 
-## amqp_0_9
+### amqp_0_9
 
 Sends messages to an AMQP (0.91) exchange. AMQP is a messaging protocol used by various message brokers, 
 including RabbitMQ.Connects to an AMQP (0.91) queue. AMQP is a messaging protocol used by various message brokers, 
@@ -4368,9 +4368,6 @@ already exists then the declaration passively verifies that the settings match.
 
 TLS is automatic when connecting to an `amqps` URL, but custom settings can be enabled in the `tls` section.
 
-The fields **key**, **exchange** and **type** can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries).
-
-
 #### Fields
 
 ##### urls
@@ -4396,7 +4393,10 @@ urls:
 
 ##### exchange
 
-An AMQP exchange to publish to. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+An AMQP exchange to publish to. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 
@@ -4431,56 +4431,80 @@ Default: `true`
 
 ##### key
 
-The binding key to set for each message. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+The binding key to set for each message. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
 
 ##### type
 
-The type property to set for each message. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+The type property to set for each message. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
 
 ##### content_type
 
-The content type attribute to set for each message. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+The content type attribute to set for each message. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `application/octet-stream`
 
 ##### content_encoding
 
-The content encoding attribute to set for each message. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+The content encoding attribute to set for each message. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
 
 ##### correlation_id
 
-Set the correlation ID of each message with a dynamic interpolated expression. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+Set the correlation ID of each message with a dynamic interpolated expression. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
 
 ##### reply_to
 
-Carries response queue name - set with a dynamic interpolated expression. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+Carries response queue name - set with a dynamic interpolated expression. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
 
 ##### expiration
 
-Set the per-message TTL. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+Set the per-message TTL. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
 
 ##### message_id
 
-Set the message ID of each message with a dynamic interpolated expression. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+Set the message ID of each message with a dynamic interpolated expression. 
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
@@ -4488,14 +4512,20 @@ Default: `""`
 ##### user_id
 
 Set the user ID to the name of the publisher. If this property is set by a publisher, its value must be equal to the name 
-of the user used to open the connection. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+of the user used to open the connection.
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
 
 ##### app_id
 
-Set the application ID of each message with a dynamic interpolated expression. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+Set the application ID of each message with a dynamic interpolated expression.
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
@@ -4515,7 +4545,10 @@ Default: `[]`
 
 ##### priority
 
-Set the priority of each message with a dynamic interpolated expression. This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+Set the priority of each message with a dynamic interpolated expression.
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `string`
 Default: `""`
