@@ -1653,7 +1653,7 @@ We've introducing a [Rate Limit Smoothing]({{< ref "api-management/rate-limit#ra
 
 ##### Fixed MDCB Issue Relating To Replication Of Custom Keys To Dataplanes
 
-Resolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
+Resolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to data planes. The issue impacted both key data and associated quotas, in the following versions:
 
 - 5.0.4 to 5.0.12
 - 5.1.1 and 5.1.2
@@ -1764,9 +1764,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Resolved an issue where changes to custom keys were not properly replicated to dataplanes</summary>
+<summary>Resolved an issue where changes to custom keys were not properly replicated to data planes</summary>
 
-Resolved a critical issue affecting MDCB environments, where changes to custom keys made via the dashboard were not properly replicated to dataplanes. This affected both the key data and associated quotas. This issue was present in versions:
+Resolved a critical issue affecting MDCB environments, where changes to custom keys made via the dashboard were not properly replicated to data planes. This affected both the key data and associated quotas. This issue was present in versions:
 - 5.0.4 to 5.0.12
 - 5.1.1 and 5.1.2
 - 5.2.0 to 5.2.6
@@ -3471,10 +3471,7 @@ base image with the gateway build environment, enabling seamless plugin function
 <details>
 <summary>Removed unused packages from plugin compiler image</summary>
 
-Removed several unused packages from the plugin compiler image. The packages include: docker, buildkit, ruc, sqlite,
-curl, wget, and other build tooling. The removal was done in order to address invalid CVE reporting, none of the removed
-dependencies are used to provide plugin compiler functionality.
-
+Removed several unused packages from the plugin compiler image. The packages include: docker, buildkit, ruc, sqlite, curl, wget, and other build tooling. The removal was done in order to address invalid CVE reporting, none of the removed dependencies are used to provide plugin compiler functionality.
 </details>
 </li>
 </ul>
@@ -3692,8 +3689,7 @@ with Redis v7.x.
 
 ##### Gateway and Component Upgrades
 
-We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power and security of Go
-1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved
+We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power and security of Go 1.21, upgrading [Sarama](https://github.com/Shopify/sarama), a widly used Kafka client in Go, to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved
 functionality and performance to support your evolving needs seamlessly.
 
 #### Downloads
@@ -4029,11 +4025,7 @@ where the converter failed to accurately interpret and represent these structure
 <details>
 <summary>GQL Playground issues related to encoding of request response</summary>
 
-An issue was identified where the encoding from the GQL upstream cache was causing readability problems in the response
-body. Specifically, the upstream GQL cache was utilizing brotli compression and not respecting the Accept-Encoding
-header. Consequently, larger response bodies became increasingly unreadable for the GQL engine due to compression,
-leading to usability issues for users accessing affected content. The issue has now been fixed by adding the brotli
-encoder to the GQL engine.
+An issue was identified where the encoding from the GQL upstream cache was causing readability problems in the response body. Specifically, the upstream GQL cache was utilizing [brotli compression](https://www.ietf.org/rfc/rfc7932.txt) and not respecting the Accept-Encoding header. Consequently, larger response bodies became increasingly unreadable for the GQL engine due to compression, leading to usability issues for users accessing affected content. The issue has now been fixed by adding the brotli encoder to the GQL engine.
 
 </details>
 </li>
@@ -4282,7 +4274,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <details>
 <summary>Python version not always correctly autodetected</summary>
 
-Fixed an issue where Tyk was not autodetecting the installed Python version if it had multiple digits in the minor version (e.g. Python 3.11). The regular expression was updated to correctly identify Python versions 3.x and 3.xx, improving compatibility and functionality.
+Fixed an issue where Tyk was not auto-detecting the installed Python version if it had multiple digits in the minor version (e.g. Python 3.11). The regular expression was updated to correctly identify Python versions 3.x and 3.xx, improving compatibility and functionality.
 </details>
 </li>
  <li>
@@ -4575,7 +4567,7 @@ Fixed a bug where the Gateway did not correctly close idle upstream connections 
 </li>
 <li>
 <details>
-<summary>Extra chunked transfer encoding was uncessarily added to rawResponse analytics</summary>
+<summary>Extra chunked transfer encoding was unnecessarily added to rawResponse analytics</summary>
 
 Removed the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
 </details>
@@ -4585,7 +4577,7 @@ Removed the extra chunked transfer encoding that was added unnecessarily to `raw
 <summary>Reponse body transformation not execute when Persist GraphQL middleware used</summary>
 
 Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "api-management/graphql#persisting-graphql-queries" >}}) was used in combination with [Response Body Transform]({{< ref "api-management/traffic-transformation/response-body" >}}), the response's body transformation was not being executed.
-{{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
+{{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middleware">}}
 </details>
 </li>
 <li>
@@ -4721,7 +4713,7 @@ Added *OpenTelemetry* support for GraphQL. This is activated by setting [opentel
 </li>
 <li>
 <details>
-<summary>Add support to configure granual control over cache timeout at the endpoint level</summary>
+<summary>Add support for configuring granular control over cache timeouts at the endpoint level</summary>
 
 Added a new [timeout option]({{< ref "api-management/response-caching#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}), offering granular control over cache timeout at the endpoint level.
 </details>
@@ -5062,7 +5054,7 @@ APIs from MDCB.
 #### Release Highlights
 
 Resolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly
-replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
+replicated to data planes. The issue impacted both key data and associated quotas, in the following versions:
 
 - 5.0.4 to 5.0.12
 - 5.1.1 and 5.1.2
@@ -5082,10 +5074,10 @@ changelog for recommended actions.
 <ul>
 <li>
 <details>
-<summary>Resolved an issue where changes to custom keys were not properly replicated to dataplanes</summary>
+<summary>Resolved an issue where changes to custom keys were not properly replicated to data planes</summary>
 
 Resolved a critical issue affecting MDCB environments, where changes to custom keys made via the dashboard were not
-properly replicated to dataplanes. This affected both the key data and associated quotas. This issue was present in
+properly replicated to data planes. This affected both the key data and associated quotas. This issue was present in
 versions:
 
 - 5.0.4 to 5.0.12
@@ -5346,7 +5338,7 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 4.3 adds two important features that improve security settings for GraphQL APIs in Tyk.
 
 1. Ability to turn on/off introspection - this feature allows much more control over what consumers are able to do when interacting with a GraphQL API. In cases where introspection is not desirable, API managers can now disallow it. The setting is done on API key level, which means API providers will have very granular control over who can and who cannot introspect the API.
-2. Support for allow list in field-based permissions - so far Tyk was offering field-based permissions as a “block list” only. That meant that any new field/query added to a graph was by default accessible for all consumers until API manager explicitly blocked it on key/policy level. Adding support for “allow list” gives APi managers much more control over changing schemas and reduces the risk of unintentionally exposing part of the graph that are not ready for usage. See [Introspection]({{< ref "api-management/graphql#introspection" >}}) for more details.
+2. Support for allow list in field-based permissions - so far Tyk was offering field-based permissions as a “block list” only. That meant that any new field/query added to a graph was by default accessible for all consumers until API manager explicitly blocked it on key/policy level. Adding support for “allow list” gives API managers much more control over changing schemas and reduces the risk of unintentionally exposing part of the graph that are not ready for usage. See [Introspection]({{< ref "api-management/graphql#introspection" >}}) for more details.
 
 
 #### Changelog
@@ -5509,7 +5501,7 @@ Added support for Kafka as a data source in Universal Data Graph. Configuration 
 - Adding a way to defining the base GraphQL entity via @key directive
 - It is now possible to define an extension for a type in a subgraph that does not define the base type.
 - Added support for the Request Body Transform middleware, for the new Tyk OAS API Definition
-- Session lifetime now can be controled by Key expiration, e.g. key removed when it is expired. Enabled by setting `session_lifetime_respects_key_expiration` to `true`
+- Session lifetime now can be controlled by Key expiration, e.g. key removed when it is expired. Enabled by setting `session_lifetime_respects_key_expiration` to `true`
 ###### Changed
 - Generate API ID when API ID is not provided while creating API. 
 - Updated the Go plugin loader to load the most appropriate plugin bundle, honoring the Tyk version, architecture and OS
@@ -5627,7 +5619,7 @@ With release 4.0, users can federate GraphQL APIs that support subscriptions. Fe
 #### Changelog
 
 - Now it is possible to configure GraphQL upstream authentification, in order for Tyk to work with its schema
-- JWT scopes now support array and comma delimeters
+- JWT scopes now support array and comma delimiters
 - Go plugins can be attached on per-endpoint level, similar to virtual endpoints
 
 #### Updated Versions
@@ -5653,7 +5645,7 @@ We've updated the GraphQL functionality of our [Universal Data Graph]({{< ref "a
 
 Queries are now possible via WebSockets and Subscriptions are coming in the next Release (3.3.0).
 
-You're also able to configure [upstream Headers dynamically]({{< ref "api-management/data-graph#header-forwarding" >}}), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
+You're also able to configure [upstream Headers dynamically]({{< ref "api-management/data-graph#header-forwarding" >}}), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to access protected upstreams. 
 
 We've added an easy to use URL-Builder to make it easier for you to inject object fields into REST API URLs when stitching REST APIs within UDG.
 
@@ -5757,7 +5749,7 @@ We have bumped our major Tyk Gateway version from 2 to 3, a long overdue change 
 Importantly, such a big change in versions does not mean that we going to break backward compatibility. More-over we are restructuring our internal release strategy to guarantee more stability and to allow us to deliver all Tyk products at a faster pace. We aim to bring more clarity to our users on the stability criteria they can expect, based on the version number.
 Additionally we are introducing Long Term Releases (also known as LTS).
 
-Read more about this changes in our blogpost: https://tyk.io/blog/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
+Read more about this changes in our blog post: https://tyk.io/blog/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
 
 
 ##### Universal Data Graph and GraphQL
@@ -5768,7 +5760,8 @@ In addition to this you can also use Tyk’s integrated GraphQL engine to build 
 
 All this without even have to build your own GraphQL server. If you have existing REST APIs all you have to do is configure the UDG and Tyk has done the work for you.
 
-With the Universal Data Graph Tyk becomes your central integration point for all your internal as well as external APIs. In addition to this, the UDG benefits from all existing solutions that already come with your Tyk installation. That is, your Data Graph will be secure from the start and there’s a large array of out of the box middlewares you can build on to power your Graph.
+With the Universal Data Graph (UDG), Tyk becomes the central integration point for all your internal and external APIs.
+It also benefits from the full set of capabilities included with your Tyk installation—meaning your data graph is secure from the start and can take advantage of a wide range of out-of-the-box middleware to power your graph.
 
 Read more about the [GraphQL]({{< ref "api-management/graphql" >}}) and [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}})
 
@@ -5833,7 +5826,7 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 #### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-support/release-notes/archived#290-release-notes" >}})
+If you are upgrading from version 2.8, please [read this guide]({{< ref "developer-support/release-notes/archived#290-release-notes" >}})
 
 ## Further Information
 
