@@ -804,21 +804,13 @@ menu:
             category: Page
             show: True
           - title: "Organizations"
-            category: Directory
+            category: Page
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
             show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
-                category: Page
-                show: True
           - title: "Users"
-            category: Directory
+            category: Page
             show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
-                category: Page
-                show: True
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
           - title: "Invite Codes"
             path: /portal/api-consumer/invite-codes
             category: Page
@@ -840,7 +832,6 @@ menu:
           show: True
           menu:
           - title: "Overview"
-            path: /portal/api-provider
             category: Page
             show: True
           - title: "Provisioning Request"
