@@ -72,9 +72,12 @@ menu:
           show: True
       - title: "Tyk API Definitions"
         category: Directory
-        path: /api-management/gateway-config-introduction
         show: True
         menu:
+          - title: "Overview"
+            path: /api-management/gateway-config-introduction
+            category: Page
+            show: True
           - title: "Tyk OAS"
             path: /api-management/gateway-config-tyk-oas
             category: Page
@@ -176,10 +179,13 @@ menu:
         category: Page
         show: True
       - title: "Advanced Protocols"
-        path: /advanced-configuration/other-protocols
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /advanced-configuration/other-protocols
+          category: Page
+          show: True
         - title: "TCP Proxy"
           path: /key-concepts/tcp-proxy
           category: Page
@@ -225,10 +231,13 @@ menu:
             category: Page
             show: True
       - title: "Traffic Transformation"
-        path: /api-management/traffic-transformation
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /api-management/traffic-transformation
+          category: Page
+          show: True
         - title: "SOAP To REST"
           path: /advanced-configuration/transform-traffic/soap-rest
           category: Page
@@ -352,9 +361,12 @@ menu:
         menu:
             - title: "Client Authentication"
               category: Directory
-              path: /api-management/client-authentication
               show: True
               menu:
+              - title: "Overview"
+                path: /api-management/client-authentication
+                category: Page
+                show: True
               - title: "Bearer Tokens"
                 path: /api-management/authentication/bearer-token
                 category: Page
@@ -392,10 +404,13 @@ menu:
                 category: Page
                 show: True
             - title: "Upstream Authentication"
-              path: /api-management/upstream-authentication
               category: Directory
               show: True
               menu:
+              - title: "Overview"
+                path: /api-management/upstream-authentication
+                category: Page
+                show: True
               - title: "Auth Token"
                 path: /api-management/upstream-authentication/auth-token
                 category: Page
@@ -449,10 +464,13 @@ menu:
             category: Page
             show: True
           - title: "Tyk Open Source"
-            path: /tyk-open-source
             category: Directory
             show: True
             menu:
+            - title: "Overview"
+              path: /tyk-open-source
+              category: Page
+              show: True
             - title: "Quick Start"
               path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
               category: Page
@@ -462,10 +480,13 @@ menu:
               category: Page
               show: True
           - title: "Tyk Self Managed"
-            path: /tyk-self-managed
             category: Directory
             show: True
             menu:
+            - title: "Overview"
+              path: /tyk-self-managed
+              category: Page
+              show: True
             - title: "Quick Start"
               path: /getting-started/quick-start
               category: Page
@@ -718,10 +739,13 @@ menu:
             category: Page
             show: True
           - title: "Docs Contribution"
-            path: /developer-support/contributing
             category: Directory
             show: True
             menu:
+              - title: "Overview"
+                path: /developer-support/contributing
+                category: Page
+                show: True
               - title: "UI Example: Pill Label shortcode"
                 path: /ui-examples/test-pill-label
                 category: Page
@@ -768,18 +792,29 @@ menu:
         show: True
         menu:
         - title: "Manage API Consumer"
-          path: /portal/api-consumer
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /portal/api-consumer
+            category: Page
+            show: True
           - title: "Organizations"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
             category: Directory
             show: True
+            menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
+                category: Page
+                show: True
           - title: "Users"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
             category: Directory
             show: True
+            menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
+                category: Page
+                show: True
           - title: "Invite Codes"
             path: /portal/api-consumer/invite-codes
             category: Page
@@ -797,10 +832,13 @@ menu:
         show: True
         menu:
         - title: "Manage API Access"
-          path: /portal/api-provider
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /portal/api-provider
+            category: Page
+            show: True
           - title: "Provisioning Request"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
             category: Page
@@ -830,10 +868,13 @@ menu:
           category: Page
           show: True
         - title: "Customization"
-          path: /portal/customization
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /portal/customization
+            category: Page
+            show: True
           - title: "Themes"
             path: /portal/customization/themes
             category: Page
@@ -1110,10 +1151,13 @@ menu:
         path: /ai-management/overview
         show: True
       - title: "MCPs"
-        path: /ai-management/mcps/overview
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /ai-management/mcps/overview
+            category: Page
+            show: True
           - title: "API to MCP"
             category: Page
             path: /ai-management/mcps/api-to-mcp
@@ -1127,10 +1171,13 @@ menu:
             path: /ai-management/mcps/tyk-docs-mcp
             show: True
       - title: "AI Studio"
-        path: /ai-management/ai-studio/overview
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /ai-management/ai-studio/overview
+            category: Page
+            show: True
           - title: "Introduction"
             category: Directory
             show: True
