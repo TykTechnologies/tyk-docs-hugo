@@ -4182,7 +4182,7 @@ paths:
   /webhooks:
     get:
       summary: List all webhooks
-      description: List all webhooks
+      description: Retrieves all configured webhooks.
       operationId: list-webhooks
       tags:
         - Webhooks
@@ -4195,7 +4195,7 @@ paths:
                 $ref: "#/components/schemas/Webhook-index"
     post:
       summary: Create a new webhook
-      description: Create a new webhook
+      description: Creates a new webhook configuration.
       operationId: create-webhook
       tags:
         - Webhooks
@@ -4222,7 +4222,7 @@ paths:
   /webhooks/{webhook_id}:
     get:
       summary: Get a webhook by ID
-      description: Get a webhook by ID
+      description: Retrieves a webhook using its unique identifier.
       operationId: get-webhook
       tags:
         - Webhooks
@@ -4247,7 +4247,7 @@ paths:
           description: Bad request
     put:
       summary: Update a webhook by ID
-      description: Update a webhook by ID
+      description: Updates an existing webhook's configuration using its unique identifier.
       operationId: update-webhook
       tags:
         - Webhooks
@@ -4279,7 +4279,7 @@ paths:
           description: Bad request
     delete:
       summary: Delete a webhook by ID
-      description: Delete a webhook by ID
+      description: Removes a webhook using its unique identifier.
       operationId: delete-webhook
       tags:
         - Webhooks
@@ -4305,7 +4305,7 @@ paths:
   /webhooks/{webhook_id}/headers:
     get:
       summary: List all headers for a webhook
-      description: List all headers for a webhook
+      description: Retrieves all headers for a specific webhook.
       operationId: list-webhook-headers
       tags:
         - Webhooks
@@ -4330,7 +4330,7 @@ paths:
           description: Bad request
     post:
       summary: Add a new header to a webhook
-      description: Add a new header to a webhook
+      description: Adds a new header to an existing webhook.
       operationId: create-webhook-header
       tags:
         - Webhooks
@@ -4363,7 +4363,7 @@ paths:
   /webhooks/{webhook_id}/headers/{header_id}:
     get:
       summary: Get a header by ID for a specific webhook
-      description: Get a header by ID for a specific webhook
+      description: Retrieves a specific header from a webhook.
       operationId: get-webhook-header
       tags:
         - Webhooks
@@ -4393,7 +4393,7 @@ paths:
           description: Bad request
     put:
       summary: Update a header by ID for a specific webhook
-      description: Update a header by ID for a specific webhook
+      description: Updates an existing header in a webhook.
       operationId: update-webhook-header
       tags:
         - Webhooks
@@ -4436,7 +4436,7 @@ paths:
           description: Validation error
     delete:
       summary: Delete a header by ID for a specific webhook
-      description: Delete a header by ID for a specific webhook
+      description: Removes a header from a webhook.
       operationId: delete-webhook-header
       tags:
         - Webhooks
