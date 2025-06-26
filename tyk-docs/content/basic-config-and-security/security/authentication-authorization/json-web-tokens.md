@@ -143,9 +143,17 @@ In step 6, now that Authentication is complete and an internal session has been 
 
 - check for the value in the policy claim within the JWT (identified by the value stored in `policyFieldName`)
 - use this to identify the Tyk Security Policy (or policies) to be applied to the request
-    - if there is no policy mapped, then the `defaultPolicy` will be used
+    - if there is no direct policy mapping, then the `defaultPolicy` will be used
 - apply the identified policies to the session, configuring access rights, rate limits and usage quota 
 
+
+### Session Updates
+
+When a JWT's claims change (for example, configuring different scopes or policies), Tyk will update the session with the new policies on the next request made with the token.
+
+### Missing policies
+
+If a policy Id is mapped to a session, but there is no policy with that Id, Tyk will fail safe and reject the request returning the `HTTP 403 Forbidden` response with `Key not authorized: no matching policy`. Tyk Gateway will also log the error: `Policy ID found is invalid!`.
 
 ## Configuring your API to use JWT authentication
 
@@ -303,6 +311,10 @@ Due to the nature of distributed systems it is expected that, despite best effor
 
 You can optionally configure a maximum permissable difference between the timestamp in the token's validity claims and Tyk's clock, to allow for these scenarios. Each can be independently configured or omitted from the API configuration as required. The permissable skews are configured in seconds.
 
+- **expiresAtValidationSkew** allows recently expired tokens to still be considered valid. This is useful when the token issuer's clock is slightly behind Tyk's clock.
+- **issuedAtValidationSkew** allows tokens that claim to be issued slightly in the future to be valid. This helps when the token issuer's clock is slightly ahead of Tyk's clock.
+- **notBeforeValidationSkew** allows tokens that claim to become valid slightly in the future to be valid now. This also helps when the token issuer's clock is ahead of Tyk's clock.
+
 ```yaml
 x-tyk-api-gateway:
   server:
@@ -324,13 +336,20 @@ Tyk creates an internal [session object]({{< ref "api-management/policies#what-i
 
 In order that this session can be correctly associated with the authenticated user, Tyk must extract a unique identity from the token.
 
-Tyk follows a specific priority order when extracting identity from a JWT:
+Tyk follows a specific priority order when extracting identity from a JWT. If an empty identity is found, Tyk will move to the next step:
 
-- first it checks the standard Key ID header (`kid`) in the JWT
-- if `kid` is not present or if `skipKid` is enabled, Tyk looks for the subject identity claim (identified by the value stored in `identityBaseField`) which allows API administrators to designate any JWT claim as the identity source (e.g., user_id, email, etc.).
-- if neither of the above yields a valid identity, Tyk falls back to the [Registered claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2") `sub`, which is the JWT specification's recommended claim for subject identity
+1. the standard Key ID header (`kid`) in the JWT (unless `skipKid` is enabled)
+2. the subject identity claim identified by the value stored in `identityBaseField` (which allows API administrators to designate any JWT claim as the identity source (e.g., user_id, email, etc.).
+3. the [Registered claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2") `sub` (which is the JWT specification's recommended claim for subject identity)
 
-In this example, `skipKid` has been set to `true`, so Tyk will use the custom claim `user_id` that is declared in the `identityBaseField` as the identity for the session object (this is stored directly in the `Alias` field and used to generate a unique Id stored in the `keyID` field within the [session object]({{< ref "api-management/policies#session-object" >}})).
+When an identity has been determined, it is stored in the session object in three locations:
+- in the `Alias` field
+- it is used to generate a hashed session Id stored in the `keyID` field
+- in the session metadata as `TykJWTSessionID`
+
+Note that session objects can be cached to improve performance, so the identity extraction is only performed on the first request with a JWT, or when the cache is refreshed.
+
+In this example, `skipKid` has been set to `true`, so Tyk checks the `identityBaseField` and determines that the value in the custom claim `user_id` within the JWT should be used as the identity for the session object.
 
 ```yaml
 x-tyk-api-gateway:
@@ -344,22 +363,21 @@ x-tyk-api-gateway:
 
 #### Identifying the Tyk policies to be applied
 
-Security Policies are applied to the session object to configure authorization for the request.
+[Security Policies]({{< ref "api-management/policies" >}}) are applied (or mapped) to the session object to configure authorization for the request. Policies must be [registered]({{< ref "api-management/policies#how-you-can-create-policies" >}}) with Tyk, such that they have been allocated a unique *Tyk Policy Id*.
 
-You **must** configure one or more *default policies* that will be applied if no specific policies are identified in the JWT claims. These are configured using the `defaultPolicies` field in the API definition, which accepts a list of policy Ids. Note that you must [create the policies]({{< ref "api-management/policies#how-you-can-create-policies" >}}) (to obtain their policy Id) before you can add them to the API definition.
+Tyk supports three different types of policy mapping, which are applied in this priority order:
 
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      securitySchemes:
-        jwtAuth:
-          defaultPolicies:
-            - 685a8af28c24bdac0dc21c28
-            - 685bd90b8c24bd4b6d79443d
-```
+1. Direct policy mapping
+2. Scope policy mapping
+3. Default policy mapping
 
-You can optionally specify the policies to be applied to the session via the *policy claim* in the JWT. This is a [Private Claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.3) and can be anything you want, but typically we recommend the use of `pol`. If you do not want to use the *default policies* then you must instruct Tyk where to look for the policy claim by configuring the `policyFieldName` field in the API definition.
+Note that, whilst a *default policy* must be configured for each API using JWT Auth, this will only be applied if there are no policies mapped in step 1 or 2. If *scope policies* are activated, these will be applied on top of the previously applied direct policies as explained in more detail in the section on [combining policies]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#combining-policies" >}}).
+
+##### Direct policies
+
+You can optionally specify policies to be applied to the session via the *policy claim* in the JWT. This is a [Private Claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.3) and can be anything you want, but typically we recommend the use of `pol`. You must instruct Tyk where to look for the policy claim by configuring the `policyFieldName` field in the API definition.
+
+In this example, Tyk has been configured to check the `pol` claim in the JWT to find the *Policy Ids* for the policies to be applied to the session object:
 
 ```yaml
 x-tyk-api-gateway:
@@ -376,9 +394,24 @@ In the JWT, you should then provide the list of policy Ids as an array of values
   "pol": ["685a8af28c24bdac0dc21c28", "685bd90b8c24bd4b6d79443d"]
 ```
 
-##### Advanced policy mapping
+##### Default policies
 
-Registering the policy Ids in the IdP that issues JWTs may not provide the flexibility required, so Tyk supports a more advanced approach where policies are applied based upon *scopes* declared in the JWT. This keeps separation between the IdP and Tyk-specific concepts.
+You **must** configure one or more *default policies* that will be applied if no specific policies are identified in the JWT claims. These are configured using the `defaultPolicies` field in the API definition, which accepts a list of policy Ids.
+
+```yaml
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          defaultPolicies:
+            - 685a8af28c24bdac0dc21c28
+            - 685bd90b8c24bd4b6d79443d
+```
+
+##### Scope policies
+
+Directly mapping policies to APIs relies upon the sharing of Tyk Policy Ids with the IdP (so that they can be included in the JWT) and may not provide the flexibility required. Tyk supports a more advanced approach where policies are applied based upon *scopes* declared in the JWT. This keeps separation between the IdP and Tyk-specific concepts, and supports much more flexible configuration.
 
 Within the JWT, you identify a Private Claim that will hold the authorization (or access) scopes for the API. You then provide, within that claim, a list of *scopes*. In your API definition, you configure the `scopes.claimName` to instruct Tyk where to look for the scopes and then you declare a mapping of scopes to policies within the `scopes.scopeToPolicyMapping` object.
 
@@ -390,145 +423,237 @@ x-tyk-api-gateway:
         jwtAuth:
           scopes:
             scopeToPolicyMapping:
-              - scope: read-only
+              - scope: read:users
                 policyId: 685bd90b8c24bd4b6d79443d
-              - scope: read-write
+              - scope: write:users
                 policyId: 685a8af28c24bdac0dc21c28
             claimName: accessScopes
 ```
 
-In this example, Tyk will check the `accessScopes` claim within the incoming JWT and apply the appropriate policy if that claim contains the value `read-only` or `read-write`. If neither scope is declared in the claim, or the claim is missing, then the default policy will be applied.
+In this example, Tyk will check the `accessScopes` claim within the incoming JWT and apply the appropriate policy if that claim contains the value `read:users` or `write:users`. If neither scope is declared in the claim, or the claim is missing, then the default policy will be applied.
 
-The claim value within the JWT could be any of the following:
+Multiple scopes can be declared within a JWT by setting the value of the claim in any of four configurations:
 
-- a string with space delimited list of values (by standard)
-- a slice of strings
-- a string with space delimited list of values inside a nested key
-- a slice of strings inside a nested key
-  
-If there is a nested key, then you must use dot notation in the value configured for `claimName`. For example, if `scope2` is a slice of strings or list of values nested within `scope2`, then you would set `claimName: scope1.scope2`.
+- a string with space delimited list of values (by standard)<br>
+    `"permissions": "read:users write:users"`
+- an array of strings<br>
+    `"permissions": ["read:users", "write:users"]`
+- a string with space delimited list of values inside a nested key<br>
+    `"permissions": { "access": "read:users write:users" }`
+- an array of strings inside a nested key<br>
+    `"permissions": { "access": ["read:users", "write:users"] }`
+
+If there is a nested key then you must use dot notation in the value configured for `claimName` so, for the first two examples above, the `claimName` should be set to `permissions` whilst for the the two nested examples you would use `permissions.access`.
+
+This example of a fragment of a JWT, if provided to an API with the configuration above, will cause Tyk to apply both policies to the session object:
+
+```json
+{
+  "sub": "1234567890",
+  "name": "Alice Smith",
+  "accessScopes": ["read:users", "write:users"]
+}
+```
 
 ##### Combining policies
 
-Where multiple policies will be applied to a key (for example, if several scopes are declared in the JWT claim, or if you set multiple *default policies*) it's important when creating those policies to ensure that they do not conflict with each other. Tyk will apply OR logic when combining policies.
+Where multiple policies are mapped to a session (for example, if several scopes are declared in the JWT claim, or if you set multiple *default policies*) Tyk will apply all the matching policies to the request, combining their access rights and using the most permissive rate limits and quotas. It's important when creating those policies to ensure that they do not conflict with each other.
 
-We recommend the use of [partitioned policies]({{< ref "api-management/policies#partitioned-policies" >}}) for selective control of access rights and usage limits to an API. All policies should have `per_api` set to `true` to ensure that their configuration is not applied universally and shouldn't have the same `API ID` in access rights.
+Policies are combined as follows:
+
+1. Apply direct mapped policies declared via `policyFieldName`
+2. Apply scope mapped policies declared in `scopeToPolicyMapping` based upon scopes in the JWT
+3. If no policies have been applied in steps 1 or 2, apply the default policies from `defaultPolicies`
+
+When multiple policies are combined the following logic is applied:
+
+- **access rights** A user gets access to an endpoint if ANY of the applied policies grant access
+- **rate limits** Tyk uses the most permissive values (highest quota, lowest rate limit)
+- **other settings** The most permissive settings from any policy are applied
+
+##### Policy Best Practices
+
+When creating multiple policies that might be applied to the same JWT, we recommend using [partitioned policies]({{< ref "api-management/policies#partitioned-policies" >}}) - policies that control specific aspects of API access rather than trying to configure everything in a single policy.
+
+For example:
+
+- Create one policy that grants read-only access to specific endpoints
+- Create another policy that grants write access to different endpoints
+- Create a third policy that sets specific rate limits
+
+To ensure these policies work correctly when combined:
+
+- Set `per_api` to `true` in each policy. This ensures that the policy's settings only apply to the specific APIs listed in that policy, not to all APIs globally.
+- Avoid listing the same `API ID` in multiple policies with conflicting settings. Instead, create distinct policies with complementary settings that can be safely combined.
+
 
 ### Using Tyk Classic APIs
 
 As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), you can select JSON Web Token authentication using the `use_jwt` option. Tyk Classic APIs do not natively support multiple JWKS endpoints, though a [custom authentication plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}) could be used to implement this functionality.
 
-
 ## Split Token Flow
 
-OAuth2, OIDC, and their foundation, JWT, have been industry standards for many years and continue to evolve, particularly with the iterative improvements in the OAuth RFC, aligning with FHIR and Open Banking principles. The OAuth flow remains a dominant approach for secure API access.
-
-In the OAuth flow, two types of access tokens are commonly used: opaque and JWT (more precisely, JWS). However, the use of JWTs has sparked debates regarding security, as JWTs can leak information when base64 decoded. While some argue that JWTs should not contain sensitive information, others consider JWTs inherently insecure for authorization.
-
-The Split Token Flow offers a solution by storing only the JWT signature on the client side while keeping the header and payload on the server side. This approach combines the flexibility of JWTs with the security of opaque tokens, ensuring that sensitive data is not exposed.
-
-### How Tyk Implements Split Token Flow
-
-Tyk API Gateway is well-positioned to broker the communication between the client and the authorization server. It can handle requests for new access tokens, split the JWT, and return only the signature to the client, storing the rest of the token internally.
-
-Here’s how you can implement the Split Token Flow using the OAuth 2.0 client credentials flow:
-
-#### Request a JWT Access Token
-
-```bash
-$ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" \
-https://keycloak-host/auth/realms/tyk/protocol/openid-connect/token \
--d "grant_type=client_credentials" \
--d "client_id=efd952c8-df3a-4cf5-98e6-868133839433" \
--d "client_secret=0ede3532-f042-4120-bece-225e55a4a2d6" -s | jq
-```
-
-This request returns a JWT access token.
-
-#### Split the JWT
+Split Token Flow addresses a fundamental security concern with JWT tokens: when a JWT is stored on a client device (browser, mobile app, etc.), all of its contents can be easily decoded since JWTs are only base64-encoded, not encrypted. This means sensitive information in the payload is potentially exposed.
 
 The JWT consists of three parts:
 
-* Header: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`
-* Payload: `eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJlbWFpbCI6ImhlbGxvQHdvcmxkLmNvbSJ9`
-* Signature: `EwIaRgq4go4R2M2z7AADywZ2ToxG4gDMoG4SQ1X3GJ0`
-
-Using the Split Token Flow, only the signature is returned to the client, while the header and payload are stored server-side by Tyk.
-
 {{< img src="/img/2.10/split_token2.png" alt="Split Token Example" >}}
 
-#### Create a Virtual Endpoint in Tyk
+In the above example you can see that they are:
 
-Create a virtual endpoint or API in Tyk to handle the token request. This endpoint receives the auth request, exchanges credentials with the authorization server, and returns the split token.
+- Header: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`
+- Payload: `eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJlbWFpbCI6ImhlbGxvQHdvcmxkLmNvbSJ9`
+- Signature: `EwIaRgq4go4R2M2z7AADywZ2ToxG4gDMoG4SQ1X3GJ0`
 
-**Example script for the Virtual Endpoint:**
+The Split Token approach provides a solution by:
+
+1. Separating the JWT into its three component parts: header, payload, and signature
+2. Storing only the signature on the client side (which by itself is meaningless)
+3. Keeping the header and payload securely on the server side (in Tyk)
+4. Reconstructing the complete JWT when needed for authentication
+
+This approach combines the benefits of JWTs (rich claims, stateless validation) with the security of opaque tokens (no information disclosure).
+
+### When to Use Split Token Flow
+
+Consider using Split Token Flow when:
+
+- Your JWT payload contains sensitive information that shouldn't be exposed to clients
+- You want to prevent token inspection by malicious actors
+- You need the flexibility of JWT while maintaining higher security
+- You're implementing systems that must meet strict security compliance requirements
+
+### How Split Token Flow Works in Tyk
+
+Here's how the process works with Tyk Gateway:
+
+1. Token Issuance:
+
+    - A `/token` endpoint is configured on Tyk from which the client should request the access token
+    - Tyk requests an access token from an authorization server (e.g., Keycloak) on behalf of the client
+    - The authorization server returns a complete JWT
+    - Tyk intercepts this response through a Virtual Endpoint
+    - Tyk splits the JWT into its components and stores the header and payload in its Redis database
+    - Only the signature portion is returned to the client as an "opaque" token
+
+2. Token Usage:
+
+    - The client makes API requests using only the signature as their access token
+    - Tyk receives the request and looks up the stored header and payload using the signature
+    - Tyk reconstructs the complete JWT and validates it
+    - If valid, Tyk forwards the request to the upstream API with the full JWT
+
+3. Security Benefits:
+
+    - The client never possesses the complete JWT, only a meaningless signature
+    - Token contents cannot be inspected by client-side code or malicious actors
+    - Token validation still occurs using standard JWT verification
+
+
+### Implementing Split Token Flow
+
+#### 1. Create a Virtual Endpoint for Token Issuance
+
+First, create a virtual endpoint in Tyk that will:
+
+- Receive authentication requests from clients
+- Forward these requests to your authorization server
+- Split the returned JWT
+- Store the header and payload in Tyk's storage
+- Return only the signature to the client
+- Here's a simplified implementation:
 
 ```javascript
-function login(request, session, config) {
-    var credentials = request.Body.split("&")
-        .map(function(item, index) {
-            return item.split("=");
-        }).reduce(function(p, c) {
-            p[c[0]] = c[1];
-            return p;
-        }, {});
-
-    var newRequest = {
-        "Headers": {"Content-Type": "application/x-www-form-urlencoded"},
-        "Method": "POST",
-        "FormData": {
-            grant_type: credentials.grant_type,
-            client_id: credentials.client_id,
-            client_secret: credentials.client_secret
-        },
-        "Domain": "https://keycloak-host",
-        "resource": "/auth/realms/tyk/protocol/openid-connect/token",
-    };
-
-    var response = TykMakeHttpRequest(JSON.stringify(newRequest));
-    var usableResponse = JSON.parse(response);
-
-    if (usableResponse.Code !== 200) {
+function splitTokenHandler(request, session, config) {
+    // 1. Forward the client's credentials to the authorization server
+    var authServerResponse = forwardToAuthServer(request);
+    
+    if (authServerResponse.Code !== 200) {
         return TykJsResponse({
-            Body: usableResponse.Body,
-            Code: usableResponse.Code
-        }, session.meta_data)
+            Body: authServerResponse.Body,
+            Code: authServerResponse.Code
+        }, session.meta_data);
     }
-
-    var bodyObj = JSON.parse(usableResponse.Body);
-    var accessTokenComplete = bodyObj.access_token;
-    var signature = accessTokenComplete.split(".")[2];
-
-    log("completeAccessToken: " + accessTokenComplete);
-
-    // Create key inside Tyk
-    createKeyInsideTyk(signature, bodyObj);
-
-    // Override signature
-    bodyObj.access_token = signature;
-    delete bodyObj.refresh_expires_in;
-    delete bodyObj.refresh_token;
-    delete bodyObj.foo;
-
-    var responseObject = {
-        Body: JSON.stringify(bodyObj),
-        Code: usableResponse.Code
-    }
-    return TykJsResponse(responseObject, session.meta_data);
+    
+    // 2. Extract the JWT from the response
+    var responseBody = JSON.parse(authServerResponse.Body);
+    var fullJWT = responseBody.access_token;
+    
+    // 3. Split the JWT into its components
+    var jwtParts = fullJWT.split(".");
+    var header = jwtParts[0];
+    var payload = jwtParts[1];
+    var signature = jwtParts[2];
+    
+    // 4. Store the complete JWT in Tyk's Redis database using the signature as the key
+    // This function would use Tyk's storage API to save the data
+    storeJWTComponents(signature, header, payload, fullJWT);
+    
+    // 5. Modify the response to return only the signature
+    responseBody.access_token = signature;
+    
+    return TykJsResponse({
+        Body: JSON.stringify(responseBody),
+        Code: 200
+    }, session.meta_data);
 }
 ```
 
-This script handles the login process, splits the JWT, and stores the necessary information in Tyk.
+Note that this example includes some level of abstraction for clarity and so is not a full implementation.
 
-Once the setup is complete, you can test the Split Token Flow by making API calls using the opaque token returned by the virtual endpoint. Tyk will validate the token and reconstruct the full JWT for upstream services.
+#### 2. Configure Custom Pre-Auth Plugin
 
-```bash
-$ curl localhost:8080/basic-protected-api/get -H "Authorization: MEw….GJ0"
+Next, create a custom pre-auth plugin that reconstructs the JWT before it reaches the standard Tyk JWT Auth middleware:
+
+```javascript
+function reconstructJWT(request, session, config) {
+    // 1. Extract the signature from the Authorization header
+    var authHeader = request.Headers["Authorization"];
+    var signature = authHeader.replace("Bearer ", "");
+    
+    // 2. Retrieve the stored JWT components using the signature
+    var storedJWT = retrieveJWTComponents(signature);
+    
+    if (!storedJWT) {
+        return TykJsResponse({
+            Body: "Invalid token",
+            Code: 401
+        }, session.meta_data);
+    }
+    
+    // 3. Replace the Authorization header with the full JWT
+    request.SetHeaders["Authorization"] = "Bearer " + storedJWT.fullJWT;
+    
+    return request;
+}
 ```
 
-This request uses the opaque token, which Tyk validates before it injects the full JWT into the Authorization header for the API request.
+#### 3. Test the Implementation
 
-{{< img src="/img/2.10/split_token3.png" alt="Split Token Key Metadata" >}}
+To test your Split Token Flow:
 
-{{< img src="/img/2.10/split_token1.png" alt="Split Token API Injection" >}}
+Request a token from your Tyk virtual endpoint:
+
+```bash
+curl -X POST https://your-tyk-gateway/token \
+  -d "grant_type=client_credentials&client_id=your-client-id&client_secret=your-client-secret"
+```
+
+You'll receive a response with only the signature as the access token, for example:
+
+```json
+{
+  "access_token": "EwIaRgq4go4R2M2z7AADywZ2ToxG4gDMoG4SQ1X3GJ0",
+  "token_type": "bearer",
+  "expires_in": 3600
+}
+```
+
+Use this token to access your JWT Auth protected API where you have configured the custom pre-auth plugin and JWT Auth:
+
+```bash
+curl https://your-tyk-gateway/protected-api \
+  -H "Authorization: Bearer EwIaRgq4go4R2M2z7AADywZ2ToxG4gDMoG4SQ1X3GJ0"
+```
+
 
