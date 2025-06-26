@@ -96,7 +96,7 @@ flowchart LR
 4. Configure the JWT settings:
     Token Signing Method: Select `RSA Public Key`
     Subject identity claim: Set to `sub`
-    JWKS Endpoint: Enter [your JWKS URI for your IdP]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens##1-configure-your-identity-provider-to-obtain-your-jwks-uri" >}})
+    JWKS Endpoint: Enter [your JWKS URI for your IdP]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#1-configure-your-identity-provider-to-obtain-your-jwks-uri" >}})
     Policy claim: Set to `pol`
     Default policy: Select `JWT Auth Policy` (the policy you created previously)
     Clock Skew (optional): Set to accommodate time differences (e.g. `10`)
@@ -136,7 +136,8 @@ In step 5, Tyk will first authenticate Alice by validating the JWT using the fol
 - if a matching key is found, the JWT signature is validated using the parameters in the JWK
     - if signature validation fails, the request is rejected
 - if signature validation is successful then the client is authenticated, and the request is accepted
-- use the value in the subject identity claim within the JWT (identified by the value stored in `identityBaseField`) to create an internal session for Alice's request
+
+Next, Tyk will create an internal session for Alice's request which will be used to control access rights, rate limits, usage quotas and in tracking logs. The session is linked to Alice using an identity that is [extracted from the JWT claims]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#identifying-the-originator" >}}).
 
 In step 6, now that Authentication is complete and an internal session has been created for the request, Tyk will proceed to Authorization by checking other claims to determine which Security Policies should be applied to the session:
 
@@ -319,7 +320,17 @@ The claims within the JSON Web Token are used to configure the Authorization for
 
 #### Identifying the originator
 
-Tyk creates an internal [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) for the request, which is linked to the originator via the **Subject claim** in the JWT. Typically the [Registered claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2") `sub` (subject) is used for this purpose, but Tyk allows you to use any claim in the token payload. You must configure the `identityBaseField` to state which JWT claim to use.
+Tyk creates an internal [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) for the request. The session is used to apply the appropriate security policies to ensure that rate limits, quotas, and access controls specific to the user are correctly applied. The session also enable tracking and analytics for the user's API usage.
+
+In order that this session can be correctly associated with the authenticated user, Tyk must extract a unique identity from the token.
+
+Tyk follows a specific priority order when extracting identity from a JWT:
+
+- first it checks the standard Key ID header (`kid`) in the JWT
+- if `kid` is not present or if `skipKid` is enabled, Tyk looks for the subject identity claim (identified by the value stored in `identityBaseField`) which allows API administrators to designate any JWT claim as the identity source (e.g., user_id, email, etc.).
+- if neither of the above yields a valid identity, Tyk falls back to the [Registered claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2") `sub`, which is the JWT specification's recommended claim for subject identity
+
+In this example, `skipKid` has been set to `true`, so Tyk will use the custom claim `user_id` that is declared in the `identityBaseField` as the identity for the session object (this is stored directly in the `Alias` field and used to generate a unique Id stored in the `keyID` field within the [session object]({{< ref "api-management/policies#session-object" >}})).
 
 ```yaml
 x-tyk-api-gateway:
@@ -327,7 +338,8 @@ x-tyk-api-gateway:
     authentication:
       securitySchemes:
         jwtAuth:
-          identityBaseField: sub
+          skipKid: true
+          identityBaseField: user_id
 ```
 
 #### Identifying the Tyk policies to be applied
