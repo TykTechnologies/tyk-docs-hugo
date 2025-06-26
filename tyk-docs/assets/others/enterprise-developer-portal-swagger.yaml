@@ -4363,7 +4363,9 @@ paths:
   /webhooks/{webhook_id}/headers/{header_id}:
     get:
       summary: Get a header by ID for a specific webhook
-      description: Retrieves a specific header from a webhook.
+      description: >-
+        Retrieves the details of a specific header associated with a given webhook. 
+        Useful for inspecting custom headers configured for webhook delivery.
       operationId: get-webhook-header
       tags:
         - Webhooks
