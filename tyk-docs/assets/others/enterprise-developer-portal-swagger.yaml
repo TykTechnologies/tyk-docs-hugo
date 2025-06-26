@@ -5889,7 +5889,10 @@ components:
           example: 1
         Visibility:
           type: string
-          description: Visibility of this application
+          description: >-
+            Controls who can access this application. Options are:
+            `personal` (visible only to you), `team` (shared with your team),
+            and `organisation` (accessible to all members of your organisation).
           enum:
             - personal
             - team
