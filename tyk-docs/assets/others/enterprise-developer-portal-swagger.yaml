@@ -67,7 +67,7 @@ tags:
   - name: SSO Profiles
     description: SSO Profiles management
   - name: Tags
-    description: Tags management
+    description: Tags management: link API Products to blog posts and control their display.
 paths:
   /access_requests:
     get:
