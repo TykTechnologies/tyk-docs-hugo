@@ -17,13 +17,15 @@ aliases:
 
 JSON Web Token (JWT) is an open standard ([RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519)) that defines a compact and self-contained way for securely transmitting claims between parties as a JSON object. The information in the JSON object is digitally signed using either a secret (with the HMAC algorithm) or a public/private key pair (using RSA or ECDSA encryption) allowing the JWT to be used for client authentication.
 
-The claims within the JWT can be used by Tyk Gateway's authorization process to configure rate and quota limits via Tyk's [Security Policy]({{< ref "api-management/policies" >}}) system. Within the API definition, JWT claims can be "mapped" onto security policies which will then be applied to the request.
+JWTs are often issued by third-party Identity Providers (IdP), with the appropriate claims being set by the issuer according to the client's permissions. The client presents the JWT as the access token in the API request to Tyk Gateway. Tyk validates the JWT signature against a JSON Web Key (JWK) which can be configured statically within Tyk or retrieved from an external location (for example the IdP). Support for multiple keys (e.g. for certificate rotation) is handled via JSON Web Key Sets (JWKS). Third-party IdPs typically expose a JWKS endpoint, which Tyk can use to fetch and trust the appropriate keys.
 
-JWTs are issued by third party Identity Providers (IdP), with the appropriate claims being set by the IdP according to the client's permissions. The client presents the JWT as the access token in the API request to Tyk Gateway. Tyk validates the JWT signature against a JSON Web Key (JWK) retrieved from the IdP and, assuming the JWT is valid, then applies access policies according to the scope-to-policy mapping declared in the API definition.
+Claims within the JWT can be used by Tyk Gateway's authorization process to configure rate and quota limits via Tyk's [Security Policy]({{< ref "api-management/policies" >}}) system. Within the API definition, JWT claims can be "mapped" onto security policies which will then be applied to the request.
 
 A key advantage of JWT authentication is that Tyk does not store any user credentials or session data.
 
 ### Key Benefits
+
+This documentation is focused on how to use Tyk's JWT Auth and there are many excellent sources online where you can learn more about JWTs so we won't deep-dive into that topic, but to whet your appetite, here are some of the benefits from using JWT with Tyk:
 
 - **Stateless Authentication**: Eliminates the need for server-side session storage, improving scalability.
 - **Flexible Integration**: Works with multiple identity providers including Auth0, Okta, and custom JWT issuers.
@@ -33,7 +35,17 @@ A key advantage of JWT authentication is that Tyk does not store any user creden
 
 ## Quick Start: Securing APIs with Auth0 or Keycloak
 
-In this tutorial, we'll secure a Tyk OAS API using JWT authentication with either Auth0 or Keycloak as the identity provider. We'll start by configuring the identity provider, then set up JWT validation in Tyk, create a security policy, configure the API to use the policy, and finally test the secured API with a valid token.
+In this tutorial, we'll secure a Tyk OAS API using JWT authentication with either Auth0 or Keycloak as the identity provider.
+
+{{< note success >}}
+**Note** 
+
+If you want to try out JWT Auth without linking up to a third-party IdP then you can skip step 1 and provide the base64 encoded public key for your JWT (in the `source` field rather than configuring `jwksURIs`) in step 3.4. You'll need to generate a JWT for the request, but otherwise everything stays the same. 
+
+Now back to the tutorial...
+{{< /note >}}
+
+We'll start by configuring the identity provider, then set up JWT validation in Tyk, create a security policy, configure the API to use the policy, and finally test the secured API with a valid token.
 
 ```mermaid
 flowchart LR
