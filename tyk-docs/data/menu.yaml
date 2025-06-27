@@ -832,6 +832,7 @@ menu:
           show: True
           menu:
           - title: "Overview"
+            path: /portal/api-provider
             category: Page
             show: True
           - title: "Provisioning Request"
