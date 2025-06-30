@@ -118,6 +118,13 @@ Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Pla
 We've fixed an issue where RPC connections remained stale when DNS records changed (such as ELB IP updates), leading to timeout errors. Based on direct customer reports, we've enhanced DNS resolution so all connections in the RPC pool now properly reconnect when endpoint IPs change. This eliminates service disruptions during infrastructure updates and ensures more resilient connectivity.
 </details>
 </li>
+<li>
+<details>
+<summary>Resolved Policy Sync Bug Caused by MDCB RPC Timeouts</summary>
+
+Fixed a bug where a timeout in a RPC call to MDCB would lead to no policies being synced to the edge gateway. 
+</details>
+</li>
 </ul>
 
 ---
