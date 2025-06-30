@@ -17,11 +17,13 @@ aliases:
 
 JSON Web Token (JWT) is an open standard ([RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519)) that defines a compact and self-contained way for securely transmitting claims between parties as a JSON object. The information in the JSON object is digitally signed using either a secret (with the HMAC algorithm) or a public/private key pair (using RSA or ECDSA encryption) allowing the JWT to be used for client authentication.
 
-JWTs are often issued by third-party Identity Providers (IdP), with the appropriate claims being set by the issuer according to the client's permissions. The client presents the JWT as the access token in the API request to Tyk Gateway. Tyk validates the JWT signature against a JSON Web Key (JWK) which can be configured statically within Tyk or retrieved from an external location (for example the IdP). Support for multiple keys (e.g. for certificate rotation) is handled via JSON Web Key Sets (JWKS). Third-party IdPs typically expose a JWKS endpoint, which Tyk can use to fetch and trust the appropriate keys.
+JWTs are often issued by third-party Identity Providers (IdP), with the appropriate claims being set by the issuer according to the permissions granted to the client by the user. The Client Application is the *bearer* of the access token. The user has delegated access to the client to act on their behalf, within the bounds of the granted scopes. The client application can have its own scopes - but can be scoped down based on delegated access. For example, just because the client application has the permission to access 5 APIs, if the user only delegated access to 2 of them, then the tokens permission sshould be scoped down.
+
+The client presents the JWT as the access token in the API request to Tyk Gateway. Tyk validates the JWT signature against a JSON Web Key (JWK) which can be configured statically within Tyk or retrieved from an external location (for example the IdP). Support for multiple keys (e.g. for certificate rotation) is handled via JSON Web Key Sets (JWKS). Third-party IdPs typically expose a JWKS endpoint, which Tyk can use to fetch and trust the appropriate keys.
 
 Claims within the JWT can be used by Tyk Gateway's authorization process to configure rate and quota limits via Tyk's [Security Policy]({{< ref "api-management/policies" >}}) system. Within the API definition, JWT claims can be "mapped" onto security policies which will then be applied to the request.
 
-A key advantage of JWT authentication is that Tyk does not store any user credentials or session data.
+A key advantage of JWT authentication is that Tyk does not store any user credentials or session data. It never sees the *user* directly - it trusts the authorization server to have authenticated the user and issued a valid token.
 
 ### Key Benefits
 
@@ -46,16 +48,6 @@ Now back to the tutorial...
 {{< /note >}}
 
 We'll start by configuring the identity provider, then set up JWT validation in Tyk, create a security policy, configure the API to use the policy, and finally test the secured API with a valid token.
-
-```mermaid
-flowchart LR
-    subgraph "Setup Process"
-        A[Configure IdP] -->|Get JWKS URI| B[Configure Tyk API]
-        B --> C[Create Security Policy]
-        C --> D[Link Policy to API]
-        D --> E[Test Authentication]
-    end
-```
 
 ### Prerequisites
 
@@ -134,9 +126,13 @@ This diagram outlines the flow when using JWT Auth to secure access to your API.
 
 {{< img src="/img/diagrams/diagram_docs_JSON-web-tokens@2x.png" alt="JSON Web Tokens Flow" >}}
 
-Once Alice has obtained a JWT (steps 1, 2, 3) they will present that with their request to Tyk Gateway (step 4).
+Alice (the *user* or *resource owner*) authenticates with the Identity Provider (IdP) and consents to delegate specific permissions to a client application (steps 1 and 2).
 
-In step 5, Tyk will first authenticate Alice by validating the JWT using the following steps:
+The client application receives an authorization code, which it then exchanges for an access token (step 3). This is a bearer token, meaning that the client can present it to access protected resources on behalf of the user (resource owner / Alice).
+
+When the client sends a request to the API gateway , it includes the access token (JWT) in the request - usually in the Authorization header as a Bearer token (step 4).
+
+Tyk validates the token's signature, using the public key(s) of the trusted issuer (IdP):
 
 - locate the JWT in the request (header, cookie or query parameter)
 - decode the JWT
@@ -147,17 +143,16 @@ In step 5, Tyk will first authenticate Alice by validating the JWT using the fol
     - if no match is found, the validation fails, and the request is rejected
 - if a matching key is found, the JWT signature is validated using the parameters in the JWK
     - if signature validation fails, the request is rejected
-- if signature validation is successful then the client is authenticated, and the request is accepted
+- if the token is valid and unexpired, the request is authenticated as coming from the client, and is accepted
 
-Next, Tyk will create an internal session for Alice's request which will be used to control access rights, rate limits, usage quotas and in tracking logs. The session is linked to Alice using an identity that is [extracted from the JWT claims]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#identifying-the-originator" >}}).
+Next, Tyk will create an internal session for the request which will be used to control access rights, rate limits, usage quotas and in tracking logs (step 5). The session is linked to Alice using an identity that is [extracted from the JWT claims]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#identifying-the-originator" >}}).
 
-In step 6, now that Authentication is complete and an internal session has been created for the request, Tyk will proceed to Authorization by checking other claims to determine which Security Policies should be applied to the session:
+In step 6 Tyk will proceed to enforce authorization by checking other claims to determine which Security Policies should be applied to the session:
 
 - check for the value in the policy claim within the JWT (identified by the value stored in `policyFieldName`)
 - use this to identify the Tyk Security Policy (or policies) to be applied to the request
     - if there is no direct policy mapping, then the `defaultPolicy` will be used
 - apply the identified policies to the session, configuring access rights, rate limits and usage quota 
-
 
 ### Session Updates
 
