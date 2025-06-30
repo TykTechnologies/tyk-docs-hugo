@@ -120,7 +120,7 @@ We've fixed an issue where RPC connections remained stale when DNS records chang
 </li>
 <li>
 <details>
-<summary>Resolved Policy Sync Bug Caused by MDCB RPC Timeouts</summary>
+<summary>Resolved MDCB Policy Sync Issue Caused by RPC Timeouts</summary>
 
 Fixed a bug where a timeout in a RPC call to MDCB would lead to no policies being synced to the edge gateway. 
 </details>
