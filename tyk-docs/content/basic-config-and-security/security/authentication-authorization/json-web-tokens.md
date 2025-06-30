@@ -206,9 +206,9 @@ With the JWT method selected, you'll need to configure Tyk to handle the specifi
 
 ### Locating the JWT in the Request
 
-The OpenAPI Specification's `securitySchemes` mechanism allows you to specify the location of the JWT, but only one (for example, in the request header). In some scenarios an API might need to support multiple potential locations to support different clients.
+The OpenAPI Specification's `securitySchemes` mechanism allows you to specify the location of the JWT, for example in the request header. In some scenarios different clients might provide the token in different locations, for example in a query parameter. 
 
-The Tyk Vendor Extension supports this by allowing configuration of alternative locations in the JWT entry in `server.authentication.securitySchemes`. Building on the previous example, we can add optional query and cookie locations as follows:
+OAS does not natively support this, however the Tyk Vendor Extension does by allowing configuration of alternative locations in the JWT entry in `server.authentication.securitySchemes`. Building on the previous example, we can add optional query and cookie locations as follows:
 
 ```yaml
 x-tyk-api-gateway:
