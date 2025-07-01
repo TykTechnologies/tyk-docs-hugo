@@ -50,7 +50,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.2" >}}) below.
+This patch release contains fixes to some bugs experienced when using MDCB and distributed data planes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.2" >}}) below.
 
 #### Breaking Changes
 
