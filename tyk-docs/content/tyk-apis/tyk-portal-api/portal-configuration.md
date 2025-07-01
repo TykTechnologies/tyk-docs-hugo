@@ -1,10 +1,6 @@
 ---
 date: 2017-03-27T12:28:24+01:00
 title: Portal Configuration
-menu:
-  main:
-    parent: "Tyk Portal API"
-weight: 5
 robots: "noindex"
 algolia:
   importance: 0
@@ -12,20 +8,16 @@ algolia:
 
 {{< warning success >}}
 
-**Attention:**
+**Legacy: Tyk Classic Portal**
 
-You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
-Developer Portal* please use the latest
-[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
-</br>
-</br>
-**Future deprecation of Tyk Classic Portal**
+You’re viewing documentation for the **Tyk Classic Portal**, which is no longer actively maintained.
 
-This product is no longer actively developed as it
-has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview/intro" >}}).
-</br>
-Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
-[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+If you're looking for the latest API documentation for the **new Tyk Developer Portal**, please refer to the 
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) or visit the 
+[Tyk Developer Portal]({{< ref "portal/overview/intro" >}}) section.
+
+The Classic Portal is in maintenance mode and will be deprecated soon. For questions or support, contact us at 
+[support@tyk.io](mailto:support@tyk.io?subject=Tyk classic developer portal>).
 
 {{< /warning >}}
 
