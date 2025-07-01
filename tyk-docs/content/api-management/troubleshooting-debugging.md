@@ -11,10 +11,8 @@ aliases:
     - /error-response-codes
     - /frequently-asked-questions/capping-analytics-data-storage
     - /tyk-stack/dependencies/mongodb/x509-client-auth
-    - /api-management/troubleshotting-debugging
     - /debugging-series/debugging-series
     - /debugging-series/mongodb-debugging
-    - /developer-support/debugging-series/.placehol
     - /developer-support/debugging-series/debugging-selfmanaged
     - /frequently-asked-questions/api-definition-url-case-sensitive
     - /frequently-asked-questions/dashboard-bootstrap-error
@@ -128,7 +126,7 @@ aliases:
 
     When it happens on the high load, it can be a lot of different reasons.
     For example your OS is running out of system limits, like number of opened sockets, and to validate it, you need to try your system limits.
-    See [this guide]({{< ref "tyk-self-managed#resource-limits" >}}).
+    See [this guide]({{< ref "planning-for-production" >}}).
 
     Additionally, it can be CPU bottleneck: you can't process more than your machine  can do.
     And note that it is not only about the actual utilization %, it is also about context switches it has to do. 
@@ -930,7 +928,7 @@ We also support limited customisation of the error codes and messages returned b
     As AWS DocumentDB runs with TLS enabled, we require a way to run it without disabling the TLS verification.
     DocumentDB uses self-signed certs for verification, and provides a bundle with root certificates for this purpose, so we need a way to load this bundle.
 
-    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) enabled.
+    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) enabled.
 
     So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}):
 
@@ -1031,7 +1029,7 @@ We also support limited customisation of the error codes and messages returned b
 
 18. ##### How to run two Gateways with docker-compose
 
-    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-self-managed#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
+    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
     You will need to make some minor modifications to `docker-compose.yml` and start your services as usual with `docker-compose up`.
 
     {{< note success >}}
@@ -1315,7 +1313,7 @@ Here, we'll outline the following:
 
 3. ##### Mongo version
 
-    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "tyk-self-managed#mongodb" >}}).
+    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "planning-for-production/database-settings#mongodb" >}}).
 
 4. ##### Capped collections
 
@@ -1325,7 +1323,7 @@ Here, we'll outline the following:
 
     We advise everyone to cap every collection in Mongo, as this prevents collections from growing out of control and bringing your dashboard down by hitting resource limits.
 
-    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}).
+    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "planning-for-production/database-settings#mongodb-sizing-guidelines" >}}).
 
     Here’s more information on how and why you want to [cap your collections](https://www.mongodb.com/docs/manual/core/capped-collections/).
 
@@ -1548,7 +1546,7 @@ This guide should help a user of Tyk Self-Managed in debugging common issues. A 
 
 1. ##### Gateway `/hello` endpoint
 
-    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}}).
+    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
 
     This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Tyk Dashboard, Tyk Multi-Data Center Bridge (MDCB), and Tyk Cloud. 
 

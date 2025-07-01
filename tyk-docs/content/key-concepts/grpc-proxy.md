@@ -32,7 +32,7 @@ For scenarios where you want to connect two services calling each other or just 
 Tyk supports all kinds of gRPC streaming (client streaming, server streaming and bidirectional streaming). It requires you to set a low value for `flush_interval`, this is required in order to forward data to the downstream target as soon as the upstream target replies. A high flush interval will delay this communication. We recommend the lowest possible value: 1 (1 millisecond). You set this value in your `tyk.conf` file in the `http_server_options.flush_interval` option.
 
 ## Mutual Authentication
-Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) to configure Mutual Authentication in Tyk. 
+Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) to configure Mutual Authentication in Tyk. 
 
 ## Basic Authentication
 Tyk supports Basic Authentication in gRPC. See [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}) to configure Basic Authentication in Tyk. 
@@ -48,7 +48,7 @@ After setting your Tyk configuration, all you need to do is to send a token in a
 
 ## gRPC load balancing
 
-Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "tyk-self-managed#load-balancing" >}}) functionality.
+Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing" >}}) functionality.
 
 For both secure and insecure gRPC scenarios, the steps above serve as a starting point.
 
@@ -126,7 +126,4 @@ In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will
     * Click Save
 * Ensure that the client application has the server address pointing to Tyk, for this example: `https://tyk.com:8000`.
 * Now you are ready to test the solution. Run the client application and it should send and receive data simultaneously.
-
-Currently load balancing is not supported for gRPC.
-
 

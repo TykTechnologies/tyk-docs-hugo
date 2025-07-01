@@ -520,6 +520,7 @@ This struct allows you to specify a custom proxy and set the minimum TLS version
 
 Example:
 
+	``` 
 	{
 	  "proxy_url": "http(s)://proxy.url:1234",
 	  "minVersion": "1.0",
@@ -530,7 +531,7 @@ Example:
 	  ],
 	  "insecureSkipVerify": true,
 	  "forceCommonNameCheck": false
-	}
+	} ```
 
 Tyk classic API definition: `proxy.transport`
 
@@ -1415,7 +1416,7 @@ Tyk classic API definition: `version_data.versions..extended_paths.transform_hea
 ContextVariables holds the configuration related to Tyk context variables.
 
 **Field: `enabled` (`boolean`)**
-Enabled enables context variables to be passed to Tyk middlewares.
+Enabled enables context variables to be passed to Tyk middleware.
 
 
 Tyk classic API definition: `enable_context_vars`.

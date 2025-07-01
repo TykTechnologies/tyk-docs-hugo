@@ -93,7 +93,7 @@ The process is very similar to [HTTP API creation]({{< ref "api-management/gatew
 
 #### Prerequisites
 
-In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}). You can also create a 5-week trial account in Tyk Cloud.
+In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}). You can also create a 5-week trial account in Tyk Cloud.
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
 
@@ -130,7 +130,7 @@ In order to complete the next steps, you need to have [Tyk Self Managed installe
     - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
     - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. **This is a setting that might be important if your GQL includes subscription operations**.
     - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. 
-    - **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) for details on implementing mutual TLS.
+    - **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) for details on implementing mutual TLS.
 
 5. **Save the API**
 

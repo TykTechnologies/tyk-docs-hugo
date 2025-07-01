@@ -128,7 +128,7 @@ The following algorithms are supported:
 
 We worked a lot with our clients to build a way nicer on-boarding experience for Tyk. Instead of using the command line, you can just run the Dashboard, and complete a form which will configure your Dashboard. However, we did not forget about our experienced users too, and now provide a CLI enchanced tool for bootstrapping Tyk via a command line.
 
-See our updated [Getting Started]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) section and [new CLI documentation]({{< ref "tyk-self-managed" >}}).
+See our updated [Getting Started]({{< ref "tyk-self-managed/install" >}}) section and [new CLI documentation]({{< ref "tyk-self-managed" >}}).
 
 ### DNS Caching
 
@@ -248,7 +248,7 @@ There is a [new section]({{< ref "api-management/dashboard-configuration#dashboa
 
 
 > **TLDR**
-> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "tyk-self-managed#planning-for-production" >}})
+> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "planning-for-production" >}})
 
 We have thoroughly analyzed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
 
@@ -913,7 +913,7 @@ Here are the packages and their versions we are releasing today: Tyk Gateway v2.
 
 #### Mutual TLS
 
-A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
+A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}).
 
 
 #### Extended use of Multiple Policies
@@ -975,7 +975,7 @@ More SSO functionality is something that a lot of our customers have been asking
 ### <a name="gateway"></a>Tyk Gateway v2.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -1060,7 +1060,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 ### <a name="dashboard"></a>Tyk Dashboard v1.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -1091,11 +1091,11 @@ Example:
 [Docs]({{< ref "api-management/external-service-integration" >}})
 
 #### Set custom login pages for portal and dashboard
-If you are using 3-rd party authentification like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
+If you are using 3-rd party authentication like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
 
 [Docs]({{< ref "api-management/external-service-integration" >}})
 
-#### Added new set of APIs for custom dashboard authentification
+#### Added new set of APIs for custom dashboard authentication
 Added new `/admin/sso` endpoint for custom integration. In fact, the same API is used by our own Tyk Identity Broker. 
 
 [Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
@@ -1161,7 +1161,7 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
 ### <a name="mdcb"></a> MDCB v1.4.0
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
+Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 

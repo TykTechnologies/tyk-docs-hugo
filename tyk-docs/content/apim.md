@@ -15,7 +15,7 @@ components.
 Choosing the right one for your organization depends on your specific requirements and preferences.
 </br>Don’t hesitate to contact us for assistance {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
-|                                                                                                                                                                                                                                    | [Open Source]({{< ref "tyk-open-source" >}})  |   [Self-Managed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})      |  [Cloud](https://account.cloud-ara.tyk.io/signup)
+|                                                                                                                                                                                                                                    | [Open Source]({{< ref "tyk-open-source" >}})  |   [Self-Managed]({{< ref "tyk-self-managed/install" >}})      |  [Cloud](https://account.cloud-ara.tyk.io/signup)
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|-------------------|---------
 | API Gateway Capabilities <br> <ul><li>Rate Limiting</li><li>Authentication</li> <li>API Versioning</li><li>Granular Access Control</li><li>GraphQL</li>  <li>and [much more]({{< ref "tyk-open-source" >}})</li></ul> | ✅             |✅	              |✅
 | [Version Control]({{< ref "api-management/automations/sync" >}}) Integration                                                                                                                                                      | -		      |✅	              |✅
@@ -47,7 +47,7 @@ Get your free account [here](https://tyk.io/sign-up/).
 
 ### Open Source (OSS)
 
-The Tyk Gateway is the backbone of all our solutions and can be deployed for free, forever. It offers various [installation options]({{< ref "tyk-open-source#installation-options-for-tyk-gateway" >}}) to suit different needs.
+The Tyk Gateway is the backbone of all our solutions and can be deployed for free, forever. It offers various [installation options]({{< ref "apim/open-source/installation" >}}) to suit different needs.
 
 Visit the [OSS section]({{< ref "tyk-open-source" >}}) for more information on it and other open source components.
 
