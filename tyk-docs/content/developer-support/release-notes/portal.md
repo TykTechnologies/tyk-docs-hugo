@@ -81,9 +81,49 @@ To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref 
 <ul>
 <li>
 <details>
-<summary>Add a changelog summary</summary>
+<summary>Enhanced Application Visibility Controls</summary>
 
-Add changelog summary 
+Added support for more precise application visibility in the Developer Portal to prevent users from seeing apps and credentials created by other teams in the same organization. Each app can now be set to personal, team, or organisation visibility, defining who can access it. Users will only see their own apps, apps shared within their teams (excluding the default “all users” team), and apps marked as visible to the whole organization. To avoid breaking existing setups, all current apps are defaulted to organisation visibility.
+</details>
+</li>
+<li>
+<details>
+<summary>API Product Tag Access in Theme Templates</summary>
+
+Portal theme templates now have access to API product tags, enabling dynamic display or categorization of API products based on tags.
+</details>
+</li>
+<li>
+<details>
+<summary>Configurable Robots.txt Support</summary>
+
+Added native support for serving a configurable robots.txt file via a new /robots.txt endpoint. Portal admins can now define and manage crawler directives directly from the Portal Admin UI.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Team and User Management</summary>
+
+We have enhanced team and user access controls by restricting team members from viewing other users' details, limiting Admin Users to adding users only to teams they belong to, automatically assigning users to the default organization team if no team is selected during invitation, and allowing Admin Users to assign users to multiple teams.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Policy Preservation in Product Updates</summary>
+
+Implement policy preservation in product updates by checking if a policy exists before updating a product
+</details>
+</li>
+<li>
+<details>
+<summary>API Product Synchronization Fixes</summary>
+
+Fixed issues with API product synchronization where applied APIs were being lost during manual or repeated Dashboard syncs. API synchronization has been enhanced to ensure all associated APIs and product details including custom fields are consistently preserved.
 </details>
 </li>
 </ul>
