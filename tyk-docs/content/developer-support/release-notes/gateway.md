@@ -2055,6 +2055,20 @@ If you are upgrading to 5.3.12, please follow the detailed [upgrade instructions
 Resolved an issue introduced in Tyk 5.3.10 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
 </details>
 </li>
+<li>
+<details>
+<summary>Fixed Stale RPC Connections After DNS Changes</summary>
+
+We’ve fixed an issue where RPC connections remained stale when DNS records changed (such as ELB IP updates), leading to timeout errors. Based on direct customer reports, we’ve enhanced DNS resolution so all connections in the RPC pool now properly reconnect when endpoint IPs change. This eliminates service disruptions during infrastructure updates and ensures more resilient connectivity.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved MDCB Policy Sync Issue Caused by RPC Timeouts</summary>
+
+Fixed a bug where a timeout in an RPC call to MDCB would lead to policies not being synchronised to the data plane.
+</details>
+</li>
 </ul>
 
 
