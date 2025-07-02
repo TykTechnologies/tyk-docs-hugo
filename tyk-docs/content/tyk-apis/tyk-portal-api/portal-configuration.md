@@ -1,10 +1,6 @@
 ---
 date: 2017-03-27T12:28:24+01:00
 title: Portal Configuration
-menu:
-  main:
-    parent: "Tyk Portal API"
-weight: 5
 robots: "noindex"
 algolia:
   importance: 0
