@@ -107,7 +107,7 @@ If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions]
 <details>
 <summary>gRPC Coprocess Middleware Now Supports dns:/// for Load Balancing</summary>
 
-Added support for "dns:///" protocol in gRPC coprocess middleware to allow for easier load balancing functionality.
+Fixed support for `dns:///` protocol in gRPC rich plugins. Setting the new configuration option `TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING` to `true` will cause Tyk to balance the load between multiple gRPC servers; the default behavior (`false`) is to use a sticky connection to a single server.
 </details>
 </li>
 <li>
