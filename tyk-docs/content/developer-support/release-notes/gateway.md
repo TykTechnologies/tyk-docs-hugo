@@ -43,6 +43,126 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 5.8 Release Notes
 
+### 5.8.3 Release Notes
+
+#### Release Date XXX
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.3" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.3}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.2    | Sync v2.1.2 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.3}
+
+If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.3)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.3
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.8.3}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>gRPC Coprocess Middleware Now Supports dns:/// for Load Balancing</summary>
+
+Added support for "dns:///" protocol in gRPC coprocess middleware to allow for easier load balancing functionality.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed Unnecessary Garbage Collection on Streams API Deletion</summary>
+
+Gateway no longer tries to start a garbage collection task after deleting the streams API
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Missing Logs for application/x-www-form-urlencoded Requests</summary>
+
+Fixed an issue where certain request types (Content-Type "application/x-www-form-urlencoded") were not properly logged - request body was missing in the logs.
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable SSE and WebSocket Streaming for Browser Clients</summary>
+
+Browser clients can now reliably consume streams outputs (SSE and WebSocket)
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk OAS Definition Now Accessible to Response Plugins Without Request Plugins</summary>
+
+Fixed an issue where the Tyk OAS API definition was not available to Response Plugins unless a Request Plugin was also loaded. The issue was caused by the `ctx.GetOASDefinition(req)` function not consistently returning the proper OpenAPI Specification (OAS).
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Invalid Config in Tyk OAS When Enabling OAuth 2.0 in Designer</summary>
+
+Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Import Failures for Streams API Definitions</summary>
+
+Fixed an issue where streams API definitions could not be imported
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Missing Logs for Chunked Transfer-Encoding Requests</summary>
+
+Fixed an issue where certain request types ("Transfer-Encoding: chunked") were not properly logged - request body was missing in the logs.
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.8.2 Release Notes
 
 #### Release Date 1st July 2025

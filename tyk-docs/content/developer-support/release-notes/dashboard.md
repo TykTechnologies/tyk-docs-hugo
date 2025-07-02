@@ -38,6 +38,185 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.8 Release Notes
 
+### 5.8.3 Release Notes
+
+#### Release Date XXX
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.3" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.3}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.2    | Sync v2.1.2 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.3}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.3}
+
+If you are upgrading to 5.8.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.3)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.3
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.3}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Improved Tyk OAS Validation for x-tyk-api-gateway Extension</summary>
+
+Fixed an issue with incorrect validation of empty or invalid OAS referring to x-tyk-api-gateway.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Error Messaging for OpenAPI Imports</summary>
+
+Improved error messages related to API creation when importing an OpenAPI description - now they clearly explain the issue and provide guidance on how to resolve it.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Security Mismatch Error in Tyk OAS Imports</summary>
+
+Improved the handling of an error that can be encountered when importing Tyk OAS API definition due to a mismatch between OAS securitySchemes and security requirements
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Auto Config Ignored Without listenPath</summary>
+
+Fixed an issue where the automatic configuration options (authentication, mock response, etc) had no effect when creating an API from an OpenAPI document if the listenPath was not specified via query parameter.
+</details>
+</li>
+<li>
+<details>
+<summary>Updated Regex to Match MongoDB Syntax</summary>
+
+Updated regex constructions to use proper MongoDB syntax
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Path Errors for Dots in Endpoint Names</summary>
+
+Fixed an issue where endpoints that contain dots in the path name failed with an error when creating or updating an API. The issue was caused by the underlying storage not accepting dots as valid URI characters.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed False Validation Error for Streams APIs</summary>
+
+Raw API definition editor no longer shows an incorrect validation error for streams API definitions
+</details>
+</li>
+<li>
+<details>
+<summary>Preserved Categories and Ownership on Tyk OAS Update</summary>
+
+Fixed an issue where API Categories and Ownership could be lost when applying an updated OpenAPI description to a Tyk OAS API.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Middleware Not Triggering in Tyk OAS Debugger</summary>
+
+Fixed an issue where some middleware (API-level rate limit and mock response) were not triggered correctly when using the Tyk OAS API designer's built in debugger to test APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed Empty Fields in Tyk Classic to Tyk OAS Conversion</summary>
+
+Fixed an issue when converting Tyk Classic API definitions to Tyk OAS format that could lead to unnecessary empty fields in the Tyk OAS API definition.
+</details>
+</li>
+<li>
+<details>
+<summary>Added Private Key Filter to /api/certs</summary>
+
+We've added an optional filter query parameter to the /api/certs endpoint when using the mode=detailed option. This allows you to refine your certificate queries based on the presence of a Private Key (PK).
+
+The filter parameter accepts the following enum values:
+
+all: (Default) Returns all certificates.
+with_pk: Returns only certificates that include a Private Key.
+without_pk: Returns only certificates that do not include a Private Key.
+For example:
+
+To retrieve all detailed certificates on page 1: /api/certs?mode=detailed&p=1
+To retrieve only detailed certificates with a Private Key on page 1: /api/certs?mode=detailed&p=1&filter=with_pk
+To retrieve only detailed certificates without a Private Key on page 1: /api/certs?mode=detailed&p=1&filter=without_pk
+This new filtering capability provides more granular control over your certificate data retrieval. Rest assured, this update maintains backward compatibility with existing integrations.
+</details>
+</li>
+<li>
+<details>
+<summary>Added YAML Support for Tyk OAS Patch Imports</summary>
+
+Patching a Tyk OAS API definition with a new OpenAPI spec to accept now the OpenAPI spec to be in YAML syntax.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Invalid OAuth Config from Tyk OAS Import</summary>
+
+Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
+</details>
+</li>
+<li>
+<details>
+<summary>Dashboard Uses New Cert Filter for Upstreams</summary>
+
+Dashboard UI is now using the new certificates filter query parameter, when calling the Dashboard API, so that it can list just the certificates that have has_private property and list them properly in the upstream certificates section
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Event Handler Issue in Tyk OAS Designer</summary>
+
+Fixed an issue, where users couldn't add Event handles in OAS API Designer
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.8.2 Release Notes
 
 #### Release Date 1st July 2025
