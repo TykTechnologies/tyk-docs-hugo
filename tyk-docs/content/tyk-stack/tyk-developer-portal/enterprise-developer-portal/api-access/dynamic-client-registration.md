@@ -167,6 +167,22 @@ First of all, select your IdP from the `Identity provider` dropdown list. Differ
 Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the `SSL secure skip verify` checkbox.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/specify-connection-setting-to-your-idp.png" alt="Specify connection setting to the IdP" >}}
 
+<<<<<<< HEAD
+=======
+{{< tab_end >}}
+
+{{< tab_start "Okta" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/specify-connection-setting-to-your-idp-okta.png" alt="Specify connection setting to the IdP" >}}
+
+**OIDC URL**: `{your-domain.com}/oauth2/default/.well-known/openid-configuration`
+
+**Registration Access Token**: To obtain token, Go to Okta Admin Console → Security → API → Tokens → Create New Token
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
+>>>>>>> 507e0bbe5... fix-issues-with-client_re (#6620)
 
 #### Create client configurations
 Once the connection settings are specified, you need to create one or multiple types of clients. You might have multiple types of clients that are suitable for different use cases, such as backend integration or web applications.
@@ -244,7 +260,7 @@ curl --location --request POST 'http://localhost:9999/realms/DCR/protocol/openid
 --data-urlencode 'scope=product_payments free_plan' \
 --data-urlencode 'grant_type=client_credentials'
 ```
-Since in this example we use the client_secret_basic token endpoint authentication method, the credentials must be supplied as a Base64-encoded string: {client_id}:{client_secret}.
+Since in this example we use the client_secret_basic token endpoint authentication method, the credentials must be supplied as a Base64-encoded string: `{client_id}:{client_secret}`.
 
 As a result, you should receive a JWT access token containing the required scopes:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/jwt.png" alt="An example of a JWT" width="600" >}}
