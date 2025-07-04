@@ -1,10 +1,14 @@
 ---
 date: 2020-02-18T15:08:55Z
+<<<<<<< HEAD
 Title: Important Prerequisites
 menu:
   main:
     parent: Tyk Gateway
 weight: 6
+=======
+title: Useful Configurations when Getting started
+>>>>>>> 3d8d565b0... Update important-prerequisites.md (#6632)
 aliases:
   - /getting-started/tutorials/important-prerequisites/
 ---
