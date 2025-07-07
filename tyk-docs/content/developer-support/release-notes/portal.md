@@ -102,13 +102,6 @@ Added native support for serving a configurable robots.txt file via a new /robot
 </li>
 <li>
 <details>
-<summary>Updated to Latest Kin-OpenAPI</summary>
-
-The Enterprise Developer Portal now uses v0.132.0, replacing the legacy import to ensure compatibility with the latest OpenAPI tooling.
-</details>
-</li>
-<li>
-<details>
 <summary>Improved Team and User Management</summary>
 
 We have enhanced team and user access controls by restricting team members from viewing other users' details, limiting Admin Users to adding users only to teams they belong to, automatically assigning users to the default organization team if no team is selected during invitation, and allowing Admin Users to assign users to multiple teams.
