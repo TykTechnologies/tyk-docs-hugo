@@ -81,7 +81,7 @@ To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref 
 <ul>
 <li>
 <details>
-<summary>Enhanced Application Visibility Controls</summary>
+<summary>New Application Visibility Controls</summary>
 
 Added support for more precise application visibility in the Developer Portal to prevent users from seeing apps and credentials created by other teams in the same organization. Each app can now be set to personal, team, or organisation visibility, defining who can access it. Users will only see their own apps, apps shared within their teams (excluding the default “all users” team), and apps marked as visible to the whole organization. To avoid breaking existing setups, all current apps are defaulted to organisation visibility.
 </details>
