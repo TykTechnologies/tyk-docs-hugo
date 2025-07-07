@@ -83,7 +83,7 @@ To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref 
 <details>
 <summary>New Application Visibility Controls</summary>
 
-Added support for more precise application visibility in the Developer Portal to prevent users from seeing apps and credentials created by other teams in the same organization. Each app can now be set to personal, team, or organisation visibility, defining who can access it. Users will only see their own apps, apps shared within their teams (excluding the default “all users” team), and apps marked as visible to the whole organization. To avoid breaking existing setups, all current apps are defaulted to organisation visibility.
+Added the facility to limit the visibility of developer apps to the user, team or Organisation (org). Org Admin users will continue to have visibility of all developer apps created in their Organisation. To minimise risk of unintentional visibility when users are members of the default teams and/or org, team-level visibility is not implemented in the Default Team for each org and all apps are treated as personal (private) in the Default Org. To avoid breaking existing setups, all current apps wii default to organisation visibility.
 </details>
 </li>
 <li>
