@@ -44,7 +44,21 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-Add release highlights 
+##### Tyk Streams APIs Come To Developer Portal
+
+<<TBA>>
+
+##### New Developer App Visibility Controls
+
+We have added more flexible Developer App visibility controls, giving team members the facility to limit the visibility of their apps to themselves (Personal), to their Team or to their Organisation (org). This means that, when logged into the Developer Portal, team members will only see their own apps, apps shared within their teams, and apps marked as visible to the whole org. Org Admin users will continue to have visibility of all developer apps created in their Organisation. The exceptions to this rule are for the Default Team, where team-level visibility is not implemented, and Default Org, where all apps are treated as personal (private).
+
+##### Enhanced Team Management
+
+We have also improved the experience with user and team management. Now, users can be removed from the default team (which should only be used for inactive users). This allows platform teams to ensure that users can only see the other members of their team, rather than all users in their Organisation. We've also fixed a bug where Org Admins could add users to other Organisations deployed on the Portal.
+
+##### Prevent Webcrawlers From Indexing Your Portal
+
+We have added a `/robots.txt` endpoint, allowing administrators to define crawler directives in a plain text entry form in the Portal Admin UI.
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.0) below.
 
