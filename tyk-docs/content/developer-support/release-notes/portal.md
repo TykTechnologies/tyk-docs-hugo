@@ -139,7 +139,7 @@ Implement policy preservation in product updates by checking if a policy exists 
 <details>
 <summary>API Product Synchronization Fixes</summary>
 
-Fixed issues with API product synchronization where applied APIs were being lost during manual or repeated Dashboard syncs. API synchronization has been enhanced to ensure all associated APIs and product details including custom fields are consistently preserved.
+Fixed issues with API product synchronization where applied APIs were being lost during manual or automatic sync with Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details including custom fields are consistently preserved.
 </details>
 </li>
 </ul>
