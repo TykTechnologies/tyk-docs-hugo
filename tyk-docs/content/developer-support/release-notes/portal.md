@@ -130,7 +130,7 @@ Tyk Enterprise Developer Portal has been upgraded from Golang 1.22 to Golang 1.2
 <ul>
 <li>
 <details>
-<summary>Policy Preservation in Product Updates</summary>
+<summary>API product metadata loss when updating the Developer Portal catalog</summary>
 
 Fixed an issue where API Product metadata could be lost when modifying the product in the Developer Portal. This was due to incorrect manipulation of the underlying Tyk policy object.
 </details>
