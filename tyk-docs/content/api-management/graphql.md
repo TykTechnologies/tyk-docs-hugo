@@ -478,7 +478,38 @@ Check out [this link]({{< ref "api-management/graphql#query-depth-limit" >}}) on
 #### Developer Portal
 
 As of Tyk v3.0.0, you can now publish GraphQL APIs to the Tyk Developer Portal.
-[This section]({{< ref "tyk-developer-portal/tyk-portal-classic/graphql" >}}) will show how you can expose a GraphQL API to the developer portal.
+
+When you publish GraphQL APIs, including [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}) APIs (UDG) to the Tyk Developer Portal, your API consumers can navigate through a GraphQL Playground, with an IDE complete with Intellisense.
+
+##### Video walkthrough
+
+We have a YouTube walkthrough of how to publish a GraphQL API to your Developer Portal:
+
+{{< youtube A2Hn9ub2mNg >}}
+
+##### How to set up
+
+Simply create a GraphQL or Universal Data Graph API, create a Policy which protects it, and then publish it to the Developer Portal Catalog.
+
+In the "Create a Catalog" section, at the bottom, make sure you enable the "Display Playground"
+
+{{< img src="/img/portal/portal-graphql-setup.png" alt="Portal GraphQL Playground Setup" >}}
+
+And then, when your API consumers are on the Developer Portal Catalog and click on View Documentation, they will be taken to the GraphQL Playground.
+
+{{< img src="/img/portal/portal-graphql-playground-viewdocs.png" alt="Portal GraphQL Playground View Docs" >}}
+
+##### Protected GraphQL catalog
+
+If you have a protected API, your users won't be able to inspect the GraphQL schema or make API calls until they add their API Key to the Headers section:
+
+{{< img src="/img/portal/portal-graphql-header-injection.png" alt="Portal GraphQL Playground Header Injection" >}}
+
+##### CORS configuration
+
+You may have to enable the following CORS settings in the "Advanced Options" of the API Designer to allow your consumers to access the GraphQL Playground:
+
+{{< img src="/img/portal/portal-graphql-cors.png" alt="Portal GraphQL Playground CORS" >}}
 
 ## Introspection
 

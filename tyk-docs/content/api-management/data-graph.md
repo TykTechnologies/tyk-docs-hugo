@@ -723,7 +723,7 @@ The result should be similar to the following:
 
 The Kafka DataSource configuration:
 
-```bash
+```json
 {
 	"kind": "Kafka",
 	"name": "kafka-consumer-group",
@@ -749,7 +749,7 @@ The Kafka DataSource configuration:
 
 Here is a sample API definition for the Kafka DataSource.
 
-```bash
+```json
 {
 	"created_at": "2022-09-15T16:19:07+03:00",
 	"api_model": {},
