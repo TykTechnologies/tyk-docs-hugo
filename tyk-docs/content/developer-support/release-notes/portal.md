@@ -102,6 +102,13 @@ Added the facility to limit the visibility of developer apps to the user, team o
 </li>
 <li>
 <details>
+<summary>Added Support for Asynchronous APIs</summary>
+
+The Developer Portal now supports Tyk Streams, enabling developers to request access to event-driven APIs. Developers can authenticate with portal tokens and receive real-time webhook notifications.  
+</details>
+</li>
+<li>
+<details>
 <summary>API Product Tag Access in Theme Templates</summary>
 
 Portal theme templates now have access to API product tags, enabling dynamic display or categorization of API products based on tags.
