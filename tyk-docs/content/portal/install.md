@@ -57,11 +57,12 @@ To enable this feature, you need to specify a connection configuration to an ema
 You can choose to use a server that is installed on your premises or an SMTP-compatible SaaS product.
 For step-by-step instructions, please refer to [the Email Settings section]({{< ref "portal/customization/email-notifications" >}})
 
-    {{< note success >}}
-**Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}) or one of the listed compatible alternatives.
-    {{< /note >}}
+{{< note success >}}
+**Note: SQLite support** 
+
+Tyk no longer supports SQLite as of v5.7.0. To ensure a smooth experience, please migrate to [PostgreSQL]({{< ref “planning-for-production/database-settings#postgresql” >}}) or another supported alternative.
+{{< /note >}}
 
 ## Portal Installation Process
 
@@ -679,24 +680,19 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
 
 3. **Update the configuration file with your license**
 
-    {{< note success >}}
-**Note** 
-
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}) or one of the listed compatible alternatives.
-    {{< /note >}}
-
     Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.
     Initially, the config file is filled with the default values. The minimal configuration change to start the portal is to add the `LicenseKey` property to the config file.
-    The below sample configuration will start the portal on portal 3001 with SQLite as a database, no TLS enabled, and all CMS assets (images, theme files, etc.) are stored in the filesystem.
+    The below sample configuration will start the portal on portal 3001 with PostgreSQL as a database, no TLS enabled, and all CMS assets (images, theme files, etc.) are stored in the filesystem.
     You can, however, customize the provided example and make more suitable for your need using the [configuration]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) reference.
     ```json
     {
     "HostPort": 3001,
     "LicenseKey": "<your-license-here>",
     "Database": {
-        "Dialect": "sqlite3",
-        "ConnectionString": "portal.db",
+        "Dialect": "postgres",
+        "ConnectionString": "host=tyk-portal-postgres port=5432 dbname=portal user=admin password=secr3t sslmode=disable",
         "EnableLogs": false
+  }
     },
     "Blog": {
         "Enable": true
