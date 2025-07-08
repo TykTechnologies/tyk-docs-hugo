@@ -106,11 +106,11 @@ menu:
             path: /api-management/gateway-config-managing-classic
             category: Page
             show: True
-          - title: "Migrate from Tyk Classic"
+          - title: "Migrate from Tyk Classic APIs"
             path: /api-management/migrate-from-tyk-classic
             category: Page
             show: True            
-          - title: "Deploy APIs"
+          - title: "API creation methods"
             category: Page
             show: True
             path: /api-management/manage-apis/deploy-apis/deploy-apis-overview

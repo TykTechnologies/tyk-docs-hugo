@@ -1,5 +1,5 @@
 ---
-title: API configuration methods
+title: API creation methods
 date: 2023-09-04
 description: "Different ways to create and manage APIs in Tyk"
 tags: [ "API Management", "API Configuration", "Dashboard", "Tyk Sync", "Tyk Operator" ]
@@ -7,7 +7,7 @@ tags: [ "API Management", "API Configuration", "Dashboard", "Tyk Sync", "Tyk Ope
 
 This page explains the different methods available for creating and managing APIs in Tyk, each suited to different use cases and workflow requirements.
 
-## File-based configuration
+## File-based configuration {#file-based-configuration}
 
 Load API configurations directly to the `/apps` folder using JSON API specifications. This method is available for open source users and is ideal for testing gateway and API configurations.
 
