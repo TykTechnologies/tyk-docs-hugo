@@ -15,7 +15,8 @@ For non-LTS releases:
 This release supersedes all previous non-LTS releases, which are no longer supported. The [current LTS release](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline) remains supported alongside this version. For more information about our release types and support policy, please refer to our [release support documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
 
 For LTS releases:
-This LTS release is supported according to our [Long Term Support policy](https://tyk.io/docs/developer-support/release-types/long-term-support/). For more information about our release types and support policy, please refer to our [release support documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
+This is an **LTS release** and it's supported according to our [Long Term Support policy](https://tyk.io/docs/developer-support/release-types/long-term-support/). To view the currently supported LTS versions and their timelines, see the [current LTS releases](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline). For details explanations related to release types and our support commitments, see [LTS documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
+
 -->
 
 ---
