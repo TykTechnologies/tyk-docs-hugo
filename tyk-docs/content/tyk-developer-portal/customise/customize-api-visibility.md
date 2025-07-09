@@ -205,7 +205,7 @@ Now the visibility of the "Internal API" is driven by the value of the "Group" f
 If you have enabled "Enable multiple API subscriptions" option in the portal settings, you also need to modify `request_multi_key.html` template. 
 The main difference from the default template is two changes:
 1. Get user data state at the start of template: `{{$profile := .UserData }}`
-2. Before rendering <li> element, which renders list of APIs, we insert the following section:
+2. Before rendering `<li>` element, which renders list of APIs, we insert the following section:
 ```go-html-template
 {{ range $field, $value := $apiDetail.Fields }}
 	{{ $group_match := true }}
