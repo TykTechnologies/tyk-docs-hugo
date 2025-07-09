@@ -44,7 +44,7 @@ graph LR
 - **MCP Extensions:** Support for custom x-mcp extensions to override tool names and descriptions
 - **Multiple Integration Options:** Works with Claude Desktop, Cursor, Vercel AI SDK, and other MCP-compatible environments
 
-Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp#features) is available in our GitHub repository.
+Check the [complete features list](https://github.com/TykTechnologies/api-to-mcp#features) is available in Tyk's *api-to-mcp* GitHub repository.
 
 ## Quick Start {#quick-start}
 
