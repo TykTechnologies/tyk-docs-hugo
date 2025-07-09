@@ -9,14 +9,18 @@ tags: ["Tyk Dashboard", "Release notes", "changelog", "vX.Y", "X.Y.0", "X.Y", "X
 
 ## Support Lifetime
 <!--
-Please add one of the following messagings to the release notes you are writing:
+Please add one of the following statements to the release notes you are preparing:
 
 For non-LTS releases:
-This release supersedes all previous non-LTS releases, which are no longer supported. The [current LTS release](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline) remains supported alongside this version. For more information about our release types and support policy, please refer to our [release support documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
+----------------------
+**This version supersedes all previous non-LTS releases, which are no longer maintained.** 
+The [current LTS release](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline) continues to receive maintenance alongside this version. 
+For details on our release lifecycle and maintenance policies, see the [release support documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
 
 For LTS releases:
-This is an **LTS release** and it's supported according to our [Long Term Support policy](https://tyk.io/docs/developer-support/release-types/long-term-support/). To view the currently supported LTS versions and their timelines, see the [current LTS releases](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline). For details explanations related to release types and our support commitments, see [LTS documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
-
+------------------
+This is an **LTS release**, maintained under our [Long Term Support policy](https://tyk.io/docs/developer-support/release-types/long-term-support/). 
+For maintained LTS versions, check the [current LTS releases timeline]https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline). 
 -->
 
 ---
@@ -40,7 +44,7 @@ This release has no breaking changes.
 
 ##### Compatibility Matrix For Tyk Components
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
-| --------------- | ------------------------- | ----------------------- |
+| --------------- | :------------------------- | ----------------------- |
 | 5.3 LTS         | Helm v2.2 - TBP           | Helm vX - vY            |
 |                 | MDCB v2.5 - TBP           | MDCB v1.7 - v2.4        |
 |                 | Operator v1.8 - TBP       | Operator vX - vY        |
@@ -51,7 +55,7 @@ This release has no breaking changes.
       
 ##### 3rd Party Dependencies & Tools {#3rdPartyTools-vX.Y.Z}
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
-| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| ---------------------------------------------------------- | :---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.0.x and 6.0.x | 4.4.x, 5.0.x and 6.0.x | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
@@ -162,10 +166,10 @@ Repeat the release notes section above for every patch here
 
 ## Further Information
 
-### Upgrading Tyk
+### Upgrading Tyk {#upgrading-tyk}
 Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
-### API Documentation
+### API Documentation {#api-documentation}
 - [OpenAPI Document]({{< ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
