@@ -1171,7 +1171,7 @@ See the example introspection cache configuration:
 ### Authenticate Using Go Plugins
 
 Go Plugin Authentication allows you to implement custom authentication logic using the Go programming language. This method is useful for scenarios where you need to implement specialized authentication mechanisms that are not natively supported by Tyk.
-To learn more about using Tyk Golang Plugins, go [here]({{< ref "/plugins/supported-languages/golang/#supported-plugin-types" >}})
+To learn more about using Tyk Golang Plugins, go [here]({{< ref "/plugins/supported-languages/golang#supported-plugin-types" >}})
 
 
 ### Sign Requests with HMAC
