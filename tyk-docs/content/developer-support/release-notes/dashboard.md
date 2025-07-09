@@ -189,7 +189,7 @@ This new filtering capability provides more granular control over your certifica
 <details>
 <summary>Added YAML Support for Tyk OAS Patch Imports</summary>
 
-Patching a Tyk OAS API definition with a new OpenAPI spec to accept now the OpenAPI spec to be in YAML syntax.
+We’ve fixed an issue that now allows patching Tyk OAS API definitions using OpenAPI specs in YAML format, in addition to JSON.
 </details>
 </li>
 <li>
