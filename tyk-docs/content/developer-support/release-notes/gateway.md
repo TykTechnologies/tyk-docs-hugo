@@ -112,6 +112,48 @@ Fixed support for `dns:///` protocol in gRPC rich plugins. Setting the new confi
 </li>
 <li>
 <details>
+<summary>OAS-Driven Mock Responses for Accurate Testing</summary>
+
+Mock response middleware now generates responses based on OpenAPI examples.
+</details>
+</li>
+<li>
+<details>
+<summary>Restored Cipher Suite Support and Reliable TLS Handling</summary>
+
+Fixed an issue where several previously supported cipher suites were no longer recognized when configured, causing them to be silently skipped for clients relying on those ciphers. The issue was only visible with debug-level logging, making it difficult to diagnose in production environments. Support for these cipher suites has now been restored.
+</details>
+</li>
+<li>
+<details>
+<summary>Proper 404 Responses for Invalid Stream API Paths</summary>
+
+Gateway no longer returns 500 when calling an invalid path on a streams API and will instead return 404
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable GraphQL Proxying for Interface Arguments</summary>
+
+Fixed an issue where Tyk has trouble proxying a graphql edge case; a request that includes an argument on an interface leads to errors proxying.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Repeated “Unsupported Protocol Scheme” Errors</summary>  
+
+Gateway no longer produces endless "unsupported protocol scheme" errors for streams APIs
+</details>
+</li>
+<li>
+<details>
+<summary>Stability Fixes for GraphQL Subscriptions and Kafka Messaging</summary>  
+
+Fixed a panic triggered by starting GraphQL subscriptions and resolved an issue where Kafka messages failed to resolve correctly.  
+</details>
+</li>
+<li>
+<details>
 <summary>Removed Unnecessary Garbage Collection on Streams API Deletion</summary>
 
 Gateway no longer tries to start a garbage collection task after deleting the streams API
@@ -122,6 +164,14 @@ Gateway no longer tries to start a garbage collection task after deleting the st
 <summary>Fixed Missing Logs for application/x-www-form-urlencoded Requests</summary>
 
 Fixed an issue where certain request types (Content-Type "application/x-www-form-urlencoded") were not properly logged - request body was missing in the logs.
+</details>
+</li>
+<li>
+<details>
+<summary>Resilient RPC Connections During DNS Changes</summary>
+
+Fixed issue where RPC connections would remain stale when DNS records change (e.g., ELB IP updates), causing timeout errors.
+Improved DNS resolution to ensure all connections in the RPC pool properly reconnect when endpoint IPs change, eliminating service disruptions during network changes.  
 </details>
 </li>
 <li>
