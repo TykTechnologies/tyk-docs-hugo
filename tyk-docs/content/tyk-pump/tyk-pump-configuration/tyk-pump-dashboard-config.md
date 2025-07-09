@@ -71,7 +71,7 @@ The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_shard
 
 ## 2. Mongo Aggregate Pump
 
-**`mongo-pump-aggregate`** pump stores data in a collection called **z_tyk_analyticz_aggregate_{ORG ID}**.
+**`mongo-pump-aggregate`** pump stores data in a collection called `z_tyk_analyticz_aggregate_{ORG ID}`.
 
 ### Pump Config
 

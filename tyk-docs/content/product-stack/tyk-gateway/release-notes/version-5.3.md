@@ -87,6 +87,97 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
+<<<<<<< HEAD
+=======
+---
+
+## 5.3.6 Release Notes
+
+### Release Date 04 October 2024
+
+{{< note success >}}
+**Important Update**
+
+**Date:** 12 October 2024  
+**Topic:** Gateway panic when reconnecting to MDCB control plane or Tyk Cloud  
+**Workaround:** Restart Gateway  
+**Affected Product:** Tyk Gateway as an Edge Gateway  
+**Affected versions:** v5.6.0, v5.3.6, and v5.0.14  
+
+We have identified an issue affecting Tyk Gateway deployed as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. In those Gateway versions a panic may occur when the gateway reconnects to the control plane after it has been restarted.
+
+Our engineering team is actively working on a fix and a patch (versions 5.6.1, 5.3.7, and 5.0.15) will be released soon.
+
+**Recommendations:**
+
+- **For users on versions 5.5.0, 5.3.5, and 5.0.13**  
+  Delay upgrading to versions 5.6.0, 5.3.6, or 5.0.14 until the patch is available.
+
+- **For users already on 5.6.0, 5.3.6, or 5.0.14 experiencing a panic**  
+  Restarting the gateway restores a healthy state. In a *Kubernetes* environment, the Tyk Gateway instance should automatically restart and resolve the issue.
+
+We appreciate your patience as we work to resolve this. Please stay tuned for the upcoming patch release.  
+{{< /note >}}
+
+
+### Release Highlights
+
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed
+[changelog]({{< ref "#Changelog-v5.3.6">}}) below.
+
+### Breaking Changes
+
+Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in
+the image.
+
+If moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Upgrade Instructions
+
+When upgrading to 5.3.6 please follow the [detailed upgrade instructions](#upgrading-tyk).
+
+### Dependencies
+
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+3rd party dependencies and tools -->
+
+#### Compatibility Matrix For Tyk Components
+
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+
+| Gateway Version | Recommended Releases                                               | Backwards Compatibility |
+| --------------- | ------------------------------------------------------------------ | ----------------------- |
+| 5.3.6           | MDCB v2.5.1                                                        | MDCB v2.5.1             |
+|                 | Operator v0.17                                                     | Operator v0.16          |
+|                 | Sync v1.4.3                                                        | Sync v1.4.3             |
+|                 | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions       |
+|                 | EDP v1.8.3                                                         | EDP all versions        |
+|                 | Pump v1.9.0                                                        | Pump all versions       |
+|                 | TIB (if using standalone) v1.5.1                                   | TIB all versions        |
+
+#### 3rd Party Dependencies & Tools
+
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                        | Tested Versions | Compatible Versions | Comments                                                                                   |
+| ------------------------------------------------------------- | --------------- | ------------------- | ------------------------------------------------------------------------------------------ |
+| [Go](https://go.dev/dl/)                                      | 1.22            | 1.22                | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Redis](https://redis.io/download/)                           | 6.2.x, 7.x      | 6.2.x, 7.x          | Used by Tyk Gateway                                                                        |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
+ongoing support of third-party dependencies they install, as their status may have changed since the release.
+>>>>>>> 6a9e711e1... fix relese 6 issues (#6670)
 
 ### Downloads
 

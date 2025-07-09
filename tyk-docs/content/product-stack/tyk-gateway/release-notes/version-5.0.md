@@ -16,6 +16,34 @@ aliases:
 
 ### Release Date 18th September 2024
 
+<<<<<<< HEAD
+=======
+{{< note success >}}
+**Important Update**
+
+**Date:** 12 October 2024  
+**Topic:** Gateway panic when reconnecting to MDCB control plane or Tyk Cloud  
+**Workaround:** Restart Gateway  
+**Affected Product:** Tyk Gateway as an Edge Gateway  
+**Affected versions:** v5.6.0, v5.3.6, and v5.0.14  
+
+We have identified an issue affecting Tyk Gateway deployed as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. In those Gateway versions a panic may occur when the gateway reconnects to the control plane after it has been restarted.
+
+Our engineering team is actively working on a fix and a patch (versions 5.6.1, 5.3.7, and 5.0.15) will be released soon.
+
+**Recommendations:**
+
+- **For users on versions 5.5.0, 5.3.5, and 5.0.13**  
+  We advise you to delay upgrading to the affected versions (5.6.0, 5.3.6, or 5.0.14) until the patch is available.
+
+- **For users who have already upgraded to 5.6.0, 5.3.6, or 5.0.14 and are experiencing a panic in the gateway**  
+  Restarting the gateway process will restore it to a healthy state. If you are operating in a *Kubernetes* environment, the Tyk Gateway instance should automatically restart, which resolves the issue.
+
+We appreciate your understanding and patience as we work to resolve this. Please stay tuned for the upcoming patch release, which will address this issue.  
+{{< /note >}}
+
+
+>>>>>>> 6a9e711e1... fix relese 6 issues (#6670)
 ### Breaking Changes
 **Attention:** Please read this section carefully.
 
