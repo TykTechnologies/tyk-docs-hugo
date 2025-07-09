@@ -25,13 +25,13 @@ graph LR
     D["AI Assistant"] <--> C
     C <--> E["Your API"]
     
-    style A fill:#d3e5ef,stroke:#333,stroke-width:2px,font-size:18px
-    style B fill:#d5f5e3,stroke:#333,stroke-width:2px,font-size:18px
-    style C fill:#d5f5e3,stroke:#333,stroke-width:2px,font-size:18px
-    style D fill:#eeeeee,stroke:#333,stroke-width:2px,font-size:18px
-    style E fill:#fdebd0,stroke:#333,stroke-width:2px,font-size:18px
+    style A fill:#ffffff,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style B fill:#d5f5e3,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style C fill:#d5f5e3,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style D fill:#eeeeee,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style E fill:#ffffff,stroke:#D1D1E0,stroke-width:1px,font-size:18px
     
-    linkStyle default stroke-width:3px
+    linkStyle default stroke-width:2px
 ```
 
 ## Key Features
@@ -134,6 +134,8 @@ flowchart LR
     class A,B input;
     class C,D,E,F tool;
     class G,H,I runtime;
+
+linkStyle default stroke-width:2px
 ```
 
 ### Request lifecycle: how an AI assistant invokes an API tool”
@@ -167,6 +169,8 @@ sequenceDiagram
         Tool->>MCP: Map to MCP Error
         MCP-->>AI: Tool Execution Error
     end
+
+linkStyle default stroke-width:2px
 ```
 
 API to MCP  can be found in [api-to-mcp GitHub repository](https://github.com/TykTechnologies/api-to-mcp)
