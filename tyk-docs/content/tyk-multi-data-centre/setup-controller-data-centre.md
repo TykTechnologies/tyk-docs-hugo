@@ -369,7 +369,7 @@ To make things easier, we will first set a few [environment variables]({{< ref "
 
 1. `export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
 
-You can find <YOUR_ADMIN_SECRET> in `tyk_analytics.conf` file under `admin_secret` field or `TYK_DB_ADMINSECRET` environment variable.
+You can find `<YOUR_ADMIN_SECRET>` in `tyk_analytics.conf` file under `admin_secret` field or `TYK_DB_ADMINSECRET` environment variable.
 
 2. `export DASH_URL=<YOUR_DASH_URL>`
 
