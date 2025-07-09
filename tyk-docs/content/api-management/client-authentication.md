@@ -1235,7 +1235,7 @@ curl --cert client_cert.pem --key client_key.pem https://localhost:8181
 
 #### mTLS for cloud users
 - Cloud users can secure their upstream services with mTLS but mTLS between the client (caller of the API) and Tyk's gateway cannot be done for the time being.
-- Multi cloud users - since you own and manage the gateways, you can use mTLS for gateway <--> upstream  as well as client <--> gateway connections.
+- Multi cloud users - since you own and manage the gateways, you can use mTLS for gateway &lt;--&gt; upstream  as well as client &lt;--&gt; gateway connections.
 
 #### Client mTLS
 
