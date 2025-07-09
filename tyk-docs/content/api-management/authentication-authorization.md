@@ -1171,7 +1171,7 @@ See the example introspection cache configuration:
 ### Authenticate Using Go Plugins
 
 Go Plugin Authentication allows you to implement custom authentication logic using the Go programming language. This method is useful for scenarios where you need to implement specialized authentication mechanisms that are not natively supported by Tyk.
-To learn more about using Tyk Golang Plugins, go [here]({{ ref "/plugins/supported-languages/golang/#supported-plugin-types" >}})
+To learn more about using Tyk Golang Plugins, go [here]({{< ref "/plugins/supported-languages/golang#supported-plugin-types" >}})
 
 
 ### Sign Requests with HMAC
@@ -2318,7 +2318,7 @@ curl --cert client_cert.pem --key client_key.pem https://localhost:8181
 
 ### mTLS for cloud users
 - Cloud users can secure their upstream services with mTLS but mTLS between the client (caller of the API) and Tyk's gateway cannot be done for the time being.
-- Multi cloud users - since you own and manage the gateways, you can use mTLS for gateway <--> upstream  as well as client <--> gateway connections.
+- Multi cloud users - since you own and manage the gateways, you can use mTLS for gateway &lt;--&gt; upstream  as well as client &lt;--&gt; gateway connections.
 
 ### Client mTLS
 

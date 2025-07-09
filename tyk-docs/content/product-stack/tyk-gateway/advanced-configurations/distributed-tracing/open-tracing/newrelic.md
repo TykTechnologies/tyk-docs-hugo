@@ -16,7 +16,7 @@ Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadm
 {{< note success >}}
 **Deprecation**
 
-OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview"}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
+OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{<ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview">}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
 {{< /note >}}
 
 ## Configuring New Relic
