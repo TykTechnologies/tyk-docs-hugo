@@ -742,7 +742,7 @@ menu:
             path: /developer-support/faq
             category: Page
             show: True
-          - title: "Docs Contribution"
+          - title: "Tyk Docs Contribution"
             category: Directory
             show: True
             menu:
@@ -750,7 +750,11 @@ menu:
                 path: /developer-support/contributing
                 category: Page
                 show: True
-              - title: "UI Example: Pill Label shortcode"
+              - title: "Inclusive naming"
+                path: /developer-support/documentation-projects/inclusive-naming
+                category: Page
+                show: True
+              - title: "UI Example: Pill Label Shortcode"
                 path: /ui-examples/test-pill-label
                 category: Page
                 show: true

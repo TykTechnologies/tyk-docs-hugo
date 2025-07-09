@@ -1,7 +1,7 @@
 ---
-title: "Inclusive Naming Initiative"
+title: "Inclusive naming"
 date: 2024-05-17T15:51:00+01:00
-tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
+tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive", "Inclusive Naming Project" ]
 description: "Explains the inclusive naming initiative concerning Tyk docs"
 ---
 
@@ -12,7 +12,7 @@ We are excited to announce the launch of our *Inclusive Naming* project, in June
 
 The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-driven effort to promote and standardize the use of inclusive language in software and documentation. By adhering to their guidelines, we aim to eliminate terms that can be considered exclusionary, offensive, or insensitive and replace them with language that is respectful and welcoming to all.
 
-**Purpose**
+### Purpose
 
 Our commitment to diversity, equity, and inclusion is foundational to our values. By updating our documentation to comply with the *Inclusive Naming Initiative (INI)*, we are taking a significant step towards ensuring that our language reflects our dedication to inclusivity. This project will help us:
 
