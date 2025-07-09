@@ -658,7 +658,6 @@ Please consult the Tyk Operator supporting documentation for an example of how t
 
 For more details on CIDR notation, see [this Wikipedia entry](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation).
 
-<p style="display: none;">{{<fn blocklist>}}{{</fn>}}</p>
 
 ### Tyk Operator
 
