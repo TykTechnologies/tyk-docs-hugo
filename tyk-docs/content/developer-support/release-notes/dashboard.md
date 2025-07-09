@@ -2976,7 +2976,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  </li>
  <li>
  <details>
- <summary>Confusing error message if user tries to modify Tyk OAS API using a Tyk Classic API endpoint/summary>
+ <summary>Confusing error message if user tries to modify Tyk OAS API using a Tyk Classic API endpoint </summary>
 
  Improved the error message that is returned when user tries to update a Tyk OAS API using a Tyk Classic API endpoint when `allow_unsafe_oas` is not enabled.
  </details>
@@ -3110,7 +3110,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <summary>Added new Dashboard configuration option `allow_unsafe_oas`</summary>
 
 Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behavior and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "developer-support/release-types/early-access-feature" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
-</summary>
 </details>
 </li>
 </ul>
@@ -3423,8 +3422,8 @@ Fixed an issue where the [Enforced Timeout]({{< ref "tyk-self-managed#enforced-t
 <summary>Duplicate APIs could be created when click save button multiple times in API Designer</summary>
 
 Fixed an issue in *Tyk Dashboard* where duplicate APIs could be created with the same names and listen paths if you clicked multiple times on the *save* button in the API Designer. Now, this is not possible anymore and there is no risk of creating multiple APIs with the same name.
-</li>
 </details>
+</li>
 <li>
 <details>
 <summary>Connection issues were encountered with MongoDB connection strings</summary>
@@ -3698,7 +3697,7 @@ Please refer to our GitHub [release notes](https://github.com/TykTechnologies/ty
 ###### Support for MongoDB 5 and 6
 From Tyk 5.0.2, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set new Dashboard config option driver to *mongo-go*. 
 The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
-- [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions <= v4.x (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
+- [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions `<= v4.x` (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
 - [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official MongoDB driver. This driver supports MongoDB versions >= v4.x (greater or equal to v4.x). You can get more information about this driver in [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) GH repository.
 
 See how to [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-driver" >}})

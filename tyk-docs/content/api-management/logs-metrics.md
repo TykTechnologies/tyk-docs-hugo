@@ -915,7 +915,7 @@ Credit: Elasticsearch, [OpenTelemetry on Elastic](https://www.elastic.co/blog/op
     - TYK_GW_OPENTELEMETRY_ENDPOINT={{Add your endpoint here}}
     ```
 
-    Make sure to replace {{Add your endpoint here}} with the appropriate endpoint from your OpenTelemetry collector.
+    Make sure to replace `<Add your endpoint here>` with the appropriate endpoint from your OpenTelemetry collector.
 
     After enabling OpenTelemetry at the Gateway level, you can activate [detailed tracing]({{< ref "api-management/logs-metrics#opentelemetry" >}}) for specific APIs by editing their respective API definitions. Set the `detailed_tracing` option to either true or false. By default, this setting is false.
 
@@ -1445,7 +1445,7 @@ Tyk will automatically propagate tracing headers to APIs  when tracing is enable
 
 {{< note success >}}
 **Note**  
-[Tyk Gateway 5.2]({{< ref "developer-support/release-notes/gateway.md" >}}) now includes OpenTelemetry Tracing. We recommend migrating to OpenTelemetry for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
+[Tyk Gateway 5.2]({{< ref "developer-support/release-notes/gateway" >}}) now includes OpenTelemetry Tracing. We recommend migrating to OpenTelemetry for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
 
 Subsequently, we recommend following this guide [Exporting OpenTelemetry Distributed Traces to Jaeger]({{< ref "#using-docker" >}}). 
 {{< /note >}}
@@ -1512,7 +1512,7 @@ Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadm
 {{< note success >}}
 **Deprecation**
 
-OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{ref "api-management/logs-metrics#opentelemetry"}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
+OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{< ref "api-management/logs-metrics#opentelemetry" >}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
 {{< /note >}}
 
 **Configuring New Relic**
