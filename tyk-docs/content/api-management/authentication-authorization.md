@@ -1369,6 +1369,12 @@ To integrate a 3rd party OAuth2/OIDC IdP with Tyk, all you will need to do is en
 The client application authenticates with the IdP which then provides an access token that is accepted by Tyk. Tyk will take care of the rest, ensuring that the rate limits and quotas of the underlying identity of the bearer are maintained across JWT token re-issues, so long as the "sub" (or whichever identity claim you chose to use) is available and consistent throughout and the policy that underpins the security clearance of the token exists too.
 
 
+<<<<<<< HEAD:tyk-docs/content/api-management/authentication-authorization.md
+=======
+#### mTLS for cloud users
+- Cloud users can secure their upstream services with mTLS but mTLS between the client (caller of the API) and Tyk's gateway cannot be done for the time being.
+- Multi cloud users - since you own and manage the gateways, you can use mTLS for gateway &lt;--&gt; upstream  as well as client &lt;--&gt; gateway connections.
+>>>>>>> 32ddd138b... fix issues in 5.7 (#6663):tyk-docs/content/api-management/client-authentication.md
 
 
 ### Use JSON Web Tokens (JWT)
