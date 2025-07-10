@@ -180,7 +180,11 @@ TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING=user=postgres password=topsecre
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A Mongo Database?
 
+<<<<<<< HEAD
 Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named *z_tyk_analyticz_aggregate_{ORG ID}*, where *ORG_ID* corresponds to the ID of your organisation assigned by Tyk.
+=======
+Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named `z_tyk_analyticz_aggregate_{ORG ID}`, where *ORG_ID* corresponds to the ID of your organization assigned by Tyk.
+>>>>>>> 4b7b86939... fix-issues in 5.5 (#6691)
 
 The following environment variables can be used as a minimum to manage this configuration:
 

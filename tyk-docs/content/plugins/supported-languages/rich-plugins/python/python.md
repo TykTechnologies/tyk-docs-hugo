@@ -21,7 +21,7 @@ Since v2.9, Tyk supports any currently stable [Python 3.x version](https://www.p
 ### Important Note Regarding Performance
 Python plugins are [embedded](https://docs.python.org/3/extending/embedding.html) within the Tyk Gateway process. Tyk Gateway integrates with Python custom plugins via a [cgo](https://golang.org/cmd/cgo) bridge.
 
-`Tyk Gateway` <-> CGO <-> `Python Custom Plugin`
+`Tyk Gateway` &lt;--&gt; CGO &lt;--&gt; `Python Custom Plugin`
 
 In order to integrate with Python custom plugins, the *libpython3.x.so* shared object library is used to embed a Python interpreter directly in the Tyk Gateway. Further details can be found [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-gateway-api" >}})
 

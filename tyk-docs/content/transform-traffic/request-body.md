@@ -262,10 +262,14 @@ As headers are also exposed to context data, you can access any header from cont
 
 Or (for body transforms):
 
+<<<<<<< HEAD
 ```{.copyWrapper}
 {{._tyk_context.headers_HEADERNAME}}
 ```
 See [Context Variables]({{< ref "context-variables" >}}) for more details.
+=======
+### Automatic XML &lt;--&gt; JSON Transformation
+>>>>>>> 4b7b86939... fix-issues in 5.5 (#6691)
 
 ## Form Data
 
