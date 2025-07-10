@@ -1345,7 +1345,7 @@ This also resets the user's Dashboard API credentials.
 | Resource URL | `/api/users/{USER_ID}/actions/key/reset`   |
 | Method       | PUT                                        |
 | Type         | None                                       |
-| Body         | {"userId":"{USER_ID}"}                     |
+| Body         | `{"userId":"{USER_ID}"}`                     |
 | Param        | None                                       |
 
 **Sample Request**
@@ -3543,7 +3543,7 @@ The **Core Settings** tab provides access to configure basic settings for the AP
    - [API Categories]({{< ref "#governance-using-api-categories" >}})
 - Upstream settings including
    - Upstream service (target) URL
-   - [Service Discovery]({{< ref "tyk-self-managed#service-discovery" >}})
+   - [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}})
 - [API Ownership]({{< ref "api-management/user-management#api-ownership" >}})
 - [API level rate limiting]({{< ref "api-management/rate-limit#configuring-the-rate-limiter-at-the-api-level" >}})
 - [Authentication]({{< ref "api-management/client-authentication" >}})
@@ -5351,7 +5351,7 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 #### Configuring MongoDB
 
-Please check [here]({{< ref "tyk-self-managed#mongodb" >}}) for MongoDB driver and production configurations.
+Please check [here]({{< ref "planning-for-production/database-settings#mongodb" >}}) for MongoDB driver and production configurations.
 
 ### PostgreSQL Supported Versions
 
@@ -5379,7 +5379,7 @@ All data stored in SQL platforms will be identical to our existing MongoDB suppo
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 We recommend the following:
@@ -5548,7 +5548,7 @@ Aggregated analytics corresponds to data that is used for the display of charts 
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 Storage of aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:
@@ -5567,7 +5567,7 @@ TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING=user=postgres password=topsecre
 
 ##### Mongo Database
 
-Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named *z_tyk_analyticz_aggregate_{ORG ID}*, where *ORG_ID* corresponds to the ID of your organization assigned by Tyk.
+Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named `z_tyk_analyticz_aggregate_{ORG ID}`, where *ORG_ID* corresponds to the ID of your organization assigned by Tyk.
 
 The following environment variables can be used as a minimum to manage this configuration:
 

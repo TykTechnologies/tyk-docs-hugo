@@ -36,7 +36,7 @@ The [Tyk Vendor Extension]({{< ref "#tyk-vendor-extension" >}}) follows the same
 
 #### OpenAPI description
 
-There are many great explanations of the features and capabilities of the OpenAPI Specification so we won't repeat it all here. A good place to start learning is from the maintainers of the specification: the [OpenAPI Initiative]({{< ref "https://learn.openapis.org/" >}}). The minimal set of elements that must be defined
+There are many great explanations of the features and capabilities of the OpenAPI Specification so we won't repeat it all here. A good place to start learning is from the maintainers of the specification: the [OpenAPI Initiative](https://learn.openapis.org/). The minimal set of elements that must be defined
 
 Tyk treats the OpenAPI description as the source of truth for the data stored within it. This means that Tyk does not duplicate those data in the Tyk Vendor Extension but rather builds upon the basic configuration defined in the OAD.
 
