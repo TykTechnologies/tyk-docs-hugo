@@ -138,7 +138,7 @@ flowchart LR
 linkStyle default stroke-width:2px
 ```
 
-### Request lifecycle: how an AI assistant invokes an API tool”
+### Request lifecycle: how an AI assistant invokes an API tool
 
 The following diagram illustrates the flow of a request through the system at runtime:
 
