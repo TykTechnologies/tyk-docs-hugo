@@ -9,7 +9,7 @@ In the realm of API security, HMAC-signed authentication serves as a foundationa
 - **Practical experience**: Gain hands-on experience in implementing custom authentication logic tailored to specific use cases, starting with HMAC-signed authentication.
 - **Enhanced control**: Exercise greater control over authentication flows and response handling, empowering developers to implement advanced authentication mechanisms beyond built-in features.
 
-While Tyk Gateway offers built-in support for HMAC-signed authentication, this tutorial serves as a practical guide for developers looking to extend Tyk's capabilities through custom authentication plugins. It extends the gRPC server that we developed in our [getting started guide]({{< ref "getting-started-python" >}}).
+While Tyk Gateway offers built-in support for HMAC-signed authentication, this tutorial serves as a practical guide for developers looking to extend Tyk's capabilities through custom authentication plugins. It extends the gRPC server that we developed in our [getting started guide]({{< ref "plugins/supported-languages/rich-plugins/grpc/getting-started-python" >}}).
 
 We will develop a basic gRPC server that implements the Tyk Dispatcher service with a custom authentication plugin to handle authentication keys, signed using the HMAC SHA512 algorithm. Subsequently, you will be able to make a request to your API with a HMAC signed authentication key in the *Authorization* header. Tyk Gateway will intercept the request and forward it to your Python gRPC server for HMAC signature and token verification.
 
