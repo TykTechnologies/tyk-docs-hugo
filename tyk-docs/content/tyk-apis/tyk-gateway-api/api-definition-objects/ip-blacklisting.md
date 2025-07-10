@@ -22,4 +22,12 @@ weight: 5
 
 For more details on CIDR notation, see [this Wikipedia entry](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation).
 
+<<<<<<< HEAD
 <p style="display: none;">{{<fn blocklist>}}{{</fn>}}</p>
+=======
+
+
+#### Tyk Operator
+
+Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP block list]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#ip-blocklist" >}}) with Tyk Operator.
+>>>>>>> 4c7c6582f... 3 fix release 5.5 (#6696)
