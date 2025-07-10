@@ -242,8 +242,9 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <details>
 <summary>Added new Dashboard configuration option `allow_unsafe_oas`</summary>
 
-Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
-</summary>
+
+Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behavior and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
+
 </details>
 </li>
 </ul>
@@ -556,8 +557,8 @@ Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ens
 <summary>Duplicate APIs could be created when click save button multiple times in API Designer</summary>
 
 Fixed an issue in *Tyk Dashboard* where duplicate APIs could be created with the same names and listen paths if you clicked multiple times on the *save* button in the API Designer. Now, this is not possible anymore and there is no risk of creating multiple APIs with the same name.
-</li>
 </details>
+</li>
 <li>
 <details>
 <summary>Connection issues were encountered with MongoDB connection strings</summary>
