@@ -1,7 +1,8 @@
 ## Contributor checklist
 
 - [ ] Reviewed *PR Code suggestions* and updated accordingly
-- [ ] **Tyk Members** - Labled the PR with the relevant releases
+- [ ] **Tyklings:** Labled the PR with the relevant releases
+- [ ] **Tyklings:** Added Jira DX PR ticket to the subject
 
 ---
 
