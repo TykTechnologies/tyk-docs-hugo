@@ -65,7 +65,7 @@ The response body transform middleware can iterate through list indices in dynam
 As explained in the [documentation](https://pkg.go.dev/text/template), templates are executed by applying them to a data structure. The template receives the decoded JSON or XML of the response body. If session variables or meta data are enabled, additional fields will be provided: `_tyk_context` and `_tyk_meta` respectively.
  {{< /note >}}
 
-### Automatic XML <-> JSON Transformation
+### Automatic XML &lt;--&gt; JSON Transformation
 
 A very common transformation that is applied in the API Gateway is to convert between XML and JSON formatted body content.
 
