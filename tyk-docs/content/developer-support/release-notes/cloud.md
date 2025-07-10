@@ -26,6 +26,19 @@ There are no deprecations in this release.
 
 ### Changelog {#Changelog-v1.29.0}
 
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>New Role to Restrict Local Login for SSO Users</summary>
+
+Introduced a new “View Only” role to enhance access control for organizations using SSO. This role prevents SSO-provisioned users from logging in via email/password, ensuring all activity is captured through the configured identity provider. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
+
+</details>
+</li> 
+</ul>
+
 ## 1.28.1 Release Notes
 
 ### Release Date 03 June 2025
