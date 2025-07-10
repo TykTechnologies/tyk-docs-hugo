@@ -30,7 +30,7 @@ Tyk Documentation is maintained in a [GitHub](https://github.com/TykTechnologies
 
 | **Special Branches** | **Description** | **Docs URL** |
 |---------------------------|-----------------|--------------|
-| `master`                  | Holds docs for nightly build. | [tyk.io/docs/nighlty](https://tyk.io/docs/nighlty) |
+| `master`                  | Holds docs for nightly build. | [tyk.io/docs/nightly](https://tyk.io/docs/nightly) |
 | `release-x.y`             | Holds docs for that specific version. For example, `release-5.7` holds docs for 5.7 and its patch versions (5.7.1, 5.7.2, etc.). | [tyk.io/docs/5.7](https://tyk.io/docs/5.7) |
 | `stable`                  | Holds the latest release. | [tyk.io/docs](https://tyk.io/docs) |
 
