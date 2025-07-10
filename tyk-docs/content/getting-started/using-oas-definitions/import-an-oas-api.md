@@ -910,7 +910,7 @@ The process for importing from an existing Tyk API definition or SOAP WSDL defin
 Tyk supports import of version 2.0 and 3.0.x OpenAPI Documents to create a Tyk OAS API Definition.
 
 When importing OpenAPI Documents using the Dashboard, Tyk detects the version of OpenAPI Specification used in the document and generates either a Tyk Classic API Definition (for OAS v2.0) or a Tyk OAS API Definition (for OAS v3.0.x). There is also an option to create a Tyk Classic API Definition from an OpenAPI 3.0.x document if you wish.
-
+</details>
 {{< tabs_start >}}
 {{< tab_start "Import from an OpenAPI v3.0 Document" >}}
 
