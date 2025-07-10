@@ -297,7 +297,7 @@ This also resets the user's Dashboard API credentials.
 | Resource URL | `/api/users/{USER_ID}/actions/key/reset`   |
 | Method       | PUT                                        |
 | Type         | None                                       |
-| Body         | {"userId":"{USER_ID}"}                     |
+| Body         | `{"userId":"{USER_ID}"}`                     |
 | Param        | None                                       |
 
 #### Sample Request
