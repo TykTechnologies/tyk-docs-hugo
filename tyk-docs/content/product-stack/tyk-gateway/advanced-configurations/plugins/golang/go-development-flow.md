@@ -161,6 +161,6 @@ go build -trimpath -buildmode=plugin -o plugin.so
 
 As a result of this build command, we get a shared library with the plugin implementation placed at `plugin.so`.
 
-For older gateway versions (<5.1), using `go mod vendor` is used to vendor third party dependencies.
+For older gateway versions (`<5.1`), using `go mod vendor` is used to vendor third party dependencies.
 If you are using [Go modules](https://blog.golang.org/using-go-modules), it should be as simple as running `go mod vendor` command.
 For newer Gateway verions than 5.1, the vendoring step is not required.
