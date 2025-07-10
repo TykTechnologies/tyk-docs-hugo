@@ -117,7 +117,7 @@ This example comes with a redis instance pre-configured and deployed with Docker
 
 ### 4. Update docker compose file
 
-Edit the <docker-compose.yml> file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
+Edit the `<docker-compose.yml>` file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
 
 From:
 
