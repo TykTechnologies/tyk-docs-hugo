@@ -22,7 +22,7 @@ weight: 5
 
 For more details on CIDR notation, see [this Wikipedia entry](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation).
 
-<p style="display: none;">{{<fn blocklist>}}{{</fn>}}</p>
+
 
 #### Tyk Operator
 
