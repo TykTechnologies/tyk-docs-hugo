@@ -123,7 +123,7 @@ Ensure the PRs for documentation, configuration, and release notes have already 
     Example migration from 5.7 to 5.8:
 
     -  Rename `5.7 - Latest` to `5.7`
-    -  Replicate the nighlty json object and update the version number to `5.8 - Latest`.
+    -  Replicate the nightly json object and update the version number to `5.8 - Latest`.
 
     Question: Will automapping will be maintained?
 
