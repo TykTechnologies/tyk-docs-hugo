@@ -233,7 +233,7 @@ Advanced caching with Tyk Operator is a similar process to that for configuring 
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
-This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
 
 For example:
 

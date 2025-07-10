@@ -9,7 +9,7 @@ Starting from Tyk Gateway version 5.2, you can leverage the power of OpenTelemet
 
 This documentation will guide you through the process of enabling and configuring OpenTelemetry in Tyk Gateway. You'll also learn how to customize trace detail levels to meet your monitoring requirements.
 
-For further guidance on configuring your observability back-end, explore our guides for [Datadog]({{< ref "otel_datadog" >}}), [Dynatrace]({{< ref "otel_dynatrace" >}}), [Jaeger]({{< ref "otel_jaeger" >}}) and [New Relic]({{< ref "otel_new_relic" >}}).
+For further guidance on configuring your observability back-end, explore our guides for [Datadog](product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog), [Dynatrace](product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace), [Jaeger](product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger) and [New Relic](product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic).
 
 ## Enabling OpenTelemetry in Two Steps
 

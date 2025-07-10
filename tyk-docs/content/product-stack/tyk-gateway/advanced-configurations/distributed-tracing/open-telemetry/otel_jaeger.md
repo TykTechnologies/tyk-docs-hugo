@@ -7,7 +7,7 @@ description: "This guide explains how to integration Tyk Gateway with OpenTeleme
 
 This quick start guide offers a detailed, step-by-step walkthrough for configuring Tyk API Gateway (OSS, self-managed or hybrid gateway connected to Tyk Cloud) with OpenTelemetry and [Jaeger](https://www.jaegertracing.io/) to significantly improve API observability. We will cover the installation of essential components, their configuration, and the process of ensuring seamless integration.
 
-For Kubernetes instructions, please refer to [How to integrate with Jaeger on Kubernetes]({{< ref "otel_jaeger_k8s" >}}).
+For Kubernetes instructions, please refer to [How to integrate with Jaeger on Kubernetes]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger_k8s" >}}).
 
 ## Prerequisites
 
