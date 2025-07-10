@@ -70,7 +70,7 @@ The implementation uses Go's context with timeout to manage the shutdown process
 
 ## Tyk Pump
 
-Tyk Pump also includes a graceful shutdown mechanism that ensures clean termination while preserving analytics data integrity. Pum pwill wait until the current purge cycle completes before flushing the data from all Pumps that have an internal buffer. This feature is particularly important during deployments, updates, or when you need to restart your pump service in production environments.
+Tyk Pump also includes a graceful shutdown mechanism that ensures clean termination while preserving analytics data integrity. Pump will wait until the current purge cycle completes before flushing the data from all Pumps that have an internal buffer. This feature is particularly important during deployments, updates, or when you need to restart your pump service in production environments.
 
 When Tyk Pump receives a termination signal, it:
 
