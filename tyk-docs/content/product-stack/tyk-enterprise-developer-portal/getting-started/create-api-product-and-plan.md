@@ -24,7 +24,7 @@ When integrating with Tyk, the Tyk policies will be imported into the Developer 
 
 - A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}})
-- Have APIs [created in your Tyk installation]({{< ref "getting-started/create-api" >}}.
+- Have APIs [created in your Tyk installation]({{< ref "getting-started/create-api" >}}).
 
 ## Create and import an API Product from Tyk
 
