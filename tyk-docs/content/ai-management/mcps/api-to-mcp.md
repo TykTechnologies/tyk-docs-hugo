@@ -170,7 +170,6 @@ sequenceDiagram
         MCP-->>AI: Tool Execution Error
     end
 
-linkStyle default stroke-width:2px
 ```
 
 API to MCP  can be found in [api-to-mcp GitHub repository](https://github.com/TykTechnologies/api-to-mcp)
