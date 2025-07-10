@@ -12,13 +12,6 @@ aliases:
 
 Tyk Gateway includes a graceful shutdown mechanism that ensures clean termination while minimizing disruption to active connections and requests. This feature is especially valuable during deployments, updates, or when you need to restart your gateway in production environments. It helps to maintain high availability and reliability during operational changes to your API gateway infrastructure.
 
-When Tyk Gateway receives a termination signal, it:
-
-- Stops accepting new connections
-- Completes processing of existing requests (up to a configurable timeout)
-- Performs cleanup of resources
-- Deregisters from management systems
-- Exits cleanly
 
 ### Configuration
 
@@ -44,6 +37,11 @@ Tyk Gateway listens for standard termination signals:
 - `SIGQUIT` : Manual quit signal
 - `SIGINT` : Interrupt signal (Ctrl+C)
 
+{{< note success >}}
+**Note**  
+
+Note that Gateway will not shutdown gracefully if it receives a `SIGKILL` signal, but will stop immediately.
+{{< /note >}}
 #### Shutdown Sequence
 
 When a termination signal is received, Tyk:
@@ -72,13 +70,6 @@ The implementation uses Go's context with timeout to manage the shutdown process
 
 Tyk Pump also includes a graceful shutdown mechanism that ensures clean termination while preserving analytics data integrity. Pump will wait until the current purge cycle completes before flushing the data from all Pumps that have an internal buffer. This feature is particularly important during deployments, updates, or when you need to restart your pump service in production environments.
 
-When Tyk Pump receives a termination signal, it:
-
-- Stops accepting new analytics data
-- Completes processing of queued analytics records
-- Flushes pending data to storage backends
-- Closes all pump connections cleanly
-- Exits safely
 
 ### Configuration
 
@@ -103,7 +94,11 @@ Tyk Pump listens for standard termination signals:
 - `SIGTERM`: Sent by container orchestrators like Kubernetes
 - `SIGINT` : Interrupt signal (Ctrl+C)
 
+{{< note success >}}
+**Note**  
+
 Note that Pump will not shutdown gracefully if it receives a `SIGKILL` signal, but will stop immediately.
+{{< /note >}}
 
 #### Shutdown Sequence
 
