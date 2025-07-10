@@ -1,14 +1,28 @@
 ---
-title: "Contributing to Tyk Docs"
+title: "Contributing Guides"
 description: "Guide to releasing Tyk documentation"
-tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs", "client"]
+tags: ["Guides", "Contribution to Tyk", "Open source contribution guide"]
 ---
 
 ## Introduction
 
-Tyk documentation is built using [Mintlify](https://mintlify.com/), a tool that allows us to create and manage documentation. This page provides an overview of how to contribute to Tyk documentation, including how to set up your local environment, create new content, and utilize Mintlify's features.
+Tyk documentation is built using [Mintlify](https://mintlify.com/), a platform that allows us to create, manage and publish our documentation. 
+This page provides an overview and guidelines to contributing to Tyk documentation, including setting up dev environment locally, creating new content, and utilize Mintlify's UI objects.
 
-## Getting Started
+Mintlify is using MDX file format. Check the [components section in Mintlify docs](https://mintlify.com/docs/text) for specific details.
+
+## Prerequisites - applys to all flows and tasks
+
+- You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
+- You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
+- You’re familiar with Git and Markdown syntax.
+
+## Common steps for every task
+- Any update requires a PR
+- Please label your PR with the versions you want it to be added to
+- Please assign a reviewer that is also a stakeholder who can sign off the change
+
+### Getting Started - Running Mintlify locally
 
 This secion provides instructions for setting up your local environment to work with Tyk documentation using Mintlify.
 
@@ -18,7 +32,7 @@ This secion provides instructions for setting up your local environment to work 
    ```
 2. **Clone the Tyk Docs repository**:
    ```bash
-   git clone <TODO>
+   git clone main
    ```
 3. **Navigate to the Tyk Docs directory**:
    ```bash
@@ -30,17 +44,9 @@ This secion provides instructions for setting up your local environment to work 
    ```
 5. Open your browser and go to `http://localhost:3000` to view the documentation.
 
-## Creating a New Page
+### Creating a New Page
 
 To add a new page to the Tyk documentation, follow the steps below.
-
-### Prerequisites
-
-* You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
-* You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
-* You’re familiar with Git and Markdown syntax.
-
-### Instructions
 
 1. **Switch to the `main` branch and pull the latest changes:**
 
@@ -118,17 +124,9 @@ To add a new page to the Tyk documentation, follow the steps below.
 
 7. **Preview your changes** using the link provided by Mintlify before merging.
 
-## Updating an Existing Page
+### Updating an Existing Page
 
 To make changes to an existing page in the Tyk documentation, follow these steps:
-
-### Prerequisites
-
-- You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
-- You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
-- You’re familiar with Git and Markdown syntax.
-
-### Instructions
 
 1. **Switch to the `main` branch and pull the latest changes:**
 
@@ -159,7 +157,7 @@ To make changes to an existing page in the Tyk documentation, follow these steps
 
    ```bash
    git add .
-   git commit -m "Update page: <page-name> – <short-description-of-change>"
+   git commit -m "<short-description-of-change>"
    git push origin <branch-name>
    ```
 
@@ -167,17 +165,9 @@ To make changes to an existing page in the Tyk documentation, follow these steps
 
 7. **Review the preview link** provided in the pull request to verify your changes before merging.
 
-## Deleting a Page
+### Deleting a Page
 
 To delete a page from the Tyk documentation, follow these steps:
-
-### Pre-requisites
-
-- You’ve set up the Tyk Docs local environment as described in the [Getting Started](#getting-started) section.
-- You have a basic understanding of [Page Structure](https://mintlify.com/docs/pages) and [Navigation](https://mintlify.com/docs/navigation) in Mintlify.
-- You’re familiar with Git and Markdown syntax.
-
-### Instructions
 
 1. **Switch to the `main` branch and pull the latest changes:**
 
@@ -203,7 +193,7 @@ To delete a page from the Tyk documentation, follow these steps:
 
    ```bash
    git add .
-   git commit -m "Delete page: <page-name>"
+   git commit -m "Delete page: <page-name> - <Explain briefly the reason>"
    git push origin <branch-name>
    ```
 
@@ -211,7 +201,7 @@ To delete a page from the Tyk documentation, follow these steps:
 
 7. **Review the preview link** provided by Mintlify to ensure your changes appear as expected before merging.
 
-## Guide for UI features
+### Guide for UI features
 
 Apart from the basic markdown writing, Tyk documentation also support UI components like accordions, callouts, cards, expandables, tabs etc. These components help in  enhance the documentation's usability and readability.
 

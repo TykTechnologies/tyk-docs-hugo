@@ -317,7 +317,7 @@ SQLite is useful for quick deployment and testing, however we don't recommend us
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 1. **Create a volume for the portal's database**
@@ -756,7 +756,7 @@ This guide provides a clear and concise, step-by-step recipe for installing the 
     {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
@@ -832,7 +832,7 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
     {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.
@@ -988,4 +988,4 @@ For global configurations of the Developer Portal deployment refer this [config 
 The Dashboard exposes two APIs:
 
 1. [Enterprise Developer Portal API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}})
-2. [Enterprise Developer Portal Admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints.md" >}})
+2. [Enterprise Developer Portal Admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints" >}})

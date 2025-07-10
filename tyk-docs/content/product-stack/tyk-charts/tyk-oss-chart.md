@@ -116,7 +116,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-configuration-reference/kv-store" >}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -143,7 +143,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -339,7 +339,7 @@ tyk-gateway:
 
 Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{< ref "tyk-gateway-api" >}}) on a separate port and protect it behind a firewall if needed.
 
-#### Mounting APIs, Policies, and Middlewares
+#### Mounting APIs, Policies, and Middleware
 
 By default, the Gateway stores API configurations at `/mnt/tyk-gateway/apps` inside the Gateway container. There are a a few challenges:
 - Multiple gateways do not share app configs
@@ -349,7 +349,7 @@ The same applies to security policies and middleware too, which are stored at `/
 
 This can be solved by instantiating a Persistent Volume as shared storage for the gateway instances. As each gateway is reloaded, they would get the API configurations from the same storage, solving the synchronisation issue between gateways. Also, the storage is persistent and can be designed to be resilient to cluster failure, thus your API configurations can be maintained after pod restart.
 
-You can configure persistent volume for APIs, Policies, and middlewares using `extraVolumes` and `extraVolumeMounts`:
+You can configure persistent volume for APIs, Policies, and middleware using `extraVolumes` and `extraVolumeMounts`:
 
 ```yaml
     extraVolumes:
