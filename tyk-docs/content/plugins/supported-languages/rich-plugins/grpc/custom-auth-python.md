@@ -42,7 +42,7 @@ http://localhost:8080/grpc-custom-auth/get
 From the above example, it should be noted that:
 
 - The *Date* header contains a date string formatted as follows: *Fri, 03 May 2024 11:06:00 GMT*.
-- The *Authorization* header is formatted as *Signature keyId=”<keyId>”, algorithm=”<hmac-algorithm>”, signature=”<hmac signature>”* where:
+- The *Authorization* header is formatted as `Signature keyId="<keyId>", algorithm="<hmac-algorithm>", signature="<hmac signature>"` where:
 
     - **keyId** is a Tyk authentication key.
     - **algorithm** is the HMAC algorithm used to sign the signature, *hmac-sha512* or *hmac-sha256*. 
