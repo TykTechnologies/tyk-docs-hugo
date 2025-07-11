@@ -95,8 +95,8 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
       Added `/env` endpoint that returns MDCB instance configuration as a list of environment variable keys and values. It requires an administrative key provided in the `x-tyk-authorization` header for access, ensuring secure and controlled usage. Successful requests returns a list of environment variable keys and values with passwords and sensitive information redacted.
       </details>
   </li>
- </details>
- </li>
+
+
  </ul>
 
 
