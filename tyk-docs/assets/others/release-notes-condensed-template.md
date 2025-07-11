@@ -44,7 +44,7 @@ This release has no breaking changes.
 
 ##### Compatibility Matrix For Tyk Components
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
-| --------------- | :------------------------- | ----------------------- |
+| --------------- | ------------------------- | ----------------------- |
 | 5.3 LTS         | Helm v2.2 - TBP           | Helm vX - vY            |
 |                 | MDCB v2.5 - TBP           | MDCB v1.7 - v2.4        |
 |                 | Operator v1.8 - TBP       | Operator vX - vY        |
