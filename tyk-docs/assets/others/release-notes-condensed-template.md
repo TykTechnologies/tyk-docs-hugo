@@ -55,7 +55,7 @@ This release has no breaking changes.
       
 ##### 3rd Party Dependencies & Tools {#3rdPartyTools-vX.Y.Z}
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
-| ---------------------------------------------------------- | :---------------------- | ---------------------- | -------- | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.0.x and 6.0.x | 4.4.x, 5.0.x and 6.0.x | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
