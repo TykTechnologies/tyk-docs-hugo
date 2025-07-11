@@ -43,6 +43,37 @@ There are three methods by which API definitions can be deployed to Tyk: using t
 
 The first two options provide access to the powerful licensed features of Tyk, whilst the third is used for open source deployments. Tyk provides additional tools to assist with automation when using the Tyk Dashboard API - namely [Tyk Operator]({{< ref "api-management/automations/operator" >}})(for Kubernetes deployments) and [Tyk Sync]({{< ref "api-management/automations/sync" >}}) (for gitops).
 
+#### Authorization credentials
+
+When making API calls to Tyk, you'll need the appropriate authorization credentials:
+
+| Interface         | Port | Authorization Header  | Authorization credentials        |
+|-------------------|------|-----------------------|----------------------------------|
+| Tyk Dashboard API | 3000 | `Authorization`       | From Dashboard User Profile      |
+| Tyk Gateway API   | 8080 | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
+
+**Dashboard API credentials:** Select **Edit profile** from the dropdown that appears when you click on your username in the top right corner of the screen, then scroll to the bottom of the page where you will see your **Tyk Dashboard API Access Credentials**. You will also need to have 'admin' or 'api:write' permission if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
+
+**Gateway API credentials:** Use the `secret` value configured in your `tyk.conf` file.
+
+#### Import types
+
+When importing content into Tyk, it's important to select the correct import type:
+
+- **openAPI** is used only for [OpenAPI descriptions]({{< ref "api-management/gateway-config-tyk-oas#openapi-description" >}}) (without the [Tyk Vendor Extension]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension" >}}))
+- **TykAPI** is used for a full [Tyk OAS API definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}) (comprising OpenAPI description plus Tyk Vendor Extension) or Tyk Classic API definition
+- **WSDL/XML** is used for WSDL/XML content and will result in a Tyk Classic API
+
+#### Gateway API hot reload
+
+When using the Tyk Gateway API, after creating or updating APIs you need to load changes into the Gateway. You can either restart the Tyk Gateway or issue a hot reload command:
+
+```curl
+curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
+```
+
+**Note:** You can find your API definitions in the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`).
+
 | Feature           | API Designer | Tyk Dashboard API | Tyk Gateway API |
 |-------------------|--------------|-------------------|-----------------|
 | Work with YAML format                                | ✅ | ✅ | ❌ |
@@ -207,18 +238,7 @@ On the Import API screen, there are three options for <b>Import Type</b>, it is 
 
 {{< tab_start "Dashboard API" >}}
 
-When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and provide credentials in the `Authorization` field for Tyk to authorize your request, as follows:
-
-| Interface         | Port | Authorization Header | Authorization credentials   |
-|-------------------|------|----------------------|-----------------------------|
-| Tyk Dashboard API | 3000 | `Authorization`      | From Dashboard User Profile |
-
-You can obtain your authorization credential (Dashboard API key) from the Tyk Dashboard UI:
-
-- Select **Edit profile** from the dropdown that appears when you click on your username in the top right corner of the screen
-- Scroll to the bottom of the page were you will see your **Tyk Dashboard API Access Credentials**
-
-You will also need to have ‘admin’ or ‘api:write’ permission if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 To create the API in Tyk, you simply send your Tyk OAS API Definition in the payload to the `POST /api/apis/oas` endpoint of your Tyk Dashboard API. 
 
@@ -256,11 +276,7 @@ You can use the optional `templateId` parameter to apply an [API Template]({{< r
 
 {{< tab_start "Gateway API" >}}
 
-When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
-
-| Interface       | Port | Authorization Header  | Authorization credentials        |
-|-----------------|------|-----------------------|----------------------------------|
-| Tyk Gateway API | 8080 | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 To create the API in Tyk, you simply send your Tyk OAS API Definition in the payload to the `POST /tyk/apis/oas` endpoint of your Tyk Gateway API. 
 
@@ -313,15 +329,7 @@ If the command succeeds, you will see the following response, where `key` contai
 
 What you have done is to send a Tyk OAS API definition to Tyk Gateway's `/tyk/apis/oas` endpoint resulting in the creation of the API in your Tyk Gateway.
 
-**Restart or hot reload**
-
-Once you have created your API you need to load it into the Gateway so that it can serve traffic. To do this you can either restart the Tyk Gateway or issue a [hot reload]({{< ref "tyk-stack/tyk-gateway/important-prerequisites#hot-reload-is-critical-in-tyk-ce" >}}) command:
-
-```.curl
-curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
-```
-
-You can go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) to see where Tyk has stored your Tyk OAS API Definition.
+For hot reload instructions, see the [Gateway API hot reload]({{< ref "#gateway-api-hot-reload" >}}) section above.
 
 {{< tab_end >}}
 
@@ -350,13 +358,9 @@ If you have a valid OAS 3.0 compliant OpenAPI description, in YAML or JSON forma
     {{< img src="/img/oas/api-create-import.png" alt="Choosing what to import" >}}
 
     {{< note success >}}
-**Note**  
+**Note**
 
-On the Import API screen, there are three options for <b>Import Type</b>, it is important to select the correct one for the object that you want to load into Tyk:
-
-- <b>openAPI</b> is used only for [OpenAPI descriptions]({{< ref "api-management/gateway-config-tyk-oas#openapi-description" >}}) (without the [Tyk Vendor Extension]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension" >}}))
-- <b>TykAPI</b> is used for a full [Tyk OAS API definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}) (comprising OpenAPI description plus Tyk Vendor Extension) or Tyk Classic API definition
-- <b>WSDL/XML</b> is used for WSDL/XML content and will result in a Tyk Classic API
+For import type options, see the [Import types]({{< ref "#import-types" >}}) section above.
     {{< /note >}}
 
 4. Now you can choose the location of the OpenAPI description, which can be:
@@ -392,18 +396,7 @@ On the Import API screen, there are three options for <b>Import Type</b>, it is 
 
 {{< tab_start "Dashboard API" >}}
 
-When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and provide credentials in the `Authorization` field for Tyk to authorize your request, as follows:
-
-| Interface         | Port | Authorization Header | Authorization credentials   |
-|-------------------|------|----------------------|-----------------------------|
-| Tyk Dashboard API | 3000 | `Authorization`      | From Dashboard User Profile |
-
-You can obtain your authorization credential (Dashboard API key) from the Tyk Dashboard UI:
-
-- Select **Edit profile** from the dropdown that appears when you click on your username in the top right corner of the screen
-- Scroll to the bottom of the page were you will see your **Tyk Dashboard API Access Credentials**
-
-You will also need to have ‘admin’ or ‘api:write’ permission if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 To create the API in Tyk, you simply send your OpenAPI document in the payload to the `POST /api/apis/oas/import` endpoint of your Tyk Dashboard API. 
 
@@ -444,11 +437,7 @@ If the command succeeds, you will see the following response, where `Meta` conta
 
 {{< tab_start "Gateway API" >}}
 
-When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
-
-| Interface       | Port | Authorization Header  | Authorization credentials        |
-|-----------------|------|-----------------------|----------------------------------|
-| Tyk Gateway API | 8080 | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 To create the API in Tyk, you simply send your OpenAPI document in the payload to the `POST /tyk/apis/oas/import` endpoint of your Tyk Gateway API. 
 
@@ -484,15 +473,7 @@ If the command succeeds, you will see the following response, where `key` contai
 }
 ```
 
-**Restart or hot reload**
-
-Once you have created your API you need to load it into the Gateway so that it can serve traffic. To do this you can either restart the Tyk Gateway or issue a [hot reload]({{< ref "tyk-stack/tyk-gateway/important-prerequisites#hot-reload-is-critical-in-tyk-ce" >}}) command:
-
-```.curl
-curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
-```
-
-You can go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) to see where Tyk has stored your Tyk OAS API Definition.
+For hot reload instructions, see the [Gateway API hot reload]({{< ref "#gateway-api-hot-reload" >}}) section above.
 
 {{< tab_end >}}
 
@@ -648,18 +629,7 @@ If you have an updated OpenAPI description or Tyk OAS API definition, in YAML or
 
 {{< tab_start "Dashboard API" >}}
 
-When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and provide credentials in the `Authorization` field for Tyk to authorize your request, as follows:
-
-| Interface         | Port | Authorization Header | Authorization credentials   |
-|-------------------|------|----------------------|-----------------------------|
-| Tyk Dashboard API | 3000 | `Authorization`      | From Dashboard User Profile |
-
-You can obtain your authorization credential (Dashboard API key) from the Tyk Dashboard UI:
-
-- Select **Edit profile** from the dropdown that appears when you click on your username in the top right corner of the screen
-- Scroll to the bottom of the page were you will see your **Tyk Dashboard API Access Credentials**
-
-You will also need to have ‘admin’ or ‘api:write’ permission if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 **Applying an Updated OpenAPI Description**
 
@@ -705,11 +675,7 @@ If the command succeeds, you will see the following response, where `Meta` conta
 
 {{< tab_start "Gateway API" >}}
 
-When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
-
-| Interface       | Port | Authorization Header  | Authorization credentials        |
-|-----------------|------|-----------------------|----------------------------------|
-| Tyk Gateway API | 8080 | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 
 **Applying an Updated OpenAPI Description**
@@ -754,13 +720,7 @@ If the command succeeds, you will see the following response, where `key` contai
 }
 ```
 
-**Restart or hot reload**
-
-Once you have updated your API you need to load it into the Gateway so that it can serve traffic. To do this you can either restart the Tyk Gateway or issue a [hot reload]({{< ref "tyk-stack/tyk-gateway/important-prerequisites#hot-reload-is-critical-in-tyk-ce" >}}) command:
-
-```.curl
-curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
-```
+For hot reload instructions, see the [Gateway API hot reload]({{< ref "#gateway-api-hot-reload" >}}) section above.
 
 {{< tab_end >}}
 
@@ -793,18 +753,7 @@ From Tyk 5.8.0, when using Tyk Dashboard these can be exported in either JSON or
 
 {{< tab_start "Dashboard API" >}}
 
-When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and provide credentials in the `Authorization` field for Tyk to authorize your request, as follows:
-
-| Interface         | Port | Authorization Header | Authorization credentials   |
-|-------------------|------|----------------------|-----------------------------|
-| Tyk Dashboard API | 3000 | `Authorization`      | From Dashboard User Profile |
-
-You can obtain your authorization credential (Dashboard API key) from the Tyk Dashboard UI:
-
-- Select **Edit profile** from the dropdown that appears when you click on your username in the top right corner of the screen
-- Scroll to the bottom of the page were you will see your **Tyk Dashboard API Access Credentials**
-
-You will also need to have ‘admin’ or ‘api:write’ permission if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 To export an API asset, you use the `GET /api/apis/oas/{API-ID}/export` endpoint, indicating whether you require the full Tyk OAS API definition or only the OpenAPI description using the `mode` parameter.
 
@@ -823,11 +772,7 @@ Where:
 
 {{< tab_start "Gateway API" >}}
 
-When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
-
-| Interface       | Port | Authorization Header  | Authorization credentials        |
-|-----------------|------|-----------------------|----------------------------------|
-| Tyk Gateway API | 8080 | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
+For authorization credentials, see the [Authorization credentials]({{< ref "#authorization-credentials" >}}) section above.
 
 To export an API asset, you use the `GET /tyk/apis/oas/{API-ID}/export` endpoint, indicating whether you require the full Tyk OAS API definition or only the OpenAPI description using the `mode` parameter.
 
