@@ -55,7 +55,7 @@ Tyk Pump now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIP
 This release focuses on improving security and compliance, enhancing integration capabilities, and ensuring robust performance in secure environments.
 
 ### Downloads
-- <<[Docker Image v1.10.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.10)>>
+- [Docker Image v1.10.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.10)
 - ```bash
   docker pull tykio/tyk-pump-docker-pub:v1.10.0
   ```

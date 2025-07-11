@@ -91,7 +91,7 @@ Specify public keys used for Certificate Pinning on global level.
 ENV: <b>TYK_GW_SECURITY_CERTIFICATES_UPSTREAM</b><br />
 Type: `map[string]string`<br />
 
-Specify upstream mutual TLS certificates at a global level in the following format: `{ "<host>": "<cert>" }``
+Specify upstream mutual TLS certificates at a global level in the following format: `{ "<host>": "<cert>" }`
 
 ### security.certificates.control_api
 ENV: <b>TYK_GW_SECURITY_CERTIFICATES_CONTROLAPI</b><br />
@@ -1107,7 +1107,7 @@ Set this to true to have Tyk automatically match for numeric IDs, it will match 
 ENV: <b>TYK_GW_ANALYTICSCONFIG_NORMALISEURLS_CUSTOM</b><br />
 Type: `[]string`<br />
 
-This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a {var} placeholder.
+This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a `{var}` placeholder.
 
 ### analytics_config.pool_size
 ENV: <b>TYK_GW_ANALYTICSCONFIG_POOLSIZE</b><br />
