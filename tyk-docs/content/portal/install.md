@@ -61,7 +61,7 @@ For step-by-step instructions, please refer to [the Email Settings section]({{< 
 {{< note success >}}
 **Note: SQLite support** 
 
-Tyk no longer supports SQLite as of v5.7.0. To ensure a smooth experience, please migrate to [PostgreSQL]({{< ref “planning-for-production/database-settings#postgresql” >}}) or another supported alternative.
+Tyk no longer supports SQLite as of the release of [Tyk Dashboard v5.7.0]({{< ref "developer-support/release-notes/dashboard#deprecations-6" ) in December 2024. To ensure a smooth experience, please migrate to [PostgreSQL]({{< ref “planning-for-production/database-settings#postgresql” >}}) or another supported alternative.
 {{< /note >}}
 
 ## Portal Installation Process
