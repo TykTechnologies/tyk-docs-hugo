@@ -70,7 +70,7 @@ For the complete API specification, see [Tyk EDP API documentation]({{< ref "pro
 
 #### Deprecations
 
-There are no deprecations in this release.
+SQLite has reached its End of Life in this release, coming into alignment with the Tyk Dashboard. Sqlite was previously recommended only to be used in basic proofs of concept. Now, for such scenarios and for production, we recommend using PostgreSQL or MySQL for better scalability and support.
 
 #### Upgrade instructions
 
