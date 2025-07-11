@@ -5,6 +5,9 @@ tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
 description: "Explains the inclusive naming initiative concerning Tyk docs"
 aliases:
    - /contribute
+   - /ui-examples/feature-cards 
+   - /ui-examples/test-pill-label 
+   - /ui-examples/youtube-video-embed
 ---
 
 This document is intended for Tyk users, contributors, and anyone interested in our commitment to [inclusive language](#inclusive-naming-project) within Tyk's documentation and product interfaces.
