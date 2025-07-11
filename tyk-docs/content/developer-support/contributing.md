@@ -7,7 +7,21 @@ aliases:
    - /contribute
 ---
 
-Contains the [Tyk Documentation](https://tyk.io/docs/) source.
+## How to Contribute to our Docs
+
+We appriciate any form of engagement and contribution to our documentation. You can do it in a few ways:
+- [Report an error](https://github.com/TykTechnologies/tyk-docs/issues) in our Github repo.
+- [Suggest/request an improvement](https://github.com/TykTechnologies/tyk-docs/issues) in our Github repo.
+- Update the code yourself:
+  1. If you want to be even more involved, you are welcomed to [submit PR](https://github.com/TykTechnologies/tyk-docs/pulls) directly in our [docs repo](https://github.com/TykTechnologies/tyk-docs/).
+  2. In order for you need to find the page that needs editing in the actual [GH docs repo](https://github.com/TykTechnologies/tyk-docs/), the best way would be to copy a sentence from that HTML page on the [docs website](https://tyk.io/docs) and look it up it using the Github search box, on the top left corner. (Since the structure of our docs is not the same as the structure in the rendered docs website, we can't easily link you to this page).
+- Post a message in our [community forum](https://community.tyk.io/)
+
+Our docs are compiled using the [Hugo static site generator](https://gohugo.io/).
+
+The [Readme](https://github.com/TykTechnologies/tyk-docs#readme) has details of how to construct docs pages.
+
+This document is intended for Tyk users, contributors, and anyone interested in our commitment to inclusive language within Tyk's documentation and product interfaces.
 
 ## How To Contribute?
 
@@ -62,222 +76,11 @@ For external contributions, we recommend contributing to Tyk in the following wa
 - Fetch from the remote branch `git fetch upstream`
 - Rebase your branch with the latest remote branch content `git rebase upstream/master`
 
-## Installing Hugo
-
-### Run Hugo With Docker
-1. Install [Docker](https://docs.docker.com/get-docker/)
-2. Run `docker-compose up` from the project directory
-
-### Run Hugo Locally
-1. Install [Hugo v0.145.0+extended or greater](https://gohugo.io/installation/)
-2. Run `hugo server --theme=tykio --buildDrafts --enableGitInfo` from the `tyk-docs/tyk-docs` directory
-3. Go to  [http://localhost:1313/docs/nightly/](http://localhost:1313/docs/nightly/) to view the docs locally
-4. The content itself is just markdown that follows the front matter block. After making a change, Hugo should auto-reload and you will be able to see the changes live in your browser. If not, refresh. Sometimes Hugo gets confused and you may need to re-run it
-
-## Getting Started
-
-This section briefly explains how to work with [Hugo](http://gohugo.io/) to create content in the Tyk Docs repository.
-
-To get started:
-1. Clone this repository 
-2. Navigate to the project directory
-
-The docs content lives in `tyk-docs/content`.
-
-### Adding A New Section And/Or A New Page
-
-1. Add a new folder within the `tyk-docs/tyk-docs/content` directory. For example `new-section`.
-2. Within the root folder of the repository, create a markdown file using the `hugo new` command from your terminal. For the above example you would run `hugo new --configDir tyk-docs new-section/new-section.md`. This file will be converted to the equivalent of an `index.html` file.
-3. You can then create other markdown files within that directory, that you can name as you want.
-
-![readme-example](https://user-images.githubusercontent.com/1983518/36219727-457c16f4-11b0-11e8-9839-946ef00c4655.png)
-
-### Front Matter
-
-For each new file created via `hugo new`, the following YAML formatted [Front Matter](http://gohugo.io/content-management/front-matter/) is added:
-
-```markdown
----
-title: "New Section"
-date: 2024-07-31
-tags: ["example-tag1", "example-tag2"]
-description: "Enter a brief description of the section here."
----
-
-**Insert Lead paragraph here.**
-```
-
-- `title` is taken from the name of the markdown file created
-- `date` is auto populated in a year-month-day format
-- `tags` are used to create meta keywords in the HTML output, and are added in the following format - `tags: ["tag 1", "tag 2", "tag 3"]`
-- `description` is used for the meta description in the HTML output
-
-Example front matter for a page:
-
-```markdown
----
-title: "Test"
-date: 2021-02-10
-tags: ["Tyk", "advanced-configuration", "Dashboard"]
-description: "Testing the description and tagging functionality in Tyk"
----
-```
-
-### Links
-
-All links should be defined using the `ref` function. This ensures that links will be correct and will never break docs.
-
-As an added value, you can specify the file path relative to the "content" folder. However, because our URL structure is synced with the file structure, it will be the same as the URL path.
-
-Example:
-
-```
-[Link title]({{< ref "tyk-open-source" >}})
-```
-
-### Images
-
-All images should be uploaded to `assets/img` folder (do not confuse it with `static/img`).
-
-All images should be defined using `img` tag.
-Example:
-
-```
-{{< img src="/img/docker.png" alt="Docker" width="500px" >}}
-```
-
-`src` and `alt` parameters are required for images.
-
-## Using Shortcodes
-
-Various shortcodes are used within the Tyk documentation to facilitate writing content.
-
-### Grid Shortcode
-
-You can find 3 sizes of grid layouts. This is used in conjunction with the badge shortcode
-
-1. grid
-2. mid
-3. big
-
-#### Grid
-
-```
-{{< grid >}}
-
-Content goes here
-
-{{< /grid >}}
-```
-
-#### Mid
-
-```
-{{< grid type="mid" >}}
-
-Content goes here
-
-{{< /grid >}}
-```
-
-#### Big
-
-```
-{{< grid type="big">}}
-
-Content goes here
-
-{{< /grid >}}
-```
-
-### Badge
-### Buttons
-
-We have 3 button types that can be used in conjunction with the Grid layout shortcode. These all align centrally and use the Tyk color palette.
-
-```
-{{< button href="/docs/basic-config-and-security/" color="black" content="More Tyk Configuration" >}}
-
-{{< button href="/docs/getting-started/key-concepts/" color="red" content="Tyk Concepts" >}}
-
-{{< button href="/docs/getting-started/installation/" color="green" content="All installation options" >}}
-```
-
-![image](https://user-images.githubusercontent.com/1983518/92096160-775f4680-edce-11ea-8d67-3106e482ad4a.png)
-![image](https://user-images.githubusercontent.com/1983518/92096210-8645f900-edce-11ea-9ccd-b0a013e6f582.png)
-![image](https://user-images.githubusercontent.com/1983518/92096267-98279c00-edce-11ea-9a50-b20aa016e189.png)
-
-### Note And Warning shortcodes
-
-Use these instead of the usual markdown blockquote style.
-
-#### Note
-
-```
-{{< note success >}}
-**Note**
-
-You need to have at least one Edge Gateway with a *Deployed* status connected to your Control Plane.
-{{< /note >}}
-```
-
-![image](https://user-images.githubusercontent.com/1983518/104920964-8d8e2d80-5990-11eb-8bc6-7cae78bf54dd.png)
-
-#### Warning
-
-```
-{{< warning success >}}
-**Warning**
-
-We recommend you restrict your IAM user as much as possible before sharing the credentials with any 3rd party, including Tyk Cloud. See [IAM User Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html) for more details.
-{{< /warning >}}
-```
-
-![image](https://user-images.githubusercontent.com/1983518/104921245-f70e3c00-5990-11eb-927c-916204d90325.png)
-
-See the [Hugo Docs](https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes) for other built-in shortcodes.
-
-### Tooltips Shortcode
-
-You can add tooltips by using the following shortcode:
-
-```markdown
-{{< tooltip >}}some link text definition{{< definition >}}
-the tooltip text to display{{< /definition >}}{{< /tooltip >}}
-```
-
-![tooltip-demo](https://user-images.githubusercontent.com/1983518/109049790-916c4880-76d0-11eb-8b3a-ad107d317468.gif)
-
-### Pill label shortcode {#pill-label-shortcode}
-
-The `pill-label` shortcode creates small, pill-shaped labels that can be added next to headers to highlight features, statuses, or other information.
-
-Basic usage:
-```
-### Feature Name {{< pill-label text="LABEL" >}}
-```
-
-You can also specify a class or custom styling:
-```
-### Feature Name {{< pill-label text="LABEL" class="pill-red" >}}
-### Feature Name {{< pill-label text="LABEL" style="background-color: #f0f0f0; color: #333;" >}}
-```
-
-To read and view detailed examples of all the available styling options, see the [pill-label live examples page](https://tyk.io/docs/ui-examples/test-pill-label/)
-
-There's also a [security pill-label test file](./tyk-docs/tyk-docs/content/ui-examples/test-pill-label-security.md) to validate the security of the implementation. It's in a draft mode, so if you want to see it in the website, you need to run Hugo with `--buildDrafts` as follows
-
-```
-hugo server --theme=tykio --buildDrafts --enableGitInfo --port 1313
-```
-
-Then navigate to `http://localhost:1313/docs/nightly/ui-examples/test-pill-label-security/` to view the examples.
-
 ## License
 
 Tyk is released under the MPL v2.0 please see the [license file](LICENSE.md) for a full version of the license.
 
-## The Pipeline
+## TODO: The Pipeline
 
 When you create a PR in this repository:
 
@@ -298,23 +101,6 @@ until the CI status is green.
 	1.	Copy the file path: From the file path in GitHub, copy the portion after `/content` up to the end, excluding the `.md` file extension.
 	2.	Construct the URL: Append this copied path to the Netlify URL after `/docs/nightly`.
 	3.	Example: To see the document at tyk-docs GitHub repository, copy `/tyk-self-managed/install` (omit `.md`) and add it after /docs/nightly/ in the Netlify URL, resulting in [https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/](https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/).
-
-
-## How to Contribute to our Docs
-
-We appriciate any form of engagement and contribution to our documentation. You can do it in a few ways:
-- [Report an error](https://github.com/TykTechnologies/tyk-docs/issues) in our Github repo.
-- [Suggest/request an improvement](https://github.com/TykTechnologies/tyk-docs/issues) in our Github repo.
-- Update the code yourself:
-  1. If you want to be even more involved, you are welcomed to [submit PR](https://github.com/TykTechnologies/tyk-docs/pulls) directly in our [docs repo](https://github.com/TykTechnologies/tyk-docs/).
-  2. In order for you need to find the page that needs editing in the actual [GH docs repo](https://github.com/TykTechnologies/tyk-docs/), the best way would be to copy a sentence from that HTML page on the [docs website](https://tyk.io/docs) and look it up it using the Github search box, on the top left corner. (Since the structure of our docs is not the same as the structure in the rendered docs website, we can't easily link you to this page).
-- Post a message in our [community forum](https://community.tyk.io/)
-
-Our docs are compiled using the [Hugo static site generator](https://gohugo.io/).
-
-The [Readme](https://github.com/TykTechnologies/tyk-docs#readme) has details of how to construct docs pages.
-
-This document is intended for Tyk users, contributors, and anyone interested in our commitment to inclusive language within Tyk's documentation and product interfaces.
 
 ## Inclusive Naming project
 We are excited to announce the launch of our *Inclusive Naming* project, in June 2024, dedicated to updating our documentation and aligning with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.

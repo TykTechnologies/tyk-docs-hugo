@@ -30,13 +30,23 @@ Tyk Documentation is maintained in a [GitHub](https://github.com/TykTechnologies
 
 | **Special Branches** | **Description** | **Docs URL** |
 |---------------------------|-----------------|--------------|
-| `master`                  | Holds docs for nightly build. | [tyk.io/docs/nighlty](https://tyk.io/docs/nighlty) |
+| `main`                  | Holds docs for nightly build. | [tyk.io/docs/nighlty](https://tyk.io/docs/nighlty) |
 | `release-x.y`             | Holds docs for that specific version. For example, `release-5.7` holds docs for 5.7 and its patch versions (5.7.1, 5.7.2, etc.). | [tyk.io/docs/5.7](https://tyk.io/docs/5.7) |
-| `stable`                  | Holds the latest release. | [tyk.io/docs](https://tyk.io/docs) |
+| `production`                  | It acts as the single source of truth for the Mintlify platform.. | [tyk.io/docs](https://tyk.io/docs) |
 
-Documentation is always merged into the `master` branch first, and then the changes are made to the `release-x.y` branches as needed.
+### Production Branch
 
-The `stable` branch automatically replicates changes from the latest release branch (e.g., `release-5.7`) to ensure that the live site always reflects the most recent stable version. Because of which at [tyk.io/docs]() and [tyk.io/docs/5.7](), you will see the same content.
+*   This is a special, **automated-only** branch. **No one should ever commit to it directly**.
+*   It acts as the single source of truth for the Mintlify platform.
+*   A GitHub Action (`deploy-docs.yml`) automatically builds this branch by:
+    1.  Cloning the main branch and all active release- branches.
+    2.  Organizing their content into versioned subfolders (e.g., /nightly/, /5.9/, /5.8/).
+    3.  Generating a unified `docs.json` navigation file that contains the structure for all versions.
+    Mintlify is connected only to this `production` branch and deploys any changes made to it.
+
+All documentation content is always merged into the `main` branch first, and then the changes are made to the `release-x.y` branches as needed.
+
+The `production` branch automatically replicates changes from the latest release branch (e.g., `release-5.7`) to ensure that the live site always reflects the most recent version. Because of which at [tyk.io/docs](https://tyk.io/docs/) and [tyk.io/docs/5.7](https://tyk.io/docs/5.7), you will see the same content.
 
 ```mermaid
 graph TD;
@@ -54,28 +64,28 @@ graph TD;
 
     subgraph SpecialBranches [Special Branches in Repository]
         direction TB
-        master["<strong>master</strong><br/>Holds docs for nightly build"]
+        main["<strong>main</strong><br/>Holds docs for nightly build"]
         release_xy["<strong>release-x.y</strong><br/>(e.g., release-5.7)<br/>Docs for specific version x.y<br/>and its patch versions (x.y.z)"]
-        stable["<strong>stable</strong><br/>Holds the latest release docs"]
+        production["<strong>production</strong><br/>Holds the latest release docs"]
     end
-    class master,release_xy,stable branchStyle;
+    class main,release_xy,production branchStyle;
 
     subgraph PublishedURLs [Published Documentation URLs]
         direction TB
         url_nightly["<code>tyk.io/docs/nightly</code>"]
         url_version["<code>tyk.io/docs/x.y</code><br/>(e.g., tyk.io/docs/5.7)"]
-        url_stable["<code>tyk.io/docs</code><br/>(Live site / Latest stable)"]
+        url_production["<code>tyk.io/docs</code><br/>(Live site / Latest production)"]
     end
-    class url_nightly,url_version,url_stable urlStyle;
+    class url_nightly,url_version,url_production urlStyle;
 
-    Repo --> master;
-    NewContent -- "Step 1. Content merged first into" --> master;
-    master -- "Step 2. Changes propagated/<br/>backported (as needed)" --> release_xy;
-    release_xy -- "Step 3. LATEST <code>release-x.y</code><br/>automatically replicates to" --> stable;
+    Repo --> main;
+    NewContent -- "Step 1. Content merged first into" --> main;
+    main -- "Step 2. Changes propagated/<br/>backported (as needed)" --> release_xy;
+    release_xy -- "Step 3. LATEST <code>release-x.y</code><br/>automatically replicates to" --> production;
 
-    master -. "Publishes to" .-> url_nightly;
+    main -. "Publishes to" .-> url_nightly;
     release_xy -. "Publishes to" .-> url_version;
-    stable -. "Publishes to" .-> url_stable;
+    production -. "Publishes to" .-> url_production;
 ```
 
 ### Previous Releases
@@ -181,6 +191,25 @@ Ensure the PRs for documentation, configuration, and release notes have already 
     **Automation:** Not Available\
     **Steps:** Modify the release tags of all components modified in a release.\
     **Example:** <https://github.com/TykTechnologies/tyk/releases/tag/v5.3.8>
+
+This process is performed by a release manager.
+
+Step 1: Create the New Release Branch
+From the main branch, create a new branch named release-5.10.
+
+Step 2: Update the Branch Configuration
+In the main branch, edit the branches-config.json file. Add a new JSON object for the new version. This configuration tells the build system how to handle the new version.
+
+*   Set isLatest to true for the new release-5.10.
+*   Set isLatest to false for the previous latest version (e.g., release-5.9).
+
+Step 3: Manually Trigger the Deployment Workflow
+
+1.  Go to the "Actions" tab in the GitHub repository.
+2.  Select the "Deploy Documentation" workflow.
+3.  Click "Run workflow" and choose the production branch to run it against.
+
+This will rebuild the production branch, creating the new versioned folder and updating the site's navigation to include v5.10 as the latest version.
 
 ---
 

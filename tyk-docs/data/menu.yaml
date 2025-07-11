@@ -734,18 +734,6 @@ menu:
                 path: /developer-support/contribution-guides
                 category: Page
                 show: true
-              - title: "UI Example: Pill Label shortcode"
-                path: /ui-examples/test-pill-label
-                category: Page
-                show: true
-              - title: "UI Example: Feature Cards shortcode"
-                path: /ui-examples/feature-cards
-                category: Page
-                show: true
-              - title: "UI Example: YouTube Video Embed shortcode"
-                path: /ui-examples/youtube-video-embed
-                category: Page
-                show: true
   - title: "Developer Portal"
     category: Tab
     show: True
