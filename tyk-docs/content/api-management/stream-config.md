@@ -4298,7 +4298,6 @@ max_elapsed_time: 1h
 ### amqp_0_9
 
 Sends messages to an AMQP (0.91) exchange. AMQP is a messaging protocol used by various message brokers, 
-including RabbitMQ.Connects to an AMQP (0.91) queue. AMQP is a messaging protocol used by various message brokers, 
 including RabbitMQ.
 
 #### Common
