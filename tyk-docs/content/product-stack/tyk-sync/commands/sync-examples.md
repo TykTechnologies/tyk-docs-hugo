@@ -22,7 +22,7 @@ Flags:
 ```
 
 ## Show Command
-Shows more details about a specific example by using its location. [See output in example usage]({{< relref "#import-tyk-example-into-dashboard" >}})
+Shows more details about a specific example by using its location. [See output in example usage]({{< ref "#import-tyk-example-into-dashboard" >}})
 ```bash
 Usage:
   tyk-sync examples show [flags]
