@@ -727,15 +727,43 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
-<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 
-Additionally, SQLite has reached its End of Life in this release, enabling a fully static, CGO-free Tyk Dashboard optimised for RHEL8. Sqlite was previously recommended only to be used in basic proofs of concept. Now, for such scenarios and for production, we recommend migrating to PostgreSQL or MongoDB for better scalability and support.
-<!-- Optional section!
-Used to share and notify users about our plan to deprecate features, configs etc.
-Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-<!-- ###### Future deprecations
--->
+This section highlights features and dependencies that have been deprecated.
+
+##### Authentication Methods
+
+We’ve deprecated the following authentication methods in this release:
+
+* **[External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})**
+
+  * Tyk Classic: `external_oauth`
+  * Tyk OAS: `server.authentication.securitySchemes.externalOAuth`
+
+* **[OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})**
+
+  * Tyk Classic: `auth_configs.oidc`
+  * Tyk OAS: `server.authentication.oidc`
+
+We recommend migrating to **[JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}})** for improved flexibility and long-term support.
+
+##### SQLite End of Life
+
+SQLite has reached **End of Life** for the Tyk Dashboard in this release. It was previously intended for **proof-of-concept** use only and is no longer supported.
+
+We now recommend using **PostgreSQL** or **MongoDB** for both development and production deployments, as they provide greater scalability and long-term support.
+
+**Why This Matters**
+
+* SQLite is written in **C**, and using it in Go projects typically requires [**CGO**](https://golang.org/cmd/cgo/), which enables Go code to call C libraries.
+* As long as the Dashboard depended on SQLite, CGO was required.
+* With SQLite removed, the Tyk Dashboard can now be compiled with `CGO_ENABLED=0`, resulting in a **fully static binary**.
+
+This change enables:
+
+* Easier cross-platform builds
+* Better compatibility with **RHEL8**
+* Fewer dependencies and improved portability
+
 #### Upgrade instructions {#upgrade-5.7.0}
 If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
