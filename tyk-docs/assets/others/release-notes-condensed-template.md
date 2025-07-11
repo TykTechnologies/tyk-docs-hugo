@@ -20,7 +20,7 @@ For details on our release lifecycle and maintenance policies, see the [release 
 For LTS releases:
 ------------------
 This is an **LTS release**, maintained under our [Long Term Support policy](https://tyk.io/docs/developer-support/release-types/long-term-support/). 
-For maintained LTS versions, check the [current LTS releases timeline]https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline). 
+For maintained LTS versions, check the [current LTS releases timeline](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline). 
 -->
 
 ---
