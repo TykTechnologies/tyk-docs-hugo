@@ -84,8 +84,8 @@ The CF Template already creates Security Groups for the Dashboard with port 3000
 
 #### cURLing the GW(s)
 
-{{% tabs_start %}}
-{{% tab_start "PoC" %}}
+{{< tabs_start >}}
+{{< tab_start "PoC" >}}
 <br>
 In order to access GW, simply assign Elastic IP to the GW instance.  The auto generated GW security group is already set up to allow traffic on port 8080.
 
@@ -95,8 +95,8 @@ $ curl http://<elastic_public_ip>:8080/hello
 {"status":"pass","version":"v3.0.0","description":"Tyk GW","details":{"dashboard":{"status":"pass","componentType":"system","time":"2020-08-28T17:19:49+02:00"},"redis":{"status":"pass","componentType":"datastore","time":"2020-08-28T17:19:49+02:00"}}}
 ```
 
-{{% tab_end %}}
-{{% tab_start "High Availability / Autoscaling" %}}
+{{< tab_end >}}
+{{< tab_start "High Availability / Autoscaling" >}}
 <br>
 The CloudFormation stack sets up an Elastic Load Balancer for the Gateway cluster.  
 
@@ -109,9 +109,9 @@ $ curl http://TYKElasticLoadBalancerALB-2050138050.us-east-1.elb.amazonaws.com/h
 ```
 
 Note that ALB rules are already setup to accept traffic on port 80 and forward it to the Gateways on port 8080.
-{{% tab_end %}}
+{{< tab_end >}}
 
-{{% tabs_end %}}
+{{< tabs_end >}}
 
 
 ### Tyk Component Updates
