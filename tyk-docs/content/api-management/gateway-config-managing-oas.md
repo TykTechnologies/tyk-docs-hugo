@@ -673,7 +673,7 @@ To update just the OpenAPI description of your API in Tyk, you simply send the O
 | Body         | OpenAPI document                         |
 | Parameters   | Path: `{API-ID}`                         |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
 
 **Applying an Updated Tyk OAS API Definition** 
 
@@ -687,7 +687,7 @@ To update the whole API in Tyk, you simply send the Tyk OAS API definition in th
 | Body         | Tyk OAS API Definition                   |
 | Parameters   | Path: `{API-ID}`                         |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
 
 **Check request response**
 
@@ -724,7 +724,7 @@ To update just the OpenAPI description of your API in Tyk, you simply send the O
 | Body         | OpenAPI document                         |
 | Parameters   | Path: `{API-ID}`  Query: `templateId`    |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
 
 
 **Applying an Updated Tyk OAS API Definition** 
@@ -739,7 +739,7 @@ To update the whole API in Tyk, you simply send the Tyk OAS API definition in th
 | Body         | Tyk OAS API Definition                   |
 | Parameters   | Path: `{API-ID}`                         |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
 
 
 **Check request response**
