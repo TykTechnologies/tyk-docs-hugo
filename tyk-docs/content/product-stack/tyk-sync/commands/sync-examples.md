@@ -7,7 +7,7 @@ tags: [ "Tyk Sync", "GitOps" ]
 
 ## Examples Command
 
-The examples command lists all examples from our official [Tyk examples](https://github.com/TykTechnologies/tyk-examples) repository. [See output in example usage]({{< relref "#import-tyk-example-into-dashboard" >}})
+The examples command lists all examples from our official [Tyk examples](https://github.com/TykTechnologies/tyk-examples) repository. [See output in example usage]({{< ref "#import-tyk-example-into-dashboard" >}})
 ```bash
 Usage:
   tyk-sync examples [flags]
