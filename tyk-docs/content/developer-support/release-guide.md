@@ -32,7 +32,7 @@ Tyk Documentation is maintained in a [GitHub](https://github.com/TykTechnologies
 |---------------------------|-----------------|--------------|
 | `main`                  | Holds docs for nightly build. | [tyk.io/docs/nighlty](https://tyk.io/docs/nighlty) |
 | `release-x.y`             | Holds docs for that specific version. For example, `release-5.7` holds docs for 5.7 and its patch versions (5.7.1, 5.7.2, etc.). | [tyk.io/docs/5.7](https://tyk.io/docs/5.7) |
-| `production`                  | It acts as the single source of truth for the Mintlify platform.. | [tyk.io/docs](https://tyk.io/docs) |
+| `production`                  | It acts as the single source of truth for the Mintlify platform. | [tyk.io/docs](https://tyk.io/docs) |
 
 ### Production Branch
 
@@ -44,9 +44,9 @@ Tyk Documentation is maintained in a [GitHub](https://github.com/TykTechnologies
     3.  Generating a unified `docs.json` navigation file that contains the structure for all versions.
     Mintlify is connected only to this `production` branch and deploys any changes made to it.
 
-All documentation content is always merged into the `main` branch first, and then the changes are made to the `release-x.y` branches as needed.
+### Workflow
 
-The `production` branch automatically replicates changes from the latest release branch (e.g., `release-5.7`) to ensure that the live site always reflects the most recent version. Because of which at [tyk.io/docs](https://tyk.io/docs/) and [tyk.io/docs/5.7](https://tyk.io/docs/5.7), you will see the same content.
+All documentation content is always merged into the `main` branch first, and then the changes are made to the `release-x.y` branches as needed.
 
 ```mermaid
 graph TD;
@@ -81,36 +81,39 @@ graph TD;
     Repo --> main;
     NewContent -- "Step 1. Content merged first into" --> main;
     main -- "Step 2. Changes propagated/<br/>backported (as needed)" --> release_xy;
-    release_xy -- "Step 3. LATEST <code>release-x.y</code><br/>automatically replicates to" --> production;
+    release_xy -- "Step 3. Trigger Mintlify Production Build" --> production;
 
-    main -. "Publishes to" .-> url_nightly;
-    release_xy -. "Publishes to" .-> url_version;
+    main -. "Trigger Build" .-> production;
+    release_xy -. "Trigger Build" .-> production;
+
+    production -. "Publishes to" .-> url_nightly;
+    production -. "Publishes to" .-> url_version;
     production -. "Publishes to" .-> url_production;
 ```
 
 ### Previous Releases
 
-Tyk maintains [LTS versions]({{< ref "developer-support/release-types/long-term-support#current-lts-releases-timeline" >}}). During some releases, we need to update the LTS release alongside the latest version. For example, you might have to maintain 5.7.2 (latest) and 5.3.2 (LTS).
+Tyk maintains [LTS versions]({{< ref "developer-support/release-types/long-term-support#current-lts-releases-timeline" >}}). During some releases, we need to update the LTS release alongside the latest version. For example, you may need to maintain both 5.7.2 (latest) and 5.3.2 (LTS).
 
 ## Patch Release
 
-To release a patch version, we follow a simple process that involves merging the release notes and documentation PRs into the master and the specific release branch (e.g., `release-5.7`).
+To release a patch version, we follow a simple process that involves merging the release notes and documentation PRs into the `main` and the specific release branch (e.g., `release-5.7`).
 
 ### Pre-Requisites:
 
 Ensure the PRs for documentation, configuration, and release notes have already been approved.
 
-**Note:** For release notes ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
+**Note:** For release notes, ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
 
 ### Instructions
 
-1.  **Deploy release: Merge RNs and Docs PRs**
-    **Description:** The PRs mentioned in the prerequisites can now be merged in master and release branch (release-5.7)
+1.  **Deploy release:**
+    The PRs mentioned in the prerequisites can now be merged into the main and release branches (release-5.7)
 
-2.  **Verify**
-    **Description:** After merging the PRs on the version branch (release-5.7), it usually takes 5 minutes to reflect the same on the live website. Verify these changes after release.
+2.  **Verify:**
+    After merging the PRs on the version branch (release-5.7), it typically takes 5 minutes for the changes to be reflected on the live website. Verify these changes after release.
 
-**Note:** We can also have patch release for previous versions. For example, if the latest version is 5.7.2 and the new patch is 5.7.3, and a patch for LTS version 5.3.3 is also needs to be released, then you will have to merge the PRs for both versions.
+**Note:** We can also have a patch release for previous versions. For example, if the latest version is 5.7.2 and the new patch is 5.7.3, and a patch for LTS version 5.3.3 also needs to be released, then you will have to merge the PRs for both versions.
 
 ## Major/Minor Release
 
@@ -120,97 +123,64 @@ To release a major or minor version, we follow a series of steps to ensure that 
 
 Ensure the PRs for documentation, configuration, and release notes have already been approved.
 
-**Note:** For release notes ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
+**Note:** For release notes, ensure that we have updated the Tyk component version on the [release summary page](https://tyk.io/docs/developer-support/release-notes/overview/)
 
 
 ### Instructions
 
-1.  **Deploy release: Merge all RNs, Docs & Config PRs**\
-    **Description:** The PRs mentioned in the prerequisites can now be merged in master.
+1.  **Create the New Release Branch**
+    From the main branch, create a new branch named release-X.Y (e.g., release-5.10). This branch will be used to maintain the documentation for the latest version.
 
-2.  **Make the following changes in the versions.json file:**
+2.  **Update the Branch Configuration**
+    In the main branch, edit the `branches-config.json` file. Add a new JSON object for the latest version. This configuration tells the build system how to handle the new version.
 
-    Example migration from 5.7 to 5.8:
+    *   Set isLatest to true for the new release-5.10.
+    *   Set isLatest to false for the previous latest version (e.g., release-5.9).
 
-    -  Rename `5.7 - Latest` to `5.7`
-    -  Replicate the nightly json object and update the version number to `5.8 - Latest`.
+    **Example:**
 
-    Question: Will automapping will be maintained?
+    ```json
+    {
+      "branch": "release-5.10",
+      "isLatest": true,
+      "sourceFolder": "5.10-source",
+      "targetFolder": "5.10",
+      "label": "v5.10 (latest)"
+    }
+    ```
 
-2.  **Create a new release branch**
-    **Description:** This step creates a new branch from the master branch, which will be used to maintain the documentation for the new version. Ensure the new release branch has branch protection enabled.
+3. **Manually Trigger the Deployment Workflow**
 
-3.  **Update stable branch updater**
-    **Description:** We are updating a GitHub Action here. This action ensures that anything we merge into the version branch (release-5.7) is also merged into the stable branch, which directly reflects our live site.
-    **Automation:** This [Github](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) Action generates this page.\
-    **Example**: <https://github.com/TykTechnologies/tyk-docs/pull/5377>\
-    **Steps:**
+    1.  Go to the "Actions" tab in the GitHub repository.
+    2.  Select the "Deploy Documentation" workflow.
+    3.  Click "Run workflow" and choose the `production` branch to run it against.
 
-    1.  Invoke this [Github Action](https://github.com/TykTechnologies/tyk-docs/actions/workflows/release.yml) with the following values. Ensure you follow the naming convention of release branches (release-x.y)
+    This will rebuild the `production` branch, creating the new versioned folder and updating the site's navigation to include v5.10 as the latest version.
 
-    2.  This will create 3 PRs. The one we are interested in will be named Update stable-updater.yaml to use release-5.8
+4.  **Deploy release:**
 
-    3.  Merge the PR into master, current latest till release-5. **We need to merge the PR to all the way to previous branches.**
+    The PRs mentioned in the prerequisites can now be merged into `main` and the latest release branch.
 
-4.  **Verify that Everything is working**\
-    **Steps:**
+7. **Update Postman Collections:**\
+    We maintain a Postman collection for the following Tyk Components (Gateway, Dashboard, MDCB, and Developer Portal). After a major or minor release, we need to update the Postman collections.
 
-    1.  Go to the latest [https://tyk.io/docs](https://tyk.io/docs/) URL and navigate through the docs to ensure it is not redirecting to some other URL.
+    These instructions are for a single Tyk component and must be repeated for other components.
 
-    2.  Go to the previous URL, <https://tyk.io/docs/5.7>, and navigate through the docs to ensure it is not redirected to some other URL.
-
-5. **Force Re-Index Mintlify Search? when merged to stable**
-
-6. **Force Re-Index AI Search? when merged to stable**
-
-7. **Update Postman Collections**\
-    **Description:** We maintain a postman collection for the following Tyk Componets. After a\
-    **Automation:** Not Available\
-    **Steps:**\
-    These instructions are for a single Tyk component and must be repeated for others.
-
-    1.  Download the swagger from the docs website or the respective Github repository of the component.
+    1.  Download the Swagger from the docs website or the respective GitHub repository of the component.
 
     2.  In Postman, select the import option and drop the file you downloaded in the first step.
 
     3.  After the import, change the name. Refer to our previous collection name.
 
-    4.  In the Postman documentation for a collection, you need to add an image. Copy it from the previous Postman collection.
+    5.  Add the `latest` prefix and remove the previous one. This ensures that the latest version is always displayed at the top.
 
-    5.  Add the latest prefix and remove the previous one. This ensures that the latest version is always displayed at the top.
-
-8. **Update the HubSpot Banner to indicate the release of 5.8 on old docs pages.**\
+8. **Update the HubSpot Banner to indicate the new release of the old docs pages.**\
     **Description:** We use HubSpot to display a banner at the top of our docs page, which indicates that you are viewing old documentation and points to the latest version.\
-    Here is a sample banner you can view on this [page](https://tyk.io/docs/4.0/getting-started/key-concepts/graphql-subscriptions/).
+    **Example:** [Sample Banner](https://tyk.io/docs/4.0/getting-started/key-concepts/graphql-subscriptions/).
 
-    **Automation:** Not Available\
-    **Steps:** Inform @Jennifer Craig to release the new banner.
+    **Steps:** Update the HubSpot banner to indicate the new release.
 
-9. **Add a reference to release notes in Github Releases.**\
-    **Description:** Developers usually refer to the release tags to view the changelog. These release tags should point to the release notes in the docs.\
-    **Automation:** Not Available\
+9. **Add a reference to release notes in Github Releases:**\
+    **Description:** Developers usually refer to the GitHub release tags to view the changelog. These release tags should point to the release notes in the docs.\
+    **Example:** <https://github.com/TykTechnologies/tyk/releases/tag/v5.3.8>\
     **Steps:** Modify the release tags of all components modified in a release.\
-    **Example:** <https://github.com/TykTechnologies/tyk/releases/tag/v5.3.8>
-
-This process is performed by a release manager.
-
-Step 1: Create the New Release Branch
-From the main branch, create a new branch named release-5.10.
-
-Step 2: Update the Branch Configuration
-In the main branch, edit the branches-config.json file. Add a new JSON object for the new version. This configuration tells the build system how to handle the new version.
-
-*   Set isLatest to true for the new release-5.10.
-*   Set isLatest to false for the previous latest version (e.g., release-5.9).
-
-Step 3: Manually Trigger the Deployment Workflow
-
-1.  Go to the "Actions" tab in the GitHub repository.
-2.  Select the "Deploy Documentation" workflow.
-3.  Click "Run workflow" and choose the production branch to run it against.
-
-This will rebuild the production branch, creating the new versioned folder and updating the site's navigation to include v5.10 as the latest version.
-
----
-
-Due to structural changes in the documentation across versions, this cannot be done directly, and a separate PR must be created from the latest RNs and config PR. This process has to be done manually and will require the help of DX.

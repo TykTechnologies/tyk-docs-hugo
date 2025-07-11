@@ -32,6 +32,13 @@ This secion provides instructions for setting up your local environment to work 
    ```bash
    git clone https://github.com/TykTechnologies/tyk-docs.git && cd tyk-docs
    ```
+
+   For external contributions, you will need to fork the Tyk docs repository and clone your fork:
+   ```bash
+   git clone <fork-url>
+   cd tyk-docs
+   ```
+
 3. **Start the Mintlify development server**:
    ```bash
    mintlify dev
@@ -118,35 +125,40 @@ To add a new page to the Tyk documentation, follow the steps below.
 
 6. **Create a pull request** on GitHub to merge your changes into `main`.
 
+   Once the PR is opened, a series of automated checks will run:
+
+   *   Link Check: Mintlify checks for broken internal links.
+   *   Spell Check: A vale-spellcheck ensures content quality.
+   *   Documentation Validation: A custom script checks for things like missing images and redirect conflicts.
+
 7. **Preview your changes** using the link provided by Mintlify before merging.
 
-Step 2: Automated Validation
-Once the PR is opened, a series of automated checks will run:
+   **For Contributors Outside Tyk:** A Tyk team member will need to approve the Mintlify CI build for your pull request (PR). You will need to wait 
+   until the CI status is green.
 
-*   Link Rot Check: Mintlify checks for broken internal links.
-*   Spell Check: A vale-spellcheck ensures content quality.
-*   Documentation Validation: A custom script checks for things like missing images and redirect conflicts.
+   **Locating Your Changes:** Since there's no search feature in this Mintlify build, you can find your changes by following these steps:
+      1.	**Copy the file path**: From the file path in GitHub, copy the path, excluding the `.md` file extension.
+      2.	**Construct the URL**: Append this copied path to the Mintlify URL after `/docs`.
+      3.	**Example**: To see the document at tyk-docs GitHub repository, copy `/tyk-self-managed/install` (omit `.md`) and add it after /docs/ in the Netlify URL, resulting in [https://branch-name.mintlify.app/docs/tyk-self-managed/install/](https://branch-name.mintlify.app/docs/tyk-self-managed/install/).
 
-Step 3: Merge to main (Updates Nightly)
-Once the PR is reviewed, approved, and all checks pass, it can be merged into main. This automatically triggers a deployment, and your changes will go live on the Nightly version of the docs.
+8. **Merge to main (Updates Nightly)**
+   
+   Once the PR is reviewed, approved, and all checks pass, it can be merged into `main`. This automatically triggers a deployment, and your changes will go live on the Nightly version of the docs.
 
-Step 4: Backporting to Release Versions (Cherry-Picking)
-If your change needs to be included in a stable release (e.g., v5.9):
+9. **Backporting to Release Versions (Cherry-Picking)**
+   If your change needs to be included in a stable release (e.g., v5.9):
 
-1.  Go to your original, now-merged PR on GitHub.
-2.  Add a label corresponding to the target version, for example, release-5.9.
-3.  That's it! An automated bot (buger) will detect this label.
+   1.  Go to your original, now-merged PR on GitHub.
+   2.  Add a label corresponding to the target version, for example, release-5.9.
+   3.  That's it! An automated bot (buger) will detect this label.
 
-Step 5: Automated Backporting
-The bot will:
+   The bot will:
 
-1.  Cherry-pick the commit from your original PR.
-2.  Create a new PR with those changes, targeting the release-5.9 branch.
-3.  Automatically merge this new PR once all checks pass.
+   1.  Cherry-pick the commit from your original PR.
+   2.  Create a new PR with those changes, targeting the release-5.9 branch.
+   3.  Automatically merge this new PR once all checks pass.
 
-Step 6: Final Deployment
-The merge into the release-5.9 branch triggers the main deployment workflow, which rebuilds the production branch. Mintlify detects the update and deploys the changes to the live v5.9 documentation.
-
+   The merge into the `release-5.9` branch triggers the `main` deployment workflow, which rebuilds the `production` branch. Mintlify detects the update and deploys the changes to the live v5.9 documentation.
 
 ## Updating an Existing Page
 
@@ -243,5 +255,5 @@ Here's a table summarizing the UI features available for Tyk documentation:
 | [Steps](https://mintlify.com/docs/components/steps) | Sequence content using the Steps component |
 | Snipptet | A custom component written by us. TODO |
 
-Note: The above components is a list of mostly used components in Tyk documentation. To see the complete list of components, refer to the [Mintlify documentation](https://docs.mintlify.com/docs/components).
+**Note:** The above components is a list of mostly used components in Tyk documentation. To see the complete list of components, refer to the [Mintlify documentation](https://docs.mintlify.com/docs/components).
 
