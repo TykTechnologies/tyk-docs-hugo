@@ -76,7 +76,7 @@ For external contributions, we recommend contributing to Tyk in the following wa
 
 ## License
 
-Tyk is released under the MPL v2.0 please see the [license file](LICENSE.md) for a full version of the license.
+Tyk is released under the MPL v2.0 please see the [license file](https://github.com/TykTechnologies/tyk-docs/blob/master/LICENSE.md) for a full version of the license.
 
 ## Inclusive Naming project
 We are excited to announce the launch of our *Inclusive Naming* project, in June 2024, dedicated to updating our documentation and aligning with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
