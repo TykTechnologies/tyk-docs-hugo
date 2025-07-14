@@ -5,7 +5,6 @@ tags: [ "Contributing", "Documentation", "Community" ]
 description: "How to contribute to Tyk documentation"
 aliases:
    - /contribute
-   
 ---
 
 This section provides resources and guidance for contributors to Tyk's documentation. Whether you're fixing a typo, adding new content, or helping improve our documentation standards, you'll find the tools and guidelines you need here.
