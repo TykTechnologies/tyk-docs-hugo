@@ -1,5 +1,5 @@
 ---
-title: "Migrating from Tyk Classic"
+title: "Migrating from Tyk Classic APIs"
 date: 2025-02-10
 tags: ["Tyk OAS API", "Tyk Classic API", "Migrate", "Convert", "Migration", "Tyk Classic", "Tyk OAS", "API definition"]
 keywords: ["Tyk OAS API", "Tyk Classic API", "Migrate", "Convert", "Migration", "Tyk Classic", "Tyk OAS", "API definition"]
