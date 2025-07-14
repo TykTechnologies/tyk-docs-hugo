@@ -25,7 +25,7 @@ Create and configure APIs through the web-based Dashboard interface. Changes tak
 **Learn more:**
 * [Create an API with the Dashboard]({{< ref "api-management/gateway-config-managing-classic#create-an-api-with-the-dashboard" >}})
 
-## Dashboard API and Gateway API
+## Dashboard and Gateway API
 
 Programmatically create and manage APIs, policies, keys, and developer portals using REST APIs. This method provides flexibility for automation but requires imperative scripting.
 
