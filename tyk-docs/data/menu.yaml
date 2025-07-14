@@ -750,7 +750,7 @@ menu:
                 path: /developer-support/contributing
                 category: Page
                 show: True
-              - title: "Inclusive naming"
+              - title: "Inclusive Naming"
                 path: /developer-support/documentation-projects/inclusive-naming
                 category: Page
                 show: True
