@@ -106,11 +106,11 @@ menu:
             path: /api-management/gateway-config-managing-classic
             category: Page
             show: True
-          - title: "Migrate from Tyk Classic"
+          - title: "Migrate from Tyk Classic APIs"
             path: /api-management/migrate-from-tyk-classic
             category: Page
             show: True            
-          - title: "Deploy APIs"
+          - title: "API Creation Methods"
             category: Page
             show: True
             path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
@@ -581,39 +581,10 @@ menu:
             category: Page
             show: True
 
-      - title: "Developer Support"
+      - title: "Reference"
         category: Label
         show: True
-        path: /developer-support/community
         menu:
-          - title: "Community Support"
-            path: /developer-support/community
-            category: Page
-            show: True
-          - title: "Support SLA"
-            path: /developer-support/support
-            category: Page
-            show: True
-          - title: "Tyk Release Types"
-            category: Directory
-            show: True
-            menu:
-              - title: "Long Term Support Release"
-                path: /developer-support/release-types/long-term-support
-                category: Page
-                show: True
-              - title: "Early access feature"
-                path: /developer-support/release-types/early-access-feature
-                category: Page
-                show: True
-              - title: "Lab Release"
-                path: /developer-support/release-types/lab-release
-                category: Page
-                show: True
-              - title: "FIPS Release"
-                path: /developer-support/release-types/fips-release
-                category: Page
-                show: True
           - title: "Environment Variables and Configs"
             category: Directory
             show: True
@@ -678,6 +649,11 @@ menu:
               path: /tyk-identity-broker/tib-rest-api
               category: Page
               show: True
+
+      - title: "Developer Support"
+        category: Label
+        show: True
+        menu:
           - title: "Release Notes"
             category: Directory
             show: True
@@ -730,16 +706,48 @@ menu:
               path: /developer-support/release-notes/archived
               category: Page
               show: True
-          - title: "Deprecation"
-            path: /developer-support/deprecation
-            category: Page
-            show: True
           - title: "Upgrading Guide"
             path: /developer-support/upgrading
             category: Page
             show: True
           - title: "Frequently Asked Questions"
             path: /developer-support/faq
+            category: Page
+            show: True
+          - title: "Tyk Releases Policy"
+            category: Directory
+            show: True
+            menu:
+              - title: "Long Term Support Release"
+                path: /developer-support/release-types/long-term-support
+                category: Page
+                show: True
+              - title: "Early access feature"
+                path: /developer-support/release-types/early-access-feature
+                category: Page
+                show: True
+              - title: "Lab Release"
+                path: /developer-support/release-types/lab-release
+                category: Page
+                show: True
+              - title: "FIPS Release"
+                path: /developer-support/release-types/fips-release
+                category: Page
+                show: True
+          - title: "Deprecation and EOL Policy"
+            path: /developer-support/deprecation
+            category: Page
+            show: True
+          - title: "Support SLA Policy"
+            path: /developer-support/support
+            category: Page
+            show: True
+          - title: "Community Support"
+            path: /developer-support/community
+            category: Page
+            show: True
+          - title: "Inclusive Naming Policy"
+            path: /developer-support/inclusive-naming-policy
             category: Page
             show: True
           - title: "Docs Contribution"
@@ -758,6 +766,10 @@ menu:
                 path: /developer-support/contribution-guides
                 category: Page
                 show: true
+              - title: "Inclusive Naming"
+                path: /developer-support/documentation-projects/inclusive-naming
+                category: Page
+                show: True
   - title: "Developer Portal"
     category: Tab
     show: True
