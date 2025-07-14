@@ -750,10 +750,6 @@ menu:
             path: /developer-support/inclusive-naming-policy
             category: Page
             show: True
-          - title: "Contributing to Tyk docs"
-            category: Directory
-            show: True
-            menu:
           - title: "Docs Contribution"
             category: Directory
             show: True
