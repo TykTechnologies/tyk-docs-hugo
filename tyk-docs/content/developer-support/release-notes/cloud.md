@@ -11,6 +11,8 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
+Tyk Cloud now supports automatic upgrades for Control Plane deployments, helping teams stay up to date with the latest features and security enhancements without manual intervention. Users can opt in via the deployment settings and configure a weekly schedule to match their maintenance windows.
+
 For a full list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.29.0" >}}) below.
 
 ### Breaking Changes
@@ -37,6 +39,44 @@ Introduced a new “View Only” role to enhance access control for organization
 
 </details>
 </li> 
+
+<li>
+<details>
+<summary>New /upgrade API Endpoint</summary>
+
+Added a new endpoint to trigger deployment upgrades automatically when a newer version is available.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Deployment Model Supports Auto-Upgrade Settings</summary>
+
+Expanded deployment configurations to include an opt-in flag and cron-style scheduling for automated upgrades.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Authenticated Cron Jobs for Auto-Upgrades</summary>
+
+Implemented Kubernetes CronJobs and service accounts to securely handle scheduled upgrade execution for Control Planes.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Frontend Support for Auto-Upgrade Opt-In</summary>
+
+Users can now enable or disable auto-upgrades and configure their preferred upgrade schedule directly in the Tyk Cloud UI.
+
+</details>
+</li> 
+
+
 </ul>
 
 ## 1.28.1 Release Notes
