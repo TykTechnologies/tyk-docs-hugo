@@ -284,7 +284,7 @@ In order to complete the next steps, you need to have the [Tyk OSS]({{< ref "tyk
 
 #### Creation Methods
 
-With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here]({{< ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configurations" >}}).
+With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [in the file-based configuration section]({{< ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configuration" >}}).
 
 
 #### Steps for Configuration
