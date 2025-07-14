@@ -96,7 +96,7 @@ If you are upgrading to 5.8.2, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.8.2](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.2)
 
 #### Changelog {#Changelog-v5.8.2}
 
@@ -181,7 +181,7 @@ If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.8.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.1)
 
 #### Changelog {#Changelog-v5.8.1}
 
@@ -284,7 +284,7 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.8.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.0)
 
 #### Changelog {#Changelog-v5.8.0}
 
@@ -466,7 +466,7 @@ If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.7.3](https://github.com/TykTechnologies/tyk/releases/tag/v5.7.3)
 
 #### Changelog {#Changelog-v5.7.3}
 
@@ -535,7 +535,7 @@ If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.7.2](https://github.com/TykTechnologies/tyk/releases/tag/v5.7.2)
 
 #### Changelog {#Changelog-v5.7.2} 
 
@@ -609,7 +609,7 @@ If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.7.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.7.1)
 
 #### Changelog {#Changelog-v5.7.1} 
 ##### Fixed
@@ -767,7 +767,7 @@ If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.7.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.7.0)
 
 #### Changelog {#Changelog-v5.7.0}
 
@@ -950,7 +950,7 @@ If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions]
 
   - [tyk-charts v2.1.0]({{< ref "developer-support/release-notes/helm-chart#210-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.6.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.6.1)
 
 #### Changelog {#Changelog-v5.6.1}
 
@@ -1137,7 +1137,7 @@ If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions]
 
   - [tyk-charts v2.1.0]({{< ref "developer-support/release-notes/helm-chart#210-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.6.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.6.0)
 
 #### Changelog {#Changelog-v5.6.0}
 
@@ -1349,7 +1349,7 @@ If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions]
     ``` 
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.5.2](https://github.com/TykTechnologies/tyk/releases/tag/v5.5.2)
 
 ---
 
@@ -1404,7 +1404,7 @@ If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions]
     ``` 
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.5.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.5.1)
 
 #### Changelog {#Changelog-v5.5.1}
 
@@ -1537,7 +1537,7 @@ If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions]
     ``` 
 - Helm charts
   - [tyk-charts v1.6]({{< ref "developer-support/release-notes/helm-chart#160-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.5.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.5.0)
 
 #### Changelog {#Changelog-v5.5.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -1767,7 +1767,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
     ``` 
 - Helm charts
   - [tyk-charts v1.5]({{< ref "developer-support/release-notes/helm-chart#150-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.4.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.4.0)
 
 #### Changelog {#Changelog-v5.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -2044,7 +2044,7 @@ If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway 5.3.11](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.11)
 
 #### Changelog {#Changelog-v5.3.11}
 
@@ -2161,7 +2161,7 @@ If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions
     ```
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway 5.3.10](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.10)
 
 #### Changelog {#Changelog-v5.3.10}
 
@@ -2246,7 +2246,7 @@ If you are upgrading to 5.3.9, please follow the detailed [upgrade instructions]
     ```
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.9](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.9)
 
 #### Changelog {#Changelog-v5.3.9}
 
@@ -2408,7 +2408,7 @@ If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions]
     ```
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.8](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.8)
 
 #### Changelog {#Changelog-v5.3.8}
 
@@ -2532,7 +2532,7 @@ ongoing support of third-party dependencies they install, as their status may ha
     ```
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.7](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.7)
 
 #### Changelog {#Changelog-v5.3.7}
 
@@ -2659,7 +2659,7 @@ ongoing support of third-party dependencies they install, as their status may ha
     ```
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.6](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.6)
 
 #### Changelog {#Changelog-v5.3.6}
 
@@ -2850,7 +2850,7 @@ ongoing support of third-party dependencies they install, as their status may ha
     ```
 - Helm charts
   - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.5](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.5)
 
 #### Changelog {#Changelog-v5.3.5}
 
@@ -2991,7 +2991,7 @@ ongoing support of third-party dependencies they install, as their status may ha
     ```
 - Helm charts
   - [tyk-charts v1.4]({{< ref "developer-support/release-notes/helm-chart#140-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.4](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.4)
 
 #### Changelog {#Changelog-v5.3.4}
 
@@ -3077,7 +3077,7 @@ ongoing support of third-party dependencies they install, as their status may ha
     ```
 - Helm charts
   - [tyk-charts v1.4]({{< ref "developer-support/release-notes/helm-chart#140-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.3](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.3)
 
 #### Changelog {#Changelog-v5.3.3}
 
@@ -3234,7 +3234,7 @@ ongoing support of third-party dependencies they install, as their status may ha
     ```
 - Helm charts
   - [tyk-charts v1.4]({{< ref "developer-support/release-notes/helm-chart#140-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.2](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.2)
 
 #### Changelog {#Changelog-v5.3.2}
 
@@ -3378,7 +3378,7 @@ ongoing support of third-party dependencies they install, as their status may ha
     ```
 - Helm charts
   - [tyk-charts v1.3]({{< ref "developer-support/release-notes/helm-chart#130-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.1)
 
 #### Changelog {#Changelog-v5.3.1}
 
@@ -3716,7 +3716,7 @@ functionality and performance to support your evolving needs seamlessly.
     ```
 - Helm charts
   - [tyk-charts v1.3]({{< ref "developer-support/release-notes/helm-chart#130-release-notes" >}})
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.3.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.3.0)
 
 #### Changelog {#Changelog-v5.3.0}
 
