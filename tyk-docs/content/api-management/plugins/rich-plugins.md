@@ -1228,7 +1228,7 @@ Your *Dispatch* RPC should handle the request made by Tyk Gateway, implementing 
 
 Consult the [Tyk protocol buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) for the definition of the service and data structures that enable integration of Tyk gateway with your gRPC server. Tyk provides pre-generated [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) for C++, Java, Python and Ruby.
 
-Example tutorials are available that explain how to generate the protobuf bindings and implement a server for [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}).
+Example tutorials are available that explain how to generate the protobuf bindings and implement a server for [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotnet" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotnet" >}}).
 
 Tyk Github repositories are also available with examples for [Ruby](https://github.com/TykTechnologies/tyk-plugin-demo-ruby) and [C#/.NET](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet)
  
@@ -1478,7 +1478,7 @@ This guide has explained the key concepts and processes for writing gRPC plugins
 #### What's Next?
 
 - Consult the [Protocol Buffer messages]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) that Tyk Gateway uses when making a request to a gRPC server.
-- Visit tutorial guides that explain how to implement a [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}) gRPC server.
+- Visit tutorial guides that explain how to implement a [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotnet" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-auth-plugin-with-dotnet" >}}) gRPC server.
 - Visit our [plugins hub]({{< ref "api-management/plugins/overview#plugins-hub" >}}) to explore further gRPC development examples and resources.
 
 ---
@@ -2293,7 +2293,7 @@ To publish the plugin, copy or upload `bundle.zip` to a local web server like Ng
 
 {{< include "grpc-include" >}}
 
-#### <a name="next"></a>What's Next?
+#### What's Next? {what-is-next}
 
 In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
 
@@ -2304,7 +2304,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 [3]: /img/dashboard/system-management/api_settings.png
 [4]: /img/dashboard/system-management/plugin_options.png
 
-### Create Custom Authentication Plugin with .NET
+### Create Custom Authentication Plugin with .NET {#create-custom-auth-plugin-with-dotnet}
 
 This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin with .NET and C#. For additional information check the official gRPC [documentation](https://grpc.io/docs/guides/index.html).
 
@@ -2322,7 +2322,7 @@ The sample code that we’ll use implements a very simple authentication layer u
 
 #### Create the Plugin
 
-##### Create .NET Project
+##### Create .NET Project {#create-dotnet-project}
 
 We use the .NET CLI tool to generate the initial files for our project:
 
@@ -2345,7 +2345,7 @@ dotnet add package Google.Protobuf --version 3.4.0
 - The `ThreadPool` package is used by `Grpc`.
 - The `Protobuf` package will be used by our gRPC bindings.
 
-##### Install the gRPC Tools
+##### Install the gRPC Tools {#install-grpc-tools}
 
 We need to install the gRPC tools to generate the bindings. We recommended you follow the official guide here: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code.
 
