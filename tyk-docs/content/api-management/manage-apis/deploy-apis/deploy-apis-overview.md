@@ -1,5 +1,5 @@
 ---
-title: API creation methods
+title: API Creation Methods
 date: 2023-09-04
 description: "Different ways to create and manage APIs in Tyk"
 tags: [ "API Management", "API Configuration", "Dashboard", "Tyk Sync", "Tyk Operator" ]
