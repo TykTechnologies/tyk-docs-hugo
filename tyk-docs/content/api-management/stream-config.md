@@ -157,7 +157,7 @@ input:
       check: ""
 ```
 
-#### Advanced
+#### Advanced
 
 ```yml
 # All config fields, showing default values
