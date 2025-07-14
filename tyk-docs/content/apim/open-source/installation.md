@@ -142,7 +142,7 @@ REDIS_BITNAMI_CHART_VERSION=19.0.2
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install --version $REDIS_BITNAMI_CHART_VERSION
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --version $REDIS_BITNAMI_CHART_VERSION
 
 helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --install \
