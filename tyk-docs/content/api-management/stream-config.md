@@ -290,7 +290,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -304,7 +303,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -1327,7 +1325,7 @@ Type: `object`
 ##### sync_response.status
 
 Specify the status code to return with synchronous responses. This is a string value, which allows you to customize it based on resulting payloads and their metadata.
-<!-- TODO: when inerpolation supported:
+<!-- TODO: when interpolation supported:
 This field supports interpolation functions.
 -->
 
@@ -1610,10 +1608,6 @@ Requires version 3.45.0 or newer
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
-<!-- TO DO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
-
 
 Type: `string`
 Default: `""`
@@ -1672,10 +1666,6 @@ Default: `""`
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
-
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -1754,9 +1744,6 @@ user: ${USER}
 ##### sasl.password
 
 A PLAIN password. It is recommended that you use environment variables to populate this field.
-<!-- TODO add secret link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -1857,7 +1844,6 @@ A maximum estimate for the time taken to process a message, this is used for tun
 Type: `string`
 Default: `"100ms"`
 
-<!-- TODO: when bloblang is supported
 ##### extract_tracing_map
 
 A Bloblang mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
@@ -1873,7 +1859,6 @@ extract_tracing_map: root = @
 
 extract_tracing_map: root = this.meta.span
 ```
--->
 
 ##### group
 
@@ -1980,7 +1965,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -1993,7 +1977,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -2018,42 +2001,41 @@ processors:
       format: json_array
 ```
 
-### amqp_0_9
-
-Connects to an AMQP (0.91) queue. AMQP is a messaging protocol used by various message brokers, including RabbitMQ.
+### MQTT
+Subscribe to topics on MQTT brokers.
 
 #### Common
-
-```yaml
+```yml
 # Common config fields, showing default values
 input:
   label: ""
-  amqp_0_9:
+  mqtt:
     urls: [] # No default (required)
-    queue: "" # No default (required)
-    consumer_tag: ""
-    prefetch_count: 10
+    client_id: ""
+    connect_timeout: 30s
+    topics: [] # No default (required)
+    auto_replay_nacks: true
 ```
 
 #### Advanced
-
-```yaml
+```yml
 # All config fields, showing default values
 input:
   label: ""
-  amqp_0_9:
+  mqtt:
     urls: [] # No default (required)
-    queue: "" # No default (required)
-    queue_declare:
+    client_id: ""
+    dynamic_client_id_suffix: "" # No default (optional)
+    connect_timeout: 30s
+    will:
       enabled: false
-      durable: true
-      auto_delete: false
-    bindings_declare: [] # No default (optional)
-    consumer_tag: ""
-    auto_ack: false
-    nack_reject_patterns: []
-    prefetch_count: 10
-    prefetch_size: 0
+      qos: 0
+      retained: false
+      topic: ""
+      payload: ""
+    user: ""
+    password: ""
+    keepalive: 30
     tls:
       enabled: false
       skip_cert_verify: false
@@ -2061,164 +2043,149 @@ input:
       root_cas: ""
       root_cas_file: ""
       client_certs: []
+    topics: [] # No default (required)
+    qos: 1
+    clean_session: true
+    auto_replay_nacks: true
 ```
-
-TLS is automatic when connecting to an `amqps` URL, but custom settings can be enabled in the `tls` section.
 
 #### Metadata
 
 This input adds the following metadata fields to each message:
 
-```
-- amqp_content_type
-- amqp_content_encoding
-- amqp_delivery_mode
-- amqp_priority
-- amqp_correlation_id
-- amqp_reply_to
-- amqp_expiration
-- amqp_message_id
-- amqp_timestamp
-- amqp_type
-- amqp_user_id
-- amqp_app_id
-- amqp_consumer_tag
-- amqp_delivery_tag
-- amqp_redelivered
-- amqp_exchange
-- amqp_routing_key
+``` text
+- mqtt_duplicate
+- mqtt_qos
+- mqtt_retained
+- mqtt_topic
+- mqtt_message_id
 ```
 
-All existing message headers, including nested headers prefixed with the key of their respective parent, can be added.
+You can access these metadata fields using function interpolation.
 
 #### Fields
 
 ##### urls
 
-A list of URLs to connect to. The first URL to successfully establish a connection will be used until the connection is closed. 
-If an item of the list contains commas, it will be expanded into multiple URLs.
+A list of URLs to connect to. If an item of the list contains commas it will be expanded into multiple URLs.
+
 
 Type: `array`
 
-```yaml
+```yml
 # Examples
 
 urls:
-  - amqp://guest:guest@127.0.0.1:5672/
-
-urls:
-  - amqp://127.0.0.1:5672/,amqp://127.0.0.2:5672/
-
-urls:
-  - amqp://127.0.0.1:5672/
-  - amqp://127.0.0.2:5672/
+  - tcp://localhost:1883
 ```
 
-##### queue
+##### client_id
 
-An AMQP queue to consume from.
+An identifier for the client connection.
 
-Type: `string`
-
-##### queue_declare
-
-Allows you to passively declare the target queue. If the queue already exists, then the declaration passively verifies that 
-they match the target fields.
-
-type: `object`
-
-##### queue_declare.enabled
-
-Whether to enable queue declaration.
-
-Type: `bool`
-Default: `false`
-
-##### queue_declare.durable
-
-Whether the declared queue is durable.
-
-Type: `bool`
-Default: `true`
-
-##### queue_declare.auto_delete
-
-Whether the declared queue will auto-delete.
-
-Type: `bool`
-Default: `false`
-
-##### bindings_declare
-
-Allows you to passively declare bindings for the target queue.
-
-Type: `array`
-
-```yaml
-# Examples
-
-bindings_declare:
-  - exchange: foo
-    key: bar
-```
-
-##### bindings_declare[].exchange
-
-The exchange of the declared binding.
 
 Type: `string`
 Default: `""`
 
-##### bindings_declare[].key
+##### dynamic_client_id_suffix
 
-The key of the declared binding.
+Append a dynamically generated suffix to the specified `client_id` on each run of the pipeline. This can be useful when clustering Streams producers.
 
-Type: `string`
-Default: `""`
-
-##### consumer_tag
-
-A consumer tag.
 
 Type: `string`
-Default: `""`
 
-##### auto_ack
+| Option | Summary |
+|---|---|
+| `nanoid` | append a nanoid of length 21 characters |
 
-Acknowledge messages automatically as they are consumed rather than waiting for acknowledgments from downstream. 
-This can improve throughput and prevent the pipeline from blocking but at the cost of eliminating delivery guarantees.
+
+##### connect_timeout
+
+The maximum amount of time to wait in order to establish a connection before the attempt is abandoned.
+
+
+Type: `string`
+Default: `"30s"`
+Requires version 1.0.0 or newer
+
+```yml
+# Examples
+
+connect_timeout: 1s
+
+connect_timeout: 500ms
+```
+
+##### will
+
+Set last will message in case of Streams failure
+
+
+Type: `object`
+
+##### will.enabled
+
+Whether to enable last will messages.
+
 
 Type: `bool`
 Default: `false`
 
-##### nack_reject_patterns
+##### will.qos
 
-A list of regular expression patterns whereby if a message that has failed to be delivered by Bento has an error that matches 
-it will be dropped (or delivered to a dead-letter queue if one exists). By default, failed messages are nacked with requeue enabled.
+Set QoS for last will message. Valid values are: 0, 1, 2.
 
-Type: `array`
-Default: `[]`
-
-```yaml
-# Examples
-
-nack_reject_patterns:
-  - ^reject me please:.+$
-```
-
-##### prefetch_count
-
-The maximum number of pending messages to have consumed at a time.
-
-Type: `int`
-Default: `10`
-
-##### prefetch_size
-
-The maximum number of pending messages measured in bytes to have consumed at a time.
 
 Type: `int`
 Default: `0`
+
+##### will.retained
+
+Set retained for last will message.
+
+
+Type: `bool`
+Default: `false`
+
+##### will.topic
+
+Set topic for last will message.
+
+
+Type: `string`
+Default: `""`
+
+##### will.payload
+
+Set payload for last will message.
+
+
+Type: `string`
+Default: `""`
+
+##### user
+
+A username to connect with.
+
+
+Type: `string`
+Default: `""`
+
+##### password
+
+A password to connect with.
+
+
+Type: `string`
+Default: `""`
+
+##### keepalive
+
+Max seconds of inactivity before a keepalive message is sent.
+
+
+Type: `int`
+Default: `30`
 
 ##### tls
 
@@ -2242,24 +2209,22 @@ Default: `false`
 
 ##### tls.enable_renegotiation
 
-Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're getting the error message 
-`local error: tls: no renegotiation.`
+Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
+
 
 Type: `bool`
 Default: `false`
+Requires version 1.0.0 or newer
 
 ##### tls.root_cas
 
-An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, 
-to possible intermediate signing certificates, to the host certificate.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
+An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
+
 
 Type: `string`
 Default: `""`
 
-```yaml
+```yml
 # Examples
 
 root_cas: |-
@@ -2270,14 +2235,13 @@ root_cas: |-
 
 ##### tls.root_cas_file
 
-An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing 
-a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host 
-certificate.
+An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
+
 
 Type: `string`
 Default: `""`
 
-```yaml
+```yml
 # Examples
 
 root_cas_file: ./root_cas.pem
@@ -2285,13 +2249,13 @@ root_cas_file: ./root_cas.pem
 
 ##### tls.client_certs
 
-A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, 
-but not both.
+A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
+
 
 Type: `array`
 Default: `[]`
 
-```yaml
+```yml
 # Examples
 
 client_certs:
@@ -2313,12 +2277,10 @@ Default: `""`
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
+
 
 Type: `string`
-Default: ""
+Default: `""`
 
 ##### tls.client_certs[].cert_file
 
@@ -2336,21 +2298,49 @@ Default: `""`
 
 ##### tls.client_certs[].password
 
-A plain text password for when the private key is password encrypted in *PKCS#1* or *PKCS#8* format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not 
-supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an 
-attacker recover the plaintext.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
+A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
+
 
 Type: `string`
 Default: `""`
 
-```yaml
+```yml
 # Examples
 
 password: foo
+
+password: ${KEY_PASSWORD}
 ```
+
+##### topics
+
+A list of topics to consume from.
+
+
+Type: `array`
+
+##### qos
+
+The level of delivery guarantee to enforce. Has options 0, 1, 2.
+
+
+Type: `int`
+Default: `1`
+
+##### clean_session
+
+Set whether the connection is non-persistent.
+
+
+Type: `bool`
+Default: `true`
+
+##### auto_replay_nacks
+
+Whether messages that are rejected (nacked) at the output level should be automatically replayed indefinitely, eventually resulting in back pressure if the cause of the rejections is persistent. If set to `false` these messages will instead be deleted. Disabling auto replays can greatly improve memory efficiency of high throughput streams as the original shape of the data can be discarded immediately upon consumption and mutation.
+
+Type: `bool`
+Default: `true`
 
 ## Outputs
 
@@ -2527,7 +2517,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -2541,7 +2530,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -3661,7 +3649,7 @@ output:
 
 The config field `ack_replicas` determines whether we wait for acknowledgment from all replicas or just a single broker.
 
-<!-- Add links to bloblang queries : Both the `key` and `topic` fields can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries). -->
+<!-- Add links to bloblang queries : Both the `key` and `topic` fields can be dynamically set using function interpolations. -->
 
 Metadata will be added to each message sent as headers (version 0.11+), but can be restricted using the field [metadata](#metadata).
 
@@ -3743,9 +3731,6 @@ Default: `false`
 ##### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -3805,9 +3790,6 @@ Default: `""`
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
-<!-- TODO: add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -3886,9 +3868,6 @@ user: ${USER}
 ##### sasl.password
 
 A PLAIN password. It is recommended that you use environment variables to populate this field.
-<!-- TODO add secret link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`
@@ -4066,7 +4045,6 @@ Provide a list of explicit metadata key prefixes to be excluded when adding meta
 Type: `array`
 Default: `[]`
 
-<!-- TODO: when bloblang is supported
 ##### inject_tracing_map
 
 A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
@@ -4082,7 +4060,6 @@ inject_tracing_map: meta = @.merge(this)
 
 inject_tracing_map: root.meta.span = this
 ```
--->
 
 ##### max_in_flight
 
@@ -4191,7 +4168,6 @@ period: 1m
 period: 500ms
 ```
 
-<!-- TODO: when bloblang is supported
 ##### batching.check
 
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
@@ -4205,7 +4181,6 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
--->
 
 ##### batching.processors
 
@@ -4295,58 +4270,46 @@ max_elapsed_time: 1m
 max_elapsed_time: 1h
 ```
 
-### amqp_0_9
+### MQTT
+Pushes messages to an MQTT broker.
 
-Sends messages to an AMQP (0.91) exchange. AMQP is a messaging protocol used by various message brokers, 
-including RabbitMQ.
+The topic field can be dynamically set using function interpolations described here. When sending batched messages these interpolations are performed per message part.
 
 #### Common
-
-```yaml
+```yml
 # Common config fields, showing default values
 output:
   label: ""
-  amqp_0_9:
+  mqtt:
     urls: [] # No default (required)
-    exchange: "" # No default (required)
-    key: ""
-    type: ""
-    metadata:
-      exclude_prefixes: []
+    client_id: ""
+    connect_timeout: 30s
+    topic: "" # No default (required)
+    qos: 1
+    write_timeout: 3s
+    retained: false
     max_in_flight: 64
 ```
 
 #### Advanced
-
-```yaml
+```yml
 # All config fields, showing default values
 output:
   label: ""
-  amqp_0_9:
+  mqtt:
     urls: [] # No default (required)
-    exchange: "" # No default (required)
-    exchange_declare:
+    client_id: ""
+    dynamic_client_id_suffix: "" # No default (optional)
+    connect_timeout: 30s
+    will:
       enabled: false
-      type: direct
-      durable: true
-    key: ""
-    type: ""
-    content_type: application/octet-stream
-    content_encoding: ""
-    correlation_id: ""
-    reply_to: ""
-    expiration: ""
-    message_id: ""
-    user_id: ""
-    app_id: ""
-    metadata:
-      exclude_prefixes: []
-    priority: ""
-    max_in_flight: 64
-    persistent: false
-    mandatory: false
-    immediate: false
-    timeout: ""
+      qos: 0
+      retained: false
+      topic: ""
+      payload: ""
+    user: ""
+    password: ""
+    keepalive: 30
     tls:
       enabled: false
       skip_cert_verify: false
@@ -4354,246 +4317,141 @@ output:
       root_cas: ""
       root_cas_file: ""
       client_certs: []
+    topic: "" # No default (required)
+    qos: 1
+    write_timeout: 3s
+    retained: false
+    retained_interpolated: "" # No default (optional)
+    max_in_flight: 64
 ```
 
-#### Metadata
+#### Performance
 
-The metadata from each message is delivered as headers.
-
-It's possible for this output type to create the target exchange by setting `exchange_declare.enabled` to `true`, if the exchange 
-already exists then the declaration passively verifies that the settings match.
-
-TLS is automatic when connecting to an `amqps` URL, but custom settings can be enabled in the `tls` section.
+This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
 #### Fields
 
 ##### urls
 
-A list of URLs to connect to. The first URL to successfully establish a connection will be used until the connection is closed. 
-If an item of the list contains commas, it will be expanded into multiple URLs.
+A list of URLs to connect to. If an item of the list contains commas it will be expanded into multiple URLs.
+
 
 Type: `array`
 
-```yaml
+```yml
 # Examples
 
 urls:
-  - amqp://guest:guest@127.0.0.1:5672/
-
-urls:
-  - amqp://127.0.0.1:5672/,amqp://127.0.0.2:5672/
-
-urls:
-  - amqp://127.0.0.1:5672/
-  - amqp://127.0.0.2:5672/
+  - tcp://localhost:1883
 ```
 
-##### exchange
+##### client_id
 
-An AMQP exchange to publish to. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
+An identifier for the client connection.
+
+
+Type: `string`
+Default: `""`
+
+##### dynamic_client_id_suffix
+
+Append a dynamically generated suffix to the specified `client_id` on each run of the pipeline. This can be useful when clustering Streams producers.
+
 
 Type: `string`
 
-##### exchange_declare
+| Option | Summary |
+|---|---|
+| `nanoid` | append a nanoid of length 21 characters |
 
-Optionally declare the target exchange (passive).
+
+##### connect_timeout
+
+The maximum amount of time to wait in order to establish a connection before the attempt is abandoned.
+
+
+Type: `string`
+Default: `"30s"`
+Requires version 1.0.0 or newer
+
+```yml
+# Examples
+
+connect_timeout: 1s
+
+connect_timeout: 500ms
+```
+
+##### will
+
+Set last will message in case of Streams failure
+
 
 Type: `object`
 
-##### exchange_declare.enabled
+##### will.enabled
 
-Whether to declare the exchange.
+Whether to enable last will messages.
+
 
 Type: `bool`
 Default: `false`
 
-##### exchange_declare.type
+##### will.qos
 
-The type of the exchange.
+Set QoS for last will message. Valid values are: 0, 1, 2.
 
-Type: `string`
-Default: `"direct"`
-Options: `direct`, `fanout`, `topic`, `x-custom`
-
-##### exchange_declare.durable
-
-Whether the exchange should be durable.
-
-Type: `bool`
-Default: `true`
-
-
-##### key
-
-The binding key to set for each message. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### type
-
-The type property to set for each message. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### content_type
-
-The content type attribute to set for each message. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `application/octet-stream`
-
-##### content_encoding
-
-The content encoding attribute to set for each message. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### correlation_id
-
-Set the correlation ID of each message with a dynamic interpolated expression. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### reply_to
-
-Carries response queue name - set with a dynamic interpolated expression. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### expiration
-
-Set the per-message TTL. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### message_id
-
-Set the message ID of each message with a dynamic interpolated expression. 
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### user_id
-
-Set the user ID to the name of the publisher. If this property is set by a publisher, its value must be equal to the name 
-of the user used to open the connection.
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### app_id
-
-Set the application ID of each message with a dynamic interpolated expression.
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-##### metadata
-
-Specify criteria for which metadata values are attached to messages as headers.
-
-Type: `object`
-
-##### metadata.exclude_prefixes
-
-Provide a list of explicit metadata key prefixes to be excluded when adding metadata to sent messages.
-
-Type: `array`
-Default: `[]`
-
-##### priority
-
-Set the priority of each message with a dynamic interpolated expression.
-<!-- TODO: when interpolation supported:
-This field supports interpolation functions.
--->
-
-Type: `string`
-Default: `""`
-
-```yaml
-# Examples
-
-priority: "0"
-
-priority: ${! metadata("amqp_priority") }
-
-priority: ${! json("doc.priority") }
-```
-
-##### max_in_flight
-
-The maximum number of messages to have in flight at a given time. Increase this to improve throughput.
 
 Type: `int`
-Default: `64`
+Default: `0`
 
-##### persistent
+##### will.retained
 
-Whether message delivery should be persistent (transient by default).
+Set retained for last will message.
 
-Type: `bool`
-Default: `false`
-
-##### mandatory
-
-Whether to set the mandatory flag on published messages. When set if a published message is routed to zero queues, it is returned.
 
 Type: `bool`
 Default: `false`
 
-##### immediate
+##### will.topic
 
-Whether to set the immediate flag on published messages. When set if there are no ready consumers of a queue, then the message is dropped instead of waiting.
+Set topic for last will message.
 
-Type: `bool`
-Default: `false`
-
-##### timeout
-
-The maximum period to wait before abandoning it and reattempting. If not set, wait indefinitely.
 
 Type: `string`
 Default: `""`
+
+##### will.payload
+
+Set payload for last will message.
+
+
+Type: `string`
+Default: `""`
+
+##### user
+
+A username to connect with.
+
+
+Type: `string`
+Default: `""`
+
+##### password
+
+A password to connect with.
+
+
+Type: `string`
+Default: `""`
+
+##### keepalive
+
+Max seconds of inactivity before a keepalive message is sent.
+
+
+Type: `int`
+Default: `30`
 
 ##### tls
 
@@ -4617,24 +4475,22 @@ Default: `false`
 
 ##### tls.enable_renegotiation
 
-Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're getting the error message
-`local error: tls: no renegotiation.`
+Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
+
 
 Type: `bool`
 Default: `false`
+Requires version 1.0.0 or newer
 
 ##### tls.root_cas
 
-An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate,
-to possible intermediate signing certificates, to the host certificate.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
+An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
+
 
 Type: `string`
 Default: `""`
 
-```yaml
+```yml
 # Examples
 
 root_cas: |-
@@ -4645,14 +4501,13 @@ root_cas: |-
 
 ##### tls.root_cas_file
 
-An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing
-a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host
-certificate.
+An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
+
 
 Type: `string`
 Default: `""`
 
-```yaml
+```yml
 # Examples
 
 root_cas_file: ./root_cas.pem
@@ -4660,13 +4515,13 @@ root_cas_file: ./root_cas.pem
 
 ##### tls.client_certs
 
-A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified,
-but not both.
+A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
+
 
 Type: `array`
 Default: `[]`
 
-```yaml
+```yml
 # Examples
 
 client_certs:
@@ -4688,9 +4543,6 @@ Default: `""`
 ##### tls.client_certs[].key
 
 A plain text certificate key to use.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 Type: `string`
 Default: `""`
@@ -4711,21 +4563,81 @@ Default: `""`
 
 ##### tls.client_certs[].password
 
-A plain text password for when the private key is password encrypted in *PKCS#1* or *PKCS#8* format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not
-supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an
-attacker recover the plaintext.
-<!-- TODO add secrets link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
+A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
+
 
 Type: `string`
 Default: `""`
 
-```yaml
+```yml
 # Examples
 
 password: foo
+
+password: ${KEY_PASSWORD}
 ```
+
+##### topic
+
+The topic to publish messages to.
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
+
+
+Type: `string`
+
+##### qos
+
+The QoS value to set for each message. Has options 0, 1, 2.
+
+
+Type: `int`
+Default: `1`
+
+##### write_timeout
+
+The maximum amount of time to wait to write data before the attempt is abandoned.
+
+
+Type: `string`
+Default: `"3s"`
+Requires version 1.0.0 or newer
+
+```yml
+# Examples
+
+write_timeout: 1s
+
+write_timeout: 500ms
+```
+
+##### retained
+
+Set message as retained on the topic.
+
+
+Type: `bool`
+Default: `false`
+
+##### retained_interpolated
+
+Override the value of `retained` with an interpolable value, this allows it to be dynamically set based on message contents. The value must resolve to either `true` or `false`.
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
+
+
+Type: `string`
+Requires version 1.0.0 or newer
+
+##### max_in_flight
+
+The maximum number of messages to have in flight at a given time. Increase this to improve throughput.
+
+
+Type: `int`
+Default: `64`
 
 ## Processors
 
@@ -4834,6 +4746,54 @@ schema_path: file://path/to/spec.avsc
 
 schema_path: http://localhost:8081/path/to/spec/versions/1
 ```
+
+### Mapping
+
+Executes a Bloblang mapping on messages, creating a new document that replaces (or filters) the original message.
+
+Bloblang is a powerful language that enables various mapping, transformation, and filtering tasks. For more information, check out the [Bloblang docs](https://warpstreamlabs.github.io/bento/docs/guides/bloblang/about/).
+
+```yml
+label: ""
+mapping: "" # No default (required)
+```
+
+#### Example
+
+Given a JSON document with US location names and the states they are located in:
+```json
+{
+  "locations": [
+    {"name": "Seattle", "state": "WA"},
+    {"name": "New York", "state": "NY"},
+    {"name": "Bellevue", "state": "WA"},
+    {"name": "Olympia", "state": "WA"}
+  ]
+}
+```
+
+If we want to collapse the location names from the state of Washington into a field `Cities`:
+
+```json
+{"Cities": "Bellevue, Olympia, Seattle"}
+```
+
+We could use the following bloblang mapping:
+
+```yml
+pipeline:
+  processors:
+    - mapping: |
+        root.Cities = this.locations.
+                        filter(loc -> loc.state == "WA").
+                        map_each(loc -> loc.name).
+                        sort().join(", ")
+```
+
+#### Considerations
+
+ - If a mapping fails, the message remains unchanged. However, Bloblang provides powerful ways to ensure your mappings do not fail by specifying desired fallback behaviour. See [this section of the Bloblang docs](https://warpstreamlabs.github.io/bento/docs/configuration/error_handling/).
+ - Mapping operates by creating an entirely new object during assignments. This has the advantage of treating the original referenced document as immutable and, therefore, queryable at any stage of your mapping. As a result, the `Cities` JSON document in the above example is a new, separate copy of the original document, which remains unchanged.
 
 ## Tracers
 
