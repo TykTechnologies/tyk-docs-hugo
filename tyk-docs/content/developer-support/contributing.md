@@ -12,16 +12,6 @@ aliases:
 
 This section provides resources and guidance for contributors to Tyk's documentation. Whether you're fixing a typo, adding new content, or helping improve our documentation standards, you'll find the tools and guidelines you need here.
 
-## What this section covers
-
-This contribution section includes:
-
-- **[Inclusive naming]({{< ref "developer-support/documentation-projects/inclusive-naming" >}})** - Information about Tyk's inclusive language initiative and the work done to update documentation terminology
-- **UI component examples** - Documentation and examples for using shortcodes in our documentation system:
-  - **[Pill label shortcode]({{< ref "ui-examples/test-pill-label" >}})** - For labeling content with edition indicators (Enterprise, Cloud, Lab Release, etc.)
-  - **[Feature cards shortcode]({{< ref "ui-examples/feature-cards" >}})** - For creating responsive feature highlight grids
-  - **[YouTube video embed shortcode]({{< ref "ui-examples/youtube-video-embed" >}})** - For embedding videos with proper styling and SEO
-
 ## How to contribute to our docs
 
 We appreciate any form of engagement and contribution to our documentation. You can contribute in several ways:
@@ -39,5 +29,4 @@ For detailed contribution guidelines, including pull request requirements, codin
 
 ### Technical guidance
 
-Our docs are compiled using the [Hugo static site generator](https://gohugo.io/). For detailed technical guidance on creating and updating documentation pages, see the [technical guide](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md) referenced in our [CONTRIBUTING.md](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md) file.
-
+Our docs uses [Mintlify](https://mintlify.com/). For detailed technical guidance on creating and updating documentation pages, see the [technical guide]({{< ref "developer-support/contribution-guides" >}}).

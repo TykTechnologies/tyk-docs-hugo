@@ -758,12 +758,12 @@ menu:
                 path: /developer-support/contributing
                 category: Page
                 show: True
-              - title: "Release Tyk Docs"
-                path: /developer-support/release-guide
-                category: Page
-                show: true
               - title: "Content Guide"
                 path: /developer-support/contribution-guides
+                category: Page
+                show: true
+              - title: "Release Tyk Docs"
+                path: /developer-support/release-guide
                 category: Page
                 show: true
               - title: "Inclusive Naming"
