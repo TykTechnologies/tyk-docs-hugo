@@ -110,7 +110,7 @@ menu:
             path: /api-management/migrate-from-tyk-classic
             category: Page
             show: True            
-          - title: "API creation methods"
+          - title: "API Creation Methods"
             category: Page
             show: True
             path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
