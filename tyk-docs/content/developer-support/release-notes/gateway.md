@@ -204,6 +204,13 @@ Fixed an issue where streams API definitions could not be imported
 </li>
 <li>
 <details>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
+
+Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.  
+</details>
+</li>
+<li>
+<details>
 <summary>Fixed Missing Logs for Chunked Transfer-Encoding Requests</summary>
 
 Fixed an issue where certain request types ("Transfer-Encoding: chunked") were not properly logged - request body was missing in the logs.
