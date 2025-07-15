@@ -176,7 +176,7 @@ Fixed an issue where the payload (request body) was not included in detailed tra
 <details>
 <summary>Resilient RPC Connections During DNS Changes</summary>
 
-Fixed issue where RPC connections would remain stale when DNS records change (e.g., ELB IP updates), causing timeout errors.
+Fixed issue where RPC connections would become stale when DNS records change (e.g., ELB IP updates), causing timeout errors.
 Improved DNS resolution to ensure all connections in the RPC pool properly reconnect when endpoint IPs change, eliminating service disruptions during network changes.  
 </details>
 </li>
