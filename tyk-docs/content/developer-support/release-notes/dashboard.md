@@ -80,7 +80,7 @@ There are no deprecations in this release.
 
 #### Upgrade instructions {#upgrade-5.8.3}
 
-If you are upgrading to 5.8.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
 
