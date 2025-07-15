@@ -215,7 +215,7 @@ Fixed an issue, where users couldn't add Event handles in OAS API Designer
 </li>
 <li>
 <details>
-<summary>Stream API Stability in Raw Definition Editor</summary>
+<summary>Streams API Stability in Raw Definition Editor</summary>
 
 Fixed an issue where the raw API definition editor could break a streams API definition  
 </details>
