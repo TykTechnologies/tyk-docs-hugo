@@ -168,7 +168,7 @@ Fixed an issue when converting Tyk Classic API definitions to Tyk OAS format tha
 </li>
 <li>
 <details>
-<summary>Added Private Key Filter to /api/certs</summary>
+<summary>Certificate API Filtering Added so that Relevant Certificates are Available when Configuring Upstream mTLS in Tyk OAS API Designer</summary>
 
 We've added an optional filter query parameter to the /api/certs endpoint when using the mode=detailed option. This allows you to refine your certificate queries based on the presence of a Private Key (PK).
 
