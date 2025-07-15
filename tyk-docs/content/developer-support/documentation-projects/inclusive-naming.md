@@ -83,9 +83,14 @@ For your records, the following sections highlight the existing *INI tier 1 word
 
 The [Tyk Gateway OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/gateway-swagger.yml) (Tyk Gateway swagger), includes references to the following Tyk Classic API Definition parameters:
 
+<<<<<<< HEAD
 - [version_data.versions.{version-name}.extended_paths.black_list]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-tyk-classic-api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
 - [version_data.versions.{version-name}.extended_paths.white_list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-tyk-classic-api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
 
+=======
+- [version_data.versions.\{version-name\}.extended_paths.black_list]({{< ref "api-management/traffic-transformation/block-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
+- [version_data.versions.\{version-name\}.extended_paths.white_list]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
+>>>>>>> 3005d8331... add ecape (#6729)
 
 #### Tyk Dashboard
 
