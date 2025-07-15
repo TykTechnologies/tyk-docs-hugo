@@ -120,7 +120,7 @@ The Gateway now supports a configurable [graceful shutdown]({{< ref "planning-fo
 <details>
 <summary>Load Balance Between gRPC Plugin Servers</summary>
 
-Fixed support for `dns:///` protocol in gRPC rich plugins. Setting the new configuration option `TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING` to `true` will cause Tyk to balance the load between multiple gRPC servers; the default behavior (`false`) is to use a sticky connection to a single server.
+Fixed support for `dns:///` protocol for load balancing when using [gRPC plugins]({{< ref "api-management/plugins/rich-plugins#load-balancing-between-grpc-servers" >}}). Setting the new configuration option `TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING` to `true` will cause Tyk to balance the load between multiple gRPC servers; the default behavior (`false`) is to use a sticky connection to a single server.
 </details>
 </li>
 <li>
