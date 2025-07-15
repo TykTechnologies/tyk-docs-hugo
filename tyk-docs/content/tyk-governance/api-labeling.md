@@ -85,7 +85,7 @@ A successful request will return a 200 OK status code and the newly created labe
 - The values field is optional. If provided, it defines the allowed values for this label
 - If values is empty, the label will accept any value (free text)
 - Only users with admin privileges can create labels
-- Once created, labels can be applied to APIs using the /api/{api-id}/labels endpoint
+- Once created, labels can be applied to APIs using the `/api/{api-id}/labels` endpoint
 - After creating a custom label, it will be available for selection when labeling APIs, either through the UI or via the API labeling endpoints.
 
 ### Validation
