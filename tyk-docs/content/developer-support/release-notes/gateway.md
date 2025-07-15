@@ -189,7 +189,7 @@ Browser clients can now reliably consume streams outputs (SSE and WebSocket)
 </li>
 <li>
 <details>
-<summary>Tyk OAS Definition Now Accessible to Response Plugins Without Request Plugins</summary>
+<summary>API Definition Wasn't Accessible from Response Plugins</summary>
 
 Fixed an issue where the Tyk OAS API definition was not available to Response Plugins unless a Request Plugin was also loaded. The issue was caused by the `ctx.GetOASDefinition(req)` function not consistently returning the proper OpenAPI Specification (OAS).
 </details>
