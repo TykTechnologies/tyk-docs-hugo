@@ -36,7 +36,7 @@ There are no deprecations in this release.
 <details>
 <summary>New Role to Restrict Local Login for SSO Users</summary>
 
-Introduced a new “View Only” role to enhance access control for organizations using SSO. This role prevents SSO-provisioned users from logging in via email/password, ensuring all activity is captured through the configured identity provider. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
+Introduced a new “View Only” role to enhance access control for organizations using SSO. Now SSO users by default would be granted this read only role. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
 
 </details>
 </li> 
