@@ -176,7 +176,7 @@ The fix for this involved the introduction of a new optional `filter` query para
 
 This parameter allows you to refine your certificate queries based on the presence of a Private Key (PK).
 
-The filter parameter accepts the following enum values:
+The `filter` parameter accepts the following values:
 
 all: (Default) Returns all certificates.
 with_pk: Returns only certificates that include a Private Key.
