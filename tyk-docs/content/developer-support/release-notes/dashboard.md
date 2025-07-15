@@ -142,7 +142,7 @@ Fixed an issue where some middleware (API-level rate limit and mock response) we
 <details>
 <summary>Removed Empty Fields in Tyk Classic to Tyk OAS Conversion</summary>
 
-Fixed an issue when converting Tyk Classic API definitions to Tyk OAS format that could lead to unnecessary empty fields in the Tyk OAS API definition.
+Fixed an issue that occurred when converting Tyk Classic API definitions to Tyk OAS format, which could result in unnecessary empty fields in the Tyk OAS API definition.
 </details>
 </li>
 <li>
