@@ -141,7 +141,7 @@ Gateway no longer returns 500 when calling an invalid path on a streams API and 
 <details>
 <summary>Reliable GraphQL Proxying for Interface Arguments</summary>
 
-Fixed an issue where Tyk has trouble proxying a graphql edge case; a request that includes an argument on an interface leads to errors proxying.
+Fixed an issue where Tyk has trouble proxying a GraphQL edge case; a request that includes an argument on an interface leads to errors proxying.
 </details>
 </li>
 <li>
