@@ -148,7 +148,7 @@ Fixed an issue where Tyk has trouble proxying a GraphQL edge case; a request tha
 <details>
 <summary>Resolved Repeated “Unsupported Protocol Scheme” Errors</summary>  
 
-Gateway no longer produces endless "unsupported protocol scheme" errors for streams APIs
+Gateway no longer produces endless "unsupported protocol scheme" errors for Tyk Streams APIs
 </details>
 </li>
 <li>
