@@ -181,6 +181,7 @@ The `filter` parameter accepts the following values:
 - `all`: (Default) Returns all certificates.
 - `with_pk`: Returns only certificates that include a Private Key.
 `without_pk`: Returns only certificates that do not include a Private Key.
+
 For example:
 
 To retrieve all detailed certificates on page 1: /api/certs?mode=detailed&p=1
