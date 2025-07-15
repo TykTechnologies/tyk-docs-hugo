@@ -39,7 +39,7 @@ info:
     name: Mozilla Public License Version 2.0
     url: https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md
   title: Tyk Dashboard API
-  version: 5.8.0
+  version: 5.8.3
 servers:
 - url: https://{tenant}
   variables:
@@ -102,8 +102,8 @@ tags:
     description: Additional Permissions full documentation.
     url: https://tyk.io/docs/tyk-dashboard-api/org/permissions/
   name: Additional Permissions
-- description: Get OAS schema.
-  name: Schema
+- description: Get schemas.
+  name: Schemas
 - description: |
     Webhooks are a great way to let external applications know about the status of a user, an API or an event that has occurred in the Tyk gateway <br/>
 
@@ -4731,6 +4731,23 @@ paths:
           enum:
           - detailed
           type: string
+      - description: |- 
+          Defines the filtering strategy applied to certificate keys.
+          This query param works only in combination with detailed mode (mode=detailed). 
+          `omit` (default) – Returns all certificates regardless of private key association.
+          with_pk – Returns only certificates that include a private key.
+          without_pk – Returns only certificates that do not include a private key.
+        name: filter
+        example: omit
+        required: false
+        in: query
+        schema:
+          type: string
+          default: omit
+          enum:
+            - omit
+            - with_pk
+            - without_pk
       responses:
         "200":
           content:
@@ -7644,7 +7661,177 @@ paths:
           description: Internal server error.
       summary: Get OAS schema.
       tags:
-      - Schema
+      - Schemas
+  /api/schemas/apidefs:
+    get:
+      description: Get all API definition schemas.
+      operationId: getAllApidefsSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllApidefSchemasResponse'
+          description: All API definition schemas response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get all API definition schemas.
+      tags:
+        - Schemas
+  /api/schemas/apidefs/oas:
+    get:
+      description: Get API definition OAS schema.
+      operationId: getApidefOASSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+        - description: Pretty print the result.
+          example: 'true'
+          in: query
+          name: pretty
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+          description: OAS schema response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs/oas'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get API definition OAS schema.
+      tags:
+        - Schemas
+  /api/schemas/apidefs/streams-oas:
+    get:
+      description: Retrieve schema for Tyk Streams APIs, enabling developers and integrators to validate or generate stream-based API definitions programmatically. Supports optional OAS version selection and pretty-print formatting via query parameters.
+      operationId: getApidefStreamsOASSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+        - description: Pretty print the result.
+          example: 'true'
+          in: query
+          name: pretty
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+          description: OAS schema response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs/streams-oas'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get API definition Streams OAS schema.
+      tags:
+        - Schemas
   /api/sso:
     post:
       description: The Dashboard exposes the /api/sso Dashboard API which allows you
@@ -12170,6 +12357,18 @@ components:
           type: string
       type: object
       x-go-package: github.com/TykTechnologies/tyk/gateway
+    AllApidefSchemasResponse:
+      properties:
+        message:
+          type: string
+        schemas:
+          properties:
+            oas: { }
+            streamsOAS: { }
+        status:
+          type: string
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk-analytics/dashboard
     OAuthApps:
       properties:
         apps:
