@@ -128,7 +128,7 @@ Fixed an issue where the automatic configuration options (authentication, mock r
 <details>
 <summary>Fixed the Search Function on the Traffic Activity by Key page when using MongoDB</summary>
 
-Updated regex constructions to use proper MongoDB syntax
+Fixed an issue where the Search function did not work correctly on the Traffic Activity by Key page that was observed only when using MongoDB for analytics storage. This was due to the specific syntax required by MongoDB for regular expressions.
 </details>
 </li>
 <li>
