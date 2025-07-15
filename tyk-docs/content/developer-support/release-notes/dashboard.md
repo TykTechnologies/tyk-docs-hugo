@@ -178,7 +178,7 @@ This parameter allows you to refine your certificate queries based on the presen
 
 The `filter` parameter accepts the following values:
 
-all: (Default) Returns all certificates.
+- `all`: (Default) Returns all certificates.
 with_pk: Returns only certificates that include a Private Key.
 without_pk: Returns only certificates that do not include a Private Key.
 For example:
