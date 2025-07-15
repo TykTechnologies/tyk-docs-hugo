@@ -119,7 +119,7 @@ Improved the handling of an error that can be encountered when importing Tyk OAS
 </li>
 <li>
 <details>
-<summary>Fixed Auto Config Ignored Without listenPath</summary>
+<summary>Fixed Automatic Configuration of Middleware when Importing OpenAPI Description</summary>
 
 Fixed an issue where the automatic configuration options (authentication, mock response, etc) had no effect when creating an API from an OpenAPI document if the listenPath was not specified via query parameter.
 </details>
