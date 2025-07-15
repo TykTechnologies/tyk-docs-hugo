@@ -169,7 +169,7 @@ Gateway no longer tries to start a garbage collection task after deleting a Tyk 
 <details>
 <summary>Some Traffic Logs Were Missing the Payload  </summary>
 
-Fixed an issue where certain request types (Content-Type "application/x-www-form-urlencoded") were not properly logged - request body was missing in the logs.
+Fixed an issue where the payload (request body) was not included in detailed traffic logs for certain request types (Content-Type "application/x-www-form-urlencoded").
 </details>
 </li>
 <li>
