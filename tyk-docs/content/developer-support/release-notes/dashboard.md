@@ -179,6 +179,13 @@ We’ve fixed an issue when importing OpenAPI descriptions using the PATCH metho
 </li>
 <li>
 <details>
+<summary>Improved Validation for Tyk Streams API Definitions</summary>
+
+Fixed an issue where Dashboard did not correctly import Tyk Streams API definitions, skipping validation of the configuration.  
+</details>
+</li>
+<li>
+<details>
 <summary>Fixed Incorrect Auth Configuration when Importing OpenAPI Description</summary>
 
 Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
