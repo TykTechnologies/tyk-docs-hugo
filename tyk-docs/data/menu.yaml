@@ -1182,27 +1182,27 @@ menu:
             path: /ai-management/ai-studio/overview
             category: Page
             show: True
-          - title: "Introduction"
-            category: Directory
-            show: True
-            menu:
-              - title: "Quickstart"
-                category: Page
-                path: /ai-management/ai-studio/quickstart
-                show: True
-              - title: "Core Concepts"
-                category: Page
-                path: /ai-management/ai-studio/core-concepts
-                show: True
           - title: "Getting Started"
             category: Directory
             show: True
             menu:
-              - title: "Installation (Kubernetes)"
+              - title: "What is AI Studio?"
                 category: Page
-                path: /ai-management/ai-studio/deployment-k8s
+                path: /ai-management/ai-studio/core-concepts
                 show: True
-              - title: "Initial Configuration"
+              - title: "Installation Guide"
+                category: Directory
+                show: True
+                menu:
+                  - title: "Docker/Packages (Recommended)"
+                    category: Page
+                    path: /ai-management/ai-studio/quickstart
+                    show: True
+                  - title: "Kubernetes"
+                    category: Page
+                    path: /ai-management/ai-studio/deployment-k8s
+                    show: True
+              - title: "First Steps"
                 category: Page
                 path: /ai-management/ai-studio/configuration
                 show: True
