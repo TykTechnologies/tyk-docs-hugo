@@ -135,7 +135,7 @@ Fixed an issue where the Search function did not work correctly on the Traffic A
 <details>
 <summary>Fixed an Incompatibility with DocumentDB for Certain Endpoint Names</summary>
 
-Fixed an issue where endpoints that contain dots in the path name failed with an error when creating or updating an API. The issue was caused by the underlying storage not accepting dots as valid URI characters.
+Fixed an issue where endpoints that contain dots in the path name failed with an error when creating or updating an API. The issue was caused by the underlying storage not accepting dots as valid URI characters and was observed only with DocumentDB.
 </details>
 </li>
 <li>
