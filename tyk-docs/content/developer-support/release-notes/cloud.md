@@ -11,7 +11,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-Tyk Cloud now supports automatic upgrades for deployments, helping teams stay up to date with the latest features and security enhancements without manual intervention. Users can opt in via the control plane deployment settings and configure a weekly schedule to match their maintenance windows. This would also automatically upgrade corresponding data planes related to this control plane to the latest available version in the channel
+This release introduces Auto-Upgrades for Control Plane deployments, allowing teams to stay up to date with the latest features on a configurable schedule, with related Data Planes upgraded automatically. We’ve also improved SSO access control by assigning a default View Only role to newly provisioned SSO users, enhancing security and auditability.
 
 
 For a full list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.29.0" >}}) below.
@@ -36,16 +36,16 @@ There are no deprecations in this release.
 <details>
 <summary>New Role to Restrict Local Login for SSO Users</summary>
 
-Introduced a new “View Only” role to enhance access control for organizations using SSO. Now SSO users by default would be granted this read only role. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
+Introduced a new “View Only” role to enhance access control for organizations using SSO. Now, SSO users by default would be granted this read only role. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
 
 </details>
 </li> 
 
 <li>
 <details>
-<summary>Frontend Support for Auto-Upgrade Opt-In</summary>
+<summary>Auto-Upgrade for Control Plane Deployments</summary>
 
-Users can now enable or disable auto-upgrades and configure their preferred upgrade schedule directly in the Tyk Cloud UI.
+Users can now opt into automatic upgrades for Control Plane deployments and configure a weekly schedule to match their maintenance windows. This would also automatically upgrade the corresponding data planes related to this control plane to the latest available version in the channel.
 
 </details>
 </li> 
