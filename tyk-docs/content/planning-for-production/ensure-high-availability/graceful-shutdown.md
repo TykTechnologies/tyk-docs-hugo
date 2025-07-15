@@ -5,13 +5,16 @@ tags: ["graceful shutdown", "deployment", "stability", "gateway", "pump"]
 description: "Graceful Shutdown in Tyk"
 keywords: ["graceful shutdown", "deployment", "stability", "gateway", "pump"]
 aliases:
-    - /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+ - /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
 ---
+
+## Introduction
+
+Tyk components implement **graceful shutdown** mechanisms to ensure data integrity and request completion during restarts or terminations. This feature is valuable during deployments, updates, or when you need to restart your Gateway in production environments. It helps to maintain high availability and reliability during operational changes to your API gateway infrastructure.
 
 ## Tyk Gateway
 
-Tyk Gateway includes a graceful shutdown mechanism that ensures clean termination while minimizing disruption to active connections and requests. This feature is especially valuable during deployments, updates, or when you need to restart your gateway in production environments. It helps to maintain high availability and reliability during operational changes to your API gateway infrastructure.
-
+Tyk Gateway includes a graceful shutdown mechanism that ensures clean termination while minimizing disruption to active connections and requests. 
 
 ### Configuration
 
@@ -23,7 +26,7 @@ Add the [graceful_shutdown_timeout_duration]({{< ref "tyk-oss-gateway/configurat
 }
 ```
 
-| Parameter	| Type | Description |
+| Parameter | Type | Description |
 |-----------|------|-------------|
 | `graceful_shutdown_timeout_duration` | integer | The number of seconds Tyk will wait for existing connections to complete before forcing termination. Default: 30 seconds. |
 
@@ -54,6 +57,41 @@ When a termination signal is received, Tyk:
 - Disconnects from MDCB (if deployed in a distributed data plane)
 - Logs completion and exits
 
+```mermaid
+sequenceDiagram
+ participant OS as Operating System
+ participant Gateway as Tyk Gateway
+ participant Connections as Active Connections
+ participant Dashboard as Tyk Dashboard
+ participant MDCB as MDCB
+    
+ OS->>Gateway: SIGTERM/SIGINT/SIGQUIT
+ Note over Gateway: Begin graceful shutdown
+ Gateway->>Gateway: Log shutdown initiation
+ Gateway->>Gateway: Stop accepting new connections
+    
+ par Process existing connections
+ Gateway->>Connections: Wait for completion (timeout: configurable)
+ and Clean up resources
+ Gateway->>Gateway: Prepare to release resources
+ end
+    
+ Note over Gateway: Timeout or connections completed
+    
+ Gateway->>Gateway: Clean up resources
+    
+ alt Using Dashboard
+ Gateway->>Dashboard: Deregister node
+ end
+    
+ alt Using MDCB
+ Gateway->>MDCB: Disconnect
+ end
+    
+ Gateway->>Gateway: Log completion
+ Gateway->>OS: Process terminates
+```
+
 ### Best Practices
 
 - Adjust timeout for your workloads: If your APIs typically handle long-running requests, increase the timeout accordingly.
@@ -62,7 +100,7 @@ When a termination signal is received, Tyk:
 
 ### Advanced Details
 
-If the shutdown process exceeds the configured timeout, Tyk logs a warning and forcibly terminates any remaining connections. This prevents the gateway from hanging indefinitely if connections don't close properly.
+If the shutdown process exceeds the configured timeout, Tyk logs a warning and forcibly terminates any remaining connections. This prevents the Gateway from hanging indefinitely if connections don't close properly.
 
 The implementation uses Go's context with timeout to manage the shutdown process, ensuring that resources are properly released even in edge cases.
 
@@ -81,7 +119,7 @@ The graceful shutdown behavior in Tyk Pump is primarily controlled by the [purge
 }
 ```
 
-| Parameter	| Type | Description |
+| Parameter | Type | Description |
 |-----------|------|-------------|
 | `purge_delay` | integer | The number of seconds between each purge loop execution. This also affects the graceful shutdown timing as Tyk Pump will complete the current purge cycle before shutting down. Default: 10 seconds. |
 
@@ -110,6 +148,34 @@ When a termination signal is received, Tyk Pump:
 - Triggers a final flush operation on all configured pumps
 - Closes all database and storage connections
 - Logs completion and exits
+
+```mermaid
+sequenceDiagram
+ participant OS as Operating System
+ participant Pump as Tyk Pump
+ participant PurgeLoop as Purge Loop
+ participant Buffers as In-Memory Buffers
+ participant Storage as Storage Systems
+    
+ OS->>Pump: SIGTERM/SIGINT
+ Note over Pump: Begin graceful shutdown
+ Pump->>Pump: Log shutdown initiation
+    
+ alt Purge cycle in progress
+ Pump->>PurgeLoop: Wait for current cycle to complete
+ PurgeLoop->>Pump: Cycle completed
+ end
+    
+ Pump->>Buffers: Process remaining analytics data
+    
+ par Flush buffered data
+ Pump->>Storage: Flush Storage System buffer
+ end
+    
+ Pump->>Pump: Close all database connections
+ Pump->>Pump: Log completion
+ Pump->>OS: Process terminates
+```
 
 These pumps buffer data in-memory before sending the data to the storage and so will flush out those data before the connection is closed:
 - `ElasticSearch`
