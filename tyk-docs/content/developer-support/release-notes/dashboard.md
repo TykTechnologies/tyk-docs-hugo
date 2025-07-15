@@ -213,6 +213,13 @@ Dashboard UI is now using the new certificates filter query parameter, when call
 Fixed an issue, where users couldn't add Event handles in OAS API Designer
 </details>
 </li>
+<li>
+<details>
+<summary>Various fixes to the Dashboard UI</summary>
+
+We have implemented various fixes and improvements in the Dashboard UI to enhance usability.  
+</details>
+</li>
 </ul>
 
 ---
