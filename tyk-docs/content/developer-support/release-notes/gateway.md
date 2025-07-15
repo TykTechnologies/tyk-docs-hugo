@@ -105,35 +105,136 @@ If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Support for Multiple JWK URLs with Caching</summary>
 
-Add changelog description  
+Users can now configure multiple JWK URLs for authentication. All JWKs are cached using the default Redis configuration to improve performance and reduce external calls.
 </details>
 </li>
-
-</ul>
-
-##### Changed
-
-<ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Tyk Gateway Now Supports Graceful Shutdown</summary>
 
-Add changelog description
+Implemented graceful shutdown behaviour in the Tyk Gateway. Now the gateway waits up to "graceful_shutdown_timeout_duration" seconds (default value is 30 seconds) for connections to close before killing the process. Furthermore improvements have been done in the liveness and readiness endpoints (currently /hello and /ready).
 </details>
 </li>
 
 </ul>
+
 
 ##### Fixed
 
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>gRPC Coprocess Middleware Now Supports dns:/// for Load Balancing</summary>
 
-Add changelog description
+Fixed support for `dns:///` protocol in gRPC rich plugins. Setting the new configuration option `TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING` to `true` will cause Tyk to balance the load between multiple gRPC servers; the default behavior (`false`) is to use a sticky connection to a single server.
+</details>
+</li>
+<li>
+<details>
+<summary>Resilient RPC Connections During DNS Changes</summary>
+
+Fixed issue where RPC connections would remain stale when DNS records change (e.g., ELB IP updates), causing timeout errors.
+Improved DNS resolution to ensure all connections in the RPC pool properly reconnect when endpoint IPs change, eliminating service disruptions during network changes.
+</details>
+</li>
+<li>
+<details>
+<summary>Stability Fixes for GraphQL Subscriptions and Kafka Messaging</summary>
+
+Fixed a panic triggered by starting GraphQL subscriptions and resolved an issue where Kafka messages failed to resolve correctly.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Missing Logs for application/x-www-form-urlencoded Requests</summary>
+
+Fixed an issue where certain request types (Content-Type "application/x-www-form-urlencoded") were not properly logged - request body was missing in the logs.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Repeated “Unsupported Protocol Scheme” Errors</summary>
+
+Gateway no longer produces endless "unsupported protocol scheme" errors for streams APIs
+</details>
+</li>
+<li>
+<details>
+<summary>Removed Unnecessary Garbage Collection on Streams API Deletion</summary>
+
+Gateway no longer tries to start a garbage collection task after deleting the streams API
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable SSE and WebSocket Streaming for Browser Clients</summary>  
+
+Browser clients can now reliably consume streams outputs (SSE and WebSocket)
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk OAS Definition Now Accessible to Response Plugins Without Request Plugins</summary>  
+
+Fixed an issue where the Tyk OAS API definition was not available to Response Plugins unless a Request Plugin was also loaded. The issue was caused by the `ctx.GetOASDefinition(req)` function not consistently returning the proper OpenAPI Specification (OAS).
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable GraphQL Proxying for Interface Arguments</summary>  
+
+Fixed an issue where Tyk has trouble proxying a graphql edge case; a request that includes an argument on an interface leads to errors proxying.
+</details>
+</li>
+<li>
+<details>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>  
+
+Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Invalid Config in Tyk OAS When Enabling OAuth 2.0 in Designer</summary> 
+
+Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
+</details>
+</li>
+<li>
+<details>
+<summary>Proper 404 Responses for Invalid Stream API Paths</summary>
+
+Gateway no longer returns 500 when calling an invalid path on a streams API and will instead return 404
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Missing Logs for Chunked Transfer-Encoding Requests</summary> 
+
+Fixed an issue where certain request types ("Transfer-Encoding: chunked") were not properly logged - request body was missing in the logs.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Import Failures for Streams API Definitions</summary>  
+
+Fixed an issue where streams API definitions could not be imported
+</details>
+</li>
+<li>
+<details>
+<summary>Restored Cipher Suite Support and Reliable TLS Handling</summary>    
+
+Fixed an issue where several previously supported cipher suites were no longer recognized when configured, causing them to be silently skipped for clients relying on those ciphers. The issue was only visible with debug-level logging, making it difficult to diagnose in production environments. Support for these cipher suites has now been restored.
+</details>
+</li>
+<li>
+<details>
+<summary>Resilient Policy Syncing Despite MDCB RPC Timeouts</summary>    
+
+Fixed a bug where a timeout in a RPC call to MDCB would lead to no policies being synced to the edge gateway.  
 </details>
 </li>
 
