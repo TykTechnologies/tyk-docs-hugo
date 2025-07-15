@@ -11,7 +11,8 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-Tyk Cloud now supports automatic upgrades for Control Plane deployments, helping teams stay up to date with the latest features and security enhancements without manual intervention. Users can opt in via the deployment settings and configure a weekly schedule to match their maintenance windows.
+Tyk Cloud now supports automatic upgrades for deployments, helping teams stay up to date with the latest features and security enhancements without manual intervention. Users can opt in via the control plane deployment settings and configure a weekly schedule to match their maintenance windows. This would also automatically upgrade corresponding data planes related to this control plane to the latest available version in the channel
+
 
 For a full list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.29.0" >}}) below.
 
