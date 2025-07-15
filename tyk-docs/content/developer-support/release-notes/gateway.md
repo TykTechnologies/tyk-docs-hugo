@@ -196,20 +196,6 @@ Fixed an issue where the API definition was not available to Response Plugins un
 </li>
 <li>
 <details>
-<summary>Fixed Invalid Config in Tyk OAS When Enabling OAuth 2.0 in Designer</summary>
-
-Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
-</details>
-</li>
-<li>
-<details>
-<summary>Fixed Import Failures for Streams API Definitions</summary>
-
-Fixed an issue where streams API definitions could not be imported
-</details>
-</li>
-<li>
-<details>
 <summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
 
 Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.  
