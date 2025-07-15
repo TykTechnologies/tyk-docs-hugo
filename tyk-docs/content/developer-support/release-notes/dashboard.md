@@ -195,7 +195,7 @@ This new filtering capability provides more granular control over which certific
 <details>
 <summary>Fixed Tyk OAS Updates with YAML Formatted OpenAPI Descriptions</summary>
 
-We’ve fixed an issue that now allows patching Tyk OAS API definitions using OpenAPI specs in YAML format, in addition to JSON.
+We’ve fixed an issue when importing OpenAPI descriptions using the PATCH method, so you can now update your Tyk OAS APIs using both YAML and JSON formats.
 </details>
 </li>
 <li>
