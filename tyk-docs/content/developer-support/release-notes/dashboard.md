@@ -107,7 +107,7 @@ Fixed an issue with incorrect validation of empty or invalid OAS referring to x-
 <details>
 <summary>Improved Error Messaging for OpenAPI Imports</summary>
 
-Improved error messages related to API creation when importing an OpenAPI description - now they clearly explain the issue and provide guidance on how to resolve it.
+Improved the error messages displayed when Dashboard UI reports problems importing OpenAPI documents - now they clearly explain the issue and provide guidance on how to resolve it.
 </details>
 </li>
 <li>
