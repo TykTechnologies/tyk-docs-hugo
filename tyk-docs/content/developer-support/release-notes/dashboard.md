@@ -142,7 +142,7 @@ Fixed an issue where some middleware (API-level rate limit and mock response) we
 <details>
 <summary>Removed Empty Fields in Tyk Classic to Tyk OAS Conversion</summary>
 
-Fixed an issue when converting Tyk Classic API definitions to Tyk OAS format that could lead to unnecessary empty fields in the Tyk OAS API definition.
+Fixed an issue that occurred when converting Tyk Classic API definitions to Tyk OAS format, which could result in unnecessary empty fields in the Tyk OAS API definition.
 </details>
 </li>
 <li>
@@ -195,7 +195,7 @@ Fixed an error in the Tyk OAS API Designer that added invalid config to the API 
 <details>
 <summary>Fixed Event Handler Issue in Tyk OAS Designer</summary>
 
-Fixed an issue, where users couldn't add Event handles in OAS API Designer 
+Fixed an issue where users couldn't register Event Handlers in Tyk OAS API Designer.
 </details>
 </li>
 <li>
