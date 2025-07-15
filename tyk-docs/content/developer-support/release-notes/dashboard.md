@@ -200,7 +200,7 @@ We’ve fixed an issue when importing OpenAPI descriptions using the PATCH metho
 </li>
 <li>
 <details>
-<summary>Fixed Invalid OAuth Config from Tyk OAS Import</summary>
+<summary>Fixed Incorrect Auth Configuration when Importing OpenAPI Description</summary>
 
 Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
 </details>
