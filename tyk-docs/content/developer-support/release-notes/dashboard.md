@@ -126,13 +126,6 @@ Fixed an issue where endpoints that contain dots in the path name failed with an
 </li>
 <li>
 <details>
-<summary>Removed False Validation Error for Streams APIs</summary>
-
-Raw API definition editor no longer shows an incorrect validation error for streams API definitions
-</details>
-</li>
-<li>
-<details>
 <summary>Preserved Categories and Ownership on Tyk OAS Update</summary>
 
 Fixed an issue where API Categories and Ownership could be lost when applying an updated OpenAPI description to a Tyk OAS API.
@@ -189,13 +182,6 @@ We’ve fixed an issue when importing OpenAPI descriptions using the PATCH metho
 <summary>Fixed Incorrect Auth Configuration when Importing OpenAPI Description</summary>
 
 Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
-</details>
-</li>
-<li>
-<details>
-<summary>Dashboard Uses New Cert Filter for Upstreams</summary>
-
-Dashboard UI is now using the new certificates filter query parameter, when calling the Dashboard API, so that it can list just the certificates that have has_private property and list them properly in the upstream certificates section
 </details>
 </li>
 <li>
