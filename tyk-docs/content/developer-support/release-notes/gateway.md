@@ -43,6 +43,168 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 5.8 Release Notes
 
+### 5.8.3 Release Notes
+
+#### Release Date 15th July 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.3" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.3}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.2    | Sync v2.1.2 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.3}
+
+If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.3)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.3
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.8.3}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Tyk Gateway Now Supports Configurable Graceful Shutdown Period</summary>
+
+The Gateway now supports a configurable [graceful shutdown]({{< ref "planning-for-production/ensure-high-availability/graceful-shutdown" >}}) period, waiting up to `graceful_shutdown_timeout_duration` seconds (default value is 30s) for open connections to close before terminating. Additionally, improvements have been made to the liveness (`hello`) and readiness (`/ready`) endpoints.
+</details>
+</li>
+</ul>
+
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Load Balance Between gRPC Plugin Servers</summary>
+
+Fixed support for `dns:///` protocol for load balancing when using [gRPC plugins]({{< ref "api-management/plugins/rich-plugins#load-balancing-between-grpc-servers" >}}). Setting the new configuration option `TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING` to `true` will cause Tyk to balance the load between multiple gRPC servers; the default behavior (`false`) is to use a sticky connection to a single server.
+</details>
+</li>
+<li>
+<details>
+<summary>Restored Cipher Suite Support and Reliable TLS Handling</summary>
+
+Fixed an issue introduced in Tyk 5.8.1 where several previously supported cipher suites were no longer recognized when configured, causing them to be silently skipped for clients relying on those ciphers. The issue was only visible with debug-level logging, making it difficult to diagnose in production environments. Support for these cipher suites has now been restored.
+</details>
+</li>
+<li>
+<details>
+<summary>Proper 404 Responses for Invalid Stream API Paths</summary>
+
+Gateway no longer returns 500 when calling an invalid path on a streams API and will instead return 404
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable GraphQL Proxying for Interface Arguments</summary>
+
+Fixed an issue where Tyk has trouble proxying a GraphQL edge case; a request that includes an argument on an interface leads to errors proxying.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Repeated “Unsupported Protocol Scheme” Errors</summary>  
+
+Gateway no longer produces endless "unsupported protocol scheme" errors for Tyk Streams APIs
+</details>
+</li>
+<li>
+<details>
+<summary>Stability Fixes for GraphQL Subscriptions and Kafka Messaging</summary>  
+
+Fixed a panic triggered by starting GraphQL subscriptions and resolved an issue where Kafka messages failed to resolve correctly.  
+</details>
+</li>
+<li>
+<details>
+<summary>Removed Unnecessary Garbage Collection When Deleting Tyk Streams API</summary>
+
+Gateway no longer tries to start a garbage collection task after deleting a Tyk Streams API
+</details>
+</li>
+<li>
+<details>
+<summary>Some Traffic Logs Were Missing the Payload  </summary>
+
+Fixed an issue where the payload (request body) was not included in detailed traffic logs for certain request types (Content-Type "application/x-www-form-urlencoded").
+</details>
+</li>
+<li>
+<details>
+<summary>Resilient RPC Connections During DNS Changes</summary>
+
+Fixed issue where RPC connections would become stale when DNS records change (e.g., ELB IP updates), causing timeout errors.
+Improved DNS resolution to ensure all connections in the RPC pool properly reconnect when endpoint IPs change, eliminating service disruptions during network changes.  
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable SSE and WebSocket Streaming for Browser Clients</summary>
+
+Browser clients can now reliably consume streams outputs (SSE and WebSocket)
+</details>
+</li>
+<li>
+<details>
+<summary>API Definition Wasn't Accessible from Response Plugins</summary>
+
+Fixed an issue where the API definition was not available to Response Plugins unless a Request Plugin was also loaded when using Tyk OAS. The issue was caused by the `ctx.GetOASDefinition(req)` function not consistently returning the Tyk OAS API definition.
+</details>
+</li>
+<li>
+<details>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
+
+Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable. Gateway now correctly log request bodies for all request types, including those using Transfer-Encoding: chunked.  
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.8.2 Release Notes
 
 #### Release Date 1st July 2025
