@@ -127,7 +127,7 @@ Fixed support for `dns:///` protocol for load balancing when using [gRPC plugins
 <details>
 <summary>Restored Cipher Suite Support and Reliable TLS Handling</summary>
 
-Fixed an issue where several previously supported cipher suites were no longer recognized when configured, causing them to be silently skipped for clients relying on those ciphers. The issue was only visible with debug-level logging, making it difficult to diagnose in production environments. Support for these cipher suites has now been restored.
+Fixed an issue introduced in Tyk 5.8.1 where several previously supported cipher suites were no longer recognized when configured, causing them to be silently skipped for clients relying on those ciphers. The issue was only visible with debug-level logging, making it difficult to diagnose in production environments. Support for these cipher suites has now been restored.
 </details>
 </li>
 <li>
