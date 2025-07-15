@@ -98,23 +98,9 @@ If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Improved Tyk OAS Validation for x-tyk-api-gateway Extension</summary>
-
-Fixed an issue with incorrect validation of empty or invalid OAS referring to x-tyk-api-gateway.
-</details>
-</li>
-<li>
-<details>
 <summary>Improved Error Messaging for OpenAPI Imports</summary>
 
 Improved the error messages displayed when Dashboard UI reports problems importing OpenAPI documents - now they clearly explain the issue and provide guidance on how to resolve it.
-</details>
-</li>
-<li>
-<details>
-<summary>Fixed Security Mismatch Error in Tyk OAS Imports</summary>
-
-Improved the handling of an error that can be encountered when importing Tyk OAS API definition due to a mismatch between OAS securitySchemes and security requirements
 </details>
 </li>
 <li>
