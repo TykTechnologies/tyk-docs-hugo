@@ -125,13 +125,6 @@ Fixed support for `dns:///` protocol in gRPC rich plugins. Setting the new confi
 </li>
 <li>
 <details>
-<summary>OAS-Driven Mock Responses for Accurate Testing</summary>
-
-Mock response middleware now generates responses based on OpenAPI examples.
-</details>
-</li>
-<li>
-<details>
 <summary>Restored Cipher Suite Support and Reliable TLS Handling</summary>
 
 Fixed an issue where several previously supported cipher suites were no longer recognized when configured, causing them to be silently skipped for clients relying on those ciphers. The issue was only visible with debug-level logging, making it difficult to diagnose in production environments. Support for these cipher suites has now been restored.
