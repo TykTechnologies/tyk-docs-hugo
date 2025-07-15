@@ -755,7 +755,7 @@ We now recommend using **PostgreSQL** or **MongoDB** for both development and pr
 **Why This Matters**
 
 * SQLite is written in **C**, and using it in Go projects typically requires [**CGO**](https://golang.org/cmd/cgo/), which enables Go code to call C libraries.
-* As long as the Dashboard depended on SQLite, CGO was required.
+* As long as the Dashboard had support for SQLite, CGO was required.
 * With SQLite removed, the Tyk Dashboard can now be compiled with `CGO_ENABLED=0`, resulting in a **fully static binary**.
 
 This change enables:
