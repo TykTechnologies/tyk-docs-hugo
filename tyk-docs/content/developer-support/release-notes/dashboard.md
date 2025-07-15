@@ -186,7 +186,7 @@ For example:
 
 - To retrieve the first page of certificates: `/api/certs?mode=detailed&p=1`
 - To retrieve the first page of certificates with a Private Key: `/api/certs?mode=detailed&p=1&filter=with_pk`
-To retrieve only detailed certificates without a Private Key on page 1: /api/certs?mode=detailed&p=1&filter=without_pk
+- To retrieve the first page of certificates without a Private Key: `/api/certs?mode=detailed&p=1&filter=without_pk`
 This new filtering capability provides more granular control over your certificate data retrieval. Rest assured, this update maintains backward compatibility with existing integrations.
 </details>
 </li>
