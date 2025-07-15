@@ -170,7 +170,11 @@ Fixed an issue when converting Tyk Classic API definitions to Tyk OAS format tha
 <details>
 <summary>Certificate API Filtering Added so that Relevant Certificates are Available when Configuring Upstream mTLS in Tyk OAS API Designer</summary>
 
-We've added an optional filter query parameter to the /api/certs endpoint when using the mode=detailed option. This allows you to refine your certificate queries based on the presence of a Private Key (PK).
+Fixed an issue where the Tyk OAS API designer did not always display all the appropriate certificates for use in Gateway to Upstream connections. In this scenario Tyk is the client and so requires the private key to sign requests to the upstream server. The full list of certificates with private keys registered in the Tyk Certificate Store will now be available when configuring your API.
+
+The fix for this involved the introduction of a new optional `filter` query parameter to the `/api/certs` endpoint which can be used alongside the `mode=detailed` option.
+
+This parameter allows you to refine your certificate queries based on the presence of a Private Key (PK).
 
 The filter parameter accepts the following enum values:
 
