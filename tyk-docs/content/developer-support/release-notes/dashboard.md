@@ -221,7 +221,7 @@ Fixed an issue, where users couldn't add Event handles in OAS API Designer
 </li>
 <li>
 <details>
-<summary>Streams API Stability in Raw Definition Editor</summary>
+<summary>Improved Experience for Tyk Streams APIs in API Definition Editor</summary>
 
 Fixed an issue where the raw API definition editor could break a streams API definition  
 </details>
