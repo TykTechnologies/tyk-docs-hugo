@@ -1162,14 +1162,14 @@ Since Tyk 5.8.2 Tyk Gateway has had the ability to load balance between multiple
 
 To implement this you must first specify the address of the load balanced service using the `dns:///` (note: triple slash) [protocol](https://github.com/grpc/grpc/blob/master/doc/naming.md) in Tyk Gateway's [gRPC server address]({{< ref "tyk-oss-gateway/configuration#coprocess_optionscoprocess_grpc_server" >}}) configuration (`TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER`). Tyk will retrieve the list of addresses for each gRPC server from that service.
 
-You can control whether Tyk will implement load balancing using the [gRPC round robin load balancing]({{< ref "tyk-oss-gateway/configuration#coprocess_optionsgrpcroundrobinloadbalancing" >}})) config  (`TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING`):
+You can control whether Tyk will implement load balancing using the [gRPC round robin load balancing]({{< ref "tyk-oss-gateway/configuration#coprocess_optionsgrpc_round_robin_load_balancing" >}})) config  (`TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING`):
 
 - If set to `true`, Tyk will balance load between the server addresses retrieved using a round robin approach.
 - If set to `false`, Tyk will implement a sticky session approach without load balancing.
 
 Note that Tyk will only query the DNS on start-up, so if you need to update the list of gRPC servers that you want Tyk to target, you must restart Tyk Gateway.
 
-If you are not load balancing, you can alternatively provide the `tcp://` address of the gRPC server in Tyk Gateway's [gRPC server address]({{< ref "tyk-oss-gateway/configuration#coprocess_optionscoprocess_grpc_server" >}}) configuration (`TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER`) and set [gRPC round robin load balancing]({{< ref "tyk-oss-gateway/configuration#coprocess_optionsgrpcroundrobinloadbalancing" >}})  (`TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING`) to `false`.
+If you are not load balancing, you can alternatively provide the `tcp://` address of the gRPC server in Tyk Gateway's [gRPC server address]({{< ref "tyk-oss-gateway/configuration#coprocess_optionscoprocess_grpc_server" >}}) configuration (`TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER`) and set [gRPC round robin load balancing]({{< ref "tyk-oss-gateway/configuration#coprocess_optionsgrpc_round_robin_load_balancing" >}})  (`TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING`) to `false`.
 
 ---
 
