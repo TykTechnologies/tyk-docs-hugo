@@ -14,24 +14,7 @@ algolia:
   importance: 0
 ---
 
-{{< warning success >}}
-
-**Attention:**
-
-You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
-Developer Portal* please use the latest
-[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
-</br>
-</br>
-**Future deprecation of Tyk Classic Portal**
-
-This product is no longer actively developed as it
-has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview/intro" >}}).
-</br>
-Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
-[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
-
-{{< /warning >}}
+{{< include "legacy-classic-portal-api" >}}
 
 {{< note success >}}
 **Note**  
@@ -265,7 +248,7 @@ The Developer object contains the `subscriptions` field with information about u
 {{% include "portal-developer-analytics" %}}
 
 
-## <a name="building-portal"></a> Building a Portal
+## <a name="building-portal"></a> Building a Portal {#building-portal}
 
 This guide includes the implementation of a full featured developer portal written in Ruby in just 250 lines of code. This portal implementation does not utilize any database and uses our Tyk Dashboard API to store and fetch all the data.
 

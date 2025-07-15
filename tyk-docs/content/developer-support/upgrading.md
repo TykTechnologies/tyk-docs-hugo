@@ -2,19 +2,11 @@
 date: 2017-03-27T16:05:33+01:00
 title: Tyk Upgrading Guide
 tags: ["configuration files backup", "backup tyk", "tyk.conf", "upgrade tyk", "database backup"]
-tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
-tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
-weight: 230
-menu:
-    main:
-        parent: "FAQ"
 aliases:
   - /developer-support/cloud-saas
-  - /developer-support/documentation-projects/inclusive-naming
   - /developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins
   - /developer-support/upgrading-tyk/deployment-model/self-managed/mdcb
   - /developer-support/backups/backup-apis-and-policies
-  - /upgrading-tyk
   - /developer-support/upgrading-tyk/preparations/upgrade-guidelines
   - /developer-support/upgrading-tyk/preparations/upgrade-strategies
   - /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
@@ -28,6 +20,7 @@ aliases:
   - /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
   - /developer-support/upgrading-tyk/deployment-model/open-source
   - /developer-support/upgrading-tyk/go-plugins
+  - /upgrading-tyk
 ---
 
 ## Overview
