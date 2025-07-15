@@ -126,7 +126,7 @@ Fixed an issue where the automatic configuration options (authentication, mock r
 </li>
 <li>
 <details>
-<summary>Updated Regex to Match MongoDB Syntax</summary>
+<summary>Fixed the Search Function on the Traffic Activity by Key page when using MongoDB</summary>
 
 Updated regex constructions to use proper MongoDB syntax
 </details>
