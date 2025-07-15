@@ -2,8 +2,6 @@
 date: 2017-03-27T16:05:33+01:00
 title: "Inclusive Naming Policy"
 tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
-aliases:
-  - /developer-support/documentation-projects/inclusive-naming
 ---
 
 In June, 2024, we announced the launch of our *Inclusive Naming* project, dedicated to updating our documentation and aligning with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
