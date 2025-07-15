@@ -105,7 +105,7 @@ If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Tyk Gateway Now Supports Graceful Shutdown</summary>
+<summary>Tyk Gateway Now Supports Configurable Graceful Shutdown Period</summary>
 
 The Gateway now supports graceful shutdown by waiting up to graceful_shutdown_timeout_duration seconds (default value is 30s) for open connections to close before terminating. Additionally, improvements have been made to the liveness (/hello) and readiness (/ready) endpoints.
 </details>
