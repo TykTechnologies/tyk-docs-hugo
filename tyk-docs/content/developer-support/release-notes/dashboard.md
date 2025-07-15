@@ -210,7 +210,14 @@ Dashboard UI is now using the new certificates filter query parameter, when call
 <details>
 <summary>Fixed Event Handler Issue in Tyk OAS Designer</summary>
 
-Fixed an issue, where users couldn't add Event handles in OAS API Designer
+Fixed an issue, where users couldn't add Event handles in OAS API Designer 
+</details>
+</li>
+<li>
+<details>
+<summary>Stream API Stability in Raw Definition Editor</summary>
+
+Fixed an issue where the raw API definition editor could break a streams API definition  
 </details>
 </li>
 <li>
