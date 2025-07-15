@@ -162,7 +162,7 @@ Fixed a panic triggered by starting GraphQL subscriptions and resolved an issue 
 <details>
 <summary>Removed Unnecessary Garbage Collection When Deleting Tyk Streams API</summary>
 
-Gateway no longer tries to start a garbage collection task after deleting the streams API
+Gateway no longer tries to start a garbage collection task after deleting a Tyk Streams API
 </details>
 </li>
 <li>
