@@ -363,7 +363,7 @@ Contains the URL scheme, e.g. `http`, `https`.
 
 ### ResponseObject
 
-The `ResponseObject` exists within an [object](#object) for response hooks. The fields are populated with the upstream HTTP response data. All the field contents can be modified.
+The `ResponseObject` exists within an [object](#coprocess-object) for response hooks. The fields are populated with the upstream HTTP response data. All the field contents can be modified.
 
 ```protobuf
 syntax = "proto3";
@@ -1311,7 +1311,7 @@ For configurations directly embedded within the Tyk Gateway, plugin hooks can be
 }
 ```
 
-For example, a Post request plugin hook has been configured with name `MyPostMiddleware`. Before the request is sent upstream Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#object" >}}) with the `hook_name` property set to `MyPostMiddleware` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
+For example, a Post request plugin hook has been configured with name `MyPostMiddleware`. Before the request is sent upstream Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#coprocess-object" >}}) with the `hook_name` property set to `MyPostMiddleware` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
 
 </br>
 {{< note success >}}
@@ -1328,7 +1328,7 @@ Setting the `driver` configuring parameter to `gRPC` instructs Tyk Gateway to is
 
 **Pre plugin hook example**
 
-In this example we can see that a `custom_middleware` configuration block has been used to configure a gRPC Pre request plugin hook with name `HelloFromPre`. Before any middleware is executed Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#object" >}}) with the `hook_name` property set to `HelloFromPre` and the `hook_type` property set to `Pre`. This message will then then be dispatched to the gRPC server.
+In this example we can see that a `custom_middleware` configuration block has been used to configure a gRPC Pre request plugin hook with name `HelloFromPre`. Before any middleware is executed Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#coprocess-object" >}}) with the `hook_name` property set to `HelloFromPre` and the `hook_type` property set to `Pre`. This message will then then be dispatched to the gRPC server.
 
 ```yaml {linenos=table,hl_lines=["14-18"],linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1355,7 +1355,7 @@ spec:
 
 In the example we can see that a `custom_middleware` configuration block has been used to configure a gRPC Post plugin with name `HelloFromPost`. 
 
-Before the request is sent upstream Tyk Gateway will serialize the request and session details into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#object" >}}) with the `hook_name` property set to `HelloFromPost` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
+Before the request is sent upstream Tyk Gateway will serialize the request and session details into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#coprocess-object" >}}) with the `hook_name` property set to `HelloFromPost` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
 
 ```yaml {linenos=table,hl_lines=["14-18"],linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -3210,7 +3210,7 @@ def set_response_error(object: coprocess_object_pb2.Object, code: int, message: 
 
 Our function accepts the following three parameters:
 
-- **object** is an instance of the [Object]({{< ref "api-management/plugins/rich-plugins#object" >}}) message representing the payload sent by Tyk Gateway to the *Dispatcher* service in our gRPC server. For further details of the payload structure dispatched by Tyk Gateway to a gRPC server please consult our gRPC documentation.
+- **object** is an instance of the [Object]({{< ref "api-management/plugins/rich-plugins#coprocess-object" >}}) message representing the payload sent by Tyk Gateway to the *Dispatcher* service in our gRPC server. For further details of the payload structure dispatched by Tyk Gateway to a gRPC server please consult our gRPC documentation.
 - **code** is the HTTP status code to return in the response.
 - **message** is the response message.
 
