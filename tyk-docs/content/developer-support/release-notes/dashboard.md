@@ -195,7 +195,7 @@ Fixed an error in the Tyk OAS API Designer that added invalid config to the API 
 <details>
 <summary>Fixed Event Handler Issue in Tyk OAS Designer</summary>
 
-Fixed an issue, where users couldn't add Event handles in OAS API Designer 
+Fixed an issue where users couldn't register Event Handlers in Tyk OAS API Designer.
 </details>
 </li>
 <li>
