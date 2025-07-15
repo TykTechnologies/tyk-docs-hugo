@@ -61,11 +61,11 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
+| 5.8.3 | MDCB v2.8.1     | MDCB v2.8.1 |
 |         | Operator v1.2.0  | Operator v0.17 |
-|         | Sync v2.1.2    | Sync v2.1.2 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
 |         | Helm Chart v3.0  | Helm all versions |
-| | EDP v1.14 | EDP all versions |
+| | EDP v1.13 | EDP all versions |
 | | Pump v1.12.0 | Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
@@ -96,7 +96,7 @@ If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.8.3](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.3)
 
 #### Changelog {#Changelog-v5.8.3}
 

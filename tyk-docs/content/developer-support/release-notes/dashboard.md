@@ -56,11 +56,11 @@ There are no breaking changes in this release.
 
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
+| 5.8.3 | MDCB v2.8.1     | MDCB v2.8.1 |
 |         | Operator v1.2.0  | Operator v0.17 |
-|         | Sync v2.1.2    | Sync v2.1.2 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
 |         | Helm Chart v3.0  | Helm all versions |
-| | EDP v1.14 | EDP all versions |
+| | EDP v1.13 | EDP all versions |
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
