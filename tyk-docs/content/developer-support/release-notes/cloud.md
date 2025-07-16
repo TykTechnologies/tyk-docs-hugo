@@ -5,16 +5,17 @@ description: "Release notes documenting updates, enhancements, and changes for T
 tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "1.29.0", "changelog"]
 
 ---
+
 ## 1.29.0 Release Notes
 
 ### Release Date 15 July 2025
 
 ### Release Highlights
 
-This release introduces Auto-Upgrades for Control Plane deployments, allowing teams to stay up to date with the latest features on a configurable schedule, with related Data Planes upgraded automatically. We’ve also improved SSO access control by assigning a default View Only role to newly provisioned SSO users, enhancing security and auditability.
+This release introduces Auto-Upgrades for Control Plane deployments, allowing teams to stay up to date with the latest features on a configurable schedule, with related Data Planes upgraded automatically. We’ve also improved SSO access control by assigning a default 'View Only' role to newly provisioned SSO users, thereby enhancing security and auditability.
 
 
-For a full list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.29.0" >}}) below.
+For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.29.0" >}}) below.
 
 ### Breaking Changes
 
@@ -36,7 +37,7 @@ There are no deprecations in this release.
 <details>
 <summary>New Role to Restrict Local Login for SSO Users</summary>
 
-Introduced a new “View Only” role to enhance access control for organizations using SSO. Now, SSO users by default would be granted this read only role. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
+Introduced a new “View Only” role to enhance access control for organizations using SSO. Now, SSO users are granted this read-only role by default. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
 
 </details>
 </li> 
@@ -49,7 +50,6 @@ Users can now opt into automatic upgrades for Control Plane deployments and conf
 
 </details>
 </li> 
-
 
 </ul>
 
