@@ -755,7 +755,7 @@ menu:
                 category: Page
                 show: True
               - title: "Inclusive Naming"
-                path: /developer-support/inclusive-naming-policy
+                path: /developer-support/documentation-projects/inclusive-naming
                 category: Page
                 show: True
               - title: "UI Example: Pill Label Shortcode"
