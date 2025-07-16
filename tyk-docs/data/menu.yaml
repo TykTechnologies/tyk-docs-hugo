@@ -746,10 +746,6 @@ menu:
             path: /developer-support/community
             category: Page
             show: True
-          - title: "Inclusive Naming Policy"
-            path: /developer-support/inclusive-naming-policy
-            category: Page
-            show: True
           - title: "Docs Contribution"
             category: Directory
             show: True
@@ -759,7 +755,7 @@ menu:
                 category: Page
                 show: True
               - title: "Inclusive Naming"
-                path: /developer-support/documentation-projects/inclusive-naming
+                path: /developer-support/inclusive-naming-policy
                 category: Page
                 show: True
               - title: "UI Example: Pill Label Shortcode"
