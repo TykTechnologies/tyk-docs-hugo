@@ -3,6 +3,8 @@ title: "Inclusive Naming"
 date: 2024-05-17T15:51:00+01:00
 tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive", "Inclusive Naming Project" ]
 description: "Explains the inclusive naming initiative concerning Tyk docs"
+aliases:
+  - /developer-support/inclusive-naming-policy
 ---
 
 This document is intended for Tyk users, contributors, and anyone interested in our commitment to inclusive language within Tyk's documentation and product interfaces.
@@ -78,8 +80,8 @@ For your records, the following sections highlight the existing *INI tier 1 word
 
 The [Tyk Gateway OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/gateway-swagger.yml) (Tyk Gateway swagger), includes references to the following Tyk Classic API Definition parameters:
 
-- [version_data.versions.\{version-name\}.extended_paths.black_list]({{< ref "api-management/traffic-transformation/block-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
-- [version_data.versions.\{version-name\}.extended_paths.white_list]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
+- [version_data.versions.{version-name}.extended_paths.black_list]({{< ref "api-management/traffic-transformation/block-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
+- [version_data.versions.{version-name}.extended_paths.white_list]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
 
 ##### Tyk Dashboard
 
