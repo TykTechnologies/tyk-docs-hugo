@@ -551,6 +551,10 @@ menu:
                 path: /tyk-configuration-reference/redis-cluster-sentinel
                 category: Page
                 show: True
+              - title: "Graceful Shutdown"
+                path: /planning-for-production/ensure-high-availability/graceful-shutdown
+                category: Page
+                show: True
           - title: "Tyk Helm Charts"
             category: Directory
             show: True
