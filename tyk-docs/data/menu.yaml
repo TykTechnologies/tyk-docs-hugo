@@ -106,11 +106,11 @@ menu:
             path: /api-management/gateway-config-managing-classic
             category: Page
             show: True
-          - title: "Migrate from Tyk Classic"
+          - title: "Migrate from Tyk Classic APIs"
             path: /api-management/migrate-from-tyk-classic
             category: Page
             show: True            
-          - title: "Deploy APIs"
+          - title: "API Creation Methods"
             category: Page
             show: True
             path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
@@ -551,6 +551,10 @@ menu:
                 path: /tyk-configuration-reference/redis-cluster-sentinel
                 category: Page
                 show: True
+              - title: "Graceful Shutdown"
+                path: /planning-for-production/ensure-high-availability/graceful-shutdown
+                category: Page
+                show: True
           - title: "Tyk Helm Charts"
             category: Directory
             show: True
@@ -581,39 +585,10 @@ menu:
             category: Page
             show: True
 
-      - title: "Developer Support"
+      - title: "Reference"
         category: Label
         show: True
-        path: /developer-support/community
         menu:
-          - title: "Community Support"
-            path: /developer-support/community
-            category: Page
-            show: True
-          - title: "Support SLA"
-            path: /developer-support/support
-            category: Page
-            show: True
-          - title: "Tyk Release Types"
-            category: Directory
-            show: True
-            menu:
-              - title: "Long Term Support Release"
-                path: /developer-support/release-types/long-term-support
-                category: Page
-                show: True
-              - title: "Early access feature"
-                path: /developer-support/release-types/early-access-feature
-                category: Page
-                show: True
-              - title: "Lab Release"
-                path: /developer-support/release-types/lab-release
-                category: Page
-                show: True
-              - title: "FIPS Release"
-                path: /developer-support/release-types/fips-release
-                category: Page
-                show: True
           - title: "Environment Variables and Configs"
             category: Directory
             show: True
@@ -678,6 +653,11 @@ menu:
               path: /tyk-identity-broker/tib-rest-api
               category: Page
               show: True
+
+      - title: "Developer Support"
+        category: Label
+        show: True
+        menu:
           - title: "Release Notes"
             category: Directory
             show: True
@@ -730,16 +710,44 @@ menu:
               path: /developer-support/release-notes/archived
               category: Page
               show: True
-          - title: "Deprecation"
-            path: /developer-support/deprecation
-            category: Page
-            show: True
           - title: "Upgrading Guide"
             path: /developer-support/upgrading
             category: Page
             show: True
           - title: "Frequently Asked Questions"
             path: /developer-support/faq
+            category: Page
+            show: True
+          - title: "Tyk Releases Policy"
+            category: Directory
+            show: True
+            menu:
+              - title: "Long Term Support Release"
+                path: /developer-support/release-types/long-term-support
+                category: Page
+                show: True
+              - title: "Early access feature"
+                path: /developer-support/release-types/early-access-feature
+                category: Page
+                show: True
+              - title: "Lab Release"
+                path: /developer-support/release-types/lab-release
+                category: Page
+                show: True
+              - title: "FIPS Release"
+                path: /developer-support/release-types/fips-release
+                category: Page
+                show: True
+          - title: "Deprecation and EOL Policy"
+            path: /developer-support/deprecation
+            category: Page
+            show: True
+          - title: "Support SLA Policy"
+            path: /developer-support/support
+            category: Page
+            show: True
+          - title: "Community Support"
+            path: /developer-support/community
             category: Page
             show: True
           - title: "Docs Contribution"
@@ -750,7 +758,11 @@ menu:
                 path: /developer-support/contributing
                 category: Page
                 show: True
-              - title: "UI Example: Pill Label shortcode"
+              - title: "Inclusive Naming"
+                path: /developer-support/documentation-projects/inclusive-naming
+                category: Page
+                show: True
+              - title: "UI Example: Pill Label Shortcode"
                 path: /ui-examples/test-pill-label
                 category: Page
                 show: true
@@ -1174,27 +1186,27 @@ menu:
             path: /ai-management/ai-studio/overview
             category: Page
             show: True
-          - title: "Introduction"
-            category: Directory
-            show: True
-            menu:
-              - title: "Quickstart"
-                category: Page
-                path: /ai-management/ai-studio/quickstart
-                show: True
-              - title: "Core Concepts"
-                category: Page
-                path: /ai-management/ai-studio/core-concepts
-                show: True
           - title: "Getting Started"
             category: Directory
             show: True
             menu:
-              - title: "Installation (Kubernetes)"
+              - title: "What is AI Studio?"
                 category: Page
-                path: /ai-management/ai-studio/deployment-k8s
+                path: /ai-management/ai-studio/core-concepts
                 show: True
-              - title: "Initial Configuration"
+              - title: "Installation Guide"
+                category: Directory
+                show: True
+                menu:
+                  - title: "Docker/Packages (Recommended)"
+                    category: Page
+                    path: /ai-management/ai-studio/quickstart
+                    show: True
+                  - title: "Kubernetes"
+                    category: Page
+                    path: /ai-management/ai-studio/deployment-k8s
+                    show: True
+              - title: "First Steps"
                 category: Page
                 path: /ai-management/ai-studio/configuration
                 show: True
