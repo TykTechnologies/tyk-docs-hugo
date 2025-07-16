@@ -1,23 +1,27 @@
 ---
-date: 2017-03-27T16:05:33+01:00
-title: "Inclusive Naming Policy"
-tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
+title: "Inclusive Naming"
+date: 2024-05-17T15:51:00+01:00
+tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive", "Inclusive Naming Project" ]
+description: "Explains the inclusive naming initiative concerning Tyk docs"
 aliases:
   - /developer-support/documentation-projects/inclusive-naming
 ---
 
-In June, 2024, we announced the launch of our *Inclusive Naming* project, dedicated to updating our documentation and aligning with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
+This document is intended for Tyk users, contributors, and anyone interested in our commitment to inclusive language within Tyk's documentation and product interfaces.
+
+## Inclusive Naming project
+We are excited to announce the launch of our *Inclusive Naming* project, in June 2024, dedicated to updating our documentation and aligning with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
 
 The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-driven effort to promote and standardize the use of inclusive language in software and documentation. By adhering to their guidelines, we aim to eliminate terms that can be considered exclusionary, offensive, or insensitive and replace them with language that is respectful and welcoming to all.
 
-## Purpose
+### Purpose
 
 Our commitment to diversity, equity, and inclusion is foundational to our values. By updating our documentation to comply with the *Inclusive Naming Initiative (INI)*, we are taking a significant step towards ensuring that our language reflects our dedication to inclusivity. This project will help us:
 
 - **Create a more welcoming environment**: By using inclusive language, we create a space where everyone feels valued and respected.
 - **Enhance accessibility**: Clear and inclusive documentation improves accessibility for all users, regardless of their background or identity.
 
-## Tier 1 word list
+### Tier 1 word list
 
 INI sorts terms into word lists, considering both the severity of the term and the level of scrutiny it has received. [INI Tier 1 words](https://inclusivenaming.org/word-lists/tier-1) are considered critical and are recommended to be replaced immediately.
 
@@ -28,11 +32,11 @@ INI has identified that terms included in this list have one or all of the follo
 - Terms where the impact of change or removal is low: for example, there is little entanglement in low-level systems or standardized language set by standards bodies
 - Have passed through all the review stages in Tiers 2 and 3
 
-## Phase #1: Review of Tyk Documentation for Tier 1 Words
+### Phase #1: Review of Tyk Documentation for Tier 1 Words
 
 An initial review of the Tyk documentation was conducted in April 2024 to check which tier 1 words can be replaced, which can't, and why.
 
-### Findings and planning
+#### Findings and planning
 The main findings of the review are:
 
 1. **Explanatory content with INI tier 1 words**: The content on these pages can be easily rephrased and is now completed.
@@ -44,20 +48,21 @@ The main findings of the review are:
      - For now, we can minimize their usage and rephrase the explanatory content to use inclusive words.
 
    
-## Phase #2: Removing Tier 1 words from Tyk documentation
+### Phase #2: Removing Tier 1 words from Tyk documentation
 
 In June 2024, based on the review we executed the planned changes to the content in our [documentation](https://github.com/tykTechnologies/tyk-docs/).
 
-### Status update
+#### Status update
 This is the update on the status of our documentation
 1. **Regular explanatory content with INI tier 1 words**: Content in the documentation has been rephrased and the work is now completed. 
 2. **Configuration parameters containing INI tier 1 words**: These words are still in our docs, however, we minimized their usage and rephrased their explanatory content to use inclusive words.
    - **Tyk products**: These words are still in our docs, however, Tyk aims to gradually replace them (in a backward-compatible way) and update the docs accordingly.
    - **Third-party and dependencies**: There's nothing much we can do at the moment except wait for them to replace these parameters, however, we are committed to updating our docs once this gets done.
 
+#### List of configuration parameters containing INI tier 1 word
 For your records, the following sections highlight the existing *INI tier 1 words* in our docs, per Tyk component:
 
-#### Tyk Gateway
+##### Tyk Gateway
 
 **Config parameters**
 
@@ -71,14 +76,14 @@ For your records, the following sections highlight the existing *INI tier 1 word
 - [enable_ip_blacklisting]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
 - [ports_whitelist]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}})
 
-#####  Tyk Classic API Definition {#gw-classic-api-definition}
+######  Tyk Classic API Definition {#gw-classic-api-definition}
 
 The [Tyk Gateway OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/gateway-swagger.yml) (Tyk Gateway swagger), includes references to the following Tyk Classic API Definition parameters:
 
-- [version_data.versions.\{version-name\}.extended_paths.black_list]({{< ref "api-management/traffic-transformation/block-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
-- [version_data.versions.\{version-name\}.extended_paths.white_list]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
+- [version_data.versions.{version-name}.extended_paths.black_list]({{< ref "api-management/traffic-transformation/block-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
+- [version_data.versions.{version-name}.extended_paths.white_list]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
 
-#### Tyk Dashboard
+##### Tyk Dashboard
 
 **Config parameters**
 - [enable_master_keys]({{< ref "tyk-dashboard/configuration#enable_master_keys" >}})
@@ -92,18 +97,18 @@ The [Tyk Dashboard OpenAPI Document](https://github.com/TykTechnologies/tyk-docs
 
 The Tyk Classic APIs *Endpoint Designer* shows configuration of [blacklist]({{< ref "api-management/traffic-transformation/block-list#api-designer" >}}) and [whitelist]({{< ref "api-management/traffic-transformation/allow-list#api-definition" >}}) middleware plugins.
     
-#### Tyk MDCB
+##### Tyk MDCB
 
 The following MDCB configuration parameters contain tier 1 word occurrences:
 - [analytics_storage.master_name]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#analytics_storagemaster_name" >}})
 - [storage.master_name]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#storagemaster_name" >}})
 
-#### Tyk Pump
+##### Tyk Pump
 
 The following Tyk Pump configuration parameters contain tier 1 word occurrences:
 - [analytics_storage_config.master_name]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#analytics_storage_configmaster_name" >}})
 
-#### Third-party dependencies 
+##### Third-party dependencies 
 
 Content contains *INI Tier 1 word* occurrences due to the following external dependencies:
 - Links to Tyk Component GitHub repositories with a default branch set as `master`. 
