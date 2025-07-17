@@ -68,7 +68,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 
 #### Breaking Changes {#breaking-changes-v1.14.0}
 
-Add breaking changes
+There are no breaking changes in this release.
 
 For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
 
@@ -148,7 +148,7 @@ The Developer Portal has been upgraded from Golang 1.22 to Golang 1.23, bringing
 <ul>
 <li>
 <details>
-<summary>API product metadata loss when updating the Developer Portal catalog</summary>
+<summary>API Product Metadata Loss when Updating the Developer Portal Catalog</summary>
 
 Fixed an issue where API Product metadata could be lost when modifying the product in the Developer Portal. This was due to incorrect manipulation of the underlying Tyk policy object.
 </details>
@@ -157,7 +157,7 @@ Fixed an issue where API Product metadata could be lost when modifying the produ
 <details>
 <summary>API Product Synchronization Fixes</summary>
 
-Fixed issues with API product synchronization where applied APIs were being lost during manual or automatic sync with Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details, including custom fields, are consistently preserved.
+Fixed issues with API Product synchronization where applied APIs were being lost during manual or automatic sync with Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details, including custom fields, are consistently preserved.
 </details>
 </li>
 </ul>
