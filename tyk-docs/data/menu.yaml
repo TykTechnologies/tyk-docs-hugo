@@ -467,6 +467,40 @@ menu:
             path: /tyk-cloud
             category: Page
             show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-open-source
+              category: Page
+              show: True
+            - title: "Configuration"
+              path: /tyk-open-source
+              category: Page
+              show: True
+              menu:
+              - title: "Configure Portal"
+                path: /tyk-open-source
+                category: Page
+                show: True
+              - title: "Configure Plugins"
+                path: /tyk-open-source
+                category: Page
+                show: True
+              - title: "Custom Domains"
+                path: /tyk-cloud/using-custom-domains
+                category: Page
+                show: True
+              - title: "Audit Logs"
+                path: /api-management/cloud/audit-logs
+                category: Page
+                show: True
+              - title: "Monitor Metrics"
+                path: /tyk-open-source
+                category: Page
+                show: True
+              - title: "Configure Telemetry"
+                path: /tyk-cloud/telemetry
+                category: Page
+                show: True
           - title: "Tyk Open Source"
             category: Directory
             show: True
