@@ -192,9 +192,19 @@ For environments where you need to install agents manually (non-Tyk platforms or
 - Network connectivity between the agent and both the Governance hub and your API provider
 - Docker or Kubernetes for container-based deployment (recommended)
 
-#### Generate Agent Token
+#### Generate Agent Token from Governance Hub UI
 
-Since the UI for generating agent tokens is unavailable, you'll need to use the API to create a token. After receiving your Governance hub credentials, follow these steps:
+1. Click on Setup a new agent
+2. Set agent details:
+   1. Name
+   2. Description
+   3. Click Create agent
+3. Click "Generate Agent Token"
+4. You can now copy the Access token generated
+
+#### Generate Agent Token using API
+
+You can also use API to create a token. After receiving your Governance hub credentials, follow these steps:
 
 1. **Obtain an API Key**:
 	 - Log in to the Governance hub using the credentials provided in your welcome email
@@ -341,6 +351,16 @@ healthProbe:
     # Port on which the health probe server will listen
     # Ensure this port is not used by other services
     port: 5959
+
+==============================================================================
+ Scheduled Synchronization (New in v0.2)
+==============================================================================
+# Configure automatic synchronization at regular intervals
+syncSchedule:
+  # Enable or disable scheduled synchronization
+  enabled: true
+  # Interval in minutes between syncs (minimum 5)
+  intervalMinutes: 60
 ```
 
 #### Deploy the Agent
@@ -392,6 +412,8 @@ spec:
         env:
         - name: TYK_AGENT_LICENSEKEY
           value: your-governance-license #Replace with your license key
+        - name: TYK_AGENT_ENABLE_LEADER_ELECTION
+          value: "true"  # Enable leader election for high availability
         ports:
         - name: health
           containerPort: 5959

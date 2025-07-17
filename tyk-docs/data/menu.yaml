@@ -1299,3 +1299,15 @@ menu:
         path: /tyk-governance/api-labeling
         category: Page
         show: True
+      - title: "Governance Rulesets"
+        path: /tyk-governance/governance-rulesets
+        category: Page
+        show: True
+      - title: "API Evaluation"
+        path: /tyk-governance/api-evaluation
+        category: Page
+        show: True
+      - title: "Agent Management"
+        path: /tyk-governance/agent-management
+        category: Page
+        show: True
