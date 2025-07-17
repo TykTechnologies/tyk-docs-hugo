@@ -335,7 +335,7 @@ The Kubernetes secret or envVars field should set the following keys:
 
 | Key                          | Mandatory | Example Value                                       | Description                                                                                                                  |
 | :--------------------------- | :-------- | :-------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
-| TYK_OPERATOR_LICENSEKEY      | Yes       | <JWT_ENCODED_LICENSE_KEY>                           | Tyk Operator license key                                                                                                     |
+| TYK_OPERATOR_LICENSEKEY      | Yes       | `<JWT_ENCODED_LICENSE_KEY>`                           | Tyk Operator license key                                                                                                     |
 | TYK_MODE                     | Yes       | pro                                                 | “ce” for Tyk Open Source mode, “pro” for Tyk licensed mode.                                                                  |
 | TYK_URL                      | Yes       | http://dashboard-svc-tyk-tyk-dashboard.tyk.svc:3000 | Management URL of Tyk Gateway (Open Source) or Tyk Dashboard                                                                 |
 | TYK_AUTH                     | Yes       | 2d095c2155774fe36d77e5cbe3ac963b                    | Operator user API key.                                                                                                       |
@@ -355,7 +355,7 @@ key is required for running Tyk Operator.
 
 | Key                          | Mandatory | Example Value                                      | Description                                                                                                                  |
 | :--------------------------- | :-------- | :------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
-| TYK_OPERATOR_LICENSEKEY      | Yes       | <JWT_ENCODED_LICENSE_KEY>                          | Tyk Operator license key                                                                                                     |
+| TYK_OPERATOR_LICENSEKEY      | Yes       | `<JWT_ENCODED_LICENSE_KEY>`                          | Tyk Operator license key                                                                                                     |
 | TYK_MODE                     | Yes       | ce                                                 | “ce” for Tyk Open Source mode, “pro” for Tyk licensed mode.                                                                  |
 | TYK_URL                      | Yes       | http://gateway-svc-tyk-ce-tyk-gateway.tyk.svc:8080 | Management URL of Tyk Gateway (Open Source) or Tyk Dashboard                                                                 |
 | TYK_AUTH                     | Yes       | myapisecret                                        | Operator user API key.                                                                                                       |
@@ -2832,7 +2832,7 @@ In this example, 4 APIs will be created by Tyk Operator. It illustrates how diff
 | default-httpbin-ingress-a1863f096         |  httpbin.ahmet |  /          |  http://httpbin1.default.svc.cluster.local:8000 | http://httpbin.ahmet/  |
 | default-httpbin-ingress-d33713b8b |  httpbin.ahmet |  /httpbin   |  http://httpbin2.default.svc.cluster.local:8000 | http://httpbin.ahmet/httpbin |
 | default-httpbin-ingress-00254eeb0             |                |  /pathonly  |  http://httpbin3.default.svc.cluster.local:8000 | http://IPADDRESS/pathonly |
-| default-httpbin-ingress-3af1fef04 |  {?:[^.]+}.foo.com  | /httpbin | http://httpbin4.default.svc:8000 | http://bar.foo.com/httpbin |
+| default-httpbin-ingress-3af1fef04 |  `{?:[^.]+}.foo.com`  | /httpbin | http://httpbin4.default.svc:8000 | http://bar.foo.com/httpbin |
 
 </details>
 
@@ -4887,7 +4887,7 @@ spec:
 #### APIDefinition CRD
 Tyk stores API configurations as JSON objects called API Definitions. If you are using Tyk Dashboard to manage Tyk, then these are stored in either Postgres or MongoDB, as specified in the database settings. On the other hand, if you are using Tyk OSS, these configurations are stored as files in the /apps directory of the Gateway which is located at the default path /opt/tyk-gateway.
 
-An API Definition has many settings and middlewares that influence the way incoming requests are processed.
+An API definition includes various settings and middleware that control how incoming requests are processed.
 
 ##### API Types
 Tyk supports various API types, including HTTP, HTTPS, TCP, TLS, and GraphQL. It also includes Universal Data Graph versions for unified data access and federation, allowing seamless querying across multiple services.

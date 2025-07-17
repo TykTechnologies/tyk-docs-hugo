@@ -93,7 +93,7 @@ The process is very similar to [HTTP API creation]({{< ref "api-management/gatew
 
 #### Prerequisites
 
-In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}). You can also create a 5-week trial account in Tyk Cloud.
+In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}). You can also create a 5-week trial account in Tyk Cloud.
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
 
@@ -284,7 +284,7 @@ In order to complete the next steps, you need to have the [Tyk OSS]({{< ref "tyk
 
 #### Creation Methods
 
-With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here]({{< ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configurations" >}}).
+With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [in the file-based configuration section]({{< ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configuration" >}}).
 
 
 #### Steps for Configuration
