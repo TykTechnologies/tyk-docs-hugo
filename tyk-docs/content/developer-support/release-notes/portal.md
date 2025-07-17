@@ -46,7 +46,11 @@ Our minor releases are supported until our next minor comes out.
 
 ##### Tyk Streams APIs Come To Developer Portal
 
-<<TBA>>
+We’ve added support for Tyk Streams APIs in the Developer Portal, allowing API Providers to expose access to event-driven APIs alongside traditional REST APIs.
+Developers can now subscribe to Products that enable webhook delivery for specific events,
+receiving real-time messages routed through Tyk Streams. 
+This opens up new integration patterns for async APIs, such as push notifications, system alerts, or data change events.
+
 
 ##### New Developer App Visibility Controls
 
