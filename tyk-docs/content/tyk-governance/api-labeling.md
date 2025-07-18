@@ -7,6 +7,10 @@ tags: ["Tyk Governance", "API Labeling", "API Categorization"]
 
 [Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
 
+### Availability
+
+- Version: Available since v0.1
+
 ## Overview
 
 API Labeling and Categorization enables you to organize, classify, and filter your APIs using customizable metadata tags. This feature allows you to create a structured taxonomy for your API landscape, making it easier to search, filter, and apply governance policies based on business context, technical characteristics, or organizational ownership.

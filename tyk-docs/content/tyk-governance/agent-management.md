@@ -1,5 +1,5 @@
 ---
-title: Agent Management
+title: Agent and API Provider Management
 date: 2025-07-16T15:49:11Z
 description: ""
 tags: ["Tyk Governance", "Agent Management", "API Provider"]
@@ -7,16 +7,38 @@ tags: ["Tyk Governance", "Agent Management", "API Provider"]
 
 [Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Configuration Options](#configuration-options) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs)| [Troubleshooting](#troubleshooting)
 
+{{< note success >}}
+**Note for Tyk Cloud Users**
+
+This documentation is primarily targeted at users who run their own self-managed agents. If you're using Tyk Cloud, agents are automatically managed for you, and you don't need to worry about access tokens, installation, or configuration. You can simply use the "Agents" and "API Provider" pages in the Tyk Cloud dashboard to check connection health between the agents and Governance Hub.
+{{< /note >}}
+
 ### Availability
 
 - Version: Available since v0.2
-- Editions: All Tyk Governance editions
 
 ## Overview
 
-Agent Management enables you to deploy, configure, and monitor the Tyk Governance agents that discover and synchronize APIs from various providers. These agents act as secure bridges between your API providers (Tyk Dashboard, AWS API Gateway, etc.) and the Tyk Governance Hub, ensuring your API inventory stays current and complete.
+Agent and API Provider Management enables you to deploy, configure, and monitor the Tyk Governance agents that discover and synchronize APIs from various providers. 
 
-![Agent Management Overview](https://tyk.io/docs/img/governance/agent-management.png)
+### Understanding Agents and API Providers
+
+**Agents** are lightweight services that act as secure bridges between your API providers and the Tyk Governance Hub. They:
+- Run in your environment (on-premises, cloud, or hybrid)
+- Connect to one or more API providers to discover APIs
+- Securely transmit API data to the Governance Hub
+- Support high availability deployments
+- Can be monitored through the "Agents" section in the UI
+
+**API Providers** are the systems where your APIs are defined and managed, such as:
+- Tyk Dashboard
+- AWS API Gateway
+
+Each provider is configured within an agent and can be monitored through the "API Providers" section in the UI, where you can see:
+- How many APIs are discovered from each provider
+- The connection status of each provider
+- The last synchronization time
+- Provider-specific details
 
 ### Key Benefits
 
@@ -28,8 +50,8 @@ Agent Management enables you to deploy, configure, and monitor the Tyk Governanc
 
 ### Dependencies
 
-- Requires Tyk Governance v0.2 or higher
-- For Kubernetes-based high availability, requires Kubernetes cluster access
+- Requires Tyk Governance and agents v0.2 or higher
+- Agents support Kubernetes-based high availability, which requires Kubernetes cluster access
 
 ## Quick Start
 
@@ -45,7 +67,21 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
 1. **Create a New Agent**
 
-	 Use the API to create a new agent:
+    - From the Agents page, click the **New agent** button in the top-right corner.
+
+    {{< img src="img/governance/agents-list.png" >}}
+
+    -  In the New agent form, enter:
+       - **Name**: A descriptive name for the agent (required)
+       - **Description**: Details about the agent's purpose or location (required)
+
+    {{< img src="img/governance/agents-new-1.png" >}}
+
+    - Click **Create agent** to save the new agent.
+
+    {{< img src="img/governance/agents-new-2.png" >}}
+
+	- Alternatively, you can use the API to create a new agent:
 
     ```sh
     # Replace with your actual Governance URL and API key
@@ -70,7 +106,21 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
 2. **Generate an Agent Token**
 
-	 Generate an authentication token for the agent:
+   - In the Agent information section, find the Access token field.
+
+   - If no token exists, click **Generate new access token**.
+
+   - For existing tokens:
+        - Click the eye icon to show/hide the token
+        - Use the copy icon to copy the token to your clipboard
+        - Use this token in your agent configuration file
+
+    {{< img src="img/governance/agents-new-3.png" >}}
+
+    {{< img src="img/governance/agents-new-4.png" >}}
+
+
+	- Alternatively, generate an authentication token for the agent using API:
 
     ```sh
     # Replace with the agent ID from the previous step
@@ -138,55 +188,15 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
 4. **Deploy the Agent**
 
-	 Run the agent using Docker:
-
-    ```sh
-    docker run -d --name tyk-governance-agent \
-    -v $(pwd)/agent-config.yaml:/app/config.yaml \
-    tykio/governance-agent:latest
-    ```
-
-	Or deploy to Kubernetes (for high availability):
-
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-    name: governance-agent
-    namespace: your-namespace
-    spec:
-    replicas: 2  # Multiple replicas for high availability
-    selector:
-        matchLabels:
-        app: tyk-governance-agent
-    template:
-        metadata:
-        labels:
-            app: tyk-governance-agent
-        spec:
-        containers:
-        - name: agent
-            image: tykio/governance-agent:latest
-            env:
-            - name: TYK_AGENT_ENABLE_LEADER_ELECTION
-            value: "true"
-            volumeMounts:
-            - mountPath: /app/config.yaml
-            name: agent-config
-            subPath: config.yaml
-        volumes:
-        - name: agent-config
-            secret:
-            secretName: agent-config
-            items:
-            - key: config.yaml
-                path: config.yaml
-
-    ```
+	 Run the agent using Docker or as Kubernetes Deployment. See [Installation]({{<ref "tyk-governance/installation#deploy-the-agent">}}) for details.
 
 5. **Monitor Agent Status**
 
-	 Check the agent status in the Governance Hub:
+	- Check the agent status in the Governance Hub. A healthy agent will appear as "Healthy":
+
+     {{< img src="img/governance/agents-list-2.png" >}}
+
+    - Check the agent status in the Governance Hub using API:
 
     ```sh
     curl "${GOVERNANCE_URL}/api/agents/${AGENT_ID}" \
@@ -216,18 +226,11 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
 6. **Trigger Initial Synchronization**
 
-	 Trigger a manual sync to verify the agent is working correctly:
-
-    ```sh
-    curl -X POST "${GOVERNANCE_URL}/api/sync" \
-        -H "X-API-Key: ${API_KEY}" \
-        -H "Content-Type: application/json" \
-        -d '{}'
-    ```
+	 Trigger a [synchronization](#synchronization-process) to verify the agent is working correctly.
 
 ### Validation
 
-- The agent should appear as "ACTIVE" in the agent list
+- The agent should appear as "Healthy" or have status as "ACTIVE" in the agent list
 - The agent's last heartbeat timestamp should be recent
 - After synchronization, APIs from your providers should appear in the API Repository
 
@@ -264,12 +267,64 @@ When multiple agent replicas are deployed with leader election enabled, they use
 Synchronization can be triggered in three ways:
 
 1. **Manual Trigger**: Through the Governance Hub UI or API
-2. **Scheduled Sync**: At regular intervals configured in the agent (new in v0.2)
+
+     {{< img src="img/governance/api-list-sync.png" >}}
+
+2. **Scheduled Sync**: At regular intervals configured in the agent. See [Understanding Scheduled Synchronization](#understanding-scheduled-synchronization).
+   
 3. **Initial Connection**: When an agent first connects to the Governance Hub
+
+#### Understanding Scheduled Synchronization
+
+There are two complementary ways to configure scheduled synchronization:
+
+1. **Agent Configuration File (Agent-side scheduling)**
+
+   Configure the `syncSchedule` section in the agent's configuration file:
+
+   ```yaml
+   # Agent configuration with scheduled sync
+   syncSchedule:
+     enabled: true
+     intervalMinutes: 60  # Sync every hour
+   ```
+
+   With this configuration:
+   - The agent will independently initiate synchronization every `intervalMinutes`
+   - This happens regardless of any schedules configured on the Governance Hub
+   - It's a "pull" model where the agent decides when to sync
+   - Minimum interval is 5 minutes
+
+2. **Governance Hub API (Hub-side scheduling)**
+
+   Use the `/api/agents/{id}/sync-jobs` endpoint to configure provider-specific schedules:
+
+   ```sh
+   # Schedule sync for a specific provider
+   curl -X POST "${GOVERNANCE_URL}/api/agents/${AGENT_ID}/sync-jobs" \
+       -H "X-API-Key: ${API_KEY}" \
+       -H "Content-Type: application/json" \
+       -d '{
+           "repeat_every": "12h",
+           "provider": "tyk-provider",
+           "start_from": "2023-06-01T12:00:00Z"
+       }'
+   ```
+
+   With this approach:
+   - The Governance Hub's scheduler component manages the schedule
+   - The Hub initiates synchronization by sending requests to the agent
+   - It's a "push" model where the Hub tells the agent when to sync
+   - You can set different schedules for different providers
+   - Supports Go duration format (e.g., "1h", "12h", "7d")
+
+**Best Practice**: You can use both mechanisms together for maximum flexibility and reliability:
+- Set a conservative baseline schedule in the agent config (e.g., daily)
+- Use the sync-jobs API for more frequent or specific provider syncs
 
 During synchronization:
 
-1. The agent receives a sync request from the hub
+1. The agent receives a sync request from the hub (or initiates it based on its schedule)
 2. The agent queries each configured API provider for APIs
 3. The agent processes and normalizes the API definitions
 4. The agent streams the API definitions to the hub

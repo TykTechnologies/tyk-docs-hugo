@@ -1307,7 +1307,7 @@ menu:
         path: /tyk-governance/api-evaluation
         category: Page
         show: True
-      - title: "Agent Management"
+      - title: "Agent and API Provider Management"
         path: /tyk-governance/agent-management
         category: Page
         show: True

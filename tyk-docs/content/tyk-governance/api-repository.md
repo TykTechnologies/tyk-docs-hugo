@@ -7,6 +7,10 @@ tags: ["Tyk Governance", "API Repository"]
 
 [Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
 
+### Availability
+
+- Version: Available since v0.1
+
 ## Overview
 
 API Repository automatically discovers and catalogs APIs across multiple sources (Tyk, AWS API Gateway, etc) to create a comprehensive inventory of all APIs in your organization. This feature addresses API sprawl, identifies shadow APIs, and provides complete visibility into your API landscape.

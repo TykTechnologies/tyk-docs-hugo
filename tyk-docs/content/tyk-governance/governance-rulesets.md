@@ -10,13 +10,10 @@ tags: ["Tyk Governance", "Rulesets"]
 ### Availability
 
 - Version: Available since v0.2
-- Editions: All Tyk Governance editions
 
 ## Overview
 
 Governance Rulesets enable you to define, manage, and enforce API standards across your organization through customizable rules. These rulesets act as executable policies that define your organization's API governance requirements, helping you establish consistent standards for security, design, and documentation.
-
-![Governance Rulesets Diagram](https://tyk.io/docs/img/governance/ruleset-overview.png)
 
 ### Key Benefits
 
@@ -48,11 +45,11 @@ In this tutorial, we'll create a simple governance ruleset that can be used to v
 
 	 Click the "Add Ruleset" button to create a new ruleset.
 
+     {{< img src="img/governance/ruleset-list.png" >}}
+     
 3. **Choose a Template**
 
 	 Select "Start from Template" and choose the "OpenAPI Best Practices" template.
-
-	 ![Ruleset Template Selection](https://tyk.io/docs/img/governance/ruleset-template.png)
 
 4. **Customize Your Ruleset**
 

@@ -15,8 +15,6 @@ tags: ["Tyk Governance", "API Evaluation", "Rulesets"]
 
 API Evaluation enables you to validate API specifications against governance policies before deployment, without requiring the API to be published or stored in your API repository. This feature helps you catch compliance issues early in the development lifecycle, reducing rework and accelerating the delivery of high-quality APIs.
 
-![API Evaluation Process](https://tyk.io/docs/img/governance/api-evaluation.png)
-
 ### Key Benefits
 
 - **Shift-Left Governance**: Catch compliance issues during design and development, not after deployment
@@ -214,68 +212,6 @@ fi
 
 exit 0
 ```
-
-## Configuration Options
-
-### API Evaluation Endpoint
-
-The API Evaluation feature is accessed through a REST API endpoint:
-
-**Endpoint**: 
-
-`POST /rulesets/evaluate-spec`
-
-**Request Format**:
-
-```json
-{
-  "rulesetId": "string",
-  "apiSpec": {
-    "name": "string",
-    "content": object
-  }
-}
-```
-
-**Parameters**:
-
-- `rulesetId` : The ID of the ruleset to validate against
-- `apiSpec.name` : A name for the API specification (for reference only)
-- `apiSpec.content` : The complete API specification in OpenAPI format
-
-**Response Format**:
-
-```json
-{
-  "status": "string",
-  "message": "string",
-  "errors": [
-    {
-      "code": "string",
-      "path": ["string"],
-      "message": "string",
-      "severity": "string",
-      "range": {
-        "start": { "line": number, "character": number },
-        "end": { "line": number, "character": number }
-      },
-      "howToFix": "string"
-    }
-  ]
-}
-```
-
-**Response Fields**:
-
-- `status` : Success or error status
-- `message` : Summary message
-- `errors` : Array of validation errors
-	 - `code` : The rule ID that was violated
-	 - `path` : JSON path to the location of the violation
-	 - `message` : Description of the violation
-	 - `severity` : Severity level (error, warning, info, hint)
-	 - `range` : Exact location in the file
-	 - `howToFix` : Guidance on resolving the issue
 
 ## Use Cases
 
