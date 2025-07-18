@@ -464,25 +464,64 @@ menu:
             category: Page
             show: True
           - title: "Tyk Cloud"
-            path: /tyk-cloud
             category: Page
             show: True
             menu:
             - title: "Overview"
-              path: /tyk-open-source
+              path: /tyk-cloud
               category: Page
               show: True
+            - title: "Management"
+              category: Page
+              show: True
+              menu:
+              - title: "Organizations"
+                path: /tyk-cloud/environments-deployments/managing-organisations
+                category: Page
+                show: True
+              - title: "Environments"
+                path: /tyk-cloud/environments-deployments/managing-environments
+                category: Page
+                show: True
+              - title: "Control Plane"
+                path: /tyk-cloud/environments-deployments/managing-control-planes
+                category: Page
+                show: True
+              - title: "Data Plane"
+                path: /tyk-cloud/environments-deployments/managing-gateways
+                category: Page
+                show: True
+              - title: "Accounts and Billing"
+                path: /tyk-cloud/account-billing
+                category: Page
+                show: True
+              - title: "Teams and Users"
+                path: /tyk-cloud/teams-users
+                category: Page
+                show: True
+              - title: "Hybrid Gateways"
+                path: /tyk-cloud/initial-portal-config
+                category: Page
+                show: True
+              - title: "Managing APIs"
+                path: /tyk-cloud/initial-portal-config
+                category: Page
+                show: True
+              - title: "Import APIs"
+                path: /tyk-cloud/initial-portal-config
+                category: Page
+                show: True
             - title: "Configuration"
               path: /tyk-open-source
               category: Page
               show: True
               menu:
-              - title: "Configure Portal"
-                path: /tyk-open-source
+              - title: "Developer Portal"
+                path: /tyk-cloud/initial-portal-config
                 category: Page
                 show: True
-              - title: "Configure Plugins"
-                path: /tyk-open-source
+              - title: "Custom Plugins"
+                path: /tyk-cloud/using-plugins
                 category: Page
                 show: True
               - title: "Custom Domains"
@@ -494,13 +533,21 @@ menu:
                 category: Page
                 show: True
               - title: "Monitor Metrics"
-                path: /tyk-open-source
+                path: /tyk-cloud/environments-deployments/monitoring-how-it-works
                 category: Page
                 show: True
               - title: "Configure Telemetry"
                 path: /tyk-cloud/telemetry
                 category: Page
                 show: True
+              - title: "Single Sign On (SSO)"
+                path: /tyk-cloud/teams-users/single-sign-on
+                category: Page
+                show: True
+            - title: "Troubleshooting"
+              path: /tyk-cloud/troubleshooting-support
+              category: Page
+              show: True
           - title: "Tyk Open Source"
             category: Directory
             show: True

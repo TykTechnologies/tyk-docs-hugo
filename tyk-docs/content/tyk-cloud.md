@@ -3,84 +3,31 @@ title: "Set Up Tyk Cloud"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk Cloud"
 tags: ["Tyk Cloud", "Migration"]
 aliases:
-  - /tyk-cloud/account--billing/plans
-  - /tyk-cloud/account--billing/retirement
-  - /tyk-cloud/account-and-billing/add-payment-method
-  - /tyk-cloud/account-and-billing/our-plans
-  - /tyk-cloud/account-and-billing/retirement
-  - /tyk-cloud/account-and-billing/upgrade-free-trial
-  - /tyk-cloud/troubleshooting-&-support/tyk-cloud-mdcb-supported-versions
-  - /tyk-cloud/account-&-billing/plans
-  - /tyk-cloud/account-billing/add-payment-method
-  - /tyk-cloud/account-billing/managing-billing-admins
-  - /tyk-cloud/account-billing/plans
-  - /tyk-cloud/account-billing/retirement
-  - /tyk-cloud/account-billing/upgrade-free-trial
-  - /tyk-cloud/configuration-options/using-plugins/api-test
-  - /tyk-cloud/configuration-options/using-plugins/python-code-bundle
-  - /tyk-cloud/configuration-options/using-plugins/python-custom-auth
-  - /tyk-cloud/configuration-options/using-plugins/setup-control-plane
-  - /tyk-cloud/configuration-options/using-plugins/uploading-bundle
-  - /tyk-cloud/create-account
-  - /tyk-cloud/create-environment
   - /tyk-cloud/environments--deployments/hybrid-gateways
   - /tyk-cloud/environments-&-deployments/hybrid-gateways
   - /tyk-cloud/environments-&-deployments/managing-apis
-  - /tyk-cloud/environments-&-deployments/managing-control-planes
-  - /tyk-cloud/environments-&-deployments/managing-environments
   - /tyk-cloud/environments-&-deployments/managing-gateways
-  - /tyk-cloud/environments-&-deployments/monitoring
-  - /tyk-cloud/environments-&-deployments/monitoring-usage
   - /tyk-cloud/environments-deployments/hybrid-gateways
   - /tyk-cloud/environments-deployments/managing-apis
-  - /tyk-cloud/environments-deployments/managing-control-planes
-  - /tyk-cloud/environments-deployments/managing-environments
-  - /tyk-cloud/environments-deployments/monitoring
   - /tyk-cloud/first-api
   - /tyk-cloud/getting-started
   - /tyk-cloud/getting-started-tyk-cloud/create-account
   - /tyk-cloud/getting-started-tyk-cloud/first-api
-  - /tyk-cloud/getting-started-tyk-cloud/setup-environment
   - /tyk-cloud/getting-started-tyk-cloud/setup-org
-  - /tyk-cloud/getting-started-tyk-cloud/setup-team
   - /tyk-cloud/getting-started-tyk-cloud/test-api
   - /tyk-cloud/getting-started-tyk-cloud/to-conclude
   - /tyk-cloud/getting-started-tyk-cloud/view-analytics
   - /tyk-cloud/reference-docs/user-roles
-  - /tyk-cloud/setup-org
-  - /tyk-cloud/setup-team
-  - /tyk-cloud/teams-&-users/managing-teams
-  - /tyk-cloud/teams-&-users/managing-users
-  - /tyk-cloud/teams-&-users/user-roles
-  - /tyk-cloud/teams-users/managing-teams
-  - /tyk-cloud/teams-users/managing-users
-  - /tyk-cloud/teams-users/user-roles
   - /tyk-cloud/test-api
   - /tyk-cloud/view-analytics
   - /tyk-cloud/what-we-covered
-  - /tyk-cloud/account-billing
   - /tyk-cloud/configuration-options
   - /tyk-cloud/environments-&-deployments
-  - /tyk-cloud/environments-&-deployments/managing-organisations
   - /tyk-cloud/environments-deployments
   - /tyk-cloud/environments-deployments/hybrid-gateways-helm
   - /tyk-cloud/environments-deployments/managing-gateways
-  - /tyk-cloud/environments-deployments/managing-organisations
-  - /tyk-cloud/environments-deployments/monitoring-how-it-works
-  - /tyk-cloud/environments-deployments/monitoring-usage
   - /tyk-cloud/glossary
   - /tyk-cloud/securing-your-apis
-  - /tyk-cloud/teams-&-users
-  - /tyk-cloud/teams-users
-  - /tyk-cloud/teams-users/single-sign-on
-  - /tyk-cloud/troubleshooting-&-support
-  - /tyk-cloud/troubleshooting-&-support/faqs
-  - /tyk-cloud/troubleshooting-&-support/glossary
-  - /tyk-cloud/troubleshooting-support
-  - /tyk-cloud/troubleshooting-support/faqs
-  - /tyk-cloud/troubleshooting-support/glossary
-  - /tyk-cloud/troubleshooting-support/tyk-cloud-mdcb-supported-versions
-  - /tyk-cloud/using-plugins
   - /tyk-cloud/what-is-tyk-cloud
   - /deployment-and-operations/tyk-cloud-platform/quick-start
   - /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
@@ -88,19 +35,6 @@ aliases:
   - /get-started/with-tyk-multi-cloud/tutorials/installation-on-aws
   - /getting-started/installation/with-tyk-multi-cloud/create-an-account
   - /getting-started/installation/with-tyk-multi-cloud/installation-on-aws
-  - /using-plugins/python-custom-auth-plugin
-  - /python-custom-auth-plugin/api-middleware-test
-  - /python-custom-auth-plugin/python-code-bundle
-  - /python-custom-auth-plugin/setup-control-plane
-  - /python-custom-auth-plugin/uploading-bundle
-  - /tyk-cloud/initial-portal-config
-  - /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users
-  - /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
-  - /frequently-asked-questions/enable-websockets-cloud
-  - /troubleshooting/tyk-cloud-classic/301-moved-permanently
-  - /troubleshooting/tyk-cloud-classic/413-request-entity-large
-  - /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error
-  - /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
 ---
 
 ## What is Tyk Cloud
@@ -178,54 +112,6 @@ To create Tyk Cloud account follow this [guide]({{< ref "getting-started/create-
 2. **Get started with your first API with Tyk Dashboard**
 
 To create your API using Tyk Dashboard follow this [guide]({{< ref "getting-started/configure-first-api" >}}).
-
-## Tyk Cloud Feature Setups
-
-{{< grid >}}
-
-{{< badge title="Configuration" href="tyk-cloud#add-custom-authentication" >}}
-
-**Python custom plugins**
-
-Implement your own custom logic with Python based plugins
-{{< /badge >}}
-
-{{< badge title="Configuration" href="tyk-cloud#configure-custom-domains" >}}
-
-**Using custom domains**
-
-Configure custom domain for your Dashboard and Developer Portal
-{{< /badge >}}
-
-{{< badge title="Administration" href="tyk-cloud#managing-environments" >}}
-
-**Manage environments**
-
-Create and manage multiple environments within your Tyk Cloud organization
-{{< /badge >}}
-
-{{< badge title="Administration" href="tyk-cloud#managing-control-planes" >}}
-
-**Manage deployments**
-
-Create and manage your Cloud Control Plane and Cloud Data Plane deployments
-{{< /badge >}}
-
-{{< badge title="Administration" href="tyk-cloud#managing-teams-and-users" >}}
-
-**Manage teams & users**
-
-Create teams in your organization, define roles and manage user access
-{{< /badge >}}
-
-{{< badge title="Account" href="tyk-cloud#manage-accounts-and-billing" >}}
-
-**Manage billing**
-
-Upgrade your subscription, billing details or card information
-{{< /badge >}}
-
-{{< /grid >}}
 
 ## Comprehensive Tyk Cloud Setup
 
@@ -493,6 +379,156 @@ What to go through next:
 
 * Managing your Deployments
 * Adding [Plugins and Middleware]({{< ref "#configure-plugins" >}}) to your Control Plane
+
+
+## Glossary
+
+**Account**
+
+The highest level container for one or more Organizations.
+
+**Organization**
+
+The main entity for all your data (Environments, APIs, Users, etc). An Organization is connected to a single region and once connected, cannot be changed.
+
+**Team** 
+
+A sub-grouping within an Organization.
+
+**User**
+
+A person who is a member of a Team with a set of permissions.
+
+**Role**
+
+A set of data and access permissions that can be applied to a user or team of users. See [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}}) for more details.
+
+**Profile**
+
+The place that holds personal information for a user.
+
+**Subscription**
+
+A set of allowances assigned to an Organization (made up of plan+addons+settings).
+
+**Plan**
+
+A portion of allowances (without add-ons) that feed into the main subscription.
+
+**Operations**
+
+The place to manage all deployments for an Organization or Team. 
+
+**Environment**
+
+A grouping of 'deployments' that can have multiple Control Planes and Cloud Data Planes.
+
+**Stack**
+
+The high level name for the set of configurations making up different types of deployments.
+
+**Control Plane**
+
+A deployment type: A single management layer for data in one region (where all the data lives).
+
+**Cloud Data Plane**
+
+A deployment type: Additional workers with varying functionality that are linked to the main control plane and can be deployed in a different region from the Control Plane.
+
+**Instance**
+
+Used to control traffic and scale in a Tyk Gateway.
+
+**Dashboard**
+
+The Tyk Analytics Dashboard to manage APIs and services.
+
+**Retirement**
+
+Where an Organization has expired due to either a subscription failure or cancelation and is now within a "retirement" period of 30 days, during which an [Billing Admin]({{< ref "#assign-user-roles" >}}) can reinstate full functionality by updating or creating a new subscription.
+
+**Deploy**
+
+Deploy a not yet deployed state (a first time deployment).
+
+**Undeploy**
+
+Temporarily remove a deployed status but keep all data and configuration.
+
+**Redeploy**
+
+Redeploy from a deployed state. Used for troubleshooting.
+
+**Destroy**
+
+Permenantly remove a deployment and all associated data and configurations.
+
+**Create**
+
+Date and time of time a deployment was initially created.
+
+**Add**
+
+Add a new 'user' or 'team' etc.
+
+**Remove**
+
+Remove things that have been added e.g. users and teams.
+
+**Update**
+
+Saving a change to a configuration.
+
+**Edit**
+
+Changing configuration or information on any of the deployments or other resources such as users or teams.
+
+**Deployed**
+
+A deployment that is currently deployed.
+
+**Undeployed**
+
+A deployment that was deployed but has been undeployed.
+
+**Not Deployed**
+
+A deployment that has never been deployed.
+
+**Destroyed**
+
+A deployment that has been permenantly deleted and will not be visible in the operations console.
+
+**Unsuccessful**
+
+When there has been an error in the deployment process.
+
+**Deploying**
+
+When a deployment is being deployed.
+
+**Undeploying**
+
+When a deployment is being undeployed.
+
+See [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}}) for more details
+
+**Super Administrator**
+
+Can do everything across all organizations
+
+**Organization Admin**
+
+Can do everything within the scope of the one organization they have access to.
+
+**Team Admin**
+
+Can do everything within the scope of the one team they have access to.
+
+**Team Member**
+
+Can only view and manage the overview, environments and deployments.
+
 
 ## Import Existing APIs
 
@@ -771,237 +807,6 @@ This section covers the administration of the various components of your Tyk Clo
 * [Managing Cloud Data Planes]({{< ref "#managing-cloud-data-plane" >}})
 
 It also covers links to how to start [managing your APIs]({{< ref "#manage-apis" >}}) via the Tyk Dashboard, accessible from your Control Plane.
-
-#### Organisations Overview
-
-Your Organization is your "container" for all your Environments, Control Planes and Cloud Data Planes. When you setup your Organization when [creating your account]({{< ref "getting-started/create-account" >}}), you assign it to a Home Region where all your data is stored. You cannot change this home region after creating your organization.
-
-**Organization Overview Screen**
-
-If you are an Organization Admin, when you log in you will see the Overview screen for the Organization you are connected to. If you are a team admin or team member you will see the Team Overview Screen. The Organization Overview screen displays the following info:
-
-* Quick Stats
-* All Teams
-* All Deployments
-* All Environments
-
-
-**Quick Stats**
-
-{{< img src="/img/admin/tyk-cloud-org-overview.png" alt="Quick Stats" >}}
-
-This section gives you an "at a glance" overview of your organization. This section is designed to show what your plan entitles your organization to and how much of your entitlement is currently used in relation to Teams, Control Planes, Cloud Data Plane Deployments and the distribution of those deployments across the available entitlement regions.
-
-**Teams**
-
-{{< img src="/img/admin/tyk-cloud-org-teams.png" alt="Teams" >}}
-
-This section shows the number of teams created within the organization, the number of environments the team is assigned to, and the Control Plane and Deployed Cloud Data Planes within those environments.
-
-**Deployments**
-
-The default view for this section is Group by Control Plane and shows all deployments across all teams.
-
-{{< img src="/img/admin/tyk-cloud-org-deployments.png" alt="Deployments Grouped by Control Plane" >}}
-
-**Environments**
-
-The Environments section shows the environments created within your organization, the team they belong to and active deployments within each environment.
-
-{{< img src="/img/admin/org_admin_environments.png" alt="Environments" >}}
-
-#### Managing Environments
-
-Environments are used to group your [Control Plane]({{< ref "#glossary" >}}) and [Cloud Data Planes]({{< ref "#glossary" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
-
-{{< note success >}}
-**Note**
-
-The number of Environments you can create is determined by your [plan]({{< ref "#select-a-payment-plan" >}})
-{{< /note >}}
-
-##### Prerequisites
-
-The following [user roles]({{< ref "#assign-user-roles" >}}) can perform Environment Admin tasks:
-
-- Org Admin
-- Team Admin
-
-You should also have created a team to assign to any new environment.
-
-##### Adding a New Environment
-
-1. From the Environments screen, click **Add Environment**
-2. Select the team you want to assign to the Environment
-3. Give your new Environment a name
-4. Click **Create**
-
-##### Editing an Existing Environment
-
-An Org Admin can perform the following:
-
-- Rename an Environment
-- Delete an Environment
-
-1. Click the environment Name from your list
-
-{{< img src="/img/admin/tyk-cloud-edit-env.png" alt="Edit Environment Name" >}}
-
-2. Click Edit
-
-{{< img src="/img/admin/tyk-cloud-env-screen.png" alt="Env Edit Screen" >}}
-
-3. You can now rename the environment, or delete it from your organization
-
-{{< img src="/img/admin/tyk-cloud-rename-delete.png" alt="Delete or Rename Env" >}}
-
-{{< warning success >}}
-**Warning**
-
-Deleting an environment will also delete all the Control Planes and Cloud Data Planes associated with it
-{{< /warning >}}
-
-#### Managing Control Planes
-
-Control Planes are situated in your Organization's home region and provide links to an instance of the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}) and the [Developer Portal]({{< ref "tyk-developer-portal" >}}). The Dashboard is where you perform all your API tasks. The developer portal allows your 3rd party developers access to your APIs. Cloud Data Planes are then connected to your Control Planes.
-
-
-##### Prerequisites
-
-All [user roles]({{< ref "#assign-user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organization Admin and the Team Admin can create or delete deployments.
-
-##### Adding a new Control Plane
-
-Watch our video on setting up a Control Plane and a Cloud Data Plane.
-
-{{< youtube JqXXEDplrr8 >}}
-
-{{< note success >}}
-**Note**
-  
-The number of Control Planes you can add is dependent on your [plan]({{< ref "#select-a-payment-plan" >}})
-{{< /note >}}
-
-1. From the Deployments screen click **Add Deployment** (you can also add a Deployment from within an Environment overview)
-2. Enter a name for the new Control Plane
-3. Select Control Plane from the Type drop-down list
-4. Select the Bundle Channel and Version
-5. (Optional) Enter a [custom domain]({{< ref "#configure-custom-domains" >}}) if required
-6. (Optional) Enable [plugins]({{< ref "#configure-plugins" >}}) if required
-
-##### Edit Control Planes
-
-You can edit the following Control Plane settings:
-* Change the Control Plane name
-* Add a [custom domain]({{< ref "#configure-custom-domains" >}})
-* Change the Bundle Channel and Bundle Version
-* Enable [plugins]({{< ref "#configure-plugins" >}})
-
-{{< note success >}}
-**Note**
-  
-The use of custom domains is dependent on your [plan]({{< ref "#select-a-payment-plan" >}})
-{{< /note >}}
-
-To edit an existing Control Plane:
-
-1. From the Deployments screen, click the **Control Plane Name** from the list
-2. Select **Edit** from the Deployed drop-down list
-
-{{< img src="/img/admin/cp-edit.png" alt="Edit drop-down" >}}
-
-##### Upgrade Control Planes
-
-To upgrade an existing Control Plane:
-
-1. Go to the **Control Plane settings** using the _Edit Control Planes_ instructions and scroll down to the **Version** section.
-2. Select a **Bundle Channel**.
-
-{{< img src="/img/admin/cp-edge-upgrade-channel.png" alt="Bundle channel drop-down" >}}
-
-3. Next, select a **Bundle Version**.
-
-{{< img src="/img/admin/cp-edge-upgrade-version.png" alt="Bundle version drop-down" >}}
-
-4. To apply your changes, click the **"Save and Re-Deploy"** button located at the top right. After a few seconds, you will be redirected to the overview page of the Control Plane and a **"Deploying"** indicator button will appear. 
-
-{{< img src="/img/admin/cp-edge-upgrade-deploying.png" alt="Deploying notification" >}}
-
-5. A **"Deployed"** button indicates a successful upgrade.
-
-{{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deployed notification" >}}
-
-#### Managing Cloud Data Plane
-
-Cloud Data Planes do all the heavy lifting of actually managing your requests: traffic proxying, access control, data transformation, logging and more.
-
-
-##### Prerequisites
-
-All [user roles]({{< ref "#assign-user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organization Admin and the Team Admin can create or delete deployments.
-
-
-##### Adding a new Cloud Data Plane
-
-Watch our video on setting up a Control Plane and a Cloud Data Plane.
-
-{{< youtube JqXXEDplrr8 >}}
-
-{{< note success >}}
-**Note**
-  
-The number of Cloud Data Planes you can add is dependent on your [plan]({{< ref "#select-a-payment-plan" >}})
-{{< /note >}}
-
-1. From the Deployments screen click **Add Deployment**
-2. Enter a name for the new Gateway
-3. Select Cloud Data Plane from the Type drop-down list
-4. Select the Bundle Channel and Version
-5. (Optional) Enter a [custom domain]({{< ref "#configure-custom-domains" >}}) if required
-6. (Optional) Enable [plugins]({{< ref "#configure-plugins" >}}) if required
-
-##### Edit Cloud Data Planes
-
-You can edit the following Control Plane settings:
-* Change the Gateway name
-* Add a [custom domain]({{< ref "#configure-custom-domains" >}})
-* Change the Bundle Channel and Bundle Version
-* Enable [plugins]({{< ref "#configure-plugins" >}})
-
-{{< note success >}}
-**Note**
-  
-The use of custom domains is dependent on your [plan]({{< ref "#select-a-payment-plan" >}})
-{{< /note >}}
-
-To edit an existing Cloud Data Plane:
-
-1. On the Deployments screen, expand the Control Plane and click on the Cloud Data Plane to access the Cloud Data Plane overview screen.
-2. Select **Edit** from the Deployed drop-down list
-
-{{< img src="/img/admin/cp-edit.png" alt="Cloud Data Plane drop-down" >}}
-
-
-##### Upgrade Cloud Data Planes
-
-To upgrade an existing Cloud Data Plane:
-
-1. Go to the **Cloud Data Plane settings** using the _Edit Cloud Data Planes_ instructions and scroll down to the **Version** section.
-2. Select a **Bundle Channel**.
-
-{{< img src="/img/admin/cp-edge-upgrade-channel.png" alt="Bundle channel drop-down" >}}
-
-3. Next, select a **Bundle Version**.
-
-{{< img src="/img/admin/cp-edge-upgrade-version.png" alt="Bundle version drop-down" >}}
-
-4. To apply your changes, click the **"Save and Re-Deploy"** button located at the top right. After a few seconds, you will be redirected to the overview page of the Control Plane and a **"Deploying"** indicator button will appear. 
-
-{{< img src="/img/admin/cp-edge-upgrade-deploying.png" alt="Deploying notification" >}}
-
-5. A **"Deployed"** button indicates a successful upgrade.
-
-{{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deployed notification" >}}
 
 #### Deploy Hybrid Gateways
 
@@ -1283,858 +1088,6 @@ The custom plugin approach is mentioned last because it involves writing a bit o
 No matter which option or combination of options you choose, it is best to keep this authentication layer outside your application logic. This glue code should be placed in your ingress, whatever that might be. By keeping this logic outside your application, you keep a separation between the business logic and the boilerplate code.  You can even use the Tyk Open Source API Gateway as an ingress to protect your APIs, and it is compatible with all the methods mentioned above.
 
 
-
-### Managing Teams and Users
-
-This section covers the following:
-
-- [Managing Teams]({{< ref "#managing-teams" >}})
-- [Managing Users]({{< ref "#managing-teams-and-users" >}})
-- Available Tyk Cloud [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}})
-- [Tyk Cloud Single Sign-On (SSO)]({{< ref "#configure-single-sign-on-sso" >}})
-
-#### Managing Teams 
-
-The following [user roles]({{< ref "#user-roles-in-tyk-cloud" >}}) can perform existing Team Admin tasks:
-
-* Organization Admin - Can manage all teams in the organization they are a member of.
-* Team Admin - Can only manage the team they are a member of.
-
-For an existing team, you can:
-
-* Change the team name
-* Create or delete a team (Organization Admin only)
-* Invite and manage users in a team
-  
-##### Change the Team Name
-
-1. From the Teams screen, select the team name.
-2. Click **Edit**.
-3. Change the existing name for the team.
-4. Click **Save**.
-
-##### Create a New Team
-
-You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to create a new team.
-
-1. From the Admin > Teams screen, click **Add Team**.
-2. Enter a name for the new team that will be added to the organization.
-3. Click **Create**.
-
-##### Delete a Team
-
-You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to delete a team.
-
-1. From the Teams screen, select the team name.
-2. Click **Edit**.
-3. Click **Delete Team**.
-4. You'll be asked to confirm the deletion. Click **Delete Team** from the dialog box to confirm, or click **Cancel**.
-
-You can now invite users to your new team. See [Managing Users]({{< ref "#managing-teams-and-users" >}}) for more details.
-
-
-#### Managing Users
-
-The following [user roles]({{< ref "#user-roles-in-tyk-cloud" >}}) can perform existing User Admin tasks:
-
-* [Organization Admin]({{< ref "#assign-user-roles" >}}) - Can manage all users in the organization they are a member of.
-* [Team Admin]({{< ref "#assign-user-roles" >}}) - Can only manage the users of the team they are a member of.
-
-{{< note success >}}
-**Note**
-
-Organization Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organization hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
-
-You can also [add users to the Tyk Dashboard]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs. 
-{{< /note >}}
-
-##### Invite a new user to your team
-
-1. From the Teams screen, select the team name.
-2. Click **Invite User**.
-3. Complete the form for the new user.
-
-##### Editing Existing Users
-
-1. Select the team with the user you want to edit.
-2. Click the user name from the team user list.
-3. You can change the following details
-   * Change the team they are a member of.
-   * Change the user role assigned to them.
-4. Click Save to update the user info.
-
-##### Delete a User
-
-1. Select the team with the user you want to edit.
-2. Click the user name from the team user list.
-3. Click **Delete**
-4. You'll be asked to confirm the deletion. Click **Delete User** from the pop-up box to confirm, or click **Cancel**.
-
-
-#### Assign User Roles
-
-This section defines the different user roles within Tyk Cloud, so that you can see at a glance what each role does and manage your account accordingly.
-
-##### User Roles within Tyk Cloud
-
-We have the following user roles defined in Tyk Cloud for your team members
-
-* Billing Admin
-* Organization Admin
-* Team Admin
-* Team Member
-
-Billing Admins are responsible for the billing management of the Tyk Cloud account. Organization Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organization hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
-
-You can [add users to the Tyk Dashboard]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs.   
-
-##### Use Case Matrix
-
-The following table shows the scope for each user role.
-
-
-| Use Case                                          | Billing Admin | Org Admin | Team Admin | Team Members |
-|---------------------------------------------------|---------------|-----------|------------|--------------|
-| Create a new account                              | X             |           |            |              |
-| Create a new organization                         | X             |           |            |              |
-| Managing a new account                            | X             |           |            |              |
-| Managing an organization entitlement              | X             |           |            |              |
-| Ability to create other billing admins            | X             |           |            |              |
-| Editing organization name                         | X             | X         |            |              |
-| Create team / delete                              |               | X         |            |              |
-| Future - Edit team entitlements                   |               | X         |            |              |
-| Invite, delete, edit org admins and team admins   |               | X         |            |              |
-| Invite, delete, edit team members                 |               | X         | X          |              |
-| Create new environments                           |               | X         | X          |              |
-| Delete / change environments                      |               | X         | X          |              |
-| View environments                                 |               | X         | X          | X            |
-| Create and delete cloud data planes               |               | X         | X          |              |
-| Create and delete control planes                  |               | X         | X          |              |
-| View deployments                                  |               | X         | X          | X            |
-| Deploy, undeploy, redeploy, restart a deployment. |               | X         | X          | X            |
-| Create and manage basic SSO                       |               | X         | X          |              |
-| Upload plugins to the File Server                 |               | X         | X          | X            |
-| Delete plugins from File Server                   |               | X         | X          | X            |
-| Viewing Analytics                                 |               | X         | X          | X            |
-
-##### Initial Tyk Cloud Account Roles
-
-The user who signs up for the initial Tyk Cloud account is uniquely assigned to two roles:
-
-1. Org admin of the organization
-2. Billing admin of the account
-
-This is the only occasion where a user can be assigned to 2 roles. So, for example, if you invite a user to be a Team Admin, that is the only role (and team) they can belong to. For a user to be invited as a Billing admin, they can't have an existing Tyk Cloud account.
-
-{{< note success >}}
-**Note**
-  
-This functionality may change in subsequent releases.
-{{< /note >}}
-
-**Tyk System Integration User (do not delete)**
-
-When you click your Control Plane Dashboard link from your Tyk Cloud Deployments Overview screen, you are automatically logged in to your Dashboard. This is due to a default Tyk Integration user that is created as part of the Control Plane deployment process. This user has a first name of `Tyk System Integration` and a last name of `User (do not delete)`. As the last name infers, you should not delete this user or your access to the Dashboard will be broken from your Tyk Cloud Installation.
-
-
-#### Configure Single Sign-On (SSO)
-
-**What is SSO?**
-Single Sign-On (SSO) is an authentication process that empowers users to access various services and applications using a single set of credentials. This streamlines the login experience by eliminating the need to remember multiple usernames and passwords for different platforms.
-
-These credentials are securely stored with an Identity Provider(IdP). An Identity Provider (IdP) is a service that stores and manages digital identities. Companies can use these services to allow their employees or users to connect with the resources they need. 
-
-**Pre-requisites**
-{{< note success >}}
-**Note**
-
-This functionality is a preview feature and may change in subsequent releases.
-
-To be able to configure Single Sign-On authentication, an SSO entitlement needs to be enabled in the subscription plan. 
-If you are interested in getting access, contact your account manager or reach out to our [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Cloud Single sign on>)
-{{< /note >}}
-
-##### Add new SSO profile
-To add a new SSO profile, login to Tyk Cloud, navigate to the _Profile_ list and click on the _ADD PROFILE_ button.
-
-  {{< img src="/img/cloud/cloud-sso-profile-list.png" alt="Tyk Cloud SSO profile list" >}}
-
-Populate the form with all the mandatory fields and click the _ADD PROFILE_ button.
-
-  {{< img src="/img/cloud/cloud-sso-add-profile-form.png" alt="Tyk Cloud SSO add profile form" >}}
-
-The table below explains the fields that should be completed:
-| Field name             | Explanation                                                                                                                     |
-|----------------------  |---------------------------------------------------------------------------------------------------------------------------------|
-| Provider name          | Used to distinguish between different SSO providers.                                                                      |
-| Client ID              | Used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration. |
-| Client Secret          | Used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration.     |
-| Discovery URL          | Used to read your IdP's openid configuration. This URL can be found in your chosen IdP provider's configuration.  |
-| Default User Group ID  | The ID of the user group that new users are allocated to by default upon registration.                                                                       |
-| Only registered users  | A check-box that defines which users are allowed to use SSO. If checked, only users who are already registered in Tyk Cloud are allowed to login with SSO. If un-checked, new users will be added to Tyk Cloud in the _Default_ user group upon successful registration. |
-
-
-As illustrated below an authentication and callback URL will be generated, once the new profile has been added. You need to add these URLs to the configuration of your chosen IdP provider.
-The Auth URL is your custom URL that can be used to start the SSO login flow whereas Callback URL is the URL that the SSO provider will callback to confirm successful authentication.
-
-  {{< img src="/img/cloud/cloud-sso-add-config-details.png" alt="Tyk Cloud SSO example of filled form" >}}
-
-##### Edit SSO profile
-
-To update/re-configure SSO profile, login to Tyk Cloud, navigate to _Profile_ list and click on the profile that you would like to update.
-  
-  {{< img src="/img/cloud/cloud-sso-edit-select.png" alt="Tyk Cloud SSO edit selection" >}}
-
-Edit the fields you would like to change and then click on the _SAVE PROFILE_ button.
-
-  {{< img src="/img/cloud/cloud-sso-save-edit.png" alt="Tyk Cloud SSO save edit selection" >}}
-
-##### Delete SSO profile
-
-{{< warning success >}}
-**Warning**
-
-Please note the action of deleting an SSO profile cannot be undone.
-
-To delete an SSO profile, login to Tyk Cloud, navigate to _Profile_ list and click on the profile you would like to remove.
-{{< /warning >}}
-
-  {{< img src="/img/cloud/cloud-sso-delete-select.png" alt="Tyk Cloud SSO delete selection" >}}
-
-On the profile page, click on the _DELETE PROFILE_ button.
-
-  {{< img src="/img/cloud/cloud-sso-delete-click.png" alt="Tyk Cloud SSO delete accept" >}}
-
-On the confirmation window, confirm by clicking the _DELETE PROFILE_ button.
-
-  {{< img src="/img/cloud/cloud-sso-delete-confirm.png" alt="Tyk Cloud SSO delete confirm" >}}
-
-After profile deletion, the authentication URL will not be available anymore. 
-
-
-### Manage Accounts and Billing
-This section covers the following:
-
-* The available [Tyk Cloud Plans]({{< ref "#select-a-payment-plan" >}})
-* Adding [Payment Methods]({{< ref "#add-payment-methods" >}})
-* How to [upgrade from the free trial plan]({{< ref "#upgrade-your-free-trial" >}})
-* [Managing Billing Admins]({{< ref "#managing-billing-admin" >}}) on your account
-* What to do if your account goes into [retirement]({{< ref "#retire-your-account" >}})
-
-#### Select a Payment Plan
-
-Our plans cover every use case scenario, from a free trial, to a global enterprise ready plan. You can also purchase addons to increase your functionality. For details on our available plans and pricing go to [Tyk Cloud Pricing](https://tyk.io/price-comparison/).
-
-Here's an overview of all of the available plans:
-
-| **Plan**          | **Who's it for?**                                                                   | **About**                                                                                                                                                                                                                                                                                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 48 hours free trial <p>[Free Support SLA]({{< ref "developer-support/support" >}})</p> | This is for POC’s and those testing the Tyk platform. | Tyk Cloud has 48 hours free trial. You can always request a longer trial period or talk to support if you need help. |
-| Starter <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#configure-custom-domains" >}})** and **[plugins]({{< ref "#configure-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
-| Launch <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#configure-custom-domains" >}})** and **[plugins]({{< ref "#configure-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
-| Grow <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "#deploy-hybrid-gateways" >}})** as an add on, along with standard support. |
-| Scale <p>[Enhanced Support SLA]({{< ref "developer-support/support" >}})</p> | For global organizations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
-
-
-{{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="Get started with Cloud free trial" >}}
-
-**Available add ons**
-
-You can purchase the following addons, depending on your plan.
-
-- Additional Control Planes
-- Additional Cloud Data Planes
-- Additional Users
-- Additional Teams
-- Additional Gateway Region (Enterprise Plans only)
-- SLA support (varies according to your plan)
-
-**Boostable Overages**
-
-Your selected plan comes with limited throughput per month. Overages allow your consumption to go over the monthly limit, which can be an easy way to deal with for example seasonal or unexpected spikes in traffic. The overage level will be automatically charged based on your throughput on a monthly basis.
-
-| Launch          | Entitlement $1,800 | Overage 1 $2,700 | Overage 2 $3,240 | Overage 3 $3,780 | Overage 4 $4,320 |
-| --------------- | :----------------: | :--------------: | :--------------: | :--------------: | :--------------: |
-| Calls (at 10kb) |        15m         |      18.75m      |      22.5m       |      26.5m       |       30m        |
-| Throughput      |       150GB        |     187.5GB      |      225GB       |     262.5GB      |      300GB       |
-
-| Grow            | Entitlement $3,800 | Overage 1 $5,700 | Overage 2 $6,840 | Overage 3 $7,980 | Overage 4 $9,120 |
-| --------------- | :----------------: | :--------------: | :--------------: | :--------------: | :--------------: |
-| Calls (at 10kb) |        100m        |       125m       |       150m       |       175m       |       200m       |
-| Throughput      |        1TB         |      1.25TB      |      1.5TB       |      1.75TB      |       2TB        |
-
-| Scale           | Entitlement $6,800 | Overage 1 $10,200 | Overage 2 $12,240 | Overage 3 $14,280 | Overage 4 $16,320 |
-| --------------- | :----------------: | :---------------: | :---------------: | :---------------: | :---------------: |
-| Calls (at 10kb) |         1b         |       1.25b       |       1.5b        |       1.75b       |        2tb        |
-| Throughput      |        10TB        |      12.5TB       |       15TB        |      17.5TB       |       20TB        |
-
-**Changing plans**
-
-You can upgrade or downgrade your current plan at any point in your billing cycle and your payment will be pro-rata'd to reflect the new payment.
-
-**Downgrading plan requirements**
-
-If you downgrade your plan, the new plan may have less entitlements than your current plan. You will need to restructure your organization to comply with the new plan entitlements before the downgraded billing starts.
-
-##### Checking the Tyk Cloud status
-
-If you want to check if there are issues with the environments and any upcoming down times, you can go to the [Tyk Status](https://status.tyk.io/) page.
-
-
-#### Add Payment Methods
-
-This section provides a step-by-step guide on how to add a payment method to your Tyk Cloud account, ensuring uninterrupted access to your API management services.
-
-**Adding a payment method to your account**
-
-**Note:** You must have *Billing Admin* user rights to add a payment method. 
-
-Follow these steps:
-
-1. Ensure you are logged in to *Tyk Cloud UI* as a Billing Admin user.
-2. Navigate to <a href="https://account.cloud-ara.tyk.io/payment-method" class="external-links" target="_blank" rel="noopener">ACCOUNT & BILLING --> Payment Method</a>. If you lack the necessary user rights, you will be directed to the main [OPERATIONS](https://dashboard.cloud-ara.tyk.io/) screen (the main login page).
-3. Enter your card details and click *Save*.
-4. You'll see a confirmation that the payment method was successfully added.
-
-{{< note success >}}
-**Note about card payments**
-  
-Currently, *Tyk Cloud* exclusively supports card payments. For alternative payment methods, please [contact us](https://tyk.io/contact/).
-{{< /note >}}
-
-**Payment Method Maintenance**
-
-As a *Billing Admin* user, you have the ability to edit or delete an existing payment method. Deleting a payment method without adding a new one will result in your plan going into [retirement]({{< ref "#retire-your-account" >}}) at the end of your current billing cycle.
-
-#### Upgrade Your Free Trial
-
-This section explains how you can upgrade your free trial of Tyk Cloud to a full account, to continue enjoying the benefits of Tyk Cloud.
-
-**My free trial is coming to an end. What are my options?**
-
-Every new Tyk Cloud account is assigned to a 48 hour free trial. You have the following options:
-
-* Upgrade to a paid plan at any stage of the free trial period.
-* Use the free trial period and upgrade after it expires
-
-**What happens if my free trial expires?**
-
-If your free trial ends without you upgrading, your account enters what we call [retirement]({{< ref "#glossary" >}}).
-
-**What does upgrading a free trial account involve?**
-
-To upgrade your free trial, you (as a Billing Admin) need to:
-* Add a [payment method]({{< ref "#add-payment-methods" >}}) to your organization
-* Select a new [plan]({{< ref "#select-a-payment-plan" >}}) from our list
-
-**I've trialled more than what my desired paid plan allows.**
-
-During the free trial we give you the same access as our Enterprise Global plan. When you come to the end of your free trial, you may want to subscribe to a plan such as 'Proof of Concept' which only allows 1 Environment, Cloud Control Plane and Cloud Data Plane. If you had an excess of these set up during your free trial, you would need to remove the appropriate amount of Environments etc from your Organization in order to start the paid plan. But don't worry, we'll let you know what you need to remove when you go to purchase a plan. 
-
-
-#### Managing Billing Admin
-
-This page explains what a Tyk Cloud billing admin can do as part of your API management process, giving you complete control over your API management.
-
-As a Billing Admin you can perform the following:
-
-* Add, edit and delete [payment methods]({{< ref "#add-payment-methods" >}})
-* Add further users as Billing Admins
-* Upgrade or downgrade plans
-
-##### Adding a new Billing Admin
-
-{{< note success >}}
-**Note**
-  
-To be added as a Billing Admin, a user cannot have an existing Tyk Cloud account.
-{{< /note >}}
-
-**Prerequisites**
-
-To add a new Billing Admin team member requires you to have one of the following roles:
-
-* Be an existing Billing Admin
-* Be the account creator Organization Admin (this user also has the Billing Admin role assigned to them)
-
-1. Select **Account & Billing** from the Admin menu (if you only have Billing Admin permissions you will automatically be logged into the Account and Billing area).
-
-{{< img src="/img/admin/tyk-cloud-account-billing-menu.png" alt="Account & Billing menu" >}}
-
-2. Select **Billing Admins** from the Accounts & Billing menu
-
-{{< img src="/img/admin/billing-admins.png" alt="Billing Admins menu" >}}
-
-3. Click **Invite Billing Admin**
-
-{{< img src="/img/admin/invite-billing-admin.png" alt="Invite Billing Admin" >}}
-
-4. Complete the Billing Admin form and click **Send Invite**
-
-##### Removing Billing Admin Access
-
-For this release, removing a billing Admin is not allowed. We can remove a Billing Admin manually, so contact your Account Manager if you need to remove a Billing Admin user.
-
-#### Retire Your Account
-
-This section explains what it means when your Tyk Cloud account goes into retirement and what your options are when it does, from account reinstatement to closure.
-
-Your plan will go into [retirement]({{< ref "#glossary" >}}) in the following scenarios:
-
-* Your subscription is manually canceled by a Billing Admin.
-* Your periodic subscription payment fails.
-* You are on a Free Trial (5 weeks) and have not signed up to a plan before the expiration of the Free Trial.
-
-**What does retirement mean?**
-
-When a plan goes into retirement, it means your Organization, Teams and any Environmenmts and APIs you manage are suspended for a grace period of up to 30 days and you won't be able to add or edit, only remove.
-
-**How can I end retirement?**
-
-Your Billing Admin needs to do one of the following:
-
-* Renew a subscription that was manually canceled.
-* Update your payment details and any outstanding payments are cleared.
-* Update a Free Trial to a paid plan, and payment is successful.
-
-**What happens at the end of the 30 day retirement period?**
-
-At the end of the 30 day retirement period if you have not restored or created a relevant subscription, all your data will be deleted.
-
-
-
-
-### Configure Developer Portal from Dashboard
-
-After deploying your Control Plane, you need to perform some initial configuration for the Developer Portal to prevent seeing any `Page Not Found` errors when trying to access the portal. You need to set up a Home page from the Control Plane Dashboard.
-
-Watch our video on configuring your Tyk Cloud Developer Portal.
-
-{{< youtube 8_SPUake84w >}}
-
-1. From the Control Plane Dashboard, select **Pages** from the **Portal Management** menu
-2. Click **Add Page**
-
-{{< img src="/img/getting-started/create-account-portal-pages.png" alt="Add Portal Page" >}}
-
-3. In the Settings, give your page a name and slug. Below we've called it Home
-4. Select **Check to make this page the Home page**
-5. Select **Default Home page template** from the Page type drop-down list
-6. You can leave the Registered Fields sections for now
-
-{{< img src="/img/getting-started/portal-home-page-settings.png" alt="Portal Home page settings" >}}
-
-7. Click **Save**.
-
-You should now be able to access your Portal from **Open Your Portal** from the **Your Developer Portal** menu.
-
-{{< img src="/img/getting-started/portal_menu.png" alt="Portal Menu" >}}
-
-#### Further Portal Configuration
-
-Our Developer Portal is completely customizable. See [Portal Customization]({{< ref "tyk-developer-portal/customise" >}}) for more details.
-
-### Configure Plugins
-
-This section explains that you can use plugins with Tyk Cloud and links to details of Python, JSVM and Golang based plugins.
-
-Tyk Cloud allows you to take advantage of Tyk's plugin architecture that allows you to write powerful middleware. For this version of Tyk Cloud, we support the use of Python, JavaScript Middleware and Golang based plugins.
-
-For more details, see: 
-* [Python Plugins]({{< ref "api-management/plugins/rich-plugins#overview" >}})
-* [JSVM]({{< ref "api-management/plugins/javascript#" >}})
-* [Golang]({{< ref "#configure-plugins" >}})
-
-Next you'll set up an Tyk Cloud Control Plane to use a Python Authentication Plugin.
-
-#### Setup Control Plane
-
-
-This page explains how to set up a control plane with plugins to customize it on Tyk Cloud, so that you can ensure your API management solution is as effective as possible. 
-
-**What do I need to do to use Plugins?**
-
-{{< img src="/img/plugins/plugins_enable.png" alt="Plugins Settings" >}}
-
-1. You need to enable Plugins on a Control Plane and on a Cloud Data Plane.
-2. You need to enter Provider details to enable you to store and access your plugins. For this version of Tyk Cloud, we are supporting Amazon AWS S3. If you haven't got an AWS S3 account, go to [https://aws.amazon.com/s3/](https://aws.amazon.com/s3/) and set one up. You will need the following details to configure SW3 within your Control Plane:
-   * Your AWS Key ID
-   * Your AWS Secret
-   * Your AWS Region
-
-{{< note success >}}
-**Note**
-
-For this release of Tyk Cloud, you need to enter your AWS Region manually. You also need to consider that uploading a custom plugin bundle to Tyk Cloud results in a new bucket being created for each bundle uploaded.  It also requires that Tyk Cloud has permissions in the form of an AWS IAM policy to have create rights on AWS.
-{{< /note >}}
-
-**AWS IAM Policy**
-
-**What is an IAM Policy?**
-
-- A policy is an entity that, when attached to an identity or resource, defines their permissions. IAM policies define permissions for an action regardless of the method that you use to perform the operation.
-
-- We have included a sample IAM policy that you need to create in AWS to allow the plugin bundle to work. For more information on creating IAM policies, see the [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html).
-
-{{< warning success >}}
-**Warning**
-  
-We recommend you restrict your IAM user as much as possible before sharing the credentials with any 3rd party, including Tyk Cloud. See [IAM User Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html) for more details.
-{{< /warning >}}
-
-```.json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "s3:CreateBucket",
-                "s3:ListBucket",
-                "s3:GetBucketLocation",
-                "s3:DeleteBucket"
-            ],
-            "Resource": "arn:aws:s3:::mserv-plugin-*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "s3:ListAllMyBuckets",
-            "Resource": "*"
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": [
-                "s3:PutObject",
-                "s3:GetObject",
-                "s3:DeleteObject"
-            ],
-            "Resource": "arn:aws:s3:::mserv-plugin-*/*"
-        }
-    ]
-}
-```
-
-Next you'll [set up the Python authentication code bundle]({{< ref "tyk-cloud#create-a-python-code-bundle" >}}).
-
-
-#### Uploading your Bundle
-
-This section walks you through uploading your bundle as part of the process of Python custom authentication on Tyk Cloud, so that you can ensure your API management solution is as effective as possible.
-
-**How do I upload my bundle file to my Amazon S3 bucket?**
-
-We are going to use a Tyk CLI tool called **mservctl**. This acts as a file server for our plugins. You use it to push your plugin bundle to your S3 bucket. Your Tyk Cloud Tyk Gateway will use **MServ** to retrieve your bundle, instead of connecting directly into S3.
-
-**Prerequisites**
-
-1. You need to install the mserv binary according to your local environment from the following repo - https://github.com/TykTechnologies/mserv/releases. Linux and MacOS are supported.
-
-2. From your Control Plane you need the following settings.
-
-{{< img src="/img/plugins/fileserver_settings.png" alt="File Server Settings" >}}
-
-   * Your Tyk Cloud Control Plane Ingress File Server Endpoint (1)
-   * Your File Server API Key (2)
-
-**How does mservctl work?**
-
-You create a config file (in YAML) that contains your Control Plane settings that connects to your S3 bucket. You then use a `push` command to upload your `bundle.zip` file to your bucket.
-
-**mservctl settings - Mac**
-
-To run `mservctl` from your local machine, from the binary directory, run:
-
-```.bash
-./mservctl.macos.amd64
-```
-**mservctl settings - Linux**
-
-To run `mservctl` from your local machine, from the binary directory, run:
-
-```.bash
-./mservctl.linux.amd64
-```
-
-The help for mservctl will be displayed. We will be using the config file options for this tutorial.
-
-```.bash
-$ mservctl help
-mservctl is a CLI application that enables listing and operating middleware in an Mserv instance.
-Use a config file (by default at $HOME/.mservctl.yaml) in order to configure the Mserv to use with the CLI.
-Alternatively pass the values with command line arguments, e.g.:
-$ mservctl list -e https://remote.mserv:8989
-Set TYK_MSERV_LOGLEVEL="debug" environment variable to see raw API requests and responses.
-Usage:
-  mservctl [command]
-Available Commands:
-  delete      Deletes a middleware from mserv
-  fetch       Fetches a middleware record from mserv
-  help        Help about any command
-  list        List middleware in mserv
-  push        Pushes a middleware to mserv
-Flags:
-      --config string     config file (default is $HOME/.mservctl.yaml)
-  -e, --endpoint string   mserv endpoint
-  -h, --help              help for mservctl
-  -t, --token string      mserv security token
-Use "mservctl [command] --help" for more information about a command.
-```
-
-{{< note success >}}
-**Note**
-  
-You may have to change the CHMOD settings on the binary to make it executable. (`chmod +x <filename>`). On MacOS you may also need to change your security settings to allow the binary to run.
-{{< /note >}}
-
-**Creating the mserv config file**
-
-1. Create a file (we'll call it `python-demo.mservctl.yaml`)
-2. Copy your Control Plane File Server endpoint URL and use it for your `endpoint` flag. Remember to prepend it with `https://`.
-3. Copy your File Server API Key and use it for your `token` flag
-
-Your `python-demo.mservctl.yaml` config file should now look like this:
-
-```.yaml
-endpoint: https://agreeable-native-mgw.usw2.ara-staging.tyk.technology/mserv
-token: eyJvcmciOiI1ZWIyOGUwY2M3ZDc4YzAwMDFlZGQ4ZmYiLCJpZCI6ImVmMTZiNGM3Y2QwMDQ3Y2JhMTAxNWIyOTUzZGRkOWRmIiwiaCI6Im11cm11cjEyOCJ9
-```
-
-**Uploading To Your S3 Bucket**
-
-1. We are going to use the MacOS binary here, just substitute the binary name for the Linx version if using that OS. Note we have our YAML config file in the same directory as our bundle.zip file. Run the following mserv `push` command:
-
-```.bash
-./mservctl.macos.amd64 --config ~/my-tyk-plugin/python-demo.mservctl.yaml push ~/my-tyk-plugin/bundle.zip
-```
-2. You should get confirmation that your middleware has been uploaded to your S3 bucket.
-
-```.bash
-INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservctl.yaml  app=mservctl
-Middleware uploaded successfully, ID: 9c9ecec1-8f98-4c3f-88cd-ca3c27599e6b
-```
-3. You will notice that the middleware uploaded has been given an ID. We are going to use that ID with an API that allows you to specify specific middlware. You can also check the contents of the middleware you have just uploaded using the mservctl `list` command. Run:
-
-```.bash
-./mservctl.macos.amd64 --config ~/my-tyk-plugin/python-demo.mservctl.yaml list
-```
-
-4. You will see the list of middleware you have pushed to your S3 Bucket
-
-```.bash
-INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservctl.yaml  app=mservctl
-  ID                                    ACTIVE  SERVE ONLY  LAST UPDATE
-
-  9c9ecec1-8f98-4c3f-88cd-ca3c27599e6b  true    false       2020-05-20T15:06:55.901Z
-  ```
-5. If you use the -f flag with the list command, you will see the functions within your middleware listed:
-
-```.bash
-./mservctl.macos.amd64 --config ~/my-tyk-plugin/python-demo.mservctl.yaml list -f
-```
-6. As you can see, the 2 middleware hooks specified within your `manifest.json` are returned:
-
-```.bash
-INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservctl.yaml  app=mservctl
-  ID                                    ACTIVE  SERVE ONLY  LAST UPDATE               FUNCTION          TYPE
-
-  9c9ecec1-8f98-4c3f-88cd-ca3c27599e6b  true    false       2020-05-20T15:06:55.901Z
-  MyPostMiddleware  Post
-  MyAuthMiddleware  CustomKeyCheck
-```
-
-Next you will [create an API]({{< ref "#test-middleware" >}}) from our Control Plane and see our middleware in action.
-
-#### Test Middleware
-
-This section explains how to test out your Python custom authentication on Tyk Cloud, to ensure that it’s working properly. 
-
-**Testing our middleware with an API**
-
-You now have your middleware uploaded to your S3 bucket. We are now going to create an API from our Control Plane Dashboard and test it via Postman
-
-**Prerequisites**
-
-* A Postman API Client from https://www.postman.com/product/api-client/
-* Your mserv middleware ID
-* The `auth` value token from your `middleware.py` code
-
-**Create your API**
-
-1. From your Control Plane in Tyk Cloud, click the *Ingress > Dashboard link*
-
-{{< img src="/img/plugins/control_plane_dashboard_link.png" alt="Dashboard Link" >}}
-
-2. From the Dashboard screen, click **APIs** from the System Management menu
-
-{{< img src="/img/plugins/apis_menu.png" alt="APIs Menu" >}}
-
-3. Click **Add New API**
-4. From the API Designer, enter the following in the **Core Settings** tab:
-   * From the API Settings section, give your API a name. We'll name this example "test"
-   * Scroll down to the Authentication section and select **Custom authentication (Python, CoProcess and JSVM plugins)** from the drop-down menu
-   * Select the **Allow query parameter as well as header** option
-5. From the Advanced Settings tab enter the following:
-   * In the Plugin Options, enter the **Plugin Bundle ID** as returned by mservctl. In our example `9c9ecec1-8f98-4c3f-88cd-ca3c27599e6b`
-   * To propagate your API to all your Cloud Data Plane Tyk Gateways connected to your Control Plane, you need to add the tag **edge** in the **API Segment Tags section**
-6. Click **Save**.
-
-You now have an API called "test" which has as its target the httpbin test site.
-
-**Testing Your API**
-
-You now need to test your API to show how the Python Authorization middleware works. We are going to use the Postman client for our testing.
-
-1. First, a quick test. Copy the URL of your Cloud Data Plane (Note the "edge" tag in the tags column) and paste it in a browser tab. You should get a **404 page not found error**.
-2. Then add the "test" endpoint to the URL in your browser tab, so in our example `uptight-paddle-gw.usw2.ara.app/test/`. You should now see a **403 "error: "forbidden"**. This is because your API has Authentication enabled and you haven't provided the credentials yet.
-3. Open up your Postman client:
-   * Paste your Gateway URL with the API appended to the request - (`uptight-paddle-gw.usw2.ara.app/test/`)
-   * Click **Send**. You'll see the **403 "error: "forbidden response"** again
-   * In the Headers section in Postman, select **Authorization** from the Key column. Add some random text in the Value field and click **Send**. You should again see the **403 error**.
-   * Now replace the random text with the `auth` value from your Python code. In our example `47a0c79c427728b3df4af62b9228c8ae` and click **Send** again.
-   * You should now see the **HTTPB** in test page
-
-{{< img src="/img/plugins/postman_success.png" alt="Postman Success" >}}
-
-4. As a further test of your plugin, you can add `get` to your API request in Postman. So in our example `uptight-paddle-gw.usw2.ara.app/test/get`. Click **Send**. This will return all the get requests, including headers. You should see the `x-tyk-request: "something"` which is the post middleware hook you set up in the Python code.
-
-{{< img src="/img/plugins/postman_all_get_requests.png" alt="Postman All Get Requests" >}}
-
-
-#### Create a Python Code Bundle
-
-This section demonstrates how to create a Python code bundle as part of the custom authentication process for Tyk Cloud, so that you can ensure your API management solution is as effective as possible.
-
-
-**What do I need to do to create my Plugin?**
-
-* You need to create the Python code bundle on your locally installed Gateway (not an Tyk Cloud Cloud Data Plane stack).
-* You will create 2 files, a manifest file (`manifest.json`) and the python file (`middleware.py`)
-* You then create a zipped bundle via our Tyk CLI tool that is built in to your local Gateway instance.
-  
-**Creating the Plugin bundle**
-
-**Step 1: Create your working directory**
-
-The first step is to create a directory for your plugin bundle files:
-
-```.copyWrapper
-mkdir ~/my-tyk-plugin
-cd ~/my-tyk-plugin
-```
-
-**Step 2: Creating the Manifest File**
-
-The manifest file contains information about your plugin file structure and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to have the following contents:
-
-```.json
-{
-  "custom_middleware": {
-    "auth_check": {
-      "name": "MyAuthMiddleware"
-    },
-    "pre": [
-      {
-        "name": "MyAuthMiddleware"
-      }
-    ],
-    "driver": "python"
-  },
-  "file_list": [
-    "middleware.py"
-  ]
-}
-```
-**File description**
-
-| File              | Description                                                                                                                                                                                                                                                                                       |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| custom_middleware | contains the middleware settings like the plugin driver you want to use (driver) and the hooks that your plugin will expose. We use the   **auth_check** for this tutorial. For other hooks see [here]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}). |
-| file_list         | contains the list of files to be included in the bundle. The CLI tool expects to find these files in the current working directory.                                                                                                                                                               |
-| name              | references the name of the function that you implement in your plugin code: **MyAuthMiddleware**                                                                                                                                                                                                  |
-| middleware.py     | an additional file that contains the main implementation of our middleware.                                                                                                                                                                                                                       |
-
-**Step 3: Creating the middleware.py file**
-
-* You import decorators from the Tyk module that gives us the Hook decorator, and we import [Tyk Python API helpers]({{< ref "api-management/plugins/rich-plugins#tyk-python-api-methods" >}})
-
-* You implement a middleware function and register it as a hook. The input includes the request object, the session object, the API meta data and its specification. The hook checks the authorization header for a specified value. In this tutorial we have called it `Authorization`.
-
-```.python
-from tyk.decorators import *
-from gateway import TykGateway as tyk
-
-@Hook
-def MyAuthMiddleware(request, session, metadata, spec):
-    auth = request.get_header('Authorization')
-    if not auth:
-        auth = request.object.params.get('authorization', None)
-
-    if auth == '47a0c79c427728b3df4af62b9228c8ae':
-        session.rate = 1000.0
-        session.per = 1.0
-        metadata["token"] = auth
-    return request, session, metadata
-
-@Hook
-def MyPostMiddleware(request, session, spec):
-    tyk.log("This is my post middleware", "info")
-    request.object.set_headers["x-tyk-request"] = "something"
-    return request, session
-  ```
-
-**File description**
-
-| File                      | Description                                                                    |
-|---------------------------|--------------------------------------------------------------------------------|
-| `MyAuthMiddleware`  @hook | checks for a value. If it is found it is treated as your authentication token. |
-| `MyPostMiddleware`  @hook | adds a header to the request. In this tutorial  `something`                    |                                                                             |
-
-**Step 4: Create the Plugin Bundle**
-
-* You create a bundle to cater for a number of plugins connected to the one API, and using a bundle makes this more manageable.
-
-* To bundle your plugin we run the following command in your working directory where your manifest.json and plugin code is.
-
-```.bash
-docker run \
-  --rm \
-  -v $(pwd):/cloudplugin \
-  --entrypoint "/bin/sh" -it \
-  -w "/cloudplugin" \
-  tykio/tyk-gateway:v3.1.2 \
-  -c '/opt/tyk-gateway/tyk bundle build -y'
-```
-
-* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "api-management/plugins/overview#how-plugin-bundles-work" >}}).
-* You should now have a `bundle.zip` file in the plugin working directory.
-* Next you will configure [uploading your plugin bundle file]({{< ref "#uploading-your-bundle" >}}) to your Amazon S3 bucket.
-
-
-#### Add Custom Authentication
-
-This section introduces the process of configuring a custom authentication plugin, so that you can override the default Tyk authentication mechanism with your own authentication logic. 
-
-**What are we going to do?**
-
-We are going to configure an Tyk Cloud Control Plane to use a custom authentication plugin built in Python.
-
-**What do I need to configure the Tyk Cloud Control Plane?**
-
-Here are the requirements:
-
-1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "tyk-self-managed/install#install-tyk-on-debian-or-ubuntu" >}}).
-2. Ensure you have a currently stable [Python 3.x version](https://www.python.org/downloads/) installed 
-3. You need install the build tools `apt-get install -y build-essential`
-4. Install our required modules:
-
-```{.copyWrapper}
-apt install python3 python3-dev python3-pip
-pip3 install protobuf grpcio
-```
-
-
 ### Deploy Legacy Hybrid Gateways
 
 {{< warning success >}}
@@ -2293,37 +1246,6 @@ Content-Length: 234
     "rpc": {"status":"pass","componentType":"system","time":"2023-03-15T11:39:10Z"}}
 }
 ```
-
-### Tyk Cloud Monitor Metrics
-
-This section explains the various metrics that are monitored by Tyk Cloud.
-
-#### Tyk Cloud Throughput
-Tyk Cloud counts the total request/response sizes for traffic transferred through a deployment. Throughput metrics are displayed for the current day. These are calculated as the difference between the throughput usage at the current time and the throughput at last midnight.
-
-External traffic is subject to billing, while internal traffic is exempt. The monitoring service aggregates traffic between different services:
-
-{{< img src="/img/cloud/tyk-cloud-monitoring-priced-traffic.png" alt="Monitoring Traffic Pricing" >}}
-
-**Billed traffic**
- - Traffic between user → Control Plane
- - Traffic between user → Cloud Data Plane
- - Traffic between user → Enterprise Developer Portal
- - Traffic between user → Mserv (plugin upload)
- - Traffic between Control Plane → Cloud Data Plane cross region
- - Traffic between Cloud Data Plane → Mserv cross region
- - Traffic between Control Plane → Portal cross region
-
-**Unbilled traffic**
- - Hybrid traffic is currently not counted
- - Traffic between Control Plane → Cloud Data Plane in the same region
- - Traffic between Cloud Data Plane → Mserv in the same region
- - Traffic between Control Plane → Portal in the same region
-
-#### Tyk Cloud Storage
-When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
-
-
 ### Tyk Cloud MDCB Supported versions
 
 This section lists the supported MDCB version for hybrid setup
@@ -2352,228 +1274,3 @@ This section lists the supported MDCB version for hybrid setup
 | v3.2.3    | v3.2.3  | v1.8.1 |
 | v3.0.9    | v3.0.9  | v1.7.11 |
 
-### Track Usage
-
-##### How to check metrics
-Login to Tyk Cloud and click on *Monitoring* within the *Operations* menu. Enable *Throughput* to display throughput metrics.
-
-{{< img src="/img/cloud/tyk-cloud-monitoring-throughput.png" alt="Monitoring Throughput" >}}
-
-Enable *Storage* to display storage metrics.
-
-{{< img src="/img/cloud/tyk-cloud-monitoring-storage.png" alt="Monitoring Storage" >}}
-
-You can also optionally filter for metrics by date.
-
-{{< img src="/img/cloud/tyk-cloud-monitoring-filtering-by-date.png" alt="Monitoring Metric Filtering" >}}
-
-Here you can see the metrics broken down per environment and a list of the top 5 control and cloud data planes.
-
-{{< img src="/img/cloud/tyk-cloud-monitoring-break-down.png" alt="Monitoring Metric break down" >}}
-
-### Troubleshooting Tyk Cloud
-
-#### FAQs
-
-**Q1: Is a Cloud Data Plane Deployment considered highly available? Do I need to deploy multiple Cloud Data Planes to a single Data Center?**
-
-A: On a Production plan and higher there are at least two Gateway instances at all times, usually in different
-availability zones within a single region (in cloud provider terms).
-
-**Q2: What are the performance benchmarks of a single Cloud Data Plane?**
-
-A: In Phase 2 we plan to allow users to choose from a pool of "runtimes" that provide different performance targets, so
-they'll be able to have a Tyk Cloud environment with Cloud Data Planes that can sustain more load and then another environment
-(e.g. for testing) that sustains less.
-
-**Q3: How can I geo-load balance across multiple Cloud Data Planes? Why should I want to?**
-
-A: The use case to deploy multiple Cloud Data Planes is either segregating regional traffic and/or segregating APIs.
-This doesn't necessarily concern High Availability.
-
-The number of actual Gateway instances within a single Cloud Data Plane deployment varies, auto-scales and load balances depending
-on the plan.
-
-If you deploy several Cloud Data Planes and want to use it to e.g. geo-load balance it's currently your responsibility to put such
-a system into place, but we have plans to help with this in later phases.
-
-**Q4: What instance sizes/VMs does a Gateway run on?**
-
-A: You won't need to worry. We abstract all the resources and only provide performance "targets". See Q2.
-
-**Q5: Can I connect my own Hybrid Gateways?**
-
-A: Yes. The MDCB Ingress URL is given in the Control Plane details page, which allows for connecting a Hybrid Gateway.
-
-**Q6: Can we use SSO in the Dashboard and/or Portal?**
-
-A: Yes, as of v3.0.0, TIB is integrated into Tyk Dashboard, meaning that once a Control Plane is deployed, a user can
-go into the Identity Management section of Tyk Dashboard and setup SSO with their IdP for both the Dashboard and
-Developer Portal.
-
-**Q7: How do I view Gateway/Dashboard logs for troubleshooting?**
-
-A: This will be exposed in later phases per deployment.
-
-**Q8: How do Segment tags work with Tyk Cloud?**
-
-A: When a Cloud Data Plane is deployed, the tag 'edge' and a location tag are automatically generated for the Cloud Data Plane. You use these tags to connect your API to the appropriate Cloud Data Plane. It works as follows:
-
-* Add the **edge** tag to your API to connect it to all Cloud Data Planes within the Control Plane.
-* Add the location tag to your API to connect it to only Cloud Data Planes with that location within the Control Plane.
-
-To add either of the tags, see [Adding an API](#steps-to-add-an-api-in-tyk-cloud) in the Getting Started section.
-
-{{< warning success >}}
-**Warning**
-  
-You must add one of the above tags to any API you add to your Control Plane Dashboard.
-{{< /warning >}}
-
-#### Glossary
-
-**Account**
-
-The highest level container for one or more Organizations.
-
-**Organization**
-
-The main entity for all your data (Environments, APIs, Users, etc). An Organization is connected to a single region and once connected, cannot be changed.
-
-**Team** 
-
-A sub-grouping within an Organization.
-
-**User**
-
-A person who is a member of a Team with a set of permissions.
-
-**Role**
-
-A set of data and access permissions that can be applied to a user or team of users. See [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}}) for more details.
-
-**Profile**
-
-The place that holds personal information for a user.
-
-**Subscription**
-
-A set of allowances assigned to an Organization (made up of plan+addons+settings).
-
-**Plan**
-
-A portion of allowances (without add-ons) that feed into the main subscription.
-
-**Operations**
-
-The place to manage all deployments for an Organization or Team. 
-
-**Environment**
-
-A grouping of 'deployments' that can have multiple Control Planes and Cloud Data Planes.
-
-**Stack**
-
-The high level name for the set of configurations making up different types of deployments.
-
-**Control Plane**
-
-A deployment type: A single management layer for data in one region (where all the data lives).
-
-**Cloud Data Plane**
-
-A deployment type: Additional workers with varying functionality that are linked to the main control plane and can be deployed in a different region from the Control Plane.
-
-**Instance**
-
-Used to control traffic and scale in a Tyk Gateway.
-
-**Dashboard**
-
-The Tyk Analytics Dashboard to manage APIs and services.
-
-**Retirement**
-
-Where an Organization has expired due to either a subscription failure or cancelation and is now within a "retirement" period of 30 days, during which an [Billing Admin]({{< ref "#assign-user-roles" >}}) can reinstate full functionality by updating or creating a new subscription.
-
-**Deploy**
-
-Deploy a not yet deployed state (a first time deployment).
-
-**Undeploy**
-
-Temporarily remove a deployed status but keep all data and configuration.
-
-**Redeploy**
-
-Redeploy from a deployed state. Used for troubleshooting.
-
-**Destroy**
-
-Permenantly remove a deployment and all associated data and configurations.
-
-**Create**
-
-Date and time of time a deployment was initially created.
-
-**Add**
-
-Add a new 'user' or 'team' etc.
-
-**Remove**
-
-Remove things that have been added e.g. users and teams.
-
-**Update**
-
-Saving a change to a configuration.
-
-**Edit**
-
-Changing configuration or information on any of the deployments or other resources such as users or teams.
-
-**Deployed**
-
-A deployment that is currently deployed.
-
-**Undeployed**
-
-A deployment that was deployed but has been undeployed.
-
-**Not Deployed**
-
-A deployment that has never been deployed.
-
-**Destroyed**
-
-A deployment that has been permenantly deleted and will not be visible in the operations console.
-
-**Unsuccessful**
-
-When there has been an error in the deployment process.
-
-**Deploying**
-
-When a deployment is being deployed.
-
-**Undeploying**
-
-When a deployment is being undeployed.
-
-See [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}}) for more details
-
-**Super Administrator**
-
-Can do everything across all organizations
-
-**Organization Admin**
-
-Can do everything within the scope of the one organization they have access to.
-
-**Team Admin**
-
-Can do everything within the scope of the one team they have access to.
-
-**Team Member**
-
-Can only view and manage the overview, environments and deployments.

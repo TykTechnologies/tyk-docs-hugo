@@ -2,8 +2,6 @@
 title: "Configure Audit Logs in Tyk Cloud"
 tags: ["Audit Logs", "Tyk Cloud", "Control Plane", "Data Plane"]
 description: "Learn how to set up and manage audit logs in Tyk Cloud Control Plane deployments."
-aliases:
-  - 
 ---
 
 ## Introduction
