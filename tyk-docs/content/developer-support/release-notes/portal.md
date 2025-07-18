@@ -58,7 +58,7 @@ We have added more flexible Developer App visibility controls, giving team membe
 
 ##### Enhanced Team Management
 
-We have also improved the experience with user and team management. Now, users can be removed from the default team (which should only be used for inactive users). This allows platform teams to ensure that users can only see the other members of their team, rather than all users in their Organisation. We've also fixed a bug where Org Admins could add users to other Organisations deployed on the Portal.
+We have also enhanced the user and team management experience. Now, users can be removed from the default team (which should only be used for inactive users). This allows platform teams to ensure that users can only see the other members of their team, rather than all users in their Organisation. We've also fixed a bug where Org Admins could add users to other Organisations deployed on the Portal.
 
 ##### Prevent Web Crawlers From Indexing Your Portal
 
@@ -89,8 +89,9 @@ To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref 
 #### Download
 - [Docker image v1.13.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.0)
   - ```bash
- docker pull tykio/portal:v1.14.0
- ```
+    docker pull tykio/portal:v1.14.0
+    ```
+
 - [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.14.0)
 
 #### Changelog {#Changelog-v1.14.0}
@@ -122,7 +123,7 @@ Portal theme templates now have access to API product tags, allowing for the dyn
 <details>
 <summary>Configurable Robots.txt Support</summary>
 
-Added native support for serving a configurable robots.txt file via a new /robots.txt endpoint. Portal admins can now define and manage crawler directives directly from the Portal Admin UI.
+Added native support for serving a configurable `robots.txt` file via a new `/robots.txt` endpoint. Portal admins can now define and manage crawler directives directly from the Portal Admin UI.
 </details>
 </li>
 <li>
@@ -157,7 +158,7 @@ Fixed an issue where API Product metadata could be lost when modifying the produ
 <details>
 <summary>API Product Synchronization Fixes</summary>
 
-Fixed issues with API Product synchronization where applied APIs were being lost during manual or automatic sync with Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details, including custom fields, are consistently preserved.
+Fixed issues with API Product synchronization, where applied APIs were being lost during manual or automatic sync with the Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details, including custom fields, are consistently preserved.
 </details>
 </li>
 </ul>
