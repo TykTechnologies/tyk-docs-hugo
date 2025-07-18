@@ -80,14 +80,10 @@ SQLite has reached its End of Life in this release, aligning with the Tyk Dashbo
 
 If you are on version 1.13.0 or an older version, we recommend upgrading to this release ASAP.
 
-While upgrading to 1.14.0, 
-1. The portal will automatically migrate the new Custom IDs to most of the existing resources. For more information, please refer to the [changelog](#Changelog-v1.14.0).
-2. Users are advised to take appropriate actions in their system regarding the `Plans` API object changes as described in the [breaking changes section]({{< ref "#breaking-changes-v1.14.0" >}}).
-
 To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
-- [Docker image v1.13.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.0)
+- [Docker image v1.14.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.0)
   - ```bash
     docker pull tykio/portal:v1.14.0
     ```
