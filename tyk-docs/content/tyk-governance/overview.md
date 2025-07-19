@@ -1,8 +1,8 @@
 ---
 title: Tyk Governance Overview
 date: 2025-04-28T15:49:11Z
-description: ""
-tags: ["Tyk Governance"]
+description: "Introduction to Tyk Governance, a universal API governance hub that enables organizations to establish, enforce, and monitor governance policies across multiple API platforms and gateways."
+tags: ["Tyk Governance", "API Governance", "API Management"]
 ---
 
 ## Overview

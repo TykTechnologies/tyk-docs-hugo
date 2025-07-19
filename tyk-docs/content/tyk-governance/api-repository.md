@@ -1,8 +1,8 @@
 ---
 title: API Repository
 date: 2025-04-28T15:49:11Z
-description: ""
-tags: ["Tyk Governance", "API Repository"]
+description: "Learn how Tyk Governance automatically discovers and catalogs APIs across multiple sources to create a comprehensive inventory of all APIs in your organization."
+tags: ["Tyk Governance", "API Repository", "API Discovery", "API Inventory"]
 ---
 
 [Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)

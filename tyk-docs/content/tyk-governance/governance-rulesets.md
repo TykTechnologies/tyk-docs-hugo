@@ -1,11 +1,11 @@
 ---
 title: Governance Rulesets
 date: 2025-07-16T15:49:11Z
-description: ""
-tags: ["Tyk Governance", "Rulesets"]
+description: "Define, manage, and enforce API standards across your organization through customizable rules that act as executable policies for API governance requirements."
+tags: ["Tyk Governance", "Rulesets", "API Standards", "Governance Policies", "API Compliance"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Manage Rulesets](#manage-rulesets) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs)| [Troubleshooting](#troubleshooting)
+[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Manage Rulesets](#manage-rulesets) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
 
 ### Availability
 
@@ -39,29 +39,29 @@ In this tutorial, we'll create a simple governance ruleset that can be used to v
 
 1. **Access the Rulesets Section**
 
-	 Navigate to the Rulesets section in your Tyk Governance dashboard.
+    Navigate to the Rulesets section in your Tyk Governance dashboard.
 
 2. **Create a New Ruleset**
 
-	 Click the "Add Ruleset" button to create a new ruleset.
+    Click the "Add Ruleset" button to create a new ruleset.
 
      {{< img src="img/governance/ruleset-list.png" >}}
      
 3. **Choose a Template**
 
-	 Select "Start from Template" and choose the "OpenAPI Best Practices" template.
+    Select "Start from Template" and choose the "OpenAPI Best Practices" template.
 
 4. **Customize Your Ruleset**
 
-	 Provide a name and description for your ruleset, then review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.
+    Provide a name and description for your ruleset, then review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.
 
 5. **Save Your Ruleset**
 
-	 Click "Save" to create your new ruleset.
+    Click "Save" to create your new ruleset.
 
 6. **View Your Ruleset**
 
-	 Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.
+    Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.
 
 ### Validation
 

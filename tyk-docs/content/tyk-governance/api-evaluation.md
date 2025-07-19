@@ -1,11 +1,11 @@
 ---
 title: API Evaluation
 date: 2025-07-16T15:49:11Z
-description: ""
-tags: ["Tyk Governance", "API Evaluation", "Rulesets"]
+description: "Validate API specifications against governance policies before deployment to catch compliance issues early in the development lifecycle and reduce rework."
+tags: ["Tyk Governance", "API Evaluation", "Rulesets", "API Validation", "Shift-Left Governance"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs)| [Troubleshooting](#troubleshooting)
+[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
 
 ### Availability
 
@@ -13,7 +13,7 @@ tags: ["Tyk Governance", "API Evaluation", "Rulesets"]
 
 ## Overview
 
-API Evaluation enables you to validate API specifications against governance policies before deployment, without requiring the API to be published or stored in your API repository. This feature helps you catch compliance issues early in the development lifecycle, reducing rework and accelerating the delivery of high-quality APIs.
+API Evaluation enables you to validate API specifications against governance policies before deployment, without requiring the API to be published or stored in your API Repository. This feature helps you catch compliance issues early in the development lifecycle, reducing rework and accelerating the delivery of high-quality APIs.
 
 ### Key Benefits
 
@@ -21,7 +21,7 @@ API Evaluation enables you to validate API specifications against governance pol
 - **Reduce Development Cycles**: Identify and fix issues before they reach code review or testing phases
 - **Seamless Integration**: Easily incorporate governance checks into CI/CD pipelines and development workflows
 - **Detailed Feedback**: Receive precise information about violations with line numbers and remediation guidance
-- **No Storage Required**: Validate API specifications without storing them in your API repository
+- **No Storage Required**: Validate API specifications without storing them in your API Repository
 
 ### Dependencies
 
@@ -42,15 +42,15 @@ In this tutorial, we'll validate an API specification against a governance rules
 
 1. **Identify Your Ruleset**
 
-	 Navigate to the Rulesets section in your Tyk Governance dashboard and note the ID of the ruleset you want to use for validation.
+    Navigate to the Rulesets section in your Tyk Governance dashboard and note the ID of the ruleset you want to use for validation.
 
 2. **Prepare Your API Specification**
 
-	 Ensure your API specification is in a valid OpenAPI format (JSON or YAML).
+    Ensure your API specification is in a valid OpenAPI format (JSON or YAML).
 
 3. **Make an API Request**
 
-	 Use the API Evaluation endpoint to validate your specification:
+    Use the API Evaluation endpoint to validate your specification:
 
     ```sh
     curl -X POST https://your-governance-instance.tyk.io/api/rulesets/evaluate-spec \
@@ -84,7 +84,7 @@ In this tutorial, we'll validate an API specification against a governance rules
 
 4. **Review the Results**
 
-	 The response will include any violations found, with details about each issue:
+    The response will include any violations found, with details about each issue:
 
     ```json
     {
@@ -110,18 +110,18 @@ In this tutorial, we'll validate an API specification against a governance rules
 
 - A successful request with no violations will return an empty errors array
 - If violations are found, each will include:
-	 - The rule code that was violated
-	 - The path in the API specification where the violation occurred
-	 - A message explaining the issue
-	 - The severity level (error, warning, info, hint)
-	 - The exact location in the file (line and character)
-	 - Guidance on how to fix the issue
+    - The rule code that was violated
+    - The path in the API specification where the violation occurred
+    - A message explaining the issue
+    - The severity level (error, warning, info, hint)
+    - The exact location in the file (line and character)
+    - Guidance on how to fix the issue
 
 ## How It Works
 
-API Evaluation works by sending your API specification to the Tyk Governance Hub, where it's validated against a specified ruleset without being stored in your API repository. The system applies each rule in the ruleset to your specification and returns detailed results.
+API Evaluation works by sending your API specification to the Tyk Governance Hub, where it's validated against a specified ruleset without being stored in your API Repository. The system applies each rule in the ruleset to your specification and returns detailed results.
 
-### Integration to Development Workflow
+### Integration into Development Workflow
 
 #### Integrating with CI/CD Pipelines
 

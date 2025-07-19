@@ -1,16 +1,16 @@
 ---
 title: Agent and API Provider Management
 date: 2025-07-16T15:49:11Z
-description: ""
-tags: ["Tyk Governance", "Agent Management", "API Provider"]
+description: "Deploy, configure, and monitor Tyk Governance agents that discover and synchronize APIs from various providers to create a federated API inventory."
+tags: ["Tyk Governance", "Agent Management", "API Provider", "API Discovery", "API Synchronization"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Configuration Options](#configuration-options) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs)| [Troubleshooting](#troubleshooting)
+[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Configuration Options](#configuration-options) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
 
 {{< note success >}}
 **Note for Tyk Cloud Users**
 
-This documentation is primarily targeted at users who run their own self-managed agents. If you're using Tyk Cloud, agents are automatically managed for you, and you don't need to worry about access tokens, installation, or configuration. You can simply use the "Agents" and "API Provider" pages in the Tyk Cloud dashboard to check connection health between the agents and Governance Hub.
+This documentation is primarily targeted at users who run their own self-managed agents. If you're using Tyk Cloud, agents are automatically managed for your Tyk Dashboard, and you don't need to worry about installation, access tokens, or configuration. You can simply use the "Agents" and "API Provider" pages in the Tyk Cloud dashboard to check connection health between the agents and Governance Hub.
 {{< /note >}}
 
 ### Availability
@@ -19,11 +19,12 @@ This documentation is primarily targeted at users who run their own self-managed
 
 ## Overview
 
-Agent and API Provider Management enables you to deploy, configure, and monitor the Tyk Governance agents that discover and synchronize APIs from various providers. 
+Agent and API Provider Management enables you to deploy, configure, and monitor the Tyk Governance agents that discover and synchronize APIs from various providers.
 
 ### Understanding Agents and API Providers
 
 **Agents** are lightweight services that act as secure bridges between your API providers and the Tyk Governance Hub. They:
+
 - Run in your environment (on-premises, cloud, or hybrid)
 - Connect to one or more API providers to discover APIs
 - Securely transmit API data to the Governance Hub
@@ -31,10 +32,12 @@ Agent and API Provider Management enables you to deploy, configure, and monitor 
 - Can be monitored through the "Agents" section in the UI
 
 **API Providers** are the systems where your APIs are defined and managed, such as:
+
 - Tyk Dashboard
 - AWS API Gateway
 
 Each provider is configured within an agent and can be monitored through the "API Providers" section in the UI, where you can see:
+
 - How many APIs are discovered from each provider
 - The connection status of each provider
 - The last synchronization time
@@ -71,7 +74,7 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
     {{< img src="img/governance/agents-list.png" >}}
 
-    -  In the New agent form, enter:
+    - In the New agent form, enter:
        - **Name**: A descriptive name for the agent (required)
        - **Description**: Details about the agent's purpose or location (required)
 
@@ -81,7 +84,7 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
     {{< img src="img/governance/agents-new-2.png" >}}
 
-	- Alternatively, you can use the API to create a new agent:
+    - Alternatively, use the API to create a new agent:
 
     ```sh
     # Replace with your actual Governance URL and API key
@@ -98,7 +101,7 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
         }'
     ```
 
-	 Note the agent ID returned in the response:
+    Note the agent ID returned in the response:
 
     ```json
     {"id":"a51d9bd0-bafe-4749-8285-e18641b151f2","name":"My API Provider Agent","last_heartbeat":"0001-01-01T00:00:00Z","status":"INACTIVE","providers":null}
@@ -119,7 +122,7 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
     {{< img src="img/governance/agents-new-4.png" >}}
 
-	- Alternatively, generate an authentication token for the agent using API:
+    - Alternatively, generate an authentication token for the agent using the API:
 
     ```sh
     # Replace with the agent ID from the previous step
@@ -134,7 +137,7 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
         }'
     ```
 
-	 Save the token from the response:
+    Save the token from the response:
 
     ```json
     {
@@ -144,7 +147,7 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
 3. **Create Agent Configuration File**
 
-	 Create a file named `agent-config.yaml` with the following content:
+    Create a file named `agent-config.yaml` with the following content:
 
     ```yaml
     # Tyk Governance Agent Configuration
