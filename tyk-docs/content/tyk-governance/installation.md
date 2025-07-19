@@ -229,45 +229,54 @@ You can also use API to create a token. After receiving your Governance Hub cred
 
 2. **Create an Agent using the API**:
 
-```bash
-# Replace these values with your actual information
-GOVERNANCE_URL="https://your-governance-instance.tyk.io"
-API_KEY="your-access-key"
-AGENT_NAME="My AWS Agent (US)"
+    ```bash
+    # Replace these values with your actual information
+    GOVERNANCE_URL="https://your-governance-instance.tyk.io"
+    API_KEY="your-access-key"
+    AGENT_NAME="My AWS Agent (US)"
 
-# Create agent first
-curl -s -X POST --location "${GOVERNANCE_URL}/api/agents/" \
-  -H "X-API-Key: ${API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "'"${AGENT_NAME}"'"
-  }'
-```
+    # Create agent first
+    curl -s -X POST --location "${GOVERNANCE_URL}/api/agents/" \
+      -H "X-API-Key: ${API_KEY}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "name": "'"${AGENT_NAME}"'"
+      }'
+    ```
 
-Example response that shows an agent is created in INACTIVE state:
+    Example response that shows an agent is created in INACTIVE state:
 
-```json
-{"id":"a51d9bd0-bafe-4749-8285-e18641b151f2","name":"My AWS agent (US)","last_heartbeat":"0001-01-01T00:00:00Z","status":"INACTIVE","providers":null}
-```
+    ```json
+    {
+      "id": "a51d9bd0-bafe-4749-8285-e18641b151f2",
+      "name": "My AWS agent (US)",
+      "description": "",
+      "last_heartbeat": "0001-01-01T00:00:00Z",
+      "status": "inactive",
+      "providers": null,
+      "token": "",
+      "version": ""
+    }
+    ```
 
-```bash
-# Extract agent ID from response
-AGENT_ID="a51d9bd0-bafe-4749-8285-e18641b151f2"
-```
+    ```bash
+    # Extract agent ID from response
+    AGENT_ID="a51d9bd0-bafe-4749-8285-e18641b151f2"
+    ```
 
 3. **Generate an Agent Token using the API**:
 
-Now you can generate an access token for the agent.
+    Now you can generate an access token for the agent.
 
-```bash
-# API call to create an agent token
-curl -X POST "${GOVERNANCE_URL}/api/auth/token/" \
-  -H "X-API-Key: ${API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "agent_id": "'"${AGENT_ID}"'"
-  }'
-```
+    ```bash
+    # API call to create an agent token
+    curl -X POST "${GOVERNANCE_URL}/api/auth/token/" \
+      -H "X-API-Key: ${API_KEY}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "agent_id": "'"${AGENT_ID}"'"
+      }'
+    ```
 
     Example response:
 
@@ -370,7 +379,7 @@ healthProbe:
 
 #### Deploy the Agent
 
-  **Docker Deployment:**
+**Docker Deployment:**
 
 ```bash
 # Replace it with your Tyk Governance license key
@@ -385,7 +394,7 @@ docker run -d --name tyk-governance-agent \
   tykio/governance-agent:$VERSION
 ```
 
-  **Kubernetes Deployment:**
+**Kubernetes Deployment:**
 
 1. Create a Kubernetes secret for the configuration:
 
@@ -464,18 +473,18 @@ kubectl apply -f agent-deployment.yaml
 
  2. Look for log messages indicating a successful connection:
 
-```
-Starting license validation... 
-License validated successfully. Valid till: ...
-starting agent
-agent started successfully
-waiting agent to establish health check
-starting health probes HTTP server","addr":":5959
-authenticated and established health stream
-health check established, waiting for sync stream
-agent registered successfully and established sync stream with governance dashboard
-waiting for sync requests from the dashboard
-```
+    ```
+    Starting license validation... 
+    License validated successfully. Valid till: ...
+    starting agent
+    agent started successfully
+    waiting agent to establish health check
+    starting health probes HTTP server","addr":":5959
+    authenticated and established health stream
+    health check established, waiting for sync stream
+    agent registered successfully and established sync stream with governance dashboard
+    waiting for sync requests from the dashboard
+    ```
 
 #### Trigger Initial Sync
 

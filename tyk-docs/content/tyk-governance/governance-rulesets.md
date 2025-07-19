@@ -43,21 +43,29 @@ In this tutorial, we'll create a simple governance ruleset that can be used to v
 
 2. **Create a New Ruleset**
 
-    Click the "Add Ruleset" button to create a new ruleset.
+    Click the "Create new ruleset" button to create a new ruleset.
 
-     {{< img src="img/governance/ruleset-list.png" >}}
+    {{< img src="img/governance/ruleset-list-2.png" >}}
      
 3. **Choose a Template**
 
-    Select "Start from Template" and choose the "OpenAPI Best Practices" template.
+    Select "Start from Template" and choose the "vacuum-owasp" template.
+
+    {{< img src="img/governance/ruleset-template-1.png" >}}
 
 4. **Customize Your Ruleset**
 
-    Provide a name and description for your ruleset, then review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.
+    Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.
+
+    {{< img src="img/governance/ruleset-template-2.png" >}}
+
+    Then, provide a name and description for your ruleset.
+
+    {{< img src="img/governance/ruleset-template-3.png" >}}
 
 5. **Save Your Ruleset**
 
-    Click "Save" to create your new ruleset.
+    Click **Finish** to create your new ruleset.
 
 6. **View Your Ruleset**
 
@@ -79,7 +87,7 @@ A typical rule in a ruleset includes:
 
 - **Given**: A JSONPath expression that selects parts of the API specification
 - **Then**: Functions to apply to the selected parts
-- **Severity**: The importance level (error, warning, info, hint)
+- **Severity**: The importance level (error, warn, info, hint)
 - **Message**: A description of what the rule checks
 - **HowToFix**: Guidance on resolving any violations
 
@@ -109,7 +117,7 @@ Define rules that enforce naming conventions, URL patterns, and response structu
 ```yaml
 path-case-convention:
   description: Path segments must use kebab-case
-  severity: warning
+  severity: warn
   given: $.paths
   then:
     field: "@key"
@@ -126,7 +134,7 @@ Create rules that check for complete and accurate documentation, including descr
 ```yaml
 operation-description:
   description: All operations must have descriptions
-  severity: warning
+  severity: warn
   given: $.paths.*.*
   then:
     field: description
@@ -206,6 +214,49 @@ Once created, rulesets can be managed through the UI or API:
 - Choose from pre-built templates for common standards
 - Customize the template to meet your specific needs
 
+### Testing Rulesets Against APIs
+
+After creating your ruleset, you'll want to test it against your APIs to ensure it correctly identifies compliance issues. You can test a ruleset through the Governance UI:
+
+1. Navigate to the Ruleset Details Page
+
+    - Go to the **Rulesets** section and select the ruleset you want to test
+
+2. Run an Evaluation
+
+    - In the ruleset details page, locate the "**Test ruleset**" section
+    - Select an API from the dropdown menu
+    - Click the "**Run ruleset**" button
+
+      {{< img src="img/governance/ruleset-test-1.png" >}}
+
+3. Review Results
+
+     - The evaluation results will display any rule violations found in the API
+     - Results are categorized by severity (High, Medium, Low)
+     - Click "View issue info" on any violation to see detailed information including:
+       - The specific rule that was violated
+       - The affected area in the API specification
+       - Guidance on how to fix the issue
+
+     {{< img src="img/governance/ruleset-test-2.png" >}}
+
+     {{< img src="img/governance/ruleset-test-3.png" >}}
+
+## Understanding Remediation Priority
+
+In Tyk Governance, "Remediation Priority" indicates how urgently an API issue should be addressed based on its risk level and potential impact. This priority helps teams focus their efforts on the most critical issues first.
+
+### Severity Mapping
+
+Remediation priority is directly derived from the severity level defined in the rule. When a rule violation is detected during evaluation, its severity level is mapped to a corresponding remediation priority:
+
+| Severity Level | Remediation Priority | Visual Indicator |
+|----------------|----------------------|------------------|
+| error          | High                 | Red pill            |
+| warn           | Medium               | Yellow/orange pill  |
+| info           | Low                  | Green pill          |
+
 ## Use Cases
 
 ### Establishing Tiered Governance Standards
@@ -250,7 +301,7 @@ Use rulesets to gradually implement and evolve governance standards as your orga
 
 1. Start with a basic ruleset focusing on critical security and fundamental design principles
 2. Gradually add more rules as teams become familiar with the standards
-3. Adjust severity levels over time (e.g., start as warnings, later promote to errors)
+3. Adjust severity levels over time (e.g., start as warns, later promote to errors)
 4. Incorporate feedback from development teams to refine rules
 
 **Benefits:**

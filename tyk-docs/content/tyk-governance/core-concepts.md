@@ -276,6 +276,10 @@ The degree to which an API adheres to defined governance policies and standards.
 
 The structured process of addressing and resolving API governance violations.
 
+### Remediation Priority
+
+Indicates how urgently an API issue should be addressed based on its risk level and potential impact. This priority helps teams focus their efforts on the most critical issues first.
+
 ### Risk Level
 
 A summary metric that reflects API governance compliance across multiple APIs, considering their adherence to selected governance rulesets.
