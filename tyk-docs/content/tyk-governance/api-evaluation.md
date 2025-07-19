@@ -59,25 +59,25 @@ In this tutorial, we'll validate an API specification against a governance rules
     -d '{
         "rulesetId": "your-ruleset-id",
         "apiSpec": {
-            "name": "My Test API",
-            "content": {
-                "openapi": "3.0.0",
-                "info": {
-                "title": "Test API",
-                "version": "1.0.0"
-                },
-                "paths": {
-                "/example": {
-                    "get": {
-                    "responses": {
-                        "200": {
-                        "description": "OK"
-                        }
+          "name": "My Test API",
+          "content": {
+            "openapi": "3.0.0",
+            "info": {
+              "title": "Test API",
+              "version": "1.0.0"
+            },
+            "paths": {
+              "/example": {
+                "get": {
+                  "responses": {
+                    "200": {
+                      "description": "OK"
                     }
-                    }
+                  }
                 }
-                }
+              }
             }
+          }
         }
     }'
     ```
@@ -103,6 +103,16 @@ In this tutorial, we'll validate an API specification against a governance rules
                 "howToFix": "Add contact information to the info section"
             }
         ]
+    }
+    ```
+
+    If there are no violations found:
+
+    ```json
+    {
+      "status" : "Success",
+      "message" : "No rule violation found",
+      "errors":[]
     }
     ```
 
@@ -144,7 +154,7 @@ jobs:
       
       - name: Validate API Specification
         run: |
-          SPEC_CONTENT=$(cat api-specs/my-api.json | jq -c .)
+          SPEC_CONTENT=$(cat api-specs/my-api.yaml | awk '{printf "%s\\n", $0}')
           curl -X POST https://your-governance-instance.tyk.io/api/rulesets/evaluate-spec \
             -H "Content-Type: application/json" \
             -H "X-API-Key: ${{ secrets.GOVERNANCE_API_KEY }}" \
@@ -152,7 +162,7 @@ jobs:
               \"rulesetId\": \"your-ruleset-id\",
               \"apiSpec\": {
                 \"name\": \"My API\",
-                \"content\": ${SPEC_CONTENT}
+                \"content\": \"$SPEC_CONTENT\"
               }
             }" > validation-results.json
             
@@ -182,7 +192,7 @@ if [ -n "$SPEC_FILE" ]; then
   
   # Convert the file content to JSON
   if [[ $SPEC_FILE == *.yaml || $SPEC_FILE == *.yml ]]; then
-    SPEC_CONTENT=$(yq eval -j $SPEC_FILE)
+    SPEC_CONTENT=$(yq eval -o=json $SPEC_FILE)
   else
     SPEC_CONTENT=$(cat $SPEC_FILE)
   fi
