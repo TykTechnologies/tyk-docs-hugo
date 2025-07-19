@@ -119,7 +119,6 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
 
     {{< img src="img/governance/agents-new-4.png" >}}
 
-
 	- Alternatively, generate an authentication token for the agent using API:
 
     ```sh
@@ -174,16 +173,6 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
             accessKeyId: "your-aws-access-key-id"
             accessKeySecret: "your-aws-access-key-secret"
             region: "us-east-1"
-
-    # Sync schedule (added in v0.2)
-    syncSchedule:
-        # Enable scheduled synchronization
-        enabled: true
-        # Interval in minutes between syncs (minimum 5)
-        intervalMinutes: 60
-
-    # Agent Settings
-    logLevel: info
     ```
 
 4. **Deploy the Agent**
@@ -268,7 +257,7 @@ Synchronization can be triggered in three ways:
 
 1. **Manual Trigger**: Through the Governance Hub UI or API
 
-     {{< img src="img/governance/api-list-sync.png" >}}
+     {{< img src="img/governance/sync-repository.png" >}}
 
 2. **Scheduled Sync**: At regular intervals configured in the agent. See [Understanding Scheduled Synchronization](#understanding-scheduled-synchronization).
    
@@ -378,7 +367,15 @@ spec:
       containers:
       - name: agent
         env:
-        - name: TYK_AGENT_ENABLE_LEADER_ELECTION
+        - name: POD_NAME # When leader election is enabled, POD_NAME environment variables must be set
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE # When leader election is enabled, POD_NAMESPACE environment variables must be set
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: TYK_AGENT_LEADERELECTION_ENABLED
           value: "true"
 ```
 
@@ -452,28 +449,105 @@ syncSchedule:
   intervalMinutes: 60
 ```
 
-#### High Availability Configuration
+#### gRPC Connection (New in v0.2)
 
-```sh
-# Leader election configuration (via environment variables)
-# TYK_AGENT_ENABLE_LEADER_ELECTION=true
-# TYK_AGENT_LEADER_ELECTION_NAMESPACE=your-namespace
-# TYK_AGENT_LEADER_ELECTION_LOCK_NAME=governance-agent-lock
+```yaml
+rpc:
+  # Keepalive configures the keepalive settings for the gRPC connection.
+  keepalive:
+    # Enabled controls whether keepalive is enabled.
+    enabled: true
+    # Time is the duration after which if there are no activities, ping will be sent.
+    time: 30s
+    # Timeout is the duration the client waits for a response to a keepalive ping.
+    timeout: 20s
+    # PermitWithoutStream if true allows sending pings even without active streams.
+    permitWithoutStream: true
+```
+
+#### High Availability Configuration (New in v0.2)
+
+```yaml
+leaderElection:
+  # Enable or disable leader election
+  enabled: true
+  # Name of the Kubernetes lease object used for leader election
+  leaseName: "governance-agent-lock"
+  # Namespace where the lease object will be created
+  # If not specified, the agent's namespace will be used
+  leaseNamespace: ""
+  # Duration that non-leader candidates will wait before attempting to acquire leadership
+  leaseDuration: "15s"
+  # Duration that the acting leader will retry refreshing leadership before giving up
+  renewDeadline: "10s"
+  # Duration the leader elector clients should wait between leadership acquisition attempts
+  retryPeriod: "2s"
 ```
 
 ### Environment Variables
 
 The agent supports configuration through environment variables:
 
-|Variable|Description|Default|
-|---|---|---|
-|`TYK_AGENT_LICENSEKEY`|Your Tyk Governance license key|-|
-|`TYK_AGENT_ENABLE_LEADER_ELECTION`|Enable Kubernetes leader election|`false`|
-|`TYK_AGENT_LEADER_ELECTION_NAMESPACE`|Kubernetes namespace for leader election|Current namespace|
-|`TYK_AGENT_LEADER_ELECTION_LOCK_NAME`|Name of the leader election lock|`governance-agent-lock`|
-|`TYK_AGENT_RPC_KEEPALIVE_ENABLED`|Enable gRPC keepalive|`true`|
-|`TYK_AGENT_RPC_KEEPALIVE_TIME`|Time between keepalive pings|`60s`|
-|`TYK_AGENT_RPC_KEEPALIVE_TIMEOUT`|Timeout for keepalive pings|`20s`|
+| Environment Variable | Description | Default Value |
+|---------------------|-------------|---------------|
+| `TYK_AGENT_LICENSEKEY` | Your Tyk Governance license key | - |
+| `TYK_AGENT_LOGLEVEL` | Log level (debug, info, warn, error) | `info` |
+| `TYK_AGENT_GOVERNANCEDASHBOARD_SERVER_URL` | The gRPC endpoint URL of the Tyk Governance service | - |
+| `TYK_AGENT_GOVERNANCEDASHBOARD_SERVER_TLS_ENABLED` | Enable TLS for gRPC connections | `false` |
+| `TYK_AGENT_GOVERNANCEDASHBOARD_SERVER_TLS_CACERTPATH` | Path to CA certificate | - |
+| `TYK_AGENT_GOVERNANCEDASHBOARD_SERVER_TLS_CLIENTCERTPATH` | Path to client certificate (for mTLS) | - |
+| `TYK_AGENT_GOVERNANCEDASHBOARD_SERVER_TLS_CLIENTKEYPATH` | Path to client key (for mTLS) | - |
+| `TYK_AGENT_GOVERNANCEDASHBOARD_SERVER_TLS_INSECURESKIPVERIFY` | Skip verification of server certificate | `false` |
+| `TYK_AGENT_GOVERNANCEDASHBOARD_AUTH_TOKEN` | Authentication token for the agent | - |
+| `TYK_AGENT_HEALTHPROBE_SERVER_PORT` | Port for health probe server | `5959` |
+
+### Scheduled Synchronization Variables (New in v0.2)
+
+| Environment Variable | Description | Default Value |
+|---------------------|-------------|---------------|
+| `TYK_AGENT_SYNCSCHEDULE_ENABLED` | Enable scheduled synchronization | `false` |
+| `TYK_AGENT_SYNCSCHEDULE_INTERVALMINUTES` | Interval in minutes between syncs (minimum 5) | `60` |
+
+### gRPC Connection Variables (New in v0.2)
+
+| Environment Variable | Description | Default Value |
+|---------------------|-------------|---------------|
+|`TYK_AGENT_RPC_KEEPALIVE_ENABLED`|Enables/disables keepalive|`true`|
+|`TYK_AGENT_RPC_KEEPALIVE_TIME`|Duration after which ping is sent|`30s`|
+|`TYK_AGENT_RPC_KEEPALIVE_TIMEOUT`|Duration client waits for ping response from the server|`20s`|
+|`TYK_AGENT_RPC_KEEPALIVE_PERMITWITHOUTSTREAM`|Allows sending pings without active streams|`true`|
+
+### Leader Election Variables (New in v0.2)
+
+| Environment Variable | Description | Default Value |
+|---------------------|-------------|---------------|
+|`TYK_AGENT_LEADERELECTION_ENABLED`|Enable Kubernetes leader election|`false`|
+|`TYK_AGENT_LEADERELECTION_LEASENAME`|Name of the lease object|`governance-agent-lock`|
+|`TYK_AGENT_LEADERELECTION_LEASENAMESPACE`|Namespace for the lease object|Agent's namespace|
+|`TYK_AGENT_LEADERELECTION_LEASEDURATION`|Duration for lease|`15s`|
+|`TYK_AGENT_LEADERELECTION_RENEWDEADLINE`|Deadline for renewing leadership|`10s`|
+|`TYK_AGENT_LEADERELECTION_RETRYPERIOD`|Period between retry attempts|`2s`|
+
+#### Required Environment Variables for Leader Election
+
+When leader election is enabled, the following environment variables must also be set:
+
+- `POD_NAME`: The name of the pod (used as the identity for leader election)
+- `POD_NAMESPACE`: The namespace of the pod (used for creating the lease object)
+
+These are typically set automatically when deploying with Kubernetes using the downward API:
+
+```yaml
+env:
+  - name: POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+```
 
 ## Use Cases
 

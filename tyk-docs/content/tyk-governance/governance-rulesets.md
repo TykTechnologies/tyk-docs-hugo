@@ -5,7 +5,7 @@ description: ""
 tags: ["Tyk Governance", "Rulesets"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Configuration Options](#configuration-options) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs)| [Troubleshooting](#troubleshooting)
+[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Manage Rulesets](#manage-rulesets) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs)| [Troubleshooting](#troubleshooting)
 
 ### Availability
 
@@ -62,8 +62,6 @@ In this tutorial, we'll create a simple governance ruleset that can be used to v
 6. **View Your Ruleset**
 
 	 Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.
-
-	 ![Ruleset Details](https://tyk.io/docs/img/governance/ruleset-details.png)
 
 ### Validation
 
@@ -136,7 +134,7 @@ operation-description:
   howToFix: "Add a meaningful description to this operation"
 ```
 
-## Configuration Options
+## Manage Rulesets
 
 ### Creating Rulesets
 
@@ -145,7 +143,7 @@ Rulesets can be created through the Governance UI or via API:
 #### Using the UI
 
 1. Navigate to the Rulesets section
-2. Click "Add Ruleset"
+2. Click **Create new ruleset**
 3. Choose to start from scratch, template, or import
 4. Configure ruleset details and rules
 5. Save the ruleset
@@ -187,22 +185,24 @@ Once created, rulesets can be managed through the UI or API:
 
 - Navigate to the Rulesets section to see all rulesets
 - Click on a ruleset to view its details and rules
-- Use filters and search to find specific rulesets
+- Use search to find specific rulesets
 
 #### Editing Rulesets
 
-- From the ruleset details page, click "Edit"
+- From the ruleset details page, click **Configure ruleset**
 - Modify ruleset metadata or individual rules
 - Save your changes
 
+<!--
 #### Deleting Rulesets
 
 - From the ruleset details page, click "Delete"
 - Confirm the deletion
+-->
 
 #### Using Templates
 
-- When creating a new ruleset, select "Start from Template"
+- When creating a new ruleset, select **Start from Template**
 - Choose from pre-built templates for common standards
 - Customize the template to meet your specific needs
 

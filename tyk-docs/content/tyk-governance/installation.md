@@ -194,13 +194,28 @@ For environments where you need to install agents manually (non-Tyk platforms or
 
 #### Generate Agent Token from Governance Hub UI
 
-1. Click on Setup a new agent
-2. Set agent details:
-   1. Name
-   2. Description
-   3. Click Create agent
-3. Click "Generate Agent Token"
-4. You can now copy the Access token generated
+1. From the Agents page, click the **New agent** button in the top-right corner.
+
+  {{< img src="img/governance/agents-list.png" >}}
+
+2. In the New agent form, enter:
+
+   - **Name**: A descriptive name for the agent (required)
+   - **Description**: Details about the agent's purpose or location (required)
+
+   Click **Create agent** to save the new agent.
+
+    {{< img src="img/governance/agents-new-1.png" >}}
+
+3. Click "Generate new access token"
+   
+    {{< img src="img/governance/agents-new-2.png" >}}
+
+4. Use the copy icon to copy the token to your clipboard
+
+    {{< img src="img/governance/agents-new-3.png" >}}
+
+    {{< img src="img/governance/agents-new-4.png" >}}
 
 #### Generate Agent Token using API
 
@@ -351,16 +366,6 @@ healthProbe:
     # Port on which the health probe server will listen
     # Ensure this port is not used by other services
     port: 5959
-
-==============================================================================
- Scheduled Synchronization (New in v0.2)
-==============================================================================
-# Configure automatic synchronization at regular intervals
-syncSchedule:
-  # Enable or disable scheduled synchronization
-  enabled: true
-  # Interval in minutes between syncs (minimum 5)
-  intervalMinutes: 60
 ```
 
 #### Deploy the Agent
@@ -370,6 +375,8 @@ syncSchedule:
 ```bash
 # Replace it with your Tyk Governance license key
 LICENSE_KEY="tyk-governance-license-key"
+
+# Replace with an available version tag
 VERSION="latest"
 
 docker run -d --name tyk-governance-agent \
@@ -412,8 +419,6 @@ spec:
         env:
         - name: TYK_AGENT_LICENSEKEY
           value: your-governance-license #Replace with your license key
-        - name: TYK_AGENT_ENABLE_LEADER_ELECTION
-          value: "true"  # Enable leader election for high availability
         ports:
         - name: health
           containerPort: 5959
@@ -437,7 +442,6 @@ spec:
           items:
           - key: config.yaml
             path: config.yaml
-
 ```
 
 Apply with:
