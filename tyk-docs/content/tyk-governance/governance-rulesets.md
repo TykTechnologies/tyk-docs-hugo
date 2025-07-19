@@ -146,17 +146,23 @@ operation-description:
 
 ### Creating Rulesets
 
-Rulesets can be created through the Governance UI or via API:
+Rulesets define governance standards and ensure API compliance with security, performance, and reliability requirements. You can create rulesets through the Governance UI or programmatically via the API.
 
 #### Using the UI
 
+The Governance UI provides a user-friendly interface for creating rulesets:
+
 1. Navigate to the Rulesets section
 2. Click **Create new ruleset**
-3. Choose to start from scratch, template, or import
-4. Configure ruleset details and rules
-5. Save the ruleset
+3. Choose how to create your ruleset (import from file, paste definition, or start from template)
+4. Provide basic information (name, description)
+5. Save your ruleset
 
 #### Using the API
+
+You can also create rulesets programmatically using the API.
+
+**Creating a Ruleset with JSON Payload**
 
 ```sh
 curl -X POST https://your-governance-instance.tyk.io/api/rulesets \
@@ -183,6 +189,24 @@ curl -X POST https://your-governance-instance.tyk.io/api/rulesets \
       }
     }
   }'
+```
+
+**Creating Rulesets from Files**
+
+For more complex rulesets or when you maintain your rulesets as files in your development environment, you can create rulesets directly from files using a multipart form request.
+
+To create a ruleset from a file, you need to send a multipart form request with two key components:
+
+1. `metadata`: JSON object containing ruleset metadata (name, description, etc.)
+2. `ruleset`: The ruleset definition file content (in YAML or JSON format)
+
+Here's how to create a ruleset from a YAML file using curl:
+
+```sh
+curl -X POST https://your-governance-instance.tyk.io/api/rulesets \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -F "metadata={\"name\":\"API Security Ruleset\",\"description\":\"Enforces API security best practices\",\"active\":true}" \
+  -F "ruleset=@/path/to/your/ruleset.yaml"
 ```
 
 ### Managing Rulesets
