@@ -451,8 +451,11 @@ menu:
               category: Page
               show: True
               path: /api-management/security-features
-            - title: "Identity Management"
+            - title: "Tyk Identity Broker (TIB)"
               path: /api-management/external-service-integration
+              category: Page
+              show: True
+            - title: "Single Sign On (SSO)"
               category: Directory
               show: True
               menu:

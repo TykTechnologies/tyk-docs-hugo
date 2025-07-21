@@ -6,6 +6,8 @@ description: "Learn how to integrate external services with Tyk API Gateway. Dis
 keywords: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder", "SAML", "OIDC", "OpenID Connect", "Profies", "IDPs", "Social Provider" ,"LDAP"]
 ---
 
+## Introduction
+
 The social provider for the Tyk Identity Broker is a thin wrapper around the excellent `goth` social auth library, modified slightly to work with a multi-tenant structure. The social provider should provide seamless integration with:
 
 *   Bitbucket
@@ -20,7 +22,6 @@ The social provider for the Tyk Identity Broker is a thin wrapper around the exc
 The social provider is ideal for SSO-style logins for the Dashboard or for the Portal. For certain providers (mainly Google+), where email addresses are returned as part of the user data, a constraint can be added to validate the users domain. This is useful for Google For Business Apps users that want to grant access to their domain users for the Dashboard.
 
 For more social provider examples see the Tyk Identity Broker (TIB) v0.2 Repo [Readme](https://github.com/TykTechnologies/tyk-identity-broker/blob/master/README.md#social).
-
 <br>
 
 {{< note success >}}
@@ -32,11 +33,11 @@ To activate SSO on the Dashboard or Developer portal, there’s no requirement t
 {{< /note >}}
 
 
-### Log into an APP with Github OAuth
+## Log into an APP with Github OAuth
 
 {{< youtube gqUaDM4aJTw >}}
 
-### Log into an APP with Google (Oauth)
+## Log into an APP with Google (Oauth)
 
 A common use case for Tyk Gateway users is to enable users to log into a web app or mobile app using a social provider such as Google, but have that user use a token in the app that is time-delimited and issued by their own API (or in this case, Tyk).
 
@@ -48,14 +49,14 @@ What the broker will do is essentially the final leg of the authentication proce
 
 Assuming we have created a client ID and secret in Google Apps to grant ourselves access to the users data, we need those details, and some additional ones from Tyk itself.
 
-#### To Set up an OAuth client with Google Apps
+### To Set up an OAuth client with Google Apps
 
 1. Go to the [Google Developer Console](https://console.developers.google.com/) and create a new app
 2. Register a new OAuth client. Let's call it WebApp 1 (Select "New Credentials -> OAuth Client ID")
 3. Select Web App
 4. Add the following URL (modify for your domain) to the "Authorized redirect URIs" section: `http://tib-hostname:TIB-PORT/auth/{PROFILE-ID}/gplus/callback`
 
-#### Create an OAuth Client in Tyk Dashboard
+### Create an OAuth Client in Tyk Dashboard
 
 TIB will use the OAuth credentials for GPlus to access and authenticate the user, it will then use another set of client credentials to make the request to Tyk to generate a token response and redirect the user, this means we need to create an OAuth client in Tyk Dashboard before we can proceed.
 
@@ -111,7 +112,7 @@ When TIB successfully authorizes the user, and generates the token using the rel
 
 There is a simplified flow, which does not require a corresponding OAuth client in Tyk Gateway, and can just generate a standard token with the same flow.
 
-### Log into Dashboard with Google 
+## Log into Dashboard with Google 
 
 Similarly to logging into an app using Tyk, OAuth and Google Plus, if we have our callback URL and client IDs set up with Google, we can use the following profile setup to access our Dashboard using a social provider:
 

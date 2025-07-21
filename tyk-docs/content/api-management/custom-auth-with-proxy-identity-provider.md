@@ -47,4 +47,3 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
 }
 ```
 
-

@@ -353,7 +353,6 @@ The LDAP Identity Provider gives you functionality to bind a user to an LDAP ser
 
 ### Log into the Dashboard using LDAP
 
-
 Below is a sample TIB profile that can be used to log a user into the Dashboard using an LDAP pass-through provider:
 
 ```{.copyWrapper}
@@ -515,3 +514,5 @@ Example profile using LDAP search filters:
 	"Type": "passthrough"
 }
 ```
+
+

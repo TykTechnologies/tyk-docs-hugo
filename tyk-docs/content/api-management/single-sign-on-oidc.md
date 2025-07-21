@@ -37,7 +37,6 @@ To set up SSO with OIDC in Tyk:
 
 <!-- TODO: Add some info and update grid -->
 
-
 ## SSO with Azure Active Directory (AD)
 
 This is an end-to-end worked example of how you can use [AzureAD](https://www.microsoft.com/en-gb/security/business/identity-access/microsoft-entra-id) and our [Tyk Identity Broker (TIB)](https://tyk.io/docs/concepts/tyk-components/identity-broker/
@@ -438,48 +437,50 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 
 1. **Prepare Encryption Keys**
   
-  - Load the certificate with the private key into Tyk:
-    - **For embedded TIB in Dashboard:** Use Tyk Dashboard's certificate manager. In the below image you can see the module in dashboard that allows to upload certificates:
-      {{< img src="/img/dashboard/certificate-manager/adding-certificate.gif" alt="Certificate manager" >}}
-    - **For standalone TIB:** Store the certificate as a file accessible to Tyk
+   - Load the certificate with the private key into Tyk:
+      - **For embedded TIB in Dashboard:** Use Tyk Dashboard's certificate manager. In the below image you can see the module in dashboard that allows to upload certificates:
+         {{< img src="/img/dashboard/certificate-manager/adding-certificate.gif" alt="Certificate manager" >}}
+      - **For standalone TIB:** Store the certificate as a file accessible to Tyk
 
-  - Load the public key into your IdP for ID token encryption (process varies by IdP)
+   - Load the public key into your IdP for ID token encryption (process varies by IdP)
 
 2. **Configure the Identity Provider**
-- Create a new client in your IdP for Tyk Identity Broker
+    - Create a new client in your IdP for Tyk Identity Broker
 
 3. **Setup OIDC Profile**
-  - Create a new [TIB profile]({{< ref "#exploring-tib-profiles" >}}):
-    - Select Social > OIDC as the provider
-    - Enter the client key and client secret from the IdP
-    - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
-    {{< img src="/img/tib/profiles/tib-profile-creation.gif" alt="Profile creation" >}}
-  - Test the basic SSO flow to ensure it's working correctly
+
+   - Create a new [TIB profile]({{< ref "#exploring-tib-profiles" >}}):
+      - Select Social > OIDC as the provider
+      - Enter the client key and client secret from the IdP
+      - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
+      {{< img src="/img/tib/profiles/tib-profile-creation.gif" alt="Profile creation" >}}
+   - Test the basic SSO flow to ensure it's working correctly
 
 4. **Enable JWE**
-  - [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#update-profile" >}})
-    - Add the following fields to the `ProviderConfig` section:
+
+   - [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#update-profile" >}})
+      - Add the following fields to the `ProviderConfig` section:
 
       ```json
       ...
       "ProviderConfig": {
-        "JWE": {
-          "Enabled": true,
-          "PrivateKeyLocation": "CERT-ID"
-        },
+         "JWE": {
+            "Enabled": true,
+            "PrivateKeyLocation": "CERT-ID"
+         },
       ...
       ```
 
-    - Set `PrivateKeyLocation` to either:
+      - Set `PrivateKeyLocation` to either:
       - The certificate ID from the certificate manager, or
       - The file path where the certificate and private key are stored
-    
-  - Update the IdP client configuration
-    - Enable JWE for the client
-    - Provide the public key for encryption
+      
+   - Update the IdP client configuration
+      - Enable JWE for the client
+      - Provide the public key for encryption
 
 5. **Verification**
-  - Test the complete flow with JWE enabled to ensure proper functionality.
+    - Test the complete flow with JWE enabled to ensure proper functionality.
 
 ### Troubleshooting
 While setting up JWE with Tyk Identity Broker, you may encounter some challenges. This section outlines common issues and their solutions to help you navigate the implementation process smoothly. 
