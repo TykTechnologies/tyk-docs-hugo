@@ -18,7 +18,7 @@ From there you have access to the full scope of Tyk API management functionality
 * Viewing granular [Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) for your Tyk managed APIs
 * [Transform traffic]({{< ref "api-management/traffic-transformation" >}}) with the Tyk API Designer
 * Add integration options such as [SSO]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) and [3rd Party IdentityProviders]({{< ref "api-management/external-service-integration" >}})
-* [Adding Segment Tags]({{< ref "#faqs" >}})
+* [Adding Segment Tags]({{< ref "tyk-cloud/troubleshooting-support" >}})
 
 
 ## Secure Your APIs

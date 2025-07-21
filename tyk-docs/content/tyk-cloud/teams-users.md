@@ -20,12 +20,12 @@ This section covers the following:
 
 - [Managing Teams]({{< ref "#managing-teams" >}})
 - [Managing Users]({{< ref "tyk-cloud/teams-users" >}})
-- Available Tyk Cloud [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}})
+- Available Tyk Cloud [User Roles]({{< ref "tyk-cloud/teams-users#user-roles-within-tyk-cloud" >}})
 - [Tyk Cloud Single Sign-On (SSO)]({{< ref "tyk-cloud/teams-users/single-sign-on" >}})
 
 ## Managing Teams 
 
-The following [user roles]({{< ref "#user-roles-in-tyk-cloud" >}}) can perform existing Team Admin tasks:
+The following [user roles]({{< ref "tyk-cloud/teams-users#user-roles-within-tyk-cloud" >}}) can perform existing Team Admin tasks:
 
 * Organization Admin - Can manage all teams in the organization they are a member of.
 * Team Admin - Can only manage the team they are a member of.
@@ -65,7 +65,7 @@ You can now invite users to your new team. See [Managing Users]({{< ref "tyk-clo
 
 ## Managing Users
 
-The following [user roles]({{< ref "#user-roles-in-tyk-cloud" >}}) can perform existing User Admin tasks:
+The following [user roles]({{< ref "tyk-cloud/teams-users#user-roles-within-tyk-cloud" >}}) can perform existing User Admin tasks:
 
 * [Organization Admin]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) - Can manage all users in the organization they are a member of.
 * [Team Admin]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) - Can only manage the users of the team they are a member of.

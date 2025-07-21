@@ -126,7 +126,7 @@ Every new Tyk Cloud account is assigned to a 48 hour free trial. You have the fo
 
 **What happens if my free trial expires?**
 
-If your free trial ends without you upgrading, your account enters what we call [retirement]({{< ref "#glossary" >}}).
+If your free trial ends without you upgrading, your account enters what we call [retirement]({{< ref "tyk-cloud#glossary" >}}).
 
 **What does upgrading a free trial account involve?**
 
@@ -186,7 +186,7 @@ For this release, removing a billing Admin is not allowed. We can remove a Billi
 
 This section explains what it means when your Tyk Cloud account goes into retirement and what your options are when it does, from account reinstatement to closure.
 
-Your plan will go into [retirement]({{< ref "#glossary" >}}) in the following scenarios:
+Your plan will go into [retirement]({{< ref "tyk-cloud#glossary" >}}) in the following scenarios:
 
 * Your subscription is manually canceled by a Billing Admin.
 * Your periodic subscription payment fails.

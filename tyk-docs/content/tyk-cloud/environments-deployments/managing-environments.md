@@ -11,7 +11,7 @@ aliases:
 
 ## Introduction
 
-Environments are used to group your [Control Plane]({{< ref "#glossary" >}}) and [Cloud Data Planes]({{< ref "#glossary" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
+Environments are used to group your [Control Plane]({{< ref "tyk-cloud#glossary" >}}) and [Cloud Data Planes]({{< ref "tyk-cloud#glossary" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
 
 {{< note success >}}
 **Note**

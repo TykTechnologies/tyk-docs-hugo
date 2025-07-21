@@ -96,7 +96,7 @@ We recommend you restrict your IAM user as much as possible before sharing the c
 }
 ```
 
-Next you'll [set up the Python authentication code bundle]({{< ref "tyk-cloud#create-a-python-code-bundle" >}}).
+Next you'll [set up the Python authentication code bundle]({{< ref "#create-a-python-code-bundle" >}}).
 
 
 ## Uploading your Bundle

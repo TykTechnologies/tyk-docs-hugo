@@ -5,7 +5,6 @@ description: "Learn how to deploy and manage hybrid gateways in Tyk Cloud, conne
 aliases:
   - /tyk-cloud/environments--deployments/hybrid-gateways
   - /tyk-cloud/environments-&-deployments/hybrid-gateways
-  - /tyk-cloud/environments-deployments/hybrid-gateways
   - /tyk-cloud/environments-deployments/hybrid-gateways-helm
   - /get-started/with-tyk-hybrid
 ---
@@ -271,7 +270,7 @@ This section lists the supported MDCB version for hybrid setup
 {{< warning success >}}
 **Warning**
 
-`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}) instead. 
+`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}) instead. 
 
 We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart#configuration" >}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
