@@ -18,6 +18,7 @@ aliases:
   - /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-
   - /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
   - /frequently-asked-questions/enable-websockets-cloud
+  - /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
 ---
 
 ## FAQs
