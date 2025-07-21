@@ -55,7 +55,7 @@ Configuring SSO with Embedded TIB is a two-step process:
 6.  Click the **Create Profile** button.
 7.  Open the created profile and copy the login URL displayed. Save it, as it will be used later in testing. (e.g., `http://localhost:3000/auth/login-with-ldap/ADProvider`)
 
-#### Test the SSO Flow
+#### Testing the SSO Flow
 
 <a id="create-login-page"></a>
 
@@ -118,7 +118,7 @@ Configuring SSO with Embedded TIB is a two-step process:
 
 ### Dashboard SSO with External TIB
 
-This guide assumes you already have a Tyk environment set up, with a Gateway and Dashboard. If you don't, please follow the [Tyk Self-Managed getting started guide]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}).
+This guide assumes you already have a Tyk environment set up, with a Gateway and Dashboard. If you don't, please follow the [Tyk Self-Managed getting started guide]({{< ref "tyk-self-managed/install" >}}).
 
 The environment used for this guide is, for simplicity's sake, all contained on a single host running Ubuntu 14.04. The hostname `my-tyk-instance.com` has been set to point at `127.0.0.1`. For production environments it is recommended that each component is hosted separately and appropriate security measures are used such as HTTPS to secure connections.
 
