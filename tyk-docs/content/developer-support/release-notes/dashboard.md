@@ -1027,7 +1027,7 @@ Introduced a form on the Tyk Dashboard that allows users to easily contact Tyk s
 
 We have enhanced security for customers in highly regulated industries by introducing JSON Web Encryption (JWE) support for OIDC single sign-on (SSO). This ensures that tokens used in authentication flows are securely encrypted, providing an additional layer of protection.
 
-[Setup guide for JWE OIDC SSO]({{< ref "api-management/external-service-integration#log-into-an-app-with-github-oauth" >}})
+[Setup guide for JWE OIDC SSO]({{< ref "api-management/single-sign-on-social-idp#log-into-an-app-with-github-oauth" >}})
 </details>
 </li>
 <li>
