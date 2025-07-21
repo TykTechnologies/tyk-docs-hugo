@@ -479,6 +479,10 @@ menu:
                 path: /tyk-cloud/environments-deployments/managing-organisations
                 category: Page
                 show: True
+              - title: "Teams and Users"
+                path: /tyk-cloud/teams-users
+                category: Page
+                show: True
               - title: "Environments"
                 path: /tyk-cloud/environments-deployments/managing-environments
                 category: Page
@@ -495,20 +499,12 @@ menu:
                 path: /tyk-cloud/account-billing
                 category: Page
                 show: True
-              - title: "Teams and Users"
-                path: /tyk-cloud/teams-users
-                category: Page
-                show: True
               - title: "Hybrid Gateways"
-                path: /tyk-cloud/initial-portal-config
+                path: /tyk-cloud/environments-deployments/hybrid-gateways
                 category: Page
                 show: True
               - title: "Managing APIs"
-                path: /tyk-cloud/initial-portal-config
-                category: Page
-                show: True
-              - title: "Import APIs"
-                path: /tyk-cloud/initial-portal-config
+                path: /tyk-cloud/securing-your-apis
                 category: Page
                 show: True
             - title: "Configuration"
