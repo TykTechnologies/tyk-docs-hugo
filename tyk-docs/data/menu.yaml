@@ -464,9 +464,86 @@ menu:
             category: Page
             show: True
           - title: "Tyk Cloud"
-            path: /tyk-cloud
             category: Page
             show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-cloud
+              category: Page
+              show: True
+            - title: "Management"
+              category: Page
+              show: True
+              menu:
+              - title: "Organizations"
+                path: /tyk-cloud/environments-deployments/managing-organisations
+                category: Page
+                show: True
+              - title: "Teams and Users"
+                path: /tyk-cloud/teams-users
+                category: Page
+                show: True
+              - title: "Environments"
+                path: /tyk-cloud/environments-deployments/managing-environments
+                category: Page
+                show: True
+              - title: "Control Plane"
+                path: /tyk-cloud/environments-deployments/managing-control-planes
+                category: Page
+                show: True
+              - title: "Data Plane"
+                path: /tyk-cloud/environments-deployments/managing-gateways
+                category: Page
+                show: True
+              - title: "Accounts and Billing"
+                path: /tyk-cloud/account-billing
+                category: Page
+                show: True
+              - title: "Hybrid Gateways"
+                path: /tyk-cloud/environments-deployments/hybrid-gateways
+                category: Page
+                show: True
+              - title: "Managing APIs"
+                path: /tyk-cloud/securing-your-apis
+                category: Page
+                show: True
+            - title: "Configuration"
+              path: /tyk-open-source
+              category: Page
+              show: True
+              menu:
+              - title: "Developer Portal"
+                path: /tyk-cloud/initial-portal-config
+                category: Page
+                show: True
+              - title: "Custom Plugins"
+                path: /tyk-cloud/using-plugins
+                category: Page
+                show: True
+              - title: "Custom Domains"
+                path: /tyk-cloud/using-custom-domains
+                category: Page
+                show: True
+              - title: "Audit Logs"
+                path: /api-management/cloud/audit-logs
+                category: Page
+                show: True
+              - title: "Monitor Metrics"
+                path: /tyk-cloud/environments-deployments/monitoring-how-it-works
+                category: Page
+                show: True
+              - title: "Configure Telemetry"
+                path: /tyk-cloud/telemetry
+                category: Page
+                show: True
+              - title: "Single Sign On (SSO)"
+                path: /tyk-cloud/teams-users/single-sign-on
+                category: Page
+                show: True
+            - title: "Troubleshooting"
+              path: /tyk-cloud/troubleshooting-support
+              category: Page
+              show: True
           - title: "Tyk Open Source"
             category: Directory
             show: True

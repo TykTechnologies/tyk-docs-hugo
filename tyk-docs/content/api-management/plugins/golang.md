@@ -778,8 +778,8 @@ Here we see:
 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
-- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud#configure-plugins" >}})
-- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud#uploading-your-bundle" >}})
+- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud/using-plugins" >}})
+- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}})
 
 ## Example custom Go plugins
 
