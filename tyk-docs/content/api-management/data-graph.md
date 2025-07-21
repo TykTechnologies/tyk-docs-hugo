@@ -95,12 +95,12 @@ The difference is that with DataSources you simply configure how the engine shou
 
 DataSources can be internal as well as external.
 
-Internal DataSources are those APIs that are already managed by tyk, e.g. REST or SOAP APIs which you already manage through the Dashboard.
-You can make use of the rich ecosystem of middlewares for internal DataSources to validate and transform requests and responses.
+Internal DataSources are APIs that are already managed by Tyk, such as REST or SOAP services configured through the Dashboard.
+You can take advantage of Tyk’s rich middleware ecosystem to validate and transform requests and responses for these internal DataSources.
 
-External DataSources are those APIs that you're not (yet) managing through tyk.
-For simplicity reasons you can also add these to your data graph without previously adding them as a dedicated API to tyk.
-If you later decide you want to add additional middlewares to one of them you can always make the transition from external to internal API.
+External DataSources are APIs that you’re not currently managing through Tyk.
+For simplicity, you can add them to your data graph without first configuring them as dedicated APIs in Tyk.
+If you later decide to apply middleware or other policies, you can easily transition an external DataSource into a managed internal API.
 
 Head over to the [connect data source]({{< ref "api-management/data-graph#udg" >}}) section to learn about the supported data sources and how to connect them to Tyk.
 

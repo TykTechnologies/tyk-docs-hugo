@@ -1,5 +1,5 @@
 ---
-title: "Transform Traffic by using Tyk Middlewares"
+title: "Transform Traffic by using Tyk Middleware"
 date: 2025-02-10
 tags: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "Virtual Endpoints", "Go Templates", "JQ Transforms", "Request Context Variables"]
 description: ""
@@ -46,7 +46,7 @@ Tyk's [API-level cache]({{< ref "api-management/response-caching#basic-caching" 
 
 #### Circuit Breaker
 
-The [Circuit Breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}) is a protective mechanism that helps to maintain system stability by preventing repeated failures and overloading of services that are erroring. When a network or service failure occurs, the circuit breaker prevents further calls to that service, allowing the affected service time to recover while ensuring that the overall system remains functional.
+The [Circuit Breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers/" >}}) is a protective mechanism that helps to maintain system stability by preventing repeated failures and overloading of services that are erroring. When a network or service failure occurs, the circuit breaker prevents further calls to that service, allowing the affected service time to recover while ensuring that the overall system remains functional.
 
 #### Do Not Track Endpoint
 
@@ -54,7 +54,7 @@ If [traffic logging]({{< ref "api-management/logs-metrics#api-traffic-logs" >}})
 
 #### Enforced Timeout
 
-Tyk’s [Enforced Timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) middleware can be used to apply a maximum time that the Gateway will wait for a response before it terminates (or times out) the request. This helps to maintain system stability and prevents unresponsive or long-running tasks from affecting the overall performance of the system.
+Tyk’s [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers/" >}}) middleware can be used to apply a maximum time that the Gateway will wait for a response before it terminates (or times out) the request. This helps to maintain system stability and prevents unresponsive or long-running tasks from affecting the overall performance of the system.
 
 #### Ignore Authentication
 
