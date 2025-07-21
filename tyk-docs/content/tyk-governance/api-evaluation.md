@@ -125,7 +125,7 @@ In this tutorial, we'll validate an API specification against a governance rules
     - A message explaining the issue
     - The severity level (error, warning, info, hint)
     - The exact location in the file (line and character)
-    - Guidance on how to fix the issue
+    - Guidance on how to fix the issue (if available)
 
 ## How It Works
 
