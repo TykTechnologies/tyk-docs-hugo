@@ -252,7 +252,7 @@ Once it's working you can also add two more enhancements - SSO and MFA
    You will need to:
 	- set up a web server with a login page and a form for `user` and `password`
 	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7]({{< ref "#create-login-page" >}})
+    Explicit details are in [steps 6-7]({{< ref "api-management/single-sign-on-ldapapi-management/single-sign-on-ldap#create-login-page" >}})
 
 #### Multi-Factor-Authentication (MFA) Support
    MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
@@ -283,7 +283,7 @@ This will walk you through securing access to your Tyk Dashboard using OpenID Co
 
 * A free account with [Auth0](https://auth0.com/)
 * A Tyk Self-Managed or Cloud installation
-* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "#what-is-tyk-identity-broker-tib" >}}) for more details.
+* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) for more details.
 
 ### Create a new user in Auth0
 
@@ -449,7 +449,7 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 
 3. **Setup OIDC Profile**
 
-   - Create a new [TIB profile]({{< ref "#exploring-tib-profiles" >}}):
+   - Create a new [TIB profile]({{< ref "api-management/external-service-integration#exploring-tib-profiles" >}}):
       - Select Social > OIDC as the provider
       - Enter the client key and client secret from the IdP
       - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
