@@ -88,7 +88,7 @@ In this tutorial, we'll validate an API specification against a governance rules
 
     ```json
     {
-        "status": "success",
+        "status": "Success",
         "message": "Rule violations found",
         "errors": [
             {
