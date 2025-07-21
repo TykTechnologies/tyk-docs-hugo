@@ -57,7 +57,7 @@ In this tutorial, we'll validate an API specification against a governance rules
     -H "Content-Type: application/json" \
     -H "X-API-Key: YOUR_API_KEY" \
     -d '{
-        "rulesetId": "your-ruleset-id",
+        "rulesetId": "$RULESET_ID",
         "apiSpec": {
           "name": "My Test API",
           "content": {
