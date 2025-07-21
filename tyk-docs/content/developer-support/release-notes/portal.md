@@ -154,7 +154,7 @@ Fixed an issue where API Product metadata could be lost when modifying the produ
 <details>
 <summary>API Product Synchronization Fixes</summary>
 
-Fixed issues with API Product synchronization, where applied APIs were being lost during manual or automatic sync with the Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details, including custom fields, are consistently preserved.
+Fixed an issue where associations with APIs or even entire Products could be lost during synchronization with the Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details are consistently preserved.
 </details>
 </li>
 </ul>
