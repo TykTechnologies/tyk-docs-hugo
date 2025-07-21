@@ -24,7 +24,7 @@ Tyk Cloud allows you to take advantage of Tyk's plugin architecture that allows 
 For more details, see: 
 * [Python Plugins]({{< ref "api-management/plugins/rich-plugins#overview" >}})
 * [JSVM]({{< ref "api-management/plugins/javascript#" >}})
-* [Golang]({{< ref "#configure-plugins" >}})
+* [Golang]({{< ref "tyk-cloud/using-plugins" >}})
 
 Next you'll set up an Tyk Cloud Control Plane to use a Python Authentication Plugin.
 

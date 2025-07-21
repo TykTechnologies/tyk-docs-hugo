@@ -13,7 +13,7 @@ Control Planes are situated in your Organization's home region and provide links
 
 ## Prerequisites
 
-All [user roles]({{< ref "#assign-user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organization Admin and the Team Admin can create or delete deployments.
+All [user roles]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organization Admin and the Team Admin can create or delete deployments.
 
 ## Adding a new Control Plane
 
@@ -24,28 +24,28 @@ Watch our video on setting up a Control Plane and a Cloud Data Plane.
 {{< note success >}}
 **Note**
   
-The number of Control Planes you can add is dependent on your [plan]({{< ref "#select-a-payment-plan" >}})
+The number of Control Planes you can add is dependent on your [plan]({{< ref "tyk-cloud/account-billing#select-a-payment-plan" >}})
 {{< /note >}}
 
 1. From the Deployments screen click **Add Deployment** (you can also add a Deployment from within an Environment overview)
 2. Enter a name for the new Control Plane
 3. Select Control Plane from the Type drop-down list
 4. Select the Bundle Channel and Version
-5. (Optional) Enter a [custom domain]({{< ref "#configure-custom-domains" >}}) if required
-6. (Optional) Enable [plugins]({{< ref "#configure-plugins" >}}) if required
+5. (Optional) Enter a [custom domain]({{< ref "tyk-cloud/using-custom-domains" >}}) if required
+6. (Optional) Enable [plugins]({{< ref "tyk-cloud/using-plugins" >}}) if required
 
 ## Edit Control Planes
 
 You can edit the following Control Plane settings:
 * Change the Control Plane name
-* Add a [custom domain]({{< ref "#configure-custom-domains" >}})
+* Add a [custom domain]({{< ref "tyk-cloud/using-custom-domains" >}})
 * Change the Bundle Channel and Bundle Version
-* Enable [plugins]({{< ref "#configure-plugins" >}})
+* Enable [plugins]({{< ref "tyk-cloud/using-plugins" >}})
 
 {{< note success >}}
 **Note**
   
-The use of custom domains is dependent on your [plan]({{< ref "#select-a-payment-plan" >}})
+The use of custom domains is dependent on your [plan]({{< ref "tyk-cloud/account-billing#select-a-payment-plan" >}})
 {{< /note >}}
 
 To edit an existing Control Plane:

@@ -16,12 +16,12 @@ Environments are used to group your [Control Plane]({{< ref "#glossary" >}}) and
 {{< note success >}}
 **Note**
 
-The number of Environments you can create is determined by your [plan]({{< ref "#select-a-payment-plan" >}})
+The number of Environments you can create is determined by your [plan]({{< ref "tyk-cloud/account-billing#select-a-payment-plan" >}})
 {{< /note >}}
 
 ## Prerequisites
 
-The following [user roles]({{< ref "#assign-user-roles" >}}) can perform Environment Admin tasks:
+The following [user roles]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) can perform Environment Admin tasks:
 
 - Org Admin
 - Team Admin

@@ -22,7 +22,7 @@ aliases:
 
 This section covers the following:
 
-* The available [Tyk Cloud Plans]({{< ref "#select-a-payment-plan" >}})
+* The available [Tyk Cloud Plans]({{< ref "tyk-cloud/account-billing#select-a-payment-plan" >}})
 * Adding [Payment Methods]({{< ref "#add-payment-methods" >}})
 * How to [upgrade from the free trial plan]({{< ref "#upgrade-your-free-trial" >}})
 * [Managing Billing Admins]({{< ref "#managing-billing-admin" >}}) on your account
@@ -37,9 +37,9 @@ Here's an overview of all of the available plans:
 | **Plan**          | **Who's it for?**                                                                   | **About**                                                                                                                                                                                                                                                                                                                                         |
 | ----------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 48 hours free trial <p>[Free Support SLA]({{< ref "developer-support/support" >}})</p> | This is for POC’s and those testing the Tyk platform. | Tyk Cloud has 48 hours free trial. You can always request a longer trial period or talk to support if you need help. |
-| Starter <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#configure-custom-domains" >}})** and **[plugins]({{< ref "#configure-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
-| Launch <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#configure-custom-domains" >}})** and **[plugins]({{< ref "#configure-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
-| Grow <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "#deploy-hybrid-gateways" >}})** as an add on, along with standard support. |
+| Starter <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "tyk-cloud/using-custom-domains" >}})** and **[plugins]({{< ref "tyk-cloud/using-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
+| Launch <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "tyk-cloud/using-custom-domains" >}})** and **[plugins]({{< ref "tyk-cloud/using-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
+| Grow <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}})** as an add on, along with standard support. |
 | Scale <p>[Enhanced Support SLA]({{< ref "developer-support/support" >}})</p> | For global organizations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
 
 
@@ -132,7 +132,7 @@ If your free trial ends without you upgrading, your account enters what we call 
 
 To upgrade your free trial, you (as a Billing Admin) need to:
 * Add a [payment method]({{< ref "#add-payment-methods" >}}) to your organization
-* Select a new [plan]({{< ref "#select-a-payment-plan" >}}) from our list
+* Select a new [plan]({{< ref "tyk-cloud/account-billing#select-a-payment-plan" >}}) from our list
 
 **I've trialled more than what my desired paid plan allows.**
 

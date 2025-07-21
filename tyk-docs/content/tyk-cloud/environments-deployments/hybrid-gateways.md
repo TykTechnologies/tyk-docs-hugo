@@ -14,7 +14,7 @@ aliases:
 
 [Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:
 
-- as [Cloud Gateways]({{< ref "#managing-cloud-data-plane" >}}): Deployed and managed in *Tyk Cloud*, in any of our available regions. These are SaaS gateways, so there are no deployment or operational concerns.
+- as [Cloud Gateways]({{< ref "tyk-cloud/environments-deployments/managing-gateways" >}}): Deployed and managed in *Tyk Cloud*, in any of our available regions. These are SaaS gateways, so there are no deployment or operational concerns.
 - as Hybrid Gateways: This is a self-managed data plane, deployed in your infrastructure and managed by yourself. Your infrastructure can be a public or private cloud, or even your own data center.
 
 This page describes the deployment of hybrid data planes and how to connect them to Tyk Cloud, in both Kubernetes and Docker environments.
@@ -165,7 +165,7 @@ Content-Length: 59
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* Connection details to remote control plane from the above [section](#deploy-hybrid-gateways).
+* Connection details to remote control plane from the above [section](tyk-cloud/environments-deployments/hybrid-gateways).
 
 The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}) to configure Tyk Gateway that includes:
 - Redis for key storage
@@ -175,7 +175,7 @@ At the end of this quickstart Tyk Gateway should be accessible through service `
 
 **1. Set connection details**
 
-Set the below environment variables and replace values with connection details to your Tyk Cloud remote control plane. See the above [section](#deploy-hybrid-gateways) on how to get the connection details.
+Set the below environment variables and replace values with connection details to your Tyk Cloud remote control plane. See the above [section](tyk-cloud/environments-deployments/hybrid-gateways) on how to get the connection details.
 
 ```bash
 MDCB_UserKey=9d20907430e440655f15b851e4112345
@@ -237,7 +237,7 @@ Confirm the removal by clicking _DELETE HYBRID DATA PLANE_
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-confirm-config-removal.png" alt="Tyk Cloud hybrid confirm removal of configs" >}}
 
-### Tyk Cloud MDCB Supported versions
+## Tyk Cloud MDCB Supported versions
 
 This section lists the supported MDCB version for hybrid setup
 
@@ -271,7 +271,7 @@ This section lists the supported MDCB version for hybrid setup
 {{< warning success >}}
 **Warning**
 
-`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{< ref "#deploy-hybrid-gateways" >}}) instead. 
+`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}) instead. 
 
 We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart#configuration" >}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}

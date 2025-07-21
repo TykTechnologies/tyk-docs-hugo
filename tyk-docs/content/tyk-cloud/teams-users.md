@@ -19,9 +19,9 @@ aliases:
 This section covers the following:
 
 - [Managing Teams]({{< ref "#managing-teams" >}})
-- [Managing Users]({{< ref "#managing-teams-and-users" >}})
+- [Managing Users]({{< ref "tyk-cloud/teams-users" >}})
 - Available Tyk Cloud [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}})
-- [Tyk Cloud Single Sign-On (SSO)]({{< ref "#configure-single-sign-on-sso" >}})
+- [Tyk Cloud Single Sign-On (SSO)]({{< ref "tyk-cloud/teams-users/single-sign-on" >}})
 
 ## Managing Teams 
 
@@ -45,7 +45,7 @@ For an existing team, you can:
 
 ### Create a New Team
 
-You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to create a new team.
+You need to be a [Organization Admin]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) to create a new team.
 
 1. From the Admin > Teams screen, click **Add Team**.
 2. Enter a name for the new team that will be added to the organization.
@@ -53,22 +53,22 @@ You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to creat
 
 ### Delete a Team
 
-You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to delete a team.
+You need to be a [Organization Admin]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) to delete a team.
 
 1. From the Teams screen, select the team name.
 2. Click **Edit**.
 3. Click **Delete Team**.
 4. You'll be asked to confirm the deletion. Click **Delete Team** from the dialog box to confirm, or click **Cancel**.
 
-You can now invite users to your new team. See [Managing Users]({{< ref "#managing-teams-and-users" >}}) for more details.
+You can now invite users to your new team. See [Managing Users]({{< ref "tyk-cloud/teams-users" >}}) for more details.
 
 
 ## Managing Users
 
 The following [user roles]({{< ref "#user-roles-in-tyk-cloud" >}}) can perform existing User Admin tasks:
 
-* [Organization Admin]({{< ref "#assign-user-roles" >}}) - Can manage all users in the organization they are a member of.
-* [Team Admin]({{< ref "#assign-user-roles" >}}) - Can only manage the users of the team they are a member of.
+* [Organization Admin]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) - Can manage all users in the organization they are a member of.
+* [Team Admin]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) - Can only manage the users of the team they are a member of.
 
 {{< note success >}}
 **Note**

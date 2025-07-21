@@ -85,7 +85,7 @@ Paid plans and Enterprise trials allow users to select one of 6 AWS locations as
 **Note**
 
 The Tyk Cloud trial is limited to 48 hours. After this period, your data will be deleted.
-The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview/intro" >}}).
+The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview/intro" >}}).
 To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
 {{< /note >}}
 
@@ -372,7 +372,7 @@ We have actually only scratched the surface of what is possible with Tyk Cloud.
 What to go through next:
 
 * Managing your Deployments
-* Adding [Plugins and Middleware]({{< ref "#configure-plugins" >}}) to your Control Plane
+* Adding [Plugins and Middleware]({{< ref "tyk-cloud/using-plugins" >}}) to your Control Plane
 
 
 ## Glossary
@@ -439,7 +439,7 @@ The Tyk Analytics Dashboard to manage APIs and services.
 
 **Retirement**
 
-Where an Organization has expired due to either a subscription failure or cancelation and is now within a "retirement" period of 30 days, during which an [Billing Admin]({{< ref "#assign-user-roles" >}}) can reinstate full functionality by updating or creating a new subscription.
+Where an Organization has expired due to either a subscription failure or cancelation and is now within a "retirement" period of 30 days, during which an [Billing Admin]({{< ref "tyk-cloud/teams-users#assign-user-roles" >}}) can reinstate full functionality by updating or creating a new subscription.
 
 **Deploy**
 
