@@ -72,6 +72,10 @@ There are no breaking changes in this release.
 
 For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
 
+#### Compatibility
+
+Developer Portal 1.14.0 has been tested and is confirmed as compatible with Tyk Dashboard 5.3 and 5.8 onwards.
+
 #### Deprecations
 
 SQLite has reached its End of Life in this release, aligning with the Tyk Dashboard. SQLite was previously recommended for use only in basic proofs of concept. Now, for such scenarios and in production, we recommend using PostgreSQL or MySQL for improved scalability and support.
