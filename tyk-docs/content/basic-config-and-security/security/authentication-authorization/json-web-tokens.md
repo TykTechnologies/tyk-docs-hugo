@@ -109,9 +109,9 @@ We'll start by configuring the identity provider, then set up JWT validation in 
     1. Log in to your Keycloak admin console
     2. Create or select a realm (e.g. `tyk-demo`)
     3. Navigate to Clients and create a new client with:
-        Client ID: `tyk-api-client`
-        Client Protocol: `openid-connect`
-        Access Type: `confidential`
+          - Client ID: `tyk-api-client`
+          - Client Protocol: `openid-connect`
+          - Access Type: `confidential`
     4. After saving, go to the Installation tab and select "OIDC JSON" format
     5. Your JWKS URI will be: `http://your-keycloak-host/realms/tyk-demo/protocol/openid-connect/certs`
 
@@ -124,12 +124,12 @@ We'll start by configuring the identity provider, then set up JWT validation in 
     1. In the Tyk Dashboard, navigate to **Policies**
     2. Click **Add Policy**
     3. Configure the policy:
-        Name: `JWT Auth Policy`
-        APIs: Select your Tyk OAS API
-        Access Rights: Configure appropriate paths and methods
-        Authentication: Select JWT
-        JWT Scope Claim Name: Enter the JWT claim that contains scopes (e.g. `scope` or `permissions`)
-        Required Scopes: Add any required scopes for access (optional)
+          - Name: `JWT Auth Policy`
+          - APIs: Select your Tyk OAS API
+          - Access Rights: Configure appropriate paths and methods
+          - Authentication: Select JWT
+          - JWT Scope Claim Name: Enter the JWT claim that contains scopes (e.g. `scope` or `permissions`)
+          - Required Scopes: Add any required scopes for access (optional)
     4. Click Create to save your policy
 
 3. **Configure JWT Authentication in Tyk OAS API**
@@ -138,15 +138,15 @@ We'll start by configuring the identity provider, then set up JWT validation in 
     2. Click **Edit**
     3. Enable **Authentication** in the **Server** section, select **JSON Web Token (JWT)** as the authentication method
     4. Configure the JWT settings:
-        Token Signing Method: Select `RSA Public Key`
-        Subject identity claim: Set to `sub`
-        JWKS Endpoint: Enter [your JWKS URI for your IdP]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#1-configure-your-identity-provider-to-obtain-your-jwks-uri" >}})
-        Policy claim: Set to `pol`
-        Default policy: Select `JWT Auth Policy` (the policy you created previously)
-        Clock Skew (optional): Set to accommodate time differences (e.g. `10`)
-        Authentication Token Location: `header`
-        Header Name: `Authorization`
-        Strip Authorization Data: `Enabled`
+          - Token Signing Method: Select `RSA Public Key`
+          - Subject identity claim: Set to `sub`
+          - JWKS Endpoint: Enter [your JWKS URI for your IdP]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#1-configure-your-identity-provider-to-obtain-your-jwks-uri" >}})
+          - Policy claim: Set to `pol`
+          - Default policy: Select `JWT Auth Policy` (the policy you created previously)
+          - Clock Skew (optional): Set to accommodate time differences (e.g. `10`)
+          - Authentication Token Location: `header`
+          - Header Name: `Authorization`
+          - Strip Authorization Data: `Enabled`
     5. Click **Save API**
 
 4. **Test your API**
