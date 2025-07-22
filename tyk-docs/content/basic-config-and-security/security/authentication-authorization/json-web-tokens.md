@@ -140,7 +140,7 @@ We'll start by configuring the identity provider, then set up JWT validation in 
     4. Configure the JWT settings:
           - Token Signing Method: Select `RSA Public Key`
           - Subject identity claim: Set to `sub`
-          - JWKS Endpoint: Enter [your JWKS URI for your IdP]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#1-configure-your-identity-provider-to-obtain-your-jwks-uri" >}})
+          - JWKS Endpoint: Enter your JWKS URI for your IdP obtained in step 1
           - Policy claim: Set to `pol`
           - Default policy: Select `JWT Auth Policy` (the policy you created previously)
           - Clock Skew (optional): Set to accommodate time differences (e.g. `10`)
