@@ -263,27 +263,11 @@ x-tyk-api-gateway:
 
 ### JWT Signatures
 
-Tyk can validate JSON Web Tokens signed using the following methods:
-
-| Method | Cryptographic style | Secret type    | Suppported locations for secret  |
-|--------|---------------------|----------------|----------------------------------|
-| HMAC   | symmetric           | Shared secret  | API definition                   |
-| RSA    | asymmetric          | Public key     | API definition, JWKS endpoint    |
-| ECDSA  | asymmetric          | Public key     | API definition, JWKS endpoint    |
-
-#### RSA Supported Algorithms
-
-Both RSA & PSA classes of RSA algorithms are supported by Tyk, including:
-- RS256
-- RS384
-- RS512 
-- PS256
-- PS384
-- PS512
-
-Read more about the differences between RSA & PSA classes of RSA algorithms [here](https://www.encryptionconsulting.com/overview-of-rsassa-pss/).
-
-To use either - simply select the "RSA" signing method in your API definition, and Tyk will use the appropriate algorithm based on the key you provide.
+| Method    | Cryptographic Style | Secret Type   | Supported Locations for Secret | Supported Algorithms                                 |
+| --------- | ------------------- | ------------- | ------------------------------ | ---------------------------------------------------- |
+| **HMAC**  | Symmetric           | Shared secret | API definition                 | `HS256`, `HS384`, `HS512`                            |
+| **RSA**   | Asymmetric          | Public key    | API definition, JWKS endpoint  | `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, `PS512` |
+| **ECDSA** | Asymmetric          | Public key    | API definition, JWKS endpoint  | `ES256`, `ES384`, `ES512`                            |
 
 #### Secret Management
 
