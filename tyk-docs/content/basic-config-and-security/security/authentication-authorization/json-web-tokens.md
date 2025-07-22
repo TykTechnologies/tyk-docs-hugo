@@ -73,7 +73,7 @@ In this tutorial, we'll secure a Tyk OAS API using JWT authentication with eithe
 {{< note success >}}
 **Note** 
 
-If you want to try out JWT Auth without linking up to a third-party IdP then you can skip step 1 and provide the base64 encoded public key for your JWT (in the `source` field rather than configuring `jwksURIs`) in step 3.4. You'll need to generate a JWT for the request, but otherwise everything stays the same. 
+If you want to try out JWT Auth without linking up to a third-party IdP then you can skip step 1 and provide the base64 encoded public key for your JWT (in the `source` field rather than configuring `jwksURIs`) in step 3. You'll need to generate a JWT for the request, but otherwise everything stays the same. 
 
 Now back to the tutorial...
 {{< /note >}}
