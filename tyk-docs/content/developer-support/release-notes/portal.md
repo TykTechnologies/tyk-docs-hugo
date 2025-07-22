@@ -72,10 +72,6 @@ There are no breaking changes in this release.
 
 For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
 
-#### Compatibility
-
-Developer Portal 1.14.0 has been tested and is confirmed as compatible with Tyk Dashboard 5.3 and 5.8 onwards.
-
 #### Deprecations
 
 SQLite has reached its End of Life in this release, aligning with the Tyk Dashboard. SQLite was previously recommended for use only in basic proofs of concept. Now, for such scenarios and in production, we recommend using PostgreSQL or MySQL for improved scalability and support.
@@ -167,6 +163,7 @@ Fixed an issue where associations with APIs or even entire Products could be los
 <li>
 <details>
 <summary>Scope-to-Policy Mapping Lost when Configuring DCR</summary>
+
 Fixed an issue where existing scope-to-policy mapping for an API could be lost when DCR is enabled via the Developer Portal. The logic has been improved to ensure that scope-to-policy mapping is preserved.
 </details>
 </li>
