@@ -164,10 +164,10 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
     instances:
         # Example Tyk Provider Configuration
         - name: "tyk-provider"
-            type: "tyk"
-            config:
-            host: "http://your-tyk-dashboard:3000"
-            auth: "your-tyk-dashboard-api-key"
+           type: "tyk"
+           config:
+             host: "http://your-tyk-dashboard:3000"
+             auth: "your-tyk-dashboard-api-key"
         
         # Example AWS API Gateway Configuration
         - name: "aws-provider"
