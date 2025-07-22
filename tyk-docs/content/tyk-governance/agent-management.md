@@ -171,8 +171,8 @@ In this tutorial, we'll set up a new agent, configure it to connect to an API pr
         
         # Example AWS API Gateway Configuration
         - name: "aws-provider"
-            type: "aws"
-            config:
+           type: "aws"
+           config:
             accessKeyId: "your-aws-access-key-id"
             accessKeySecret: "your-aws-access-key-secret"
             region: "us-east-1"
