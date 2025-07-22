@@ -143,6 +143,9 @@ We have enhanced team and user access controls by restricting team members from 
 <summary>Upgrade to Go 1.23</summary>
 
 The Developer Portal has been upgraded from Golang 1.22 to Golang 1.23, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
+</details>
+</li>
+</ul>
 
 ##### Fixed
 
