@@ -36,6 +36,141 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 1.14 Release Notes
+
+### 1.14.0 Release Notes
+
+#### Release Date 23 July 2025
+
+#### Release Highlights
+
+##### Tyk Streams APIs Come To Developer Portal
+
+We’ve added support for [Tyk Streams APIs]({{< ref "api-management/event-driven-apis" >}}) in the Developer Portal, allowing API Providers to expose access to event-driven APIs alongside traditional REST APIs.
+Developers can now subscribe to Products that enable webhook delivery for specific events,
+receiving real-time messages routed through Tyk Streams. 
+This opens up new integration patterns for async APIs, such as push notifications, system alerts, or data change events.
+
+
+##### New Developer App Visibility Controls
+
+We have added more flexible Developer App visibility controls, giving team members the ability to limit the visibility of their apps to themselves (Personal), their Team, or their Organisation (Org). This means that when logged into the Developer Portal, team members will only see their apps, apps shared within their teams, and apps marked as visible to the entire organization. Org Admin users will continue to have visibility of all developer apps created in their Organisation. The exceptions to this rule are for the Default Team, where team-level visibility is not implemented, and the Default Org, where all apps are treated as personal (private).
+
+##### Enhanced Team Management
+
+We have also enhanced the user and team management experience. Now, users can be removed from the default team (which should only be used for inactive users). This allows platform teams to ensure that users can only see the other members of their team, rather than all users in their Organisation. We've also fixed a bug where Org Admins could add users to other Organisations deployed on the Portal.
+
+##### Prevent Web Crawlers From Indexing Your Portal
+
+We have added a `/robots.txt` endpoint, allowing administrators to define crawler directives in a plain text entry form in the Portal Admin UI.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.0) below.
+
+#### Breaking Changes {#breaking-changes-v1.14.0}
+
+There are no breaking changes in this release.
+
+For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
+
+#### Deprecations
+
+SQLite has reached its End of Life in this release, aligning with the Tyk Dashboard. SQLite was previously recommended for use only in basic proofs of concept. Now, for such scenarios and in production, we recommend using PostgreSQL or MySQL for improved scalability and support.
+
+#### Upgrade instructions
+
+If you are on version 1.13.0 or an older version, we recommend upgrading to this release ASAP.
+
+To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
+
+#### Download
+- [Docker image v1.14.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.0)
+  - ```bash
+    docker pull tykio/portal:v1.14.0
+    ```
+
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.14.0)
+
+#### Changelog {#Changelog-v1.14.0}
+
+##### Added
+<ul>
+<li>
+<details>
+<summary>New Application Visibility Controls</summary>
+
+Added the facility to limit the visibility of developer apps to the user, team, or Organisation (org). Org Admin users will continue to have visibility of all developer apps created in their Organisation. To minimize the risk of unintentional visibility when users are members of the default teams and/or organization, team-level visibility is not implemented in the Default Team for each organization, and all apps are treated as personal (private) in the default organization. To avoid breaking existing setups, all current apps will default to organisation visibility.
+</details>
+</li>
+<li>
+<details>
+<summary>Added Support for Asynchronous APIs</summary>
+
+The Developer Portal now supports Tyk Streams, enabling developers to request access to event-driven APIs. Developers can authenticate with portal tokens and receive real-time webhook notifications.  
+</details>
+</li>
+<li>
+<details>
+<summary>API Product Tag Access in Theme Templates</summary>
+
+Portal theme templates now have access to API product tags, allowing for the dynamic display or categorization of API products based on these tags.
+</details>
+</li>
+<li>
+<details>
+<summary>Configurable Robots.txt Support</summary>
+
+Added native support for serving a configurable `robots.txt` file via a new `/robots.txt` endpoint. Portal admins can now define and manage crawler directives directly from the Portal Admin UI.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Team and User Management</summary>
+
+We have enhanced team and user access controls by restricting team members from viewing other users' details, limiting Admin Users to adding users only to teams to which they belong, automatically assigning users to the default organization team if no team is selected during invitation, and allowing Admin Users to assign users to multiple teams.
+</details>
+</li>
+</ul>
+
+##### Changed 
+
+<ul>
+<li>
+<details>
+<summary>Upgrade to Go 1.23</summary>
+
+The Developer Portal has been upgraded from Golang 1.22 to Golang 1.23, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>API Product Metadata Loss when Updating the Developer Portal Catalog</summary>
+
+Fixed an issue where API Product metadata could be lost when modifying the product in the Developer Portal. This was due to incorrect manipulation of the underlying Tyk policy object.
+</details>
+</li>
+<li>
+<details>
+<summary>API Product Synchronization Fixes</summary>
+
+Fixed an issue where associations with APIs or even entire Products could be lost during synchronization with the Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details are consistently preserved.
+</details>
+</li>
+<li>
+<details>
+<summary>Scope-to-Policy Mapping Lost when Configuring DCR</summary>
+
+Fixed an issue where existing scope-to-policy mapping for an API could be lost when DCR is enabled via the Developer Portal. The logic has been improved to ensure that scope-to-policy mapping is preserved.
+</details>
+</li>
+</ul>
+
+---
+
 ## 1.13 Release Notes
 
 ### 1.13.2 Release Notes
@@ -149,6 +284,7 @@ Resolved a regression introduced in v1.13.0 that removed the ability to view or 
 </li>
 </ul>
 
+---
 
 ### 1.13.0 Release Notes
 
