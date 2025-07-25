@@ -5,9 +5,7 @@ description: "Define, manage, and enforce API standards across your organization
 tags: ["Tyk Governance", "Rulesets", "API Standards", "Governance Policies", "API Compliance"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Manage Rulesets](#manage-rulesets) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
-
-### Availability
+## Availability
 
 - Version: Available since v0.2
 
