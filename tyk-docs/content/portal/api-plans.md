@@ -71,7 +71,7 @@ Alternatively, you can:
 
 You can create a new API Plan in the Developer Portal by following these simple steps:
 
-1. Log in to the Developer Portal using an [Admin User]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#admin-settings-and-governance" >}}) account
+1. Log in to the Developer Portal as an [API Owner]({{< ref "portal/api-owner" >}})
 2. Select the *Provider* that hosts the APIs you want to use
 3. Enter a descriptive **Name** for your Product
 4. Set the *Plan limits* that you wish this Plan to grant

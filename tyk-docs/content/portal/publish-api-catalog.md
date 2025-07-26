@@ -23,7 +23,7 @@ Before you begin, ensure you have:
 
 - [Installed]({{< ref "portal/install" >}}) the Developer Portal
 - [Connected]({{< ref "portal/overview/getting-started#configuring-the-provider" >}}) to a Provider (Tyk Dashboard)
-- [Configured]({{< ref "portal/overview/getting-started#create-an-organisational-structure" >}}) at least one Organisation and Team
+- [Configured]({{< ref "portal/overview/getting-started#create-an-organizational-structure" >}}) at least one Organisation and Team
 - [Created]({{< ref "getting-started/configure-first-api#set-up-your-api" >}}) at least one API in Tyk Dashboard that you will make available to your API consumers, for this tutorial we assume this is secured with the [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) authentication method
 
 ## Step 1: Create the API Catalog

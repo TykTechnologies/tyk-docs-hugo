@@ -66,7 +66,7 @@ Ensure that this user has the following permissions:
 
 4. Click **Save Changes**
 
-If a tag is defined here, it needs to also be defined in the Policy section in the [Tyk Dashboard]({{< ref "portal/overview/getting-started#create-and-import-an-api-product-from-tyk" >}}). If this field is left empty in both this provider section and in the policies within Tyk, then all policies will be imported from the Tyk instance. How to include the label in the policy section inside Tyk, is explained in [Publish API Products and plans]({{< ref "portal/overview/getting-started#publish-an-api-product" >}}) for the public-facing portal.
+If a tag is defined here, it needs to also be defined in the [Policy]({{< ref "api-management/policies" >}}) for it to be retrieved during the [synchronization]({{< ref "portal/api-provider#synchronizing-developer-portal-with-providers" >}}). If this field is left empty in the Provider configuration, then all policies will be imported from the Tyk instance. For API Products and Plans created on the Developer Portal, the policy tag will automatically be created for the corresponding policies created on the Tyk Dashboard.
 
 ### Testing the Connection
 

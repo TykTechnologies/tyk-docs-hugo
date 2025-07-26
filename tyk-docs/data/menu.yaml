@@ -1112,10 +1112,6 @@ menu:
                   path: /tyk-developer-portal/tyk-portal-classic/graphql
                   category: Page
                   show: True
-                - title: "Streams with Classic Portal"
-                  path: /tyk-developer-portal/tyk-portal-classic/streams
-                  category: Page
-                  show: True
                 - title: "Monetising your APIs"
                   path: /tyk-developer-portal/tyk-portal-classic/monetise
                   category: Page

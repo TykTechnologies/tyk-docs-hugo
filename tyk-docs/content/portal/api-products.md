@@ -6,6 +6,7 @@ keywords: ["Developer Portal", "Tyk", "Reference", "API Product", "Product", "Ca
 description: "Working with API Products"
 aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+  - /tyk-developer-portal/tyk-portal-classic/streams
 ---
 
 ## Introduction
@@ -20,6 +21,8 @@ API Products transform technical APIs into business assets by:
 - Creating a consistent developer experience across multiple underlying APIs
 
 In the Tyk Developer Portal, API Products serve as the primary unit of discovery, access control, and [monetization]({{< ref "overview/intro#api-monetization-with-tyk-developer-portal" >}}) of your API portfolio.
+
+Since Tyk 5.7.0, you have been able to create API Products to publish your [Tyk Streams APIs]({{< ref "api-management/event-driven-apis" >}}) on the Developer Portal.
 
 ## Understanding the Relationship Between Portal and Provider
 
@@ -86,7 +89,7 @@ This ensures that your API Products remain aligned with both your business objec
 
 You can create a new API Product in the Developer Portal by following these simple steps:
 
-1. Log in to the Developer Portal using an [Admin User]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#admin-settings-and-governance" >}}) account
+1. Log in to the Developer Portal as an [API Owner]({{< ref "portal/api-owner" >}})
 2. Navigate to **API Products** in the main navigation
 3. Select **Add new API Product**
 4. Navigate to the **APIs** tab

@@ -62,7 +62,7 @@ The Developer Portal connects to one or more instances of the Tyk Dashboard (ref
 - Security policies that define access rights and rate limits
 - Authentication mechanisms for securing API access
 
-The API owner bundles API definitions into [API Products]({{< ref "portal/overview/concepts#api-products" >}}) which are then published to specific audiences in [API Catalogs]({{< ref "portal/overview/concepts#api-catalogs" >}}). They create [Subscription Plans]({{< ref "portal/overview/concepts#consumption-plans" >}}) which use the security policies to control granular access - for example gold, silver and bronze tiers.
+The API owner bundles API definitions into [API Products]({{< ref "portal/overview/concepts#api-products" >}}) which are then published to specific audiences in [API Catalogs]({{< ref "portal/overview/concepts#api-catalogs" >}}). They create [Subscription Plans]({{< ref "portal/overview/concepts#api-plans" >}}) which use the security policies to control granular access - for example gold, silver and bronze tiers.
 
 When an API consumer discovers an API Product they want to use, they request access through the Portal via a Subscription Plan. Once approved (either automatically or by an administrator), the Developer Portal issues a provisioning request to the relevant Tyk Dashboard, which then generates the necessary access credentials (API keys, OAuth tokens, etc.).
 

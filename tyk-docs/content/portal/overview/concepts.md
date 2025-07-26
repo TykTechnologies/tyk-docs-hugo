@@ -44,7 +44,7 @@ API Consumers exist within a hierarchical structure allowing for flexible access
 
 ### API Owners
 
-API Owners are the internal users who manage the publication of API Catalogs onto the Live Portal. They can configure the visual appearance of the portal, create [Catalogs, Products and Plans]({{< ref "portal/overview/concepts#developer-portal-assets" >}}), and manage the Organisation, Teams and Users granted access to the Live Portal. They operate within the Admin Portal and have read-only access to the Live Portal.
+API Owners are the internal users who manage the publication of API Catalogs onto the Live Portal. They can configure the visual appearance of the portal, create [Catalogs, Products and Plans]({{< ref "portal/overview/concepts#api-packaging-and-access-control" >}}), and manage the Organisation, Teams and Users granted access to the Live Portal. They operate within the Admin Portal and have read-only access to the Live Portal.
 
 ### Developer Portal Views
 

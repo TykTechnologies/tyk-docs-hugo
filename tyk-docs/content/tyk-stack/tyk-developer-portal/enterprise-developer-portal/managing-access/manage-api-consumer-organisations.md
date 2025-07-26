@@ -120,7 +120,7 @@ As an API Owner, you can delete an Organisations to represent changes in partner
 
 The Organisation and any Teams created within it will be deleted immediately.
 
-All users (both API Consumer Admins and Team Members) will be moved to the [default Team]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#default-team" >}}) in the [default Organisation]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#deledefault-organisation" >}}) where any Developer Apps they own will have their visibility set to [Personal]({{< ref "portal/developer-app#visibility" >}})
+All users (both API Consumer Admins and Team Members) will be moved to the [default Team]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#default-team" >}}) in the [default Organisation]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#default-organisation" >}}) where any Developer Apps they own will have their visibility set to [Personal]({{< ref "portal/developer-app#visibility" >}})
 
 ### Best Practices for Organisation Management
 
