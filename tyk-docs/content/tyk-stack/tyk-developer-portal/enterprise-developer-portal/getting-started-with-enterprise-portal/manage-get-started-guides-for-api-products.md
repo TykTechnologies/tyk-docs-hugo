@@ -1,10 +1,11 @@
 ---
 title: "Create Get started guides for your API Products"
-date: 2025-02-10
+date: 2025-07-26
 linkTitle: API Management
 tags: ["Developer Portal", "Tyk", "Managing Access", "Catalogs", "Rate Limit", "Dynamic Client Registration", "Documenting APIs"]
 keywords: ["Developer Portal", "Tyk", "Managing Access", "Catalogs", "Rate Limit", "Dynamic Client Registration", "Documenting APIs"]
 description: "How to configure API Providers in Tyk developer portal"
+
 ---
 
 ## Introduction
