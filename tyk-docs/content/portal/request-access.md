@@ -5,12 +5,13 @@ tags: ["Developer Portal", "Tyk", "Getting Started"]
 keywords: ["Developer Portal", "Tyk", "Getting Started", "Developer App", "API Consumer"]
 description: "Create aa App to consume a Product published on the Tyk Developer Portal."
 aliases:
+ - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
 
 ---
 
 ## Introduction
 
-After setting up your Developer Portal with Organisation, Catalogs, API products, and Plans, it's time to experience the portal from an API Consumer's perspective. In this guide, you'll learn how to log in as an API Consumer Admin, create an application, request API access, and test the API with the provided credentials.
+After setting up your Developer Portal with Organisation, Catalogs, API products, and Plans, it's time to experience the portal from an API Consumer's perspective. In this guide, you'll learn how to log in as an API Consumer, create an application, request API access, and test the API with the provided credentials.
 
 This workflow represents the typical experience your API consumers will have when using your Developer Portal to access your APIs.
 
@@ -24,16 +25,16 @@ Before you begin, ensure you have:
 - [Created]({{< ref "portal/overview/getting-started#step-3-create-an-api-consumer-admin-user" >}}) an API Consumer Admin user
 - [Published]({{< ref "portal/publish-api-catalog" >}}) an API Catalog with at least one API Product and Plan
 
-## Step 1: Log in as an API Consumer Admin
+## Step 1: Log in as an API Consumer
 
-First, access the Developer Portal as an API consumer admin:
+First, access the Developer Portal as an API consumer:
 
 1. Open your Developer Portal's public URL in a web browser
 2. Select **Log In** in the top navigation bar
 3. Enter the email address and password for the API consumer admin user you created [previously]({{< ref "portal/overview/getting-started#step-3-create-an-api-consumer-admin-user" >}})
 4. Select **Log In**
 
-You should now be logged in to the Live Portal as an API consumer admin. You'll see the *default theme* provided by Tyk, all of which is [customisable]({{< ref "portal/customization" >}}) for your brand and workflows.
+You should now be logged in to the Live Portal as an API consumer. You'll see the *default theme* provided by Tyk, all of which is [customisable]({{< ref "portal/customization" >}}) for your brand and workflows.
 
 ## Step 2: Browse the API Catalog
 

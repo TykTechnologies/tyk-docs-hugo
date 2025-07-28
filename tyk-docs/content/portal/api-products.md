@@ -273,7 +273,7 @@ Documentation-only Products are a special type of API Product that serve purely 
 To create a Documentation-only Product:
 
 1. Create a new API Product following the standard process
-2. On the **APIs** tab, do not select any APIs from the [list]({{< ref "portal/api-products#api-list" >}})list
+2. On the **APIs** tab, do not select any APIs from the [list]({{< ref "portal/api-products#api-list" >}})
 3. On the **Documentation** tab, add [OpenAPI documentation]({{< ref "portal/api-products#api-reference-documentation" >}}) as needed
 4. Configure the usual Product descriptions, imagery and and [usage guides]({{< ref "portal/api-products#getting-started-guide" >}}) you wish to display in the Live Portal
 5. Publish the Product to your desired Catalog(s)
