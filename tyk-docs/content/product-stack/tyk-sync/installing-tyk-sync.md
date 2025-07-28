@@ -14,7 +14,7 @@ On this page, you will find instructions on how to install Tyk Sync using Docker
 
 | Method           | Description                        |
 | ---------------- | ---------------------------------- |
-| **[Docker]({{< ref "#install-on-docker" >}})**       | Run in a container using Docker    |
+| **[Docker]({{< ref "#install-on-docker" >}})**       | Run Tyk Sync in a container |
 | **[Packagecloud]({{< ref "" >}})** | Hosts packages for linux distributions |
 
 ## Install on Docker

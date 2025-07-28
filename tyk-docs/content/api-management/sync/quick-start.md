@@ -1,9 +1,181 @@
 ---
-title: "Getting Started with Tyk Sync"
-tags: ["Tyk Sync", "Installation", "Docker", "API Management"]
-description: "Learn how to install Tyk Sync using Docker or Packagecloud"
+title: "Tyk Sync Quick Start Guide"
+tags: ["Quick Start", "Tyk Sync", "API Management", "Automations"]
+description: "Quick start guide for Tyk Sync to synchronize API configurations with Tyk Dashboard"
 ---
 
+
+---
+
+**Tyk Sync** is a command line tool and library to manage and synchronise a Tyk installation with your version control system (VCS). This guide will help you get started with Tyk Sync to manage your API configurations.
+
+## What We'll Cover in This Guide
+
+1. Set up Tyk Demo (gateway with prebuilt APIs)
+2. Install Tyk Sync using Docker
+3. Use Tyk Sync to dump API configurations from the Tyk Demo
+4. Observe the dumped configurations
+5. Make changes and sync back to Tyk Demo
+6. Verify changes in Tyk Demo
+
+## Instructions
+
+1. **Set Up Tyk Demo**
+
+First, let's set up a Tyk Demo environment with some prebuilt APIs:
+
+```bash
+# Pull and run Tyk Demo using Docker Compose
+git clone https://github.com/TykTechnologies/tyk-demo
+cd tyk-demo
+docker-compose up -d
+```
+
+This will start a Tyk Gateway and Dashboard with some sample APIs already configured. The Dashboard will be available at `http://localhost:3000`.
+
+## 2. Install Tyk Sync
+
+You can run Tyk Sync using Docker:
+
+```bash
+# Create a directory to store your API configurations
+mkdir -p tyk-sync-data
+
+# Run Tyk Sync using Docker
+docker run --rm -v $(pwd)/tyk-sync-data:/opt/tyk-sync/data tykio/tyk-sync:latest
+```
+
+Alternatively, you can install it directly:
+
+```bash
+# For Linux/macOS
+curl -L https://github.com/TykTechnologies/tyk-sync/releases/latest/download/tyk-sync_linux_amd64 -o tyk-sync
+chmod +x tyk-sync
+sudo mv tyk-sync /usr/local/bin/
+```
+
+## 3. Dump API Configurations
+
+Now, let's dump the API configurations from the Tyk Dashboard:
+
+```bash
+# Get your Dashboard API key from the Dashboard UI (User menu > Profile)
+# Replace YOUR_DASHBOARD_API_KEY with your actual key
+
+# Using Docker
+docker run --rm -v $(pwd)/tyk-sync-data:/opt/tyk-sync/data tykio/tyk-sync:latest dump -d="http://localhost:3000" -s="YOUR_DASHBOARD_API_KEY" -t="/opt/tyk-sync/data"
+
+# Or using the binary directly
+tyk-sync dump -d="http://localhost:3000" -s="YOUR_DASHBOARD_API_KEY" -t="./tyk-sync-data"
+```
+
+This command will:
+- Connect to your Tyk Dashboard at `http://localhost:3000`
+- Use your Dashboard API key for authentication
+- Extract all APIs and policies
+- Save them to the `tyk-sync-data` directory
+
+## 4. Observe the Dumped Configurations
+
+Let's examine what was dumped:
+
+```bash
+ls -la tyk-sync-data
+```
+
+You should see:
+- A `.tyk.json` file (index file for synchronization)
+- A `policies` directory containing policy definitions
+- An `apis` directory containing API definitions
+
+Each API and policy is stored as a separate JSON file, making it easy to track changes in version control.
+
+## 5. Make Changes and Sync Back
+
+Now, let's modify an API definition and sync it back to the Dashboard:
+
+```bash
+# Edit one of the API definition files
+# For example, change the name of an API
+# Then sync the changes back
+
+# Using Docker
+docker run --rm -v $(pwd)/tyk-sync-data:/opt/tyk-sync/data tykio/tyk-sync:latest update -d="http://localhost:3000" -s="YOUR_DASHBOARD_API_KEY" -p="/opt/tyk-sync/data"
+
+# Or using the binary directly
+tyk-sync update -d="http://localhost:3000" -s="YOUR_DASHBOARD_API_KEY" -p="./tyk-sync-data"
+```
+
+This will update the API configurations in your Tyk Dashboard based on the local files.
+
+## 6. Verify Changes in Tyk Demo
+
+Open your Tyk Dashboard at `http://localhost:3000` and navigate to the APIs section. You should see that your changes have been applied.
+
+## Additional Tyk Sync Commands
+
+Tyk Sync offers several other useful commands:
+
+- **Publish**: Create new API definitions from your local files
+  ```bash
+  tyk-sync publish -d="http://localhost:3000" -s="YOUR_DASHBOARD_API_KEY" -p="./tyk-sync-data"
+  ```
+
+- **Sync**: Synchronize a Git repository with your Tyk Dashboard
+  ```bash
+  tyk-sync sync -d="http://localhost:3000" -s="YOUR_DASHBOARD_API_KEY" -p="./tyk-sync-data"
+  ```
+
+- **Examples**: Show available Tyk examples
+  ```bash
+  tyk-sync examples
+  ```
+
+## Version Control Integration
+
+One of the key benefits of Tyk Sync is its ability to integrate with version control systems. Here's how to use it with Git:
+
+1. Initialize a Git repository in your tyk-sync-data directory:
+   ```bash
+   cd tyk-sync-data
+   git init
+   git add .
+   git commit -m "Initial API configurations"
+   ```
+
+2. Push to a remote repository:
+   ```bash
+   git remote add origin YOUR_REMOTE_REPO_URL
+   git push -u origin master
+   ```
+
+3. To sync from the Git repository to another Tyk Dashboard:
+   ```bash
+   tyk-sync sync -d="http://another-dashboard:3000" -s="ANOTHER_DASHBOARD_API_KEY" -b="refs/heads/master" YOUR_REMOTE_REPO_URL
+   ```
+
+This enables you to maintain your API configurations as code, with all the benefits of version control, code review, and automated deployments.
+
+## Conclusion
+
+Tyk Sync provides a powerful way to manage your API configurations as code. By following this quick start guide, you've learned how to:
+- Extract API configurations from a Tyk Dashboard
+- Store them as files that can be version-controlled
+- Modify and update configurations
+- Synchronize configurations between different environments
+
+This approach helps ensure consistency across environments and enables you to implement proper CI/CD practices for your API management.
+
+---
+
+<TODO: What we will be doing in this quick start guide>
+
+1. Set up Tyk Demo (gateway with prebuilt APIs)
+2. Install Tyk Sync using Docker
+3. Use Tyk Sync to dump API configurations from the Tyk Demo
+4. Observe the dumped configurations
+5. Make Changes and Sync Back to Tyk Demo
+6. Verify Changes in Tyk Demo
 
 ## Set up Tyk Sync
 ### Installation

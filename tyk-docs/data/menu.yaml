@@ -347,7 +347,7 @@ menu:
                 path: /product-stack/tyk-sync/installing-tyk-sync
                 category: Page
                 show: True
-              - title: "Getting Started"
+              - title: "Quick Start"
                 path: /api-management/sync/quick-start
                 category: Page
                 show: True
