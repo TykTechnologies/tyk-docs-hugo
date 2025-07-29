@@ -889,11 +889,11 @@ menu:
           category: Page
           show: True
         - title: "Publish an API Catalog"
-          path: portal/publish-api-catalog
+          path: /portal/publish-api-catalog
           category: Page
           show: True
         - title: "Request access to an API"
-          path: portal/request-access
+          path: /portal/request-access
           category: Page
           show: True
       - title: "Publishing APIs"

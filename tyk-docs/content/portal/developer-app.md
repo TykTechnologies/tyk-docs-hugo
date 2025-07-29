@@ -5,7 +5,6 @@ tags: ["Developer Portal", "Tyk", "API Consumer", "Developer App", "Developer", 
 keywords: ["Developer Portal", "Tyk", "Reference", "API Consumer", "Developer App", "Developer", "Access"]
 description: "All about Developer Apps with Tyk Developer Portal"
 aliases:
-  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
 ---
 
