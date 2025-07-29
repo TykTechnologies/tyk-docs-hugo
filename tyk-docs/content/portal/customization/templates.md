@@ -676,6 +676,7 @@ Accessible via `{{ .product }}`
 | `{{ .Feature }}` | true if the product is featured |
 | `{{ .DCREnabled }}` | true if DCR is enabled |
 | `{{ .ProviderID }}` | Provider ID |
+| `{{ .Tags }}` | List of tags associated with the product |
 
 #### API Details (Within product)
 
@@ -702,6 +703,15 @@ Accessible via `{{ .product.Docs }}`
 | `{{ .Content }}` | Document content |
 | `{{ .MarkdownContent }}` | Markdown content |
 | `{{ .MarkdownEnabled }}` | Boolean for Markdown enablement |
+
+#### Product Tags (Within product)
+
+Accessible via `{{ .product.Tags }}`
+
+| Attribute | Description |
+|-----------|-------------|
+| `{{ .ID }}`	| Tag ID |
+| `{{ .Name }}`	| Tag name |
 
 #### Catalogues
 
