@@ -1044,7 +1044,22 @@ The reason this value is configurable is because sample data takes up space in y
 ENV: <b>TYK_GW_HEALTHCHECKENDPOINTNAME</b><br />
 Type: `string`<br />
 
-Enables you to rename the /hello endpoint
+HealthCheckEndpointName Enables you to change the liveness endpoint.
+Default is "/hello"
+
+### readiness_check_endpoint_name
+ENV: <b>TYK_GW_READINESSCHECKENDPOINTNAME</b><br />
+Type: `string`<br />
+
+ReadinessCheckEndpointName Enables you to change the readiness endpoint
+Default is "/ready"
+
+### graceful_shutdown_timeout_duration
+ENV: <b>TYK_GW_GRACEFULSHUTDOWNTIMEOUTDURATION</b><br />
+Type: `int`<br />
+
+GracefulShutdownTimeoutDuration sets how many seconds the gateway should wait for an existing connection
+to finish before shutting down the server. Defaults to 30 seconds.
 
 ### oauth_refresh_token_expire
 ENV: <b>TYK_GW_OAUTHREFRESHEXPIRE</b><br />
@@ -1169,7 +1184,7 @@ Set this to true to have Tyk automatically match for numeric IDs, it will match 
 ENV: <b>TYK_GW_ANALYTICSCONFIG_NORMALISEURLS_CUSTOM</b><br />
 Type: `[]string`<br />
 
-This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a {var} placeholder.
+This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a `{var}` placeholder.
 
 ### analytics_config.pool_size
 ENV: <b>TYK_GW_ANALYTICSCONFIG_POOLSIZE</b><br />
@@ -1623,6 +1638,12 @@ ENV: <b>TYK_GW_COPROCESSOPTIONS_GRPCAUTHORITY</b><br />
 Type: `string`<br />
 
 Authority used in GRPC connection
+
+### coprocess_options.grpc_round_robin_load_balancing
+ENV: <b>TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING</b><br />
+Type: `bool`<br />
+
+GRPCRoundRobinLoadBalancing enables round robin load balancing for gRPC services; you must provide the address of the load balanced service using `dns:///` protocol in `coprocess_grpc_server`.
 
 ### coprocess_options.python_path_prefix
 ENV: <b>TYK_GW_COPROCESSOPTIONS_PYTHONPATHPREFIX</b><br />

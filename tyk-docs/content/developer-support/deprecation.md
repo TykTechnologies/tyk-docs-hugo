@@ -1,7 +1,8 @@
 ---
-title: "Tyk Deprecation and EOL Notices"
+title: "Tyk Deprecation and EOL Policy"
 date: 2025-03-11
 description: "Official schedule and information regarding Tyk component deprecation and End-of-Life (EOL)."
+tags: [ "Deprecation policy", "EOL Policy", "End of Life Policy" ]
 ---
 
 ## Introduction

@@ -38,9 +38,9 @@ Configuring SSO with Embedded TIB is a four-step process:
 
 ### Enabling Embedded TIB
 
-To enable Embedded TIB in the portal, add the `PORTAL_TIB_ENABLE` variable to [the portal .env file]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#sample-env-file" >}}):
+To enable Embedded TIB in the portal, add the `PORTAL_TIB_ENABLED` variable to [the portal .env file]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#sample-env-file" >}}):
 ```.ini
-PORTAL_TIB_ENABLE=true
+PORTAL_TIB_ENABLED=true
 ```
 
 {{< note info >}}
@@ -226,7 +226,7 @@ To specify the portal SSO API secret, add the `PORTAL_API_SECRET` variable to [t
 PORTAL_API_SECRET=your-portal-api-secret
 ```
 
-If you use [the Tyk helm chart]({{< ref "tyk-self-managed#install-more-tyk-components" >}}), it is required to add the `PORTAL_API_SECRET` to extraEnvs:
+If you use [the Tyk helm chart]({{< ref "tyk-self-managed/install#install-more-tyk-components" >}}), it is required to add the `PORTAL_API_SECRET` to extraEnvs:
 ```.yaml
 extraEnvs:
 - name: PORTAL_API_SECRET

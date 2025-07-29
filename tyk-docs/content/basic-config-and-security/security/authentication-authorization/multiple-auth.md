@@ -70,7 +70,7 @@ In the following example, the OpenAPI description includes multiple security sch
 }
 ```
 
-Tyk will consider only the first entry in the `security` list and so will implement the `auth-A` and `auth-B` schemes.
+Tyk will consider only the first entry in the `security` list and so will implement the `auth-A` and `auth-C` schemes.
 
 In the Tyk Vendor Extension this would result in the following configuration:
 
