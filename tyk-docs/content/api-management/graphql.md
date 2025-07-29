@@ -2007,7 +2007,7 @@ The values for subscription types are the same on all API types:
 
 ##### HTTP method for Server-Sent Event subscription
 
-When using `subscription_type=sse`, Tyk will use the HTTP `GET` method to subscribe to the upstream service. For some use cases, for example to support larger subscription payloads or to increase security by keeping the subscription payload out of server logs, the upstream requires HTTP `POST`. In Tyk 5.9.0 we have added `POST` support for SSE with the introduction of the boolean `use_sse_post` option which is only relevant if `subscription_type=sse`.
+When using `subscription_type=sse`, Tyk will use the HTTP `GET` method to subscribe to the upstream service. For some use cases, for example, to support larger subscription payloads or to increase security by keeping the subscription payload out of server logs, the upstream requires HTTP `POST`. In Tyk 5.9.0, we have added `POST` support for SSE with the introduction of the boolean `use_sse_post` option, which is only relevant if `subscription_type=sse`.
 
 ```json
 {
