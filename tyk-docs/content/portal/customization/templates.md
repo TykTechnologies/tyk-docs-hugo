@@ -710,8 +710,8 @@ Accessible via `{{ .product.Tags }}`
 
 | Attribute | Description |
 |-----------|-------------|
-| {{ .ID }}	| Tag ID |
-| {{ .Name }}	| Tag name |
+| `{{ .ID }}`	| Tag ID |
+| `{{ .Name }}`	| Tag name |
 
 #### Catalogues
 
