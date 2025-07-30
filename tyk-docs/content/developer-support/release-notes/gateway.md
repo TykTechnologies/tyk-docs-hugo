@@ -46,7 +46,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.9.0 Release Notes
 
-#### Release Date 30th July 2025
+#### Release Date 4th August 2025
 
 #### Release Highlights
 
@@ -76,12 +76,12 @@ There are no breaking changes in this release.
 ##### Compatibility Matrix For Tyk Components
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
-|---- |---- |---- |
-| 5.9.0  | MDCB v2.8.2      | MDCB v2.8.2 |
-|        | Operator v1.2.0  | Operator v0.17 |
-|        | Sync v2.1.2      | Sync v2.1.0 |
-|        | Helm Chart v3.0  | Helm all versions |
-|        | Pump v1.12.0     | Pump all versions |
+|--------|-------------------|---- |
+| 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.2       | Sync v2.1.0 |
+|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Pump v1.12.0      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
 

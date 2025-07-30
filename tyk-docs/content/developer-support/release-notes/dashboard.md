@@ -39,7 +39,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.9.0 Release Notes
 
-#### Release Date 30th July 2025
+#### Release Date 4th August 2025
 
 #### Release Highlights
 
@@ -65,7 +65,7 @@ We have implemented a [change]({{< ref "developer-support/release-notes/dashboar
 #### Dependencies {#dependencies-5.9.0}
 
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
-|------- |---- |---- |
+|--------|-------------------|-------------|
 | 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |

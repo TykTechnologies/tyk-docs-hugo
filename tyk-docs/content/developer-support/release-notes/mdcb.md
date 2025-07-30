@@ -1,7 +1,7 @@
 ---
 title: Tyk Multi Data Center Bridge Release Notes
 description: "Tyk Multi Data-Center Bridge v2.7 release notes"
-tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.7", "2.7"]
+tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center"]
 aliases:
   - /release-notes/mdcb/mdcb
   - /release-notes/mdcb/
@@ -28,6 +28,59 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 2.8 Release Notes
 
+### 2.8.2 Release Notes
+
+#### Release Date 4th August 2025
+
+#### Release Highlights
+
+This release contains a bump to the API definitions to align with changes in Gateway and Dashboard v5.9.0; no functional changes have been implemented to MDCB in this release.
+
+##### Compatibility with Valkey
+
+Tyk is now fully compatible with [Valkey](https://valkey.io/), the open source (BSD) high-performance key/value datastore backed by the Linux foundation, as an alternative to Redis.
+
+#### Breaking Changes
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
+| ------------------------------- | --------------- | ------------------- | -------- | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are upgrading to 2.8.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.2](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.2)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.2
+    ```
+#### Changelog {#Changelog-v2.8.2}
+
+<ul>
+<li>
+<details>
+<summary>Valkey Database Compatibility</summary>
+
+Added compatibility with Valkey database as an alternative to Redis. This is for fresh environments, with no migration support from Redis.
+</details>
+</li>
+<li>
+<details>
+<summary>Updated to use latest kin-openapi</summary>
+
+Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensures improved compatibility, full stack interoperability, and continued support for existing OpenAPI 3.0.x specifications.
+</details>
+</li>
+</ul>
 
 ### 2.8.1 Release Notes
 
