@@ -6,6 +6,12 @@ keywords: ["Developer Portal", "Tyk", "Rate Limit"]
 description: "How to configure rate limit in Tyk developer portal"
 ---
 
+{{< note success >}}
+**Note**
+
+For comprehensive information about custom rate limiting in Tyk, including detailed configuration options and examples, please refer to the main [Custom Rate Limiting documentation]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting#custom-rate-limiting" >}}).
+{{< /note >}}
+
 ## Introduction
 
 Different business models may require applying rate limits and quotas not only by credentials but also by other entities, e.g. per application, per developer, per organization etc.

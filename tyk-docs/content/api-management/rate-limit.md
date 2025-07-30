@@ -723,6 +723,202 @@ Configuring per-endpoint rate limits for your API endpoints is easy when using t
 
     Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
+## Custom Rate Limiting
+
+Custom rate limiting allows you to implement sophisticated rate limiting logic that goes beyond the standard algorithms provided by Tyk. This feature enables you to create tailored rate limiting strategies based on your specific business requirements, such as:
+
+- Dynamic rate limits based on user tiers or subscription levels
+- Time-based rate limiting (e.g., different limits for business hours vs. off-hours)
+- Geographic-based rate limiting
+- Complex multi-dimensional rate limiting combining multiple factors
+- Integration with external systems for rate limit decisions
+
+### Benefits of Custom Rate Limiting
+
+Custom rate limiting provides several advantages over standard rate limiting approaches:
+
+1. **Flexibility**: Implement complex business logic that standard rate limiters cannot handle
+2. **Dynamic Adjustment**: Modify rate limits in real-time based on external factors
+3. **Multi-dimensional Control**: Apply rate limits based on multiple request attributes simultaneously
+4. **External Integration**: Connect with external systems, databases, or APIs for rate limit decisions
+5. **Advanced Analytics**: Collect detailed metrics and implement custom monitoring
+
+### Implementation Approaches
+
+There are several ways to implement custom rate limiting in Tyk:
+
+#### 1. Custom Middleware Plugins
+
+You can create custom middleware plugins using Go, Python, or JavaScript to implement your rate limiting logic. These plugins can:
+
+- Access request headers, body, and metadata
+- Make external API calls to determine rate limits
+- Store and retrieve custom counters
+- Implement complex algorithms
+
+#### 2. Virtual Endpoints
+
+Use Tyk's virtual endpoints feature to create custom rate limiting endpoints that can:
+
+- Process requests before they reach your upstream service
+- Implement custom logic using JavaScript
+- Return appropriate HTTP status codes and headers
+
+#### 3. Pre-processor Middleware
+
+Implement custom rate limiting using pre-processor middleware that executes before the standard rate limiter:
+
+- Modify request attributes based on custom logic
+- Set dynamic rate limit values
+- Integrate with external rate limiting services
+
+### Configuration Examples
+
+#### Custom Plugin Rate Limiting
+
+Here's an example of configuring a custom rate limiting plugin in a Tyk Classic API definition:
+
+```json
+{
+  "custom_middleware": {
+    "pre": [
+      {
+        "name": "CustomRateLimiter",
+        "path": "/opt/tyk-gateway/middleware/custom_rate_limiter.so",
+        "require_session": false
+      }
+    ]
+  }
+}
+```
+
+#### Virtual Endpoint Rate Limiting
+
+Example virtual endpoint configuration for custom rate limiting:
+
+```json
+{
+  "extended_paths": {
+    "virtual": [
+      {
+        "response_function_name": "customRateLimit",
+        "function_source_type": "blob",
+        "function_source_uri": "function customRateLimit(request, session, config) { /* custom logic */ }",
+        "path": "/custom-rate-limit",
+        "method": "GET",
+        "use_session": true
+      }
+    ]
+  }
+}
+```
+
+### Best Practices
+
+When implementing custom rate limiting, consider these best practices:
+
+1. **Performance**: Ensure your custom logic is optimized to avoid adding significant latency
+2. **Reliability**: Implement proper error handling and fallback mechanisms
+3. **Monitoring**: Add comprehensive logging and metrics collection
+4. **Testing**: Thoroughly test your custom rate limiting under various load conditions
+5. **Documentation**: Document your custom rate limiting logic for maintenance and troubleshooting
+
+### Integration with Standard Rate Limiting
+
+Custom rate limiting can work alongside Tyk's standard rate limiting features:
+
+- Use custom logic to determine which standard rate limit to apply
+- Implement custom rate limiting as a first-pass filter before standard limits
+- Combine multiple rate limiting strategies for comprehensive protection
+
+### Custom Rate Limit Keys
+
+Custom rate limit keys allow you to implement sophisticated rate limiting strategies by defining custom identifiers that determine how rate limits are applied. This feature enables you to group API consumers and apply shared rate limits based on custom criteria rather than individual API keys.
+
+#### What are Custom Rate Limit Keys?
+
+By default, Tyk applies rate limits on a per-key basis, meaning each API key has its own independent rate limit allowance. Custom rate limit keys change this behavior by allowing you to:
+
+- **Group multiple API keys**: Apply shared rate limits across multiple API keys that belong to the same entity (e.g., organization, user, or subscription tier)
+- **Use request attributes**: Create rate limit groups based on request headers, JWT claims, or other request data
+- **Implement business logic**: Apply rate limits that align with your business model, such as organization-wide limits or tier-based restrictions
+
+#### Configuring Custom Rate Limit Keys
+
+Custom rate limit keys are configured in security policies using the `rate_limit_pattern` field. This field accepts a template string that can reference various request attributes:
+
+- Request headers: `$tyk_context.headers_<header_name>`
+- JWT claims: `$tyk_context.jwt_claims_<claim_name>`
+- Query parameters: `$tyk_context.request_data.<param_name>`
+- Static values and combinations thereof
+
+**Basic Example:**
+
+```json
+{
+  "name": "Organization Rate Limit Policy",
+  "rate": 1000,
+  "per": 60,
+  "rate_limit_pattern": "$tyk_context.headers_x-org-id",
+  "access_rights": {
+    "api-id": {
+      "api_name": "My API",
+      "api_id": "api-id",
+      "versions": ["Default"]
+    }
+  }
+}
+```
+
+In this example, all API keys generated from this policy will share a rate limit based on the `X-Org-ID` header value. If multiple developers within the same organization make requests, they will collectively consume from the same 1000 requests per minute allowance.
+
+**Complex Pattern Example:**
+
+```json
+{
+  "rate_limit_pattern": "$tyk_context.headers_x-org-id:$tyk_context.jwt_claims_tier"
+}
+```
+
+This creates a composite key combining organization ID and subscription tier, enabling different rate limits for different tiers within the same organization.
+
+#### Integration with Developer Portal
+
+Custom rate limit keys are particularly powerful when used with the Tyk Developer Portal. When you configure a policy with a `rate_limit_pattern`, all API keys generated from that policy through the Developer Portal will use the custom rate limiting behavior.
+
+**Common Use Cases:**
+
+1. **Organization-level Rate Limiting**: Set the `rate_limit_pattern` to use an organization identifier, allowing all developers within an organization to share a collective rate limit
+2. **Subscription Tier Limits**: Use JWT claims or headers to implement different rate limits based on subscription tiers
+3. **Geographic Rate Limiting**: Apply location-based rate limiting using geographic identifiers in headers
+
+**Developer Portal Benefits:**
+
+- **Simplified Management**: Configure rate limiting once in the policy rather than managing individual key limits
+- **Flexible Billing Models**: Support complex billing scenarios where organizations pay for shared usage
+- **Fair Usage Policies**: Implement organization-wide fair usage policies that prevent individual developers from consuming all available quota
+
+For detailed information about configuring custom rate limit keys in the Developer Portal, see the [Developer Portal Custom Rate Limiting]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-concepts/custom-rate-limiting" >}}) documentation.
+
+#### Best Practices
+
+1. **Pattern Design**: Ensure your rate limit pattern creates meaningful groupings that align with your business model
+2. **Header Consistency**: When using headers, ensure they are consistently provided by your API consumers
+3. **Fallback Strategy**: Consider what happens when pattern values are missing - the system will fall back to per-key rate limiting
+4. **Monitoring**: Implement monitoring to track rate limit usage across your custom groupings
+5. **Documentation**: Clearly communicate rate limiting behavior to your API consumers
+
+#### Troubleshooting
+
+Common issues when implementing custom rate limit keys:
+
+- **Missing Pattern Values**: If the header or claim specified in the pattern is not present, Tyk will fall back to standard per-key rate limiting
+- **Pattern Conflicts**: Ensure your pattern creates unique identifiers to avoid unintended rate limit sharing
+- **Performance Impact**: Complex patterns may add processing overhead - keep them as simple as possible
+- **Case Sensitivity**: Header names and values are case-sensitive in patterns
+
+For more detailed information about implementing custom middleware and plugins, see the [Custom Plugins]({{< ref "api-management/plugins" >}}) documentation.
+
 ## Rate Limiting with Tyk Streams
 
 A rate limit is a strategy for limiting the usage of a shared resource across parallel components in a Tyk Streams instance, or potentially across multiple instances. They are configured as a resource:
