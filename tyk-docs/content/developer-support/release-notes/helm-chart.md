@@ -21,6 +21,108 @@ aliases:
 Our minor releases are supported until our next minor comes out. 
 
 ---
+## 3.1 Release Notes
+
+### 3.1.0 Release Notes
+
+#### Release Date XX August 2025
+
+#### Release Highlights
+
+...
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v3.1.0) below.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-3.1}
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency  | Tested Versions  | Compatible Versions  | Comments | 
+| ------------------------| ---------------- | -------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)   | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+ | | 
+| [Helm](https://helm.sh)               | 3.14.x              | 3.x  | | 
+| [Redis](https://redis.io/download/)   | 6.2.x, 7.x, 7.4.x   | 6.2.x, 7.x, 7.4.x | |
+| [Valkey](https://valkey.io/download/) | 7.2.x, 8.0.x, 8.1.x | 7.2.x, 8.0.x, 8.1.x | |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x, 8.0.x | 5.0.x, 6.0.x, 7.0.x, 8.0.x | Used by Tyk Dashboard, Pump, and MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x | 13.x - 17.x | Used by Tyk Dashboard, Pump, and MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecation in this release.
+
+#### Upgrade instructions
+You can use helm upgrade to upgrade your release
+
+```bash
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
+```
+
+#### Downloads
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v3.1.0.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/3.1.0)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/3.1.0)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/3.1.0)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/3.1.0)
+
+#### Changelog {#Changelog-v3.1.0}
+
+##### Added
+
+<ul>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated default versions of Tyk components</summary>
+
+ Tyk Charts 3.1 will install the following Tyk component versions by default.
+
+  - Tyk Gateway v5.8.3
+  - Tyk Dashboard v5.8.3
+  - Tyk Pump v1.12.0
+  - Tyk MDCB v2.8.2
+  - Tyk Developer Portal v1.14.0
+  - Tyk Operator v1.2.0
+
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Pre-install job fails with an error reporting an unknown field</summary>
+
+Fixed a bug in the `tyk-stack` chart's `values.yaml` file where the `fsGroup` field is incorrectly located in the `containerSecurityContext` section for the tyk-bootstrap component. This has now been moved to the pod `securityContext`.
+</details>
+</li>
+</ul>
+
+<!-- ##### Security Fixes
+This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
+---
 ## 3.0 Release Notes
 
 ### 3.0.0 Release Notes

@@ -17,7 +17,47 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+
 ## 2.1 Release Notes
+
+### 2.1.2 Release Notes
+
+#### Release Date XX August 2025
+
+#### Release Highlights
+
+This release contains a bump to align with changes in Gateway and Dashboard v5.9.0; no functional changes have been implemented to Tyk Sync in this release.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.1.1, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.1.1 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.1.2](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.1.2)
+  - ```bash
+    docker pull tykio/tyk-sync:v2.1.2
+    ```
+
+#### Changelog {#Changelog-v2.1.2}
+
+##### Added
+<ul>
+<li>
+<details>
+<summary>Updated to use latest kin-openapi</summary>
+
+Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensures improved compatibility, full stack interoperability, and continued support for existing OpenAPI 3.0.x specifications.
+</details>
+</li>
+</ul>
 
 ### 2.1.1 Release Notes
 
