@@ -1889,13 +1889,13 @@ A JSON string has to be escaped before using as a header value. For example:
 It is possible to import various UDG examples from the [official Tyk examples repository](https://github.com/TykTechnologies/tyk-examples).
 
 We offer 3 ways of importing an example into Tyk:
- - Using [tyk-sync]({{< ref "api-management/automations/sync#synchronize-api-configurations-with-github-actions" >}})
+ - Using [tyk-sync]({{< ref "api-management/sync/use-cases#synchronize-api-configurations-with-github-actions" >}})
  - Manually import via [Dashboard API Import]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}})
 - Using Tyk Dashboard to browse and import the examples directly
 
 #### Import via tyk-sync
 
-Please follow the [tyk-sync documentation]({{< ref "api-management/automations/sync#examples-publish-command" >}}) to learn more about this approach.
+Please follow the [tyk-sync documentation]({{< ref "product-stack/tyk-sync/commands#examples-publish-command" >}}) to learn more about this approach.
 
 #### Import via Tyk Dashboard API Import
 
