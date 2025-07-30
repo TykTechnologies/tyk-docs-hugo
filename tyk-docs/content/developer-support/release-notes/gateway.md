@@ -54,7 +54,12 @@ This release builds on the recent release of [Tyk 5.8.3]({{< ref "developer-supp
 
 ##### Accept JSON Web Tokens (JWTs) Issued By Multiple Identity Providers
 
-Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field but now you can register multiple JWKS endpoints in the Tyk OAS API definition. When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity. For full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) section.
+Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
+
+When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity. For full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) section.
+
+<br> 
+Please note that this functionality is not available for Tyk Classic APIs.
 
 ##### Compatibility with Valkey
 
@@ -74,18 +79,18 @@ There are no breaking changes in this release.
 |---- |---- |---- |
 | 5.9.0  | MDCB v2.8.2      | MDCB v2.8.2 |
 |        | Operator v1.2.0  | Operator v0.17 |
-|        | Sync v2.1.0      | Sync v2.1.0 |
+|        | Sync v2.1.2      | Sync v2.1.0 |
 |        | Helm Chart v3.0  | Helm all versions |
 |        | Pump v1.12.0     | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
 
-| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
-| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
-| [Go](https://go.dev/dl/)                                     | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)                          | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
-| [Valkey](https://valkey.io/download/)                        | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -120,7 +125,6 @@ If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions]
 Added compatibility with Valkey database as an alternative to Redis. This is for fresh environments, with no migration support from Redis.
 </details>
 </li>
-
 <li>
 <details>
 <summary>Authenticate with Mutliple JWKS Providers</summary>
