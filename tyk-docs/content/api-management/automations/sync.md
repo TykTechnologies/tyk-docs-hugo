@@ -47,7 +47,34 @@ From Sync v2.0, compatibility with the Open Source Tyk Gateway has been removed,
 
 ## Glossary
 
+### Tyk Sync
+A command line tool and library designed to manage and synchronize Tyk API Gateway configurations with version control systems. Originally called "tyk-git," it was renamed to "tyk-sync" as its capabilities expanded beyond Git to support synchronization with any file system.
+
+### Synchronization
+The process of ensuring that API and policy configurations in your Tyk Gateway match those stored in your version control system. Tyk Sync performs one-way synchronization, where definitions are written from the VCS to the Tyk Dashboard.
+
+### Spec File (.tyk.json)
+A metadata file created by Tyk Sync that contains information about the APIs and policies in a directory. This file is used during synchronization to determine what needs to be created, updated, or deleted.
+
 ## FAQ
+
+<details> <summary><b>Tyk Sync and Gateway Configurations?</b></summary>
+
+Tyk Sync is designed to dump API configurations from a Tyk Dashboard, not directly from a Tyk Gateway.
+
+Tyk Sync's `dump` command is specifically designed to work with the Tyk Dashboard. The command requires a dashboard URL and API secret:
+
+```bash
+tyk-sync dump -d="http://dashboard-url" -s="dashboard-secret" -t="./output-directory"
+```
+
+There is no equivalent flag or functionality to dump configurations directly from a standalone Gateway. This is because:
+
+1. The Dashboard serves as the central configuration repository in the Tyk architecture
+2. The Gateway is primarily focused on runtime execution of those configurations
+3. While Gateways can operate standalone, they don't expose the same management APIs as the Dashboard
+
+</details> 
 
 <details> <summary><b>Differences between sync, publish, and update commands?</b></summary>
 

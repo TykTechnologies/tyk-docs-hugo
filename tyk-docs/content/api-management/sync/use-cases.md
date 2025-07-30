@@ -220,3 +220,52 @@ docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v2.0.0 update \
 Log in to your Tyk Dashboard to verify that the API definitions have been published or updated successfully.
 
 
+## Specify Source API Configurations
+For the `sync`, `update`, and `publish` commands, you need to specify where Tyk Sync can get the source API configurations to update the target Tyk installation. You can store the source files either in a Git repository or the local file system.
+
+### Working with Git
+For any Tyk Sync command that requires Git repository access, specify the Git repository as the first argument after the command. By default, Tyk Sync reads from the `master` branch. To specify a different branch, use the `--branch` or `-b` flag. If the Git repository requires connection using Secure Shell Protocol (SSH), you can specify SSH keys with `--key` or `-k` flag.
+
+```bash
+tyk-sync [command] https://github.com/your-repo --branch develop
+```
+
+### Working with the local file system
+To update API configurations from the local file system, use the `--path` or `-p` flag to specify the source directory for your API configuration files.
+
+```bash
+tyk-sync [command] --path /path/to/local/directory
+```
+
+### Index File Requirement
+A `.tyk.json` index file is required at the root of the source Git repository or the specified path. This `.tyk.json` file lists all the files that should be processed by Tyk Sync.
+
+Example `.tyk.json`:
+```json
+{
+  "type": "apidef",
+  "files": [
+    {
+      "file": "api1/api1.json"
+    },
+    {
+      "file": "api2/api2.json"
+    },
+    {
+      "file": "api3.json"
+    }
+  ],
+  "policies": [
+    {
+      "file": "policy1.json"
+    }
+  ],
+  "assets": [
+    {
+      "file": "template1.json"
+    }
+  ]
+}
+```
+
+
