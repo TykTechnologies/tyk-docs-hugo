@@ -87,7 +87,7 @@ API Owners can create API Consumer Admin users from the Admin Portal as follows:
     - Initial Password
     - (optionally) Select the checkbox to force the user to reset their password on first log in
 5. Select **Save changes**
-6. If you did not set an initial password in step 4, Tyk will send an email to the new user with registration instructions
+6. If you did not set an initial password in step 4, you will need to use the "Send Invite" action to send an email to the new user with registration instructions
 
 {{< note success >}}
 **Note**  
