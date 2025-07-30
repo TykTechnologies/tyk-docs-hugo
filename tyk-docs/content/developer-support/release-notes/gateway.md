@@ -142,9 +142,9 @@ Enabled configuration for GraphQL SSE subscriptions to use `POST` requests inste
 </li>
 <li>
 <details>
-<summary>Added AMQP as Input/Output Methods for Tyk Streams APIs</summary>
+<summary>Added AMQP and MQTT as Input/Output Methods for Tyk Streams APIs</summary>
 
-Added support for AMQP (0.9 and 1.0) to be used for input and output methods when constructing Tyk Streams APIs.
+Added support for AMQP (0.9 and 1.0) and MQTT to be used for input and output methods when constructing Tyk Streams APIs.
 </details>
 </li>
 <li>
