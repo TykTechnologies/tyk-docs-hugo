@@ -37,7 +37,7 @@ The actual consumption limit policy that configures the API Gateway's rate limit
 {{< note success >}}
 **Note**  
 
-Once an access policy has been linked to an API Plan you are strongly recommended not to make changes to it from the Provider, but to manage the Plan in the Developer Portal.
+Once a consumption limit policy has been linked to an API Plan you are strongly recommended not to make changes to it from the Provider, but to manage the Plan in the Developer Portal.
 {{< /note >}}
 
 ### Creation Workflows

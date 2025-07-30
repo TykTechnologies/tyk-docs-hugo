@@ -111,7 +111,7 @@ As an API Owner, you can change the name of an Organisations to represent change
 
 ### Deleting Organisations
 
-As an API Owner, you can delete an Organisations to represent changes in partner companies or business units:
+As an API Owner, you can delete an Organisation to represent changes in partner companies or business units:
 
 1. Navigate to **API Consumers > Organisations** in the Admin Portal
 2. Select the three dot menu next to the Organisation you want to delete

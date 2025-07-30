@@ -51,7 +51,7 @@ It is important to understand the boundaries of Provider functionality:
 
 - Each API Product or Plan can only be associated with a single Provider
 - Credentials issued by one Provider cannot be used with APIs from another Provider
-- Authentication methods must be consistent within a Provider for APIs grouped in the same Product
+- The same Authentication method must be used to access all APIs within an API Product, so that a single set of credentials can be created and accepted by the Provider.
 
 ### Tyk Dashboard API Access Credentials
 
