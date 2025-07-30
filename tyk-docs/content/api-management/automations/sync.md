@@ -45,6 +45,14 @@ Note: The Streams API validator is not applied during these operations.
 
 From Sync v2.0, compatibility with the Open Source Tyk Gateway has been removed, making Tyk Sync v2.0 compatible exclusively with licensed Tyk Dashboard. As a result, Tyk Sync is no longer usable with the Open Source (OSS) version of the Tyk Gateway.
 
+## Installation
+
+To install Tyk Sync, follow the instructions in the [Tyk Sync installation guide]({{< ref "product-stack/tyk-sync/installing-tyk-sync" >}}). You can install Tyk Sync using Docker or download the binary directly.
+
+## Quick Start Guide
+
+For a quick start guide to using Tyk Sync, refer to the [Tyk Sync Quick Start Guide]({{< ref "api-management/sync/quick-start" >}}). This guide will help you set up Tyk Sync, dump API configurations, and synchronize them with your Tyk Dashboard.
+
 ## Glossary
 
 ### Tyk Sync
