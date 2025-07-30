@@ -5,16 +5,16 @@ tags: ["Developer Portal", "Tyk"]
 keywords: ["Developer Portal", "Tyk"]
 description: "Learn what the Tyk Developer Portal is, its key features, and how it supports API management."
 aliases:
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-  - /tyk-developer-portal/tyk-enterprise-developer-portal
-  - /tyk-developer-portal
-  - /portal/overview
+ - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+ - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+ - /tyk-developer-portal/tyk-enterprise-developer-portal
+ - /tyk-developer-portal
+ - /portal/overview
 ---
 
 ## Introduction
 
-The Tyk Developer Portal is a comprehensive solution designed for API providers who want to publish, monetize, and drive adoption of their APIs. It offers a flexible, full-featured CMS-like system that supports all stages of the API adoption journey - from customizing the look and feel to exposing APIs and enabling third-party developers to register and use your APIs.
+The Tyk Developer Portal is a comprehensive solution designed for API providers who want to publish, monetize, and drive adoption of their APIs. It offers a flexible, full-featured CMS-like system that supports all stages of the API adoption journey, from customizing the look and feel to exposing APIs and enabling third-party developers to register and utilize your APIs.
 
 <br>
 {{< note success >}}
@@ -22,7 +22,7 @@ The Tyk Developer Portal is a comprehensive solution designed for API providers 
 
 Throughout this documentation, we use specific spelling conventions to help distinguish between product features and general concepts:
 - Organisation (with an 's') refers specifically to the entity within the Tyk Developer Portal (sometimes abbreviated to Org)
-- organization (with a 'z') refers to real-world businesses or the general concept of organizing
+- Organization (with a 'z') refers to real-world businesses or the general concept of organizing
 
 This British/American English distinction helps clarify when we're discussing the Tyk Developer Portal feature versus general organizational concepts.
 {{< /note >}}
@@ -33,7 +33,7 @@ The Developer Portal enables you to:
 
 - **Completely customize the portal's appearance** to match your brand identity
 - **Bundle related APIs into cohesive packages** that deliver specific value to consumers
-- **Provide comprehensive documentation** including OpenAPI specifications, blogs and tutorials
+- **Provide comprehensive documentation** including OpenAPI specifications, blogs, and tutorials
 - **Segment your developer audience** through multiple Organisation and Teams
 - **Tailor API visibility** with multiple catalogs showing different offerings to different audiences
 - **Integrate with popular Identity Providers** via Dynamic Client Registration
@@ -54,7 +54,7 @@ If you require integrated API monetization, you can implement a custom integrati
 
 ## Where It Fits in the Tyk Ecosystem
 
-The Developer Portal serves as the bridge between your API infrastructure and your developer community. It acts as a central hub where API providers can publish their offerings and API consumers can discover, learn about, and gain access to those APIs.
+The Developer Portal serves as the bridge between your API infrastructure and your developer community. It serves as a central hub where API providers can publish their offerings and API consumers can discover, learn about, and access those APIs.
 
 The Developer Portal connects to one or more instances of the Tyk Dashboard (referred to as "Providers"). Each Tyk Dashboard provides access to:
 
@@ -62,7 +62,7 @@ The Developer Portal connects to one or more instances of the Tyk Dashboard (ref
 - Security policies that define access rights and rate limits
 - Authentication mechanisms for securing API access
 
-The API owner bundles API definitions into [API Products]({{< ref "portal/overview/concepts#api-products" >}}) which are then published to specific audiences in [API Catalogs]({{< ref "portal/overview/concepts#api-catalogs" >}}). They create [Subscription Plans]({{< ref "portal/overview/concepts#api-plans" >}}) which use the security policies to control granular access - for example gold, silver and bronze tiers.
+The API owner bundles API definitions into [API Products]({{< ref "portal/overview/concepts#api-products" >}}), which are then published to specific audiences in [API Catalogs]({{< ref "portal/overview/concepts#api-catalogs" >}}). They create [Subscription Plans]({{< ref "portal/overview/concepts#api-plans" >}}) that use security policies to control granular access, for example, gold, silver, and bronze tiers.
 
 When an API consumer discovers an API Product they want to use, they request access through the Portal via a Subscription Plan. Once approved (either automatically or by an administrator), the Developer Portal issues a provisioning request to the relevant Tyk Dashboard, which then generates the necessary access credentials (API keys, OAuth tokens, etc.).
 
@@ -71,7 +71,7 @@ This separation between the Developer Portal and the Tyk Dashboard creates a cle
 - **API Management** - how you define, secure, and monitor your APIs (handled by Tyk Dashboard)
 - **API Publishing** - how you present, document, and provide access to your APIs (handled by Developer Portal)
 
-This architecture allows you to maintain a consistent developer experience even if your backend API infrastructure spans multiple environments or uses different configurations.
+This architecture enables you to maintain a consistent developer experience, even if your backend API infrastructure spans multiple environments or utilizes different configurations.
 
 
 ## Getting Started

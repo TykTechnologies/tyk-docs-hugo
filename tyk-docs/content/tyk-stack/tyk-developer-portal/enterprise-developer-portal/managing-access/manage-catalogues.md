@@ -76,21 +76,21 @@ This configuration is not currently in use and can be ignored.
 
 Controls which API Consumers can see and access this Catalog.
 
-**Location**: *Catalogues > Add/Edit Catalogues > Visibility options*
-**Options**:
+- **Location**: *Catalogues > Add/Edit Catalogues > Visibility options*
+- **Options**:
     - Public: Visible to all visitors, even without logging in
     - Private: Visible only to authenticated users in the teams select in the [Audience]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues#audience" >}})
-**Default**: Private
-**Best Practice**: Use the most restrictive visibility that meets your business needs
+- **Default**: Private
+- **Best Practice**: Use the most restrictive visibility that meets your business needs
 
 #### Audience
 
 Specifies which teams can access a Private Catalog.
 
-**Location**: *Catalogues > Add/Edit Catalogues > Team*
-**Selection**: Select **Add Team** then choose from any Teams created on the Developer Portal; you can add multiple teams by repeating this action
-**Behavior**: Only members of the selected teams will see this Catalog
-**Note**: Teams must be created before they can be added to the audience; any combination of Teams can be added to a Catalog's audience across any number of Organisations
+- **Location**: *Catalogues > Add/Edit Catalogues > Team*
+- **Selection**: Select **Add Team** then choose from any Teams created on the Developer Portal; you can add multiple teams by repeating this action
+- **Behavior**: Only members of the selected teams will see this Catalog
+- **Note**: Teams must be created before they can be added to the audience; any combination of Teams can be added to a Catalog's audience across any number of Organisations
 
 ### Catalog Content
 
@@ -98,21 +98,21 @@ Specifies which teams can access a Private Catalog.
 
 Determines which API Products appear in this Catalog.
 
-**Location**: *Catalogues > Add/Edit Catalogues > Products*
-**Selection**: Select one or more Products from the dropdown
-**Removal**: Click on the `x` next to the name of the Product you want to delete from the Catalog
-**Relationship**: A Product can be assigned to multiple Catalogs
-**Best Practice**: Ensure that Products and their relevant Plans are assigned to the same Catalogs
+- **Location**: *Catalogues > Add/Edit Catalogues > Products*
+- **Selection**: Select one or more Products from the dropdown
+- **Removal**: Click on the `x` next to the name of the Product you want to delete from the Catalog
+- **Relationship**: A Product can be assigned to multiple Catalogs
+- **Best Practice**: Ensure that Products and their relevant Plans are assigned to the same Catalogs
 
 #### Plans
 
 Determines which API Plans appear in this Catalog.
 
-**Location**: *Catalogues > Add/Edit Catalogues > Plans*
-**Selection**: Select one or more Plans from the dropdown
-**Removal**: Click on the `x` next to the name of the Plan you want to delete from the Catalog
-**Relationship**: A Plan can be assigned to multiple Catalogs
-**Best Practice**: Ensure that Products and their relevant Plans are assigned to the same Catalogs
+- **Location**: *Catalogues > Add/Edit Catalogues > Plans*
+- **Selection**: Select one or more Plans from the dropdown
+- **Removal**: Click on the `x` next to the name of the Plan you want to delete from the Catalog
+- **Relationship**: A Plan can be assigned to multiple Catalogs
+- **Best Practice**: Ensure that Products and their relevant Plans are assigned to the same Catalogs
 
 ## Best Practices for API Catalogs
 

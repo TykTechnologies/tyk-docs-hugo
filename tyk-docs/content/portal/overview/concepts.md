@@ -5,11 +5,11 @@ tags: ["Developer Portal", "Tyk"]
 keywords: ["Developer Portal", "Tyk"]
 description: "Understand the fundamental concepts behind the Tyk Developer Portal, including APIs, access control, and customisation."
 aliases:
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
-  - /concepts/tyk-components/developer-portal
+ - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+ - /concepts/tyk-components/developer-portal
 ---
 
-This page provides an overview of the fundamental concepts that form the foundation of the Tyk Developer Portal. Understanding these concepts is essential for effectively setting up and managing your portal.
+This page provides an overview of the fundamental concepts that form the foundation of the Tyk Developer Portal. Understanding these concepts is crucial for setting up and effectively managing your portal.
 
 {{< youtube 0xlJDXKrbSw >}}
 
@@ -25,7 +25,7 @@ The Developer Portal’s user management system allows you to:
 - Control access to API Products, documentation, and credentials
 - Delegate administrative responsibilities to trusted partners
 
-This comprehensive approach to user management ensures that each participant in your API ecosystem has exactly the access and capabilities they need - no more, no less.
+This comprehensive approach to user management ensures that each participant in your API ecosystem has exactly the access and capabilities they need—no more, no less.
 
 ### API Consumers
 
@@ -34,9 +34,9 @@ API Consumers are the external users who access your APIs through the Live Porta
 There are two categories of API Consumer:
 
 - **Team Members** are the individual developers who can register, browse catalogs, request access to APIs, and view details of their API consumption. They are restricted to operate within their assigned *Team*.
-- **Administrators** operate within an *Organisation* and in addition to the capabilies of *Team Members* are also user managers. They can invite new users (both team member and admin), assign users to teams within the Organisation and delete users from the Organisation.
+- **Administrators** operate within an *Organisation* and in addition to the capabilies of *Team Members* are also user managers. They can invite new users (both team members and admins), assign users to teams within the Organisation, and delete users from the Organisation.
 
-API Consumers exist within a hierarchical structure allowing for flexible access management:
+API Consumers exist within a hierarchical structure, allowing for flexible access management:
 
 - **Teams** are groups of users who share access to specific catalogs and can collaborate on API projects. Teams provide a way to organize users within an Organisation. Users can be members of multiple Teams. **All users are members of at least one team**.
 
@@ -44,7 +44,7 @@ API Consumers exist within a hierarchical structure allowing for flexible access
 
 ### API Owners
 
-API Owners are the internal users who manage the publication of API Catalogs onto the Live Portal. They can configure the visual appearance of the portal, create [Catalogs, Products and Plans]({{< ref "portal/overview/concepts#api-packaging-and-access-control" >}}), and manage the Organisation, Teams and Users granted access to the Live Portal. They operate within the Admin Portal and have read-only access to the Live Portal.
+API Owners are the internal users who manage the publication of API Catalogs onto the Live Portal. They can configure the visual appearance of the portal, create [Catalogs, Products and Plans]({{< ref "portal/overview/concepts#api-packaging-and-access-control" >}}), and manage the Organisation, Teams, and Users granted access to the Live Portal. They operate within the Admin Portal and have read-only access to the Live Portal.
 
 ### Developer Portal Views
 
@@ -60,7 +60,7 @@ The **Live Portal** is the public-facing website where [API Consumers]({{< ref "
 
 The Live Portal displays the content for a single Organisation (restricting the API Consumer's view according to their access rights).
 
-The **Admin Portal** is the private administrative view where [API Owners]({{< ref "portal/overview/concepts#api-owners" >}}) can manage the content displayed in the Live Portal, approve access requests, and configure API Products.. It is also where users, Teams and Organisation are administered.
+The **Admin Portal** is the private administrative view where [API Owners]({{< ref "portal/overview/concepts#api-owners" >}}) can manage the content displayed in the Live Portal, approve access requests, and configure API Products.. It is also where users, Teams, and Organisation are administered.
 
 <br>
 {{< note success >}}
@@ -75,23 +75,23 @@ The Live Portal will only display content visible to the Team or Teams of which 
 
 An API Product is a strategic packaging of one or more APIs that delivers specific value to API Consumers. Rather than exposing individual API endpoints, API Products allow you to bundle related functionality together with appropriate documentation and access controls.
 
-For example a "Weather API" product might combine current weather data, historical weather records, and forecast APIs into a cohesive offering that solves a specific business need.
+For example, a "Weather API" product might combine current weather data, historical weather records, and forecast APIs into a cohesive offering that solves a specific business need.
 
 When creating an API Product, you should focus on:
 
 - Which APIs to include in the product
 - How to document the product's capabilities
-- Which business problems the product solves
-- Who the target audience is for the product
+- Which business problems does the product solve
+- Who is the target audience for the product
 
 ### API Plans
 
 API or Subscription Plans (usually referred to simply as Plans) define the terms under which API Consumers can access your API Products and control aspects like:
 
 - Rate limits (requests per second/minute/hour)
-- Quotas (total requests allowed in a time period)
+- Quotas (total requests allowed in a period)
 
-Different Plans can be attached to the same API Product, allowing you to offer various service tiers (for example free, basic and premium)
+Different Plans can be attached to the same API Product, allowing you to offer various service tiers (for example, free, basic, and premium)
 
 ### API Catalogs
 
@@ -129,9 +129,9 @@ API Consumers can create multiple apps to organize their API usage by project or
 
 ### Access Credentials
 
-This is the unified naming for any API Keys, Tokens or Secrets provisioned for a specific app.
+This is the unified naming for any API Keys, Tokens, or Secrets provisioned for a specific app.
 
-Access credentials are the security tokens that allow API Consumers to authenticate with your APIs. These depend upon the configuration of those APIs in the API definition managed by Tyk Dashnoard and may include:
+Access credentials are the security tokens that allow API Consumers to authenticate with your APIs. These depend upon the configuration of those APIs in the API definition managed by Tyk Dashboard and may include:
 
 - API keys
 - OAuth tokens
@@ -149,7 +149,7 @@ The Developer Portal manages the lifecycle of these credentials, including:
 When an API Consumer requests access to an API Product through a specific Plan, a provisioning request is generated. This request:
 
 - Captures the consumer's intended use case
-- Records which API Product and Plan they've selected
+- Records the API Product and Plan they've selected
 - Initiates an approval workflow (if required)
 - Triggers credential generation upon approval
 
@@ -161,12 +161,12 @@ Provisioning requests can be configured to require manual approval by an API Own
 
 A Provider is a connection to a Tyk Dashboard instance that supplies APIs, policies, and authentication mechanisms to the Developer Portal. The Provider serves as the bridge between your API management infrastructure and the Developer Portal experience.
 
-- API Source: Providers make APIs defined in Tyk Dashboard available for inclusion in API Products
+- API Source: Providers make APIs defined in the Tyk Dashboard available for inclusion in API Products
 - Policy Management: Providers supply the access and rate limit policies used by Products and Plans
 - Credential Issuance: When developers request access to APIs, the Provider generates and manages the necessary credentials
 - Multi-Provider Support: The Developer Portal can connect to multiple Providers simultaneously, allowing you to expose APIs from different Tyk environments
 
-While the Developer Portal can connect to multiple Providers, each individual API Product or Plan can only be associated with a single Provider. This is because the access policies that define Products and Plans exist within a specific Provider instance.
+While the Developer Portal can connect to multiple Providers, each API Product or Plan can only be associated with a single Provider. This is because the access policies that define Products and Plans exist within a specific Provider instance.
 
 ### Using Tyk Policies
 
