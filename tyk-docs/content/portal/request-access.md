@@ -41,14 +41,14 @@ You should now be logged in to the Live Portal as an API consumer. You'll see th
 Next, explore the catalog to find the API product you want to use:
 
 1. Navigate to **Catalogues** in the main navigation
-  - In this tutorial there is only one Catalog, containing a single API Product
+    - In this tutorial there is only one Catalog, containing a single API Product
 2. Select the API Product you created [previously]({{< ref "portal/publish-api-catalog#step-2-create-an-api-product" >}})
-  - Note that the Authentication requirements are shown in the Catalog view
+    - Note that the Authentication requirements are shown in the Catalog view
 3. You can now view the details from the perspective of an API Consumer:
-  - Product description
-  - APIs to which the Product grants access 
-  - The subscription plans available to you, including their rate limits and quotas
-  - API documentation and Getting Started guides (if you created any)
+    - Product description
+    - APIs to which the Product grants access 
+    - The subscription plans available to you, including their rate limits and quotas
+    - API documentation and Getting Started guides (if you created any)
 
 ## Step 3: Create a Developer App
 
@@ -58,10 +58,10 @@ You need to create a [Developer App]({{< ref "portal/developer-app" >}}) to cont
 2. Navigate to **My Apps** in the left hand navigation
 3. Select **Create New App**
 4. Enter the following details:
-  - App name: A descriptive name (e.g., "Weather Dashboard")
-  - Description: What the app will do with the API
-  - Visibility: select **Personal** so that the access credentials are not visible to other users in your Org
-  - Redirect URL: leave blank, as we're using Auth Token
+    - App name: A descriptive name (e.g., "Weather Dashboard")
+    - Description: What the app will do with the API
+    - Visibility: select **Personal** so that the access credentials are not visible to other users in your Org
+    - Redirect URL: leave blank, as we're using Auth Token
 5. Select **Create App**
 6. You will be shown a read-only summary of the App's details; if you want to make changes simply select **Edit details**
 7. Select **Back to Apps overview** to return to your *My Apps* list
@@ -87,8 +87,8 @@ Let's find the access credentials so that we can start to consume the API:
 2. Navigate to **My Apps** in the left hand navigation
 3. Select the app you created [previously]({{< ref "portal/request-access#step-3-create-a-developer-app" >}})
 4. In the API Credentials section, you'll see your access credentials
-  - Click Show to reveal the API key
-  - Copy the credentials for use in step 6
+    - Click Show to reveal the API key
+    - Copy the credentials for use in step 6
 
 ## Step 6: Test the API
 
@@ -98,16 +98,16 @@ Finally, let's use your credentials to make a test API request:
 2. You can see the *listen path* for the API and, if you provided API documentation when creating the Product, may have more detail of the available endpoints
 3. Open a terminal or API testing tool (like Postman or cURL)
 4. Construct your API request using the access credentials issued in [Step 5]({{< ref "portal/request-access#step-5-view-your-api-access-credentials" >}})
-  - For example, with cURL:
+    - For example, with cURL:
 
-  ```
-curl -X GET "https://your-api-gateway.com/your-api-path" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json"
-  ```
+    ```
+    curl -X GET "https://your-api-gateway.com/your-api-path" \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json"
+    ```
 5. Send the request and verify that you receive a successful response
 
-### Troubleshooting
+## Troubleshooting
 
 If you encounter issues when testing the API:
 

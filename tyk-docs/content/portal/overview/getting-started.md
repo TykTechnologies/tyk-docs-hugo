@@ -116,7 +116,7 @@ API Consumer Admin users have special privileges to manage other users within th
 3. Enter the user's details:
     - First Name and Last Name
     - Email: The user's email address (this will be their login)
-    - Select the **activate user** checkbox
+    - Select the **activate developer** checkbox
     - Select the org that you created in [step 1]({{< ref "portal/overview/getting-started#step-1-create-an-organisation" >}})
     - Select the Team that you created in [step 2]({{< ref "portal/overview/getting-started#step-2-create-a-team-within-the-organisation" >}})
     - For this tutorial provide an initial password for the user

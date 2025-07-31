@@ -31,7 +31,7 @@ Before you begin, ensure you have:
 [Catalogs]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues" >}}) determine which API products and plans are visible to different developer audiences. You'll need to create a catalog and then later you'll create content to publish to its audience.
 
 1. Log in to the Developer Portal using your API Owner credentials
-    - this will take you to the Admin Portal viewNavigate to Catalogs
+    - this will take you to the Admin Portal view, Navigate to Catalogs
 2. Navigate to **Developer Portal > Catalogues**
   {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-catalogues.png" alt="Navigate the to catalogues menu" >}}
 3. Click **Add new catalogue**
@@ -98,7 +98,7 @@ Before you begin, ensure you have:
 
 You can now go back to your Catalog to check that the API Product and Plan have been successfully added, ready for your API Consumers to gain access to your service.
 
-1. Navigate to **Developer Portal > API Products**
+1. Navigate to **Developer Portal > Catalogue**
 2. Select the Catalog that you created [previously]({{< ref "portal/publish-api-catalog#step-1-create-the-api-catalog" >}})
 3. Find the **Catalogue content** section and confirm that your Product and Plan are listed
 4. Click **Cancel** or **Save Changes**
@@ -110,7 +110,7 @@ You can now go back to your Catalog to check that the API Product and Plan have 
 
 You have successfully created an API Product and a Plan and included them in a private Catalog that will only be available to a selected audience in your Developer Portal. Now you're ready to experience the API Consumer side.
 
-It's time to [create your first Developer App]({{< ref "portal/publish-api-catalog" >}}).
+It's time to [create your first Developer App]({{< ref "portal/request-access" >}}).
 
 ### Best Practices
 
