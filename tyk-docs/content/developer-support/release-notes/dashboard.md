@@ -49,7 +49,7 @@ This release builds on the recent release of [Tyk 5.8.3]({{< ref "developer-supp
 
 Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field, but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
 
-When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity. For full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "developer-support/release-notes/dashboard#fixed-v5.9.0" >}}) section.
+When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity. For full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "developer-support/release-notes/dashboard#Fixed-v5.9.0" >}}) section.
 
 **Please note that this functionality is not available for Tyk Classic APIs.**
 
