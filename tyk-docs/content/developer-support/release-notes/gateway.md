@@ -46,7 +46,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.9.0 Release Notes
 
-#### Release Date 4th August 2025
+#### Release Date 31st July 2025
 
 #### Release Highlights
 
@@ -54,16 +54,15 @@ This release builds on the recent release of [Tyk 5.8.3]({{< ref "developer-supp
 
 ##### Accept JSON Web Tokens (JWTs) Issued By Multiple Identity Providers
 
-Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
+Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field, but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
 
-When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity. For full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) section.
+When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity, for full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) section.
 
-<br> 
-Please note that this functionality is not available for Tyk Classic APIs.
+**Please note that this functionality is not available for Tyk Classic APIs.**
 
 ##### Compatibility with Valkey
 
-Tyk is now fully compatible with [Valkey](https://valkey.io/), the open source (BSD) high-performance key/value datastore backed by the Linux foundation, as an alternative to Redis.
+Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
 
 ##### Enhancements to Tyk Streams for Enterprise Edition
 
@@ -111,7 +110,7 @@ If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
-- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+- [Source code tarball of Tyk Gateway v5.9.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.0)
 
 #### Changelog {#Changelog-v5.9.0}
 
@@ -129,13 +128,13 @@ Added compatibility with Valkey database as an alternative to Redis. This is for
 <details>
 <summary>Authenticate with Mutliple JWKS Providers</summary>
 
-Added support for configuration of multiple JWKS (JSON Web Key Set) endpoints in the Tyk OAS API definition. This enables the Gateway to authenticate JSON Web Tokens (JWTs) in multi-identity provider environments. The JWKS endpoints are configured in the new `jwksURIs` array in the JWT Auth `securityScheme`. This will take precedence over the existing `source` field and existing API definitions will be automatically migrated to use the new field, while maintaining backward compatibility in case of rollback.
+Added support for configuration of multiple JWKS (JSON Web Key Set) endpoints in the Tyk OAS API definition. This enables the Gateway to authenticate JSON Web Tokens (JWTs) in multi-identity provider environments. The JWKS endpoints are configured in the new `jwksURIs` array in the JWT Auth `securityScheme`. This will take precedence over the existing `source` field, and existing API definitions will be automatically migrated to use the new field, while maintaining backward compatibility in case of rollback.
 
 </details>
 </li>
 <li>
 <details>
-<summary>Added GraphQL subscription support for upstream SSE servers that require POST method</summary>
+<summary>Added GraphQL subscription support for upstream SSE servers that require the POST method</summary>
 
 Enabled configuration for GraphQL SSE subscriptions to use `POST` requests instead of `GET`, addressing compatibility issues with upstream servers that require `POST`. We’ve added a new option `proxy.sse_use_post` which can be set if `proxy.subscription_type=sse` to cause Tyk to issue `POST` requests. This allows for larger subscription payloads and keeps the subscription payload out of the URL.
 </details>
@@ -161,6 +160,11 @@ Added support for Bloblang to be used as a new processor option for Tyk Streams 
 Added the missing `KeyID` field to the coprocess `SessionState` proto, allowing gRPC plugins to access it and aligning it with the Go `SessionState` struct. This enables full feature parity for custom authentication and session management in gRPC plugins.
 </details>
 </li>
+</ul>
+
+##### Changed
+
+<ul>
 <li>
 <details>
 <summary>Updated to use latest kin-openapi</summary>
@@ -169,7 +173,6 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 </details>
 </li>
 </ul>
-
 
 ---
 

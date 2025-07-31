@@ -39,7 +39,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.9.0 Release Notes
 
-#### Release Date 4th August 2025
+#### Release Date 31st July 2025
 
 #### Release Highlights
 
@@ -47,16 +47,15 @@ This release builds on the recent release of [Tyk 5.8.3]({{< ref "developer-supp
 
 ##### Accept JSON Web Tokens (JWTs) Issued By Multiple Identity Providers
 
-Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
+Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field, but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
 
 When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity. For full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "developer-support/release-notes/dashboard#fixed-v5.9.0" >}}) section.
 
-<br> 
-Please note that this functionality is not available for Tyk Classic APIs.
+**Please note that this functionality is not available for Tyk Classic APIs.**
 
 ##### Compatibility with Valkey
 
-Tyk is now fully compatible with [Valkey](https://valkey.io/), the open source (BSD) high-performance key/value datastore backed by the Linux foundation, as an alternative to Redis.
+Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
 
 #### Breaking Changes
 
@@ -111,7 +110,7 @@ If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions]
 <details>
 <summary>Authenticate with Mutliple JWKS Providers</summary>
 
-Added support for configuration of multiple JWKS (JSON Web Key Set) endpoints for Tyk OAS APIs. This enables the Gateway to authenticate JSON Web Tokens (JWTs) in multi-identity provider environments. The JWKS endpoints are configured in the new `jwksURIs` array in the JWT Auth `securityScheme`. This will take precedence over the existing `source` field and existing API definitions will be automatically migrated to use the new field, while maintaining backward compatibility in case of rollback. Full support has been added to the Tyk OAS API Designer.
+Added support for configuration of multiple JWKS (JSON Web Key Set) endpoints for Tyk OAS APIs. This enables the Gateway to authenticate JSON Web Tokens (JWTs) in multi-identity provider environments. The JWKS endpoints are configured in the new `jwksURIs` array in the JWT Auth `securityScheme`. This will take precedence over the existing `source` field, and existing API definitions will be automatically migrated to use the new field, while maintaining backward compatibility in case of rollback. Full support has been added to the Tyk OAS API Designer.
 
 </details>
 </li>
@@ -126,12 +125,17 @@ Added compatibility with Valkey database as an alternative to Redis. This is for
 <details>
 <summary>Experimental Access to Additional Input and Output Options for Tyk Streams APIs </summary>
 
-We have ntroduced a new Dashboard configuration option, `TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL`, to enable all Bento input and output options for Tyk Streams APIs. This is strictly provided for demos and MVPs and should not be enabled in production use.
+We have introduced a new Dashboard configuration option, `TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL`, to enable all Bento input and output options for Tyk Streams APIs. This is strictly provided for demos and MVPs and should not be enabled in production use.
 </details>
 </li>
+</ul>
+
+##### Changed
+
+<ul>
 <li>
 <details>
-<summary>Updated to Use Latest kin-openapi</summary>
+<summary>Updated to use latest kin-openapi</summary>
 
 Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensures improved compatibility, full stack interoperability, and continued support for existing OpenAPI 3.0.x specifications.
 </details>
@@ -148,7 +152,6 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Content-Type` header instead of an `Accept` header for `GET` requests.
 </details>
 </li>
-
 </ul>
 
 ---

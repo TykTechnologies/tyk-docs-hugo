@@ -30,7 +30,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 2.8.2 Release Notes
 
-#### Release Date 4th August 2025
+#### Release Date 31st July 2025
 
 #### Release Highlights
 
@@ -38,7 +38,7 @@ This release contains a bump to the API definitions to align with changes in Gat
 
 ##### Compatibility with Valkey
 
-Tyk is now fully compatible with [Valkey](https://valkey.io/), the open source (BSD) high-performance key/value datastore backed by the Linux foundation, as an alternative to Redis.
+Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
 
 #### Breaking Changes
 
@@ -65,6 +65,8 @@ If you are upgrading to 2.8.2, please follow the detailed [upgrade instructions]
     ```
 #### Changelog {#Changelog-v2.8.2}
 
+##### Added
+
 <ul>
 <li>
 <details>
@@ -73,6 +75,11 @@ If you are upgrading to 2.8.2, please follow the detailed [upgrade instructions]
 Added compatibility with Valkey database as an alternative to Redis. This is for fresh environments, with no migration support from Redis.
 </details>
 </li>
+</ul>
+
+##### Changed
+
+<ul>
 <li>
 <details>
 <summary>Updated to use latest kin-openapi</summary>
