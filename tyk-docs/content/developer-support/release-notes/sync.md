@@ -48,7 +48,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 
 #### Changelog {#Changelog-v2.1.2}
 
-##### Added
+##### Changed
 <ul>
 <li>
 <details>

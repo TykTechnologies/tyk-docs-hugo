@@ -73,11 +73,6 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 
 #### Changelog {#Changelog-v3.1.0}
 
-##### Added
-
-<ul>
-</ul>
-
 ##### Changed
 
 <ul>
