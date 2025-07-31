@@ -104,8 +104,8 @@ This status mechanism is also used when approving [self-registered users]({{< re
 API Owners can change a user's active status at any time:
 
 1. Navigate to the user's profile in the Admin Portal:
-  - for API Consumers: **API Consumers > Users**
-  - for API Owners: **Settings > Admin users**
+    - for API Consumers: **API Consumers > Users**
+    - for API Owners: **Settings > Admin users**
 2. Toggle the **active** checkbox to the required state
 3. Click **Save Changes**
 4. Changes take effect immediately - activated users can log in right away, while deactivated users will lose access
@@ -134,8 +134,8 @@ This setting is particularly useful for closed ecosystems where all potential us
 The API Owner can permanently remove a user from the Developer Portal as follows:
 
 1. Navigate to the appropriate user list in the Admin Portal:
-  - for API Consumers: **API Consumers > Users**
-  - for API Owners: **Settings > Admin users**
+    - for API Consumers: **API Consumers > Users**
+    - for API Owners: **Settings > Admin users**
 2. Use search to find the user you wish to view or manage (if required)
 3. Select **Delete** from the three dot menu
 4. Confirm the deletion
