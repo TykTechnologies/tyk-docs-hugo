@@ -125,7 +125,7 @@ Added compatibility with Valkey database as an alternative to Redis. This is for
 <details>
 <summary>Experimental Access to Additional Input and Output Options for Tyk Streams APIs </summary>
 
-We have introduced a new Dashboard configuration option, `TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL`, to enable all Bento input and output options for Tyk Streams APIs. This is strictly provided for demos and MVPs and should not be enabled in production use.
+We have introduced a new Dashboard configuration option, `TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL`, to enable all experimental input and output options for Tyk Streams APIs. This is strictly provided for demos and MVPs and should not be enabled in production use.
 </details>
 </li>
 </ul>
