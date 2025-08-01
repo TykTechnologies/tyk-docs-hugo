@@ -1,14 +1,14 @@
 ---
-title: "Getting Started with Tyk Self-Managed"
+title: "Developing APIs with Tyk Self-Managed"
 date: 2025-02-10
 keywords: ["quick start", "tyk self-managed", "tyk gateway", "tyk dashboard", "tyk pump", "tyk analytics"]
 description: "Quickly set up Tyk Self-Managed with our comprehensive guide, including installation options and demo environments."
 aliases:
 ---
 
-## Introduction to Tyk Self-Managed Trial
+## Introduction
 
-Tyk Self-Managed is a comprehensive API Management platform that you can deploy and control within your own infrastructure. This guide will help you set up and explore your Tyk Self-Managed trial environment.
+Tyk Self-Managed is a comprehensive API Management platform that you can deploy and control within your own infrastructure. This page will help you set up and explore your Tyk Self-Managed environment.
 
 ### What's included in your trial
 
@@ -23,24 +23,34 @@ Your Tyk Self-Managed trial includes:
 ### System Requirements
 
 - **Docker**: Docker Engine 20.10.0 or newer
-- **Docker Compose**: Version 2.0.0 or newer
-- **Memory**: Minimum 4GB RAM
-- **Storage**: At least 10GB of free disk space
-- **CPU**: 2 cores minimum (4+ recommended for production)
-- **License Key**: A valid Tyk Self-Managed license key (provided in your trial email)
+- **CPU & Memory**: Minimum 2 GB RAM and 2 CPU cores
+- **License Key**: A valid Tyk Self-Managed license key. 
+    
+    You can instantly obtain a self managed trial license by registering on this [form](https://share.hsforms.com/13h7zZ8k6Tt2FCbIbYs39mA3ifmg). After registraion, you will receive an email with your license key.
+
+    If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
 
 ### Trial Duration and Limitations
 
 Your trial license is valid for 14 days from activation. During this period, you have access to all Enterprise features. After the trial period, you'll need to purchase a license to continue using Tyk Self-Managed.
 
+To continue using Tyk Self-Managed after your trial, please contact our [support team](https://tyk.io/contact/) to obtain a license.
+
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
+
+<br>
+<br>
+
 ## Quick Setup
+
+This section provides a step-by-step guide to quickly set up Tyk Self-Managed using Docker. 
 
 ### Prerequisites
 
 1. Install [Docker](https://docs.docker.com/get-docker/) on your system
 2. Ensure you have your Tyk Self-Managed license key from your trial email
 
-### One-command Installation using Docker Compose
+### Installation
 
 1. Clone the repository:
    ```
@@ -56,17 +66,26 @@ Your trial license is valid for 14 days from activation. During this period, you
 
 3. Start the Tyk stack:
    ```
-   docker-compose up -d
+   docker compose up -d
    ```
 
    This command will download and start all the necessary containers:
    - Tyk Gateway
    - Tyk Dashboard
    - Enterprise Developer Portal
-   - Redis
-   - PostgreSQL
+   - Redis (Gateway dependency for caching)
+   - PostgreSQL (Dashboard and Portal dependency for data storage)
    - Tyk Pump (for analytics)
    - Sample API service (httpbin)
+
+    **Wait for the containers to initialize. This may take a few minutes depending on your system.**
+
+5. Once all containers are running, you can verify their status with:
+   ```
+   docker compose ps
+   ```
+
+   You should see all services listed as "Up".
 
 ### Default Credentials and Access Points
 
@@ -90,11 +109,22 @@ admin pw: specialpassword
 
 ### Verifying Your Installation
 
-1. Open your browser and navigate to `http://localhost:3000`
-2. Log in with the default credentials (developer@tyk.io / specialpassword)
-3. You should see the Tyk Dashboard with pre-configured APIs and analytics
+1. **Verify Dashboard Access**:
+    1. Open your browser and navigate to `http://localhost:3000`
+    2. Log in with the default credentials (developer@tyk.io / specialpassword)
+    3. You should see the Tyk Dashboard with pre-configured APIs and analytics
+2. **Verify Gateway Access**:
+    1. Open a terminal and run:
+       ```
+       curl http://localhost:8080/hello
+       ```
+    2. You should receive a JSON response from API, confirming that the Tyk Gateway is functioning correctly. 
+3. **Verify Developer Portal Access**:
+    1. Open your browser and navigate to `http://localhost:3001`
+    2. Log in with the default credentials (portal@tyk.io / specialpassword)
+    3. You should see the `Overview` section of the Developer Portal.
 
-## 3. Exploring Your Pre-Configured Environment
+## Exploring Your Pre-Configured Environment (TODO)
 
 ### Dashboard Tour
 
@@ -142,7 +172,9 @@ The Developer Portal includes:
   - Production Plan: Higher capacity (100 requests per 60 seconds)
 - A public catalog making these APIs discoverable
 
-## 4. Quick Wins: Core API Management Capabilities
+## Core API Management Capabilities
+
+In this section, we will explore the core API management capabilities of Tyk Self-Managed using the pre-configured httpbingo API.
 
 ### API Security in Action
 
@@ -189,16 +221,6 @@ The Dashboard's Analytics section provides real-time insights into API usage pat
 
 TODO: Alerting features are not yet implemented in the tyk-poc repository.
 
+## Next Steps
 
-Tyk Self-Managed consists of multiple components, [as described]({{< ref "tyk-self-managed" >}}). While the OSS Gateway and Pump are available without a license, the remaining components require one. To experience the full capabilities of our Full Lifecycle API Management solution within your own infrastructure, please obtain a license by contacting our support team.
-
-{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
-
-If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
-
-Once you have obtained your license, you can proceed with the installation options provided below.
-
-## Tyk Demo 
-
-Head over to our **Tyk Demo** guides in [Kubernetes]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#kubernetes-demo" >}}) or [Docker]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-demo" >}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
-
+[Developing APIs with Tyk Self-Managed]({{< ref "deployment-and-operations/tyk-self-managed/value-addons" >}}) - Learn how to create new APIs, publish them to the Developer Portal, and integrate advanced middleware.
