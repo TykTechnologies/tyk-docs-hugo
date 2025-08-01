@@ -332,9 +332,45 @@ menu:
             category: Page
             show: True
           - title: "API Management in Kubernetes"
-            path: /api-management/automations/operator
             category: Page
             show: True
+            menu:
+              - title: "Overview"
+                path: /api-management/automations/operator
+                category: Page
+                show: True
+              - title: "Installation"
+                path: /tyk-stack/tyk-operator/installing-tyk-operator
+                category: Page
+                show: True
+              - title: "Create an API"
+                path: /tyk-stack/tyk-operator/create-an-api
+                category: Page
+                show: True
+              - title: "Publish an API"
+                path: /tyk-stack/tyk-operator/publish-an-api
+                category: Page
+                show: True
+              - title: "Kubernetes Ingress"
+                path: /product-stack/tyk-operator/tyk-ingress-controller
+                category: Page
+                show: True
+              - title: "GraphQL Federation"
+                path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
+                category: Page
+                show: True
+              - title: "Custom Plugins"
+                path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
+                category: Page
+                show: True
+              - title: "Internal Looping"
+                path: /product-stack/tyk-operator/advanced-configurations/internal-looping
+                category: Page
+                show: True
+              - title: "Managing Multiple Organizations"
+                path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
+                category: Page
+                show: True
           - title: "Synchronizing Tyk Configuration"
             category: Directory
             show: True
