@@ -10,7 +10,6 @@ aliases:
   - /product-stack/tyk-operator/advanced-configurations/api-categories
   - /product-stack/tyk-operator/advanced-configurations/api-versioning
   - /product-stack/tyk-operator/advanced-configurations/client-authentication
-  - /product-stack/tyk-operator/advanced-configurations/internal-looping
   - /product-stack/tyk-operator/advanced-configurations/management-of-api
   - /product-stack/tyk-operator/advanced-configurations/tls-certificate
   - /product-stack/tyk-operator/getting-started/create-an-api-overview
@@ -24,7 +23,6 @@ aliases:
   - /product-stack/tyk-operator/getting-started/secure-an-oas-api
   - /product-stack/tyk-operator/getting-started/security-policy-example
   - /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
-  - /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
   - /product-stack/tyk-operator/key-concepts/custom-resources
   - /product-stack/tyk-operator/key-concepts/key-concepts
   - /product-stack/tyk-operator/key-concepts/operator-context
@@ -56,6 +54,196 @@ Tyk Operator is a native Kubernetes operator, allowing you to define and manage 
 
 {{< img src="/img/operator/tyk-operator.svg" alt="Tyk Operator" width="600" >}}
 
+## Key Concepts
+
+### GitOps With Tyk
+With Tyk Operator, you can configure your APIs using Kubernetes native manifest files. You can use the manifest files in a GitOps workflow as the single source of truth for API deployment.
+
+{{< note success >}}
+**Note**  
+
+If you use Tyk Operator to manage your APIs, you should set up RBAC such that human users cannot have the "write" permission on the API definition endpoints using Tyk Dashboard. 
+{{< /note >}}
+
+#### What is GitOps?
+“GitOps” refers to the operating model of using Git as the “single source of truth” to drive continuous delivery for infrastructure and software through automated CI/CD workflow.
+
+#### Tyk Operator in your GitOps workflow
+You can install Argo CD, Flux CD or the GitOps tool of your choice in a cluster, and connect it to the Git repository where you version control your API manifests. The tool can synchronise changes from Git to your cluster. The API manifest updates in cluster would be detected by Tyk Operator, which has a Kubernetes controller to automatically reconcile the API configurations on your Tyk Gateway or Tyk Dashboard. 
+
+**Kubernetes-Native Developer Experience** 
+API Developers enjoy a smoother Continuous Integration process as they can develop, test, and deploy the microservices. API configurations together use familiar development toolings and pipeline.
+
+**Reliability** 
+With declarative API configurations, you have a single source of truth to recover after any system failures, reducing the meantime to recovery from hours to minutes.
+
+#### Single Source of Truth for API Configurations
+Tyk Operator will reconcile any divergence between the Kubernetes desired state and the actual state in [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) or [Tyk Dashboard]({{< ref "tyk-dashboard" >}}). Therefore, you should maintain the API definition manifests in Kubernetes as the single source of truth for your system. If you update your API configurations using Tyk Dashboard, those changes would be reverted by Tyk Operator eventually.
+
+To learn more about Gitops with Tyk, refer the following blog posts:
+- [GitOps-enabled API management in Kubernetes](https://tyk.io/blog/gitops-enabled-api-management-in-kubernetes/)
+- [A practical guide using Tyk Operator, ArgoCD, and Kustomize](https://tyk.io/blog/a-practical-guide-using-tyk-operator-argocd-and-kustomize/)
+
+### Custom Resources in Tyk
+
+In Kubernetes, a [Custom Resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) is an extension of the Kubernetes API that allows you to introduce custom objects in your cluster. Custom Resources enable you to define and manage custom configurations and settings specific to your applications, making Kubernetes highly extensible. These custom objects are defined using Custom Resource Definitions (CRDs), which specify the schema and structure of the resource.
+
+Tyk Operator manages multiple custom resources to help users create and maintain their API configurations:
+
+**TykOasApiDefinition**: Available from Tyk Operator v1.0. It represents a [Tyk OAS API configuration]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk OAS API is based on the OpenAPI specification (OAS) and is the recommended format for standard HTTP APIs.
+
+**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{< ref "api-management/gateway-config-tyk-classic" >}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
+
+**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options">}}) which is based on [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk Operator supports all [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}) features as they become available on the Gateway.
+
+**SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
+
+These custom resources enable users to leverage Kubernetes' declarative configuration management to define, modify, and version their APIs, seamlessly integrating with other Kubernetes-based workflows and tools.
+
+#### Custom Resources for API and Policy Configuration
+
+The following custom resources can be used to configure APIs and policies at [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) or [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
+
+| Kind               | Group       | Version   | Description                                                                                       |
+|--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
+| TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{< ref "api-management/gateway-config-tyk-oas" >}})                                 |
+| ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{< ref "api-management/gateway-config-tyk-classic" >}})                                 |
+| TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{< ref "api-management/event-driven-apis#configuration-options" >}})                                 |
+| SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
+| SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                           |
+| SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                        |
+| OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) for details. |
+
+#### Tyk Classic Developer Portal
+
+The following custom resources can be used to configure [Tyk Classic Developer Portal]({{< ref "tyk-developer-portal/tyk-portal-classic" >}}).
+
+| Kind               | Group       | Version   | Description                                                                                       |
+|--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
+| APIDescription     | tyk.tyk.io  | v1alpha1  | Configures [Portal Documentation]({{< ref "tyk-apis/tyk-portal-api/portal-documentation" >}}). |
+| PortalAPICatalogue | tyk.tyk.io  | v1alpha1  | Configures [Portal API Catalogue]({{< ref "getting-started/key-concepts/api-catalogue" >}}). |
+| PortalConfig       | tyk.tyk.io  | v1alpha1  | Configures [Portal Configuration]({{< ref "tyk-apis/tyk-portal-api/portal-configuration" >}}). |
+
+
+### Reconciliation With Tyk Operator 
+#### Controllers & Operators
+In Kubernetes, [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) watch one or more Kubernetes resources, which can be built-in types like *Deployments* or custom resources like *ApiDefinition* - in this case, we refer to Controller as Operator. The purpose of a controller is to match the desired state by using Kubernetes APIs and external APIs.
+
+> A [Kubernetes operator](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-operator) is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage instances of complex applications on behalf of a Kubernetes user.
+
+#### Desired State vs Observed State
+Let’s start with the *Desired State*. It is defined through Kubernetes Manifests, most likely YAML or JSON, to describe what you want your system to be in. Controllers will watch the resources and try to match the actual state (the observed state) with the desired state for Kubernetes Objects. For example, you may want to create a Deployment that is intended to run three replicas. So, you can define this desired state in the manifests, and Controllers will perform necessary operations to make it happen.
+
+How about *Observed State*? Although the details of the observed state may change controller by controller, usually controllers update the status field of Kubernetes objects to store the observed state. For example, in Tyk Operator, we update the status to include *api_id*, so that Tyk Operator can understand that the object was successfully created on Tyk.
+
+#### Reconciliation
+Reconciliation is a special design paradigm used in Kubernetes controllers. Tyk Operator also uses the same paradigm, which is responsible for keeping our Kubernetes objects in sync with the underlying external APIs - which is Tyk in our case. 
+
+**When would reconciliation happen?**
+<br>
+Before diving into Tyk Operator reconciliation, let's briefly mention some technical details about how and when reconciliation happens. Reconciliation only happens when certain events happen on your cluster or objects. Therefore, Reconciliation will **NOT** be triggered when there is an update or modification on Tyk’s side. It only watches certain Kubernetes events and is triggered based on them. Usually, the reconciliation happens when you modify a Kubernetes object or when the cache used by the controller expires - side note, controllers, in general, use cached objects to reduce the load in the Kube API server. Typically, caches expire in ~10 hours or so but the expiration time might change based on Operator configurations.
+
+So, in order to trigger Reconciliation, you can either
+- modify an object, which will trigger reconciliation over this modified object or,
+- restart Tyk Operator pod, which will trigger reconciliation over each of the objects watched by Tyk Operator.
+
+**What happens during Reconciliation?**
+<br>
+Tyk Operator will compare desired state of the Kubernetes object with the observed state in Tyk. If there is a drift, Tyk Operator will update the actual state on Tyk with the desired state. In the reconciliation, Tyk Operator mainly controls three operations; DELETE, CREATE, and UPDATE.
+
+- **CREATE** - an object is created in Kubernetes but not exists in Tyk
+- **UPDATE** - an object is in different in Kubernetes and Tyk (we compare that by hash)
+- **DELETE** - an object is deleted in Kubernetes but exists in Tyk
+
+**Drift Detection**
+<br>
+If human operators or any other system delete or modify API Definition from Tyk Gateway or Dashboard, Tyk Operator will restore the desired state back to Tyk during reconciliation. This is called Drift Detection. It can protect your systems from unauthorized or accidental modifications. It is a best practice to limit user access rights on production environment to read-only in order to prevent accidental updates through API Manager directly.
+
+
+### CRD Versioning
+
+Tyk follows standard practices for naming and versioning custom resources as outlined by the Kubernetes Custom Resource Definition [versioning guidelines](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/). Although we are currently on the `v1alpha1` version, no breaking changes will be introduced to existing Custom Resources without a version bump. This means that any significant changes or updates that could impact existing resources will result in a new version (e.g., `v1beta1` or `v1`) and Operator will continue supporting all CRD versions for a reasonable time before deprecating an older version. This ensures a smooth transition and compatibility, allowing you to upgrade without disrupting your current configurations and workflows.
+
+For more details on Kubernetes CRD versioning practices, refer to the Kubernetes Custom Resource Definition [Versioning documentation](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/).
+
+
+### Operator User
+Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource (CRs)]({{< ref "#custom-resources-in-tyk" >}}), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state.
+
+For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organization and RBAC rules.
+
+During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the environment variables (listed in the table below).
+
+| Key or Environment Variable | Description  |
+|:-----|:-------------|
+| `TYK_MODE` | "ce" for OSS or "pro" for licensed users |
+| `TYK_URL` | URL of Tyk Gateway or Dashboard API |
+| `TYK_ORG` | Organization ID of Operator user |
+| `TYK_AUTH` | API key of Operator user |
+
+These would be the default credentials Tyk Operator uses to connect to Tyk.
+
+
+### Multi-tenancy in Tyk
+
+Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "api-management/dashboard-configuration#organizations" >}}) for each team or department. Each organization is a completely isolated unit with its own:
+
+- API Definitions
+- API Keys
+- Users
+- Developers
+- Domain
+- Tyk Classic Portal
+
+This structure is ideal for businesses with a complex hierarchy, where distinct departments operate independently but within the same overall infrastructure.
+
+{{< img src="/img/operator/tyk-organisations.svg" alt="Multi-tenancy in Tyk Dashboard" width="600" >}}
+
+#### Define OperatorContext for Multi-Tenant API Management
+
+The `OperatorContext` in Tyk Operator allows you to create isolated management environments by defining specific access parameters for different teams or departments within a shared Tyk Operator instance. It helps you specify:
+
+- The Tyk Dashboard with which the Operator interacts
+- The organization under which API management occurs
+- The user identity utilized for requests
+- The environment in which the Operator operates
+
+By setting different `OperatorContext` configurations, you can define unique access and management contexts for different teams. These contexts can then be referenced directly in your `ApiDefinition`, `TykOasApiDefinition`, `TykStreamsApiDefinition` or `SecurityPolicy` custom resource definitions (CRDs) using the `contextRef` field, enabling precise control over API configurations.
+
+#### Example Scenarios Using OperatorContext
+
+1. **No OperatorContext Defined**
+   - If no `OperatorContext` is defined, Tyk Operator defaults to using credentials from the `tyk-operator-conf` secret or from environment variables. This means all API management actions are performed under the system’s default user credentials, with no specific contextual isolation.
+
+2. **OperatorContext Defined but Not Referenced**
+   - When an `OperatorContext` is defined but not referenced in an API configuration, Tyk Operator continues to use the default credentials from `tyk-operator-conf`. The specified `OperatorContext` is ignored, resulting in API operations being managed under default credentials.
+
+3. **OperatorContext Defined and Referenced**
+   - If a specific `OperatorContext` is both defined and referenced in an API or policy, Tyk Operator utilizes the credentials and parameters from the referenced `OperatorContext` to perform API operations. This allows each API or policy to be managed with isolated configurations, enabling team-based or department-specific API management within the same Kubernetes cluster.
+
+Using `OperatorContext` offers flexibility for multi-tenancy, helping organizations manage and isolate API configurations based on their specific team or departmental needs.
+
+{{< img src="/img/operator/tyk-operator-context.svg" alt="Multi-tenancy in Kubernetes Tyk Operator" width="600" >}}
+
+### TLS Certificates
+
+Tyk Operator is designed to offer a seamless Kubernetes-native experience by managing TLS certificates stored within Kubernetes for your API needs. Traditionally, to use a certificate (e.g., as a client certificate, domain certificate, or certificate for accessing an upstream service), you would need to manually upload the certificate to Tyk and then reference it using a 'Certificate ID' in your API definitions. This process can become cumbersome, especially in a Kubernetes environment where certificates are often managed as secrets and may rotate frequently.
+
+To address this challenge, Tyk Operator allows you to directly reference certificates stored as Kubernetes secrets within your custom resource definitions (CRDs). This reduces operational overhead, minimizes the risk of API downtime due to certificate mismatches, and provides a more intuitive experience for API developers.
+
+#### Benefits of Managing Certificates with Tyk Operator
+- **Reduced operational overhead**: Automates the process of updating certificates when they rotate.
+- **Minimized risk of API downtime**: Ensures that APIs continue to function smoothly, even when certificates are updated.
+- **Improved developer experience**: Removes the need for API developers to manage certificate IDs manually.
+
+#### Examples
+
+| Certificate Type | Supported in ApiDefinition | Supported in TykOasApiDefinition | Supported in TykStreamsApiDefinition |
+|------------------|-------------|---------|---------|
+| Client certifates | ✅ [Client mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition" >}}) | ✅ [Client mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Custom domain certificates | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Public keys pinning | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#certificate-pinning" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 
 ## What Features Are Supported By Tyk Operator?
 
@@ -273,633 +461,6 @@ Here are the supported features:
 | Partitions                     | ✅        | v0.1           | [Partitioned policies]({{< ref "#security-policy-example" >}})       |
 | Per API limit                  | ✅        | v1.0           | [Per API Limit]({{< ref "#security-policy-example" >}})        |
 | Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit]({{< ref "#security-policy-example" >}})        |
-
-## Key Concepts
-
-### GitOps With Tyk
-With Tyk Operator, you can configure your APIs using Kubernetes native manifest files. You can use the manifest files in a GitOps workflow as the single source of truth for API deployment.
-
-{{< note success >}}
-**Note**  
-
-If you use Tyk Operator to manage your APIs, you should set up RBAC such that human users cannot have the "write" permission on the API definition endpoints using Tyk Dashboard. 
-{{< /note >}}
-
-#### What is GitOps?
-“GitOps” refers to the operating model of using Git as the “single source of truth” to drive continuous delivery for infrastructure and software through automated CI/CD workflow.
-
-#### Tyk Operator in your GitOps workflow
-You can install Argo CD, Flux CD or the GitOps tool of your choice in a cluster, and connect it to the Git repository where you version control your API manifests. The tool can synchronise changes from Git to your cluster. The API manifest updates in cluster would be detected by Tyk Operator, which has a Kubernetes controller to automatically reconcile the API configurations on your Tyk Gateway or Tyk Dashboard. 
-
-**Kubernetes-Native Developer Experience** 
-API Developers enjoy a smoother Continuous Integration process as they can develop, test, and deploy the microservices. API configurations together use familiar development toolings and pipeline.
-
-**Reliability** 
-With declarative API configurations, you have a single source of truth to recover after any system failures, reducing the meantime to recovery from hours to minutes.
-
-#### Single Source of Truth for API Configurations
-Tyk Operator will reconcile any divergence between the Kubernetes desired state and the actual state in [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) or [Tyk Dashboard]({{< ref "tyk-dashboard" >}}). Therefore, you should maintain the API definition manifests in Kubernetes as the single source of truth for your system. If you update your API configurations using Tyk Dashboard, those changes would be reverted by Tyk Operator eventually.
-
-To learn more about Gitops with Tyk, refer the following blog posts:
-- [GitOps-enabled API management in Kubernetes](https://tyk.io/blog/gitops-enabled-api-management-in-kubernetes/)
-- [A practical guide using Tyk Operator, ArgoCD, and Kustomize](https://tyk.io/blog/a-practical-guide-using-tyk-operator-argocd-and-kustomize/)
-
-### Custom Resources in Tyk
-
-In Kubernetes, a [Custom Resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) is an extension of the Kubernetes API that allows you to introduce custom objects in your cluster. Custom Resources enable you to define and manage custom configurations and settings specific to your applications, making Kubernetes highly extensible. These custom objects are defined using Custom Resource Definitions (CRDs), which specify the schema and structure of the resource.
-
-Tyk Operator manages multiple custom resources to help users create and maintain their API configurations:
-
-**TykOasApiDefinition**: Available from Tyk Operator v1.0. It represents a [Tyk OAS API configuration]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk OAS API is based on the OpenAPI specification (OAS) and is the recommended format for standard HTTP APIs.
-
-**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{< ref "api-management/gateway-config-tyk-classic" >}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
-
-**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options">}}) which is based on [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk Operator supports all [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}) features as they become available on the Gateway.
-
-**SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
-
-These custom resources enable users to leverage Kubernetes' declarative configuration management to define, modify, and version their APIs, seamlessly integrating with other Kubernetes-based workflows and tools.
-
-#### Custom Resources for API and Policy Configuration
-
-The following custom resources can be used to configure APIs and policies at [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) or [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
-
-| Kind               | Group       | Version   | Description                                                                                       |
-|--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
-| TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{< ref "api-management/gateway-config-tyk-oas" >}})                                 |
-| ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{< ref "api-management/gateway-config-tyk-classic" >}})                                 |
-| TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{< ref "api-management/event-driven-apis#configuration-options" >}})                                 |
-| SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
-| SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                           |
-| SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                        |
-| OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) for details. |
-
-#### Tyk Classic Developer Portal
-
-The following custom resources can be used to configure [Tyk Classic Developer Portal]({{< ref "tyk-developer-portal/tyk-portal-classic" >}}).
-
-| Kind               | Group       | Version   | Description                                                                                       |
-|--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
-| APIDescription     | tyk.tyk.io  | v1alpha1  | Configures [Portal Documentation]({{< ref "tyk-apis/tyk-portal-api/portal-documentation" >}}). |
-| PortalAPICatalogue | tyk.tyk.io  | v1alpha1  | Configures [Portal API Catalogue]({{< ref "getting-started/key-concepts/api-catalogue" >}}). |
-| PortalConfig       | tyk.tyk.io  | v1alpha1  | Configures [Portal Configuration]({{< ref "tyk-apis/tyk-portal-api/portal-configuration" >}}). |
-
-
-### Reconciliation With Tyk Operator 
-#### Controllers & Operators
-In Kubernetes, [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) watch one or more Kubernetes resources, which can be built-in types like *Deployments* or custom resources like *ApiDefinition* - in this case, we refer to Controller as Operator. The purpose of a controller is to match the desired state by using Kubernetes APIs and external APIs.
-
-> A [Kubernetes operator](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-operator) is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage instances of complex applications on behalf of a Kubernetes user.
-
-#### Desired State vs Observed State
-Let’s start with the *Desired State*. It is defined through Kubernetes Manifests, most likely YAML or JSON, to describe what you want your system to be in. Controllers will watch the resources and try to match the actual state (the observed state) with the desired state for Kubernetes Objects. For example, you may want to create a Deployment that is intended to run three replicas. So, you can define this desired state in the manifests, and Controllers will perform necessary operations to make it happen.
-
-How about *Observed State*? Although the details of the observed state may change controller by controller, usually controllers update the status field of Kubernetes objects to store the observed state. For example, in Tyk Operator, we update the status to include *api_id*, so that Tyk Operator can understand that the object was successfully created on Tyk.
-
-#### Reconciliation
-Reconciliation is a special design paradigm used in Kubernetes controllers. Tyk Operator also uses the same paradigm, which is responsible for keeping our Kubernetes objects in sync with the underlying external APIs - which is Tyk in our case. 
-
-**When would reconciliation happen?**
-<br>
-Before diving into Tyk Operator reconciliation, let's briefly mention some technical details about how and when reconciliation happens. Reconciliation only happens when certain events happen on your cluster or objects. Therefore, Reconciliation will **NOT** be triggered when there is an update or modification on Tyk’s side. It only watches certain Kubernetes events and is triggered based on them. Usually, the reconciliation happens when you modify a Kubernetes object or when the cache used by the controller expires - side note, controllers, in general, use cached objects to reduce the load in the Kube API server. Typically, caches expire in ~10 hours or so but the expiration time might change based on Operator configurations.
-
-So, in order to trigger Reconciliation, you can either
-- modify an object, which will trigger reconciliation over this modified object or,
-- restart Tyk Operator pod, which will trigger reconciliation over each of the objects watched by Tyk Operator.
-
-**What happens during Reconciliation?**
-<br>
-Tyk Operator will compare desired state of the Kubernetes object with the observed state in Tyk. If there is a drift, Tyk Operator will update the actual state on Tyk with the desired state. In the reconciliation, Tyk Operator mainly controls three operations; DELETE, CREATE, and UPDATE.
-
-- **CREATE** - an object is created in Kubernetes but not exists in Tyk
-- **UPDATE** - an object is in different in Kubernetes and Tyk (we compare that by hash)
-- **DELETE** - an object is deleted in Kubernetes but exists in Tyk
-
-**Drift Detection**
-<br>
-If human operators or any other system delete or modify API Definition from Tyk Gateway or Dashboard, Tyk Operator will restore the desired state back to Tyk during reconciliation. This is called Drift Detection. It can protect your systems from unauthorized or accidental modifications. It is a best practice to limit user access rights on production environment to read-only in order to prevent accidental updates through API Manager directly.
-
-
-### CRD Versioning
-
-Tyk follows standard practices for naming and versioning custom resources as outlined by the Kubernetes Custom Resource Definition [versioning guidelines](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/). Although we are currently on the `v1alpha1` version, no breaking changes will be introduced to existing Custom Resources without a version bump. This means that any significant changes or updates that could impact existing resources will result in a new version (e.g., `v1beta1` or `v1`) and Operator will continue supporting all CRD versions for a reasonable time before deprecating an older version. This ensures a smooth transition and compatibility, allowing you to upgrade without disrupting your current configurations and workflows.
-
-For more details on Kubernetes CRD versioning practices, refer to the Kubernetes Custom Resource Definition [Versioning documentation](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/).
-
-
-### Operator User
-Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource (CRs)]({{< ref "#custom-resources-in-tyk" >}}), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state.
-
-For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organization and RBAC rules.
-
-During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the environment variables (listed in the table below).
-
-| Key or Environment Variable | Description  |
-|:-----|:-------------|
-| `TYK_MODE` | "ce" for OSS or "pro" for licensed users |
-| `TYK_URL` | URL of Tyk Gateway or Dashboard API |
-| `TYK_ORG` | Organization ID of Operator user |
-| `TYK_AUTH` | API key of Operator user |
-
-These would be the default credentials Tyk Operator uses to connect to Tyk.
-
-
-### Multi-tenancy in Tyk
-
-Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "api-management/dashboard-configuration#organizations" >}}) for each team or department. Each organization is a completely isolated unit with its own:
-
-- API Definitions
-- API Keys
-- Users
-- Developers
-- Domain
-- Tyk Classic Portal
-
-This structure is ideal for businesses with a complex hierarchy, where distinct departments operate independently but within the same overall infrastructure.
-
-{{< img src="/img/operator/tyk-organisations.svg" alt="Multi-tenancy in Tyk Dashboard" width="600" >}}
-
-#### Define OperatorContext for Multi-Tenant API Management
-
-The `OperatorContext` in Tyk Operator allows you to create isolated management environments by defining specific access parameters for different teams or departments within a shared Tyk Operator instance. It helps you specify:
-
-- The Tyk Dashboard with which the Operator interacts
-- The organization under which API management occurs
-- The user identity utilized for requests
-- The environment in which the Operator operates
-
-By setting different `OperatorContext` configurations, you can define unique access and management contexts for different teams. These contexts can then be referenced directly in your `ApiDefinition`, `TykOasApiDefinition`, `TykStreamsApiDefinition` or `SecurityPolicy` custom resource definitions (CRDs) using the `contextRef` field, enabling precise control over API configurations.
-
-#### Example Scenarios Using OperatorContext
-
-1. **No OperatorContext Defined**
-   - If no `OperatorContext` is defined, Tyk Operator defaults to using credentials from the `tyk-operator-conf` secret or from environment variables. This means all API management actions are performed under the system’s default user credentials, with no specific contextual isolation.
-
-2. **OperatorContext Defined but Not Referenced**
-   - When an `OperatorContext` is defined but not referenced in an API configuration, Tyk Operator continues to use the default credentials from `tyk-operator-conf`. The specified `OperatorContext` is ignored, resulting in API operations being managed under default credentials.
-
-3. **OperatorContext Defined and Referenced**
-   - If a specific `OperatorContext` is both defined and referenced in an API or policy, Tyk Operator utilizes the credentials and parameters from the referenced `OperatorContext` to perform API operations. This allows each API or policy to be managed with isolated configurations, enabling team-based or department-specific API management within the same Kubernetes cluster.
-
-Using `OperatorContext` offers flexibility for multi-tenancy, helping organizations manage and isolate API configurations based on their specific team or departmental needs.
-
-{{< img src="/img/operator/tyk-operator-context.svg" alt="Multi-tenancy in Kubernetes Tyk Operator" width="600" >}}
-
-### TLS Certificates
-
-Tyk Operator is designed to offer a seamless Kubernetes-native experience by managing TLS certificates stored within Kubernetes for your API needs. Traditionally, to use a certificate (e.g., as a client certificate, domain certificate, or certificate for accessing an upstream service), you would need to manually upload the certificate to Tyk and then reference it using a 'Certificate ID' in your API definitions. This process can become cumbersome, especially in a Kubernetes environment where certificates are often managed as secrets and may rotate frequently.
-
-To address this challenge, Tyk Operator allows you to directly reference certificates stored as Kubernetes secrets within your custom resource definitions (CRDs). This reduces operational overhead, minimizes the risk of API downtime due to certificate mismatches, and provides a more intuitive experience for API developers.
-
-#### Benefits of Managing Certificates with Tyk Operator
-- **Reduced operational overhead**: Automates the process of updating certificates when they rotate.
-- **Minimized risk of API downtime**: Ensures that APIs continue to function smoothly, even when certificates are updated.
-- **Improved developer experience**: Removes the need for API developers to manage certificate IDs manually.
-
-#### Examples
-
-| Certificate Type | Supported in ApiDefinition | Supported in TykOasApiDefinition | Supported in TykStreamsApiDefinition |
-|------------------|-------------|---------|---------|
-| Client certifates | ✅ [Client mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition" >}}) | ✅ [Client mTLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Custom domain certificates | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Public keys pinning | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication/mtls#certificate-pinning" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication/mtls#using-tyk-operator-to-configure-mtls" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-
-## Multi-Organization Management With Tyk Operator
-
-If you want to set up multi-tenant API management with Tyk, follow these steps to define an OperatorContext for connecting and authenticating with a Tyk Dashboard and reference it in your API definitions for specific configurations.
-
-### Defining OperatorContext
-
-An [OperatorContext]({{< ref "#multi-tenancy-in-tyk" >}}) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
-
-```yaml
-apiVersion: tyk.tyk.io/v1alpha1
-kind: OperatorContext
-metadata:
-  name: team-alpha
-  namespace: default
-spec:
-  env:
-    # The mode of the admin api
-    # ce - community edition (open source gateway)
-    # pro - dashboard (requires a license)
-    mode: pro
-    # Org ID to use
-    org: *YOUR_ORGANIZATION_ID*
-    # The authorization token this will be set in x-tyk-authorization header on the
-    # client while talking to the admin api
-    auth: *YOUR_API_ACCESS_KEY*
-    # The url to the Tyk Dashboard API
-    url: http://dashboard.tyk.svc.cluster.local:3000
-    # Set this to true if you want to skip tls certificate and host name verification
-    # this should only be used in testing
-    insecureSkipVerify: true
-    # For ingress the operator creates and manages ApiDefinition resources, use this to configure
-    # which ports the ApiDefinition resources managed by the ingress controller binds to.
-    # Use this to override default ingress http and https port
-    ingress:
-      httpPort: 8000
-      httpsPort: 8443
-```
-
-For better security, you can also replace sensitive data with values contained within a referenced secret with `.spec.secretRef`.
-
-In this example, API access key `auth` and organization ID `org` are not specified in the manifest. They are provided through a Kubernetes secret named `tyk-operator-conf` in `alpha` namespace. The secret contains keys `TYK_AUTH` and `TYK_ORG` which correspond to the `auth` and `org` fields respectively.
-
-```yaml
-apiVersion: tyk.tyk.io/v1alpha1
-kind: OperatorContext
-metadata:
-  name: team-alpha
-  namespace: default
-spec:
-  secretRef:
-    name: tyk-operator-conf## Secret containing keys TYK_AUTH and TYK_ORG
-    namespace: alpha
-  env:
-    mode: pro
-    url: http://tyk.tykce-control-plane.svc.cluster.local:8001
-    insecureSkipVerify: true
-    ingress:
-      httpPort: 8000
-      httpsPort: 8443
-    user_owners:
-    - a1b2c3d4f5e6f7
-    user_group_owners:
-    - 1a2b3c4d5f6e7f
-```
-
-You can provide the following fields through secret as referenced by `secretRef`. The table shows mappings between `.spec.env` properties and secret `.spec.data` keys. If a value is configured in both the secret and OperatorContext `spec.env` field, the value from secret will take precedence.
-
-| Secret key | .spec.env |
-|------------|-----------|
-| TYK_MODE	 | mode |
-| TYK_URL    | url |
-| TYK_AUTH	 | auth |
-| TYK_ORG	   | org |
-| TYK_TLS_INSECURE_SKIP_VERIFY | insecureSkipVerify |
-| TYK_USER_OWNERS (comma separated list) | user_owners |
-| TYK_USER_GROUP_OWNERS (comma separated list) | user_group_owners |
-
-### Using contextRef in API Definitions
-
-Once an `OperatorContext` is defined, you can reference it in your API Definition objects using `contextRef`. Below is an example:
-
-```yaml
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin
-  namespace: alpha
-spec:
-  contextRef:
-    name: team-alpha
-    namespace: default
-  name: httpbin
-  use_keyless: true
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.org
-    listen_path: /httpbin
-    strip_listen_path: true
-```
-
-In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring that the configuration is applied within the `alpha` organization.
-
-## Internal Looping With Tyk Operator
-
-The concept of [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) allows you to use URL Rewriting to redirect your URL to *another API endpoint* or to *another API* in the Gateway. In Tyk, looping is generally targeted using the `tyk://<API_ID>/<path>` scheme, which requires prior knowledge of the `API_ID`. Tyk Operator simplifies the management and transformation of API traffic within Kubernetes environments by abstracting APIs as objects, managing them and dynamically assigning `API_ID`s by its Kubernetes metedata name and namespace.
-
-### Configuring looping to internal ApiDefinition resources
-
-Looping can be configured within Tyk Operator for [URL Rewrites]({{< ref "#url-rewrites" >}}), [URL Rewrite Triggers]({{< ref "#url-rewrite-triggers" >}}) and [Proxy to internal APIs]({{< ref "#proxy-to-internal-apis" >}}) by configuring the `rewrite_to_internal` in `url_rewrite`, `rewrite_to_internal` in `triggers`, and `proxy.target_internal` fields respectively with these properties:
-
-- **Path**: The `path` property specifies the endpoint on the target API where the request should be directed. This is the portion of the URL that follows the domain and is crucial for ensuring that the request reaches the correct resource. For example, setting a value of `"/myendpoint"` means that the request will be forwarded to the `/myendpoint` path on the target API.
-
-- **Query**: The `query` property allows you to append additional query parameters to the target URL. These parameters can be used to modify the behavior of the target API or to pass along specific request information. For instance, setting `query: "check_limits=true"` will include this query string in the redirected request, potentially triggering special handling by the target API.
-
-- **Target**: The `target` property identifies the API resource to which the request should be routed. It consists of two components: `name` and `namespace`. The `name` is the identifier of the target API, while the `namespace` specifies the Kubernetes namespace where the API resource resides. Together, these elements ensure that Tyk Operator accurately locates and routes the request to the intended API. For example, `name: "proxy-api"` and `namespace: "default"` direct the request to the `proxy-api` resource in the `default` namespace.
-
-Tyk Operator would dynamically update the API definition by generating internal looping URL in the form of `tyk://<API_ID>/<path>`. This mechanism is essential for routing traffic within a microservices architecture or when managing APIs across different namespaces in Kubernetes. Using this object you can effectively manage and optimize API traffic within your Tyk Gateway.
-
----
-
-### URL Rewrites 
-
-[URL rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
-
-Assume that we wish to redirect incoming `GET /basic/` requests to an API defined by an ApiDefinition object named `proxy-api` in the `default` namespace. We want the `/basic/` prefix to be stripped from the request path and the redirected path should be of the format `/proxy/$1`, where the context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` should become `GET /proxy/456`.
-
-In this case we can use a `rewrite_to_internal` object to instruct Tyk Operator to automatically generate the API rewrite URL on our behalf for the API identified by name `proxy-api` in the `default` namespace:
-
-```yaml
-url_rewrites:
-  - path: "/{id}"
-    match_pattern: "/basic/(.*)"
-    method: GET
-    rewrite_to_internal:
-      target:
-        name: proxy-api
-        namespace: default
-      path: proxy/$1
-```
-
-In the above example an incoming request of `/basic/456` would be matched by the `match_pattern` rule `/basic/(.*)` for `GET` requests specified in the `method` field. The `456` part of the URL will be captured and replaces `{id}` in the `path` field. Tyk Operator will use the `rewrite_to_internal` configuration to generate the URL rewrite for the API named `proxy-api` in the `default` namespace, and update the `rewrite_to` field accordingly:
-
-```yaml
-url_rewrites:
-- match_pattern: /basic/(.*)
-  method: GET
-  path: /{id}
-  rewrite_to: tyk://ZGVmYXVsdC9wcm94eS1hcGk/proxy/$1
-```
-
-Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9wcm94eS1hcGk/proxy/$1` where `ZGVmYXVsdC9wcm94eS1hcGk` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `proxy/$1` is appended to the base URL `tyk://ZGVmYXVsdC9wcm94eS1hcGk` and contains the context variable `$1`. This will be substituted with the value of `{id}` in the `path` configuration parameter.
-
-### URL Rewrite Triggers 
-
-[Triggers]({{< ref "transform-traffic/url-rewriting#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
-
-Triggers are essential for executing specific actions when particular criteria are met, such as rewriting URLs. They are useful for automating actions based on real-time data received in requests. For example, you might use triggers to:
-
-- Redirect users to different APIs in the Gateway based on their authentication status.
-- Enforce business rules by redirecting requests to different APIs in the Gateway based on certain parameters.
-
-The process for configuring internal looping in triggers to is similar to that explained in section [URL Rewrites]({{< ref "#url-rewrites" >}}).
-
-Assume that we wish to instruct Tyk Operator to redirect all *Basic Authentication* requests to the API identified by `basic-auth-internal` within the `default` namespace. Subsequently, we can use a `rewrite_to_internal` object as follows:
-
-```yaml
-triggers:
-  - "on": "all"
-    options:
-      header_matches:
-        "Authorization":
-          match_rx: "^Basic"
-    rewrite_to_internal:
-      target:
-        name: basic-auth-internal
-        namespace: default
-      path: "basic/$2"
-```
-
-Here we we can see that a trigger is configured for all requests that include an `Authorization` header containing `Basic` in the header value.
-
-A `rewrite_to_internal` configuration object is used to instruct Tyk Operator to generate a redirect to the API identified by the `basic-auth-internal` API resource in the `default` namespace. The redirect path will be prefixed with `basic`. For example, a basic authentication request to path `/` will be redirected to `/basic/`.
-
-Tyk Operator will automatically generate a URL Rewrite (`rewrite_to`) to redirect the request to the API identified by `basic-auth-internal` within the `default` namespace as follows:
-
-```yaml
-triggers:
-- "on": all
-  options:
-    header_matches:
-      Authorization:
-        match_rx: ^Basic
-  rewrite_to: tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/basic/$2
-```
-
-Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/proxy/$1` where `ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `basic/$2` is appended to the base URL `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` and contains the context variable `$2`. This will be substituted with the remainder of the request path.
-
-### Proxy to Internal APIs 
-
-Internal looping can also be used for [proxying to internal APIs]({{< ref "advanced-configuration/transform-traffic/looping" >}}).
-
-Assume that we wish to redirect all incoming requests on listen path `/users` to an API defined by an ApiDefinition object named `users-internal-api` in the `default` namespace.
-
-In this case we can use a `proxy.target_internal` field to instruct Tyk Operator to automatically generate the target URL on our behalf for the API identified by name `users-internal-api` in the `default` namespace:
-
-```yaml {linenos=true, linenostart=1, hl_lines=["12-15"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: users
-spec:
-  name: Users API
-  protocol: http
-  active: true
-  use_keyless: true
-  proxy:
-    target_url: ""
-    target_internal:
-      target:
-        name: users-internal-api
-        namespace: default
-    listen_path: /users
-    strip_listen_path: true
-```
-
-The proxy object’s `target_internal` field references other API resources. This field shares the same properties as those described for `rewrite_to_internal`, ensuring consistent configuration.
-
-Tyk Operator will automatically generate the target URL to redirect the request to the API identified by `users-internal-api` within the `default` namespace as follows:
-
-```yaml
-  target_url: "tyk://ZGVmYXVsdC91c2Vycy1pbnRlcm5hbC1hcGk"
-```
-
----
-
-### Example
-
-Assume a business has legacy customers who authenticate with a service using *Basic Authentication*. The business also wants to support API Keys, enabling both client types to access the same ingress.
-
-To facilitate this, Tyk must be configured for dynamic authentication, accommodating both *Basic Authentication* and *Auth Token* methods.
-
-This setup requires configuring four API Definitions within Tyk:
-
-1. Entry Point API
-2. BasicAuth Internal API
-3. AuthToken Internal API
-4. Proxy Internal API
-
-When a request arrives at the ingress route, a URL rewrite can direct it to either the *BasicAuth Internal* or *AuthToken Internal* API, depending on the authentication method used.
-
-These internal APIs will authenticate the requests. Assuming successful authentication (the happy path), they will forward the requests to the *Proxy Internal API*, which handles the proxying to the underlying service.
-
-</br>
-
-{{< note success >}}
-**Note**
-
-There are no actual HTTP redirects in this scenario, meaning that there is no performance penalty in performing any of these *Internal Redirects*.
-
-{{< /note >}}
-
-#### Entry Point API
-
-The *Entry Point* API is the first point of entry for a client request. It inspects the header to determine if the incoming client request requires authentication using *Basic Authentication* or *Auth Token*. Consequently, it then redirects the request to the *BasicAuth Internal* or *AuthToken Internal* API depending upon the header included in the client request.
-
-The API definition resource for the *Entry Point* API is listed below. It is configured to listen for requests on the `/entry` path and forward requests upstream to `http://example.com`
-
-We can see that there is a URL Rewrite rule (`url_rewrites`) with two triggers configured to match Basic Authentication and Auth Token requests:
-
-- **Basic Authentication trigger**: Activated for incoming client requests that include an *Authorization* header containing a value starting with *Basic*. In this case a `rewrite_to_internal` configuration object is used to instruct Tyk Operator to redirect the request to the *BasicAuthInternal* API, identified by name `basic-auth-internal` in the `default` namespace. The request URL is rewritten, modifying the path to `/basic/<path>`.
-- **Auth Token trigger**: Activated for incoming client requests that include an *Authorization* header containing a value starting with *Bearer*. In this case a `rewrite_to_internal` configuration object is used to instruct Tyk Operator to redirect the request to the *AuthTokenInternal* API, identified by name `auth-token-internal` in the `default` namespace. The request URL is rewritten, modifying the path to `/token/<path>`.
-
- ```yaml {linenos=true, linenostart=1, hl_lines=["21-45"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: entrypoint-api
-spec:
-  name: Entrypoint API
-  protocol: http
-  active: true
-  proxy:
-    listen_path: /entry
-    target_url: http://example.com
-  use_keyless: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          url_rewrites:
-            - path: "/{id}"
-              match_pattern: "/(.*)/(.*)"
-              method: GET
-              triggers:
-                - "on": "all"
-                  options:
-                    header_matches:
-                      "Authorization":
-                        match_rx: "^Basic"
-                  rewrite_to_internal:
-                    target:
-                      name: basic-auth-internal
-                      namespace: default
-                    path: "basic/$2"
-                - "on": "all"
-                  options:
-                    header_matches:
-                      "Authorization":
-                        match_rx: "^Bearer"
-                  rewrite_to_internal:
-                    target:
-                      name: auth-token-internal
-                      namespace: default
-                    path: "token/$2"
-```
-
-#### BasicAuth Internal API
-
-The *BasicAuth Internal* API listens to requests on path `/basic` and forwards them upstream to `http://example.com`.
-
-The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /basic/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/basic/` prefix will be stripped from the request URL and the URL will be rewritten with the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` will become `GET /proxy/456`.
-
-Furthermore, a header transform rule is configured within `transform_headers` to add the header `x-transform-api` with value `basic-auth`, to the request.
-
-```yaml {linenos=true, linenostart=1, hl_lines=["21-35"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: basic-auth-internal
-spec:
-  name: BasicAuth Internal API
-  protocol: http
-  proxy:
-    listen_path: "/basic"
-    target_url: http://example.com
-  active: true
-  use_keyless: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          url_rewrites:
-            - path: "/{id}"
-              match_pattern: "/basic/(.*)"
-              method: GET
-              rewrite_to_internal:
-                target:
-                  name: proxy-api
-                  namespace: default
-                path: proxy/$1
-          transform_headers:
-            - add_headers:
-                x-transform-api: "basic-auth"
-              method: GET
-              path: "/{id}"
-              delete_headers: []
-```
-
-#### AuthToken Internal API
-
-The *AuthToken Internal* API listens to requests on path `/token` and forwards them upstream to `http://example.com`.
-
-The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /token/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/token/` prefix will be stripped from the request URL and the URL will be rewritten to the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /token/456` will become `GET /proxy/456`.
-
-Furthermore, a header transform rule is configured within `transform_headers` to add the header `x-transform-api` with value `token-auth`, to the request.
-
-```yaml {linenos=true, linenostart=1, hl_lines=["21-35"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: auth-token-internal
-spec:
-  name: AuthToken Internal API
-  protocol: http
-  proxy:
-    listen_path: "/token"
-    target_url: http://example.com
-  active: true
-  use_keyless: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          url_rewrites:
-            - path: "/{id}"
-              match_pattern: "/token/(.*)"
-              method: GET
-              rewrite_to_internal:
-                target:
-                  name: proxy-api
-                  namespace: default
-                path: proxy/$1
-          transform_headers:
-            - add_headers:
-                x-transform-api: "token-auth"
-              method: GET
-              path: "/{id}"
-              delete_headers: []
-```
-
-#### Proxy Internal API
-
-The *Proxy Internal* API is keyless and responsible for listening to requests on path `/proxy` and forwarding upstream to `http://httpbin.org`. The listen path is stripped from the request before it is sent upstream.
-
-This API receives requests forwarded from the internal *AuthToken Internal* and *BasicAuth Internal APIs*. Requests will contain the header `x-transform-api` with value `token-auth` or `basic-auth`, depending upon which internal API the request originated from.
-
-```yaml {linenos=true, linenostart=1, hl_lines=["10-13"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: proxy-api
-spec:
-  name: Proxy API
-  protocol: http
-  active: true
-  internal: true
-  proxy:
-    listen_path: "/proxy"
-    target_url: http://httpbin.org
-    strip_listen_path: true
-  use_keyless: true
-```
 
 ## Manage API MetaData
 

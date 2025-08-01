@@ -363,8 +363,12 @@ menu:
                 path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
                 category: Page
                 show: True
-              - title: "Troubleshooting"
-                path: /api-management/automations/operator
+              - title: "Internal Looping"
+                path: /product-stack/tyk-operator/advanced-configurations/internal-looping
+                category: Page
+                show: True
+              - title: "Managing Multiple Organizations"
+                path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
                 category: Page
                 show: True
           - title: "Synchronizing Tyk Configuration"
