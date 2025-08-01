@@ -10,7 +10,7 @@ If you want to set up multi-tenant API management with Tyk, follow these steps t
 
 ## Defining OperatorContext
 
-An [OperatorContext]({{< ref "#multi-tenancy-in-tyk" >}}) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
+An [OperatorContext]({{< ref "api-management/automations/operator#multi-tenancy-in-tyk" >}}) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1

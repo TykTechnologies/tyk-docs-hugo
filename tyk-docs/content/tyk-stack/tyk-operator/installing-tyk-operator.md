@@ -14,7 +14,7 @@ Chart]({{< ref "product-stack/tyk-charts/overview" >}}) is the preferred (and ea
 In order for policy ID matching to work correctly, Dashboard must have `allow_explicit_policy_id` and
 `enable_duplicate_slugs` set to `true` and Gateway must have `policies.allow_explicit_policy_id` set to `true`.
 
-Tyk Operator needs a [user credential]({{< ref "#operator-user" >}}) to connect with
+Tyk Operator needs a [user credential]({{< ref "api-management/automations/operator#operator-user" >}}) to connect with
 Tyk Dashboard. The Operator user should have write access to the resources it is going to manage, e.g. APIs, Certificates,
 Policies, and Portal. It is the recommended practice to turn off write access for other users for the above resources. See
 [Using Tyk Operator to enable GitOps with Tyk]({{< ref "api-management/automations" >}}) about
@@ -160,7 +160,7 @@ of k8s namespaces. For example:
 
 **Watch custom ingress class**
 
-You can configure [Tyk Operator as Ingress Controller]({{< ref "#control-kubernetes-ingress-resources" >}}) so
+You can configure [Tyk Operator as Ingress Controller]({{< ref "product-stack/tyk-operator/tyk-ingress-controller" >}}) so
 that [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources can be managed by Tyk as
 APIs. By default, Tyk Operator looks for the value `tyk` in Ingress resources `kubernetes.io/ingress.class` annotation
 and will ignore all other ingress classes. If you want to override this default behavior, you may do so by setting

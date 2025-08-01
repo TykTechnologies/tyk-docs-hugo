@@ -92,11 +92,11 @@ Tyk Operator manages multiple custom resources to help users create and maintain
 
 **TykOasApiDefinition**: Available from Tyk Operator v1.0. It represents a [Tyk OAS API configuration]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk OAS API is based on the OpenAPI specification (OAS) and is the recommended format for standard HTTP APIs.
 
-**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{< ref "api-management/gateway-config-tyk-classic" >}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
+**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{< ref "api-management/gateway-config-tyk-classic" >}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "api-management/automations/operator#apidefinition-crd" >}}).
 
 **TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options">}}) which is based on [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk Operator supports all [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}) features as they become available on the Gateway.
 
-**SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
+**SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
 
 These custom resources enable users to leverage Kubernetes' declarative configuration management to define, modify, and version their APIs, seamlessly integrating with other Kubernetes-based workflows and tools.
 
@@ -112,7 +112,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 | SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
 | SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                           |
 | SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                        |
-| OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) for details. |
+| OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "api-management/automations/operator#multi-tenancy-in-tyk" >}}) for details. |
 
 #### Tyk Classic Developer Portal
 
@@ -387,8 +387,8 @@ The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API De
 | Custom Domain Certificates | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
 | Public keys pinning | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
 | Upstream mTLS | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
-| Kubernetes Ingress | ✅      | v1.0 | - | [Kubernetes Ingress Controller]({{< ref "#control-kubernetes-ingress-resources" >}}) |
-| Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "#add-a-security-policy-to-your-api" >}}) |
+| Kubernetes Ingress | ✅      | v1.0 | - | [Kubernetes Ingress Controller]({{< ref "product-stack/tyk-operator/tyk-ingress-controller" >}}) |
+| Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "tyk-stack/tyk-operator/create-an-api#add-a-security-policy-to-your-api" >}}) |
 
 ### TykStreamsApiDefinition CRD
 The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options" >}}) within a Kubernetes environment.
@@ -400,7 +400,7 @@ The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API 
 | Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|
 | API Ownership via OperatorContext | ✅      | v1.0 | - | [API Ownership]({{< ref "api-management/user-management#when-to-use-api-ownership" >}}) |
-| Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "#add-a-security-policy-to-your-api" >}}) |
+| Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "tyk-stack/tyk-operator/create-an-api#add-a-security-policy-to-your-api" >}}) |
 
 ### Version Compatability
 Ensuring compatibility between different versions is crucial for maintaining stable and efficient operations. This document provides a comprehensive compatibility matrix for Tyk Operator with various versions of Tyk and Kubernetes. By understanding these compatibility details, you can make informed decisions about which versions to deploy in your environment, ensuring that you leverage the latest features and maintain backward compatibility where necessary.
@@ -454,13 +454,13 @@ Here are the supported features:
 
 | Features                       | Support   | Supported From | Example |
 |--------------------------------|-----------|----------------|---------|
-| API Access                     | ✅        | v0.1           | [API Access]({{< ref "#define-the-security-policy-manifest" >}})        |
-| Rate Limit, Throttling, Quotas | ✅        | v0.1           | [Rate Limit, Throttling, Quotas]({{< ref "#define-the-security-policy-manifest" >}})        |
-| Meta Data & Tags               | ✅        | v0.1           | [Tags and Meta-data]({{< ref "#define-the-security-policy-manifest" >}})        |
-| Path and Method based permissions | ✅     | v0.1           | [Path based permission]({{< ref "#security-policy-example" >}})        |
-| Partitions                     | ✅        | v0.1           | [Partitioned policies]({{< ref "#security-policy-example" >}})       |
-| Per API limit                  | ✅        | v1.0           | [Per API Limit]({{< ref "#security-policy-example" >}})        |
-| Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit]({{< ref "#security-policy-example" >}})        |
+| API Access                     | ✅        | v0.1           | [API Access]({{< ref "tyk-stack/tyk-operator/create-an-api#define-the-security-policy-manifest" >}})        |
+| Rate Limit, Throttling, Quotas | ✅        | v0.1           | [Rate Limit, Throttling, Quotas]({{< ref "tyk-stack/tyk-operator/create-an-api#define-the-security-policy-manifest" >}})        |
+| Meta Data & Tags               | ✅        | v0.1           | [Tags and Meta-data]({{< ref "tyk-stack/tyk-operator/create-an-api#define-the-security-policy-manifest" >}})        |
+| Path and Method based permissions | ✅     | v0.1           | [Path based permission]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}})        |
+| Partitions                     | ✅        | v0.1           | [Partitioned policies]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}})       |
+| Per API limit                  | ✅        | v1.0           | [Per API Limit]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}})        |
+| Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}})        |
 
 ## Manage API MetaData
 
@@ -750,7 +750,7 @@ For Tyk Classic API, versioning can be configured via `ApiDefinition` custom res
 
 ### API Ownership
 
-Please consult the [API Ownership]({{< ref "api-management/user-management#api-ownership" >}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
+Please consult the [API Ownership]({{< ref "api-management/user-management#api-ownership" >}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "api-management/automations/operator#multi-tenancy-in-tyk" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
 
 The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in `TykOasApiDefinition` or `ApiDefinition` objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 

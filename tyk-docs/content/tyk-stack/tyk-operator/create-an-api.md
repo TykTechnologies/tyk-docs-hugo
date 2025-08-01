@@ -340,7 +340,7 @@ Request should fail with a `401 Unauthorized` response now as an API key is requ
 ## Set Up Tyk Classic API
 
 ### Create a Tyk Classic API
-First, specify the details of your API using the [ApiDefinition CRD]({{< ref "#apidefinition-crd" >}}), then deploy it to create the corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
+First, specify the details of your API using the [ApiDefinition CRD]({{< ref "api-management/automations/operator#apidefinition-crd" >}}), then deploy it to create the corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
 
 #### Create an ApiDefinition resource in YAML format
 Create a file called `httpbin.yaml`, then add the following:
@@ -363,7 +363,7 @@ spec:
 
 You can also use other sample files from the following pages:
 
-- [HTTP Proxy example]({{< ref "#set-up-manifest-for-http" >}})
+- [HTTP Proxy example]({{< ref "tyk-stack/tyk-operator/create-an-api#set-up-manifest-for-http" >}})
 - [TCP Proxy example]({{< ref "#set-up-manifest-for-tcp" >}})
 - [GraphQL Proxy example]({{< ref "#set-up-manifest-for-graphql" >}})
 - [UDG example]({{< ref "#set-up-manifest-for-udg" >}})
@@ -425,7 +425,7 @@ $ curl -i localhost:8080/httpbin/get
 
 We have an ApiDefinition called `httpbin`, as specified in `spec.name` field, which listens to path `/httpbin` and proxies requests to [http://httpbin.org](http://httpbin.org), as specified under `spec.proxy` field. Now, any requests coming to the `/httpbin` endpoint will be proxied to the target URL that we defined in `spec.proxy.target_url`, which is [http://httpbin.org](http://httpbin.org) in our example.
 
-You can visit the [ApiDefinition CRD]({{< ref "#apidefinition-crd" >}}) page to see all the latest API Definitions fields and features we support.
+You can visit the [ApiDefinition CRD]({{< ref "api-management/automations/operator#apidefinition-crd" >}}) page to see all the latest API Definitions fields and features we support.
 
 #### Configure Kubernetes service as an upstream target
 
@@ -602,7 +602,7 @@ Content-Length: 46
 
 **Note**  
 
-Tyk Operator supported authentication types are listed in the [API Definition features]({{< ref "#apidefinition-crd" >}}) section.
+Tyk Operator supported authentication types are listed in the [API Definition features]({{< ref "api-management/automations/operator#apidefinition-crd" >}}) section.
 
 {{< /note >}}
 
@@ -1547,7 +1547,7 @@ To secure your Tyk Streams API, configure security fields in the OAS definition 
 
 ## Add a Security Policy to your API
 To further protect access to your APIs, you will want to add a security policy. 
-Below, we take you through how to define the security policy but you can also find [Security Policy Example]({{< ref "#security-policy-example" >}}) below.
+Below, we take you through how to define the security policy but you can also find [Security Policy Example]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}}) below.
 
 ### Define the Security Policy manifest
 
