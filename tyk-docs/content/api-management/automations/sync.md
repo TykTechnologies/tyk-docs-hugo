@@ -8,9 +8,6 @@ aliases:
   - /advanced-configuration/manage-multiple-environments/tyk-sync
   - /product-stack/tyk-sync/overview
   - /tyk-sync
-  - /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
-  - /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
-  - /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
 ---
 
 ## Introduction
