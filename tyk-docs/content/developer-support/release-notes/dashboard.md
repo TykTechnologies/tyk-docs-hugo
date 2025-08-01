@@ -78,9 +78,10 @@ We have implemented a [change]({{< ref "developer-support/release-notes/dashboar
 | Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
 | ---------------------- | --------------- | ------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)          | 1.23 | 1.23 | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)   | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
-| [Valkey](https://valkey.io/download/) | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
+| [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4  | 4  | | 
 | [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
