@@ -170,7 +170,7 @@ menu:
                 category: Page
                 show: True
               - title: "Developing APIs"
-                path: /deployment-and-operations/tyk-self-managed/value-addons
+                path: /deployment-and-operations/tyk-self-managed/developing-apis
                 category: Page
                 show: True
             - title: "Demos"
