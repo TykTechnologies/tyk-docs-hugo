@@ -27,6 +27,9 @@ jobs:
           mkdir -p n8n-data
           echo '[{ "version": "${{ github.event.inputs.component_version }}" }]' > n8n-data/input.json
 
+      - name: Set write permissions for n8n-data
+        run: chmod -R 777 n8n-data
+
       - name: Run n8n container
         run: |
           docker run --rm \
