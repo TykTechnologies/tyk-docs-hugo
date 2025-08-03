@@ -1,5 +1,8 @@
 name: Run n8n Workflow to Generate Release Notes
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
     inputs:
