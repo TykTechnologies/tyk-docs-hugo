@@ -302,7 +302,7 @@ Set JWT as the authentication method for this API.
 Either HMAC or RSA - HMAC requires a shared secret while RSA requires a public key to use to verify against. Please see the section on JSON web tokens for more details on how to generate these.
 
 **Field: `jwt_source`**
-Must either be a base64 encoded valid RSA/HMAC key or a url to a resource serving JWK, this key will then be used to validate inbound JWT and throttle them according to the centralised JWT options and fields set in the configuration. See [Dynamic public key rotation using public JWKs URL]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#enable-dynamic-public-key-rotation-using-jwks" >}}) for more details on JWKs.
+Must be a base64 encoded valid RSA, ECDSA or HMAC key or the full address of a JSON Web Key Set (JWKS) endpoint. This key (or the JWKS retrieved from the endpoint) will be used to validate inbound JWT and throttle them according to the centralised JWT options and fields set in the configuration. See [JWT signature validation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#remotely-stored-keys-jwks-endpoint" >}}) for more details on using a JWKS endpoint.
 
 **Field: `jwt_identity_base_field`**
 Identifies the user or identity to be used in the Claims of the JWT. This will fallback to `sub` if not found. This field forms the basis of a new "virtual" token that gets used after validation. It means policy attributes are carried forward through Tyk for attribution purposes.
