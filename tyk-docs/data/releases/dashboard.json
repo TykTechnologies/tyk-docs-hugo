@@ -5,7 +5,7 @@
   "lts": "5.9.0",
   "releaseNotesPath": "developer-support/release-notes/dashboard",
   "5.9.0": {
-    "date": "31/07/2025",
+    "date": "04/08/2025",
     "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.9.0"
   },
   "5.8.3": {
