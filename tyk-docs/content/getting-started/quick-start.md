@@ -8,7 +8,7 @@ aliases:
 
 ## Introduction
 
-Tyk Self-Managed is a comprehensive API Management platform that you can deploy and control within your own infrastructure. This page will help you set up and explore your Tyk Self-Managed environment.
+Tyk Self-Managed is a comprehensive API Management platform that you can deploy and control on premises. This page will help you set up and explore your Tyk Self-Managed environment.
 
 ### What's included in your trial
 
@@ -16,7 +16,7 @@ Your Tyk Self-Managed trial includes:
 
 - **Tyk Gateway**: The core API Gateway that handles all your API traffic
 - **Tyk Dashboard**: A web interface for managing your APIs, policies, and analytics
-- **Enterprise Developer Portal**: A customizable portal for API consumers
+- **Enterprise Developer Portal**: A customizable API portal to securely publish and manage API access for your consumers.
 - **Analytics**: Detailed insights into API usage and performance
 - **Sample APIs**: Pre-configured APIs to help you explore Tyk's capabilities
 
@@ -24,11 +24,11 @@ Your Tyk Self-Managed trial includes:
 
 - **Docker**: Docker Engine 20.10.0 or newer
 - **CPU & Memory**: Minimum 2 GB RAM and 2 CPU cores
-- **License Key**: A valid Tyk Self-Managed license key. 
-    
-    You can instantly obtain a self managed trial license by registering on the [website](https://share.hsforms.com/13h7zZ8k6Tt2FCbIbYs39mA3ifmg). After registraion, you will receive an email with your license key.
+- **License Key**: A valid Tyk Self-Managed license key.
 
-    If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
+    You can quickly get started with a self-managed trial license by completing the registration on [website](https://tyk.io/self-managed-trial ). After registering, you’ll receive an email containing your license key.
+
+    If you'd rather have guided assistance, we recommend checking out our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
 
 ### Trial Duration and Limitations
 
@@ -48,7 +48,8 @@ This section provides a step-by-step guide to quickly set up Tyk Self-Managed us
 ### Prerequisites
 
 1. Install [Docker](https://docs.docker.com/get-docker/) on your system
-2. Ensure you have your Tyk Self-Managed license key from your trial email
+2. Git
+3. Ensure you have your Tyk Self-Managed license key from your trial email
 
 ### Installation
 
@@ -85,6 +86,8 @@ This section provides a step-by-step guide to quickly set up Tyk Self-Managed us
    docker compose ps
    ```
 
+   <TODO: Add Image>
+
    You should see all services listed as "Up".
 
 ### Default Credentials and Access Points
@@ -113,16 +116,25 @@ admin pw: specialpassword
     1. Open your browser and navigate to `http://localhost:3000`
     2. Log in with the default credentials (developer@tyk.io / specialpassword)
     3. You should see the Tyk Dashboard with pre-configured APIs and analytics
+
+    <TODO: Add Image>
+
 2. **Verify Gateway Access**:
     1. Open a terminal and run:
        ```
        curl http://localhost:8080/hello
        ```
     2. You should receive a JSON response from API, confirming that the Tyk Gateway is functioning correctly. 
+
+    <TODO: Add Image / Output>
+
 3. **Verify Developer Portal Access**:
     1. Open your browser and navigate to `http://localhost:3001`
     2. Log in with the default credentials (portal@tyk.io / specialpassword)
     3. You should see the `Overview` section of the Developer Portal.
+
+    <TODO: Add Image>
+
 
 ## Exploring Your Pre-Configured Environment (TODO)
 
@@ -176,23 +188,26 @@ The Developer Portal includes:
 
 In this section, we will explore the core API management capabilities of Tyk Self-Managed using the pre-configured APIs.
 
+<TODO: Add more details on the core API management capabilities that we will explore>
+
 ### API Security in Action
 
-API security is a critical aspect of API management. Tyk provides [multiple authentication methods]({{< ref "api-management/client-authentication/#what-does-tyk-support" >}}) to secure your APIs and control access. In this section, we'll explore the security features available in your trial environment.
+API security is an important aspect of API management. Tyk provides [multiple authentication methods]({{< ref "api-management/client-authentication/#what-does-tyk-support" >}}) to secure your APIs and control access. In this section, we'll explore the security features available in your trial environment.
 
 #### Exploring Authentication Methods
 
-Tyk supports various authentication methods including API keys, [JWT]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), [OAuth 2.0]({{< ref "api-management/authentication/oauth-2" >}}), and [more]({{< ref "api-management/client-authentication/#what-does-tyk-support" >}}). In your trial environment, the httpbingo API is pre-configured with API key authentication.
+Tyk supports various authentication methods including [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}), [JWT]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), [OAuth 2.0]({{< ref "api-management/authentication/oauth-2" >}}), and [more]({{< ref "api-management/client-authentication/#what-does-tyk-support" >}}). In your trial environment, the httpbingo API is pre-configured with Auth Token authentication.
 
-**Understanding API Key Authentication:**
+**Understanding Auth Token Authentication:**
 
-API keys are the simplest form of authentication. They're easy to implement and understand, making them perfect for your first exploration of Tyk.
+[Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) is the simplest form of authentication. They're easy to implement and understand, making them perfect for your first exploration of Tyk.
 
 1. **Create an API Key:**
    - In the Dashboard, navigate to the "Keys" section in the left menu
    - Click the "ADD KEY" button
    - Under "Access Rights," select the `HTTPBIN API Access` policy
    - Click "CREATE" to generate your API key
+   <TODO: Add Image>
    - Copy the displayed API `key ID` for testing
 
 2. **Test API Access with Your Key:**
@@ -207,20 +222,20 @@ API keys are the simplest form of authentication. They're easy to implement and 
    - Make the same request without the Authorization header:
      ```
      curl http://localhost:8080/httpbingo/get
+     or
+     curl -H "Authorization: invalid-key" http://localhost:8080/httpbingo/get
      ```
    - You should receive an "Unauthorized" error, confirming that authentication is working
 
+**TODO: (Update this with JWT when API availalbe in Demo)**
+
 **Exploring Other Authentication Methods (Optional):**
-
-While not pre-configured in the trial, you can explore other authentication methods by creating a new API or modifying the existing one through the Dashboard's API Designer:
-
-- **JWT Authentication**: For token-based authentication with signature validation
-- **OAuth 2.0**: For delegated authorization scenarios
-- **Mutual TLS**: For certificate-based client authentication
 
 #### Rate Limiting and Quota Management
 
-Rate limiting helps protect your APIs from overuse, whether accidental or malicious. Tyk makes it easy to implement and test rate limiting.
+[Rate limiting]({{< ref "api-management/rate-limit" >}}) is a technique that allows you to control the rate at which clients can consume your APIs and is one of the fundamental aspects of managing traffic to your services. It serves as a safeguard against abuse, overloading, and denial-of-service attacks by limiting the rate at which an API can be accessed.
+
+In this section we will implement and test rate limiting in Tyk.
 
 **Understanding Rate Limiting:**
 
@@ -236,6 +251,7 @@ The trial includes two pre-configured policies with different rate limits:
    - Go to the "Keys" section and create a new key
    - Assign the "Sandbox Plan" policy to this key
    - Save and copy the generated key
+   <TODO: Add Image>
 
 2. **Observe Rate Limiting in Action:**
    - Open a terminal and run multiple requests in quick succession:
@@ -302,30 +318,156 @@ Tyk provides comprehensive logging and analytics for security monitoring and tro
 
 By exploring these security features, you'll gain a solid understanding of how Tyk helps protect your APIs while providing the right level of access to authorized consumers.
 
+
 ### Traffic Control & Transformation
+
+Tyk API [Gateway]({{< ref "tyk-oss-gateway" >}}) can control and transform incoming API traffic. It provides [various mechanisms]({{< ref "api-management/traffic-transformation" >}}) to modify requests and responses, control traffic flow, and optimize performance. Let's explore these capabilities in your trial environment.
 
 #### Testing Request/Response Transformations
 
-The httpbingo API includes a transformation example on the `/xml` endpoint that converts XML to JSON.
+Transformations allow you to modify API requests and responses without changing your backend services. This is useful for adapting legacy APIs, standardizing formats, or enhancing responses.
+
+**Understanding Transformations:**
+
+The httpbingo API in your trial includes a pre-configured transformation on the `/xml` endpoint that converts XML responses to JSON format.
+
+**Testing the XML to JSON Transformation:**
+
+1. **Make a Request to the XML Endpoint:**
+   - Using your API key from the previous section, make a request to the XML endpoint:
+     ```
+     curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/xml
+     ```
+   - Notice that even though the backend returns XML, you receive a JSON response
+   - This transformation happens in the gateway, not in the backend service
+
+2. **Examine the Transformation Configuration:**
+   - In the Dashboard, go to the "APIs" section
+   - Click on the httpbingo API
+   - Navigate to the "Endpoint Designer" tab
+   - Find the `/xml` path and click on it
+   - You'll see the response transformation that converts XML to JSON
+
+Transformations are a powerful way to adapt APIs to your needs without modifying backend code, making them ideal for modernizing legacy services or standardizing API responses across different systems.
 
 #### Exploring Caching Configurations
 
-TODO: Caching features are not yet implemented in the tyk-poc repository.
+Caching improves API performance by storing responses and serving them without hitting your backend services for every request. This reduces latency and backend load.
+
+**Understanding API Caching:**
+
+The httpbingo API includes a caching example on the `/test` endpoint with a 10-second cache lifetime. This means that repeated requests within 10 seconds will receive the same cached response.
+
+**Testing Caching Behavior:**
+
+1. **Make an Initial Request:**
+   - Using your API key, make a request to the test endpoint:
+     ```
+     curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/test
+     ```
+   - Take note of the value in the "Postman-Token" field in the response
+
+2. **Make an Immediate Second Request:**
+   - Immediately make another request to the same endpoint:
+     ```
+     curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/test
+     ```
+   - Notice that the "Postman-Token" value is identical to the first request
+   - This confirms that you're receiving a cached response, not a new one from the backend
+
+3. **Wait and Test Again:**
+   - Wait 11 seconds (just past the 10-second cache lifetime)
+   - Make another request to the same endpoint
+   - You should see a different "Postman-Token" value, indicating a fresh response from the backend
+
+4. **Examining Cache Configuration:**
+
+    1. In the Dashboard, go to the "APIs" section
+    2. Click on the httpbingo API
+    3. Navigate to the "Advanced Options" tab
+    4. Look for the "Cache Response" section to see how caching is configured
+
+Caching is particularly valuable for responses that are expensive to generate but don't change frequently. By implementing appropriate caching strategies, you can significantly improve API performance and reduce backend load.
 
 ### API Monitoring & Analytics
 
+Understanding how your APIs are used is crucial for maintaining performance, planning capacity, and ensuring security. Tyk provides comprehensive analytics and monitoring tools to give you visibility into your API traffic.
+
 #### Generating Test Traffic
 
-Use tools like Apache Bench or Postman to send multiple requests to generate analytics data.
+To explore Tyk's analytics capabilities, you'll need to generate some API traffic. This simulates real-world usage patterns and populates the analytics dashboard.
+
+**Creating Test Traffic:**
+
+1. **Using Command Line Tools:**
+   - You can use simple bash loops to generate multiple requests:
+     ```
+     for i in {1..20}; do curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get; sleep 0.5; done
+     ```
+   - This sends 20 requests with a half-second delay between each
+
+2. **Using Apache Bench (if installed):**
+   - For more controlled load testing:
+     ```
+     ab -n 100 -c 10 -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get
+     ```
+   - This sends 100 requests with 10 concurrent connections
+
+3. **Generating Diverse Traffic:**
+   - Try accessing different endpoints to create a more realistic traffic pattern:
+     ```
+     curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/headers
+     curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/ip
+     curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/user-agent
+     ```
+   - Include some errors by attempting to exceed rate limits or access without authentication
 
 #### Exploring Real-time Analytics
 
-The Dashboard's Analytics section provides real-time insights into API usage patterns.
+Once you've generated some traffic, you can explore Tyk's analytics capabilities to gain insights into API usage.
 
-#### Setting up Alerts and Notifications
+**Accessing Analytics Dashboard:**
 
-TODO: Alerting features are not yet implemented in the tyk-poc repository.
+1. **View the Main Dashboard:**
+   - In the Tyk Dashboard, go to the "Dashboard" section under "Analytics"
+   - This provides an overview of API usage, errors, and performance metrics
+   - The dashboard updates in near real-time as new requests are processed
+
+2. **Explore Key Metrics:**
+   - **Request Volume**: See how many requests are being processed
+   - **Error Rates**: Monitor authentication failures and other errors
+   - **Response Times**: Track API performance and identify slow endpoints
+   - **Geographic Distribution**: See where API requests are coming from
+
+3. **Drill Down into Specific APIs:**
+   - Click on the httpbingo API in the analytics view
+   - This shows detailed metrics specific to that API
+   - You can see which endpoints are most frequently used
+   - Identify any performance or error hotspots
+
+**Using Analytics for Decision Making:**
+
+The analytics dashboard helps you answer important questions about your APIs:
+
+- Which endpoints are most popular?
+- Are there performance bottlenecks?
+- Are users experiencing errors?
+- How is usage changing over time?
+
+These insights can guide your API development priorities, capacity planning, and troubleshooting efforts.
+
+**Exporting Analytics Data (Optional):**
+
+If you want to perform more detailed analysis or integrate with other systems:
+
+1. Use the "Export" button in the analytics dashboard
+2. Select your preferred format (CSV, JSON)
+3. Choose the time range and metrics to export
+4. Use the exported data with your preferred analysis tools
+
+Tyk's analytics capabilities provide the visibility you need to manage your APIs effectively, ensuring they meet the needs of your users while maintaining performance and security standards.
 
 ## Next Steps
 
 [Developing APIs with Tyk Self-Managed]({{< ref "deployment-and-operations/tyk-self-managed/value-addons" >}}) - Learn how to create new APIs, publish them to the Developer Portal, and integrate advanced middleware.
+
