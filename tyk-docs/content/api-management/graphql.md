@@ -2005,6 +2005,24 @@ The values for subscription types are the same on all API types:
 - `graphql-transport-ws`
 - `sse` (Server-Sent Events)
 
+##### HTTP method for Server-Sent Event subscription
+
+When using `subscription_type=sse`, Tyk will use the HTTP `GET` method to subscribe to the upstream service. For some use cases, for example, to support larger subscription payloads or to increase security by keeping the subscription payload out of server logs, the upstream requires HTTP `POST`. In Tyk 5.9.0, we have added `POST` support for SSE with the introduction of the boolean `use_sse_post` option, which is only relevant if `subscription_type=sse`.
+
+```json
+{
+  "graphql": {
+    "proxy": {
+      "subscription_type": "sse",
+      "sse_use_post": true
+    }
+  }
+}
+```
+
+If you need to use HTTP `GET` then you can omit `sse_use_post` or set it to `false`.
+
+
 ##### GraphQL Proxy
 
 ```
