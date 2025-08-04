@@ -1,5 +1,5 @@
 ---
-title: "Developing APIs with Tyk Self-Managed"
+title: "Getting Started with Tyk Self-Managed"
 date: 2025-02-10
 keywords: ["quick start", "tyk self-managed", "tyk gateway", "tyk dashboard", "tyk pump", "tyk analytics"]
 description: "Quickly set up Tyk Self-Managed with our comprehensive guide, including installation options and demo environments."
@@ -26,13 +26,13 @@ Your Tyk Self-Managed trial includes:
 - **CPU & Memory**: Minimum 2 GB RAM and 2 CPU cores
 - **License Key**: A valid Tyk Self-Managed license key. 
     
-    You can instantly obtain a self managed trial license by registering on this [form](https://share.hsforms.com/13h7zZ8k6Tt2FCbIbYs39mA3ifmg). After registraion, you will receive an email with your license key.
+    You can instantly obtain a self managed trial license by registering on the [website](https://share.hsforms.com/13h7zZ8k6Tt2FCbIbYs39mA3ifmg). After registraion, you will receive an email with your license key.
 
     If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
 
 ### Trial Duration and Limitations
 
-Your trial license is valid for 14 days from activation. During this period, you have access to all Enterprise features. After the trial period, you'll need to purchase a license to continue using Tyk Self-Managed.
+Your trial license is valid for **14 days from activation**. During this period, you have access to all Enterprise features. After the trial period, you'll need to purchase a license to continue using Tyk Self-Managed.
 
 To continue using Tyk Self-Managed after your trial, please contact our [support team](https://tyk.io/contact/) to obtain a license.
 
@@ -174,28 +174,133 @@ The Developer Portal includes:
 
 ## Core API Management Capabilities
 
-In this section, we will explore the core API management capabilities of Tyk Self-Managed using the pre-configured httpbingo API.
+In this section, we will explore the core API management capabilities of Tyk Self-Managed using the pre-configured APIs.
 
 ### API Security in Action
 
+API security is a critical aspect of API management. Tyk provides [multiple authentication methods]({{< ref "api-management/client-authentication/#what-does-tyk-support" >}}) to secure your APIs and control access. In this section, we'll explore the security features available in your trial environment.
+
 #### Exploring Authentication Methods
 
-The httpbingo API is configured with API key authentication:
+Tyk supports various authentication methods including API keys, [JWT]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), [OAuth 2.0]({{< ref "api-management/authentication/oauth-2" >}}), and [more]({{< ref "api-management/client-authentication/#what-does-tyk-support" >}}). In your trial environment, the httpbingo API is pre-configured with API key authentication.
 
-1. In the Dashboard, go to "Keys" and create a new key
-2. Assign it to the httpbingo API
-3. Test API access using the key:
-   ```
-   curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get
-   ```
+**Understanding API Key Authentication:**
 
-#### Testing Rate Limiting and Quota Management
+API keys are the simplest form of authentication. They're easy to implement and understand, making them perfect for your first exploration of Tyk.
 
-To test rate limiting:
+1. **Create an API Key:**
+   - In the Dashboard, navigate to the "Keys" section in the left menu
+   - Click the "ADD KEY" button
+   - Under "Access Rights," select the `HTTPBIN API Access` policy
+   - Click "CREATE" to generate your API key
+   - Copy the displayed API `key ID` for testing
 
-1. Create a key with the "Sandbox Plan" policy
-2. Make multiple rapid requests to observe rate limiting in action
-3. After 3 requests within 10 seconds, you should receive rate limit errors
+2. **Test API Access with Your Key:**
+   - Open a terminal or API client like Postman
+   - Make a request to the API including your key in the Authorization header:
+     ```
+     curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get
+     ```
+   - You should receive a successful response with details about your request
+
+3. **Try Without Authentication:**
+   - Make the same request without the Authorization header:
+     ```
+     curl http://localhost:8080/httpbingo/get
+     ```
+   - You should receive an "Unauthorized" error, confirming that authentication is working
+
+**Exploring Other Authentication Methods (Optional):**
+
+While not pre-configured in the trial, you can explore other authentication methods by creating a new API or modifying the existing one through the Dashboard's API Designer:
+
+- **JWT Authentication**: For token-based authentication with signature validation
+- **OAuth 2.0**: For delegated authorization scenarios
+- **Mutual TLS**: For certificate-based client authentication
+
+#### Rate Limiting and Quota Management
+
+Rate limiting helps protect your APIs from overuse, whether accidental or malicious. Tyk makes it easy to implement and test rate limiting.
+
+**Understanding Rate Limiting:**
+
+The trial includes two pre-configured policies with different rate limits:
+- **Sandbox Plan**: 3 requests per 10 seconds (for testing rate limiting)
+- **Production Plan**: 100 requests per 60 seconds (simulating a higher-tier plan)
+
+**Testing Rate Limiting:**
+
+1. **Create a Key with Rate Limiting:**
+   - Go to the "Policies" section in the Dashboard
+   - Note the "Sandbox Plan" policy that has a rate limit of 3 requests per 10 seconds
+   - Go to the "Keys" section and create a new key
+   - Assign the "Sandbox Plan" policy to this key
+   - Save and copy the generated key
+
+2. **Observe Rate Limiting in Action:**
+   - Open a terminal and run multiple requests in quick succession:
+     ```
+     for i in {1..5}; do curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get; echo -e "\n--- Request $i completed ---\n"; done
+     ```
+   - After the third request within 10 seconds, you should see a rate limit exceeded error
+   - The error message will indicate that you've exceeded your rate limit and when you can try again
+
+3. **Compare with a Higher Limit:**
+   - Create another key with the "Production Plan" policy
+   - Run the same test and observe that you can make more requests before hitting limits
+
+**Understanding Quota Management:**
+
+In addition to rate limiting, Tyk allows you to set quotas (total number of requests allowed in a time period). While not explicitly configured in the trial policies, you can explore this feature by modifying a policy and setting a quota limit.
+
+#### Viewing Security Logs and Analytics
+
+Tyk provides comprehensive logging and analytics for security monitoring and troubleshooting.
+
+**Accessing Security Logs:**
+
+1. **View API Request Logs:**
+   - In the Dashboard, go to the "Activity" section in the left menu
+   - Here you'll see a log of all API requests, including:
+     - Success/failure status
+     - Authentication details
+     - IP addresses
+     - Timestamps
+     - Response times
+
+2. **Filter Security Events:**
+   - Use the filters at the top to focus on security-related events
+   - Filter by error type to see authentication failures
+   - Filter by API to focus on a specific service
+
+3. **Examine Rate Limiting Events:**
+   - After testing rate limiting, filter the logs to show "Rate Limit" errors
+   - Examine the details of these events to understand how rate limiting is enforced
+
+**Exploring Analytics for Security Insights:**
+
+1. **Access the Analytics Dashboard:**
+   - Go to the "Dashboard" section under Analytics
+   - View the overview of API usage, errors, and performance
+
+2. **Security-Focused Analytics:**
+   - Look for the "Errors" widget to identify authentication and authorization issues
+   - Check the "By IP" view to identify potential abuse patterns
+   - Use the time range selector to analyze trends over different periods
+
+3. **Generate a Security Report:**
+   - Use the "Generate Report" feature to create a security-focused report
+   - Select metrics related to authentication and rate limiting
+   - Export the report for sharing with your team
+
+**Key Security Takeaways:**
+
+- Tyk provides multiple layers of security: authentication, rate limiting, and quotas
+- Real-time logs and analytics help you monitor and respond to security events
+- Policies allow you to create different security tiers for different API consumers
+- The Dashboard makes it easy to visualize security patterns and identify issues
+
+By exploring these security features, you'll gain a solid understanding of how Tyk helps protect your APIs while providing the right level of access to authorized consumers.
 
 ### Traffic Control & Transformation
 
