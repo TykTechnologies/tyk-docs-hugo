@@ -39,7 +39,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.9.0 Release Notes
 
-#### Release Date 31st July 2025
+#### Release Date 4th August 2025
 
 #### Release Highlights
 
