@@ -4,7 +4,7 @@
   "latest": "2.8.2",
   "releaseNotesPath": "developer-support/release-notes/mdcb",
   "2.8.2": {
-    "date": "31/07/2025",
+    "date": "04/08/2025",
     "docker":"https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=1&name=2.8.2"
   },
   "2.8.1": {
