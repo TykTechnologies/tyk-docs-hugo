@@ -1362,11 +1362,14 @@ ValidateSchemaDefaults enables validation of values provided in `default` fields
 ### streaming
 Streaming holds the configuration for Tyk Streaming functionalities
 
-### streaming.enabled
-ENV: <b>TYK_DB_STREAMING_ENABLED</b><br />
+### streaming.enable_all_experimental
+ENV: <b>TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL</b><br />
 Type: `bool`<br />
 
-This flag enables the Tyk Streaming feature.
+EnableAllExperimental indicates whether all experimental features for streaming are enabled. This is useful for testing purposes.
+
+Warning:
+  This flag should not be enabled in production environments.
 
 ### labs
 Experimental and beta features configuration settings
