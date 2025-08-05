@@ -520,7 +520,6 @@ This struct allows you to specify a custom proxy and set the minimum TLS version
 
 Example:
 
-	```
 	{
 	  "proxy_url": "http(s)://proxy.url:1234",
 	  "minVersion": "1.0",
@@ -532,7 +531,6 @@ Example:
 	  "insecureSkipVerify": true,
 	  "forceCommonNameCheck": false
 	}
-	```
 
 Tyk classic API definition: `proxy.transport`
 
@@ -2255,7 +2253,7 @@ Tyk classic API definition: `version_data.versions..extended_paths.hard_timeouts
 ### **ExternalOAuth**
 
 ExternalOAuth holds configuration for an external OAuth provider.
-Deprecated: ExternalOAuth support has been deprecated from 5.7.0.
+Deprecated: ExternalOAuth support was deprecated in Tyk 5.7.0.
 To avoid any disruptions, we recommend that you use JSON Web Token (JWT) instead,
 as explained in https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/.
 
@@ -2386,6 +2384,9 @@ Source contains the source for the JWT.
 
 
 Tyk classic API definition: `jwt_source`.
+
+**Field: `jwksURIs` (`[]apidef.JWK`)**
+JwksURIs contains a list of JSON Web Key Sets (JWKS) endpoints from which Tyk will retrieve JWKS to validate JSON Web Tokens (JWTs).
 
 **Field: `signingMethod` (`string`)**
 SigningMethod contains the signing method to use for the JWT.
