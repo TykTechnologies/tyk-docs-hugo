@@ -297,6 +297,161 @@ admin pw: specialpassword
 
     {{< img src="/img/self-managed/self-managed-trial-portal.png" alt="Developer Portal" >}}
 
+## Exploring Your Pre-Configured Environment
+
+When you run the Docker Compose command in the previous section, several interconnected components are deployed to create a complete Tyk API Management ecosystem. Let's explore what's installed and how these components work together.
+
+The following diagram illustrates the components of your Tyk Self-Managed installation and how they interact:
+
+<TODO: Ask @jen to recreate the diagram with our standard colors and styles>
+
+```mermaid
+graph TD
+    User[External User/API Consumer] -->|API Requests| Gateway
+    Developer[API Developer] -->|Manages APIs| Dashboard
+    PortalUser[Portal User/Developer] -->|Browses & Subscribes| Portal
+    
+    subgraph "Tyk Self-Managed Environment"
+        Gateway[Tyk Gateway<br/>:8080] -->|Forwards Requests| HttpBin[HttpBin Service<br/>:8081]
+        Gateway -->|Stores Data| Redis[Redis<br/>:6379]
+        Gateway -->|Reports Analytics| Pump[Tyk Pump]
+        
+        Dashboard[Tyk Dashboard<br/>:3000] -->|Configures| Gateway
+        Dashboard -->|Reads/Writes| Redis
+        Dashboard -->|Stores Config & Analytics| Postgres[PostgreSQL<br/>:5432]
+        
+        Portal[Enterprise Portal<br/>:3001] -->|Gets API Products| Dashboard
+        Portal -->|Stores Data| Postgres
+        
+        Pump -->|Processes Analytics| Postgres
+    end
+    
+    style Gateway fill:#f9f,stroke:#333,stroke-width:2px
+    style Dashboard fill:#bbf,stroke:#333,stroke-width:2px
+    style Portal fill:#bfb,stroke:#333,stroke-width:2px
+```
+
+**Key Components:**
+
+1. **Tyk Gateway (tyk-gateway)**: The core API Gateway that processes all API requests, applies policies, and enforces security. Exposed on port 8080.
+
+2. **Tyk Dashboard (tyk-dashboard)**: The management interface for configuring APIs, policies, and viewing analytics. Exposed on port 3000.
+
+3. **Enterprise Developer Portal (tyk-ent-portal)**: A customizable portal for API consumers to discover, test, and subscribe to APIs. Exposed on port 3001.
+
+4. **Redis (tyk-redis)**: Used for caching, session management, and real-time communication between components. Exposed on port 6379.
+
+5. **PostgreSQL (tyk-postgres)**: Stores configuration data, user information, and analytics. Exposed on port 5432.
+
+6. **Tyk Pump (tyk-pump)**: Processes and transfers analytics data from the Gateway to the database for reporting.
+
+7. **HttpBin (httpbin)**: A sample API service that provides various endpoints for testing. Exposed on port 8081.
+
+With these components, you have a fully functional Tyk Self-Managed environment that allows you to manage APIs, monitor usage, and provide a developer portal for your API consumers. Let's explore how to navigate the Dashboard, understand the pre-loaded APIs, and preview the Developer Portal.
+
+### Dashboard Tour
+
+The Tyk Dashboard is your central hub for managing APIs, monitoring performance, and configuring security settings.
+
+{{< img src="/img/self-managed/self-managed-trial-dashboard.png" alt="Self Managed Tyk Dashbaord" >}}
+
+Let's explore the main sections available in the sidebar:
+
+#### Navigating the Tyk Dashboard
+
+Dashboard is organized into a few key categories:
+* **API Management**: In API Management, you can access and edit all your APIs, create data graphs, and add webhooks.
+* **API Security**: In API Security, you can manage keys, policies, and certificates to customize your security settings. 
+* **User Management**: In User Management, you can control permissions and access for users and user groups. You can also create profiles that help you manage third party identity providers for specific Tyk actions like signing into the portal or logging into the dashboard.
+* **Monitoring**: In Monitoring, you can view activity reports, logs, and analytics related to your APIs.
+* **System Management**: In System Management, you can affect OPA rules that define fine-grained access control for managing and enforcing permissions on various actions and resources in Tyk’s API management system.
+* **Classic Portal**: In Classic Portal, you can affect permissions and configurations related to your developer portal. The Tyk Developer Portal is a platform that enables you to publish, manage, and promote your APIs to external developers.
+
+
+For a comprehensive guide to the Dashboard, refer to the [using Tyk Dashboard]({{< ref "tyk-dashboard/getting-started/using-tyk-dashboard#dashboard-organization" >}}) guide.
+
+#### Understanding the Pre-loaded APIs
+
+Your trial environment comes with pre-configured sample APIs to help you explore Tyk's capabilities:
+
+**1. httpbingo API Overview:**
+
+- **Purpose**: A test API with various endpoints for exploring API management features
+- **Base URL**: `http://localhost:8080/httpbingo`
+- **Authentication**: API Key authentication (via Authorization header)
+- **Rate Limiting**: Configured through policies (Sandbox and Production plans)
+
+**Key Endpoints:**
+
+- `/get`: Returns request data (headers, query parameters)
+- `/headers`: Shows all request headers
+- `/ip`: Returns the client's IP address
+- `/xml`: Demonstrates response transformation (XML to JSON)
+- `/status/{code}`: Returns specified HTTP status code
+- `/mock`: Returns a mock response generated by Tyk
+
+**2. F1 API Overview:**
+
+- **Purpose**: Demonstrates JWT authentication with a real-world API providing Formula 1 racing data
+- **Base URL**: `http://localhost:8080/f1api` (proxies to https://f1api.dev/api/)
+- **Authentication**: JWT HMAC authentication
+
+   JWT Authentication Details:
+
+   - **Shared Secret**: `topspecial256sharedbitlongsecret`
+   - **JWT Generation**: You can use [jwt.io](https://jwt.io) to generate valid tokens
+   - **Header Format**: `Authorization: Bearer <your_jwt_token>`
+- **Rate Limiting**: 4 requests per 15 seconds (configured through policy)
+
+**Key Endpoints:**
+
+- `/drivers`: Information about F1 drivers
+- `/seasons`: Data about F1 racing seasons
+- `/circuits`: Details about F1 racing circuits
+- `/teams`: Information about F1 teams
+
+To explore these APIs in detail:
+
+1. In the Dashboard, go to the "APIs" section
+2. Click on either "httpbingo API" or "F1 API"
+3. Navigate through the tabs to see the various configuration options
+4. Pay special attention to the `Endpoint Designer` tab to see how individual endpoints are configured
+
+### (TODO: WIP) Enterprise Developer Portal Preview
+
+The Enterprise Developer Portal provides a dedicated space for API consumers to discover, learn about, and subscribe to your APIs. It bridges the gap between API providers and consumers.
+
+{{< img src="/img/self-managed/self-managed-trial-portal.png" alt="Developer Portal" >}}
+
+As an administrator, you can customize the portal's appearance, content, and behavior to match your brand and requirements.
+
+#### Exploring Available API Products and Catalogs
+
+The Developer Portal organizes APIs into a structured hierarchy:
+
+**Products, Plans, and Catalogs:**
+
+- **Products**: API offerings that developers can consume. In your trial, there's a pre-configured product for the httpbingo API.
+
+- **Plans**: Subscription tiers with different access levels and rate limits. Your trial includes:
+  - **Sandbox Plan**: Limited rate (3 requests per 10 seconds) for testing and development
+  - **Production Plan**: Higher capacity (100 requests per 60 seconds) for production use
+
+- **Catalogs**: Collections of products and plans that can be made available to different audiences. Your trial has a public catalog containing the httpbingo API product and both plans.
+
+**Exploring as a Developer:**
+
+To experience the portal from a developer's perspective:
+
+1. Register a new developer account (or use the admin account to view the developer experience)
+2. Browse the API catalog to see available products
+3. View the API documentation, which is automatically generated from the API definition
+4. Subscribe to a plan to get access credentials
+5. Test the API using the provided examples and your credentials
+
+The Developer Portal streamlines the onboarding process for API consumers, making it easy for them to find, understand, and use your APIs.
+
+
 ## Core API Management Capabilities
 
 In this section, we will explore the core API management capabilities of Tyk Self-Managed using the pre-configured APIs.
