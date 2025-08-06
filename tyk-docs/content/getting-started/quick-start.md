@@ -15,8 +15,8 @@ Tyk Self-Managed is a full-featured API management platform that you deploy and 
 Your Tyk Self-Managed trial includes:
 
 - **[Tyk Gateway]({{< ref "tyk-oss-gateway" >}})**: The core API Gateway that handles all your API traffic
-- **[Tyk Dashboard]({{< ref "api-management/dashboard-configuration" >}})**: A web interface for managing your APIs, policies, and monitoring
-- **[Enterprise Developer Portal]({{< ref "portal/overview/intro" >}})**: A customizable API portal to securely publish and manage API access for your consumers.
+- **[Tyk Dashboard]({{< ref "api-management/dashboard-configuration" >}})**: A [REST API]({{< ref "api-management/dashboard-configuration#exploring-the-dashboard-api" >}}) with a [web interface]({{<  ref "getting-started/using-tyk-dashboard" >}}) for managing your APIs, policies, and monitoring
+- **[Developer Portal]({{< ref "portal/overview/intro" >}})**: A customizable API portal to securely publish and manage API access for your consumers.
 - **Monitoring**: Detailed insights into API usage and performance
 - **Sample APIs**: Pre-configured APIs to help you explore Tyk's capabilities
 
@@ -26,7 +26,7 @@ Your Tyk Self-Managed trial includes:
 - **CPU & Memory**: Minimum 2 GB RAM and 2 CPU cores
 - **License Key**: A valid Tyk Self-Managed license key.
 
-    You can quickly get started with a self-managed trial license by completing the registration on [website](https://tyk.io/self-managed-trial ). After registering, you’ll receive an email containing your license key.
+    You can quickly get started with a self-managed trial license by completing the registration on our [website](https://tyk.io/self-managed-trial ). After registering, you’ll receive an email containing your license key.
 
     If you'd rather have guided assistance, we recommend checking out our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
 
@@ -84,7 +84,7 @@ This section provides a step-by-step guide to quickly set up Tyk Self-Managed us
     This command will download and start all the necessary containers:
     - Tyk Gateway
     - Tyk Dashboard
-    - Enterprise Developer Portal
+    - Developer Portal
     - Redis (Gateway dependency for caching)
     - PostgreSQL (Dashboard and Portal dependency for data storage)
     - Tyk Pump (for analytics)
@@ -160,7 +160,7 @@ admin pw: specialpassword
 
 3. **Verify Developer Portal Access**:
     1. Open your browser and navigate to `http://localhost:3001`
-    2. Log in with the default credentials (portal@tyk.io / specialpassword)
+    2. Log in with the default credentials (portaladmin@tyk.io / specialpassword)
     3. You should see the `Overview` section of the Developer Portal.
 
     {{< img src="/img/self-managed/self-managed-trial-portal.png" alt="Developer Portal" >}}
@@ -171,33 +171,34 @@ When you run the Docker Compose command in the previous section, several interco
 
 The following diagram illustrates the components of your Tyk Self-Managed installation and how they interact:
 
-<TODO: Ask @jen to recreate the diagram with our standard colors and styles>
+{{< img src="/img/self-managed/self-managed-trial-architecture.png" alt="Self Managed Tyk Architecture" >}}
 
-```mermaid
+<!-- ```mermaid
 graph TD
-    User[External User/API Consumer] -->|API Requests| Gateway
-    Developer[API Developer] -->|Manages APIs| Dashboard
-    PortalUser[Portal User/Developer] -->|Browses & Subscribes| Portal
+    User[External User/API Consumer] -/->|API Requests| Gateway
+    Developer[API Developer] -/->|Manages APIs| Dashboard
+    PortalUser[Portal User/Developer] -/->|Browses & Subscribes| Portal
     
     subgraph "Tyk Self-Managed Environment"
-        Gateway[Tyk Gateway<br/>:8080] -->|Forwards Requests| HttpBin[HttpBin Service<br/>:8081]
-        Gateway -->|Stores Data| Redis[Redis<br/>:6379]
-        Gateway -->|Reports Analytics| Pump[Tyk Pump]
+        Gateway[Tyk Gateway<br/>:8080] -/->|Forwards Requests| HttpBin[HttpBin Service<br/>:8081]
+        Gateway -/->|Stores Data| Redis[Redis<br/>:6379]
+        Gateway -/->|Reports Analytics| Pump[Tyk Pump]
         
-        Dashboard[Tyk Dashboard<br/>:3000] -->|Configures| Gateway
-        Dashboard -->|Reads/Writes| Redis
-        Dashboard -->|Stores Config & Analytics| Postgres[PostgreSQL<br/>:5432]
+        Dashboard[Tyk Dashboard<br/>:3000] -/->|Configures| Gateway
+        Dashboard -/->|Reads/Writes| Redis
+        Dashboard -/->|Stores Config & Analytics| Postgres[PostgreSQL<br/>:5432]
         
-        Portal[Enterprise Portal<br/>:3001] -->|Gets API Products| Dashboard
-        Portal -->|Stores Data| Postgres
+        Portal[Enterprise Portal<br/>:3001] -/->|Gets API Products| Dashboard
+        Portal -/->|Stores Data| Postgres
         
-        Pump -->|Processes Analytics| Postgres
+        Pump -/->|Processes Analytics| Postgres
     end
     
     style Gateway fill:#f9f,stroke:#333,stroke-width:2px
     style Dashboard fill:#bbf,stroke:#333,stroke-width:2px
-    style Portal fill:#bfb,stroke:#333,stroke-width:2px
+    style Portal fill:#bfb,stroke:#333,stroke-width:2px 
 ```
+-->
 
 **Key Components:**
 
@@ -205,7 +206,7 @@ graph TD
 
 2. **Tyk Dashboard (tyk-dashboard)**: The management interface for configuring APIs, policies, and viewing monitoring data. Exposed on port 3000.
 
-3. **Enterprise Developer Portal (tyk-ent-portal)**: A customizable portal for API consumers to discover, test, and subscribe to APIs. Exposed on port 3001.
+3. **Developer Portal (tyk-ent-portal)**: A customizable portal for API consumers to discover, test, and subscribe to APIs. Exposed on port 3001.
 
 4. **Redis (tyk-redis)**: Used for caching, session management, and real-time communication between components. Exposed on port 6379.
 
@@ -228,11 +229,12 @@ Let's explore the main sections available in the sidebar:
 #### Navigating the Tyk Dashboard
 
 Dashboard is organized into a few key categories:
-* **API Management**: In API Management, you can access and edit all your APIs, create data graphs, and add webhooks.
-* **API Security**: In API Security, you can manage keys, policies, and certificates to customize your security settings. 
-* **User Management**: In User Management, you can control permissions and access for users and user groups. You can also create profiles that help you manage third party identity providers for specific Tyk actions like signing into the portal or logging into the dashboard.
-* **Monitoring**: In Monitoring, you can view activity reports, logs, and analytics related to your APIs.
-* **System Management**: In System Management, you can affect OPA rules that define fine-grained access control for managing and enforcing permissions on various actions and resources in Tyk’s API management system.
+* **API Management**: In API Management, you can access and edit all your APIs, create [data graphs]({{< ref "api-management/data-graph" >}}), and add webhooks.
+* **API Security**: In API Security, you can manage [keys]({{< ref "api-management/policies#access-keys" >}}), [policies]({{< ref "api-management/policies" >}}), and [certificates]({{< ref "api-management/certificates" >}}) to customize your security settings. 
+* **User Management**: In [User Management]({{< ref "api-management/user-management" >}}), you can control permissions and access for users and user groups. You can also create profiles that help you manage third party identity providers for specific Tyk actions like signing into the portal or logging into the dashboard.
+* **Monitoring**: In [Monitoring]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}), you can view activity reports, logs, and analytics related to your APIs.
+* **System Management**: In [System Management]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}), you can affect OPA rules that define fine-grained access control for managing and enforcing permissions on various actions and resources in Tyk’s API management system.
+<!-- TODO: Remove this when we upgrade this guide to 5.9.0: In 5.9.0 the Classic Portal will be hidden in the Dashboard -->
 * **Classic Portal**: In Classic Portal, you can affect permissions and configurations related to your developer portal. The Tyk Developer Portal is a platform that enables you to publish, manage, and promote your APIs to external developers.
 
 
@@ -261,7 +263,7 @@ Your trial environment comes with pre-configured sample APIs to help you explore
 **2. F1 API Overview:**
 
 - **Purpose**: Demonstrates JWT authentication with a real-world API providing Formula 1 racing data
-- **Base URL**: `http://localhost:8080/f1api` (proxies to https://f1api.dev/api/)
+- **Base URL**: `http://localhost:8080/f1-api` (proxies to https://f1api.dev/api/)
 - **Authentication**: JWT HMAC authentication
 
    JWT Authentication Details:
@@ -283,11 +285,11 @@ To explore these APIs in detail:
 1. In the Dashboard, go to the "APIs" section
 2. Click on either "httpbingo API" or "F1 API"
 3. Navigate through the tabs to see the various configuration options
-4. Pay special attention to the `Endpoint Designer` tab to see how individual endpoints are configured
+4. Pay special attention to the `Endpoints` tab to see how individual endpoints are configured
 
-### (TODO: WIP) Enterprise Developer Portal Preview
+### Developer Portal Preview
 
-The Enterprise Developer Portal provides a dedicated space for API consumers to discover, learn about, and subscribe to your APIs. It bridges the gap between API providers and consumers.
+The [Developer Portal]({{< ref "portal/overview/intro" >}}) provides a dedicated space for API consumers to discover, learn about, and subscribe to your APIs. It bridges the gap between API providers and consumers.
 
 {{< img src="/img/self-managed/self-managed-trial-portal.png" alt="Developer Portal" >}}
 
@@ -295,30 +297,32 @@ As an administrator, you can customize the portal's appearance, content, and beh
 
 #### Exploring Available API Products and Catalogs
 
+Login into the portal as an Admin user with credentials provided in the [previous section]({{< ref "getting-started/quick-start#default-credentials-and-access-points" >}}) to explore the resources created in the portal. 
+
 The Developer Portal organizes APIs into a structured hierarchy:
 
 **Products, Plans, and Catalogs:**
 
-- **Products**: API offerings that developers can consume. In your trial, there's a pre-configured product for the httpbingo API.
+- **[Products]({{< ref "portal/api-products" >}})**: API offerings that developers can consume. In your trial, there's a pre-configured product for the [httpbingo API](http://localhost:3001/admin/api_products).
 
-- **Plans**: Subscription tiers with different access levels and rate limits. Your trial includes:
+- **[Plans]({{< ref "portal/api-plans" >}})**: Subscription tiers with different access levels and rate limits. [Your trial includes](http://localhost:3001/admin/plans):
   - **Sandbox Plan**: Limited rate (3 requests per 10 seconds) for testing and development
   - **Production Plan**: Higher capacity (100 requests per 60 seconds) for production use
 
-- **Catalogs**: Collections of products and plans that can be made available to different audiences. Your trial has a public catalog containing the httpbingo API product and both plans.
+- **[Catalogs]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues" >}})**: Collections of products and plans that can be made available to different audiences. Your trial has a public catalog containing the httpbingo API product and both plans.
 
-**Exploring as a Developer:**
+#### Understanding the developer experience
 
 To experience the portal from a developer's perspective:
 
-1. Register a new developer account (or use the admin account to view the developer experience)
-2. Browse the API catalog to see available products
-3. View the API documentation, which is automatically generated from the API definition
-4. Subscribe to a plan to get access credentials
-5. Test the API using the provided examples and your credentials
+1. You can access the [live portal](http://localhost:3001/) using the admin account. This is the public-facing interface for API consumers.
+2. From here the API consumer can:
+   1. Browse the [API catalog](http://localhost:3001/portal/catalogue-products) to see available products
+   2. View the [API documentation](http://localhost:3001/portal/catalogue-products/httpbin-api-access-1), which is automatically generated from the API definition
+   3. Create [apps](http://localhost:3001/portal/private/dashboard) and then Subscribe to a [plan](http://localhost:3001/portal/catalogue-products/httpbin-api-access-1) to get access credentials
+   4. Test the API using the provided examples and your credentials
 
 The Developer Portal streamlines the onboarding process for API consumers, making it easy for them to find, understand, and use your APIs.
-
 
 ## Core API Management Capabilities
 
@@ -334,7 +338,7 @@ API security is an important aspect of API management. Tyk provides [multiple au
 
 Tyk supports various authentication methods including [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}), [JWT]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), [OAuth 2.0]({{< ref "api-management/authentication/oauth-2" >}}), and [more]({{< ref "api-management/client-authentication/#what-does-tyk-support" >}}). In your trial environment, the httpbingo API is pre-configured with Auth Token authentication.
 
-[Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) is the simplest form of authentication. They're easy to implement and understand, making them perfect for your first exploration of Tyk.
+[Auth Tokens]({{< ref "api-management/authentication/bearer-token" >}}) are the simplest form of authentication. They're easy to implement and understand, making them perfect for your first exploration of Tyk.
 
 1. **Create an API Key:**
    - In the Dashboard, navigate to the "Keys" section in the left menu
@@ -344,7 +348,7 @@ Tyk supports various authentication methods including [Auth Token]({{< ref "api-
 
    - Under "Access Rights," select the `HTTPBIN API Access` policy
    - Now under the "Configuration" tab, add an alias `httpbin`
-   - Click "CREATE" to generate your API key
+   - Click "Create Key" to generate your API key
    
       {{< img src="/img/self-managed/self-managed-trial-create-key.png" alt="Click on Create Key" >}}
 
@@ -392,11 +396,15 @@ Tyk supports various authentication methods including [Auth Token]({{< ref "api-
 3. **Try Without Authentication:**
    - Make the same request without the Authorization header:
      ```
-     curl http://localhost:8080/httpbingo/get
-     or
      curl -H "Authorization: invalid-key" http://localhost:8080/httpbingo/get
      ```
-   - You should receive an "Unauthorized" error, confirming that authentication is working
+   - You should receive an error, confirming that authentication is working
+
+      ```json
+      {
+         "error": "Access to this API has been disallowed"
+      }
+      ```
 
 #### Rate Limiting and Quota Management
 
@@ -442,6 +450,8 @@ In this section we will implement and test rate limiting in Tyk.
 4. **Clean Up**
    - After testing, you can delete the `httpbin rate limit` API key from the Dashboard.
 
+      {{< img src="/img/self-managed/self-managed-trial-delete-key.png" alt="Delete API Key" >}}
+
 By exploring these security features, you'll gain a solid understanding of how Tyk helps protect your APIs while providing the right level of access to authorized consumers.
 
 ### Traffic Control & Transformation
@@ -464,7 +474,7 @@ The httpbingo API in your trial includes a pre-configured transformation on the 
    - You should see an XML response from the backend service
 
 1. **Make a Request to the XML Endpoint:**
-   - Using your API key from the previous section, make a request to the XML endpoint (on the Tyk Gateway):
+   - Using your API key from the [previous section]({{< ref "getting-started/quick-start#exploring-authentication-methods" >}}), make a request to the XML endpoint (on the Tyk Gateway):
      ```
      curl -s -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/xml | jq
      ```
@@ -474,7 +484,7 @@ The httpbingo API in your trial includes a pre-configured transformation on the 
 2. **Examine the Transformation Configuration:**
    - In the Dashboard, go to the "APIs" section
    - Click on the httpbingo API
-   - Navigate to the "Endpoint Designer" tab
+   - Navigate to the "Endpoints" tab
    - Find the `/xml` path and click on it
    - You'll see the response transformation that converts XML to JSON
 
@@ -529,6 +539,9 @@ The httpbingo API includes a caching example on the `/get` endpoint with a 10-se
    - You should see a different Unique-Header value in the response, matching your new request
    - This indicates the cache has expired and you're getting a fresh response from the backend
 
+   <!-- Add this note: Could also mention that X-Tyk-Cached-Response header is set when a cached response is returned -->
+      > **Note:** You can also check the `X-Tyk-Cached-Response` header in the response to confirm whether the response was served from cache or not.
+
 Caching is particularly valuable for responses that are expensive to generate but don't change frequently. By implementing appropriate caching strategies, you can significantly improve API performance and reduce backend load.
 
 ### API Monitoring
@@ -576,7 +589,6 @@ Once you've generated some traffic, you can explore Tyk's analytics capabilities
       - **Request Volume**: See how many requests are being processed
       - **Error Rates**: Monitor authentication failures and other errors
       - **Response Times**: Track API performance and identify slow endpoints
-      - **Geographic Distribution**: See where API requests are coming from
 
 
 2. **View Detailed Logs:**
