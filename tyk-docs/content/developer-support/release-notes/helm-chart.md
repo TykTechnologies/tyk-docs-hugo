@@ -21,9 +21,9 @@ aliases:
 Our minor releases are supported until our next minor comes out. 
 
 ---
-## 3.1 Release Notes
+## 4.0 Release Notes
 
-### 3.1.0 Release Notes
+### 4.0.0 Release Notes
 
 #### Release Date 6th August 2025
 
@@ -31,13 +31,13 @@ Our minor releases are supported until our next minor comes out.
 
 This release includes improvements to support for Redis Sentinel deployments and updates the default charts to install the most recent Tyk LTS release [5.8.3]({{< ref "developer-support/release-notes/dashboard#583-release-notes" >}}) and Developer Portal [1.14.0]({{< ref "developer-support/release-notes/portal#1140-release-notes" >}}).
 
-For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v3.1.0) below.
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v4.0.0) below.
 
 #### Breaking Changes
 
-This release has no breaking changes.
+In this release, the MongoDB GraphQL Pump is not enabled by default. If you are using this Tyk Pump then you will need to enable it explicitly in your charts.
 
-#### Dependencies {#dependencies-3.1}
+#### Dependencies {#dependencies-4.0}
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency  | Tested Versions  | Compatible Versions  | Comments | 
@@ -65,13 +65,13 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
 #### Downloads
-- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v3.1.0.tar.gz)
-- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/3.1.0)
-- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/3.1.0)
-- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/3.1.0)
-- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/3.1.0)
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v4.0.0.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/4.0.0)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/4.0.0)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/4.0.0)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/4.0.0)
 
-#### Changelog {#Changelog-v3.1.0}
+#### Changelog {#Changelog-v4.0.0}
 
 ##### Added
 
@@ -92,10 +92,10 @@ Added Helm Chart support for Redis Sentinel configurations using global values f
 <details>
 <summary>Updated default versions of Tyk components</summary>
 
-Tyk Charts 3.1 will install the following Tyk components:
+Tyk Charts 4.0 will install the following Tyk components:
 
-- Tyk Gateway v5.8.3
-- Tyk Dashboard v5.8.3
+- Tyk Gateway v5.8.4
+- Tyk Dashboard v5.8.4
 - Tyk Pump v1.12.0
 - Tyk MDCB v2.8.2
 - Tyk Developer Portal v1.14.0
