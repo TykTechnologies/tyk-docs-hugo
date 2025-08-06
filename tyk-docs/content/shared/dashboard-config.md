@@ -1362,6 +1362,12 @@ ValidateSchemaDefaults enables validation of values provided in `default` fields
 ### streaming
 Streaming holds the configuration for Tyk Streaming functionalities
 
+### streaming.enabled
+ENV: <b>TYK_DB_STREAMING_ENABLED</b><br />
+Type: `bool`<br />
+
+This flag enables the Tyk Streaming feature.
+
 ### streaming.enable_all_experimental
 ENV: <b>TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL</b><br />
 Type: `bool`<br />
@@ -1379,4 +1385,3 @@ ENV: <b>TYK_DB_DISABLETELEMETRY</b><br />
 Type: `bool`<br />
 
 Enable or disable sending telemetry data such as analytics, API configurations, etc.
-
