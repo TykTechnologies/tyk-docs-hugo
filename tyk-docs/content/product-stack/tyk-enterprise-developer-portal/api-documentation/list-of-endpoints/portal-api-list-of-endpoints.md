@@ -1,13 +1,11 @@
 ---
-title: "List of endpoints exposed by Tyk Enterprise Developer Portal v1.13.0"
-date: 2024-02-29
+title: "Reference list of Endpoints in the Developer Portal API"
+date: 2025-07-26
 tags: ["Tyk Developer Portal","Enterprise Portal","Endpoints","Firewall","Integration","Portal 1.13.0"]
 description: "Internal APIs exposed by Tyk Developer Portal"
-menu:
-    main:
-        parent: "Configuring firewall"
 aliases:
   - /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
+  - /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints
 weight: 3
 ---
 
@@ -21,11 +19,12 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 ## Introduction
 
 In highly secure environments, it is often necessary to configure a firewall precisely and to allow only the endpoints exposed for the portal, while banning all other routes.
-For this purpose, we have prepared a list of all endpoints exposed by the Tyk Enterprise Developer Portal v1.13.0.
+
+For this purpose, we have prepared a list of all endpoints exposed by the Tyk Enterprise Developer Portal.
 
 {{< note success >}}
 
-Please note that this list only refers to v1.13.0 of the portal. The list of endpoints for other version might be different.  
+Please note that this list only refers to v1.13.0 of the portal. The list of endpoints for other versions might be different.  
 
 {{< /note >}}
 
@@ -42,8 +41,8 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Users              | `/users/{user_id}`                                                                       |
 | Users              | `/users/{user_id}/custom-attributes`                                                     |
 | Users              | `/users/{user_id}/custom-attributes/{custom-attribute_id}`                               |
-| Organizations      | `/organisations`                                                                         |
-| Organizations      | `/organisations/{organisation_id}`                                                       |
+| Organisations      | `/organisations`                                                                         |
+| Organisations      | `/organisations/{organisation_id}`                                                       |
 | Teams              | `/organisations/{organisation_id}/teams`                                                 |
 | Teams              | `/organisations/{organisation_id}/teams/{team_id}`                                       |
 | Products           | `/products`                                                                              |
@@ -168,9 +167,9 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Users              | `/admin/admin_users/{user_id}/send_invite`                       |
 | Users              | `/admin/users/{user_id}/deactivate`                              |
 | Users              | `/admin/admin_users/{user_id}/deactivate`                        |
-| Organizations      | `/admin/organisations`                                           |
-| Organizations      | `/admin/organisations/new`                                       |
-| Organizations      | `/admin/organisations/org:{organisation_id}`                     |
+| Organisations      | `/admin/organisations`                                           |
+| Organisations      | `/admin/organisations/new`                                       |
+| Organisations      | `/admin/organisations/org:{organisation_id}`                     |
 | Teams              | `/admin/teams`                                                   |
 | Teams              | `/admin/teams/new`                                               |
 | Teams              | `/admin/teams/filter`                                            |
@@ -253,11 +252,11 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Apps              | `/portal/private/apps/{app_id}/cert/{cert_id}`                  |
 | Credentials       | `/portal/private/credentials`                                   |
 | Profile           | `/portal/private/profile`                                       |
-| Organization Flow | `/portal/private/organisation`                                  |
-| Organization Flow | `/portal/private/users`                                         |
-| Organization Flow | `/portal/private/users/{user_id}`                               |
-| Organization Flow | `/portal/private/users/{user_id}/edit`                          |
-| Organization Flow | `/portal/private/users/invite`                                  |
+| Organisation Flow | `/portal/private/organisation`                                  |
+| Organisation Flow | `/portal/private/users`                                         |
+| Organisation Flow | `/portal/private/users/{user_id}`                               |
+| Organisation Flow | `/portal/private/users/{user_id}/edit`                          |
+| Organisation Flow | `/portal/private/users/invite`                                  |
 | Analytics         | `/portal/private/analytics`                                     |
 | Analytics         | `/portal/private/analytics/api/chart/overview`                  |
 | Analytics         | `/portal/private/analytics/api/chart/traffic`                   |

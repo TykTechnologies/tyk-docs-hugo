@@ -1,6 +1,6 @@
 ---
-title: "Setup email notifications"
-date: 2022-12-28
+title: "Set up email notification service"
+date: 2025-07-26
 tags: ["Tyk Developer Portal","Enterprise Portal","Email","Notifications"]
 aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
@@ -22,9 +22,9 @@ Once the configuration is finished, the portal will send emails upon the followi
 * Invitation to a user to register in the portal;
 * User account is activated;
 * User account is deactivated;
-* New organization registration request is created;
-* Organization registration request is accepted;
-* Organization registration request is rejected.
+* New Organisation registration request is created;
+* Organisation registration request is accepted;
+* Organisation registration request is rejected.
 
 
 **Prerequisites**
@@ -37,7 +37,7 @@ To complete the email setup, you will need the following information about your 
 
 ## Portal Admin User Notifications
 
-To start with, you need to configure an email address where the portal will send notifications for admin users: new API Product access requests, new organization registration requests, and so on.
+To start with, you need to configure an email address where the portal will send notifications for admin users: new API Product access requests, new Organisation registration requests, and so on.
 For that, you need to navigate to the General section in the Setting menu, scroll down to the Portal admin notification address, and specify the admin email address in the Portal admin email field.
 {{< img src="img/dashboard/portal-management/enterprise-portal/admin_email_settings.png" alt="Portal admin notification address settings" >}}
 
