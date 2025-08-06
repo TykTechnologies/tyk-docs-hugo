@@ -106,7 +106,7 @@ Tyk Charts 3.1 will install the following Tyk components:
 <details>
 <summary>Tyk Pump Helm Chart: GraphQL Pump disabled by default</summary>
 
-The GraphQL Pump (mongo-graph pump) in the Tyk Pump Helm Chart is no longer enabled by default for both MongoDB and PostgreSQL backends. This change provides users with explicit control to enable the pump via Helm values (e.g., `pump.mongoGraph.enabled`), addressing concerns about rapid storage increase. Users currently relying on the GraphQL Pump will need to enable it explicitly after this update.
+The Tyk Pump Helm Chart has been updated to disable the GraphQL Pump configuration by default for both MongoDB and PostgreSQL backends. This change provides users with explicit control to enable the pump via Helm values (e.g., `pump.mongoGraph.enabled`), addressing concerns about rapid storage increase. Users currently relying on the GraphQL Pump will need to enable it explicitly after this update.
 </details>
 </li>
 </ul>
