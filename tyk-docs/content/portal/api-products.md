@@ -7,6 +7,7 @@ description: "Working with API Products"
 aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
   - /tyk-developer-portal/tyk-portal-classic/streams
+  - /tyk-developer-portal/streams
 ---
 
 ## Introduction

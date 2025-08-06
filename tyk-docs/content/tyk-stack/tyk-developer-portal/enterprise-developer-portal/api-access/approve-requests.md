@@ -4,6 +4,8 @@ date: 2025-07-26
 tags: ["Developer Portal", "Tyk", "Dynamic Client Registration"]
 keywords: ["Developer Portal", "Tyk", "Dynamic Client Registration"]
 description: "How to provision API Access Requests in Tyk Developer Portal"
+aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
 ---
 
 ## Introduction
