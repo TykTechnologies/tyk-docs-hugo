@@ -138,18 +138,6 @@ Resolved an issue where the Redis Sentinel password ([TYK_GW_STORAGE_SENTINELPAS
 </ul>
 
 
-<!-- ##### Security Fixes
-This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
-1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
-2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
-
-For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
-
-- Fixed the following CVEs:
-    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
--->
-
-<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 ## 3.0 Release Notes
 
