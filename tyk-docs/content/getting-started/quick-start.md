@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with Tyk Self-Managed"
 date: 2025-02-10
-keywords: ["quick start", "tyk self-managed", "tyk gateway", "tyk dashboard", "tyk pump", "tyk analytics"]
+keywords: ["quick start", "tyk self-managed", "tyk gateway", "tyk dashboard", "tyk pump", "tyk analytics", "tyk monitoring"]
 description: "Quickly set up Tyk Self-Managed with our comprehensive guide, including installation options and demo environments."
 aliases:
 ---
@@ -14,10 +14,10 @@ Tyk Self-Managed is a full-featured API management platform that you deploy and 
 
 Your Tyk Self-Managed trial includes:
 
-- **Tyk Gateway**: The core API Gateway that handles all your API traffic
-- **Tyk Dashboard**: A web interface for managing your APIs, policies, and analytics
-- **Enterprise Developer Portal**: A customizable API portal to securely publish and manage API access for your consumers.
-- **Analytics**: Detailed insights into API usage and performance
+- **[Tyk Gateway]({{< ref "tyk-oss-gateway" >}})**: The core API Gateway that handles all your API traffic
+- **[Tyk Dashboard]({{< ref "api-management/dashboard-configuration" >}})**: A web interface for managing your APIs, policies, and monitoring
+- **[Enterprise Developer Portal]({{< ref "portal/overview/intro" >}})**: A customizable API portal to securely publish and manage API access for your consumers.
+- **Monitoring**: Detailed insights into API usage and performance
 - **Sample APIs**: Pre-configured APIs to help you explore Tyk's capabilities
 
 ### System Requirements
@@ -63,15 +63,17 @@ This section provides a step-by-step guide to quickly set up Tyk Self-Managed us
     git clone https://github.com/munkiat/tyk-poc && cd tyk-poc
     ```
 
-2. Create a `.env` file with your license key:
+2. Create a `.env` file at the root of your installation
 
-    ```
-    DASH_LICENSE=<your-tyk-license-key>
-    ```
+   Create a file named `.env` in the **root directory** of your cloned repository and add your license key:
 
-    You can use the `.env.example` file as a template.
+   ```
+   DASH_LICENSE=<your-tyk-license-key>
+   ```
 
-    **Note:** Files starting with a dot (.) are hidden by default in Unix-based systems. Use `ls -a` to view hidden files in your terminal.
+   You can use the included `.env.example` file as a reference or starting point.
+
+   > **Note:** Files starting with a dot (like `.env`) are hidden by default in Unix-based systems. Use the `ls -a` command to view them in your terminal.
 
 3. Start the Tyk stack:
 
@@ -125,16 +127,36 @@ admin pw: specialpassword
 1. **Verify Dashboard Access**:
     1. Open your browser and navigate to `http://localhost:3000`
     2. Log in with the default credentials (developer@tyk.io / specialpassword)
-    3. You should see the Tyk Dashboard with pre-configured APIs and analytics
+    3. You should see the Tyk Dashboard with pre-configured APIs and monitoring
 
     {{< img src="/img/self-managed/self-managed-trial-dashboard.png" alt="Self Managed Tyk Dashbaord" >}}
 
 2. **Verify Gateway Access**:
     1. Open a terminal and run:
     ```
-    curl http://localhost:8080/hello
+    curl -s http://localhost:8080/hello | jq
     ```
-    2. You should receive a JSON response from the API, confirming that the Tyk Gateway is functioning correctly. 
+    2. You should receive a JSON response from the API, confirming that the Tyk Gateway is functioning correctly.
+
+    ```json
+   {
+      "status": "pass",
+      "version": "5.8.2",
+      "description": "Tyk GW",
+      "details": {
+         "dashboard": {
+            "status": "pass",
+            "componentType": "system",
+            "time": "2025-08-06T10:10:46Z"
+         },
+         "redis": {
+            "status": "pass",
+            "componentType": "datastore",
+            "time": "2025-08-06T10:10:46Z"
+         }
+      }
+   }
+    ```
 
 3. **Verify Developer Portal Access**:
     1. Open your browser and navigate to `http://localhost:3001`
@@ -181,7 +203,7 @@ graph TD
 
 1. **Tyk Gateway (tyk-gateway)**: The core API Gateway that processes all API requests, applies policies, and enforces security. Exposed on port 8080.
 
-2. **Tyk Dashboard (tyk-dashboard)**: The management interface for configuring APIs, policies, and viewing analytics. Exposed on port 3000.
+2. **Tyk Dashboard (tyk-dashboard)**: The management interface for configuring APIs, policies, and viewing monitoring data. Exposed on port 3000.
 
 3. **Enterprise Developer Portal (tyk-ent-portal)**: A customizable portal for API consumers to discover, test, and subscribe to APIs. Exposed on port 3001.
 
@@ -317,15 +339,18 @@ Tyk supports various authentication methods including [Auth Token]({{< ref "api-
 1. **Create an API Key:**
    - In the Dashboard, navigate to the "Keys" section in the left menu
    - Click the "ADD KEY" button
+
+      {{< img src="/img/self-managed/self-managed-trial-add-key.png" alt="Click on Add Key" >}}
+
    - Under "Access Rights," select the `HTTPBIN API Access` policy
    - Now under the "Configuration" tab, add an alias `httpbin`
    - Click "CREATE" to generate your API key
    
-      {{< img src="/img/self-managed/self-managed-trial-create-key.png" alt="Docker Container Status of Tyk Self Managed Trial" >}}
+      {{< img src="/img/self-managed/self-managed-trial-create-key.png" alt="Click on Create Key" >}}
 
    - Copy the displayed API `key ID` for testing
       
-      **Note:** This key will be used in the upcoming sections to authenticate requests to the httpbingo API.
+      > **Note:** This key will be used in the upcoming sections to authenticate requests to the httpbingo API.
 
 2. **Test API Access with Your Key:**
    - Open a terminal or API client like Postman
@@ -334,6 +359,35 @@ Tyk supports various authentication methods including [Auth Token]({{< ref "api-
      curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get
      ```
    - You should receive a successful response with details about your request
+
+      ```json
+      {
+         "args": {},
+         "headers": {
+            "Accept": [
+               "*/*"
+            ],
+            "Accept-Encoding": [
+               "gzip"
+            ],
+            "Authorization": [
+               "eyJvcmciOiI2ODkxYTllMzExZDY2NTAwMDE4M2M5Y2MiLCJpZCI6ImM4MmNiYzRhY2Q4NTQyMGZiZGNiZjViN2U2NjY1MWU3IiwiaCI6Im11cm11cjY0In0="
+            ],
+            "Host": [
+               "httpbin:8080"
+            ],
+            "User-Agent": [
+               "curl/8.7.1"
+            ],
+            "X-Forwarded-For": [
+               "192.168.65.1"
+            ]
+         },
+         "method": "GET",
+         "origin": "192.168.65.1",
+         "url": "http://httpbin:8080/get"
+      }
+      ```
 
 3. **Try Without Authentication:**
    - Make the same request without the Authorization header:
@@ -370,8 +424,11 @@ In this section we will implement and test rate limiting in Tyk.
 
 2. **Observe Rate Limiting in Action:**
    - Open a terminal and run multiple requests in quick succession:
-     ```
-     for i in {1..5}; do curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get; echo -e "\n--- Request $i completed ---\n"; done
+     ```bash
+      for i in {1..5}; do
+         curl -H "Authorization: <your-api-key>" http://localhost:8080/httpbingo/get
+         echo -e "\n--- Request $i completed ---\n"
+      done
      ```
    - After the third request within 10 seconds, you should see a rate limit exceeded error
        ```json
@@ -476,13 +533,13 @@ The httpbingo API includes a caching example on the `/get` endpoint with a 10-se
 
 Caching is particularly valuable for responses that are expensive to generate but don't change frequently. By implementing appropriate caching strategies, you can significantly improve API performance and reduce backend load.
 
-### API Monitoring & Analytics
+### API Monitoring
 
-Understanding how your APIs are performing is important for optimizing performance, planning capacity, and ensuring security. Tyk provides comprehensive analytics and monitoring tools to give you visibility into your API traffic.
+Understanding how your APIs are performing is important for optimizing performance, planning capacity, and ensuring security. Tyk provides comprehensive monitoring capabilities to give you visibility into your API traffic.
 
 #### Generating Test Traffic
 
-To explore Tyk's analytics capabilities, you'll need to generate some API traffic that simulates real-world usage patterns and populates the analytics dashboard.
+To explore Tyk's monitoring capabilities, you'll need to generate some API traffic that simulates real-world usage patterns and populates the monitoring dashboard.
 
 **Creating Test Traffic:**
 
@@ -509,10 +566,10 @@ To explore Tyk's analytics capabilities, you'll need to generate some API traffi
 
 Once you've generated some traffic, you can explore Tyk's analytics capabilities to gain insights into API usage.
 
-**Accessing Analytics Dashboard:**
+**Accessing Monitoring Dashboard:**
 
 1. **View the Main Dashboard:**
-   - In the Tyk Dashboard, go to the [Analytics Overview](http://localhost:3000/activity-overview) section under "Monitoring"
+   - In the Tyk Dashboard, go to the [Activity Overview](http://localhost:3000/activity-overview) section under "Monitoring"
    - This provides an overview of API usage, errors, and performance metrics
    - The dashboard updates in near real-time as new requests are processed
 
@@ -540,7 +597,7 @@ Once you've generated some traffic, you can explore Tyk's analytics capabilities
 
 **Using Analytics for Decision Making:**
 
-The analytics dashboard helps you answer important questions about your APIs:
+The monitoring dashboard helps you answer important questions about your APIs:
 
 - Which endpoints are most popular?
 - Are there performance bottlenecks?
@@ -549,7 +606,7 @@ The analytics dashboard helps you answer important questions about your APIs:
 
 These insights can guide your API development priorities, capacity planning, and troubleshooting efforts.
 
-Tyk's analytics capabilities provide the visibility you need to manage your APIs effectively, ensuring they meet the needs of your users while maintaining performance and security standards.
+Tyk's monitoring capabilities provide the visibility you need to manage your APIs effectively, ensuring they meet the needs of your users while maintaining performance and security standards.
 
 ## Next Steps
 
