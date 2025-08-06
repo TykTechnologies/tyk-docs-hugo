@@ -398,8 +398,6 @@ Tyk supports various authentication methods including [Auth Token]({{< ref "api-
      ```
    - You should receive an "Unauthorized" error, confirming that authentication is working
 
-**TODO: (Is this enough? or should I add JWT Demo as well?)**
-
 #### Rate Limiting and Quota Management
 
 [Rate limiting]({{< ref "api-management/rate-limit" >}}) is a technique that allows you to control the rate at which clients can consume your APIs and is one of the fundamental aspects of managing traffic to your services. It serves as a safeguard against abuse, overloading, and denial-of-service attacks by limiting the rate at which an API can be accessed.
@@ -612,4 +610,6 @@ Tyk's monitoring capabilities provide the visibility you need to manage your API
 
 Now that you have a basic understanding of Tyk Self-Managed and have set up your trial environment, you can explore more advanced features and capabilities.
 
-In the next guide [Developing APIs with Tyk Self-Managed]({{< ref "deployment-and-operations/tyk-self-managed/value-addons" >}}), we will cover how to create new APIs, publish them to the Developer Portal, and integrate advanced middleware.
+- [Creating and Managing APIs]({{< ref "api-management/gateway-config-managing-oas#creating-an-api" >}}),
+- [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}),
+- [Publishing APIs to Developer Portal]({{< ref "portal/publish-api-catalog" >}}),

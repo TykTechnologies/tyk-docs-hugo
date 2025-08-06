@@ -161,18 +161,10 @@ menu:
               path: /tyk-self-managed
               category: Page
               show: True
-            - title: "Self Managed Trial "
+            - title: "Getting Started"
+              path: /getting-started/quick-start
               category: Page
               show: True
-              menu:
-              - title: "Getting Started"
-                path: /getting-started/quick-start
-                category: Page
-                show: True
-              - title: "Developing APIs"
-                path: /deployment-and-operations/tyk-self-managed/developing-apis
-                category: Page
-                show: True
             - title: "Demos"
               path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
               category: Page
