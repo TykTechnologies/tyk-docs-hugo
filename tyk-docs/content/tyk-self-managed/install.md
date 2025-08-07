@@ -106,6 +106,63 @@ Install on Microsoft Azure
 
 {{< /grid >}}
 
+
+## Tyk Dependencies and Database Support
+
+### MongoDB / PostgreSQL
+
+Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "api-management/dashboard-configuration#supported-database" >}}) for a list of versions and drop-in replacements we support.
+
+### Redis
+
+Tyk Gateway requires Redis for its operations. Here is the list of supported versions:
+
+**Supported Versions**
+- Tyk 5.3 supports Redis 6.2.x, 7.0.x, and 7.2.x
+- Tyk 5.2.x and earlier supports Redis 6.0.x and Redis 6.2.x only.
+
+Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
+
+### Tyk Gateway Architecture
+
+The Tyk Gateway can run completely independently, requiring only a Redis database, and can scale horizontally:
+
+{{< img src="/img/diagrams/oss-architecture.png" alt="Open Source Architecture" >}}
+
+
+### Init Systems
+
+Tyk packages support SysVinit Linux init systems, [systemd](https://www.freedesktop.org/wiki/Software/systemd/) and Upstart (both 0.6.x and 1.x, [FYI - Ubuntu stopped supporting Upstart] upstart(https://askubuntu.com/questions/1024120/will-ubuntu-18-04-lts-still-support-upstart-or-do-we-have-to-change-to-systemd)).
+During package installation only one is chosen depending on the operating system support, e.g.:
+
+*   CentOS 6, RHEL 6, Amazon Linux ship with Upstart 0.6.x
+*   Ubuntu 14.04, Debian Jessie with Upstart 1.x
+*   CentOS 7, RHEL 7, Ubuntu 16.04, Debian Stretch are running with systemd
+*   Certain older distros may only provide SysVinit but all of them typically provide compatibility with its scripts
+
+Note that any init scripts of your choosing can be used instead of automatically detected ones by copying them from the `install/inits` directory inside the package directory.
+
+This init system variance implies there are different ways to manage the services and collect service logs.
+
+#### Upstart
+For Upstart, service management can be performed through the `initctl` or a set of `start`, `stop`, `restart` and `status` commands. Upstart 1.x also works with the `service` command.
+
+#### systemd
+For systemd, either `systemctl` or `service` commands may be utilized.
+
+The `service` command can usually be used with SysVinit scripts, as well as invoking them directly.
+
+{{< note success >}}
+**Note**
+*   Upstart 0.6.x and SysVinit: log files are located in `/var/logs` for every respective service, e.g. `/var/logs/tyk-gateway.stderr` and `/var/logs/tyk-gateway.stdout`
+*   Upstart 1.x: by default everything is stored in `/var/logs/upstart` directory, e.g. `/var/logs/upstart/tyk-gateway.log`
+*   systemd utilizes its own logging mechanism called journald, which is usable via the `journalctl` command, e.g. `journalctl -u tyk-gateway`
+
+
+Please consult with respective init system documentation for more details on how to use and configure it.
+
+{{< /note >}}
+
 ## Install on Kubernetes
 
 The main way to install *Tyk Self-Managed* in a Kubernetes cluster is via Helm charts. 
