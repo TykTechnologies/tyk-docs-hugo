@@ -70,11 +70,11 @@ We've added support for additional processors, inputs and outputs for [Tyk Strea
 
 #### Breaking Changes
 
-A breaking change has been identified in Tyk 5.9.0 regarding URL rewrite rules. The negate field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
+A breaking change has been identified in Tyk 5.9.0 regarding [URL rewrite rules]({{< ref "transform-traffic/url-rewriting" >}}). The `negate` field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
 
 ##### What Changed
 
-In Tyk 5.8.2 and earlier, the negate field in URL rewrite rules included an omitempty tag, making it optional in JSON. If not provided, it would default to false
+In Tyk 5.8.2 and earlier, the `negate` field in [URL rewrite rules]({{< ref "transform-traffic/url-rewriting" >}}) included an omitempty tag, making it optional in JSON. If not provided, it would default to false
 
 In Tyk 5.9.0, this omitempty tag has been removed, making the negate field mandatory in all URL rewrite rule configurations.
 
@@ -111,6 +111,8 @@ Set negate: false for standard matching behavior, or negate: true
 ##### Expected fix version
 
 This issue will be fixed in Tyk 5.9.1, where we're going to make negate field optional again.
+
+#### Dependencies {#dependencies-5.9.0}
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -228,11 +230,11 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 #### Breaking Changes
 
-A breaking change has been identified in Tyk 5.8.3 regarding URL rewrite rules. The negate field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
+A breaking change has been identified in Tyk 5.8.3 regarding [URL rewrite rules]({{< ref "transform-traffic/url-rewriting" >}}). The `negate` field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
 
 ##### What Changed
 
-In Tyk 5.8.2 and earlier, the negate field in URL rewrite rules included an omitempty tag, making it optional in JSON. If not provided, it would default to false
+In Tyk 5.8.2 and earlier, the `negate` field in [URL rewrite rules]({{< ref "({{< ref "transform-traffic/url-rewriting" >}})" >}}) included an omitempty tag, making it optional in JSON. If not provided, it would default to false
 
 In Tyk 5.8.3, this omitempty tag has been removed, making the negate field mandatory in all URL rewrite rule configurations.
 
