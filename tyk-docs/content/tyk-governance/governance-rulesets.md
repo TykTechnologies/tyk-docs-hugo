@@ -256,7 +256,7 @@ After creating your ruleset, you'll want to test it against your APIs to ensure 
 
      - The evaluation results will display any rule violations found in the API
      - Results are categorized by severity (High, Medium, Low)
-     - Click "View issue info" on any violation to see detailed information including:
+     - Click "View issue info" on any violation to see detailed information, including:
        - The specific rule that was violated
        - The affected area in the API specification
        - Guidance on how to fix the issue
@@ -267,7 +267,7 @@ After creating your ruleset, you'll want to test it against your APIs to ensure 
 
 ## Understanding Remediation Priority
 
-In Tyk Governance, "Remediation Priority" indicates how urgently an API issue should be addressed based on its risk level and potential impact. This priority helps teams focus their efforts on the most critical issues first.
+In Tyk Governance, "Remediation Priority" indicates the urgency with which an API issue should be addressed, based on its risk level and potential impact. This priority helps teams focus their efforts on the most critical issues first.
 
 ### Severity Mapping
 
@@ -323,7 +323,7 @@ Use rulesets to gradually implement and evolve governance standards as your orga
 
 1. Start with a basic ruleset focusing on critical security and fundamental design principles
 2. Gradually add more rules as teams become familiar with the standards
-3. Adjust severity levels over time (e.g., start as warns, later promote to errors)
+3. Adjust severity levels over time (e.g., start as warnings, later promote to errors)
 4. Incorporate feedback from development teams to refine rules
 
 **Benefits:**
@@ -403,3 +403,4 @@ Once you've created rulesets, you can use them to validate APIs through the [API
 - Check browser console for any JavaScript errors
 
 </details>
+
