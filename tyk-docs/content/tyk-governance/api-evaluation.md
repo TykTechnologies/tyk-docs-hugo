@@ -5,9 +5,7 @@ description: "Validate API specifications against governance policies before dep
 tags: ["Tyk Governance", "API Evaluation", "Rulesets", "API Validation", "Shift-Left Governance"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
-
-### Availability
+## Availability
 
 - Version: Available since v0.2
 
@@ -135,7 +133,7 @@ API Evaluation works by sending your API specification to the Tyk Governance Hub
 
 #### Integrating with CI/CD Pipelines
 
-API Evaluation can be integrated into your CI/CD pipeline to automatically validate API specifications before they're deployed. This ensures that only compliant APIs make it to production.
+API Evaluation can be integrated into your CI/CD pipeline to validate API specifications before they're deployed automatically. This ensures that only compliant APIs make it to production.
 
 ```yaml
 # Example GitHub Actions workflow
@@ -237,7 +235,7 @@ Integrate API Evaluation with design tools to validate specifications during the
 
 **Implementation**:
 
-1. Design API in your preferred tool
+1. Design an API in your preferred tool
 2. Export the OpenAPI specification
 3. Validate using the API Evaluation endpoint
 4. Review and address any issues
@@ -342,3 +340,4 @@ No, specifications submitted through the API Evaluation endpoint are not stored 
 - Verify you're using the correct Governance Hub URL
 
 </details>
+
