@@ -5,15 +5,13 @@ description: "Deploy, configure, and monitor Tyk Governance agents that discover
 tags: ["Tyk Governance", "Agent Management", "API Provider", "API Discovery", "API Synchronization"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Configuration Options](#configuration-options) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
-
 {{< note success >}}
 **Note for Tyk Cloud Users**
 
 This documentation is primarily targeted at users who run their own self-managed agents. If you're using Tyk Cloud, agents are automatically managed for your Tyk Dashboard, and you don't need to worry about installation, access tokens, or configuration. You can simply use the "Agents" and "API Provider" pages in the Tyk Cloud dashboard to check connection health between the agents and Governance Hub.
 {{< /note >}}
 
-### Availability
+## Availability
 
 - Version: Available since v0.2
 
