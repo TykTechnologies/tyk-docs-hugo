@@ -21,6 +21,3 @@ The following Tyk components, created and maintained by the Tyk Team, are propri
 * [Tyk Sync]({{< ref "api-management/automations/sync" >}})
 
 If you plan to deploy and use the above components On-premise, license keys are required.
-
-## Licensing
-Read more about licensing [here]({{< ref "apim#licensing" >}}).

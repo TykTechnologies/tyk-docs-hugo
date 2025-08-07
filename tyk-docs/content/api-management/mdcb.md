@@ -215,7 +215,7 @@ We will assume that your account manager has provided you with a valid MDCB and 
 We will assume that the following components are up and running in your Controller DC:
 
 * MongoDB or SQL (check [supported versions]({{< ref "planning-for-production/database-settings" >}}))
-* Redis (check [supported versions]({{< ref "tyk-self-managed#redis" >}}))
+* Redis (check [supported versions]({{< ref "tyk-self-managed/install#redis" >}}))
 * Tyk Dashboard
 * Tyk Gateway / Gateways Cluster
 * Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed/install" >}})
@@ -317,7 +317,7 @@ To access the comprehensive installation instructions and configuration options,
     {{< note >}}
 **Note**
 
-Ensure that you are installing Redis versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-self-managed#redis" >}}) that are compatible with Tyk.
+Ensure that you are installing Redis versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}) that are compatible with Tyk.
     {{< /note >}}
 
 3. **Install PostgreSQL (if you don't already have PostgreSQL installed)**
