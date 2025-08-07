@@ -60,7 +60,7 @@ This section provides a step-by-step guide to quickly set up Tyk Self-Managed us
 1. Clone the repository:
 
     ```
-    git clone https://github.com/munkiat/tyk-poc && cd tyk-poc
+    git clone https://github.com/TykTechnologies/tyk-self-managed-trial && cd tyk-self-managed-trial
     ```
 
 2. Create a `.env` file at the root of your installation
