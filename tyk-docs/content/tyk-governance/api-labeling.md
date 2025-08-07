@@ -5,9 +5,7 @@ description: "Organize, classify, and filter your APIs using customizable metada
 tags: ["Tyk Governance", "API Labeling", "API Categorization", "API Metadata", "API Organization"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
-
-### Availability
+## Availability
 
 - Version: Available since v0.1
 
@@ -48,7 +46,7 @@ In this tutorial, we'll explore how to use API labeling to categorize and filter
 
     - Set "Business Domain" to an appropriate value (e.g., "Finance", "Customer", "Product")
     - Assign "API Criticality" based on the API's importance (Tier 1 for mission-critical, Tier 2 for important, Tier 3 for non-critical)
-    - Add any custom labels that have been defined by your Governance Admin
+    - Add any custom labels that your Governance Admin has defined
 
 4. **Filter APIs Using Labels**
 
@@ -151,7 +149,7 @@ Use labels to indicate lifecycle stage (Development, Testing, Production, Deprec
 
 ## FAQs
 
-<details> <summary><b>Can I create custom labels with my own predefined values?</b></summary>
+<details> <summary><b>Can I create custom labels with my predefined values?</b></summary>
 
 Yes, Governance Administrators can create custom labels with either free text values or a predefined list of acceptable values.
 
@@ -159,7 +157,7 @@ Yes, Governance Administrators can create custom labels with either free text va
 
 <details> <summary><b>How do labels differ from tags?</b></summary>
 
-Labels are structured key-value pairs that can be validated and used for governance, while tags are typically simpler, unstructured text values used primarily for search.
+Labels are structured key-value pairs that can be validated and used for governance, while tags are typically simpler, unstructured text values mainly used for search.
 
 </details> 
 
@@ -173,7 +171,7 @@ Yes, the discovery process attempts to map source system metadata to correspondi
 
 <details> <summary><b>Labels not appearing in filter options</b></summary>
 
-- Ensure the label has been properly defined by a Governance Admin  
+- Ensure a Governance Admin has properly defined the label  
 - Check that at least one API has been tagged with this label  
 - Refresh the browser cache if the label was recently added  
 
