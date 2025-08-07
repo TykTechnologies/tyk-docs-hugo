@@ -268,51 +268,28 @@ Synchronization can be triggered in three ways:
 
 #### Understanding Scheduled Synchronization
 
-There are two complementary ways to configure scheduled synchronization:
+You can configure scheduled synchronization for each API provider using the **Governance Hub API (Hub-side scheduling)**.
 
-1. **Agent Configuration File (Agent-side scheduling)**
+Use the `/api/agents/{id}/sync-jobs` endpoint to configure provider-specific schedules:
 
-   Configure the `syncSchedule` section in the agent's configuration file:
+```sh
+# Schedule sync for a specific provider
+curl -X POST "${GOVERNANCE_URL}/api/agents/${AGENT_ID}/sync-jobs" \
+   -H "X-API-Key: ${API_KEY}" \
+   -H "Content-Type: application/json" \
+   -d '{
+        "repeat_every": "12h",
+        "provider": "tyk-provider",
+        "start_from": "2023-06-01T12:00:00Z"
+   }'
+```
 
-   ```yaml
-   # Agent configuration with scheduled sync
-   syncSchedule:
-     enabled: true
-     intervalMinutes: 60  # Sync every hour
-   ```
-
-   With this configuration:
-   - The agent will independently initiate synchronization every `intervalMinutes`
-   - This happens regardless of any schedules configured on the Governance Hub
-   - It's a "pull" model where the agent decides when to sync
-   - Minimum interval is 5 minutes
-
-2. **Governance Hub API (Hub-side scheduling)**
-
-   Use the `/api/agents/{id}/sync-jobs` endpoint to configure provider-specific schedules:
-
-   ```sh
-   # Schedule sync for a specific provider
-   curl -X POST "${GOVERNANCE_URL}/api/agents/${AGENT_ID}/sync-jobs" \
-       -H "X-API-Key: ${API_KEY}" \
-       -H "Content-Type: application/json" \
-       -d '{
-           "repeat_every": "12h",
-           "provider": "tyk-provider",
-           "start_from": "2023-06-01T12:00:00Z"
-       }'
-   ```
-
-   With this approach:
-   - The Governance Hub's scheduler component manages the schedule
-   - The Hub initiates synchronization by sending requests to the agent
-   - It's a "push" model where the Hub tells the agent when to sync
-   - You can set different schedules for different providers
-   - Supports Go duration format (e.g., "1h", "12h", "7d")
-
-**Best Practice**: You can use both mechanisms together for maximum flexibility and reliability:
-- Set a conservative baseline schedule in the agent config (e.g., daily)
-- Use the sync-jobs API for more frequent or specific provider syncs
+With this approach:
+- The Governance Hub's scheduler component manages the schedule
+- The Hub initiates synchronization by sending requests to the agent
+- It's a "push" model where the Hub tells the agent when to sync
+- You can set different schedules for different providers
+- Supports Go duration format (e.g., "1h", "12h", "7d")
 
 During synchronization:
 
@@ -382,17 +359,6 @@ spec:
           value: "true"
 ```
 
-#### Scheduled API Synchronization
-
-Configure agents to automatically synchronize APIs at regular intervals to maintain an up-to-date inventory.
-
-```yaml
-# Agent configuration with scheduled sync
-syncSchedule:
-  enabled: true
-  intervalMinutes: 120  # Sync every 2 hours
-```
-
 ## Configuration Options
 
 ### Agent Configuration File
@@ -439,17 +405,6 @@ instances:
       region: "us-east-1"
       # Optional session token for temporary credentials
       sessionToken: "your-aws-session-token"
-```
-
-#### Scheduled Synchronization (New in v0.2)
-
-```yaml
-# Sync schedule configuration
-syncSchedule:
-  # Enable or disable scheduled synchronization
-  enabled: true
-  # Interval in minutes between syncs (minimum 5)
-  intervalMinutes: 60
 ```
 
 #### gRPC Connection (New in v0.2)
@@ -503,13 +458,6 @@ The agent supports configuration through environment variables:
 | `TYK_AGENT_GOVERNANCEDASHBOARD_SERVER_TLS_INSECURESKIPVERIFY` | Skip verification of server certificate | `false` |
 | `TYK_AGENT_GOVERNANCEDASHBOARD_AUTH_TOKEN` | Authentication token for the agent | - |
 | `TYK_AGENT_HEALTHPROBE_SERVER_PORT` | Port for health probe server | `5959` |
-
-### Scheduled Synchronization Variables (New in v0.2)
-
-| Environment Variable | Description | Default Value |
-|---------------------|-------------|---------------|
-| `TYK_AGENT_SYNCSCHEDULE_ENABLED` | Enable scheduled synchronization | `false` |
-| `TYK_AGENT_SYNCSCHEDULE_INTERVALMINUTES` | Interval in minutes between syncs (minimum 5) | `60` |
 
 ### gRPC Connection Variables (New in v0.2)
 
@@ -694,8 +642,6 @@ The agent never requires write access to API providers.
 
 </details> <details> <summary><b>Scheduled sync not working</b></summary>
 
-- Verify `syncSchedule.enabled` is set to `true`
-- Check that `intervalMinutes` is set to at least 5
 - Ensure the agent has been running long enough for a scheduled sync
 - Check agent logs for scheduled sync messages
 - Try restarting the agent to reset the schedule

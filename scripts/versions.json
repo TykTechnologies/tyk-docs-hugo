@@ -1,7 +1,12 @@
 [
     {
         "path": "/docs/",
-        "name": "5.8 - Latest",
+        "name": "5.9 - Latest",
+        "branch": "release-5.9"
+    },
+    {
+        "path": "/docs/5.8/",
+        "name": "5.8",
         "branch": "release-5.8"
     },
     {
