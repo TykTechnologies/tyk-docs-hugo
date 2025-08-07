@@ -110,7 +110,7 @@ Set negate: false for standard matching behavior, or negate: true
 
 ##### Expected fix version
 
-This issue will be fixed in Tyk 5.9.1
+This issue will be fixed in Tyk 5.9.1, where we're going to make negate field optional again.
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -268,7 +268,7 @@ Set negate: false for standard matching behavior, or negate: true
 
 ##### Expected fix version
 
-This issue will be fixed in Tyk 5.8.4
+This issue will be fixed in Tyk 5.8.4, where we're going to make negate field optional again.
 
 #### Dependencies {#dependencies-5.8.3}
 
