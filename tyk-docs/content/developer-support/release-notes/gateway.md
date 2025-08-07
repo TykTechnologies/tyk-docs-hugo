@@ -70,7 +70,47 @@ We've added support for additional processors, inputs and outputs for [Tyk Strea
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+A breaking change has been identified in Tyk 5.9.0 regarding URL rewrite rules. The negate field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
+
+##### What Changed
+
+In Tyk 5.8.2 and earlier, the negate field in URL rewrite rules included an omitempty tag, making it optional in JSON. If not provided, it would default to false
+
+In Tyk 5.9.0, this omitempty tag has been removed, making the negate field mandatory in all URL rewrite rule configurations.
+
+##### Impact
+
+API definitions that worked in Tyk 5.8.2 will fail validation in Tyk 5.9.0 if they contain URL rewrite rules without an explicit negate field. This may cause API updates, or promotion between environments failures between environments with error messages similar to:
+
+```
+Error: API Updating Returned error: {
+  "Status": "Error",
+  "Message": "x-tyk-api-gateway.middleware.operations.(.*)OPTIONS.urlRewrite.triggers.0.rules.0: negate is required"
+}
+```
+
+##### Workarounds
+
+When using Tyk 5.9.0, you must explicitly include the negate field in all URL rewrite rules:
+
+```
+{
+  "rules": [
+    {
+      "in": "header",
+      "name": "x-example",
+      "pattern": "test",
+      "negate": false  // This field is now required
+    }
+  ]
+}
+```
+
+Set negate: false for standard matching behavior, or negate: true
+
+##### Expected fix version
+
+This issue will be fixed in Tyk 5.9.1
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -188,7 +228,47 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+A breaking change has been identified in Tyk 5.8.3 regarding URL rewrite rules. The negate field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
+
+##### What Changed
+
+In Tyk 5.8.2 and earlier, the negate field in URL rewrite rules included an omitempty tag, making it optional in JSON. If not provided, it would default to false
+
+In Tyk 5.8.3, this omitempty tag has been removed, making the negate field mandatory in all URL rewrite rule configurations.
+
+##### Impact
+
+API definitions that worked in Tyk 5.8.2 will fail validation in Tyk 5.8.3 if they contain URL rewrite rules without an explicit negate field. This may cause API updates, or promotion between environments failures between environments with error messages similar to:
+
+```
+Error: API Updating Returned error: {
+  "Status": "Error",
+  "Message": "x-tyk-api-gateway.middleware.operations.(.*)OPTIONS.urlRewrite.triggers.0.rules.0: negate is required"
+}
+```
+
+##### Workarounds
+
+When using Tyk 5.8.3, you must explicitly include the negate field in all URL rewrite rules:
+
+```
+{
+  "rules": [
+    {
+      "in": "header",
+      "name": "x-example",
+      "pattern": "test",
+      "negate": false  // This field is now required
+    }
+  ]
+}
+```
+
+Set negate: false for standard matching behavior, or negate: true
+
+##### Expected fix version
+
+This issue will be fixed in Tyk 5.8.4
 
 #### Dependencies {#dependencies-5.8.3}
 
