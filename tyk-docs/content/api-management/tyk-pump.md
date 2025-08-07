@@ -1616,7 +1616,7 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
     {{< note success >}}
@@ -1699,7 +1699,7 @@ For Custom Metrics, commas are escaped to be used in helm --set command. You can
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
 3. **Verification**

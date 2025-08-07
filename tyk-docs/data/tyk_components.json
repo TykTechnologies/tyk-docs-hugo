@@ -1,22 +1,31 @@
 {
   "components": [
-    {
-      "title": "Schedule your guided evaluation",
-      "image": "img/home-page-review-icon.svg",
-      "steps": "Schedule your guided evaluation",
-      "button_text": "Get in touch",
-      "path": "https://tyk.io/guided-evaluation/",
-      "description": "Looking to evaluate our powerful Hybrid or Self-Managed deployment types?",
-      "includes": "Our Solution Architects will collaborate with you to understand your needs and guide you to success."
+        {
+      "title": "Try Tyk Cloud",
+      "image": "img/tyk-cloud.svg",
+      "steps": "Try Tyk Cloud",
+      "button_text": "Cloud Trial",
+      "path": "https://tyk.io/cloud-trial/",
+      "description": "Get 48 hours of free, immediate access to our fully managed SaaS solution. No installation required.",
+      "includes": "Ideal for quick, hassle-free evaluation"
     },
     {
-      "title": "Tyk Cloud",
-      "image": "img/home_page_free_trial_icon.svg",
-      "steps": "Start your 48-hour free trial",
-      "button_text": "Start trial",
-      "path": "https://tyk.io/sign-up/",
-      "description": "Dive in with a cloud-based trial.",
-      "includes": "Get access to all features and capabilities of Tyk. No installation or credit card needed (and no need to speak with the sales team)."
+      "title": "Try Tyk Self Managed",
+      "image": "img/tyk-sm.svg",
+      "steps": "Try Tyk Self Managed",
+      "button_text": "Self Managed Trial",
+      "path": "https://tyk.io/self-managed-trial/",
+      "description": "Deploy Tyk on your own infrastructure with a free 14-day trial. Full access, full control.",
+      "includes": "Ideal for on premise environments or custom setups"
+    },
+    {
+      "title": "Proof of Concept",
+      "image": "img/poc.svg",
+      "steps": "Proof of Concept",
+      "button_text": "Request PoC",
+      "path": "https://tyk.io/guided-evaluation/",
+      "description": "For complex or regulated environments, work with our team on a tailored proof of concept or request an extended, in-depth trial of Tyk.",
+      "includes": "We’ll map your requirements to Tyk’s architecture."
     }
   ]
 }
