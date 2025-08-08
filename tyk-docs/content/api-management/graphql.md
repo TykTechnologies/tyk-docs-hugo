@@ -46,7 +46,8 @@ It fully complies with the latest GraphQL specifications, as outlined on the [Gr
 
 - **[Queries](https://spec.graphql.org/October2021/#sec-Query)** – Fetching data  
 - **[Mutations](https://spec.graphql.org/October2021/#sec-Mutations)** – Modifying data  
-- **[Subscriptions](https://spec.graphql.org/October2021/#sec-Subscription)** – Real-time updates  
+- **[Subscriptions](https://spec.graphql.org/October2021/#sec-Subscription)** – Real-time updates
+- **[Schema Types]({{< ref "api-management/graphql/graphql-schema-types" >}})** - Defining your data structure
 
 
 ### What can you do with GraphQL and Tyk?
