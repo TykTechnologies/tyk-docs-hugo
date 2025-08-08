@@ -384,9 +384,17 @@ menu:
           category: Page
           show: True
       - title: "GraphQL"
-        path: /api-management/graphql
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Overview"
+          path: /api-management/graphql
+          category: Page
+          show: True
+        - title: "Schema Types"
+          path: /api-management/graphql/graphql-schema-types
+          category: Page
+          show: True
       - title: "Universal Data Graph (UDG)"
         path: /api-management/data-graph
         category: Page
