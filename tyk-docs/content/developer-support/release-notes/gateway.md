@@ -44,6 +44,9 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.9 Release Notes 
 
+### 5.9.1 Release Notes
+
+
 ### 5.9.0 Release Notes
 
 #### Release Date 4th August 2025
@@ -238,6 +241,9 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 ---
 
 ## 5.8 Release Notes
+
+### 5.8.4 Release Notes
+
 
 ### 5.8.3 Release Notes
 
