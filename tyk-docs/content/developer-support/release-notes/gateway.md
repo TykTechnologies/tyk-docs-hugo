@@ -72,22 +72,20 @@ We've added support for additional processors, inputs and outputs for [Tyk Strea
 
 **1. Modified `/hello` endpoint behavior affects kubernetes deployments**
 
-In Tyk Gateway versions 5.9.0, we introduced a breaking change to the `/hello` health check endpoint behavior. Previously, this endpoint would always return HTTP 200 during normal operations, regardless of Redis connectivity. The change made the endpoint return HTTP 503 when Redis was unavailable (which shouldn't be the case), which caused issues for Kubernetes deployments using this endpoint for liveness probes.
+In Tyk Gateway version 5.9.0, we introduced a breaking change to the `/hello` health check endpoint behavior. Previously, this endpoint would always return HTTP 200 during normal operations, regardless of Redis connectivity. The change made the endpoint return HTTP 503 when Redis was unavailable (which shouldn't be the case), which caused issues for Kubernetes deployments using this endpoint for liveness probes.
 
-#### Impact
+##### Impact
 
 -   Kubernetes pods may be unnecessarily terminated when Redis becomes temporarily unavailable
 -   Deployments using `/hello` for both liveness and readiness probes experience disruption
 -   This contradicts the documented behavior that the Gateway continues functioning when Redis is unavailable
 
+##### Expected Fix Version
 
-#### Expected Fix Version
-
-This issue will be fixed in Tyk Gateway versions 5.9.1, where we will:
+This issue will be fixed in Tyk Gateway version 5.9.1, where we will:
 
 -   Revert the `/hello` endpoint to its pre-5.8.3 behavior (always return HTTP 200 during normal operations)
 -   Ensure backward compatibility for existing Kubernetes deployments
-
 
 **2. URL rewrite rules now require explicit `negate` field**
 
@@ -253,18 +251,18 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 **1. Modified `/hello` endpoint behavior affects kubernetes deployments**
 
-In Tyk Gateway versions 5.8.3, we introduced a breaking change to the `/hello` health check endpoint behavior. Previously, this endpoint would always return HTTP 200 during normal operations, regardless of Redis connectivity. The change made the endpoint return HTTP 503 when Redis was unavailable (which shouldn't be the case), which caused issues for Kubernetes deployments using this endpoint for liveness probes.
+In Tyk Gateway version 5.8.3, we introduced a breaking change to the `/hello` health check endpoint behavior. Previously, this endpoint would always return HTTP 200 during normal operations, regardless of Redis connectivity. The change made the endpoint return HTTP 503 when Redis was unavailable (which shouldn't be the case), which caused issues for Kubernetes deployments using this endpoint for liveness probes.
 
-#### Impact
+##### Impact
 
 -   Kubernetes pods may be unnecessarily terminated when Redis becomes temporarily unavailable
 -   Deployments using `/hello` for both liveness and readiness probes experience disruption
 -   This contradicts the documented behavior that the Gateway continues functioning when Redis is unavailable
 
 
-#### Expected Fix Version
+##### Expected Fix Version
 
-This issue will be fixed in Tyk Gateway versions 5.8.4, where we will:
+This issue will be fixed in Tyk Gateway version 5.8.4, where we will:
 
 -   Revert the `/hello` endpoint to its pre-5.8.3 behavior (always return HTTP 200 during normal operations)
 -   Ensure backward compatibility for existing Kubernetes deployments
