@@ -46,6 +46,59 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.9.1 Release Notes
 
+#### Release Date x
+
+#### Release Highlights
+
+x
+
+#### Breaking Changes
+
+x
+
+#### Dependencies {#dependencies-5.9.1}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|---- |
+| 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.2       | Sync v2.1.0 |
+|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Pump v1.12.0      | Pump all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.9.1}
+
+If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.9.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.9.1
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.9.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.1)
+
+
 
 ### 5.9.0 Release Notes
 
@@ -243,6 +296,59 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 ## 5.8 Release Notes
 
 ### 5.8.4 Release Notes
+
+#### Release Date x
+
+#### Release Highlights
+
+x
+
+#### Breaking Changes
+
+x
+
+#### Dependencies {#dependencies-5.8.4}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.3 | MDCB v2.8.1     | MDCB v2.8.1 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.4}
+
+If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.4)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.4
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.4](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.4)
 
 
 ### 5.8.3 Release Notes
