@@ -16,6 +16,9 @@ When working with GraphQL APIs in Tyk, understanding the different schema types 
 Tyk supports all standard GraphQL types as defined in the [GraphQL specification](https://spec.graphql.org/October2021/):
 
 ### Scalar Types
+
+Scalar types are the fundamental building blocks of your schema, representing actual data values.
+
 - `Int`: 32-bit integer
 - `Float`: Double-precision floating-point value
 - `String`: UTF-8 character sequence
@@ -23,6 +26,9 @@ Tyk supports all standard GraphQL types as defined in the [GraphQL specification
 - `ID`: Unique identifier, serialized as a String
 
 ### Object Types
+
+Object types define collections of fields and are the most common type in GraphQL schemas. They model complex entities and can include fields of any type, enabling rich, nested data structures.
+
 ```graphql
 type User {
   id: ID!
@@ -33,6 +39,7 @@ type User {
 ```
 
 ### Interface Types
+
 Interfaces are abstract types that define a set of fields that implementing object types must include.
 
 ```graphql
@@ -54,6 +61,7 @@ type Product implements Node {
 ```
 
 ### Union Types
+
 Unions represent an object that could be one of several object types, but don't share common fields like interfaces.
 
 ```graphql
@@ -77,6 +85,9 @@ When querying a union, you need to use inline fragments:
 ```
 
 ### Input Types
+
+Input types are special object types used specifically for arguments. They make complex operations more manageable by grouping related arguments, particularly useful for mutations.
+
 ```graphql
 input UserInput {
   name: String!
@@ -86,6 +97,9 @@ input UserInput {
 ```
 
 ### Enum Types
+
+Enums restrict fields to specific allowed values, improving type safety and self-documentation in your API.
+
 ```graphql
 enum UserRole {
   ADMIN
@@ -127,6 +141,9 @@ scalar UUID @specifiedBy(url: "https://tools.ietf.org/html/rfc4122")
 ### Common Custom Scalar Types
 
 #### JSON Scalar
+
+The JSON scalar handles arbitrary JSON data, useful for dynamic structures without defining every possible field.
+
 ```graphql
 scalar JSON
 
@@ -157,9 +174,11 @@ type Event {
 
 ## GraphQL Federation Types
 
-Tyk supports [GraphQL Federation]({{< ref "api-management/graphql#graphql-federation" >}}), which allows you to build a unified graph from multiple services.
+Tyk supports [GraphQL Federation]({{< ref "api-management/graphql#graphql-federation" >}}) for building unified APIs across multiple services.
 
 ### Entity Types with @key
+
+The @key directive is fundamental to federation. It identifies fields that can be used to uniquely identify entities across services:
 
 ```graphql
 # In the Users service
@@ -176,7 +195,17 @@ type User @key(fields: "id") {
 }
 ```
 
-### Extended Types with @extends
+In this example:
+- The `User` type is defined in both services
+- The `@key` directive specifies that `id` is the field that uniquely identifies a User
+- The Users service owns the core User fields (id, name, email)
+- The Orders service extends User to add the orders field
+
+When a client queries for a User with their orders, Tyk's federation engine knows how to fetch the core User data from the Users service and the orders data from the Orders service, then combine them into a single response.
+
+### Extended Types with @external
+
+The `@external` directive explicitly indicates that a type extends an entity defined in another service:
 
 ```graphql
 # In a service extending the User type
@@ -186,26 +215,42 @@ extend type User @key(fields: "id") {
 }
 ```
 
+In this example:
+- The `extend` keyword and `@external` directive indicate this is extending the User type
+- The `@external` directive on the `id` field indicates this field is defined in another service
+- This service adds the `reviews` field to the User type
+
 ## Best Practices
 
 ### Type Definition Best Practices
 
 1. **Use Non-Nullable Fields Wisely**
-2. **Consistent Naming Conventions**: use `PascalCase` for types, `camelCase` for fields
-3. **Input Type Naming**: CreateUserInput, UpdateUserInput
-4. **Scalar Type Usage**: Use built-in scalars when possible, document custom scalars with `@specifiedBy`
-5. **Interface and Union Usage**: Use interfaces for common fields, unions for different types
+   Consider future API evolution when deciding which fields should be non-nullable.
+
+2. **Consistent Naming Conventions**
+   Use PascalCase for type names, camelCase for field names, and ALL_CAPS for enum values.
+
+3. **Input Type Naming**
+   Name input types clearly to indicate their purpose (e.g., CreateUserInput, UpdateUserInput).
+
+4. **Scalar Type Usage**
+   Choose appropriate scalar types based on semantic meaning, not just data format.
+
+5. **Interface and Union Usage**
+   Use interfaces for shared fields and unions for different types that might be returned from the same field.
 
 ### Limitations and Considerations
 
-1. **Custom Scalar Validation**: Implemented in upstream service
-2. **Schema Evolution**: Start with nullable fields, use deprecation before removing
-3. **Performance Considerations**: Limit nesting depth, use pagination
-4. **Federation Considerations**: Ensure consistent entity keys across services
+1. **Custom Scalar Validation**
+   Ensure your upstream service properly validates custom scalar values.
+
+2. **Schema Evolution**
+   Start with nullable fields when unsure about requirements and use deprecation before removing fields.
+
+3. **Performance Considerations**
+   Limit nesting depth in types and consider pagination for list fields.
 
 ## Type System Example
-
-This example demonstrates a complete type system using various GraphQL types and following best practices for schema design.
 
 ```graphql
 # Custom scalars
