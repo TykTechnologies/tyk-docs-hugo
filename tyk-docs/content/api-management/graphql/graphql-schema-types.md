@@ -13,7 +13,7 @@ When working with GraphQL APIs in Tyk, understanding the different schema types 
 
 ## Standard GraphQL Types
 
-Tyk supports all standard GraphQL types as defined in the GraphQL specification:
+Tyk supports all standard GraphQL types as defined in the [GraphQL specification](https://spec.graphql.org/October2021/):
 
 ### Scalar Types
 - `Int`: 32-bit integer
@@ -29,6 +29,50 @@ type User {
   name: String!
   age: Int
   isActive: Boolean
+}
+```
+
+### Interface Types
+Interfaces are abstract types that define a set of fields that implementing object types must include.
+
+```graphql
+interface Node {
+  id: ID!
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  email: String
+}
+
+type Product implements Node {
+  id: ID!
+  name: String!
+  price: Float!
+}
+```
+
+### Union Types
+Unions represent an object that could be one of several object types, but don't share common fields like interfaces.
+
+```graphql
+union SearchResult = User | Product | Article
+
+type Query {
+  search(term: String!): [SearchResult!]!
+}
+```
+
+When querying a union, you need to use inline fragments:
+
+```graphql
+{
+  search(term: "example") {
+    ... on User { id name }
+    ... on Product { id price }
+    ... on Article { title content }
+  }
 }
 ```
 
@@ -50,10 +94,35 @@ enum UserRole {
 }
 ```
 
+### List and Non-Null Types
+GraphQL provides two type modifiers:
+
+- Non-Null (`!`): Indicates that the value cannot be null
+- List (`[]`): Indicates that the value is an array of the specified type
+
+These modifiers can be combined:
+
+```graphql
+type Collection {
+  requiredItemsRequired: [Item!]!  # Non-null list of non-null items
+  optionalItemsRequired: [String!]  # Nullable list of non-null items
+  requiredItemsOptional: [String]!  # Non-null list of nullable items
+  optionalItemsOptional: [String]   # Nullable list of nullable items
+}
+```
+
 ## Custom Scalar Types
 
-### Important Note
-All custom scalar types in Tyk are serialized as Strings in the underlying implementation. This means that while you can define custom scalars for better schema documentation and client-side validation, Tyk will handle them as string values internally.
+### Implementation in Tyk
+Tyk supports custom scalar types through the underlying GraphQL engine. While Tyk passes custom scalar values through its system, the actual validation, parsing, and serialization of these values should be implemented in your upstream service.
+
+### Using the @specifiedBy Directive
+The `@specifiedBy` directive allows you to provide a URL to the specification for a custom scalar type:
+
+```graphql
+scalar DateTime @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
+scalar UUID @specifiedBy(url: "https://tools.ietf.org/html/rfc4122")
+```
 
 ### Common Custom Scalar Types
 
@@ -66,8 +135,6 @@ type Configuration {
 }
 ```
 
-The `JSON` scalar is useful for flexible data structures that don't need a strict schema.
-
 #### Long/BigInt
 ```graphql
 scalar Long
@@ -77,20 +144,6 @@ type Transaction {
   timestamp: Long
 }
 ```
-
-Use `Long` for 64-bit integers that exceed the standard `Int` range.
-
-#### BigDecimal
-```graphql
-scalar BigDecimal
-
-type Product {
-  price: BigDecimal
-  weight: BigDecimal
-}
-```
-
-`BigDecimal` is suitable for precise decimal calculations, especially in financial applications.
 
 #### DateTime
 ```graphql
@@ -102,20 +155,34 @@ type Event {
 }
 ```
 
-### Implementing Custom Scalars
+## GraphQL Federation Types
 
-When implementing custom scalars in Tyk:
+Tyk supports [GraphQL Federation]({{< ref "api-management/graphql#graphql-federation" >}}), which allows you to build a unified graph from multiple services.
 
-1. Define the scalar in your schema
-2. Remember that all custom scalar values are handled as strings
-3. Implement proper validation in your upstream service
+### Entity Types with @key
 
-Example implementation:
 ```graphql
-scalar Date
+# In the Users service
+type User @key(fields: "id") {
+  id: ID!
+  name: String!
+  email: String!
+}
 
-type Query {
-  getEventsByDate(date: Date!): [Event!]!
+# In the Orders service
+type User @key(fields: "id") {
+  id: ID!
+  orders: [Order!]!
+}
+```
+
+### Extended Types with @extends
+
+```graphql
+# In a service extending the User type
+extend type User @key(fields: "id") {
+  id: ID! @external
+  reviews: [Review!]!
 }
 ```
 
@@ -124,62 +191,31 @@ type Query {
 ### Type Definition Best Practices
 
 1. **Use Non-Nullable Fields Wisely**
-   - Mark required fields with `!`
-   - Consider the impact on API evolution
-   ```graphql
-   type User {
-     id: ID!           # Always required
-     email: String!    # Always required
-     nickname: String  # Optional
-   }
-   ```
-
-2. **Consistent Naming Conventions**
-   - Use PascalCase for type names
-   - Use camelCase for field names
-   - Use ALL_CAPS for enum values
-
-3. **Input Type Naming**
-   ```graphql
-   input CreateUserInput {
-     name: String!
-     email: String!
-   }
-   
-   input UpdateUserInput {
-     name: String
-     email: String
-   }
-   ```
-
-4. **Scalar Type Usage**
-   - Use built-in scalars when possible
-   - Document custom scalars thoroughly
-   - Consider validation requirements
+2. **Consistent Naming Conventions**: use `PascalCase` for types, `camelCase` for fields
+3. **Input Type Naming**: CreateUserInput, UpdateUserInput
+4. **Scalar Type Usage**: Use built-in scalars when possible, document custom scalars with `@specifiedBy`
+5. **Interface and Union Usage**: Use interfaces for common fields, unions for different types
 
 ### Limitations and Considerations
 
-1. **Custom Scalar Serialization**
-   - All custom scalars are serialized as strings
-   - The upstream service must handle validation
-   - Consider performance implications for large custom scalar values
-
-2. **Schema Evolution**
-   - Start with nullable fields when unsure about requirements
-   - Consider backwards compatibility when making changes
-   - Use deprecation before removing fields
-
-3. **Performance Considerations**
-   - Limit nesting depth in types
-   - Consider pagination for list fields
-   - Be cautious with recursive types
+1. **Custom Scalar Validation**: Implemented in upstream service
+2. **Schema Evolution**: Start with nullable fields, use deprecation before removing
+3. **Performance Considerations**: Limit nesting depth, use pagination
+4. **Federation Considerations**: Ensure consistent entity keys across services
 
 ## Type System Example
 
+This example demonstrates a complete type system using various GraphQL types and following best practices for schema design.
+
 ```graphql
 # Custom scalars
-scalar DateTime
+scalar DateTime @specifiedBy(url: "https://tools.ietf.org/html/rfc3339")
 scalar JSON
+
+# Interfaces
+interface Node {
+  id: ID!
+}
 
 # Enums
 enum Status {
@@ -197,7 +233,7 @@ input ProductInput {
 }
 
 # Object types
-type Product {
+type Product implements Node {
   id: ID!
   name: String!
   description: String
@@ -218,5 +254,3 @@ type Mutation {
   updateProduct(id: ID!, input: ProductInput!): Product!
 }
 ```
-
-This example demonstrates a complete type system using various GraphQL types and following best practices for schema design.
