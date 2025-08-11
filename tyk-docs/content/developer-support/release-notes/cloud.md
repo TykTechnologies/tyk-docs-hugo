@@ -2,9 +2,56 @@
 title: Tyk Cloud Release Notes
 date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "1.29.0", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "1.29.0", "1.30.0", "changelog"]
 
 ---
+
+## 1.30.0 Release Notes
+
+### Release Date x August 2025
+
+### Release Highlights
+
+This release introduces the ability to export Tyk application logs directly to Datadog via OpenTelemetry, giving teams more flexibility to monitor and analyze their deployments in real time. We’ve also added email notifications for auto-upgrades, ensuring admins are informed when upgrades start for Control Plane or Governance Dashboard deployments.
+
+For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.30.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.30.0}
+
+#### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Export Application Logs to Datadog</summary>
+
+Added the ability to stream Tyk application logs to Datadog via OpenTelemetry. Users can enable traces, logs, or both to export to their observability provider.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Email Notifications for Auto-Upgrades</summary>
+
+Introduced automated email notifications to inform org and team admins when a Control Plane or Governance Dashboard auto-upgrade begins. Notifications include key details such as deployment name, environment, and version changes, helping teams track upgrade activity.
+
+</details>
+</li>
+
+</ul>
 
 ## 1.29.0 Release Notes
 
@@ -773,3 +820,4 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
