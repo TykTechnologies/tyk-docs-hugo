@@ -34,13 +34,14 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-x
+This release updates MDCB to remain compatible with recent URL Rewrite Middleware schema changes, ensuring smooth interoperability with the latest Gateway and Dashboard versions.
 
 ##### Compatibility with Valkey
 
 Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
 
 #### Breaking Changes
+This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -65,7 +66,17 @@ If you are upgrading to 2.8.3, please follow the detailed [upgrade instructions]
     ```
 #### Changelog {#Changelog-v2.8.3}
 
-##### Added
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>MDCB Compatibility Update for URL Rewrite Middleware Changes</summary>
+
+Updated MDCB to align with recent schema changes to the URL Rewrite Middleware, ensuring continued compatibility and consistent behavior with the latest Gateway and Dashboard releases.
+</details>
+</li>
+</ul>
 
 
 ### 2.8.2 Release Notes
@@ -81,6 +92,7 @@ This release contains a bump to the API definitions to align with changes in Gat
 Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
 
 #### Breaking Changes
+This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -138,6 +150,7 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 This is a version bump to align with Gateway and Dashboard v5.8.1; no changes have been implemented in this release.
 
 #### Breaking Changes
+This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
