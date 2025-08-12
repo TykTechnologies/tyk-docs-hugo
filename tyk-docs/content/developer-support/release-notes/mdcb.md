@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release contains a bump to the API definitions to align with changes in Gateway and Dashboard v5.9.0; no functional changes have been implemented to MDCB in this release.
+x
 
 ##### Compatibility with Valkey
 
@@ -59,7 +59,7 @@ There are no deprecations in this release.
 If you are upgrading to 2.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
-- [Docker image v2.8.2](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.3)
+- [Docker image v2.8.3](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.3)
   - ```bash
     docker pull tykio/tyk-mdcb-docker:v2.8.3
     ```
