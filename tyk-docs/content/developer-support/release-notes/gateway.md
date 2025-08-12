@@ -54,7 +54,7 @@ x
 
 #### Breaking Changes
 
-x
+There are no breaking changes in this release.
 
 #### Dependencies {#dependencies-5.9.1}
 
@@ -305,7 +305,7 @@ x
 
 #### Breaking Changes
 
-x
+There are no breaking changes in this release.
 
 #### Dependencies {#dependencies-5.8.4}
 
