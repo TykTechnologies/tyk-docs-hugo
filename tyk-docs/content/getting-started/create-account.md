@@ -18,7 +18,7 @@ aliases:
 
 Welcome to Tyk! This guide will walk you through the process of creating your account and getting started with our powerful API management platform.
 
-Updated workflow.
+Updated workflow Part 2.
 
 ## Choosing Your Tyk Solution
 
