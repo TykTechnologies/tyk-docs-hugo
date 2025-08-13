@@ -109,9 +109,9 @@ If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Restore Original `/hello` Health Check Behavior</summary>
+<summary>Gateway `/hello` endpoint behaviour restored when Redis is unavailable</summary>
 
-Reverted the change introduced in 5.9.0 and 5.8.3 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
+Reverted the change introduced in versions 5.9.0 and 5.8.3 to the `/hello` health check endpoint, restoring its original functionality. This fix resolves an issue where the endpoint returned a 503 error when Redis was down. The `/hello` endpoint now correctly returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness and readiness probes.
 
 </details>
 </li>
@@ -120,7 +120,7 @@ Reverted the change introduced in 5.9.0 and 5.8.3 so `/hello` once again returns
 <details>
 <summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
 
-Resolved validation errors by aligning the URL Rewrite middleware schema with previous versions, preventing failures when promoting APIs between environments.
+Fixed a breaking change in the URL Rewrite middleware schema where the ’negate’ field incorrectly became mandatory in versions 5.8.3 and 5.9.0. This change caused validation errors when promoting APIs created in earlier versions (e.g., 5.8.1) to newer environments. The ’negate’ field is now optional again, restoring backward compatibility and defaulting to ‘false’ when omitted.
 
 </details>
 </li>
