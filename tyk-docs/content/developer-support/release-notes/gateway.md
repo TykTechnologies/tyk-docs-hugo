@@ -46,11 +46,11 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.9.1 Release Notes
 
-#### Release Date x
+#### Release Date 13th August 2025
 
 #### Release Highlights
 
-x
+This release restores the stable /hello health‑check behavior for Kubernetes probes and fixes a schema compatibility issue in the URL Rewrite middleware. Deployments using /hello for liveness/readiness will behave consistently again, and API promotion/validation flows will no longer fail due to schema mismatches.
 
 #### Breaking Changes
 
@@ -98,7 +98,30 @@ If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions]
 
 - [Source code tarball of Tyk Gateway v5.9.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.1)
 
+#### Changelog {#Changelog-v5.9.1}
 
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Restore Original /hello Health Check Behavior</summary>
+
+Reverted the change introduced in 5.9.0 so /hello once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
+
+Resolved validation errors by aligning the URL Rewrite middleware schema with previous versions, preventing failures when promoting APIs between environments.
+
+</details>
+</li>
+
+</ul>
 
 ### 5.9.0 Release Notes
 
@@ -297,11 +320,11 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 ### 5.8.4 Release Notes
 
-#### Release Date x
+#### Release Date 13th August 2025
 
 #### Release Highlights
 
-x
+This release restores the stable /hello health‑check behavior for Kubernetes probes and fixes a schema compatibility issue in the URL Rewrite middleware. Deployments using /hello for liveness/readiness will behave consistently again, and API promotion/validation flows will no longer fail due to schema mismatches.
 
 #### Breaking Changes
 
@@ -349,6 +372,31 @@ If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions]
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
 - [Source code tarball of Tyk Gateway v5.8.4](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.4)
+
+#### Changelog {#Changelog-v5.8.4}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Restore Original /hello Health Check Behavior</summary>
+
+Reverted the change introduced in 5.9.0 so /hello once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
+
+Resolved validation errors by aligning the URL Rewrite middleware schema with previous versions, preventing failures when promoting APIs between environments.
+
+</details>
+</li>
+
+</ul>
 
 
 ### 5.8.3 Release Notes
