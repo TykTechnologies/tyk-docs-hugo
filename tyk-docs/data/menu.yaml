@@ -38,6 +38,10 @@ menu:
             path: /getting-started/create-account
             category: Page
             show: True
+          - title: "New File"
+            path: /api-management/getting-started/new-file
+            category: Page
+            show: True
           - title: "Configure Your First API"
             path: /getting-started/configure-first-api
             category: Page
