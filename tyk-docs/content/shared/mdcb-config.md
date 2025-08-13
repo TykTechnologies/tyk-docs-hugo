@@ -126,7 +126,7 @@ SSL certificates used by your MDCB server. A list of certificate IDs or path to 
 ENV: <b>TYK_MDCB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS](https://tyk.io/docs/api-management/client-authentication/#use-mutual-tls) for more details.
+Secret used to decrypt TLS certificates that are stored in an encrypted format in Redis or on the filesystem. This enables secure storage and transmission of certificates within the Tyk ecosystem. Required when using TLS (server_options.use_ssl=true) with encrypted certificates.
 
 ### security.enable_http_secure_endpoints
 ENV: <b>TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS</b><br />
