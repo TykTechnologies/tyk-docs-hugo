@@ -305,7 +305,7 @@ If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Restore Original `/hello` Health Check Behavior</summary>
+<summary>Gateway /hello endpoint behaviour restored when Redis is unavailable</summary>
 
 Reverted the change introduced in 5.9.0 and 5.8.3 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
 
