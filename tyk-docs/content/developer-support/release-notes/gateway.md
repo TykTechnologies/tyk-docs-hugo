@@ -307,7 +307,7 @@ If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions]
 <details>
 <summary>Gateway /hello endpoint behaviour restored when Redis is unavailable</summary>
 
-Reverted the change introduced in 5.9.0 and 5.8.3 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
+Reverted the change introduced in versions 5.9.0 and 5.8.3 to the `/hello` health check endpoint, restoring its original functionality. This fix resolves an issue where the endpoint returned a 503 error when Redis was down. The `/hello` endpoint now correctly returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness and readiness probes.
 
 </details>
 </li>
