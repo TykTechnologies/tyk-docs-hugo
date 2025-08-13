@@ -245,7 +245,11 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 #### Release Highlights
 
-This release restores the stable `/hello` health‑check behavior for Kubernetes probes and fixes a schema compatibility issue in the URL Rewrite middleware. Deployments using `/hello` for liveness/readiness will behave consistently again, and API promotion/validation flows will no longer fail due to schema mismatches.
+This release restores the stable /hello health-check behavior for Kubernetes probes. Deployments using /hello for liveness or readiness will now behave consistently again.
+
+It also fixes a schema compatibility issue in the URL Rewrite middleware, ensuring that API promotion and validation flows no longer fail due to schema mismatches.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.0" >}}).
 
 #### Breaking Changes
 
