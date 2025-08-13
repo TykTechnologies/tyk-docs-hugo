@@ -44,6 +44,85 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.9 Release Notes 
 
+### 5.9.1 Release Notes
+
+#### Release Date 13th August 2025
+
+#### Release Highlights
+
+This release restores the stable `/hello` health‑check behavior for Kubernetes probes and fixes a schema compatibility issue in the URL Rewrite middleware. Deployments using `/hello` for liveness/readiness will behave consistently again, and API promotion/validation flows will no longer fail due to schema mismatches.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.9.1}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|---- |
+| 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.2       | Sync v2.1.0 |
+|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Pump v1.12.0      | Pump all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.9.1}
+
+If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.9.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.9.1
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.9.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.1)
+
+#### Changelog {#Changelog-v5.9.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Restore Original `/hello` Health Check Behavior</summary>
+
+Reverted the change introduced in 5.9.0 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
+
+Resolved validation errors by aligning the URL Rewrite middleware schema with previous versions, preventing failures when promoting APIs between environments.
+
+</details>
+</li>
+
+</ul>
+
 ### 5.9.0 Release Notes
 
 #### Release Date 4th August 2025
