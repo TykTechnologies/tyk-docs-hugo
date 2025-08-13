@@ -18,6 +18,8 @@ aliases:
 
 Welcome to Tyk! This guide will walk you through the process of creating your account and getting started with our powerful API management platform.
 
+Updated workflow.
+
 ## Choosing Your Tyk Solution
 
 Tyk offers multiple deployment options to suit your needs:
