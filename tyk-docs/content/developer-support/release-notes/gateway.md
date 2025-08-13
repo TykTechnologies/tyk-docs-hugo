@@ -249,7 +249,7 @@ This release restores the stable /hello health-check behavior for Kubernetes pro
 
 It also fixes a schema compatibility issue in the URL Rewrite middleware, ensuring that API promotion and validation flows no longer fail due to schema mismatches.
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.0" >}}).
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.4" >}}).
 
 #### Breaking Changes
 
@@ -261,7 +261,7 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.3 | MDCB v2.8.1     | MDCB v2.8.1 |
+| 5.8.3 | MDCB v2.8.3     | MDCB v2.8.3 |
 |         | Operator v1.2.0  | Operator v0.17 |
 |         | Sync v2.1.0    | Sync v2.1.0 |
 |         | Helm Chart v3.0  | Helm all versions |
