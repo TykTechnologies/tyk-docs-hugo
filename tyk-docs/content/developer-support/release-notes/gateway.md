@@ -316,7 +316,7 @@ Reverted the change introduced in 5.9.0 and 5.8.3 so `/hello` once again returns
 <details>
 <summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
 
-Resolved validation errors by aligning the URL Rewrite middleware schema with previous versions, preventing failures when promoting APIs between environments.
+Fixed a breaking change in the URL Rewrite middleware schema where the 'negate' field incorrectly became mandatory in versions 5.8.3 and 5.9.0. This change caused validation errors when promoting APIs created in earlier versions (e.g., 5.8.1) to newer environments. The 'negate' field is now optional again, restoring backward compatibility and defaulting to 'false' when omitted.
 
 </details>
 </li>
