@@ -261,7 +261,7 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.3 | MDCB v2.8.3     | MDCB v2.8.3 |
+| 5.8.4 | MDCB v2.8.3     | MDCB v2.8.3 |
 |         | Operator v1.2.0  | Operator v0.17 |
 |         | Sync v2.1.0    | Sync v2.1.0 |
 |         | Helm Chart v3.0  | Helm all versions |
@@ -307,7 +307,7 @@ If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions]
 <details>
 <summary>Restore Original `/hello` Health Check Behavior</summary>
 
-Reverted the change introduced in 5.9.0 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
+Reverted the change introduced in 5.9.0 and 5.8.3 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
 
 </details>
 </li>
