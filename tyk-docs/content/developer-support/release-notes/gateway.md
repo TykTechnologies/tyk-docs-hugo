@@ -50,7 +50,11 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release restores the stable `/hello` health‑check behavior for Kubernetes probes and fixes a schema compatibility issue in the URL Rewrite middleware. Deployments using `/hello` for liveness/readiness will behave consistently again, and API promotion/validation flows will no longer fail due to schema mismatches.
+This release restores the stable /hello health-check behavior for Kubernetes probes. Deployments using /hello for liveness or readiness will now behave consistently again.
+
+It also fixes a schema compatibility issue in the URL Rewrite middleware, ensuring that API promotion and validation flows no longer fail due to schema mismatches.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.1" >}}).
 
 #### Breaking Changes
 
@@ -62,7 +66,7 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |--------|-------------------|---- |
-| 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
+| 5.9.1  | MDCB v2.8.3       | MDCB v2.8.3 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |
 |        | Helm Chart v3.1.0 | Helm all versions |
@@ -107,7 +111,7 @@ If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions]
 <details>
 <summary>Restore Original `/hello` Health Check Behavior</summary>
 
-Reverted the change introduced in 5.9.0 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
+Reverted the change introduced in 5.9.0 and 5.8.3 so `/hello` once again returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness/readiness probes.
 
 </details>
 </li>
