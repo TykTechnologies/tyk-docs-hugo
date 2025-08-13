@@ -43,7 +43,7 @@ Navigate to the Tyk sign-up page at [https://tyk.io/sign-up/](https://tyk.io/sig
 
 On the sign-up page, select the "Start your 48-hour free trial" option to begin your Tyk Cloud experience.
 
-{{< img src="/img/getting-started/create-account-start-trial.png" alt="Start Trial" >}}
+{{< img src="/img/getting-started/test-2.png" alt="Start Trial" >}}
 
 
 ### Step 3: Complete the Account Creation Form
