@@ -34,10 +34,12 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release updates MDCB to remain compatible with recent URL Rewrite Middleware schema changes, ensuring smooth interoperability with the latest Gateway and Dashboard versions.
+This release updates MDCB to maintain compatibility with recent changes to the URL Rewrite Middleware schema, ensuring seamless interoperability with the latest Gateway and Dashboard versions.
 
 #### Breaking Changes
 This release has no breaking changes.
+
+#### Dependencies {#dependencies-2.8.3}
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -69,7 +71,9 @@ If you are upgrading to 2.8.3, please follow the detailed [upgrade instructions]
 <details>
 <summary>MDCB Compatibility Update for URL Rewrite Middleware Changes</summary>
 
-Updated MDCB to align with recent schema changes to the URL Rewrite Middleware, ensuring continued compatibility and consistent behavior with the latest Gateway and Dashboard releases.
+We have updated MDCB to align with the recent URL Rewrite Middleware schema changes. This update ensures that MDCB remains fully compatible and behaves consistently with the latest Gateway and Dashboard releases.
+
+<!-- TODO: Link to gateway release notes -->
 </details>
 </li>
 </ul>
@@ -89,6 +93,8 @@ Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (
 
 #### Breaking Changes
 This release has no breaking changes.
+
+#### Dependencies {#dependencies-2.8.2}
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -147,6 +153,8 @@ This is a version bump to align with Gateway and Dashboard v5.8.1; no changes ha
 
 #### Breaking Changes
 This release has no breaking changes.
+
+#### Dependencies {#dependencies-2.8.1}
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
