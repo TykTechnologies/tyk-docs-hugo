@@ -30,15 +30,11 @@ Our minor releases are supported until our next minor comes out.
 
 ### 2.8.3 Release Notes
 
-#### Release Date 12th August 2025
+#### Release Date 13th August 2025
 
 #### Release Highlights
 
 This release updates MDCB to remain compatible with recent URL Rewrite Middleware schema changes, ensuring smooth interoperability with the latest Gateway and Dashboard versions.
-
-##### Compatibility with Valkey
-
-Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
 
 #### Breaking Changes
 This release has no breaking changes.
