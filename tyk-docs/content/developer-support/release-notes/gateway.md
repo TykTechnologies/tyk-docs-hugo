@@ -120,7 +120,7 @@ Reverted the change introduced in versions 5.9.0 and 5.8.3 to the `/hello` healt
 <details>
 <summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
 
-Fixed a breaking change in the URL Rewrite middleware schema where the ’negate’ field incorrectly became mandatory in versions 5.8.3 and 5.9.0. This change caused validation errors when promoting APIs created in earlier versions (e.g., 5.8.1) to newer environments. The ’negate’ field is now optional again, restoring backward compatibility and defaulting to ‘false’ when omitted.
+Fixed a breaking change in the URL Rewrite middleware schema where the ’negate’ field inadvertently became mandatory in versions 5.8.3 and 5.9.0. This change caused validation errors when promoting APIs created in earlier versions (e.g., 5.8.1) to newer environments. The ’negate’ field is now optional again, restoring backward compatibility and defaulting to ‘false’ when omitted.
 
 </details>
 </li>
