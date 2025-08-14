@@ -232,7 +232,7 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 #### Release Highlights
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.1" >}}).
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.4" >}}).
 
 #### Breaking Changes
 
