@@ -1,12 +1,7 @@
 ---
 title: Tyk Multi Data Center Bridge Release Notes
-<<<<<<< HEAD
-description: "Tyk Multi Data-Center Bridge v2.7 release notes"
-tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.7", "2.7"]
-=======
 description: "Tyk Multi Data-Center Bridge v2.8 release notes"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center"]
->>>>>>> d6cbe9932... Update mdcb 2.8.3.md (#6843)
 aliases:
   - /release-notes/mdcb/mdcb
   - /release-notes/mdcb/
@@ -33,8 +28,6 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 2.8 Release Notes
 
-<<<<<<< HEAD
-=======
 ### 2.8.3 Release Notes
 
 #### Release Date 13th August 2025
@@ -150,7 +143,6 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 </details>
 </li>
 </ul>
->>>>>>> d6cbe9932... Update mdcb 2.8.3.md (#6843)
 
 ### 2.8.1 Release Notes
 
