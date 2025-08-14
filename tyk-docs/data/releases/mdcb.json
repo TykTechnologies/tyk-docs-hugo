@@ -1,8 +1,21 @@
 {
   "home": "tyk-multi-data-centre",
   "licensed": true,
+<<<<<<< HEAD
   "latest": "2.8.1",
   "releaseNotesPath": "developer-support/release-notes/mdcb",
+=======
+  "latest": "2.8.3",
+  "releaseNotesPath": "developer-support/release-notes/mdcb",
+  "2.8.3": {
+    "date": "13/08/2025",
+    "docker":"https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=1&name=2.8.3"
+  },
+  "2.8.2": {
+    "date": "04/08/2025",
+    "docker":"https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=1&name=2.8.2"
+  },
+>>>>>>> d6cbe9932... Update mdcb 2.8.3.md (#6843)
   "2.8.1": {
     "date": "09/05/2025",
     "docker":"https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=1&name=2.8.1"
