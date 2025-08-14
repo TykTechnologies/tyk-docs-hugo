@@ -165,7 +165,7 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 #### Release Highlights
 
-This is a version bump to align with Gateway v5.8.4, no changes have been implemented in this release.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.1" >}}).
 
 #### Breaking Changes
 
@@ -214,7 +214,17 @@ If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.8.4}
 
-No changes in this release.
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>URL Rewrite Middleware UI Compatibility Fix</summary>
+
+Resolved an issue in the URL Rewrite middleware UI where the absence of the `negate` field in OAS API definition configurations caused unexpected behavior. The UI now correctly interprets a missing `negate` field in URL rewrite rules as `false` by default, ensuring compatibility with APIs created in earlier versions.
+</details>
+</li>
+</ul>
 
 ---
 
