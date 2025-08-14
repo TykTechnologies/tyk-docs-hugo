@@ -1,6 +1,6 @@
 ---
 title: Tyk Multi Data Center Bridge Release Notes
-description: "Tyk Multi Data-Center Bridge v2.7 release notes"
+description: "Tyk Multi Data-Center Bridge v2.8 release notes"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center"]
 aliases:
   - /release-notes/mdcb/mdcb
@@ -28,6 +28,58 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 2.8 Release Notes
 
+### 2.8.3 Release Notes
+
+#### Release Date 13th August 2025
+
+#### Release Highlights
+
+This release updates MDCB to maintain compatibility with recent changes to the [URL Rewrite Middleware schema]({{< ref "developer-support/release-notes/gateway#release-highlights-1" >}}), ensuring seamless interoperability with the latest Gateway and Dashboard versions.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.3" >}}).
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-2.8.3}
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
+| ------------------------------- | --------------- | ------------------- | -------- | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are upgrading to 2.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.3](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.3)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.3
+    ```
+#### Changelog {#Changelog-v2.8.3}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>MDCB Compatibility Update for URL Rewrite Middleware Changes</summary>
+
+We have updated MDCB to align with the recent [URL Rewrite Middleware schema]({{< ref "developer-support/release-notes/gateway#release-highlights-1" >}}). This update ensures that MDCB remains fully compatible and behaves consistently with the latest Gateway and Dashboard releases.
+
+</details>
+</li>
+</ul>
+
+
 ### 2.8.2 Release Notes
 
 #### Release Date 4th August 2025
@@ -41,6 +93,9 @@ This release contains a bump to the API definitions to align with changes in Gat
 Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
 
 #### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-2.8.2}
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -98,6 +153,9 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 This is a version bump to align with Gateway and Dashboard v5.8.1; no changes have been implemented in this release.
 
 #### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-2.8.1}
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
