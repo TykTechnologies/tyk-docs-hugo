@@ -2,7 +2,7 @@
   "home": "tyk-dashboard",
   "licensed": true,
   "latest": "5.9.0",
-  "lts": "5.8.3",
+  "lts": "5.8.4",
   "releaseNotesPath": "developer-support/release-notes/dashboard",
   "5.9.0": {
     "date": "04/08/2025",
