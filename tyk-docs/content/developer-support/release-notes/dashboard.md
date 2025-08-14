@@ -226,6 +226,75 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 ## 5.8 Release Notes
 
+### 5.8.4 Release Notes
+
+#### Release Date 13th August 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.4" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.4}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.4 | MDCB v2.8.3     | MDCB v2.8.3 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.4}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.4}
+
+If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.4)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.4
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.4}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>URL Rewrite Middleware UI Compatibility Fix</summary>
+
+Resolved an issue in the URL Rewrite middleware UI where the absence of the `negate` field in OAS API definition configurations caused unexpected behavior. The UI now correctly interprets a missing `negate` field in URL rewrite rules as `false` by default, ensuring compatibility with APIs created in earlier versions.
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.8.3 Release Notes
 
 #### Release Date 15th July 2025
@@ -244,11 +313,11 @@ There are no breaking changes in this release.
 
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.3 | MDCB v2.8.1     | MDCB v2.8.1 |
+| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
 |         | Operator v1.2.0  | Operator v0.17 |
-|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
 |         | Helm Chart v3.0  | Helm all versions |
-| | EDP v1.13 | EDP all versions |
+| | EDP v1.14 | EDP all versions |
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
