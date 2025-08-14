@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release updates MDCB to maintain compatibility with recent changes to the URL Rewrite Middleware schema, ensuring seamless interoperability with the latest Gateway and Dashboard versions.
+This release updates MDCB to maintain compatibility with recent changes to the [URL Rewrite Middleware schema]({{< ref "developer-support/release-notes/gateway#release-highlights-1" >}}), ensuring seamless interoperability with the latest Gateway and Dashboard versions.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.3" >}}).
 
@@ -73,9 +73,8 @@ If you are upgrading to 2.8.3, please follow the detailed [upgrade instructions]
 <details>
 <summary>MDCB Compatibility Update for URL Rewrite Middleware Changes</summary>
 
-We have updated MDCB to align with the recent URL Rewrite Middleware schema changes. This update ensures that MDCB remains fully compatible and behaves consistently with the latest Gateway and Dashboard releases.
+We have updated MDCB to align with the recent [URL Rewrite Middleware schema]({{< ref "developer-support/release-notes/gateway#release-highlights-1" >}}). This update ensures that MDCB remains fully compatible and behaves consistently with the latest Gateway and Dashboard releases.
 
-[Gateway Release Notes](https://tyk.io/docs/developer-support/release-notes/gateway/)
 </details>
 </li>
 </ul>
