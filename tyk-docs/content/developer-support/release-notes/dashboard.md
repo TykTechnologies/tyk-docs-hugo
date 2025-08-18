@@ -232,7 +232,7 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 #### Release Highlights
 
-This release fixes a critical issue where APIs containing dots (.) in their paths were not handled correctly in MDCB when using DocumentDB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
+This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB when using DocumentDB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.5" >}}).
 
@@ -292,7 +292,40 @@ If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions]
 <details>
 <summary>Consistent Handling of Escaped Dots in OAS Paths</summary>
 
-Resolved an issue where MDCB failed to properly decode escaped dots in API definitions, causing middleware mismatches on Edge Gateways. MDCB now aligns with Dashboard’s behavior, ensuring APIs function consistently. A new configuration option (<code>escape_dots_in_oas_paths</code>) has been introduced for DocumentDB compatibility.
+We’ve resolved the compatibility issue between MDCB and Dashboard when OAS paths contain dots (.) for the following MDCB and Dashboard versions:
+- MDCB v2.8.4
+- Dashboard: v5.8.5
+**New Configuration Option**
+Both Dashboard and MDCB now include a new configuration parameter: escape_dots_in_oas_paths
+This configuration is designed specifically for customers using databases like DocumentDB, where storing JSON with dots (.) requires escaping.
+
+**Default Behavior**
+By default, <code>escape_dots_in_oas_paths</code> is set to <code>false</code> in both Dashboard and MDCB.
+
+**Component-Specific Changes**
+**Dashboard (v5.8.5 or v5.9.2)**
+- When <code>escape_dots_in_oas_paths</code> is <code>false</code> (default):
+  + Automatically unescapes all dots stored in OAS API definitions
+  + Fixes previously affected APIs
+- When <code>escape_dots_in_oas_paths</code> is <code>true</code>
+  + Automatically escapes all dots for compatibility with databases like DocumentDB
+**MDCB (v2.8.4)**
+- When <code>escape_dots_in_oas_paths</code>  is <code>true</code>
+  + MDCB properly decodes dots in OAS API definitions
+  + Provides compatibility for customers who cannot upgrade their Dashboard
+
+**Gateway**
+- Not affected by this change
+- Continues to process API definitions as received
+
+**Recommended Upgrade Paths**
+1. For customers able to upgrade Dashboard (prefferex):
+  + Upgrade to Dashboard v5.8.5
+  + No MDCB upgrade required
+2. For customers on Dashboard v5.8.3 or v5.8.4:
+  + Upgrade MDCB to v2.8.4 and enable <code>escape_dots_in_oas_paths</code>
+
+This fix ensures proper handling of OAS paths containing dots across all components of your Tyk deployment.
 
 </details>
 </li>
