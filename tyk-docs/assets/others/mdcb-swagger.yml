@@ -10,6 +10,15 @@ info:
     This API provides operations for monitoring Data Planes connected to MDCB and accessing diagnostic data. 
     It includes endpoints for retrieving connected data plane details, performing health checks, 
     and accessing Go's built-in pprof diagnostics for advanced performance profiling.
+tags:
+  - name: Data Planes
+    description: Operations related to data plane management and information
+  - name: Health
+    description: Endpoints for checking system health and status
+  - name: Debug
+    description: Diagnostic and profiling endpoints
+  - name: Configuration
+    description: Configuration and environment variable management
 servers:
   - url: https://{tenant}
     variables:
@@ -21,6 +30,8 @@ security:
 paths:
   /dataplanes:
     get:
+      tags:
+        - Data Planes
       summary: Retrieve information of all the connected data plane nodes.
       description: Provides a list of all the data plane nodes connected to MDCB. Data plane nodes are Tyk Gateways that make your APIs available to your consumers. MDCB offers centralised management of your data plane nodes. This endpoint offers metadata and status for all connected data plane nodes, allowing for monitoring and troubleshooting.
       operationId: dataplanesGet
@@ -50,6 +61,8 @@ paths:
                 $ref: "#/components/schemas/Error"
   /health:
     get:
+      tags:
+        - Health
       summary: Health Check
       description: Returns OK if the service is up and running.
       operationId: healthGet
@@ -63,6 +76,8 @@ paths:
                 example: "OK"
   /readiness:
     get:
+      tags:
+        - Health
       summary: Check system readiness status
       description: >
         Assesses the readiness of the system and its critical components.
@@ -88,6 +103,8 @@ paths:
                 $ref: "#/components/schemas/ReadinessFailure"
   /liveness:
     get:
+      tags:
+        - Health
       summary: Check liveness status
       description: Provides the liveness status of the service.
       operationId: livenessGet
@@ -100,6 +117,8 @@ paths:
                 $ref: "#/components/schemas/LivenessStatus"
   /debug/pprof/profile:
     get:
+      tags:
+        - Debug
       summary: CPU Profiling data
       description: Returns CPU profiling data. Available only when HTTPProfile is enabled in sink.conf.
       operationId: debugPprofProfileGet
@@ -113,6 +132,8 @@ paths:
                 format: binary
   /debug/pprof/{profileType}:
     get:
+      tags:
+        - Debug
       summary: pprof data
       description: >
         Serves various pprof data like heap, goroutine, threadcreate, block, and so on. The `{profileType}` path parameter can accept various profiling types as well as more complex patterns. Available only when HTTPProfile is enabled in sink.conf.
@@ -135,14 +156,25 @@ paths:
                 format: binary
   /config:
     get:
+      tags:
+        - Configuration
       summary: Retrieve current configuration status
       description: |
-        Returns the current configuration status of the system.
+        Returns the current configuration status of the system. You can optionally filter for a specific configuration field.
 
-        Example curl command:
-        ```
+        **Example curl commands:**
+
+        Get full configuration:
+        ```bash
         curl -X GET \
         http://localhost:8181/config \
+        -H 'X-Tyk-Authorization: your-secret-key'
+        ```
+
+        Get specific configuration field:
+        ```bash
+        curl -X GET \
+        'http://localhost:8181/config?field=storage.host' \
         -H 'X-Tyk-Authorization: your-secret-key'
         ```
       operationId: configGet
@@ -154,13 +186,176 @@ paths:
           schema:
             type: string
           example: "your-secret-key"
+        - in: query
+          name: field
+          description: Optional configuration field name to filter by
+          required: false
+          schema:
+            type: string
+          example: "storage.host"
       responses:
         "200":
           description: Successful retrieval of the current configuration.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ConfigStatus"
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum: ["full", "single"]
+                discriminator:
+                  propertyName: type
+                allOf:
+                  - $ref: "#/components/schemas/ConfigStatus"
+                  - $ref: "#/components/schemas/EnvVariable"
+              examples:
+                full_config:
+                  summary: Full configuration
+                  value:
+                    type: "full"
+                    listen_port: 9090
+                    healthcheck_port: 8180
+                    http_port: 8180
+                    enable_http_profiler: false
+                    server_options:
+                      use_ssl: false
+                      certificate:
+                        cert_file: "./server.crt"
+                        key_file: "./server.key"
+                      min_version: 0
+                      ssl_ciphers: null
+                      ssl_certificates: null
+                    http_server_options:
+                      use_ssl: false
+                      certificate:
+                        cert_file: ""
+                        key_file: ""
+                      min_version: 0
+                      ssl_ciphers: null
+                      ssl_certificates: null
+                    security:
+                      private_certificate_encoding_secret: ""
+                      enable_http_secure_endpoints: true
+                      secret: ""
+                    storage:
+                      type: "redis"
+                      host: "localhost"
+                      port: 6379
+                      master_name: ""
+                      sentinel_password: ""
+                      username: ""
+                      password: ""
+                      database: 0
+                      optimisation_max_idle: 0
+                      optimisation_max_active: 0
+                      enable_cluster: false
+                      hosts: null
+                      addrs: null
+                      redis_use_ssl: false
+                      redis_ssl_insecure_skip_verify: false
+                      debug: false
+                      timeout: 0
+                      use_ssl: false
+                      ssl_insecure_skip_verify: false
+                      ca_file: ""
+                      cert_file: ""
+                      key_file: ""
+                      max_version: ""
+                      min_version: ""
+                    analytics:
+                      type: "mongo"
+                      connection_string: ""
+                      table_sharding: false
+                      batch_size: 0
+                      postgres:
+                        prefer_simple_protocol: false
+                      mysql:
+                        default_string_size: 0
+                        disable_datetime_precision: false
+                        dont_support_rename_index: false
+                        dont_support_rename_column: false
+                        skip_initialize_with_version: false
+                      mongo_url: ""
+                      mongo_use_ssl: false
+                      mongo_ssl_insecure_skip_verify: false
+                      mongo_ssl_allow_invalid_hostnames: false
+                      mongo_ssl_ca_file: ""
+                      mongo_ssl_pem_keyfile: ""
+                      mongo_session_consistency: ""
+                      mongo_batch_size: 0
+                      driver: "mongo-go"
+                      mongo_direct_connection: false
+                    hash_keys: true
+                    session_timeout: 0
+                    forward_analytics_to_pump: false
+                    enable_multiple_analytics_keys: false
+                    dont_store_selective: false
+                    dont_store_aggregate: false
+                    org_session_expiration: 60
+                    org_session_cleanup: 60
+                    license: ""
+                    aggregates_ignore_tags: null
+                    track_all_paths: false
+                    store_analytics_per_minute: false
+                    ignore_tag_prefix_list: null
+                    threshold_len_tag_list: 1000
+                    omit_analytics_index_creation: false
+                    enable_separate_analytics_store: false
+                    analytics_storage:
+                      type: ""
+                      host: ""
+                      port: 0
+                      master_name: ""
+                      sentinel_password: ""
+                      username: ""
+                      password: ""
+                      database: 0
+                      optimisation_max_idle: 0
+                      optimisation_max_active: 0
+                      enable_cluster: false
+                      hosts: null
+                      addrs: null
+                      redis_use_ssl: false
+                      redis_ssl_insecure_skip_verify: false
+                      debug: false
+                      timeout: 0
+                      use_ssl: false
+                      ssl_insecure_skip_verify: false
+                      ca_file: ""
+                      cert_file: ""
+                      key_file: ""
+                      max_version: ""
+                      min_version: ""
+                    log_level: "info"
+                    enable_key_logging: false
+                    sync_worker_config:
+                      enabled: true
+                      hash_keys: true
+                      max_batch_size: 1000
+                      time_between_batches: 3
+                      max_workers: 1000
+                      warmup_time: 0
+                      group_key_ttl: 30
+                    enable_ownership: false
+                single_field:
+                  summary: Single configuration field (filtered by query parameter)
+                  value:
+                    type: "single"
+                    config_field: "sync_worker_config.warmup_time"
+                    env: "TYK_MDCB_SYNCWORKERCONFIG_WARMUPTIME"
+                    value: "0"
+                    obfuscated: false
+        "400":
+          description: Field not found in configuration.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "field not found"
         "401":
           description: Forbidden access due to invalid or missing administrative key.
           content:
@@ -169,15 +364,25 @@ paths:
                 $ref: "#/components/schemas/Error"
   /env:
     get:
+      tags:
+        - Configuration
       summary: Retrieve environment variables
       description: |
-        Returns the current configuration status of the system.
+        Returns environment variables of the system. You can optionally filter for a specific configuration field.
 
-        **Example curl command:**
+        **Example curl commands:**
 
+        Get all environment variables:
         ```bash
         curl -X GET \ 
-        http://localhost:8181/config
+        http://localhost:8181/env \
+        -H 'X-Tyk-Authorization: your-secret-key'
+        ```
+
+        Get specific environment variable:
+        ```bash
+        curl -X GET \
+        'http://localhost:8181/env?env=TYK_MDCB_SYNCWORKERCONFIG_WARMUPTIME' \
         -H 'X-Tyk-Authorization: your-secret-key'
         ```
       operationId: envGet
@@ -189,16 +394,48 @@ paths:
           schema:
             type: string
           example: "your-secret-key"
+        - in: query
+          name: env
+          description: Optional environment variable name to filter by
+          required: false
+          schema:
+            type: string
+          example: "TYK_MDCB_SYNCWORKERCONFIG_WARMUPTIME"
       responses:
         "200":
           description: Successful retrieval of environment variables.
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
-                  example: "TYK_MDCB_ANALYTICSSTORAGE_SSLINSECURESKIPVERIFY=false"
+                oneOf:
+                  - type: array
+                    items:
+                      type: string
+                  - $ref: "#/components/schemas/EnvVariable"
+              examples:
+                array_response:
+                  summary: All environment variables
+                  value:
+                    - "TYK_MDCB_ANALYTICSSTORAGE_SSLINSECURESKIPVERIFY=false"
+                    - "TYK_MDCB_STORAGE_HOST=localhost"
+                    - "TYK_MDCB_LISTENPORT=9090"
+                single_variable:
+                  summary: Single environment variable (filtered by query parameter)
+                  value:
+                    config_field: "sync_worker_config.warmup_time"
+                    env: "TYK_MDCB_SYNCWORKERCONFIG_WARMUPTIME"
+                    value: "0"
+                    obfuscated: false
+        "400":
+          description: Environment variable not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "environment variable not found"
         "401":
           description: Forbidden access due to invalid or missing administrative key.
           content:
@@ -718,6 +955,21 @@ components:
               type: integer
               example: 30
         enable_ownership:
+          type: boolean
+          example: false
+    EnvVariable:
+      type: object
+      properties:
+        config_field:
+          type: string
+          example: "sync_worker_config.warmup_time"
+        env:
+          type: string
+          example: "TYK_MDCB_SYNCWORKERCONFIG_WARMUPTIME"
+        value:
+          type: string
+          example: "0"
+        obfuscated:
           type: boolean
           example: false
   securitySchemes:
