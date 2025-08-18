@@ -63,7 +63,7 @@ To resolve the compatibility issue between MDCB and Tyk Dashboard when OAS API d
 
 1. Upgrade Dashboard (Preferred)
 
-    - Upgrade to Dashboard v5.8.5, where `escape_dots_in_oas_paths` is set to `false`, dots in OAS API definitions will be automatically unescaped, resolving the issue. 
+    - Upgrade to Dashboard v5.8.5 to resolve the issue. In this version, `escape_dots_in_oas_paths` defaults to `false`, and the Dashboard automatically unescapes dots in all API definitions.
     - No MDCB upgrade required.
 
 2. Upgrade MDCB to v2.8.4 
