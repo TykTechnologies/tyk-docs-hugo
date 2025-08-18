@@ -1,8 +1,13 @@
 {
   "home": "tyk-oss-gateway",
   "licensed": false,
+<<<<<<< HEAD
   "latest": "5.8.3",
   "lts": "5.8.3",
+=======
+  "latest": "5.9.1",
+  "lts": "5.8.5",
+>>>>>>> a5f6c5181... Update gateway-dashboard 5.8.5.md (#6858)
   "releaseNotesPath": "developer-support/release-notes/gateway",
   "5.8.3": {
     "date": "14/07/2025",
