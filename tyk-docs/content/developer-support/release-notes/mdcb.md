@@ -72,6 +72,7 @@ If you are upgrading to 2.8.4, please follow the detailed [upgrade instructions]
 <li>
 <details>
 <summary>Consistent Handling of Escaped Dots in OAS Paths</summary>
+
 We’ve resolved the compatibility issue between MDCB and Dashboard when OAS paths contain dots (.) for the following MDCB and Dashboard versions:
 - MDCB v2.8.4
 - Dashboard: v5.8.5
