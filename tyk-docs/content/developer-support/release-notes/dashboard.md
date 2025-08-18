@@ -309,7 +309,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</code>becomes<code>/v1\u002e0</code>) before saving to the database to support DocumentDB users. However, MDCB fails to properly decode these escaped paths when reading from the database. This causes OAS-specific middleware (validate request and mock response) to malfunction for paths containing dots, while other middleware like the allow list, continues to work. The issue affects all MDCB deployments using OAS APIs with dotted paths. Fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4.
 
 #### Dependencies {#dependencies-5.8.4}
 
@@ -378,7 +378,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</code>becomes<code>/v1\u002e0</code>) before saving to the database to support DocumentDB users. However, MDCB fails to properly decode these escaped paths when reading from the database. This causes OAS-specific middleware (validate request and mock response) to malfunction for paths containing dots, while other middleware like the allow list, continues to work. The issue affects all MDCB deployments using OAS APIs with dotted paths. Fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4.
 
 #### Dependencies {#dependencies-5.8.3}
 
