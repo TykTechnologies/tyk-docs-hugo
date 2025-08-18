@@ -39,7 +39,6 @@ This release has no breaking changes
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -53,7 +52,7 @@ Given the time difference between your upgrade and the release of this version, 
 There are no deprecations in this release.
 
 #### Upgrade instructions
-For users currently on v1.11.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.11.0 and proceed directly to this latest patch release.
+For users currently on v1.12.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.12.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
@@ -69,12 +68,11 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 ##### Fixed
 
 <ul>
-
 <li>
 <details>
 <summary>Consolidated Syslog Log Entries</summary>
 
-Resolved an issue where enabling decoded raw request and response data caused Syslog Pump logs to fragment into multiple entries. Logs are now properly consolidated into a single entry per API request, with newlines escaped to ensure consistent formatting and maintain backward compatibility with existing log processors.
+Resolved an issue in the Syslog Pump where enabling `Decode Raw Request` and `Decode Raw Response` caused log entries to fragment into multiple messages due to unescaped newline characters. The fix ensures a single consolidated log entry by escaping newlines (\n) in raw request and response fields, maintaining backward compatibility with existing log parsers.
 
 </details>
 </li>
