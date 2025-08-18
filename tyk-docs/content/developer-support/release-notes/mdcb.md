@@ -57,16 +57,17 @@ Given the time difference between your upgrade and the release of this version, 
 There are no deprecations in this release.
 
 #### Upgrade instructions
-To resolve the compatibility issue between MDCB and Tyk Dashboard when OAS API definition paths contain dot (.) characters. You can follow any of the paths below:
+To resolve the compatibility issue between MDCB and Tyk Dashboard when OAS API definition paths contain dot (.) characters, you can choose **one** of the following upgrade paths:
 
 ##### Recommended Upgrade Paths
 
-1. Upgrade Dashboard (Preferred)
+1. **Upgrade Dashboard (Preferred)**
 
-    - Upgrade to Dashboard v5.8.5 to resolve the issue. In this version, `escape_dots_in_oas_paths` defaults to `false`, and the Dashboard automatically unescapes dots in all API definitions.
-    - No MDCB upgrade required.
+   * Upgrade to Dashboard v5.8.5 to resolve the issue.
+   * In this version, `escape_dots_in_oas_paths` defaults to `false`, and the Dashboard automatically unescapes dots in all API definitions.
+   * **No MDCB upgrade is required.**
 
-2. Upgrade MDCB to v2.8.4 
+2. **Upgrade MDCB to v2.8.4 (Alternative if you cannot upgrade the Dashboard)**
 
     - Enable `escape_dots_in_oas_paths` in both Dashboard and MDCB configurations.
     - This ensures consistent escaping/decoding of dots across all components.
