@@ -328,9 +328,7 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 #### Release Highlights
 
-This release fixes a critical issue where APIs containing dots (.) in their paths were not handled correctly in MDCB when using DocumentDB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
-
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.5" >}}).
+Gateway 5.8.5 was version bumped only to align with Dashboard 5.8.5. Subsequently, no changes were encountered in release 5.8.5. For further information, please see the release notes for Dashboard [v5.8.5]({{< ref "developer-support/release-notes/dashboard#585-release-notes" >}})
 
 #### Breaking Changes
 
@@ -381,19 +379,7 @@ If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.8.5}
 
-##### Fixed
-
-<ul>
-<li>
-<details>
-<summary>Consistent Handling of Escaped Dots in OAS Paths</summary>
-
-Resolved an issue where MDCB failed to properly decode escaped dots in API definitions, causing middleware mismatches on Edge Gateways. MDCB now aligns with Dashboard’s behavior, ensuring APIs function consistently. A new configuration option (<code>escape_dots_in_oas_paths</code>) has been introduced for DocumentDB compatibility.
-
-</details>
-</li>
-
-</ul>
+Since this release was version-bumped only to align with Dashboard v5.8.5, no changes were encountered in this release.
 
 
 ### 5.8.4 Release Notes
