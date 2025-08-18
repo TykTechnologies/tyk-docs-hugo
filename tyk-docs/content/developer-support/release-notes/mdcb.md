@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB when using DocumentDB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
+This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.4" >}}).
 
@@ -93,7 +93,7 @@ Resolved a compatibility issue introduced in Dashboard v5.8.3, where MDCB failed
 To align MDCB's dot handling mechanism with Tyk Dashboard, a new configuration option, `escape_dots_in_oas_paths`, has been introduced in both Dashboard and MDCB:
 
 * By Default, `escape_dots_in_oas_paths` is set to `false` in both MDCB and Dashboard, restoring the Dashboard behaviour before v5.8.3, where dots are unescaped.
-* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with databases such as DocumentDB. MDCB and Dashboard decode these paths consistently.
+* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to true, MDCB and Dashboard encode/decode these paths consistently.
 
 Check the [Upgrade and Compatibility section]({{< ref "#upgrade-instructions" >}}) for details on the recommended upgrade path.
 </details>
