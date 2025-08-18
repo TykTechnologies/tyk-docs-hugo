@@ -539,6 +539,9 @@ This is a UNIX timestamp that signifies when a cached key or ID will expire. Thi
 `session_lifetime`
 UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "api-management/policies#set-physical-key-expiry-and-deletion" >}}) for more information.
 
+`key_id`
+This is the unique identifier for the access token used to authenticate the request, introduced in v5.9.0.
+
 ---
 
 ### AccessDefinition {#access-definition}
@@ -1158,7 +1161,7 @@ If you wish to generate bindings for another target language you may generate th
 
 #### Load Balancing Between gRPC Servers
 
-Since Tyk 5.8.2 Tyk Gateway has had the ability to load balance between multiple gRPC servers.
+Since Tyk 5.8.3 Tyk Gateway has had the ability to load balance between multiple gRPC servers.
 
 To implement this you must first specify the address of the load balanced service using the `dns:///` (note: triple slash) [protocol](https://github.com/grpc/grpc/blob/master/doc/naming.md) in Tyk Gateway's [gRPC server address]({{< ref "tyk-oss-gateway/configuration#coprocess_optionscoprocess_grpc_server" >}}) configuration (`TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER`). Tyk will retrieve the list of addresses for each gRPC server from that service.
 

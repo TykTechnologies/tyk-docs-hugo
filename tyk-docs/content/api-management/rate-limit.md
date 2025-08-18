@@ -298,6 +298,50 @@ the Redis Rate Limiter.
 See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration#drl_threshold" >}}) for details on how to configure this feature.
 
 
+## Custom Rate Limiting
+
+Different business models may require applying rate limits and quotas not only by credentials but also by other entities, such as per application, per developer, per organization, etc. For example, if an API Product is sold to a B2B customer, the quota of API calls is usually applied to all developers and their respective applications combined, in addition to a specific credential.
+
+To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}). This feature allows you to define custom patterns for rate limiting that go beyond the default credential-based approach.
+
+### How Custom Rate Limiting Works
+
+Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
+
+To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`. In the value field you can specify any value or expression that you want to use as a custom rate limit key for your APIs.
+
+The `rate_limit_pattern` field supports:
+- Referencing session metadata using `$tyk_meta.FIELD_NAME` syntax
+- Concatenating multiple values together using the pipe operator (`|`)
+
+### Configuring Custom Rate Limit Keys
+
+Custom rate limit keys are configured in the Tyk Dashboard by adding a metadata field to your policy:
+
+1. Navigate to your policy in the Tyk Dashboard
+2. Add a new metadata field called `rate_limit_pattern`
+3. Set the value to your desired pattern expression
+
+For example, if you want to specify a rate limit pattern to calculate the rate limit for a combination of developers and plans, where all credentials of a developer using the same plan share the same rate limit, you can use the following expression (assuming that the `DeveloperID` and `PlanID` metadata fields are available in a session):
+
+```gotemplate
+$tyk_meta.DeveloperID|$tyk_meta.PlanID
+```
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/configuring-custom-rate-limit-keys.png" alt="Configuring custom rate limit keys" >}}
+
+### Important Considerations
+
+{{< note success >}}
+**Updating credential metadata**
+
+The custom rate limit key capability uses only metadata objects, such as credentials metadata available in a session. Therefore, if the `rate_limit_pattern` relies on credentials metadata, this capability will work only if those values are present. If, after evaluating the `rate_limit_pattern`, its value is equal to an empty string, the rate limiter behavior defaults to rate limiting by credential IDs.
+{{< /note >}}
+
+**Prerequisites**
+
+This capability works with [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}) or higher.
+
 ## Rate Limiting Layers
 
 You can protect your upstream services from being flooded with requests by configuring rate limiting in Tyk Gateway. Rate limits in Tyk are configured using two parameters: allow `rate` requests in any `per` time period (given in seconds).

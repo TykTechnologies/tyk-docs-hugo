@@ -965,10 +965,10 @@ We have added a new **Tag headers** section to the Dashboard **API Designer Adva
 
 More SSO functionality is something that a lot of our customers have been asking for. In this release we've significantly improved our support for SSO, and you can now:
 
-* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
+* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "api-management/single-sign-on-ldap" >}})
 * Set permissions for your users, logged via SSO, via `sso_permission_defaults` in Dashboard config file. [Docs]({{< ref "api-management/external-service-integration" >}})
 * Setup a login page redirect, using `sso_custom_login_url` and `sso_custom_portal_login_url` Dashboard config options to enable users login using a custom SSO login page. [Docs]({{< ref "api-management/external-service-integration" >}})
-* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
+* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "api-management/custom-auth-with-proxy-identity-provider" >}})
 
 
 
@@ -1098,7 +1098,7 @@ If you are using 3-rd party authentication like TIB, you maybe want to redirect 
 #### Added new set of APIs for custom dashboard authentication
 Added new `/admin/sso` endpoint for custom integration. In fact, the same API is used by our own Tyk Identity Broker. 
 
-[Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
+[Docs]({{< ref "api-management/custom-auth-with-proxy-identity-provider" >}})
 
 
 #### Service discovery form improved with most common pre-defined templates
@@ -1168,7 +1168,7 @@ Also fixed bug when Mongo connections became growing though the roof if client w
 
 ### <a name="tib"></a>TIB v0.2
   
-Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
+Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "api-management/single-sign-on-ldap" >}})
 
 ### <a name="upgrade"></a>Upgrading all new Components
 

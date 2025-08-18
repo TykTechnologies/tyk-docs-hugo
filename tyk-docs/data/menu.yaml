@@ -46,6 +46,215 @@ menu:
             path: /getting-started/using-tyk-dashboard
             category: Page
             show: True
+
+
+      - title: "Deploy Tyk"
+        category: Label
+        show: True
+        menu:
+          - title: "Tyk Stack"
+            path: /tyk-stack
+            category: Page
+            show: True
+          - title: "Tyk Cloud"
+            category: Page
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-cloud
+              category: Page
+              show: True
+            - title: "Management"
+              category: Page
+              show: True
+              menu:
+              - title: "Organizations"
+                path: /tyk-cloud/environments-deployments/managing-organisations
+                category: Page
+                show: True
+              - title: "Teams and Users"
+                path: /tyk-cloud/teams-users
+                category: Page
+                show: True
+              - title: "Environments"
+                path: /tyk-cloud/environments-deployments/managing-environments
+                category: Page
+                show: True
+              - title: "Control Plane"
+                path: /tyk-cloud/environments-deployments/managing-control-planes
+                category: Page
+                show: True
+              - title: "Data Plane"
+                path: /tyk-cloud/environments-deployments/managing-gateways
+                category: Page
+                show: True
+              - title: "Accounts and Billing"
+                path: /tyk-cloud/account-billing
+                category: Page
+                show: True
+              - title: "Hybrid Gateways"
+                path: /tyk-cloud/environments-deployments/hybrid-gateways
+                category: Page
+                show: True
+              - title: "Managing APIs"
+                path: /tyk-cloud/securing-your-apis
+                category: Page
+                show: True
+            - title: "Configuration"
+              path: /tyk-open-source
+              category: Page
+              show: True
+              menu:
+              - title: "Developer Portal"
+                path: /tyk-cloud/initial-portal-config
+                category: Page
+                show: True
+              - title: "Custom Plugins"
+                path: /tyk-cloud/using-plugins
+                category: Page
+                show: True
+              - title: "Custom Domains"
+                path: /tyk-cloud/using-custom-domains
+                category: Page
+                show: True
+              - title: "Audit Logs"
+                path: /api-management/cloud/audit-logs
+                category: Page
+                show: True
+              - title: "Monitor Metrics"
+                path: /tyk-cloud/environments-deployments/monitoring-how-it-works
+                category: Page
+                show: True
+              - title: "Configure Telemetry"
+                path: /tyk-cloud/telemetry
+                category: Page
+                show: True
+              - title: "Single Sign On (SSO)"
+                path: /tyk-cloud/teams-users/single-sign-on
+                category: Page
+                show: True
+            - title: "Troubleshooting"
+              path: /tyk-cloud/troubleshooting-support
+              category: Page
+              show: True
+          - title: "Tyk Open Source"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-open-source
+              category: Page
+              show: True
+            - title: "Quick Start"
+              path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
+              category: Page
+              show: True
+            - title: "Installation Options"
+              path: /apim/open-source/installation
+              category: Page
+              show: True
+          - title: "Tyk Self Managed"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-self-managed
+              category: Page
+              show: True
+            - title: "Getting Started"
+              path: /getting-started/quick-start
+              category: Page
+              show: True
+            - title: "Demos"
+              path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
+              category: Page
+              show: True
+            - title: "Installation Options"
+              path: /tyk-self-managed/install
+              category: Page
+              show: True
+            - title: "Configuration"
+              category: Directory
+              show: True
+              menu:
+              - title: "Planning for Production"
+                path: /planning-for-production
+                category: Page
+                show: True
+              - title: "Database Management"
+                path: /planning-for-production/database-settings
+                category: Page
+                show: True
+              - title: "Circuit Breakers"
+                path: /planning-for-production/ensure-high-availability/circuit-breakers
+                category: Page
+                show: True
+              - title: "Enforced Timeouts"
+                path: /planning-for-production/ensure-high-availability/enforced-timeouts
+                category: Page
+                show: True
+              - title: "Health Checks"
+                path: /planning-for-production/ensure-high-availability/health-check
+                category: Page
+                show: True
+              - title: "Load Balancing"
+                path: /planning-for-production/ensure-high-availability/load-balancing
+                category: Page
+                show: True
+              - title: "Service Discovery"
+                path: /planning-for-production/ensure-high-availability/service-discovery
+                category: Page
+                show: True
+              - title: "Uptime Tests"
+                path: /planning-for-production/ensure-high-availability/uptime-tests
+                category: Page
+                show: True
+              - title: "Key Value Store"
+                path: /tyk-configuration-reference/kv-store
+                category: Page
+                show: True
+              - title: "Monitoring"
+                path: /planning-for-production/monitoring/tyk-components
+                category: Page
+                show: True
+              - title: "Redis"
+                path: /tyk-configuration-reference/redis-cluster-sentinel
+                category: Page
+                show: True
+              - title: "Graceful Shutdown"
+                path: /planning-for-production/ensure-high-availability/graceful-shutdown
+                category: Page
+                show: True
+          - title: "Tyk Helm Charts"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /product-stack/tyk-charts/overview
+                category: Page
+                show: True
+              - title: "Tyk Stack Chart"
+                path: /product-stack/tyk-charts/tyk-stack-chart
+                category: Page
+                show: True
+              - title: "Tyk Control Plane Chart"
+                path: /product-stack/tyk-charts/tyk-control-plane-chart
+                category: Page
+                show: True
+              - title: "Tyk Data Plane Chart"
+                path: /product-stack/tyk-charts/tyk-data-plane-chart
+                category: Page
+                show: True
+              - title: "Tyk Open Source Chart"
+                path: /product-stack/tyk-charts/tyk-oss-chart
+                category: Page
+                show: True
+
+          - title: "Manage Distributed Gateways"
+            path: /api-management/mdcb
+            category: Page
+            show: True
+
       - title: "Managing APIs"
         category: Label
         show: True
@@ -332,13 +541,69 @@ menu:
             category: Page
             show: True
           - title: "API Management in Kubernetes"
-            path: /api-management/automations/operator
             category: Page
             show: True
+            menu:
+              - title: "Overview"
+                path: /api-management/automations/operator
+                category: Page
+                show: True
+              - title: "Installation"
+                path: /tyk-stack/tyk-operator/installing-tyk-operator
+                category: Page
+                show: True
+              - title: "Create an API"
+                path: /tyk-stack/tyk-operator/create-an-api
+                category: Page
+                show: True
+              - title: "Publish an API"
+                path: /tyk-stack/tyk-operator/publish-an-api
+                category: Page
+                show: True
+              - title: "Kubernetes Ingress"
+                path: /product-stack/tyk-operator/tyk-ingress-controller
+                category: Page
+                show: True
+              - title: "GraphQL Federation"
+                path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
+                category: Page
+                show: True
+              - title: "Custom Plugins"
+                path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
+                category: Page
+                show: True
+              - title: "Internal Looping"
+                path: /product-stack/tyk-operator/advanced-configurations/internal-looping
+                category: Page
+                show: True
+              - title: "Managing Multiple Organizations"
+                path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
+                category: Page
+                show: True
           - title: "Synchronizing Tyk Configuration"
-            path: /api-management/automations/sync
-            category: Page
+            category: Directory
             show: True
+            menu:
+              - title: "Overview"
+                path: /api-management/automations/sync
+                category: Page
+                show: True
+              - title: "Installation"
+                path: /product-stack/tyk-sync/installing-tyk-sync
+                category: Page
+                show: True
+              - title: "Quick Start"
+                path: /api-management/sync/quick-start
+                category: Page
+                show: True
+              - title: "Use Cases"
+                path: /api-management/sync/use-cases
+                category: Page
+                show: True
+              - title: "CLI Commands"
+                path: /product-stack/tyk-sync/commands
+                category: Page
+                show: True
       - title: "Manage Environments"
         path: /api-management/multiple-environments
         category: Page
@@ -451,140 +716,34 @@ menu:
               category: Page
               show: True
               path: /api-management/security-features
-            - title: "Identity Management"
+            - title: "Tyk Identity Broker (TIB)"
               path: /api-management/external-service-integration
               category: Page
               show: True
-      - title: "Deploy Tyk"
-        category: Label
-        show: True
-        menu:
-          - title: "Tyk Stack"
-            path: /tyk-stack
-            category: Page
-            show: True
-          - title: "Tyk Cloud"
-            path: /tyk-cloud
-            category: Page
-            show: True
-          - title: "Tyk Open Source"
-            category: Directory
-            show: True
-            menu:
-            - title: "Overview"
-              path: /tyk-open-source
-              category: Page
-              show: True
-            - title: "Quick Start"
-              path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
-              category: Page
-              show: True
-            - title: "Installation Options"
-              path: /apim/open-source/installation
-              category: Page
-              show: True
-          - title: "Tyk Self Managed"
-            category: Directory
-            show: True
-            menu:
-            - title: "Overview"
-              path: /tyk-self-managed
-              category: Page
-              show: True
-            - title: "Quick Start"
-              path: /getting-started/quick-start
-              category: Page
-              show: True
-            - title: "Demos"
-              path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
-              category: Page
-              show: True
-            - title: "Installation Options"
-              path: /tyk-self-managed/install
-              category: Page
-              show: True
-            - title: "Configuration"
+            - title: "Single Sign On (SSO)"
               category: Directory
               show: True
               menu:
-              - title: "Planning for Production"
-                path: /planning-for-production
+              - title: "SSO with Social IDP"
+                path: /api-management/single-sign-on-social-idp
                 category: Page
                 show: True
-              - title: "Database Management"
-                path: /planning-for-production/database-settings
+              - title: "SSO with OpenID Connect"
+                path: /api-management/single-sign-on-oidc
                 category: Page
                 show: True
-              - title: "Circuit Breakers"
-                path: /planning-for-production/ensure-high-availability/circuit-breakers
+              - title: "SSO with SAML"
+                path: /api-management/single-sign-on-saml
                 category: Page
                 show: True
-              - title: "Enforced Timeouts"
-                path: /planning-for-production/ensure-high-availability/enforced-timeouts
+              - title: "SSO with LDAP"
+                path: /api-management/single-sign-on-ldap
                 category: Page
                 show: True
-              - title: "Health Checks"
-                path: /planning-for-production/ensure-high-availability/health-check
+              - title: "Custom Authentication"
+                path: /api-management/custom-auth-with-proxy-identity-provider
                 category: Page
                 show: True
-              - title: "Load Balancing"
-                path: /planning-for-production/ensure-high-availability/load-balancing
-                category: Page
-                show: True
-              - title: "Service Discovery"
-                path: /planning-for-production/ensure-high-availability/service-discovery
-                category: Page
-                show: True
-              - title: "Uptime Tests"
-                path: /planning-for-production/ensure-high-availability/uptime-tests
-                category: Page
-                show: True
-              - title: "Key Value Store"
-                path: /tyk-configuration-reference/kv-store
-                category: Page
-                show: True
-              - title: "Monitoring"
-                path: /planning-for-production/monitoring/tyk-components
-                category: Page
-                show: True
-              - title: "Redis"
-                path: /tyk-configuration-reference/redis-cluster-sentinel
-                category: Page
-                show: True
-              - title: "Graceful Shutdown"
-                path: /planning-for-production/ensure-high-availability/graceful-shutdown
-                category: Page
-                show: True
-          - title: "Tyk Helm Charts"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-charts/overview
-                category: Page
-                show: True
-              - title: "Tyk Stack Chart"
-                path: /product-stack/tyk-charts/tyk-stack-chart
-                category: Page
-                show: True
-              - title: "Tyk Control Plane Chart"
-                path: /product-stack/tyk-charts/tyk-control-plane-chart
-                category: Page
-                show: True
-              - title: "Tyk Data Plane Chart"
-                path: /product-stack/tyk-charts/tyk-data-plane-chart
-                category: Page
-                show: True
-              - title: "Tyk Open Source Chart"
-                path: /product-stack/tyk-charts/tyk-oss-chart
-                category: Page
-                show: True
-
-          - title: "Manage Distributed Gateways"
-            path: /api-management/mdcb
-            category: Page
-            show: True
-
       - title: "Reference"
         category: Label
         show: True
@@ -603,10 +762,6 @@ menu:
               show: True
             - title: "Pump"
               path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
-              category: Page
-              show: True
-            - title: "Enterprise Developer Portal"
-              path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
               category: Page
               show: True
             - title: "Multi Data Center Bridge"
@@ -639,14 +794,6 @@ menu:
               show: True
             - title: "Multi Data Center Bridge"
               path: /tyk-mdcb-api
-              category: Page
-              show: True
-            - title: "Enterprise Developer Portal"
-              path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
-              category: Page
-              show: True
-            - title: "Enterprise Developer Portal Admin"
-              path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints
               category: Page
               show: True
             - title: "Tyk Identity Broker"
@@ -684,10 +831,6 @@ menu:
               show: True
             - title: "Multi Data Center Bridge"
               path: /developer-support/release-notes/mdcb
-              category: Page
-              show: True
-            - title: "Enterprise Developer Portal"
-              path: /developer-support/release-notes/portal
               category: Page
               show: True
             - title: "Tyk Operator"
@@ -774,7 +917,7 @@ menu:
                 path: /ui-examples/youtube-video-embed
                 category: Page
                 show: true
-  - title: "Developer Portal"
+  - title: "API Publishing"
     category: Tab
     show: True
     path: /portal/overview/intro
@@ -787,155 +930,179 @@ menu:
           path: /portal/overview/intro
           category: Page
           show: True
-        - title: "Getting Started"
-          path: /portal/overview/getting-started
-          category: Page
-          show: True
         - title: "Core Concepts"
           path: /portal/overview/concepts
           category: Page
           show: True
-      - title: "Installation"
+      - title: "Getting Started"
         category: Label
         show: True
         menu:
-        - title: "Install and Configure"
+        - title: "Install Developer Portal"
           path: /portal/install
           category: Page
           show: True
-      - title: "API Consumer"
-        category: Label
-        show: True
-        menu:
-        - title: "Manage API Consumer"
-          category: Directory
-          show: True
-          menu:
-          - title: "Overview"
-            path: /portal/api-consumer
-            category: Page
-            show: True
-          - title: "Organizations"
-            category: Page
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
-            show: True
-          - title: "Users"
-            category: Page
-            show: True
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
-          - title: "Invite Codes"
-            path: /portal/api-consumer/invite-codes
-            category: Page
-            show: True
-          - title: "Reset Password"
-            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
-            category: Page
-            show: True
-        - title: "Access an API Product"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+        - title: "Set up the Portal"
+          path: /portal/overview/getting-started
           category: Page
           show: True
-      - title: "API Publisher"
+        - title: "Publish an API Catalog"
+          path: /portal/publish-api-catalog
+          category: Page
+          show: True
+        - title: "Request access to an API"
+          path: /portal/request-access
+          category: Page
+          show: True
+      - title: "Publishing APIs"
         category: Label
         show: True
         menu:
-        - title: "Manage API Access"
-          category: Directory
-          show: True
-          menu:
-          - title: "Overview"
-            path: /portal/api-provider
+          - title: "API Products"
+            path: /portal/api-products
+            category: Page
+            show: True  
+          - title: "API Plans"
+            path: /portal/api-plans
+            category: Page
+            show: True         
+          - title: "API Catalogs"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
             category: Page
             show: True
-          - title: "Provisioning Request"
+      - title: "Consuming APIs"
+        category: Label
+        show: True
+        menu:
+          - title: "Developer Apps"
+            path: /portal/developer-app
+            category: Page
+            show: True
+          - title: "Manage Access Requests"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
             category: Page
             show: True
-          - title: "Dynamic Client Registration"
+      - title: "User Management"
+        category: Label
+        show: True
+        menu:            
+          - title: "API Owners"
+            category: Page
+            show: True
+            path: /portal/api-owner 
+          - title: "API Consumers"
+            path: /portal/api-consumer
+            category: Page
+            show: True
+          - title: "Organisations and Teams"
+            category: Page
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
+            show: True
+          - title: "Forgotten Password"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
+            category: Page
+            show: True
+      - title: "Portal Administration"
+        category: Label
+        show: True
+        menu:
+          - title: "API Providers"
+            path: /portal/api-provider
+            category: Page
+            show: True
+          - title: "OAuth 2.0 Dynamic Client Registration"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
             category: Page
             show: True
-        - title: "Manage API Products"
-          category: Directory
-          show: True
-          menu:
-          - title: "Create Documentation"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+          - title: "Advanced Rate Limits"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
             category: Page
             show: True
-        - title: "Manage Catalogs"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
-          category: Page
-          show: True
-        - title: "Manage Applications"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
-          category: Page
-          show: True
-        - title: "Configure Rate Limits"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
-          category: Page
-          show: True
-        - title: "Customization"
-          category: Directory
-          show: True
-          menu:
-          - title: "Overview"
-            path: /portal/customization
+          - title: "Single Sign On"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
             category: Page
             show: True
-          - title: "Themes"
-            path: /portal/customization/themes
+          - title: "Email Service"
+            path: /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
             category: Page
             show: True
-          - title: "Templates"
-            path: /portal/customization/templates
+          - title: "Manage Webcrawlers"
+            path: /portal/webcrawlers
             category: Page
             show: True
-          - title: "Pages"
-            path: /portal/customization/pages
+          - title: "Resource Migration"
+            path: /portal/resource-migration
             category: Page
             show: True
-          - title: "Menus"
-            path: /portal/customization/menus
-            category: Page
+          - title: "Events and Notifications"
+            category: Directory
             show: True
-          - title: "Branding"
-            path: /portal/customization/branding
-            category: Page
-            show: True
-          - title: "Sign Up Form"
-            path: /portal/customization/sign-up
-            category: Page
-            show: True
-          - title: "Email Notifications"
-            path: /portal/customization/email-notifications
-            category: Page
-            show: True
-          - title: "User Model"
-            path: /portal/customization/user-model
-            category: Page
-            show: True
-          - title: "Webhooks"
-            path: /portal/customization/webhooks
-            category: Page
-            show: True
-        - title: "Administration"
-          category: Directory
-          show: True
-          menu:
-            - title: "Single Sign On"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
+            menu:
+            - title: "Webhooks"
+              path: /portal/customization/webhooks
+              category: Page
+              show: True        
+            - title: "Email Notifications"
+              path: /portal/customization/email-notifications
               category: Page
               show: True
-            - title: "Email Settings"
-              path: /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
+          - title: "Customizing Developer Portal"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /portal/customization
               category: Page
               show: True
-            - title: "Resource Migration"
-              path: /portal/resource-migration
+            - title: "Themes"
+              path: /portal/customization/themes
               category: Page
               show: True
+            - title: "Templates"
+              path: /portal/customization/templates
+              category: Page
+              show: True
+            - title: "Pages"
+              path: /portal/customization/pages
+              category: Page
+              show: True
+            - title: "Menus"
+              path: /portal/customization/menus
+              category: Page
+              show: True
+            - title: "Branding"
+              path: /portal/customization/branding
+              category: Page
+              show: True
+            - title: "Sign Up Form"
+              path: /portal/customization/sign-up
+              category: Page
+              show: True
+            - title: "User Model"
+              path: /portal/customization/user-model
+              category: Page
+              show: True     
       - title: "Reference"
+        category: Label
+        show: True
+        menu:
+        - title: "Environment Variables and Configs"
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
+          category: Page
+          show: True                  
+        - title: "Developer Portal API"
+          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
+          category: Page
+          show: True
+        - title: "API Endpoint Reference"
+          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-api-list-of-endpoints
+          category: Page
+          show: True
+        - title: "Release Notes"
+          path: /developer-support/release-notes/portal
+          category: Page
+          show: True
+      - title: "Legacy Products"
         category: Label
         show: True
         menu:
@@ -1001,10 +1168,6 @@ menu:
                   show: True
                 - title: "GraphQL with Classic Portal"
                   path: /tyk-developer-portal/tyk-portal-classic/graphql
-                  category: Page
-                  show: True
-                - title: "Streams with Classic Portal"
-                  path: /tyk-developer-portal/tyk-portal-classic/streams
                   category: Page
                   show: True
                 - title: "Monetising your APIs"
@@ -1297,5 +1460,17 @@ menu:
         show: True
       - title: "API Labeling and Categorization"
         path: /tyk-governance/api-labeling
+        category: Page
+        show: True
+      - title: "Governance Rulesets"
+        path: /tyk-governance/governance-rulesets
+        category: Page
+        show: True
+      - title: "API Evaluation"
+        path: /tyk-governance/api-evaluation
+        category: Page
+        show: True
+      - title: "Agent and API Provider Management"
+        path: /tyk-governance/agent-management
         category: Page
         show: True
