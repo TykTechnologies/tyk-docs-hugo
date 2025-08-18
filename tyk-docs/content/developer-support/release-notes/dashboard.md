@@ -226,6 +226,99 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 ## 5.8 Release Notes
 
+### 5.8.5 Release Notes
+
+#### Release Date 18th August 2025
+
+#### Release Highlights
+
+This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.5" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.5}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.5 | MDCB v2.8.4     | MDCB v2.8.4 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.1 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.5}
+
+To resolve the compatibility issue between MDCB and Tyk Dashboard when OAS API definition paths contain dot (.) characters, you can choose **one** of the following upgrade paths:
+
+##### Recommended Upgrade Paths
+
+1. **Upgrade Dashboard (Preferred)**
+
+   * Upgrade to Dashboard v5.8.5 to resolve the issue.
+   * In this version, `escape_dots_in_oas_paths` defaults to `false`, and the Dashboard automatically unescapes dots in all API definitions.
+   * **No MDCB upgrade is required.**
+
+2. **Upgrade MDCB to v2.8.4 (Alternative if you cannot upgrade the Dashboard)**
+
+    - Enable `escape_dots_in_oas_paths` in both Dashboard and MDCB configurations.
+    - This ensures consistent escaping/decoding of dots across all components.
+
+If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.5)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.5
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.5](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.5)
+
+#### Changelog {#Changelog-v5.8.5}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Consistent Handling of Escaped Dots in OAS Paths</summary>
+
+Resolved a compatibility issue introduced in Dashboard v5.8.3, where MDCB failed to unescape dot characters (e.g., `\u002e`) in OAS API definition paths when reading from the database. This caused the [request validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) and [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware configured on affected endpoints not to be applied. 
+
+To align MDCB's dot handling mechanism with Tyk Dashboard, a new configuration option, `escape_dots_in_oas_paths`, has been introduced in both Dashboard and MDCB:
+
+* By Default, `escape_dots_in_oas_paths` is set to `false` in both MDCB and Dashboard, restoring the Dashboard behaviour before v5.8.3, where dots are unescaped.
+* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to true, MDCB and Dashboard encode/decode these paths consistently.
+
+Check the [Upgrade and Compatibility section]({{< ref "#upgrade-instructions" >}}) for details on the recommended upgrade path.
+</details>
+</li>
+</ul>
+
 ### 5.8.4 Release Notes
 
 #### Release Date 13th August 2025
@@ -236,7 +329,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</code>becomes<code>/v1\u002e0</code>) before saving to the database to support DocumentDB users. However, MDCB fails to properly decode these escaped paths when reading from the database. This causes OAS-specific middleware (validate request and mock response) to malfunction for paths containing dots, while other middleware like the allow list, continues to work. The issue affects all MDCB deployments using OAS APIs with dotted paths. Fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4.
 
 #### Dependencies {#dependencies-5.8.4}
 
@@ -305,7 +398,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</code>becomes<code>/v1\u002e0</code>) before saving to the database to support DocumentDB users. However, MDCB fails to properly decode these escaped paths when reading from the database. This causes OAS-specific middleware (validate request and mock response) to malfunction for paths containing dots, while other middleware like the allow list, continues to work. The issue affects all MDCB deployments using OAS APIs with dotted paths. Fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4.
 
 #### Dependencies {#dependencies-5.8.3}
 
