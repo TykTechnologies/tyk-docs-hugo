@@ -328,7 +328,7 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 #### Release Highlights
 
-Gateway 5.8.5 was version bumped only to align with Dashboard 5.8.5. Subsequently, no changes were encountered in release 5.8.5. For further information, please see the release notes for Dashboard [v5.8.5]({{< ref "developer-support/release-notes/dashboard#585-release-notes" >}})
+Gateway 5.8.5 was version bumped only to align with Dashboard 5.8.5. Subsequently, no changes were encountered in release 5.8.5. For further information, please see the release notes for Dashboard [v5.8.5]({{< ref "developer-support/release-notes/dashboard#585-release-notes" >}}).
 
 #### Breaking Changes
 
