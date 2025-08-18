@@ -22,6 +22,65 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.12 Release Notes
 
+### 1.12.1 Release Notes
+
+#### Release Date 18 August 2025
+
+#### Release Highlights
+
+This release improves log reliability in the Syslog Pump by ensuring that raw request and response data are no longer fragmented into multiple entries. Logs are now consolidated into a single entry per API request, making analysis easier while preserving compatibility with existing log parsers.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.1" >}}) below.
+
+#### Breaking Changes
+This release has no breaking changes
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.11.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.11.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.12.1](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.12.1)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.12.1
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.1)
+
+#### Changelog {#Changelog-v1.12.1}
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Consolidated Syslog Log Entries</summary>
+
+Resolved an issue where enabling decoded raw request and response data caused Syslog Pump logs to fragment into multiple entries. Logs are now properly consolidated into a single entry per API request, with newlines escaped to ensure consistent formatting and maintain backward compatibility with existing log processors.
+
+</details>
+</li>
+
+</ul>
+
 ### 1.12.0 Release Notes
 
 #### Release Date 28 March 2025
