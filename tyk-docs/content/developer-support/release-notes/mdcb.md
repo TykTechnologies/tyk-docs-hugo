@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB when using DocumentDB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
+This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.4" >}}).
 
