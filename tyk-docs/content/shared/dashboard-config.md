@@ -1381,5 +1381,7 @@ Enable or disable sending telemetry data such as analytics, API configurations, 
 ENV: <b>TYK_DB_ESCAPEDOTSINOASPATHS</b><br />
 Type: `bool`<br />
 
-When enabled, dots in OAS field names will be escaped to \\u002e for DocumentDB compatibility
+When enabled, dots in OAS field names will be escaped (to \\u002e ) and unescaped when required for compatibility with specific databases.
+
+Defaults to `false`.
 
