@@ -366,7 +366,7 @@ There are no deprecations in this release.
 
 #### Upgrade instructions {#upgrade-5.8.5}
 
-If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions](#upgrading-tyk).
+If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
 
@@ -377,7 +377,7 @@ If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
-- [Source code tarball of Tyk Gateway v5.8.4](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.5)
+- [Source code tarball of Tyk Gateway v5.8.5](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.5)
 
 #### Changelog {#Changelog-v5.8.5}
 
