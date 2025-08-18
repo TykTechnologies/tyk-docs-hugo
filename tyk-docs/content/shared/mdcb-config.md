@@ -712,6 +712,6 @@ Defaults to `false`.
 ENV: <b>TYK_MDCB_ESCAPEDOTSINOASPATHS</b><br />
 Type: `bool`<br />
 
-Enable escaping of dots in OAS paths. When enabled, dots in field names will be escaped with double underscores to prevent MongoDB field name conflicts.
+When enabled, dots in OAS field names will be escaped (to \\u002e ) and unescaped when required for compatibility with specific databases.
 Defaults to `false`.
 
