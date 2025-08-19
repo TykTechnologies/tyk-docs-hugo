@@ -21,7 +21,7 @@ API Products transform technical APIs into business assets by:
 - Establishing clear terms of use through associated plans
 - Creating a consistent developer experience across multiple underlying APIs
 
-In the Tyk Developer Portal, API Products serve as the primary unit of discovery, access control, and [monetization]({{< ref "overview/intro#api-monetization-with-tyk-developer-portal" >}}) of your API portfolio.
+In the Tyk Developer Portal, API Products serve as the primary unit of discovery, access control, and [monetization]({{< ref "portal/overview/intro#api-monetization-with-tyk-developer-portal" >}}) of your API portfolio.
 
 Since Tyk 5.7.0, you have been able to create API Products to publish your [Tyk Streams APIs]({{< ref "api-management/event-driven-apis" >}}) on the Developer Portal.
 

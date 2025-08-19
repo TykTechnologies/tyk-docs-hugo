@@ -252,7 +252,7 @@ Once it's working you can also add two more enhancements - SSO and MFA
    You will need to:
 	- set up a web server with a login page and a form for `user` and `password`
 	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7]({{< ref "api-management/single-sign-on-ldapapi-management/single-sign-on-ldap#create-login-page" >}})
+    Explicit details are in [steps 6-7]({{< ref "api-management/single-sign-on-ldap#create-login-page" >}})
 
 #### Multi-Factor-Authentication (MFA) Support
    MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
