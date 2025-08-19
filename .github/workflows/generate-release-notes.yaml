@@ -7,9 +7,19 @@ on:
   workflow_dispatch:
     inputs:
       component_version:
-        description: 'Component version to process'
+        description: 'Component version ID'
         required: true
         type: string
+      component_name:
+        description: 'Component name (e.g gateway etc..)'
+        required: true
+        type: string
+      component_version_number:
+        description: 'Component version (e.g v5.8.5 etc.)'
+        required: false
+        type: string
+
+run-name: "Release Notes for ${{ github.event.inputs.component_name }} ${{ github.event.inputs.component_version_number }}"
 
 jobs:
   run-n8n:
