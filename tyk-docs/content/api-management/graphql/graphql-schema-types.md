@@ -122,6 +122,7 @@ type Collection {
   optionalItemsRequired: [String!]  # Nullable list of non-null items
   requiredItemsOptional: [String]!  # Non-null list of nullable items
   optionalItemsOptional: [String]   # Nullable list of nullable items
+  nestedRequiredItemsRequired: [[String!]!]!   # nested non-nullable list in non-nullable list with non-null items
 }
 ```
 
@@ -162,6 +163,25 @@ type Transaction {
 }
 ```
 
+{{< note success >}}
+
+**Note:**
+
+According to the [GraphQL spec](https://spec.graphql.org/), `Long/BigInt` values must be serialized as **strings** (IEEE standard). Some libraries incorrectly serialize them as numbers, which can lead to compatibility issues.
+
+Tyk’s GraphQL engine expects `Long` values to be serialized as strings to ensure interoperability.
+
+{{< /note >}}
+
+**Example:**
+
+```json
+{
+  "amount": "9223372036854775807",
+  "timestamp": "1690991344000"
+}
+```
+
 #### DateTime
 ```graphql
 scalar DateTime
@@ -174,7 +194,7 @@ type Event {
 
 ## GraphQL Federation Types
 
-Tyk supports [GraphQL Federation]({{< ref "api-management/graphql#graphql-federation" >}}) for building unified APIs across multiple services.
+Tyk supports [GraphQL Federation v1]({{< ref "api-management/graphql#graphql-federation" >}}) for building unified APIs across multiple services.
 
 ### Entity Types with @key
 
