@@ -692,7 +692,6 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
         "Dialect": "postgres",
         "ConnectionString": "host=tyk-portal-postgres port=5432 dbname=portal user=admin password=secr3t sslmode=disable",
         "EnableLogs": false
-  }
     },
     "Blog": {
         "Enable": true
