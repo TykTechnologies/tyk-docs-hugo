@@ -198,7 +198,7 @@ The following sections will guide you through the prerequisites and steps to con
 
 - **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
 - **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
-- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license.
+- **Dashboard License**: We will configure Streams API using Dashboard. [Contact our team](https://tyk.io/contact/) to obtain a license or get self-managed trial license by completing the registration on our [website]
 - **Curl and JQ**: These tools will be used for testing.
 
 ### Instructions
@@ -225,7 +225,7 @@ The following sections will guide you through the prerequisites and steps to con
    TYK_GW_STREAMING_ENABLED=true
    ```
 
-   - `DASHBOARD_LICENCE`: Add your license key. Contact [support](https://tyk.io/contact/) to obtain a license.
+   - `DASHBOARD_LICENCE`: Add your license key. Contact [our team](https://tyk.io/contact/) to obtain a license.
    - `GATEWAY_IMAGE_REPO`: Tyk Streams is available as part of the Enterprise Edition of the Gateway.
    - `TYK_DB_STREAMING_ENABLED` and `TYK_GW_STREAMING_ENABLED`: These must be set to `true` to enable Tyk Streams in the Dashboard and Gateway, respectively. Refer to the [configuration options]({{< ref "tyk-oss-gateway/configuration#streaming" >}}) for more details.
 
@@ -845,17 +845,6 @@ pipeline:
     - mapping: |
         root = this.merge({ "high_value_order": true })
 ```
-
-{{< note success >}}
-**Note:**
-
-The `Mapping` processor is currently available and working, but it will be officially supported starting from version 5.9.0.
-
-You’re welcome to explore and experiment with this feature in non-production environments today. For production use, we recommend waiting for the official release in 5.9.0 to ensure full support.
-{{< /note >}}
-<!--
-TODO: Official bloblang support from 5.9.0 onwards
--->
 
 In this example:
 

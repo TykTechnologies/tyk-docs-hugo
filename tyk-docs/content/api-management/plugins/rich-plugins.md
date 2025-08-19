@@ -539,6 +539,9 @@ This is a UNIX timestamp that signifies when a cached key or ID will expire. Thi
 `session_lifetime`
 UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "api-management/policies#set-physical-key-expiry-and-deletion" >}}) for more information.
 
+`key_id`
+This is the unique identifier for the access token used to authenticate the request, introduced in v5.9.0.
+
 ---
 
 ### AccessDefinition {#access-definition}

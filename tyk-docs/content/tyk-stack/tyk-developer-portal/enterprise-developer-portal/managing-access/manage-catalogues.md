@@ -1,51 +1,123 @@
 ---
-title: "Manage Catalogs"
-date: 2022-02-10
+title: "API Catalogs"
+date: 2025-07-26
 tags: ["Developer Portal", "Tyk", "Managing Access", "Catalogs"]
-keywords: ["Developer Portal", "Tyk", "Managing Access", "Catalogs"]
-description: "How to configure Catalogs in Tyk developer portal"
+keywords: ["Developer Portal", "Tyk", "Managing Access", "Catalog", "API Product", "Plan"]
+description: "Working with API Catalogs"
 ---
 
 ## Introduction
 
-Catalogs are a way for you to tailor the audience for API products and Plans. You can, for example create a Partner Catalog, with a specific API product tailored to them and a preferential plan not available in your public portal.
+API Catalogs are curated collections of API Products and Plans that enable you to organize and present your API offerings to different developer audiences. Catalogs serve as the primary navigation and discovery mechanism in the Tyk Developer Portal, allowing you to create tailored API marketplaces for different consumer segments.
 
-In this section, you will learn about how catalogs work and how to create a new catalog to expose your API products and plans.
+Unlike traditional API documentation sites that present all APIs to everyone, Catalogs give you fine-grained control over who sees what. This enables you to create personalized experiences for different developer audiences - from public APIs available to anyone, to specialized offerings for specific partners or internal teams.
 
-**Prerequisites**
+Catalogs transform your API portfolio management by:
 
-- Connect to a provider [Tyk Self-Managed]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}})
-- Create [policies with enforced access rights]({{< ref "portal/overview/getting-started#create-api-products-and-plans" >}}) (API Product in the Portal)
-- Create one or more [policies with enforced rate limit and quotas]({{< ref "portal/overview/getting-started#create-api-products-and-plans" >}}) (Plan in the Portal)
+- Segmenting API Products for different developer audiences
+- Creating customized discovery experiences for different use cases
+- Controlling visibility of API offerings based on business relationships
+- Enabling consistent organization of related API Products
 
-## Create a New Catalog
+In the Tyk Developer Portal, Catalogs act as the bridge between your API Products and your developer community, ensuring that each developer sees exactly the APIs they need.
 
-1. Navigate to the **Catalog section** section
+## Key Concepts
 
-    {{< img src="/img/dashboard/portal-management/enterprise-portal/catalogue-menu.png" alt="Catalogue menu" >}}
+### Catalog Types
 
-2. Click Create a new catalog
+The Tyk Developer Portal supports two visibility modes for Catalogs:
 
-    {{< img src="/img/dashboard/portal-management/enterprise-portal/portal-managing-access-create-catalogue.png" alt="Create a new catalogue" >}}
+- Public Catalogs: Visible to anyone visiting your Developer Portal, even without logging in. Ideal for openly available APIs and developer recruitment.
+- Private Catalogs: Visible only to authenticated users who have logged into your Developer Portal. They can be further restricted only to members of specific [teams]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers" >}}). Perfect for partner-specific APIs, internal teams, or premium offerings.
 
-3. Enter Name and Path URL
+### Catalog Structure
 
-    {{< img src="/img/dashboard/portal-management/enterprise-portal/portal-managing-access-add-name.png" alt="Name the new catalogue" >}}
+Each Catalog contains:
 
-4. Set the access required for the catalog e.g. Public, Private or Custom
+- [API Products]({{< ref "portal/api-products" >}}): The functional API offerings available in this Catalog
+- [Plans]({{< ref "portal/api-plans" >}}): The subscription options available for Products in this Catalog
+- Visibility Settings: Controls which developers can see this Catalog
+- Presentation Elements: Name, description, and other display properties
 
-  - Public: External developers can access the catalog
-  - Private: The catalog is only visible to developers that are logged in
-  - Custom: Only selected teams can access this catalog
+### Catalog Relationships
 
-5.  [If creating a custom catalog] Under Audience, select one or multiple teams that you want to have access to this catalog.
+Understanding how Catalogs relate to other elements in the Developer Portal:
 
-{{< note success >}}
-**Note**
+- Products and Plans: A Product or Plan can appear in multiple Catalogs
+- Teams and Organisations: Can be granted access to specific Custom Catalogs
+- Developer Experience: Developers only see Catalogs they have access to
 
-For this audience to apply, the visibility needs to be set to custom.
+## API Catalog Reference Guide
 
-{{< /note >}}
+This comprehensive reference guide details all the configurable options and features of API Catalogs in the Tyk Developer Portal.
 
-6. Select the catalog content in terms of which API Products and plans this catalog should contain.
+### Core Features
 
+#### Catalog Name
+
+The primary identifier for your Catalog within the Admin Portal, this is not exposed in the Live Portal
+
+- **Location**: *Catalogues > Add/Edit Catalogues > Name*
+- **Purpose**: Identifies the Catalog within the Developer Portal
+- **Best Practice**: Choose a clear, descriptive name that reflects the Catalog's purpose or audience
+
+#### Path URL
+
+This configuration is not currently in use and can be ignored.
+
+#### Sync URL with Name
+
+- **Location**: *Catalogues > Add/Edit Catalogues > Sync URL with Name*
+- **Note**: This configuration must be checked (selected).
+
+### Catalog Visibility
+
+#### Visibility Options
+
+Controls which API Consumers can see and access this Catalog.
+
+- **Location**: *Catalogues > Add/Edit Catalogues > Visibility options*
+- **Options**:
+    - Public: Visible to all visitors, even without logging in
+    - Private: Visible only to authenticated users in the teams select in the [Audience]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues#audience" >}})
+- **Default**: Private
+- **Best Practice**: Use the most restrictive visibility that meets your business needs
+
+#### Audience
+
+Specifies which teams can access a Private Catalog.
+
+- **Location**: *Catalogues > Add/Edit Catalogues > Team*
+- **Selection**: Select **Add Team** then choose from any Teams created on the Developer Portal; you can add multiple teams by repeating this action
+- **Behavior**: Only members of the selected teams will see this Catalog
+- **Note**: Teams must be created before they can be added to the audience; any combination of Teams can be added to a Catalog's audience across any number of Organisations
+
+### Catalog Content
+
+#### Products
+
+Determines which API Products appear in this Catalog.
+
+- **Location**: *Catalogues > Add/Edit Catalogues > Products*
+- **Selection**: Select one or more Products from the dropdown
+- **Removal**: Click on the `x` next to the name of the Product you want to delete from the Catalog
+- **Relationship**: A Product can be assigned to multiple Catalogs
+- **Best Practice**: Ensure that Products and their relevant Plans are assigned to the same Catalogs
+
+#### Plans
+
+Determines which API Plans appear in this Catalog.
+
+- **Location**: *Catalogues > Add/Edit Catalogues > Plans*
+- **Selection**: Select one or more Plans from the dropdown
+- **Removal**: Click on the `x` next to the name of the Plan you want to delete from the Catalog
+- **Relationship**: A Plan can be assigned to multiple Catalogs
+- **Best Practice**: Ensure that Products and their relevant Plans are assigned to the same Catalogs
+
+## Best Practices for API Catalogs
+
+- Create purpose-driven Catalogs: Design each Catalog with a specific audience and purpose in mind
+- Use clear naming conventions: Make Catalog names intuitive and descriptive
+- Maintain consistent organization: Apply similar structures across Catalogs for a predictable developer experience
+- Limit the number of Catalogs: Too many Catalogs can create confusion; aim for a manageable number
+- Review access regularly: Periodically audit Custom Catalog access to ensure it remains appropriate
