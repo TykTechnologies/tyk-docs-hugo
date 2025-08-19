@@ -216,7 +216,7 @@ The base address of the Tyk Gateway where API Products from this Provider can be
 **Missing Products or Plans**
 
 - Verify the corresponding policies exist in the Dashboard
-- Verify policies have the correct [policy tags]({{< ref "api-provider#policy-tags" >}})
+- Verify policies have the correct [policy tags]({{< ref "portal/api-provider#policy-tags" >}})
 - Check synchronization status and last sync time
 - Trigger manual synchronization if needed
 
