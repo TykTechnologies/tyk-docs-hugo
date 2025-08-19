@@ -1,14 +1,19 @@
 {
   "home": "tyk-oss-gateway",
   "licensed": false,
-<<<<<<< HEAD
-  "latest": "5.8.3",
-  "lts": "5.8.3",
-=======
-  "latest": "5.9.1",
+  "latest": "5.8.5",
   "lts": "5.8.5",
->>>>>>> a5f6c5181... Update gateway-dashboard 5.8.5.md (#6858)
   "releaseNotesPath": "developer-support/release-notes/gateway",
+  "5.8.5": {
+    "date": "18/08/2025",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.8.5",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.8.5"
+  },
+  "5.8.4": {
+    "date": "13/08/2025",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.8.4",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.8.4"
+  },
   "5.8.3": {
     "date": "14/07/2025",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.8.3",

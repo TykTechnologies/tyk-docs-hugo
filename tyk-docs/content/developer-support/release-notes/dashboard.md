@@ -38,8 +38,6 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.8 Release Notes
 
-<<<<<<< HEAD
-=======
 ### 5.8.5 Release Notes
 
 #### Release Date 18th August 2025
@@ -202,7 +200,6 @@ Resolved an issue in the URL Rewrite middleware UI where the absence of the `neg
 
 ---
 
->>>>>>> a5f6c5181... Update gateway-dashboard 5.8.5.md (#6858)
 ### 5.8.3 Release Notes
 
 #### Release Date 15th July 2025
