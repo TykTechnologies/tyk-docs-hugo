@@ -238,7 +238,7 @@ Dashboard is organized into a few key categories:
 * **Classic Portal**: In Classic Portal, you can affect permissions and configurations related to your developer portal. The Tyk Developer Portal is a platform that enables you to publish, manage, and promote your APIs to external developers.
 
 
-For a comprehensive guide to the Dashboard, refer to the [using Tyk Dashboard]({{< ref "tyk-dashboard/getting-started/using-tyk-dashboard#dashboard-organization" >}}) guide.
+For a comprehensive guide to the Dashboard, refer to the [using Tyk Dashboard]({{< ref "getting-started/using-tyk-dashboard#dashboard-organization" >}}) guide.
 
 #### Understanding the Pre-loaded APIs
 
