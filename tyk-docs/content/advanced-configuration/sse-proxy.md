@@ -1,7 +1,7 @@
 ---
-title: "Server Side Events Proxy"
+title: "Server Sent Events Proxy"
 date: 2019-09-23T10:28:52+03:00
-description: Describe how you can use Tyk as a simple Server Side Events Proxy
+description: Describe how you can use Tyk as a simple Server Sent Events Proxy
 tags: ["SSE Proxy", "Other Protocol"]
 ---
 
