@@ -47,7 +47,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+Since 5.9.0, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.1 and will be fixed in version Dashboard version 5.9.2 and MDCB version 2.8.4.
 
 #### Dependencies {#dependencies-5.9.1}
 
@@ -69,7 +69,7 @@ There are no breaking changes in this release.
 | [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
 | [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
-| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4  | 4  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
 | [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
@@ -128,6 +128,8 @@ Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (
 
 We have implemented a [change]({{< ref "developer-support/release-notes/dashboard#Fixed-v5.9.0" >}}) to the behaviour of the `GET /api/streams/{apiID}` endpoint, which now expects an `Accept` header, not `Content-Type`.
 
+Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.9.0" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.0 and will be fixed in Dashboard version 5.9.2 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+
 #### Dependencies {#dependencies-5.9.0}
 
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
@@ -148,7 +150,7 @@ We have implemented a [change]({{< ref "developer-support/release-notes/dashboar
 | [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
 | [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
-| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4  | 4  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
 | [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
@@ -259,7 +261,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -305,14 +310,14 @@ If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Consistent Handling of Escaped Dots in OAS Paths</summary>
+<summary>Consistent Handling of Escaped Dots in OpenAPI endpoint paths</summary>
 
-Resolved a compatibility issue introduced in Dashboard v5.8.3, where MDCB failed to unescape dot characters (e.g., `\u002e`) in OAS API definition paths when reading from the database. This caused the [request validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) and [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware configured on affected endpoints not to be applied. 
+Resolved a compatibility issue introduced via a fix in Dashboard v5.8.3 to account for DocumentDB's handling of endpoint paths containing dots (`.`). The Dashboard now escapes dot characters (e.g., `\u002e`) when storing Tyk OAS API definitions in the database, but MDCB failed to unescape them when reading from the database. This caused the [request validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) and [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware configured on affected endpoints not to be applied. 
 
 To align MDCB's dot handling mechanism with Tyk Dashboard, a new configuration option, `escape_dots_in_oas_paths`, has been introduced in both Dashboard and MDCB:
 
 * By Default, `escape_dots_in_oas_paths` is set to `false` in both MDCB and Dashboard, restoring the Dashboard behaviour before v5.8.3, where dots are unescaped.
-* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to true, MDCB and Dashboard encode/decode these paths consistently.
+* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to `true`, MDCB and Dashboard encode/decode these paths consistently.
 
 Check the [Upgrade and Compatibility section]({{< ref "#upgrade-instructions" >}}) for details on the recommended upgrade path.
 </details>
@@ -329,7 +334,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Breaking Changes
 
-Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</code>becomes<code>/v1\u002e0</code>) before saving to the database to support DocumentDB users. However, MDCB fails to properly decode these escaped paths when reading from the database. This causes OAS-specific middleware (validate request and mock response) to malfunction for paths containing dots, while other middleware like the allow list, continues to work. The issue affects all MDCB deployments using OAS APIs with dotted paths. Fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4.
+Since 5.8.3, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.4 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
 #### Dependencies {#dependencies-5.8.4}
 
@@ -350,9 +355,10 @@ Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</c
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
 #### Deprecations
@@ -398,7 +404,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 #### Breaking Changes
 
-Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</code>becomes<code>/v1\u002e0</code>) before saving to the database to support DocumentDB users. However, MDCB fails to properly decode these escaped paths when reading from the database. This causes OAS-specific middleware (validate request and mock response) to malfunction for paths containing dots, while other middleware like the allow list, continues to work. The issue affects all MDCB deployments using OAS APIs with dotted paths. Fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4.
+Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.3 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
 #### Dependencies {#dependencies-5.8.3}
 
@@ -419,9 +425,10 @@ Dashboard (5.8.3+) automatically escapes dots in OAS paths (e.g., <code>/v1.0</c
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | |
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
 #### Deprecations
@@ -584,9 +591,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
 #### Deprecations
@@ -644,10 +652,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
 #### Deprecations
 
@@ -775,9 +783,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
 #### Deprecations
@@ -998,9 +1007,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1056,9 +1066,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1146,9 +1157,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1236,9 +1248,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1507,9 +1520,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1586,9 +1600,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1779,9 +1794,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1837,9 +1853,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -1912,9 +1929,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -2079,9 +2097,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -2283,9 +2302,10 @@ There are no breaking changes in this release.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
 #### Deprecations
@@ -2387,9 +2407,10 @@ This release has no breaking changes.
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2481,9 +2502,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2579,9 +2601,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2682,9 +2705,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
@@ -2762,9 +2786,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
@@ -2936,9 +2961,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
@@ -3007,9 +3033,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
@@ -3121,9 +3148,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
@@ -3263,6 +3291,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
@@ -3395,9 +3424,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x        | 11.x - 15.x            | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
