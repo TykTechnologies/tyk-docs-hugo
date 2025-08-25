@@ -1184,7 +1184,7 @@ Set this to true to have Tyk automatically match for numeric IDs, it will match 
 ENV: <b>TYK_GW_ANALYTICSCONFIG_NORMALISEURLS_CUSTOM</b><br />
 Type: `[]string`<br />
 
-This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a {var} placeholder.
+This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a `{var}` placeholder.
 
 ### analytics_config.pool_size
 ENV: <b>TYK_GW_ANALYTICSCONFIG_POOLSIZE</b><br />
