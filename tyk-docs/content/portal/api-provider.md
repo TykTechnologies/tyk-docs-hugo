@@ -77,7 +77,7 @@ The Developer Portal regularly synchronizes with the Provider to ensure it has u
 
 ### What Happens During Synchronization?
 
-When a synchronization event occurs, for each Provider in turn, the Portal will retrieve all access and limit policies that have matching tags with those configured in the [Provider settings]({{< ref "api-provider#policy-tags" >}}).
+When a synchronization event occurs, for each Provider in turn, the Portal will retrieve all access and limit policies that have matching tags with those configured in the [Provider settings]({{< ref "portal/api-provider#policy-tags" >}}).
 
 - Portal will create placeholder Products and Plans for any new policies.
 - It will hide from the Admin Portal view (and unpublish) any Products or Plans whose access/limit policies were not retrieved from the Dashboard (for example if the tags no longer match, or the Dashboard policy has been deleted).
