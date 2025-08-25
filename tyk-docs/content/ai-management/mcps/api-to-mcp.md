@@ -85,9 +85,9 @@ To enable the tool, paste the above configuration into your AI assistant’s MCP
 **Step 2.**
 Once connected, ask the AI to perform an operation (e.g., "List all pets" or "Create a new user").
 
-## How It Works {#how-it-works}
+## How It Works
 
-### User flow in *API to MCP** user flow
+### User flow in API to MCP user flow
 
 1.  **Input**: Your OpenAPI specification (required) and optional overlays
 2.  **Processing**: The API to MCP tool loads the spec, applies any overlays, and transforms API operations into MCP tools
