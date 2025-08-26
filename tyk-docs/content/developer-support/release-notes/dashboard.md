@@ -126,9 +126,9 @@ Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (
 
 #### Breaking Changes
 
-We have implemented a [change]({{< ref "developer-support/release-notes/dashboard#Fixed-v5.9.0" >}}) to the behaviour of the `GET /api/streams/{apiID}` endpoint, which now expects an `Accept` header, not `Content-Type`.
+1. We have implemented a [change]({{< ref "developer-support/release-notes/dashboard#Fixed-v5.9.0" >}}) to the behaviour of the `GET /api/streams/{apiID}` endpoint, which now expects an `Accept` header, not `Content-Type`.
 
-Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.9.0" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.0 and will be fixed in Dashboard version 5.9.2 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+2. Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.9.0" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.0 and will be fixed in Dashboard version 5.9.2 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
 #### Dependencies {#dependencies-5.9.0}
 
@@ -310,7 +310,7 @@ If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Consistent Handling of Escaped Dots in OpenAPI endpoint paths</summary>
+<summary>Consistent Handling of Escaped Dots in OpenAPI Endpoint Paths</summary>
 
 Resolved a compatibility issue introduced via a fix in Dashboard v5.8.3 to account for DocumentDB's handling of endpoint paths containing dots (`.`). The Dashboard now escapes dot characters (e.g., `\u002e`) when storing Tyk OAS API definitions in the database, but MDCB failed to unescape them when reading from the database. This caused the [request validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) and [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware configured on affected endpoints not to be applied. 
 
@@ -319,7 +319,7 @@ To align MDCB's dot handling mechanism with Tyk Dashboard, a new configuration o
 * By Default, `escape_dots_in_oas_paths` is set to `false` in both MDCB and Dashboard, restoring the Dashboard behaviour before v5.8.3, where dots are unescaped.
 * When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to `true`, MDCB and Dashboard encode/decode these paths consistently.
 
-Check the [Upgrade and Compatibility section]({{< ref "#upgrade-instructions" >}}) for details on the recommended upgrade path.
+Check the [Upgrade and Compatibility section]({{< ref "#upgrade-5.8.5" >}}) for details on the recommended upgrade path.
 </details>
 </li>
 </ul>
@@ -655,7 +655,8 @@ There are no breaking changes in this release.
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
 | [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
 
 #### Deprecations
 
