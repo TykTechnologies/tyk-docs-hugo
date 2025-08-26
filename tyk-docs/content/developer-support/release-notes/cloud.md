@@ -12,7 +12,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-This release introduces the ability to export Tyk application logs directly to Datadog via OpenTelemetry, giving teams more flexibility to monitor and analyze their deployments in real time. We’ve also added email notifications for auto-upgrades, ensuring admins are informed when upgrades start for Control Plane or Governance Dashboard deployments.
+This release expands observability and upgrade management capabilities in Tyk Cloud. Teams can now export application logs to external log vendors, giving full flexibility in integrating with their preferred OpenTelemetry-compatible provider. Additionally, we’ve enhanced the auto-upgrade experience by providing detailed email notifications when the process begins.
 
 For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.30.0" >}}) below.
 
@@ -35,9 +35,9 @@ There are no deprecations in this release.
 
 <li>
 <details>
-<summary>Export Application Logs to Datadog</summary>
+<summary>Export Application Logs to Observability Providers</summary>
 
-Added the ability to stream Tyk application logs to Datadog via OpenTelemetry. Users can enable traces, logs, or both to export to their observability provider.
+Application logs can now be streamed to Datadog, New Relic, Elastic, Dynatrace, or any OpenTelemetry-native provider using the same OpenTelemetry-based architecture. This feature can be enabled or disabled per deployment, and logs are streamed in real time to the chosen provider, enabling better monitoring and faster troubleshooting.
 
 </details>
 </li> 
@@ -46,7 +46,7 @@ Added the ability to stream Tyk application logs to Datadog via OpenTelemetry. U
 <details>
 <summary>Email Notifications for Auto-Upgrades</summary>
 
-Introduced automated email notifications to inform org and team admins when a Control Plane or Governance Dashboard auto-upgrade begins. Notifications include key details such as deployment name, environment, and version changes, helping teams track upgrade activity.
+Introduced automated email notifications to inform organisations and team admins when a Control Plane auto-upgrade begins. Notifications include key details such as deployment name and version changes, helping teams track upgrade activity more effectively.
 
 </details>
 </li>
@@ -820,4 +820,5 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
 
