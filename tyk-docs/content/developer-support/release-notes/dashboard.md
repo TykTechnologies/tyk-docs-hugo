@@ -47,7 +47,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Breaking Changes
 
-Since 5.9.0, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.1 and will be fixed in version Dashboard version 5.9.2 and MDCB version 2.8.4.
+Since 5.9.0, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.1 and will be fixed in version Dashboard version 5.9.2 and MDCB version 2.8.4.
 
 #### Dependencies {#dependencies-5.9.1}
 
@@ -128,7 +128,7 @@ Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (
 
 We have implemented a [change]({{< ref "developer-support/release-notes/dashboard#Fixed-v5.9.0" >}}) to the behaviour of the `GET /api/streams/{apiID}` endpoint, which now expects an `Accept` header, not `Content-Type`.
 
-Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.9.0" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.0 and will be fixed in Dashboard version 5.9.2 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.9.0" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.0 and will be fixed in Dashboard version 5.9.2 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
 #### Dependencies {#dependencies-5.9.0}
 
@@ -334,7 +334,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Breaking Changes
 
-Since 5.8.3, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.4 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+Since 5.8.3, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.4 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
 #### Dependencies {#dependencies-5.8.4}
 
@@ -404,7 +404,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 #### Breaking Changes
 
-Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" ). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.3 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.3 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
 #### Dependencies {#dependencies-5.8.3}
 
