@@ -68,6 +68,10 @@ While the Default Organisation cannot be deleted, you can:
 - Move users from it to other Organisations as needed
 - Use it as a holding area for users awaiting proper Organisation assignment
 
+#### Developer App visibility
+
+[Team and Organisation level visibility]({{< ref "portal/developer-app#visibility" >}}) are not applied within the Default Organisation. This behavior has been implemented to ensure no accidental exposure of Developer Apps if a user is removed from a custom Organisation and reverts automatically to the Default Org.
+
 <br>
 {{< note success >}}
 **Note**  
@@ -178,11 +182,15 @@ Each Organisation has a system-generated Default Team that serves several import
 - Provides a home for API Consumer users who have been [removed]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#deleting-organisations" >}}) from all other Teams in the Org
 - Can be used for Organisation-wide API access
 
-While the Default Team cannot be deleted, you can:
+The Default Team cannot be deleted, however you can:
 
 - Rename it to better reflect your business needs
 - Move users from it to other Teams as needed
 - Use it as a holding area for users awaiting proper Team assignment
+
+#### Developer App visibility
+
+[Team level visibility]({{< ref "portal/developer-app#visibility" >}}) is not applied within the Default Team. This behavior has been implemented to ensure no accidental exposure of Developer Apps if a user is removed from a team and reverts automatically to the Default Team.
 
 <br>
 {{< note success >}}
