@@ -106,6 +106,9 @@ Controls visibility of the App within the Live Portal. When an App is visible to
   - Personal: Only the owner (usually the creator of the App) can view the App
   - Team: All members of Teams of which the owner is a member can view the App
   - Organisation: All members of the Organisation of which the owner is a member can view the App
+- **Restrictions**:
+  - When a user is in the [Default Organisation]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#developer-app-visibility" >}}), all of their Developer Apps will be restricted to Personal visibility
+  - When a user is *only* in the [Default Team]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#developer-app-visibility-1" >}}) of a Custom Organisation, all of their Developer Apps will be restricted to Personal or Organisation level visibility
 - **Best Practice**: Share Apps when multiple developers need access to the same APIs
 
 #### Redirect URL
