@@ -190,7 +190,7 @@ The Default Team cannot be deleted, however you can:
 
 #### Developer App visibility
 
-[Team level visibility]({{< ref "portal/developer-app#visibility" >}}) is not applied within the Default Team. This behavior has been implemented to ensure no accidental exposure of Developer Apps if a user is removed from a team and reverts automatically to the Default Team.
+[Team level app visibility]({{< ref "portal/developer-app#visibility" >}}) is not applied within the Default Team. This behavior has been implemented to prevent accidental exposure of Developer Apps if a user is removed from a team and automatically reverts to the Default Team.
 
 <br>
 {{< note success >}}
