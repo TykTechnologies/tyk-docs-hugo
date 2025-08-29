@@ -45,7 +45,30 @@ To enable API Consumer organization registration, navigate to the Settings/Gener
 
 **Steps for Configuration**
 
+<<<<<<< HEAD
 1. **Request org registration**
+=======
+- Self-registered users without an [invite code]({{< ref "portal/api-consumer#invite-codes" >}})
+- API Consumer users created by API Owners without a specific Organisation assignment
+- API Consumer users whose Organisation has been [deleted]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#deleting-organisations" >}})
+
+While the Default Organisation cannot be deleted, you can:
+
+- [Rename]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#editing-organisation-details" >}}) it to better reflect your business needs
+- Move users from it to other Organisations as needed
+- Use it as a holding area for users awaiting proper Organisation assignment
+
+#### Developer App visibility
+
+[Team and Organisation level app visibility]({{< ref "portal/developer-app#visibility" >}}) is not applied within the Default Organisation. This behavior has been implemented to prevent accidental exposure of Developer Apps if a user is removed from a custom Organisation and automatically reverts to the Default Org.
+
+<br>
+{{< note success >}}
+**Note**  
+
+We do not recommend using the Default Org for publication of API Products and Plans.
+{{< /note >}}
+>>>>>>> f3c6d9abe... Clarified visibility rules for default Orgs and Teams (#6884)
 
     Register a developer account or use an existing one and log in to the developer portal as a developer.
     To start the organization registration flow, click on the **Create an organization** button in the top right corner of the screen.
@@ -134,10 +157,22 @@ In this section, you’ll learn how to create a new organization for your extern
 
 2. Enter the name of your new organization
 
+<<<<<<< HEAD
     {{< img src="/img/dashboard/portal-management/enterprise-portal/add-orgs.png" alt="Add a new Organization" >}}
+=======
+The Default Team cannot be deleted, however you can:
+>>>>>>> f3c6d9abe... Clarified visibility rules for default Orgs and Teams (#6884)
 
 3. Click **Save** to create your new organization. A new default-team will also automatically created that is tied to your new organization.
 
+<<<<<<< HEAD
+=======
+#### Developer App visibility
+
+[Team level app visibility]({{< ref "portal/developer-app#visibility" >}}) is not applied within the Default Team. This behavior has been implemented to prevent accidental exposure of Developer Apps if a user is removed from a team and automatically reverts to the Default Team.
+
+<br>
+>>>>>>> f3c6d9abe... Clarified visibility rules for default Orgs and Teams (#6884)
 {{< note success >}}
 **Note**
 
