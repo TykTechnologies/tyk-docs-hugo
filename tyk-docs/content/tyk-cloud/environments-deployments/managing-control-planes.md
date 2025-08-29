@@ -92,7 +92,7 @@ Auto Upgrade is available for:
 
 #### How to Enable Auto Upgrade
 
-You can enable Auto Upgrade when creating a new Control Plane or edit an existing Control Plane to enable it.
+You can enable Auto Upgrade when creating a new Control Plane or editing an existing Control Plane.
 
 #### New Control Plane Deployments
 
