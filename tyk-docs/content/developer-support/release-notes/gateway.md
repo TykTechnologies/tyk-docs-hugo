@@ -2711,7 +2711,7 @@ Fixed a bug where a timeout in an RPC call to MDCB would lead to policies not be
 <details>
 <summary>Improved Gateway Registration Reliability During Upgrades</summary>
 
-We’ve resolved an issue that could cause Gateways to fail re-registration when restarting under certain licensing configurations during upgrades. This fix introduces support for new “unlimited Gateway” licenses, improves authentication retry logic, and ensures smoother upgrade experiences for large-scale deployments. Gateways now register reliably without entering failure loops, even under heavy churn or rolling upgrades.
+We’ve resolved an issue that could cause Gateways to fail re-registration when restarting under certain licensing configurations during upgrades. This fix introduces support for new “Unlimited Gateway” licenses, improves authentication retry logic, and ensures smoother upgrade experiences for large-scale deployments. Gateways now register reliably without entering failure loops, even under heavy churn or rolling upgrades.
 </details>
 </li>
 
