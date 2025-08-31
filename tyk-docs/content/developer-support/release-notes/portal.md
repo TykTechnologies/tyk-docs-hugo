@@ -38,6 +38,90 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.14 Release Notes
 
+### 1.14.1 Release Notes
+
+#### Release Date xx
+
+#### Release Highlights
+
+#### Breaking Changes {#breaking-changes-v1.14.1}
+
+There are no breaking changes in this release.
+
+For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are on version 1.13.0 or an older version, we recommend upgrading to this release ASAP.
+
+To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
+
+#### Download
+- [Docker image v1.14.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.1)
+  - ```bash
+    docker pull tykio/portal:v1.14.1
+    ```
+
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.14.1)
+
+#### Changelog {#Changelog-v1.14.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Improved SSO User Assignment and Login Behavior</summary>
+
+Resolved issues where SSO users could lose their team assignments or be incorrectly reassigned to the default organization and team after logging in. SSO now correctly links returning users to their existing profiles, preserving team and organization memberships and preventing duplicate accounts. The SSO configuration UI has also been improved for greater clarity around default and group-based team assignments.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Saving and Updating Documentation-Only Products</summary>
+
+Fixed an issue where the Portal could report an error when API access was added to a documentation-only API Product. This ensures seamless transitions between documentation-only and regular products, correctly managing associated policies in Tyk Dashboard.
+</details>
+</li>
+
+<li>
+<details>
+<summary>SSO User Organization Persistence Fix</summary>
+
+Resolved an issue where SSO users could be moved back to the default organization when logging back into the Portal after having created a new, approved organization. Users will now consistently retain their created organization across SSO login sessions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Corrected User Assignment in Auto-Approved Organization Registrations</summary>
+
+Fixed an issue where auto-approved organization registrations could incorrectly assign a user to multiple organizations, causing cross-organization visibility. Users are now always placed only in their new organization’s default team, ensuring proper isolation across both auto-approved and manual approval flows.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Handling of SSO Profiles When Teams Are Deleted</summary>
+
+Fixed an issue where deleting a team that was referenced in an SSO profile’s UserGroupMapping caused validation errors and prevented the profile form from loading or being updated. SSO profiles now gracefully handle deleted team references, allowing administrators to view, edit, and save changes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>API Product Policy Persistence Improved in Developer Portal</summary>
+
+Resolved an issue where removing all API access from a Product would delete its associated policy, causing previously issued tokens to stop working when access was re-added. Now, policies are preserved, ensuring existing tokens remain valid even if API access is temporarily removed and later restored. Tokens will only be invalidated if the authentication method of the Product is changed.
+</details>
+</li>
+</ul>
+
 ### 1.14.0 Release Notes
 
 #### Release Date 23 July 2025
