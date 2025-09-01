@@ -176,7 +176,7 @@ specified order. Adhering to the provided sequence is crucial for a smooth and s
 
 **Step 1. Upgrade Control Plane**
 
-Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-control-planes" >}}).
+Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-cloud-control-planes" >}}).
 
 **Step 2. Upgrade Go Plugins**
 
@@ -244,7 +244,7 @@ following order:
 
 **Step 1. Upgrade your control plane**
 
-See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-cloud-control-planes" >}})
 
 **Step 2 Upgrade Go plugins**
 
