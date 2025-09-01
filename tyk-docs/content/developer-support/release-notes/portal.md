@@ -51,7 +51,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 
 There are no breaking changes in this release.
 
-
 #### Deprecations
 
 There are no deprecations in this release.
@@ -88,12 +87,6 @@ Resolved issues where SSO users could lose their Team assignments or be incorrec
 <summary>Saving and Updating Documentation-Only Products</summary>
 
 Fixed an issue where the Portal could report an error when API access was added to a documentation-only API Product. This ensures seamless transitions between documentation-only and regular products, correctly managing associated policies in Tyk Dashboard.
-</details>
-</li>
-
-<li>
-<details>
-
 </details>
 </li>
 
