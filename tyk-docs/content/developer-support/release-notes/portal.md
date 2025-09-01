@@ -94,7 +94,6 @@ Fixed an issue where the Portal could report an error when API access was added 
 <li>
 <details>
 
-Resolved an issue where SSO users could be moved back to the default organization when logging back into the Portal after having created a new, approved organization. Users will now consistently retain their created organization across SSO login sessions.
 </details>
 </li>
 
