@@ -60,7 +60,7 @@ There are no deprecations in this release.
 
 If you are on version 1.14.0 or an older version, we recommend upgrading to this release ASAP.
 
-To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
+To upgrade the Portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}).
 
 #### Download
 - [Docker image v1.14.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.1)
