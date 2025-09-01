@@ -44,7 +44,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release delivers key bug fixes to improve stability in the Developer Portal. Updates include better handling of SSO user assignments and organization persistence, safeguards against cross-organization visibility in auto-approved registrations, and improved resilience when teams are deleted. We’ve also fixed issues with API Product transitions and policy persistence, ensuring existing tokens remain valid.
+This release delivers key bug fixes to improve stability in the Developer Portal. Updates include better handling of SSO user assignments and Organisation persistence, safeguards against cross-Organisation visibility in auto-approved registrations, and improved resilience when Teams are deleted. We’ve also fixed issues with API Product transitions and policy persistence, ensuring existing tokens remain valid.
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.1) below.
 
 #### Breaking Changes {#breaking-changes-v1.14.1}
