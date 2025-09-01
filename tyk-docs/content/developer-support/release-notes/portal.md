@@ -109,7 +109,7 @@ Fixed an issue where auto-approved Organisation (Org) registrations could incorr
 <details>
 <summary>Improved Handling of SSO Profiles When Teams Are Deleted</summary>
 
-Fixed an issue where deleting a Tam that was referenced in an SSO profile’s `UserGroupMapping` caused validation errors and prevented the profile form from loading or being updated. SSO profiles now gracefully handle deleted Team references, allowing administrators to view, edit, and save changes.
+Fixed an issue where deleting a Team that was referenced in an SSO profile’s `UserGroupMapping` caused validation errors and prevented the profile form from loading or being updated. SSO profiles now gracefully handle deleted Team references, allowing administrators to view, edit, and save changes.
 </details>
 </li>
 
