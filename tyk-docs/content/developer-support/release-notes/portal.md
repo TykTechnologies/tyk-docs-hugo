@@ -51,7 +51,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 
 There are no breaking changes in this release.
 
-For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
 
 #### Deprecations
 
