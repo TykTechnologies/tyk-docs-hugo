@@ -117,7 +117,7 @@ Fixed an issue where deleting a Tam that was referenced in an SSO profile’s `U
 <details>
 <summary>Improved Persistence of Access Token Validity</summary>
 
-Resolved an issue where removing all API access from a Product would delete its associated policy, causing previously issued tokens to stop working when access was re-added. Now, policies are preserved, ensuring existing tokens remain valid even if API access is temporarily removed and later restored. Tokens will only be invalidated if the authentication method of the Product is changed.
+Resolved an issue where removing all API access from a Product would delete the associated access policy, causing previously issued tokens to stop working when access was later re-added. Now, access policies are preserved in draft status, temporarily invalidating tokens. When API access is added back to the API Product, the existing tokens will become valid again. Note that if the authentication method of the APIs within the Product is changed, all previously issued access tokens will remain invalid.
 </details>
 </li>
 </ul>
