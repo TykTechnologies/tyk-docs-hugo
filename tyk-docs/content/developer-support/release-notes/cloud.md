@@ -8,7 +8,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ## 1.30.0 Release Notes
 
-### Release Date x August 2025
+### Release Date 1 September 2025
 
 ### Release Highlights
 
@@ -820,5 +820,6 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
 
 
