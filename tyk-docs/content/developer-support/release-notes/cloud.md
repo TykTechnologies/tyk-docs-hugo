@@ -47,7 +47,8 @@ Cloud users can now export Tyk application logs to observability providers using
 <details>
 <summary>Email Notifications for Auto-Upgrades</summary>
 
-Introduced automated email notifications to inform organisations and team admins when a Control Plane auto-upgrade begins. Notifications include key details such as deployment name and version changes, helping teams track upgrade activity more effectively.
+Introduced automated email notifications to inform organisations and team admins when a Control Plane [auto-upgrade]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#auto-upgrade" >}}) begins. Notifications include key details such as deployment name and version changes, helping teams track upgrade activity more effectively.
+
 
 </details>
 </li>
