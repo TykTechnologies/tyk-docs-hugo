@@ -79,7 +79,7 @@ To upgrade the Portal's theme, please follow the [upgrade instructions]({{< ref 
 <details>
 <summary>Improved SSO User Assignment and Login Behavior</summary>
 
-Resolved issues where SSO users could lose their team assignments or be incorrectly reassigned to the default organization and team after logging in. SSO now correctly links returning users to their existing profiles, preserving team and organization memberships and preventing duplicate accounts. The SSO configuration UI has also been improved for greater clarity around default and group-based team assignments.
+Resolved issues where SSO users could lose their Team assignments or be incorrectly reassigned to the default Organisation and Team after logging in. SSO now correctly links returning users to their existing profiles, preserving Team and Organisation memberships and preventing duplicate accounts. The SSO configuration UI has also been improved for greater clarity around default and group-based Team assignments.
 </details>
 </li>
 
