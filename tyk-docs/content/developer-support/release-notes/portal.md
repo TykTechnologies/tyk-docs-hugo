@@ -58,7 +58,7 @@ There are no deprecations in this release.
 
 #### Upgrade instructions
 
-If you are on version 1.13.0 or an older version, we recommend upgrading to this release ASAP.
+If you are on version 1.14.0 or an older version, we recommend upgrading to this release ASAP.
 
 To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
 
