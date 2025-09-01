@@ -37,7 +37,7 @@ There are no deprecations in this release.
 <details>
 <summary>Export Application Logs to Observability Providers</summary>
 
-Application logs can now be streamed to Datadog, New Relic, Elastic, Dynatrace, or any OpenTelemetry-native provider using the same OpenTelemetry-based architecture. This feature can be enabled or disabled per deployment, and logs are streamed in real time to the chosen provider, enabling better monitoring and faster troubleshooting.
+Cloud users can now export Tyk application logs to observability providers using OpenTelemetry (such as Datadog, New Relic, Elastic, and Dynatrace). This feature can be enabled or disabled per deployment, and logs are streamed in real time to the chosen provider, enabling better monitoring and faster troubleshooting.
 
 </details>
 </li> 
