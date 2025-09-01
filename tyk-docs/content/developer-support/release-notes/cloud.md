@@ -2,9 +2,58 @@
 title: Tyk Cloud Release Notes
 date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "1.29.0", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "1.29.0", "1.30.0", "changelog"]
 
 ---
+
+## 1.30.0 Release Notes
+
+### Release Date 1st September 2025
+
+
+### Release Highlights
+
+This release expands observability and upgrade management capabilities in Tyk Cloud. Teams can now export application logs to external log vendors, giving full flexibility in integrating with their preferred OpenTelemetry-compatible provider. Additionally, we’ve enhanced the auto-upgrade experience by providing detailed email notifications when the process begins.
+
+For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.30.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.30.0}
+
+#### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Export Application Logs to Observability Providers</summary>
+
+Cloud users can now export Tyk application logs to observability providers using OpenTelemetry (such as Datadog, New Relic, Elastic, and Dynatrace). This feature can be enabled or disabled per deployment, and logs are streamed in real time to the chosen provider, enabling better monitoring and faster troubleshooting.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Email Notifications for Auto-Upgrades</summary>
+
+Introduced automated email notifications to inform organisations and team admins when a Control Plane [auto-upgrade]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#auto-upgrade" >}}) begins. Notifications include key details such as deployment name and version changes, helping teams track upgrade activity more effectively.
+
+
+</details>
+</li>
+
+</ul>
 
 ## 1.29.0 Release Notes
 
@@ -773,3 +822,6 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
+
+
