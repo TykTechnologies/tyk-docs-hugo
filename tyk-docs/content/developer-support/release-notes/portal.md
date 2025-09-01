@@ -101,7 +101,7 @@ Fixed an issue where the Portal could report an error when API access was added 
 <details>
 <summary>Corrected User Assignment in Auto-Approved Organisation Registrations</summary>
 
-Fixed an issue where auto-approved organization registrations could incorrectly assign a user to multiple organizations, causing cross-organization visibility. Users are now always placed only in their new organization’s default team, ensuring proper isolation across both auto-approved and manual approval flows.
+Fixed an issue where auto-approved Organisation (Org) registrations could incorrectly assign a user to multiple Orgs, causing cross-Organisation visibility. Users are now always placed only in their new Org's default Team, ensuring proper isolation across both auto-approved and manual approval flows.
 </details>
 </li>
 
