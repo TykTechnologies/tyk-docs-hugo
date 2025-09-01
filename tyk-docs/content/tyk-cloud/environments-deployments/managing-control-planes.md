@@ -1,6 +1,6 @@
 ---
 title: "Managing Control Planes in Tyk Cloud"
-tags: ["Control Planes", "Tyk Cloud", "Control Plane", "Cloud Data Plane"]
+tags: ["Control Planes", "Tyk Cloud", "Control Plane", "Cloud Data Plane", "Auto Upgrade"]
 description: "Learn how to manage Control Planes in Tyk Cloud"
 aliases:
   - /tyk-cloud/environments-&-deployments/managing-control-planes
@@ -55,7 +55,11 @@ To edit an existing Control Plane:
 
 {{< img src="/img/admin/cp-edit.png" alt="Edit drop-down" >}}
 
-## Upgrade Control Planes
+## Upgrade Cloud Control Planes
+
+There are two ways to upgrade a Control Plane.
+
+### Manual Upgrade
 
 To upgrade an existing Control Plane:
 
@@ -76,3 +80,48 @@ To upgrade an existing Control Plane:
 
 {{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deployed notification" >}}
 
+### Auto Upgrade
+
+The Auto Upgrade feature enables users to automatically upgrade their deployments to the latest version based on their selected bundle channel (E.g., Latest, LTS) without requiring manual intervention. This feature helps users stay on the latest features and security enhancements by automating the upgrade process according to a scheduled maintenance window.
+
+#### Availability
+
+Auto Upgrade is available for:
+- Control Plane deployments
+- When enabled on a Control Plane, it will automatically upgrade the corresponding data planes related to this control plane
+
+#### How to Enable Auto Upgrade
+
+You can enable Auto Upgrade when creating a new Control Plane or editing an existing Control Plane.
+
+#### New Control Plane Deployments
+
+1. Navigate to the "Add Deployment" page
+2. Fill in the required deployment details
+3. In the "Version" section, select your preferred Bundle Channel (Latest or LTS)
+4. Select the desired Bundle Version
+4. Toggle on the "Auto-upgrade" option
+5. Schedule the maintenance window by selecting:
+   - **Day**: Choose a day of the week (Monday-Sunday)
+   - **Time**: Select an hour (0-23, in UTC timezone)
+
+    {{< img src="/img/cloud/tyk-cloud-auto-upgrade.png" alt="Tyk Cloud Control Plane Auto Upgrade" >}}
+
+6. Complete the deployment creation process
+
+#### Existing Control Plane Deployments
+
+1. Navigate to the deployment dashboard
+2. Click "Edit" in the top-right corner
+3. In the "Version" section, toggle on "Auto-upgrade"
+4. Schedule the maintenance window by selecting the day and time
+5. Click "Save and re-deploy"
+
+#### Limitations and Considerations
+
+- **Control Plane Only**: Auto Upgrade can only be enabled on Control Plane deployments
+- **Plugin Compatibility**: Auto Upgrade cannot be enabled when plugins are enabled
+- **Production Caution**: Not recommended for production environments without prior testing in lower environments
+- **UTC Timezone**: All scheduled times are in UTC
+- **Bundle Channel**: Upgrades will always follow the selected bundle channel (Latest or LTS)
+- **Email Notifications**: Organization and team admins will receive email notifications when auto-upgrades occur

@@ -56,6 +56,10 @@ To edit an existing Cloud Data Plane:
 
 ## Upgrade Cloud Data Planes
 
+There are two ways to upgrade a Control Plane.
+
+### Manual Upgrade
+
 To upgrade an existing Cloud Data Plane:
 
 1. Go to the **Cloud Data Plane settings** using the _Edit Cloud Data Planes_ instructions and scroll down to the **Version** section.
@@ -75,3 +79,6 @@ To upgrade an existing Cloud Data Plane:
 
 {{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deployed notification" >}}
 
+### Auto Upgrade
+
+The Auto Upgrade feature is only available for Control Plane deployments. When enabled on a Control Plane, it will automatically upgrade the corresponding data planes related to this control plane. For more information, see the [Tyk Cloud Control Plane Auto Upgrade Documentation]({{< ref "tyk-cloud/environments-deployments/managing-control-planes" >}}).
