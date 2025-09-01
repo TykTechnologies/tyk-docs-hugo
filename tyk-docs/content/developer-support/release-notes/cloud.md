@@ -8,7 +8,8 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ## 1.30.0 Release Notes
 
-### Release Date 1 September 2025
+### Release Date 1st September 2025
+
 
 ### Release Highlights
 
