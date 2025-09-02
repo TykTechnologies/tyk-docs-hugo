@@ -6,7 +6,7 @@ info:
     url: https://tyk.io/contact
   description: |2
     <img src="https://tyk.io/docs/img/swagger_dashboard_image.png" width="963" height="250">
-    
+
     ## <a name="introduction"></a> Introduction
 
     The Tyk Dashboard API offers granular, programmatic access to a centralised database of resources that your Tyk nodes can pull from. This API has a dynamic user administrative structure which means the secret key that is used to communicate with your Tyk nodes can be kept secret and access to the wider management functions can be handled on a user-by-user and organisation-by-organisation basis.
@@ -39,7 +39,7 @@ info:
     name: Mozilla Public License Version 2.0
     url: https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md
   title: Tyk Dashboard API
-  version: 5.8.0
+  version: 5.9.0
 servers:
 - url: https://{tenant}
   variables:
@@ -102,8 +102,8 @@ tags:
     description: Additional Permissions full documentation.
     url: https://tyk.io/docs/tyk-dashboard-api/org/permissions/
   name: Additional Permissions
-- description: Get OAS schema.
-  name: Schema
+- description: Get schemas.
+  name: Schemas
 - description: |
     Webhooks are a great way to let external applications know about the status of a user, an API or an event that has occurred in the Tyk gateway <br/>
 
@@ -1622,7 +1622,7 @@ paths:
       operationId: proxyRequest
       description: |
         Forwards a request to a specified gateway endpoint. This endpoint allows you to send requests to other services through the Tyk gateway, which can be useful for testing or accessing protected resources.
-        
+
         The proxy will forward your request to the specified URL, including any headers and body data you provide. It then returns the response from the target service, including status code, headers, and body.
       tags:
         - Proxy
@@ -2149,10 +2149,10 @@ paths:
           required: true
           schema:
             type: string
-        - name: "Content-Type"
+        - name: "Accept"
           in: header
           required: true
-          description: "Content type for streams endpoints should be `application/vnd.tyk.streams.oas`"
+          description: "Accept type for streams endpoints should be `application/vnd.tyk.streams.oas`"
           schema:
             type: string
             enum: ["application/vnd.tyk.streams.oas"]
@@ -4731,6 +4731,23 @@ paths:
           enum:
           - detailed
           type: string
+      - description: |-
+          Defines the filtering strategy applied to certificate keys.
+          This query param works only in combination with detailed mode (mode=detailed).
+          omit – Includes all certificates; this is the default behavior.
+          with_pk – Returns only certificates that are associated with a private key.
+          without_pk – Returns only certificates that do not include a private key.
+        name: filter
+        example: omit
+        required: false
+        in: query
+        schema:
+          type: string
+          default: omit
+          enum:
+            - omit
+            - with_pk
+            - without_pk
       responses:
         "200":
           content:
@@ -7595,13 +7612,21 @@ paths:
       - Policies
   /api/schema:
     get:
-      description: Get OAS schema.
+      deprecated: true
+      description: Get API definition OAS schema.  An alias to `/api/schemas/apidefs/oas`.
       operationId: getSchema
       parameters:
       - description: The OAS version.
         example: 3.0.3
         in: query
         name: oasVersion
+        required: false
+        schema:
+          type: string
+      - description: Pretty print the result.
+        example: 'true'
+        in: query
+        name: pretty
         required: false
         schema:
           type: string
@@ -7636,15 +7661,185 @@ paths:
           content:
             application/json:
               example:
-                Message: Could not retrieve OAS schema. Schema not found for version.
+                Message: Could not retrieve schema. schema not found for version.
                 Meta: null
                 Status: Error
               schema:
                 $ref: '#/components/schemas/ApiResponse'
           description: Internal server error.
-      summary: Get OAS schema.
+      summary: Get API definition OAS schema.
       tags:
-      - Schema
+      - Schemas
+  /api/schemas/apidefs:
+    get:
+      description: Get all API definition schemas.
+      operationId: getAllApidefsSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllApidefSchemasResponse'
+          description: All API definition schemas response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get all API definition schemas.
+      tags:
+      - Schemas
+  /api/schemas/apidefs/oas:
+    get:
+      description: Get API definition OAS schema.
+      operationId: getApidefOASSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+        - description: Pretty print the result.
+          example: 'true'
+          in: query
+          name: pretty
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+          description: OAS schema response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs/oas'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get API definition OAS schema.
+      tags:
+      - Schemas
+  /api/schemas/apidefs/streams-oas:
+    get:
+      description: Get API definition Streams OAS schema.
+      operationId: getApidefStreamsOASSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+        - description: Pretty print the result.
+          example: 'true'
+          in: query
+          name: pretty
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+          description: OAS schema response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs/streams-oas'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get API definition Streams OAS schema.
+      tags:
+      - Schemas
   /api/sso:
     post:
       description: The Dashboard exposes the /api/sso Dashboard API which allows you
@@ -9189,8 +9384,8 @@ paths:
           required: false
           schema:
             type: integer
-        - description: | 
-            This parameter filters audit logs based on partially matching the accessed API endpoint's URL path. It allows searching for actions performed on related resources or sections of the API by matching any portion of the URL. The match is case-sensitive and ignores additional path segments or query parameters beyond the matched portion.  
+        - description: |
+            This parameter filters audit logs based on partially matching the accessed API endpoint's URL path. It allows searching for actions performed on related resources or sections of the API by matching any portion of the URL. The match is case-sensitive and ignores additional path segments or query parameters beyond the matched portion.
             For example, if the database contains URLs like `/tib/create`, `/tib/get/1?schema=json`,  `/api/schema`, and `/schema1` searching with `url=schema` would return  `/api/schema` and `/schema1`.
           example: /api/apis
           in: query
@@ -12170,6 +12365,18 @@ components:
           type: string
       type: object
       x-go-package: github.com/TykTechnologies/tyk/gateway
+    AllApidefSchemasResponse:
+      properties:
+        message:
+          type: string
+        schemas:
+          properties:
+            oas: {}
+            streamsOAS: {}
+        status:
+          type: string
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk-analytics/dashboard
     OAuthApps:
       properties:
         apps:

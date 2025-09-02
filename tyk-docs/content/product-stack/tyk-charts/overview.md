@@ -8,7 +8,7 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 
 ## Quick start guides
 - [Quick Start with Tyk OSS Chart]({{< ref "apim/open-source/installation#quick-start-with-helm-chart" >}})
-- [Quick Start with Tyk Data Plane Chart for Cloud Hybrid Gateways]({{< ref "tyk-cloud#deploy-hybrid-gateways" >}})
+- [Quick Start with Tyk Data Plane Chart for Cloud Hybrid Gateways]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}})
 - [Quick Start with Tyk Stack Chart and PostgreSQL]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-postgresql" >}})
 - [Quick Start with Tyk Stack Chart and MongoDB]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-mongodb" >}})
 
@@ -21,4 +21,4 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 | [tyk-data-plane]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}})        | Deploys Tyk data plane including Tyk Gateway and Pump. Data planes are managed by Tyk Dashboard and MDCB in control plane. |
 | [tyk-oss]({{< ref "product-stack/tyk-charts/tyk-oss-chart" >}})                      | Deploys Open source Tyk Gateway and Pump |
 
-Learn more about [Tyk Licensing and Deployment models]({{< ref "tyk-self-managed#tyk-self-managed-pricing" >}}).
+Learn more about [Tyk Licensing and Deployment models](https://tyk.io/pricing/).

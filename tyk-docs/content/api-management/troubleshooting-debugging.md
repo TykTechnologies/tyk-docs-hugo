@@ -65,7 +65,6 @@ aliases:
     - /troubleshooting/tyk-multi-cloud
     - /troubleshooting/tyk-pump
     - /tyk-rest-api/hot-reload
-    - /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
     - /frequently-asked-questions/add-custom-certificates-to-docker-images
     - /troubleshooting/tyk-on-premise/tyk-on-premise
     - /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
@@ -1220,37 +1219,6 @@ We also support limited customisation of the error codes and messages returned b
     **Reduce analytics record expiry time**
 
     Set `analytics_config.storage_expiration_time` to a low value e.g. `5` in the Gateway configuration file `tyk.conf`. This value  is the number of seconds beyond which analytics records will be deleted from the database. The value must be higher than the `purge_delay` set for the Pump. This will allow for analytics records to be discarded in the scenario that the system is becoming overwhelmed. Note that this results in analytics record loss, but will help prevent degraded system performance.
-
-7. ##### Tyk Pump Graceful Shutdown
-
-    From version 1.5.0, Tyk Pump has a new mechanism which is called Pump’s Graceful Shutdown.
-
-    **What does Pump’s Graceful Shutdown mean exactly?**
-
-    That means that now, when Tyk Pump gets stopped or restarts, it is going to wait until the current purge cycle finishes, determined by `purge_delay` configuration. It is also going to flush all the data of the pumps that have an inner buffer.
-
-    **Why are we doing that?**
-
-    We are adding this mechanism since we were losing data on Kubernetes environments or ephemeral containers, whenever a pump instance finishes. Now, with this change, we aren't going to lose analytics records anymore.
-
-    **When is it triggered?**
-
-    This is triggered when Tyk Pump catches one of the following signals from the OS:
-
-    - `os.Interrupt, syscall.SIGINT`
-    - `syscall.SIGTERM`
-
-    When the signal is `SIGKILL`, it will not gracefully stop its execution.
-
-    **What pumps are affected?**
-
-    The main affected pumps are:
-    - `ElasticSearch`
-    - `dogstatd`
-    - `Influx2`
-
-    As they all have some kind of in-memory buffering before sending the data to the storage. With this new mechanism, all those pumps are going to flush their data before finishing the Tyk Pump process.
-    Furthermore, in a certain way, this new feature affects all the rest of the pumps since Tyk Pump is now going to wait to finish the purge cycle per se, like the writing of the records in all the configured storages.
 
 ## Streams
 

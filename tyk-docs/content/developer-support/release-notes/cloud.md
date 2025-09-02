@@ -2,9 +2,106 @@
 title: Tyk Cloud Release Notes
 date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "1.29.0", "1.30.0", "changelog"]
 
 ---
+
+## 1.30.0 Release Notes
+
+### Release Date 1st September 2025
+
+
+### Release Highlights
+
+This release expands observability and upgrade management capabilities in Tyk Cloud. Teams can now export application logs to external log vendors, giving full flexibility in integrating with their preferred OpenTelemetry-compatible provider. Additionally, we’ve enhanced the auto-upgrade experience by providing detailed email notifications when the process begins.
+
+For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.30.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.30.0}
+
+#### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Export Application Logs to Observability Providers</summary>
+
+Cloud users can now export Tyk application logs to observability providers using OpenTelemetry (such as Datadog, New Relic, Elastic, and Dynatrace). This feature can be enabled or disabled per deployment, and logs are streamed in real time to the chosen provider, enabling better monitoring and faster troubleshooting.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Email Notifications for Auto-Upgrades</summary>
+
+Introduced automated email notifications to inform organisations and team admins when a Control Plane [auto-upgrade]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#auto-upgrade" >}}) begins. Notifications include key details such as deployment name and version changes, helping teams track upgrade activity more effectively.
+
+
+</details>
+</li>
+
+</ul>
+
+## 1.29.0 Release Notes
+
+### Release Date 15 July 2025
+
+### Release Highlights
+
+This release introduces Auto-Upgrades for Control Plane deployments, allowing teams to stay up to date with the latest features on a configurable schedule, with related Data Planes upgraded automatically. We’ve also improved SSO access control by assigning a default 'View Only' role to newly provisioned SSO users, thereby enhancing security and auditability.
+
+
+For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.29.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.29.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>New Role to Restrict Local Login for SSO Users</summary>
+
+Introduced a new “View Only” role to enhance access control for organizations using SSO. Now, SSO users are granted this read-only role by default. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Auto-Upgrade for Control Plane Deployments</summary>
+
+Users can now opt into automatic upgrades for Control Plane deployments and configure a weekly schedule to match their maintenance windows. This would also automatically upgrade the corresponding data planes related to this control plane to the latest available version in the channel.
+
+</details>
+</li> 
+
+</ul>
+
 ## 1.28.1 Release Notes
 
 ### Release Date 03 June 2025
@@ -564,7 +661,7 @@ This Tyk Cloud update introduces a groundbreaking feature for enhanced API obser
 
 This feature enables trace export capabilities, providing deep insights into API and plugin performance. It marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
 
-For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud#enabling-telemetry-in-tyk-cloud" >}}).
+For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud/telemetry" >}}).
 
 ### Breaking Changes
 
@@ -585,7 +682,7 @@ There are no deprecations in this release
 
 ### Release Highlights
 
-This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud#uploading-your-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
+This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
 
 For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0" >}}) below.
 
@@ -725,3 +822,6 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
+
+
