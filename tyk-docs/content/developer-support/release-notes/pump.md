@@ -22,6 +22,63 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.12 Release Notes
 
+### 1.12.1 Release Notes
+
+#### Release Date 18 August 2025
+
+#### Release Highlights
+
+This release improves log reliability in the Syslog Pump by ensuring that raw request and response data are no longer fragmented into multiple entries. Logs are now consolidated into a single entry per API request, making analysis easier while preserving compatibility with existing log parsers.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.1" >}}) below.
+
+#### Breaking Changes
+This release has no breaking changes
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.12.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.12.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.12.1](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.12.1)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.12.1
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.1)
+
+#### Changelog {#Changelog-v1.12.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Consolidated Syslog Log Entries</summary>
+
+Resolved an issue in the Syslog Pump where enabling `Decode Raw Request` and `Decode Raw Response` caused log entries to fragment into multiple messages due to unescaped newline characters. The fix ensures a single consolidated log entry by escaping newlines (\n) in raw request and response fields, maintaining backward compatibility with existing log parsers.
+
+</details>
+</li>
+
+</ul>
+
 ### 1.12.0 Release Notes
 
 #### Release Date 28 March 2025
@@ -39,7 +96,7 @@ This release removes support for SQLite in Pump, aligning with the broader remov
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -121,7 +178,7 @@ This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -187,7 +244,7 @@ This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -246,7 +303,7 @@ This release has no breaking changes.
 
 ##### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -307,7 +364,7 @@ This release has no breaking changes.
 
 #### 3rd Party Dependencies & Tools
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
@@ -637,10 +694,10 @@ From pump v1.8.1, the default MongoDB driver it uses is [mgo](https://github.com
 - GraphQL analytics records were being excluded from the _tyk_analytics_ collection for Mongo Pump. This has been fixed so that GraphQL analytic records are now included as expected.
 - Fixed MongoDB connection issue when using a password with URL escape characters (with mongo-go driver)
 - Fixed an issue in Prometheus pump when filtering fields , e.g. _API Name_, that contain `--` in their value. For example, `test--name`. Prometheus Pump filtered the field as two separate instances, e.g. `test` & `name`, instead of the expected `test--name`.
-- When [`omit_configfile`]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#omit_config_file" >}}) is set to `true`, Pump will not try to load the config file and spit out error logs
+- When [`omit_configfile`]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#omit_config_file" >}}) is set to `true`, Pump will not try to load the config file and spit out error logs
 
 ##### Updated
-- Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint. See [Pump configurations]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#pumpshybridmetarpcpoolsize" >}})
+- Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint. See [Pump configurations]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#pumpshybridmetarpcpoolsize" >}})
 - Import and use latest [storage library v1.0.5](https://github.com/TykTechnologies/storage/releases/tag/v1.0.5)
 - Updated default MongoDB driver to `mgo`. [Follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type)
 - Pump name is now case-insensitive. It will override two or more pumps with the same name but in different cases (e.g. _Mongo_ / _mongo_)

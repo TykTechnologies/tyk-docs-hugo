@@ -1,11 +1,13 @@
 ---
 title: API Repository
 date: 2025-04-28T15:49:11Z
-description: ""
-tags: ["Tyk Governance", "API Repository"]
+description: "Learn how Tyk Governance automatically discovers and catalogs APIs across multiple sources to create a comprehensive inventory of all APIs in your organization."
+tags: ["Tyk Governance", "API Repository", "API Discovery", "API Inventory"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
+## Availability
+
+- Version: Available since v0.1
 
 ## Overview
 
@@ -20,7 +22,7 @@ API Repository automatically discovers and catalogs APIs across multiple sources
 
 ### Dependencies
 
-- Requires the governance agent for API discovery from non-Tyk Cloud managed control planes and non-Tyk platforms.
+- Requires the governance agent for API discovery from non-Tyk Cloud-managed control planes and non-Tyk platforms.
 
 ## Quick Start
 
@@ -37,17 +39,17 @@ For detailed installation and configuration instructions, please refer to the [
 
 1. **Access the API Repository**
 
-	 Navigate to the API Repository section in your Tyk Governance Hub to view discovered APIs.
+     Navigate to the API Repository section in your Tyk Governance Hub to view discovered APIs.
 
 2. **Explore the API inventory**
 
-	 The dashboard provides a comprehensive view of all discovered APIs across your organization, with filtering and search capabilities.
+     The dashboard provides a comprehensive view of all discovered APIs across your organization, with filtering and search capabilities.
 
      {{< img src="img/governance/api-list.png" >}}
 
 3. **Examine API details**
 
-	 Click on any API to view detailed information including specifications, ownership, authentication methods, and governance status.
+     Click on any API to view detailed information, including specifications, ownership, authentication methods, and governance status.
 
      {{< img src="img/governance/api-details.png" >}}
 
@@ -77,7 +79,7 @@ Shadow APIs—those created outside official processes—pose security and gover
 
 ### Streamlining API Onboarding with Automated Discovery
 
-For organizations with many APIs, manual registration is time-consuming and error-prone. Automated discovery accelerates the onboarding process by automatically detecting new APIs and pre-populating their metadata, reducing the time to bring APIs under governance.
+For organizations with numerous APIs, manual registration is time-consuming and prone to errors. Automated discovery accelerates the onboarding process by automatically detecting new APIs and pre-populating their metadata, thereby reducing the time required to bring APIs under governance.
 
 ### Tracking API Changes for Compliance and Audit
 
@@ -91,23 +93,11 @@ Developers often recreate APIs because they're unaware of existing ones. A compl
 
 - **Configure all relevant API sources** to ensure complete coverage of your API landscape
 - **Implement a review process** for newly discovered APIs to ensure proper classification and ownership assignment
-- **Integrate discovery with your CI/CD pipeline** to automatically synchronize new APIs as they're deployed
+- **Integrate discovery with your CI/CD pipeline** to synchronize new APIs as they're deployed automatically
 - **Establish clear ownership** for each API to ensure accountability for governance and maintenance
 
 ## FAQs
-<!--
-<details> <summary><b>How does the system handle duplicate APIs discovered from different sources?</b></summary>
 
-The system uses a combination of API path, name, and other metadata to identify potential duplicates. These are flagged for review in the dashboard, allowing administrators to merge or manage them appropriately.
-
-</details> 
-
-<details> <summary><b>Can I customize the metadata extracted during discovery?</b></summary>
-
-Yes, the governance agent can be configured to extract additional custom metadata fields specific to your organization's needs.
-
-</details> 
--->
 <details> <summary><b>How secure is the API discovery process?</b></summary>
 
 The discovery process uses secure authentication methods for each provider and transmits data via encrypted channels. The agent requires minimal permissions—just enough to read API configurations.
@@ -116,7 +106,7 @@ The discovery process uses secure authentication methods for each provider and t
 
 <details> <summary><b>Will discovery impact the performance of my API gateways?</b></summary>
 
-The discovery process is designed to be lightweight and non-intrusive. It primarily reads configuration data rather than analyzing traffic, minimizing any performance impact.
+The discovery process is designed to be lightweight and non-intrusive, primarily reading configuration data rather than analyzing traffic, thereby minimizing any performance impact.
 
 </details>
 
@@ -145,3 +135,4 @@ The discovery process is designed to be lightweight and non-intrusive. It primar
 - Examine the agent logs for specific connection errors  
 
 </details>
+

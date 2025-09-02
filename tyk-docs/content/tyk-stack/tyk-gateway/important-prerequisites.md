@@ -1,6 +1,6 @@
 ---
 date: 2020-02-18T15:08:55Z
-Title: Useful Configurations when Getting started
+title: Useful Configurations when Getting started
 aliases:
   - /getting-started/tutorials/important-prerequisites/
 ---

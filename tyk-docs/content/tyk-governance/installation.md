@@ -1,8 +1,8 @@
 ---
 title: Installation and Setup
 date: 2025-04-28T15:49:11Z
-description: ""
-tags: ["Tyk Governance"]
+description: "Step-by-step instructions for installing and configuring Tyk Governance, including cloud-hosted options and deploying agents in your environment."
+tags: ["Tyk Governance", "Installation", "Configuration", "Agent Setup", "Deployment"]
 ---
 
 This section moves from concepts to hands-on implementation, providing the practical steps needed to start with Tyk Governance.
@@ -147,20 +147,20 @@ The installation process for Tyk Governance varies depending on whether you're a
 ### Requesting Access to Tyk Governance
 
 1. **Contact Tyk for Access**
-	- Reach out to your Tyk Account Manager or visit [tyk.io/contact-book-a-demo](https://tyk.io/contact-book-a-demo/)
-	- Specify that you're interested in access to Tyk Governance
-	- Provide information about your current API management environment
+    - Reach out to your Tyk Account Manager or visit [tyk.io/contact-book-a-demo](https://tyk.io/contact-book-a-demo/)
+    - Specify that you're interested in access to Tyk Governance
+    - Provide information about your current API management environment
 
 2. **Receive Access Credentials**
-	- After your request is processed, you'll receive an email with:
-		- URL to access the Tyk Governance Hub
-		- Admin credentials for initial login
-		- Instructions for next steps
+    - After your request is processed, you'll receive an email with:
+        - URL to access the Tyk Governance Hub
+        - Admin credentials for initial login
+        - Instructions for next steps
 
 3. **Initial Login**
-	- Navigate to the provided Governance hub URL
-	- Enter the admin credentials from the email
-	- You'll be prompted to change your password on first login
+    - Navigate to the provided Governance Hub URL
+    - Enter the admin credentials from the email
+    - You'll be prompted to change your password on first login
 
 ### Enabling Governance Feature for Cloud Control Planes
 
@@ -188,61 +188,95 @@ For existing Tyk Cloud managed control planes, enabling governance is straightfo
 For environments where you need to install agents manually (non-Tyk platforms or on-premises deployments), follow these steps:
 
 **Prerequisites for Agent Installation:**
-- Access to the Governance hub to generate agent tokens
-- Network connectivity between the agent and both the Governance hub and your API provider
+- Access to the Governance Hub to generate agent tokens
+- Network connectivity between the agent and both the Governance Hub and your API provider
 - Docker or Kubernetes for container-based deployment (recommended)
 
-#### Generate Agent Token
+#### Generate Agent Token from Governance Hub UI
 
-Since the UI for generating agent tokens is unavailable, you'll need to use the API to create a token. After receiving your Governance hub credentials, follow these steps:
+1. From the Agents page, click the **New agent** button in the top-right corner.
+
+  {{< img src="img/governance/agents-list.png" >}}
+
+2. In the New agent form, enter:
+
+   - **Name**: A descriptive name for the agent (required)
+   - **Description**: Details about the agent's purpose or location (required)
+
+   Click **Create agent** to save the new agent.
+
+    {{< img src="img/governance/agents-new-1.png" >}}
+
+3. Click "Generate new access token"
+   
+    {{< img src="img/governance/agents-new-2.png" >}}
+
+4. Use the copy icon to copy the token to your clipboard
+
+    {{< img src="img/governance/agents-new-3.png" >}}
+
+    {{< img src="img/governance/agents-new-4.png" >}}
+
+#### Generate Agent Token using API
+
+You can also use API to create a token. After receiving your Governance Hub credentials, follow these steps:
 
 1. **Obtain an API Key**:
-	 - Log in to the Governance hub using the credentials provided in your welcome email
+	 - Log in to the Governance Hub using the credentials provided in your welcome email
 	 - Check your Access key under the "Settings > User Profile" section
 
      {{< img src="img/governance/user-profile.png" >}}
 
 2. **Create an Agent using the API**:
 
-```bash
-# Replace these values with your actual information
-GOVERNANCE_URL="https://your-governance-instance.tyk.io"
-API_KEY="your-access-key"
-AGENT_NAME="My AWS Agent (US)"
+    ```bash
+    # Replace these values with your actual information
+    GOVERNANCE_URL="https://your-governance-instance.tyk.io"
+    API_KEY="your-access-key"
+    AGENT_NAME="My AWS Agent (US)"
 
-# Create agent first
-curl -s -X POST --location "${GOVERNANCE_URL}/api/agents/" \
-  -H "X-API-Key: ${API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "'"${AGENT_NAME}"'"
-  }'
-```
+    # Create agent first
+    curl -s -X POST --location "${GOVERNANCE_URL}/api/agents/" \
+      -H "X-API-Key: ${API_KEY}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "name": "'"${AGENT_NAME}"'"
+      }'
+    ```
 
-Example response which shows that an agent is created in INACTIVE state:
+    Example response that shows an agent is created in INACTIVE state:
 
-```json
-{"id":"a51d9bd0-bafe-4749-8285-e18641b151f2","name":"My AWS agent (US)","last_heartbeat":"0001-01-01T00:00:00Z","status":"INACTIVE","providers":null}
-```
+    ```json
+    {
+      "id": "a51d9bd0-bafe-4749-8285-e18641b151f2",
+      "name": "My AWS agent (US)",
+      "description": "",
+      "last_heartbeat": "0001-01-01T00:00:00Z",
+      "status": "inactive",
+      "providers": null,
+      "token": "",
+      "version": ""
+    }
+    ```
 
-```bash
-# Extract agent ID from response
-AGENT_ID="a51d9bd0-bafe-4749-8285-e18641b151f2"
-```
+    ```bash
+    # Extract agent ID from response
+    AGENT_ID="a51d9bd0-bafe-4749-8285-e18641b151f2"
+    ```
 
 3. **Generate an Agent Token using the API**:
 
-Now you can generate an access token for the agent.
+    Now you can generate an access token for the agent.
 
-```bash
-# API call to create an agent token
-curl -X POST "${GOVERNANCE_URL}/api/auth/token/" \
-  -H "X-API-Key: ${API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "agent_id": "'"${AGENT_ID}"'"
-  }'
-```
+    ```bash
+    # API call to create an agent token
+    curl -X POST "${GOVERNANCE_URL}/api/auth/token/" \
+      -H "X-API-Key: ${API_KEY}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "agent_id": "'"${AGENT_ID}"'"
+      }'
+    ```
 
     Example response:
 
@@ -269,15 +303,15 @@ Create a configuration file named `agent-config.yaml` with the following structu
 
 # Your Tyk Governance license key - required for agent authentication
 # This is provided by Tyk when you subscribe to the Governance service
-licenseKey: "your-tyk-governace-license-key"
+licenseKey: "your-tyk-governance-license-key"
 
 # Configuration for connecting to the Tyk Governance dashboard/service
 governanceDashboard:
   server:
     # The gRPC endpoint URL of the Tyk Governance service
     # Format: hostname:port (without protocol)
-    # This will be provided in your welcome email from Tyk
-    url: "your-governance-instance.tyk.io:50051"
+    # This is in the format of prefixing "grpc-" to your Governance Hub URL.
+    url: "grpc-your-governance-instance.tyk.io:443"
   
   auth:
     # Authentication token for this agent
@@ -345,11 +379,13 @@ healthProbe:
 
 #### Deploy the Agent
 
-  **Docker Deployment:**
+**Docker Deployment:**
 
 ```bash
 # Replace it with your Tyk Governance license key
 LICENSE_KEY="tyk-governance-license-key"
+
+# Replace with an available version tag
 VERSION="latest"
 
 docker run -d --name tyk-governance-agent \
@@ -358,7 +394,7 @@ docker run -d --name tyk-governance-agent \
   tykio/governance-agent:$VERSION
 ```
 
-  **Kubernetes Deployment:**
+**Kubernetes Deployment:**
 
 1. Create a Kubernetes secret for the configuration:
 
@@ -415,7 +451,6 @@ spec:
           items:
           - key: config.yaml
             path: config.yaml
-
 ```
 
 Apply with:
@@ -438,22 +473,22 @@ kubectl apply -f agent-deployment.yaml
 
  2. Look for log messages indicating a successful connection:
 
-```
-Starting license validation... 
-License validated successfully. Valid till: ...
-starting agent
-agent started successfully
-waiting agent to establish health check
-starting health probes HTTP server","addr":":5959
-authenticated and established health stream
-health check established, waiting for sync stream
-agent registered successfully and established sync stream with governance dashboard
-waiting for sync requests from the dashboard
-```
+    ```
+    Starting license validation... 
+    License validated successfully. Valid till: ...
+    starting agent
+    agent started successfully
+    waiting agent to establish health check
+    starting health probes HTTP server","addr":":5959
+    authenticated and established health stream
+    health check established, waiting for sync stream
+    agent registered successfully and established sync stream with governance dashboard
+    waiting for sync requests from the dashboard
+    ```
 
-####  Trigger Initial Sync
+#### Trigger Initial Sync
 
-1. In the Governance hub, navigate to "API Repository"
+1. In the Governance Hub, navigate to "API Repository"
 2. Click the "ReSync" button to initiate synchronisation
 
 {{< img src="img/governance/sync-repository.png" >}}

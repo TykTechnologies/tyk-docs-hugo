@@ -126,22 +126,7 @@ SSL certificates used by your MDCB server. A list of certificate IDs or path to 
 ENV: <b>TYK_MDCB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS](https://tyk.io/docs/api-management/client-authentication/#use-mutual-tls) for more details.
-
-### security.enable_http_secure_endpoints
-ENV: <b>TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS</b><br />
-Type: `bool`<br />
-
-`EnableHTTPSecureEndpoints` controls the availability of HTTP endpoints for monitoring and debugging MDCB. These endpoints provide critical system information and are disabled by default for security reasons. Access to these endpoints requires a secret, defined in the `security.secret` configuration field.
-Available endpoints include:
-- /dataplanes - Provides information about the dataplanes connected to MDCB.
-- /config - Provides information about the current settings of the MDCB instance in JSON format
-
-### security.secret
-ENV: <b>TYK_MDCB_SECURITY_SECRET</b><br />
-Type: `string`<br />
-
-Secret is the secret key required for authenticating access to the secure HTTP endpoints. This secret should be provided as the `X-Tyk-Authorization` header in requests to these endpoints. Tyk assumes that you are sensible enough not to expose the management endpoints publicly and to keep this configuration value to yourself.
+Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for more details.
 
 ### storage
 This section describes your centralised Redis DB. This will act as your main key store for all of your clusters.
@@ -297,7 +282,7 @@ configuration of the store of analytics
 ENV: <b>TYK_MDCB_ANALYTICSCONFIG_TYPE</b><br />
 Type: `DBType`<br />
 
-Determines the storage type. It could be `mongo`, `postgres` or `sqlite`. By default, the value is `mongo`.
+Determines the storage type. It could be `mongo` or `postgres`. By default, the value is `mongo`.
 
 ### analytics.connection_string
 ENV: <b>TYK_MDCB_ANALYTICSCONFIG_CONNECTIONSTRING</b><br />
@@ -502,7 +487,7 @@ Type: `int`<br />
 ENV: <b>TYK_MDCB_OMITANALYTICSINDEXCREATION</b><br />
 Type: `bool`<br />
 
-Set to true to disable the Mongo storages default index creation. More detailed behavior explained [here](https://tyk.io/docs/api-management/tyk-pump/#omitting-indexes).
+Set to true to disable the Mongo storages default index creation. More detailed behavior explained at https://tyk.io/docs/tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config/#omitting-indexes.
 
 ### enable_separate_analytics_store
 ENV: <b>TYK_MDCB_ENABLESEPERATEANALYTICSSTORE</b><br />
@@ -719,7 +704,14 @@ Specifies the group key TTL in seconds. This key is used to prevent a group of g
 ENV: <b>TYK_MDCB_ENABLEOWNERSHIP</b><br />
 Type: `bool`<br />
 
-Enables [API Ownership](https://tyk.io/docs/api-management/user-management/#api-ownership) in MDCB. It allows the gateways in the data plane cluster to load only APIs that are accessible by the user and user group associated with the `slave_options.api_key` that is used to connect to MDCB (defined in `tyk.config` of the gateway).
+Enables [API Ownership]({{< ref "tyk-dashboard/rbac#enabling-api-ownership" >}}) in MDCB. It allows the gateways in the data plane cluster to load only APIs that are accessible by the user and user group associated with the `slave_options.api_key` that is used to connect to MDCB (defined in `tyk.config` of the gateway).
 This will be enforced if `enable_ownership` is also enabled in the Dashboard and your API definition has been associated with a user or user_group
+Defaults to `false`.
+
+### escape_dots_in_oas_paths
+ENV: <b>TYK_MDCB_ESCAPEDOTSINOASPATHS</b><br />
+Type: `bool`<br />
+
+When enabled, dots in OAS field names will be escaped (to \\u002e ) and unescaped when required for compatibility with specific databases.
 Defaults to `false`.
 

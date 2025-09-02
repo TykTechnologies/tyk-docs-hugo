@@ -15,12 +15,12 @@ In order to specify a loop, in the target URL you specify a string in the protoc
 
 This syntax of `tyk` in the schema protocol and `self` in the domian will loop the request to another endpoint under the current api:
 ```
-tyk://self/<path>. 
+tyk://self/<path>
 ```
 
 You can also loop to another API as by specifying the API name or id (instead of `self`): 
 ```
-tyk://<API_ID>/<path>.
+tyk://<API_ID>/<path>
 ```
 
 Combined with our advanced URL rewriter rules, it can be turned into a powerful logical block, replacing the need for writing middleware or virtual endpoints in many cases.

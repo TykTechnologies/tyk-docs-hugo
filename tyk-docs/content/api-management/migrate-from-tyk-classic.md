@@ -1,5 +1,5 @@
 ---
-title: "Migrating from Tyk Classic"
+title: "Migrating from Tyk Classic APIs"
 date: 2025-02-10
 tags: ["Tyk OAS API", "Tyk Classic API", "Migrate", "Convert", "Migration", "Tyk Classic", "Tyk OAS", "API definition"]
 keywords: ["Tyk OAS API", "Tyk Classic API", "Migrate", "Convert", "Migration", "Tyk Classic", "Tyk OAS", "API definition"]
@@ -8,7 +8,7 @@ description: "API Migration: Converting Tyk Classic APIs to Tyk OAS Format"
 
 ## Overview
 
-From Tyk 5.8.0, you can convert your existing [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic.md" >}}) to the recommended [Tyk OAS API]({{< ref "api-management/gateway-config-tyk-oas" >}}) format.
+From Tyk 5.8.0, you can convert your existing [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic" >}}) to the recommended [Tyk OAS API]({{< ref "api-management/gateway-config-tyk-oas" >}}) format.
 
 The API Migration feature provides a powerful way to convert your existing Tyk Classic API definitions to the newer Tyk OAS format with various options to ensure a smooth transition. We've built support into the Tyk Dashboard's [API Designer]({{< ref "api-management/migrate-from-tyk-classic#using-the-api-designer" >}}) to convert individual Tyk Classic APIs one by one. The Tyk Dashboard API [migrate endpoint]({{< ref "api-management/migrate-from-tyk-classic#using-the-migration-api" >}}) allows you to migrate individual APIs or perform bulk migrations.
 

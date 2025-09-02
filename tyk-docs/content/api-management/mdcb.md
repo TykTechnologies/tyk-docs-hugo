@@ -214,11 +214,11 @@ The MDCB component will however, by default, expose an RPC service on port 9091,
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your Controller DC:
 
-* MongoDB or SQL (check [supported versions]({{< ref "tyk-self-managed#database-management" >}}))
-* Redis (check [supported versions]({{< ref "tyk-self-managed#redis-1" >}}))
+* MongoDB or SQL (check [supported versions]({{< ref "planning-for-production/database-settings" >}}))
+* Redis (check [supported versions]({{< ref "tyk-self-managed/install#redis" >}}))
 * Tyk Dashboard
 * Tyk Gateway / Gateways Cluster
-* Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
+* Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed/install" >}})
 
 {{< note success >}}
 **Note**  
@@ -317,7 +317,7 @@ To access the comprehensive installation instructions and configuration options,
     {{< note >}}
 **Note**
 
-Ensure that you are installing Redis versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}) that are compatible with Tyk.
+Ensure that you are installing Redis versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}) that are compatible with Tyk.
     {{< /note >}}
 
 3. **Install PostgreSQL (if you don't already have PostgreSQL installed)**
@@ -415,7 +415,7 @@ If you install MDCB component with package, modify your `/opt/tyk-sink/tyk_sink.
 {{< note success >}}
 **Note**  
 
-From MDCB 2.0+, you can choose between Mongo or SQL databases to setup your `analytics` storage. In order to setup your PostgreSQL storage, you can use the same configuration from your [Tyk Dashboard main storage]({{< ref "tyk-self-managed#postgresql" >}}).
+From MDCB 2.0+, you can choose between Mongo or SQL databases to setup your `analytics` storage. In order to setup your PostgreSQL storage, you can use the same configuration from your [Tyk Dashboard main storage]({{< ref "planning-for-production/database-settings#postgresql" >}}).
 
 For example, to set up a `postgres` storage the `analytics` configurations would be:
 
@@ -559,7 +559,7 @@ To make things easier, we will first set a few [environment variables]({{< ref "
 
 1. `export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
 
-You can find <YOUR_ADMIN_SECRET> in `tyk_analytics.conf` file under `admin_secret` field or `TYK_DB_ADMINSECRET` environment variable.
+You can find `<YOUR_ADMIN_SECRET>` in `tyk_analytics.conf` file under `admin_secret` field or `TYK_DB_ADMINSECRET` environment variable.
 
 2. `export DASH_URL=<YOUR_DASH_URL>`
 
@@ -636,7 +636,7 @@ Your Data Plane can be in the same physical data center as the Control Plane wit
 
 ### Installing in a Kubernetes Cluster with our Helm Chart
 
-The [Tyk Data Plane]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}) helm chart is pre-configured to install Tyk Gateway and Tyk Pump that connects to MDCB or Tyk Cloud, our SaaS MDCB Control Plane. After setting up Tyk Control Plane with Helm Chart, obtain the required connection details from installation output and configure data plane chart as below. For Tyk Cloud users, following [Tyk Cloud instructions]({{< ref "tyk-cloud#deploy-hybrid-gateways" >}}) to deploy your hybrid gateways.
+The [Tyk Data Plane]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}) helm chart is pre-configured to install Tyk Gateway and Tyk Pump that connects to MDCB or Tyk Cloud, our SaaS MDCB Control Plane. After setting up Tyk Control Plane with Helm Chart, obtain the required connection details from installation output and configure data plane chart as below. For Tyk Cloud users, following [Tyk Cloud instructions]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}) to deploy your hybrid gateways.
 
 #### Prerequisites
 

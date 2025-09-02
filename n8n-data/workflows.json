@@ -1,0 +1,1430 @@
+[
+    {
+        "createdAt": "2025-07-17T13:55:50.287Z",
+        "updatedAt": "2025-08-03T12:41:20.000Z",
+        "id": "4mng9TxZXz8NIJvK",
+        "name": "Release Notes",
+        "active": false,
+        "isArchived": false,
+        "nodes": [
+            {
+                "parameters": {
+                    "operation": "get",
+                    "issueKey": "={{ $json.key }}",
+                    "additionalFields": {}
+                },
+                "type": "n8n-nodes-base.jira",
+                "typeVersion": 1,
+                "position": [
+                    416,
+                    0
+                ],
+                "id": "29b5089a-6064-4820-a34b-2d78f547b543",
+                "name": "Get an issue",
+                "credentials": {
+                    "jiraSoftwareCloudApi": {
+                        "id": "Q6ORmeXN0w4qtf2u",
+                        "name": "Jira SW Cloud account"
+                    }
+                }
+            },
+            {
+                "parameters": {
+                    "promptType": "define",
+                    "text": "=Given the following Jira issue information:  \nTitle: {{ $json.jiraTitle }}  \nDescription: {{ $json.jiraDescription }}\nComponents: {{ $json.jiraComponents }}\nVersions: {{ $json.jiraVersions }}\n\nGenerate a release note with five fields:  \n- \"title\": a concise release note title  \n- \"summary\": a short summary of the change  \n- \"components\": a list of components affected by the change \n- \"versions\": a list of versions affected by the change \n- \"type\": one of the following values based on the description content:  \n  - \"Added\" (for new features or additions)  \n  - \"Changed\" (for modifications or improvements)  \n  - \"Fixed\" (for bug fixes)  \n  - \"Security Fixes\" (if the ticket is about security issues or CVE fixes)  \n\nOutput only valid JSON in this format:  \n{\n  \"title\": \"...\",\n  \"summary\": \"...\",\n  \"components\": [\"...\"],\n  \"versions\": [\"...\"],\n  \"type\": \"...\" // one of \"Added\", \"Changed\", \"Fixed\", \"Security Fixes\"\n}\n\nDo not include any code blocks, markdown, or any other text. Output ONLY the JSON object, not wrapped in triple backticks, not labeled as json, and not inside an array. If you are processing multiple issues, output a JSON array with each object in the format above, and nothing else.",
+                    "batching": {}
+                },
+                "type": "@n8n/n8n-nodes-langchain.chainLlm",
+                "typeVersion": 1.7,
+                "position": [
+                    1088,
+                    0
+                ],
+                "id": "cb3ee7e5-5434-4ce3-b084-72198ea8334c",
+                "name": "Basic LLM Chain"
+            },
+            {
+                "parameters": {
+                    "options": {}
+                },
+                "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+                "typeVersion": 1,
+                "position": [
+                    1184,
+                    224
+                ],
+                "id": "72f0d65e-130b-4292-a4ed-878dc9ab2561",
+                "name": "Google Gemini Chat Model",
+                "credentials": {
+                    "googlePalmApi": {
+                        "id": "Kgg1WQ8gFsxvWLWz",
+                        "name": "Google Gemini(PaLM) Api account"
+                    }
+                }
+            },
+            {
+                "parameters": {
+                    "jsCode": "function extractJson(text) {\n  // Remove code block formatting if present\n  let cleaned = text.trim();\n  if (cleaned.startsWith(\"```json\")) {\n    cleaned = cleaned.replace(/^```json/, '').replace(/```$/, '').trim();\n  } else if (cleaned.startsWith(\"```\")) {\n    cleaned = cleaned.replace(/^```/, '').replace(/```$/, '').trim();\n  }\n  return JSON.parse(cleaned);\n}\n\nconst results = [];\n\nfor (const item of $input.all()) {\n  const parsed = extractJson(item.json.text);\n  results.push({ json: parsed });\n}\n\nreturn results;"
+                },
+                "type": "n8n-nodes-base.code",
+                "typeVersion": 2,
+                "position": [
+                    1488,
+                    0
+                ],
+                "id": "d6a1ba59-3db0-41c5-b6b9-debd744e2ecf",
+                "name": "Parse JSON"
+            },
+            {
+                "parameters": {
+                    "jsCode": "// Group changelog items by type\nconst groups = {\n  Added: [],\n  Changed: [],\n  Fixed: [],\n  \"Security Fixes\": []\n};\n\nfor (const item of items.map(i => i.json)) {\n  if (groups[item.type]) {\n    groups[item.type].push(item);\n  }\n}\n\n// Helper to generate HTML list for each type\nfunction buildList(items) {\n  if (!items.length) return \"\";\n  return `<ul>\\n${items.map(item => \n    `<li>\\n<details>\\n<summary>${item.title}</summary>\\n\\n${item.summary}\\n</details>\\n</li>`\n  ).join('\\n')}\\n</ul>`;\n}\n\nlet output = \"#### Changelog {#Changelog-vX.Y.Z}\\n\\n\";\n\noutput += \"##### Added\\n\\n\";\noutput += buildList(groups.Added) || \"<ul></ul>\\n\\n\";\n\noutput += \"##### Changed\\n\\n\";\noutput += buildList(groups.Changed) || \"<ul></ul>\\n\\n\";\n\noutput += \"##### Fixed\\n\\n\";\noutput += buildList(groups.Fixed) || \"<ul></ul>\\n\\n\";\n\noutput += \"##### Security Fixes\\n\\n\";\noutput += buildList(groups[\"Security Fixes\"]) || \"-\\n\\n\";\n\n// Return as one markdown string\nreturn [{ json: { changelog: output } }];"
+                },
+                "type": "n8n-nodes-base.code",
+                "typeVersion": 2,
+                "position": [
+                    1712,
+                    0
+                ],
+                "id": "1a4207a5-b730-441c-80f7-707e4cf8b808",
+                "name": "Generate Change Log"
+            },
+            {
+                "parameters": {
+                    "url": "https://tyktech.atlassian.net/rest/api/2/search/jql",
+                    "authentication": "predefinedCredentialType",
+                    "nodeCredentialType": "jiraSoftwareCloudApi",
+                    "sendQuery": true,
+                    "queryParameters": {
+                        "parameters": [
+                            {
+                                "name": "jql",
+                                "value": "=fixVersion = \"{{ $json.name }}\""
+                            },
+                            {
+                                "name": "maxResults",
+                                "value": "500"
+                            },
+                            {
+                                "name": "fields",
+                                "value": "key"
+                            }
+                        ]
+                    },
+                    "options": {
+                        "redirect": {
+                            "redirect": {}
+                        }
+                    }
+                },
+                "type": "n8n-nodes-base.httpRequest",
+                "typeVersion": 4.2,
+                "position": [
+                    -32,
+                    0
+                ],
+                "id": "3b6b5bfb-fbe5-4e3a-a094-05fc1623ff99",
+                "name": "Get Jira Issues of a Version",
+                "credentials": {
+                    "jiraSoftwareCloudApi": {
+                        "id": "Q6ORmeXN0w4qtf2u",
+                        "name": "Jira SW Cloud account"
+                    }
+                }
+            },
+            {
+                "parameters": {
+                    "jsCode": "const output = [];\n\nfor (const item of $input.all()) {\n  if (Array.isArray(item.json.issues)) {\n    for (const issue of item.json.issues) {\n      output.push({ json: { key: issue.key } });\n    }\n  }\n}\n\nreturn output;\n"
+                },
+                "type": "n8n-nodes-base.code",
+                "typeVersion": 2,
+                "position": [
+                    192,
+                    0
+                ],
+                "id": "fcebaa40-c20e-496d-90c6-21acfb15d7e6",
+                "name": "Code"
+            },
+            {
+                "parameters": {
+                    "url": "=https://tyktech.atlassian.net/rest/api/2/version/{{ $json.data[0].version }}",
+                    "authentication": "predefinedCredentialType",
+                    "nodeCredentialType": "jiraSoftwareCloudApi",
+                    "options": {}
+                },
+                "type": "n8n-nodes-base.httpRequest",
+                "typeVersion": 4.2,
+                "position": [
+                    -256,
+                    0
+                ],
+                "id": "dd666d04-5e86-4139-8f14-b9748c6c7759",
+                "name": "Check Version",
+                "credentials": {
+                    "jiraSoftwareCloudApi": {
+                        "id": "Q6ORmeXN0w4qtf2u",
+                        "name": "Jira SW Cloud account"
+                    }
+                }
+            },
+            {
+                "parameters": {
+                    "operation": "write",
+                    "fileName": "/data/changelog.md",
+                    "options": {}
+                },
+                "type": "n8n-nodes-base.readWriteFile",
+                "typeVersion": 1,
+                "position": [
+                    2160,
+                    0
+                ],
+                "id": "d5cd00f8-b6c0-43a0-b7e9-b36c70075bab",
+                "name": "Read/Write Files from Disk"
+            },
+            {
+                "parameters": {
+                    "fileSelector": "/data/input.json",
+                    "options": {}
+                },
+                "type": "n8n-nodes-base.readWriteFile",
+                "typeVersion": 1,
+                "position": [
+                    -704,
+                    0
+                ],
+                "id": "363a6839-4668-46c7-9bdc-7ff7b8aa6f7f",
+                "name": "Read/Write Files from Disk1"
+            },
+            {
+                "parameters": {
+                    "operation": "fromJson",
+                    "options": {}
+                },
+                "type": "n8n-nodes-base.extractFromFile",
+                "typeVersion": 1,
+                "position": [
+                    -480,
+                    0
+                ],
+                "id": "e496beab-72a4-4874-8cb8-a3b15e576267",
+                "name": "Extract from File"
+            },
+            {
+                "parameters": {},
+                "type": "n8n-nodes-base.manualTrigger",
+                "typeVersion": 1,
+                "position": [
+                    -928,
+                    0
+                ],
+                "id": "77153f80-ea18-47b9-8f07-4a90e829e2d9",
+                "name": "When clicking ‘Execute workflow’"
+            },
+            {
+                "parameters": {
+                    "operation": "toText",
+                    "sourceProperty": "changelog",
+                    "options": {}
+                },
+                "type": "n8n-nodes-base.convertToFile",
+                "typeVersion": 1.1,
+                "position": [
+                    1936,
+                    0
+                ],
+                "id": "3a841601-1e04-49d6-a701-ccfe9b5beb88",
+                "name": "Convert to File"
+            },
+            {
+                "parameters": {
+                    "assignments": {
+                        "assignments": [
+                            {
+                                "id": "55afedd3-15b1-4bc6-b7c9-fa55c9936a5b",
+                                "name": "jiraID",
+                                "value": "={{ $json.key }}",
+                                "type": "string"
+                            },
+                            {
+                                "id": "71c25d0d-9af4-4807-9a35-81aa09543cfb",
+                                "name": "jiraTitle",
+                                "value": "={{ $json.fields.summary }}",
+                                "type": "string"
+                            },
+                            {
+                                "id": "e130e76a-42c4-4a5e-92dd-19a41c3a466c",
+                                "name": "jiraDescription",
+                                "value": "={{ $json.fields.description }}",
+                                "type": "string"
+                            },
+                            {
+                                "id": "19c1a5c1-9a5a-4ac2-8616-1fcb7c623ff9",
+                                "name": "jiraComponents",
+                                "value": "={{ $json.fields.components.map(c => c.name) }}",
+                                "type": "array"
+                            },
+                            {
+                                "id": "2d9bd0ab-1154-414c-890c-81c3dbade44a",
+                                "name": "jiraVersions",
+                                "value": "={{ $json.fields.versions.map(c => c.name) }}",
+                                "type": "array"
+                            },
+                            {
+                                "id": "0a6e257c-e8cf-4048-bdab-3c13a33cfdfd",
+                                "name": "includeInChangeLog",
+                                "value": "={{ $json.fields.customfield_10335?.value || \"No\" }}",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "options": {}
+                },
+                "type": "n8n-nodes-base.set",
+                "typeVersion": 3.4,
+                "position": [
+                    640,
+                    0
+                ],
+                "id": "90115cac-b6c3-4888-9f03-349ad581b62d",
+                "name": "Extract Specific Fields"
+            },
+            {
+                "parameters": {
+                    "conditions": {
+                        "options": {
+                            "caseSensitive": true,
+                            "leftValue": "",
+                            "typeValidation": "strict",
+                            "version": 2
+                        },
+                        "conditions": [
+                            {
+                                "id": "036a7b93-1ecb-4962-a8f2-b5ff40fe82fb",
+                                "leftValue": "={{ $json.includeInChangeLog }}",
+                                "rightValue": "Yes",
+                                "operator": {
+                                    "type": "string",
+                                    "operation": "equals",
+                                    "name": "filter.operator.equals"
+                                }
+                            }
+                        ],
+                        "combinator": "and"
+                    },
+                    "options": {}
+                },
+                "type": "n8n-nodes-base.filter",
+                "typeVersion": 2.2,
+                "position": [
+                    864,
+                    0
+                ],
+                "id": "7b74138c-9a9e-45b5-963a-91bb845e42be",
+                "name": "Select Included In ChangeLog"
+            }
+        ],
+        "connections": {
+            "Get an issue": {
+                "main": [
+                    [
+                        {
+                            "node": "Extract Specific Fields",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Google Gemini Chat Model": {
+                "ai_languageModel": [
+                    [
+                        {
+                            "node": "Basic LLM Chain",
+                            "type": "ai_languageModel",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Basic LLM Chain": {
+                "main": [
+                    [
+                        {
+                            "node": "Parse JSON",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Parse JSON": {
+                "main": [
+                    [
+                        {
+                            "node": "Generate Change Log",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Generate Change Log": {
+                "main": [
+                    [
+                        {
+                            "node": "Convert to File",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Get Jira Issues of a Version": {
+                "main": [
+                    [
+                        {
+                            "node": "Code",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Code": {
+                "main": [
+                    [
+                        {
+                            "node": "Get an issue",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Check Version": {
+                "main": [
+                    [
+                        {
+                            "node": "Get Jira Issues of a Version",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Read/Write Files from Disk1": {
+                "main": [
+                    [
+                        {
+                            "node": "Extract from File",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Extract from File": {
+                "main": [
+                    [
+                        {
+                            "node": "Check Version",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "When clicking ‘Execute workflow’": {
+                "main": [
+                    [
+                        {
+                            "node": "Read/Write Files from Disk1",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Read/Write Files from Disk": {
+                "main": [
+                    []
+                ]
+            },
+            "Convert to File": {
+                "main": [
+                    [
+                        {
+                            "node": "Read/Write Files from Disk",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Extract Specific Fields": {
+                "main": [
+                    [
+                        {
+                            "node": "Select Included In ChangeLog",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Select Included In ChangeLog": {
+                "main": [
+                    [
+                        {
+                            "node": "Basic LLM Chain",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            }
+        },
+        "settings": {
+            "executionOrder": "v1"
+        },
+        "staticData": null,
+        "meta": {
+            "templateCredsSetupCompleted": true
+        },
+        "pinData": {},
+        "versionId": "8c989a5a-9dda-4349-88ee-e03d9fa4fdc5",
+        "triggerCount": 0,
+        "tags": []
+    },
+    {
+        "createdAt": "2025-07-24T07:25:27.237Z",
+        "updatedAt": "2025-07-31T05:16:53.000Z",
+        "id": "4tjM6o6FoR63TyfS",
+        "name": "Review PRs",
+        "active": false,
+        "isArchived": false,
+        "nodes": [
+            {
+                "parameters": {},
+                "type": "n8n-nodes-base.manualTrigger",
+                "typeVersion": 1,
+                "position": [
+                    0,
+                    0
+                ],
+                "id": "18e03c82-91f7-48ea-a8a5-2876054655a5",
+                "name": "When clicking ‘Execute workflow’"
+            },
+            {
+                "parameters": {
+                    "promptType": "define",
+                    "text": "=**🔧 System Prompt: Configuration Documentation Rewriter**\n\nYou are a technical documentation assistant specialized in rewriting configuration guides for software products.\n\nYour goal is to produce documentation that is:\n\n* **Clear**: Use concise, straightforward language without unnecessary jargon.\n* **Direct**: Use active voice and imperative mood to guide the user (e.g., “Set this option to true.”).\n* **Supportive**: Anticipate common questions or issues and provide reassurance or guidance.\n* **Structured**: Organize content logically—start with a brief introduction, followed by step-by-step instructions, optional configurations, and troubleshooting notes if needed.\n\n### Tone Guidelines:\n\n* Use **second-person** point of view when appropriate (e.g., “You can configure...”).\n* Avoid overly casual or overly formal language. Aim for a **professional and approachable** tone.\n* Avoid hedging words like \"might\", \"possibly\", or \"just\" unless necessary.\n* When referring to code, configuration keys, or paths, use proper formatting (e.g., backticks for code snippets).\n* Include links or references where the user can learn more or resolve issues.\n\n### Example transformation:\n\n**Before:**\n\n> This feature can be turned on by modifying the config file and setting the value to true.\n\n**After:**\n\n> To enable this feature, set `enableFeature: true` in your configuration file.\n\n---\n{{ $json.body }}",
+                    "batching": {}
+                },
+                "type": "@n8n/n8n-nodes-langchain.chainLlm",
+                "typeVersion": 1.7,
+                "position": [
+                    -608,
+                    208
+                ],
+                "id": "82da76e6-5f77-4912-9987-324f4c18ac68",
+                "name": "Tone Analyzer"
+            },
+            {
+                "parameters": {
+                    "jsCode": "let tokens = [];\n\nfor (const item of $input.all()) {\n  tokens.push(item.json)\n};\n\n// Your grouping function\nfunction groupByHeadings(tokens) {\n  const result = [];\n  let currentGroup = null;\n\n  for (const token of tokens) {\n    if (token.type === 'heading') {\n      // Start a new group\n      if (currentGroup) {\n        result.push(currentGroup);\n      }\n      currentGroup = token.raw;\n    } else {\n      // If we're inside a heading group, keep appending\n      if (currentGroup !== null) {\n        currentGroup += token.raw || '';\n      }\n    }\n  }\n\n  // Push the last group if it exists\n  if (currentGroup) {\n    result.push(currentGroup);\n  }\n\n  return result;\n}\n\n// Call the function\nconst groups = groupByHeadings(tokens);\n\n// Output for n8n: return array of objects with {json: ...} and incremental id\nreturn groups.map((g, index) => ({\n  json: {\n    id: index + 1,  // 1-based index\n    group: g\n  }\n}));"
+                },
+                "type": "n8n-nodes-base.code",
+                "typeVersion": 2,
+                "position": [
+                    208,
+                    0
+                ],
+                "id": "987169e9-8b6a-4433-a187-9dcea64913e6",
+                "name": "groupByHeadings",
+                "alwaysOutputData": false
+            },
+            {
+                "parameters": {
+                    "options": {}
+                },
+                "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+                "typeVersion": 1,
+                "position": [
+                    416,
+                    160
+                ],
+                "id": "a8f16a8f-1421-4bba-8620-22f04cb4239d",
+                "name": "Google Gemini Chat Model",
+                "credentials": {
+                    "googlePalmApi": {
+                        "id": "Kgg1WQ8gFsxvWLWz",
+                        "name": "Google Gemini(PaLM) Api account"
+                    }
+                }
+            },
+            {
+                "parameters": {
+                    "jsCode": "function extractJson(text) {\n  // Remove code block formatting if present\n  let cleaned = text.trim();\n  if (cleaned.startsWith(\"```json\")) {\n    cleaned = cleaned.replace(/^```json/, '').replace(/```$/, '').trim();\n  } else if (cleaned.startsWith(\"```\")) {\n    cleaned = cleaned.replace(/^```/, '').replace(/```$/, '').trim();\n  }\n  return JSON.parse(cleaned);\n}\n\nconst results = [];\n\nfor (const item of $input.all()) {\n  const parsed = extractJson(item.json.text);\n  results.push({ json: { output: parsed} });\n}\n\nreturn results;"
+                },
+                "type": "n8n-nodes-base.code",
+                "typeVersion": 2,
+                "position": [
+                    800,
+                    0
+                ],
+                "id": "198c77fb-e7b9-4f8f-8c80-1913b82f3474",
+                "name": "Parse JSON"
+            },
+            {
+                "parameters": {
+                    "promptType": "define",
+                    "text": "=You are a documentation quality analyzer.\n\nYour task is to analyze technical documentation and detect unexplained or undefined technical terms—terms that are domain-specific (e.g., software, infrastructure, APIs, cloud, etc.) but are not introduced, defined, or referenced properly within the given text.\n\nThese terms are often:\n- Abbreviations or acronyms\n- Names of formats, protocols, libraries, standards, or tools\n- Words that require prior technical knowledge but are introduced without explanation\n\nFor each unexplained term you detect, return the following fields in a JSON array:\n- \"term\": The exact word or phrase found in the text\n- \"reason\": Why you flagged it (e.g., \"used without explanation\", \"no reference or link provided\", \"not defined before use\")\n\nOnly include terms that would be unclear to a reader with general technical experience but no prior knowledge of this specific product.\n\n### Input:\nThe input will be a paragraph or section of technical documentation.\n\n### Output:\nRespond strictly with a JSON array of unexplained terms.\n\nIf no such terms are found, return an empty array `[]`.\n\nDo not include any code blocks, markdown, or any other text. Output ONLY the JSON object, not wrapped in triple backticks, not labeled as json, and not inside an array. If you are processing multiple issues, output a JSON array with each object in the format above, and nothing else.\n\n--- Input Text ---\n {{ $json.group }}",
+                    "batching": {}
+                },
+                "type": "@n8n/n8n-nodes-langchain.chainLlm",
+                "typeVersion": 1.7,
+                "position": [
+                    416,
+                    0
+                ],
+                "id": "a2f27f8a-d073-4e08-b64d-e32ffaecc9d2",
+                "name": "Check Reference"
+            },
+            {
+                "parameters": {
+                    "options": {}
+                },
+                "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+                "typeVersion": 1,
+                "position": [
+                    416,
+                    496
+                ],
+                "id": "9ee609c1-fa74-431a-b01c-0ffc6218d983",
+                "name": "Google Gemini Chat Model1",
+                "credentials": {
+                    "googlePalmApi": {
+                        "id": "Kgg1WQ8gFsxvWLWz",
+                        "name": "Google Gemini(PaLM) Api account"
+                    }
+                }
+            },
+            {
+                "parameters": {
+                    "promptType": "define",
+                    "text": "=You are an AI documentation analyst. Your task is to review a given block of technical documentation and determine whether it suffers from being overly text-heavy and lacking in visual aids such as diagrams, flowcharts, tables, bullet points, or code examples.\n\nSpecifically, evaluate whether the content:\n1. Provides abstract explanations without visual or structural support.\n2. Contains long paragraphs without formatting that aids readability.\n3. Lacks illustrations of concepts (e.g., no data flows, architecture, or sequences).\n4. Does not include concrete examples (e.g., code snippets, curl commands, etc.).\n\nReturn your response in the following JSON format:\n\n```json\n{\n  \"id\": <ID-Provide-To-you>\n  \"is_text_heavy\": true | false,\n  \"issues_detected\": [\n    \"Long unstructured paragraphs\",\n    \"No diagrams or visual representations\",\n    \"No code examples or usage snippets\",\n    \"No flowcharts or architecture explanation\",\n    \"Abstract explanation without concrete support\"\n  ],\n  \"suggested_improvements\": [\n    \"Add sequence diagrams or flowcharts to illustrate process\",\n    \"Break paragraphs into bullet points or steps\",\n    \"Include real-world examples or code snippets\",\n    \"Use tables to compare or list options clearly\"\n  ]\n}\n```\n\nBe concise and only detect actual issues based on input text.\n\nDo not include any code blocks, markdown, or any other text. Output ONLY the JSON object, not wrapped in triple backticks, not labeled as json, and not inside an array. If you are processing multiple issues, output a JSON array with each object in the format above, and nothing else.\n\n--- Input Text ---\nID: {{ $json.id }}\nText: {{ $json.group }}",
+                    "batching": {}
+                },
+                "type": "@n8n/n8n-nodes-langchain.chainLlm",
+                "typeVersion": 1.7,
+                "position": [
+                    416,
+                    320
+                ],
+                "id": "073f4d27-f3d1-4315-98ef-e1831046890b",
+                "name": "Diagram Detection"
+            },
+            {
+                "parameters": {
+                    "jsCode": "function extractJson(text) {\n  // Remove code block formatting if present\n  let cleaned = text.trim();\n  if (cleaned.startsWith(\"```json\")) {\n    cleaned = cleaned.replace(/^```json/, '').replace(/```$/, '').trim();\n  } else if (cleaned.startsWith(\"```\")) {\n    cleaned = cleaned.replace(/^```/, '').replace(/```$/, '').trim();\n  }\n  return JSON.parse(cleaned);\n}\n\nconst results = [];\n\nfor (const item of $input.all()) {\n  const parsed = extractJson(item.json.text);\n  results.push({ json: parsed });\n}\n\nreturn results;"
+                },
+                "type": "n8n-nodes-base.code",
+                "typeVersion": 2,
+                "position": [
+                    816,
+                    320
+                ],
+                "id": "d3e78248-fb99-418f-9bb5-c92908e903fd",
+                "name": "Parse JSON1"
+            }
+        ],
+        "connections": {
+            "When clicking ‘Execute workflow’": {
+                "main": [
+                    [
+                        {
+                            "node": "groupByHeadings",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "groupByHeadings": {
+                "main": [
+                    [
+                        {
+                            "node": "Check Reference",
+                            "type": "main",
+                            "index": 0
+                        },
+                        {
+                            "node": "Diagram Detection",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Google Gemini Chat Model": {
+                "ai_languageModel": [
+                    [
+                        {
+                            "node": "Check Reference",
+                            "type": "ai_languageModel",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Check Reference": {
+                "main": [
+                    [
+                        {
+                            "node": "Parse JSON",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Google Gemini Chat Model1": {
+                "ai_languageModel": [
+                    [
+                        {
+                            "node": "Diagram Detection",
+                            "type": "ai_languageModel",
+                            "index": 0
+                        }
+                    ]
+                ]
+            },
+            "Diagram Detection": {
+                "main": [
+                    [
+                        {
+                            "node": "Parse JSON1",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            }
+        },
+        "settings": {
+            "executionOrder": "v1"
+        },
+        "staticData": null,
+        "meta": {
+            "templateCredsSetupCompleted": true
+        },
+        "pinData": {
+            "When clicking ‘Execute workflow’": [
+                {
+                    "json": {
+                        "type": "space",
+                        "raw": "\n"
+                    }
+                },
+                {
+                    "json": {
+                        "type": "heading",
+                        "raw": "## Quick Start\n\n",
+                        "depth": 2,
+                        "text": "Quick Start",
+                        "tokens": [
+                            {
+                                "type": "text",
+                                "raw": "Quick Start",
+                                "text": "Quick Start",
+                                "escaped": false
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "paragraph",
+                        "raw": "In this tutorial, we'll create a simple governance ruleset that can be used to validate APIs.",
+                        "text": "In this tutorial, we'll create a simple governance ruleset that can be used to validate APIs.",
+                        "tokens": [
+                            {
+                                "type": "text",
+                                "raw": "In this tutorial, we'll create a simple governance ruleset that can be used to validate APIs.",
+                                "text": "In this tutorial, we'll create a simple governance ruleset that can be used to validate APIs.",
+                                "escaped": false
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "space",
+                        "raw": "\n\n"
+                    }
+                },
+                {
+                    "json": {
+                        "type": "heading",
+                        "raw": "### Prerequisites\n\n",
+                        "depth": 3,
+                        "text": "Prerequisites",
+                        "tokens": [
+                            {
+                                "type": "text",
+                                "raw": "Prerequisites",
+                                "text": "Prerequisites",
+                                "escaped": false
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "list",
+                        "raw": "- Access to Tyk Governance Hub",
+                        "ordered": false,
+                        "start": "",
+                        "loose": false,
+                        "items": [
+                            {
+                                "type": "list_item",
+                                "raw": "- Access to Tyk Governance Hub",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": false,
+                                "text": "Access to Tyk Governance Hub",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "Access to Tyk Governance Hub",
+                                        "text": "Access to Tyk Governance Hub",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": "Access to Tyk Governance Hub",
+                                                "text": "Access to Tyk Governance Hub",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "space",
+                        "raw": "\n\n"
+                    }
+                },
+                {
+                    "json": {
+                        "type": "heading",
+                        "raw": "### Step-by-Step\n\n",
+                        "depth": 3,
+                        "text": "Step-by-Step",
+                        "tokens": [
+                            {
+                                "type": "text",
+                                "raw": "Step-by-Step",
+                                "text": "Step-by-Step",
+                                "escaped": false
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "list",
+                        "raw": "1. **Access the Rulesets Section**\n\n    Navigate to the Rulesets section in your Tyk Governance dashboard.\n\n2. **Create a New Ruleset**\n\n    Click the \"Create new ruleset\" button to create a new ruleset.\n\n    {{< img src=\"img/governance/ruleset-list-2.png\" >}}\n     \n3. **Choose a Template**\n\n    Select \"Start from Template\" and choose the \"vacuum-owasp\" template.\n\n    {{< img src=\"img/governance/ruleset-template-1.png\" >}}\n\n4. **Customize Your Ruleset**\n\n    Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.\n\n    {{< img src=\"img/governance/ruleset-template-2.png\" >}}\n\n    Then, provide a name and description for your ruleset.\n\n    {{< img src=\"img/governance/ruleset-template-3.png\" >}}\n\n5. **Save Your Ruleset**\n\n    Click **Finish** to create your new ruleset.\n\n6. **View Your Ruleset**\n\n    Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.",
+                        "ordered": true,
+                        "start": 1,
+                        "loose": true,
+                        "items": [
+                            {
+                                "type": "list_item",
+                                "raw": "1. **Access the Rulesets Section**\n\n    Navigate to the Rulesets section in your Tyk Governance dashboard.\n\n",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": true,
+                                "text": "**Access the Rulesets Section**\n\n Navigate to the Rulesets section in your Tyk Governance dashboard.\n",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "**Access the Rulesets Section**",
+                                        "text": "**Access the Rulesets Section**",
+                                        "tokens": [
+                                            {
+                                                "type": "strong",
+                                                "raw": "**Access the Rulesets Section**",
+                                                "text": "Access the Rulesets Section",
+                                                "tokens": [
+                                                    {
+                                                        "type": "text",
+                                                        "raw": "Access the Rulesets Section",
+                                                        "text": "Access the Rulesets Section",
+                                                        "escaped": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " Navigate to the Rulesets section in your Tyk Governance dashboard.\n",
+                                        "text": " Navigate to the Rulesets section in your Tyk Governance dashboard.",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " Navigate to the Rulesets section in your Tyk Governance dashboard.",
+                                                "text": " Navigate to the Rulesets section in your Tyk Governance dashboard.",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "raw": "2. **Create a New Ruleset**\n\n    Click the \"Create new ruleset\" button to create a new ruleset.\n\n    {{< img src=\"img/governance/ruleset-list-2.png\" >}}\n     \n",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": true,
+                                "text": "**Create a New Ruleset**\n\n Click the \"Create new ruleset\" button to create a new ruleset.\n\n {{< img src=\"img/governance/ruleset-list-2.png\" >}}\n  ",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "**Create a New Ruleset**",
+                                        "text": "**Create a New Ruleset**",
+                                        "tokens": [
+                                            {
+                                                "type": "strong",
+                                                "raw": "**Create a New Ruleset**",
+                                                "text": "Create a New Ruleset",
+                                                "tokens": [
+                                                    {
+                                                        "type": "text",
+                                                        "raw": "Create a New Ruleset",
+                                                        "text": "Create a New Ruleset",
+                                                        "escaped": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " Click the \"Create new ruleset\" button to create a new ruleset.",
+                                        "text": " Click the \"Create new ruleset\" button to create a new ruleset.",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " Click the \"Create new ruleset\" button to create a new ruleset.",
+                                                "text": " Click the \"Create new ruleset\" button to create a new ruleset.",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " {{< img src=\"img/governance/ruleset-list-2.png\" >}}",
+                                        "text": " {{< img src=\"img/governance/ruleset-list-2.png\" >}}",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " {{< img src=\"img/governance/ruleset-list-2.png\" >}}",
+                                                "text": " {{< img src=\"img/governance/ruleset-list-2.png\" >}}",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n  "
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "raw": "3. **Choose a Template**\n\n    Select \"Start from Template\" and choose the \"vacuum-owasp\" template.\n\n    {{< img src=\"img/governance/ruleset-template-1.png\" >}}\n\n",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": true,
+                                "text": "**Choose a Template**\n\n Select \"Start from Template\" and choose the \"vacuum-owasp\" template.\n\n {{< img src=\"img/governance/ruleset-template-1.png\" >}}\n",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "**Choose a Template**",
+                                        "text": "**Choose a Template**",
+                                        "tokens": [
+                                            {
+                                                "type": "strong",
+                                                "raw": "**Choose a Template**",
+                                                "text": "Choose a Template",
+                                                "tokens": [
+                                                    {
+                                                        "type": "text",
+                                                        "raw": "Choose a Template",
+                                                        "text": "Choose a Template",
+                                                        "escaped": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " Select \"Start from Template\" and choose the \"vacuum-owasp\" template.",
+                                        "text": " Select \"Start from Template\" and choose the \"vacuum-owasp\" template.",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " Select \"Start from Template\" and choose the \"vacuum-owasp\" template.",
+                                                "text": " Select \"Start from Template\" and choose the \"vacuum-owasp\" template.",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " {{< img src=\"img/governance/ruleset-template-1.png\" >}}\n",
+                                        "text": " {{< img src=\"img/governance/ruleset-template-1.png\" >}}",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " {{< img src=\"img/governance/ruleset-template-1.png\" >}}",
+                                                "text": " {{< img src=\"img/governance/ruleset-template-1.png\" >}}",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "raw": "4. **Customize Your Ruleset**\n\n    Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.\n\n    {{< img src=\"img/governance/ruleset-template-2.png\" >}}\n\n    Then, provide a name and description for your ruleset.\n\n    {{< img src=\"img/governance/ruleset-template-3.png\" >}}\n\n",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": true,
+                                "text": "**Customize Your Ruleset**\n\n Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.\n\n {{< img src=\"img/governance/ruleset-template-2.png\" >}}\n\n Then, provide a name and description for your ruleset.\n\n {{< img src=\"img/governance/ruleset-template-3.png\" >}}\n",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "**Customize Your Ruleset**",
+                                        "text": "**Customize Your Ruleset**",
+                                        "tokens": [
+                                            {
+                                                "type": "strong",
+                                                "raw": "**Customize Your Ruleset**",
+                                                "text": "Customize Your Ruleset",
+                                                "tokens": [
+                                                    {
+                                                        "type": "text",
+                                                        "raw": "Customize Your Ruleset",
+                                                        "text": "Customize Your Ruleset",
+                                                        "escaped": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.",
+                                        "text": " Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.",
+                                                "text": " Review the pre-configured rules. You can enable/disable specific rules or adjust their severity levels.",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " {{< img src=\"img/governance/ruleset-template-2.png\" >}}",
+                                        "text": " {{< img src=\"img/governance/ruleset-template-2.png\" >}}",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " {{< img src=\"img/governance/ruleset-template-2.png\" >}}",
+                                                "text": " {{< img src=\"img/governance/ruleset-template-2.png\" >}}",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " Then, provide a name and description for your ruleset.",
+                                        "text": " Then, provide a name and description for your ruleset.",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " Then, provide a name and description for your ruleset.",
+                                                "text": " Then, provide a name and description for your ruleset.",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " {{< img src=\"img/governance/ruleset-template-3.png\" >}}\n",
+                                        "text": " {{< img src=\"img/governance/ruleset-template-3.png\" >}}",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " {{< img src=\"img/governance/ruleset-template-3.png\" >}}",
+                                                "text": " {{< img src=\"img/governance/ruleset-template-3.png\" >}}",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "raw": "5. **Save Your Ruleset**\n\n    Click **Finish** to create your new ruleset.\n\n",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": true,
+                                "text": "**Save Your Ruleset**\n\n Click **Finish** to create your new ruleset.\n",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "**Save Your Ruleset**",
+                                        "text": "**Save Your Ruleset**",
+                                        "tokens": [
+                                            {
+                                                "type": "strong",
+                                                "raw": "**Save Your Ruleset**",
+                                                "text": "Save Your Ruleset",
+                                                "tokens": [
+                                                    {
+                                                        "type": "text",
+                                                        "raw": "Save Your Ruleset",
+                                                        "text": "Save Your Ruleset",
+                                                        "escaped": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " Click **Finish** to create your new ruleset.\n",
+                                        "text": " Click **Finish** to create your new ruleset.",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " Click ",
+                                                "text": " Click ",
+                                                "escaped": false
+                                            },
+                                            {
+                                                "type": "strong",
+                                                "raw": "**Finish**",
+                                                "text": "Finish",
+                                                "tokens": [
+                                                    {
+                                                        "type": "text",
+                                                        "raw": "Finish",
+                                                        "text": "Finish",
+                                                        "escaped": false
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "text",
+                                                "raw": " to create your new ruleset.",
+                                                "text": " to create your new ruleset.",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "raw": "6. **View Your Ruleset**\n\n    Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": true,
+                                "text": "**View Your Ruleset**\n\n Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "**View Your Ruleset**",
+                                        "text": "**View Your Ruleset**",
+                                        "tokens": [
+                                            {
+                                                "type": "strong",
+                                                "raw": "**View Your Ruleset**",
+                                                "text": "View Your Ruleset",
+                                                "tokens": [
+                                                    {
+                                                        "type": "text",
+                                                        "raw": "View Your Ruleset",
+                                                        "text": "View Your Ruleset",
+                                                        "escaped": false
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "space",
+                                        "raw": "\n\n"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "raw": " Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.",
+                                        "text": " Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": " Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.",
+                                                "text": " Your new ruleset will appear in the rulesets list. Click on it to view details and manage individual rules.",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "space",
+                        "raw": "\n\n"
+                    }
+                },
+                {
+                    "json": {
+                        "type": "heading",
+                        "raw": "### Validation\n\n",
+                        "depth": 3,
+                        "text": "Validation",
+                        "tokens": [
+                            {
+                                "type": "text",
+                                "raw": "Validation",
+                                "text": "Validation",
+                                "escaped": false
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "list",
+                        "raw": "- Successful ruleset creation will be confirmed with a success message\n- The ruleset will appear in your rulesets list\n- You can now use this ruleset to [evaluate APIs]({{< ref \"tyk-governance/api-evaluation\" >}})",
+                        "ordered": false,
+                        "start": "",
+                        "loose": false,
+                        "items": [
+                            {
+                                "type": "list_item",
+                                "raw": "- Successful ruleset creation will be confirmed with a success message\n",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": false,
+                                "text": "Successful ruleset creation will be confirmed with a success message",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "Successful ruleset creation will be confirmed with a success message",
+                                        "text": "Successful ruleset creation will be confirmed with a success message",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": "Successful ruleset creation will be confirmed with a success message",
+                                                "text": "Successful ruleset creation will be confirmed with a success message",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "raw": "- The ruleset will appear in your rulesets list\n",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": false,
+                                "text": "The ruleset will appear in your rulesets list",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "The ruleset will appear in your rulesets list",
+                                        "text": "The ruleset will appear in your rulesets list",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": "The ruleset will appear in your rulesets list",
+                                                "text": "The ruleset will appear in your rulesets list",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "raw": "- You can now use this ruleset to [evaluate APIs]({{< ref \"tyk-governance/api-evaluation\" >}})",
+                                "task": false,
+                                "checked": "undefined",
+                                "loose": false,
+                                "text": "You can now use this ruleset to [evaluate APIs]({{< ref \"tyk-governance/api-evaluation\" >}})",
+                                "tokens": [
+                                    {
+                                        "type": "text",
+                                        "raw": "You can now use this ruleset to [evaluate APIs]({{< ref \"tyk-governance/api-evaluation\" >}})",
+                                        "text": "You can now use this ruleset to [evaluate APIs]({{< ref \"tyk-governance/api-evaluation\" >}})",
+                                        "tokens": [
+                                            {
+                                                "type": "text",
+                                                "raw": "You can now use this ruleset to [evaluate APIs]({{< ref \"tyk-governance/api-evaluation\" >}})",
+                                                "text": "You can now use this ruleset to [evaluate APIs]({{< ref \"tyk-governance/api-evaluation\" >}})",
+                                                "escaped": false
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "json": {
+                        "type": "space",
+                        "raw": "\n\n"
+                    }
+                }
+            ]
+        },
+        "versionId": "49aa473f-67a6-4b1a-ac15-b9ceb37009ef",
+        "triggerCount": 0,
+        "tags": []
+    },
+    {
+        "createdAt": "2025-07-30T12:58:42.846Z",
+        "updatedAt": "2025-07-30T13:31:36.000Z",
+        "id": "8tI8bEhLrY7a3NtC",
+        "name": "Test",
+        "active": false,
+        "isArchived": false,
+        "nodes": [
+            {
+                "parameters": {},
+                "type": "n8n-nodes-base.manualTrigger",
+                "typeVersion": 1,
+                "position": [
+                    0,
+                    0
+                ],
+                "id": "26b87806-c6a9-411b-8712-d9b14ba84290",
+                "name": "When clicking ‘Execute workflow’"
+            },
+            {
+                "parameters": {
+                    "operation": "write",
+                    "fileName": "input.json",
+                    "dataPropertyName": "",
+                    "options": {
+                        "append": false
+                    }
+                },
+                "type": "n8n-nodes-base.readWriteFile",
+                "typeVersion": 1,
+                "position": [
+                    208,
+                    0
+                ],
+                "id": "78ee6333-5fc8-4b36-b387-1a76709bdffd",
+                "name": "Read/Write Files from Disk"
+            }
+        ],
+        "connections": {
+            "When clicking ‘Execute workflow’": {
+                "main": [
+                    [
+                        {
+                            "node": "Read/Write Files from Disk",
+                            "type": "main",
+                            "index": 0
+                        }
+                    ]
+                ]
+            }
+        },
+        "settings": {
+            "executionOrder": "v1"
+        },
+        "staticData": null,
+        "meta": null,
+        "pinData": {
+            "When clicking ‘Execute workflow’": [
+                {
+                    "json": {
+                        "name": "First item",
+                        "code": 1
+                    }
+                },
+                {
+                    "json": {
+                        "name": "Second item",
+                        "code": 2
+                    }
+                }
+            ]
+        },
+        "versionId": "0eb3694a-d342-43a7-bbb2-17bcb44574b3",
+        "triggerCount": 0,
+        "tags": []
+    }
+]

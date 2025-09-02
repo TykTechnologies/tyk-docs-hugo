@@ -11,7 +11,7 @@ In this section we will explain how to apply your branding (styling - CSS) on th
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
 - A login for the portal admin app
 - Access to your Tyk portal file system
 

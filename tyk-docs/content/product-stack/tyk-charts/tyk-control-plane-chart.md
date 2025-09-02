@@ -36,7 +36,7 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
-- [Redis]({{< ref "tyk-open-source#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway and dashboard.
+- [Redis]({{< ref "apim/open-source/installation#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway and dashboard.
 - [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by dashboard. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 
 {{< note success >}}
@@ -158,7 +158,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-configuration-reference/kv-store" >}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -185,7 +185,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -818,7 +818,7 @@ tyk-dev-portal:
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 By default, Tyk Developer Portal use `sqlite3` to store portal metadata. If you want to use a different SQL Database, please modify the section below.
@@ -909,7 +909,7 @@ tyk-dev-portal:
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}})
+Please refer to the [Tyk Operator Installation Guide]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -920,4 +920,4 @@ to `true`.
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
 > Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
-> official documentation: [Installing Tyk Operator]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}).
+> official documentation: [Installing Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}).

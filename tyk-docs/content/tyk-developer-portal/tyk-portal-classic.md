@@ -12,24 +12,7 @@ algolia:
   importance: 0
 ---
 
-{{< warning success >}}
-
-**Attention:**
-
-You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
-Developer Portal* please use the latest
-[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
-</br>
-</br>
-**Future deprecation of Tyk Classic Portal**
-
-This product is no longer actively developed as it
-has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
-</br>
-Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
-[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
-
-{{< /warning >}}
+{{< include "legacy-classic-portal-api" >}}
 
 The Tyk Classic Developer Portal is a small CMS-like system that enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
 
@@ -41,7 +24,7 @@ The Tyk Classic Developer Portal enables you to:
 *   Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal.
 *   Fully control the flow of the developer sign-up and enrollment.
 
-The Tyk Classic Developer Portal is suitable for primary use cases, however if you want a more feature-rich experience then you should consider the [Tyk Enterprise Developer Portal]({{< ref "portal/overview#" >}}). This provides audience management, full UI customization including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features.
+The Tyk Classic Developer Portal is suitable for primary use cases, however if you want a more feature-rich experience then you should consider the [Tyk Enterprise Developer Portal]({{< ref "portal/overview/intro" >}}). This provides audience management, full UI customization including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features.
 
 {{< note success >}}
 **Note**  

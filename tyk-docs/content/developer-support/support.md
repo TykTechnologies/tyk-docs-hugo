@@ -1,5 +1,5 @@
 ---
-title: "Tyk Support Options"
+title: "Support SLA"
 date: 2023-11-15
 tags: ["Support", "SLA", "Contract", "Order Form", "Entitlements"]
 description: "Learn about Tyk's flexible support offerings and how your specific entitlements are defined."

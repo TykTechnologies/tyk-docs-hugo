@@ -1,8 +1,8 @@
 ---
 title: Tyk Governance Overview
 date: 2025-04-28T15:49:11Z
-description: ""
-tags: ["Tyk Governance"]
+description: "Introduction to Tyk Governance, a universal API governance hub that enables organizations to establish, enforce, and monitor governance policies across multiple API platforms and gateways."
+tags: ["Tyk Governance", "API Governance", "API Management"]
 ---
 
 ## Overview
@@ -17,7 +17,7 @@ In today's complex API ecosystems, organizations struggle with inconsistent stan
 
 * **Universal Governance** - Define and enforce consistent policies across multiple API platforms and styles (REST, GraphQL, event-driven) from a single control plane
 * **Reduced Duplication** - Identify redundant or shadow APIs across different departments, reducing maintenance costs and security risks
-* **Early Feedback** - Catch governance violations during design and development, not after deployment, reducing rework by up to 60%
+* **Shift-Left Governance** - Catch governance violations during design and development, not after deployment, reducing rework by up to 60%
 * **Collaborative Improvement** - Enable teams to work together with shared visibility and clear ownership of APIs across the organization
 * **Measurable API Maturity** - Track and improve API quality with quantifiable metrics across technical excellence, business impact, and developer experience
 
@@ -41,6 +41,7 @@ Enterprise architects and security leads use Tyk Governance to establish organiz
 * Centralized visibility across all API platforms
 * Comprehensive compliance reporting
 * The ability to define tiered governance policies based on API criticality
+* Pre-built governance templates aligned with industry standards
 
 **Example:** An enterprise architect at a financial services company uses Tyk Governance to ensure all customer-facing APIs comply with security and regulatory requirements, while allowing internal APIs to follow a lighter governance model.
 
@@ -50,7 +51,7 @@ Platform engineers leverage Tyk Governance to build and maintain internal develo
 
 * Seamless integration of governance into CI/CD pipelines
 * Self-service tools that empower developers
-* Unified monitoring across environments
+* Automated API discovery with scheduled synchronization
 
 **Example:** A platform engineer integrates Tyk Governance into Tyk Dashboard and other API platforms, providing API templates that automatically incorporate security best practices and compliance requirements.
 

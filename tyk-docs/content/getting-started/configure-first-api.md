@@ -27,6 +27,8 @@ This guide helps you get started with Tyk by covering the basics:
 
 Follow these steps to quickly and easily create and manage your APIs with Tyk.
 
+> This page focuses on getting started with Tyk Cloud, If you are looking for information on Tyk Self-Managed, please refer to the [Getting Started with Tyk Self-Managed Guide]({{< ref "getting-started/quick-start" >}}).
+
 ## Prerequisites
 
 To start quickly, we'll use Tyk Cloud in this guide.

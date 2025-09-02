@@ -48,7 +48,7 @@ After setting your Tyk configuration, all you need to do is to send a token in a
 
 ## gRPC load balancing
 
-Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "tyk-self-managed#load-balancing" >}}) functionality.
+Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing" >}}) functionality.
 
 For both secure and insecure gRPC scenarios, the steps above serve as a starting point.
 
@@ -126,7 +126,4 @@ In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will
     * Click Save
 * Ensure that the client application has the server address pointing to Tyk, for this example: `https://tyk.com:8000`.
 * Now you are ready to test the solution. Run the client application and it should send and receive data simultaneously.
-
-Currently load balancing is not supported for gRPC.
-
 

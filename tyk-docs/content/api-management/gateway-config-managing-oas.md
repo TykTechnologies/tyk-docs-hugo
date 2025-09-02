@@ -161,7 +161,7 @@ You can see the URL given to your API, in the Info section displayed at the top 
 
 ### Using your own code editor to create Tyk OAS API definitions
 
-The API definition is often generated either from the codebase or using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}})).
+The API definition is often generated either from the codebase or using API design tools (such as [Swagger Editor](https://editor.swagger.io/), [Postman](https://www.postman.com/) and [Stoplight](https://stoplight.io/)).
 
 To enjoy writing a *Tyk OAS API definition* as if it is [a native programming language](https://tyk.io/blog/get-productive-with-the-tyk-intellisense-extension/), you can add the [Tyk OAS API definition schema](https://raw.githubusercontent.com/TykTechnologies/tyk-schemas/main/JSON/draft-04/schema_TykOasApiDef_3.0.x.json) to your favorite IDE or editor. We have published a Tyk VS Code extension that provides Tyk API schema validation and auto-completion (both OAS and other schemas) in the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=TykTechnologiesLimited.tyk-schemas). You can use it to create Tyk objects in your IDE (Tyk API definitions, Key and Tyk config file).
 
@@ -230,7 +230,7 @@ To create the API in Tyk, you simply send your Tyk OAS API Definition in the pay
 | Body         | Tyk OAS API Definition   |
 | Parameters   | Query: `templateID`      |
 
-Using [this](https://bit.ly/39jUnuq) API definition it is possible to create a Tyk OAS API on your Tyk Gateway that forwards requests to the [Swagger Petstore]({{< ref "https://petstore3.swagger.io" >}}) request/response service.
+Using [this](https://bit.ly/39jUnuq) API definition it is possible to create a Tyk OAS API on your Tyk Gateway that forwards requests to the [Swagger Petstore](https://petstore3.swagger.io) request/response service.
 
 ```
 curl -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_URL}/apis/oas -d "$(wget -qO- https://bit.ly/39jUnuq)"
@@ -590,6 +590,40 @@ Resolution can be:
 - local, by providing a ZIP archive containing all fragments
 - remote, by providing resolvable paths to the secondary fragments (this is particularly used if the main fragment is provided via URL, as all fragments can then exist on the same file server).
 
+{{< note success >}}
+**Note**  
+
+The **main fragment** must be in a file named `openapi.json` or `openapi.yaml` (depending on the format used).
+{{< /note >}}
+
+##### Creating the ZIP Archive
+
+When creating ZIP archives for the multi-part OpenAPI import feature, it's important to exclude operating system metadata files that could interfere with the import process.
+
+- **MacOS Users**
+
+    When using the `zip` command on MacOS, include the `-X` flag to exclude extended attributes and hidden files: `zip -X -r archive.zip directory/`
+    
+- **Linux Users**
+
+    When using the `zip` command on Linux, you can exclude hidden files using: `zip -r archive.zip directory/ -x "*/\.*"`
+
+    To exclude specific metadata files: `zip -r archive.zip directory/ -x "*/\.*" "*/Thumbs.db" "*/.DS_Store"`
+
+- **Windows Users**
+
+    When using PowerShell to create ZIP archives on Windows, you can exclude hidden and system files with: `Compress-Archive -Path "directory\*" -DestinationPath "archive.zip" -CompressionLevel Optimal`
+
+    To exclude specific metadata files (like Thumbs.db or .DS_Store) you can use: `Get-ChildItem "directory" -Recurse -File | Where-Object { $_.Name -notmatch '(^\.DS_Store$|^Thumbs\.db$)' } | Compress-Archive -DestinationPath "archive.zip"`
+
+- **Using GUI Tools**
+
+    If using GUI tools like WinZip, WinRAR, or the built-in archive utilities:
+    - Ensure options to include hidden/system files are disabled
+    - Look for options like "Store Mac OS X resource forks/special files" and disable them
+    - Some tools have specific options to exclude .DS_Store files and other metadata
+
+Including these unwanted files may cause validation errors during the import process.
 
 ## Maintaining your APIs
 
@@ -673,7 +707,7 @@ To update just the OpenAPI description of your API in Tyk, you simply send the O
 | Body         | OpenAPI document                         |
 | Parameters   | Path: `{API-ID}`                         |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
 
 **Applying an Updated Tyk OAS API Definition** 
 
@@ -687,7 +721,7 @@ To update the whole API in Tyk, you simply send the Tyk OAS API definition in th
 | Body         | Tyk OAS API Definition                   |
 | Parameters   | Path: `{API-ID}`                         |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition stored in your main storage.
 
 **Check request response**
 
@@ -724,7 +758,7 @@ To update just the OpenAPI description of your API in Tyk, you simply send the O
 | Body         | OpenAPI document                         |
 | Parameters   | Path: `{API-ID}`  Query: `templateId`    |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
 
 
 **Applying an Updated Tyk OAS API Definition** 
@@ -739,7 +773,7 @@ To update the whole API in Tyk, you simply send the Tyk OAS API definition in th
 | Body         | Tyk OAS API Definition                   |
 | Parameters   | Path: `{API-ID}`                         |
 
-You need to specify which API to update - and so so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
+You need to specify which API to update - and do so using the `API-ID` value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the `/apps` folder of your Tyk Gateway installation.
 
 
 **Check request response**

@@ -1004,7 +1004,7 @@ Credit: Elasticsearch, [OpenTelemetry on Elastic](https://www.elastic.co/blog/op
     - TYK_GW_OPENTELEMETRY_ENDPOINT={{Add your endpoint here}}
     ```
 
-    Make sure to replace {{Add your endpoint here}} with the appropriate endpoint from your OpenTelemetry collector.
+    Make sure to replace `<Add your endpoint here>` with the appropriate endpoint from your OpenTelemetry collector.
 
     After enabling OpenTelemetry at the Gateway level, you can activate [detailed tracing]({{< ref "api-management/logs-metrics#opentelemetry" >}}) for specific APIs by editing their respective API definitions. Set the `detailed_tracing` option to either true or false. By default, this setting is false.
 
@@ -1418,7 +1418,7 @@ Ensure the following prerequisites are in place before proceeding:
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
 

@@ -72,7 +72,7 @@ Administrators configure Data Sources via the UI or API:
 ## Organizing & Assigning Data Sources (Admin)
 
 *   **Create Catalogues:** Group related Data Sources into Catalogues (e.g., "Product Docs", "Support KB").
-*   **Assign to Groups:** Assign Data Source Catalogues to specific [Teams]({{< ref "ai-management/ai-studio/teams" >}}).
+*   **Assign to Groups:** Assign Data Source Catalogues to specific Teams.
 
     {{< img src="/img/ai-management/data-sources-catalog-config.png" alt="Catalogue Config" >}}
 

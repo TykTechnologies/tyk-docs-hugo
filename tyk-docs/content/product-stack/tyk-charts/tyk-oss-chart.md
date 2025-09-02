@@ -24,13 +24,13 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{< ref "tyk-open-source#quick-start-with-helm-chart" >}}).
+For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{< ref "apim/open-source/installation#quick-start-with-helm-chart" >}}).
 
 ## Prerequisites
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis]({{< ref "tyk-open-source#configuration-options-for-redis" >}}) should already be installed or accessible by the gateway. 
+* [Redis]({{< ref "tyk-configuration-reference/redis-cluster-sentinel" >}}) should already be installed or accessible by the gateway. 
 
 ## Tyk OSS Installations
 ### Installing the Chart
@@ -116,7 +116,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-configuration-reference/kv-store" >}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -143,7 +143,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -339,7 +339,7 @@ tyk-gateway:
 
 Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{< ref "tyk-gateway-api" >}}) on a separate port and protect it behind a firewall if needed.
 
-#### Mounting APIs, Policies, and Middlewares
+#### Mounting APIs, Policies, and Middleware
 
 By default, the Gateway stores API configurations at `/mnt/tyk-gateway/apps` inside the Gateway container. There are a a few challenges:
 - Multiple gateways do not share app configs
@@ -349,7 +349,7 @@ The same applies to security policies and middleware too, which are stored at `/
 
 This can be solved by instantiating a Persistent Volume as shared storage for the gateway instances. As each gateway is reloaded, they would get the API configurations from the same storage, solving the synchronisation issue between gateways. Also, the storage is persistent and can be designed to be resilient to cluster failure, thus your API configurations can be maintained after pod restart.
 
-You can configure persistent volume for APIs, Policies, and middlewares using `extraVolumes` and `extraVolumeMounts`:
+You can configure persistent volume for APIs, Policies, and middleware using `extraVolumes` and `extraVolumeMounts`:
 
 ```yaml
     extraVolumes:
@@ -508,7 +508,7 @@ To setup other backends for pump, refer to this [document](https://github.com/Ty
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}})
+Please refer to the [Tyk Operator Installation Guide]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -517,4 +517,4 @@ In order to enable installing Tyk Operator along-side Tyk OSS installation, plea
 
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
-> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}).
+> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}).

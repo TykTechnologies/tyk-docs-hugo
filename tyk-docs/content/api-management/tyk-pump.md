@@ -109,7 +109,7 @@ The Tyk Dashboard uses the `mongo-pump-aggregate` collection to display analytic
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 In v4.0 of the Tyk Dashboard, we added support for the following SQL platforms:
@@ -294,7 +294,7 @@ The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_shard
 
 ##### Mongo Aggregate Pump
 
-**`mongo-pump-aggregate`** pump stores data in a collection called **z_tyk_analyticz_aggregate_{ORG ID}**.
+**`mongo-pump-aggregate`** pump stores data in a collection called `**z_tyk_analyticz_aggregate_{ORG ID}**`.
 
 ###### Pump Config
 
@@ -843,7 +843,7 @@ We ceated a defaulkt Tyk dashboard canvat to give our users an easier starting p
 #### Prerequisites
 
 - A working Datadog agent installed on your Environment. See the [Datadog Tyk integration docs](https://docs.datadoghq.com/integrations/tyk/) for more information.
-- Either a [Tyk Pro install]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) or [Tyk OSS Gateway install]({{< ref "tyk-open-source#installation-options-for-tyk-gateway" >}}) along with a [Tyk Pump]({{< ref "tyk-pump.md" >}}) install.
+- Either a [Tyk Pro install]({{< ref "tyk-self-managed/install" >}}) or [Tyk OSS Gateway install]({{< ref "apim/open-source/installation" >}}) along with a [Tyk Pump]({{< ref "tyk-pump" >}}) install.
 
 #### How it works
 
@@ -1616,7 +1616,7 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
     {{< note success >}}
@@ -1699,7 +1699,7 @@ For Custom Metrics, commas are escaped to be used in helm --set command. You can
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
 3. **Verification**

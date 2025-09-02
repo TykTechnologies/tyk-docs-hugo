@@ -22,7 +22,7 @@ If your **upstream service** is protected using Auth Token then similarly, Tyk w
 ### How to use Upstream Token-based Authentication
 Typically Auth Token uses the `Authorization` header to pass the token in the request.
 
-Tyk's [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware can be configured to add this header to the request prior to it being proxied to the upstream. To enhance security by restricting visibility of the access token, the key/token can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only the reference included in the middleware configuration.
+Tyk's [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware can be configured to add this header to the request prior to it being proxied to the upstream. To enhance security by restricting visibility of the access token, the key/token can be stored in a [key-value store]({{< ref "tyk-self-managed/install" >}}), with only the reference included in the middleware configuration.
 
 
 

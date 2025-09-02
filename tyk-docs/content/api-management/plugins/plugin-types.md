@@ -169,8 +169,8 @@ See the [supported languages]({{< ref "api-management/plugins/overview#supported
 
 Please consult the Tyk Operator supporting documentation for examples of how to configure a Tyk Operator API to use:
 
-- [Go custom authentication plugin]({{< ref "api-management/automations/operator#custom-plugin-auth-go" >}})
-- [gRPC custom authentication plugin]({{< ref "api-management/automations/operator#custom-plugin-auth-grpc" >}})
+- [Go custom authentication plugin]({{< ref "tyk-stack/tyk-operator/create-an-api#custom-plugin-auth-go" >}})
+- [gRPC custom authentication plugin]({{< ref "tyk-stack/tyk-operator/create-an-api#custom-plugin-auth-grpc" >}})
 
 ## Response Plugins
 

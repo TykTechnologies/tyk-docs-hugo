@@ -142,7 +142,7 @@ of requests could lead to exhaustion of the limit on some gateways before others
 
 ### Redis Rate Limiter
 
-This algorithm implements a sliding window log algorithm and can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}) configuration option.
+This algorithm implements a sliding window log algorithm and can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration#enable_redis_rolling_limiter" >}}) configuration option.
 
 The characteristics of the Redis Rate Limiter (RRL) are:
 
@@ -232,13 +232,13 @@ effect for a minimum of the configured window duration (`per`). Gateway and Redi
 resource usage is increased with this option.
 
 This option can be enabled using the following configuration option
-[enable_sentinel_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_sentinel_rate_limiter" >}}).
+[enable_sentinel_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_sentinel_rate_limiter" >}}).
 
 To optimize performance, you may configure your rate limits with shorter
 window duration values (`per`), as that will cause Redis to hold less
 data at any given moment.
 
-Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
+Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
 
 Please consider the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm as an alternative, if Redis performance is an issue.
 
@@ -264,7 +264,7 @@ window and removed when the window elapses. Regardless of the traffic
 received, Redis is not impacted in a negative way, resource usage remains
 constant.
 
-This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_fixed_window_rate_limiter" >}}).
+This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_fixed_window_rate_limiter" >}}).
 
 If you need spike arrest behavior, the [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}) should be used.
 
@@ -295,8 +295,52 @@ gateways, the DRL algorithm will be used if the rate limit exceeds 10
 requests per second. If it is 10 or fewer, the system will fall back to
 the Redis Rate Limiter.
 
-See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration.md#drl_threshold" >}}) for details on how to configure this feature.
+See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration#drl_threshold" >}}) for details on how to configure this feature.
 
+
+## Custom Rate Limiting
+
+Different business models may require applying rate limits and quotas not only by credentials but also by other entities, such as per application, per developer, per organization, etc. For example, if an API Product is sold to a B2B customer, the quota of API calls is usually applied to all developers and their respective applications combined, in addition to a specific credential.
+
+To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}). This feature allows you to define custom patterns for rate limiting that go beyond the default credential-based approach.
+
+### How Custom Rate Limiting Works
+
+Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
+
+To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`. In the value field you can specify any value or expression that you want to use as a custom rate limit key for your APIs.
+
+The `rate_limit_pattern` field supports:
+- Referencing session metadata using `$tyk_meta.FIELD_NAME` syntax
+- Concatenating multiple values together using the pipe operator (`|`)
+
+### Configuring Custom Rate Limit Keys
+
+Custom rate limit keys are configured in the Tyk Dashboard by adding a metadata field to your policy:
+
+1. Navigate to your policy in the Tyk Dashboard
+2. Add a new metadata field called `rate_limit_pattern`
+3. Set the value to your desired pattern expression
+
+For example, if you want to specify a rate limit pattern to calculate the rate limit for a combination of developers and plans, where all credentials of a developer using the same plan share the same rate limit, you can use the following expression (assuming that the `DeveloperID` and `PlanID` metadata fields are available in a session):
+
+```gotemplate
+$tyk_meta.DeveloperID|$tyk_meta.PlanID
+```
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/configuring-custom-rate-limit-keys.png" alt="Configuring custom rate limit keys" >}}
+
+### Important Considerations
+
+{{< note success >}}
+**Updating credential metadata**
+
+The custom rate limit key capability uses only metadata objects, such as credentials metadata available in a session. Therefore, if the `rate_limit_pattern` relies on credentials metadata, this capability will work only if those values are present. If, after evaluating the `rate_limit_pattern`, its value is equal to an empty string, the rate limiter behavior defaults to rate limiting by credential IDs.
+{{< /note >}}
+
+**Prerequisites**
+
+This capability works with [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}) or higher.
 
 ## Rate Limiting Layers
 

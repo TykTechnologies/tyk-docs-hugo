@@ -1,12 +1,12 @@
 ---
-title: "Core Concepts"
+title: "What is AI Studio?"
 date: 2025-04-25
-tags: ["AI Studio", "AI Management", "Core Concepts"]
-description: "Core Concepts of AI Studio"
-keywords: ["AI Studio", "AI Management", "Core Concepts"]
+tags: ["AI Studio", "AI Management", "Introduction"]
+description: "Introduction to Tyk AI Studio - comprehensive AI management platform"
+keywords: ["AI Studio", "AI Management", "Introduction", "Overview"]
 ---
 
-Welcome to Tyk AI Studio! Before diving into specific features, understanding these core concepts will help you navigate the platform and its capabilities.
+Tyk AI Studio is a comprehensive platform that enables organizations to manage, govern, and deploy AI applications with enterprise-grade security, control, and observability. Before diving into installation and configuration, let's understand what AI Studio offers and its core concepts.
 
 ## Key Components & Philosophy
 
@@ -36,4 +36,14 @@ Understanding these entities is crucial:
 *   **[Secret]({{< ref "ai-management/ai-studio/secrets" >}}):** Securely stored credentials (API keys, tokens) referenced indirectly (e.g., `$SECRET/MY_KEY`) in configurations like LLMs, Tools, or Data Sources.
 *   **[Filter]({{< ref "ai-management/ai-studio/filters" >}}):** Custom logic (using Tengo scripts) associated with specific execution points (e.g., pre/post LLM request) to intercept and modify requests/responses.
 
-This page provides a high-level overview. Click the links above or use the sidebar to navigate to the detailed documentation for each feature.
+## Getting Started
+
+Now that you understand the core concepts, you're ready to begin your AI Studio journey:
+
+1. **[Choose your installation method]({{< ref "ai-management/ai-studio/quickstart" >}})**: Docker/Packages (recommended) or Kubernetes
+2. **[Complete first-time setup]({{< ref "ai-management/ai-studio/configuration" >}})**: Register your admin user and configure your first LLM
+3. **Explore the platform**: Start with the chat interface and gradually explore advanced features
+
+{{< note >}}
+**Ready to start?** Head to the [Installation Guide]({{< ref "ai-management/ai-studio/quickstart" >}}) to get AI Studio up and running in minutes.
+{{< /note >}}

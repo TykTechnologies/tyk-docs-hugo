@@ -29,14 +29,14 @@ The [Go plugin writing guide]({{< ref "api-management/plugins/golang#writing-cus
 
 All of Tyk's [custom middleware hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) support Go plugins. They represent different stages in the request and response [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) where custom functionality can be added.
 
-- **Pre** - supports an array of middlewares to be run before any others (i.e. before authentication)
+- **Pre** - supports an array of middleware that run before any others (i.e. before authentication)
 - **Auth** - this middleware performs custom authentication and adds API key session info into the request context and can be used only if the API definition has both:
   - `"use_keyless": false`
   - `"use_go_plugin_auth": true`
 - **Post-Auth** - supports an array of middleware to be run after authentication; at this point, we have authenticated the session API key for the given key (in the request context) so we can perform any extra checks. This can be used only if the API definition has both:
   - `"use_keyless": false`
   - an authentication method specified
-- **Post** - supports an array of middlewares to be run at the very end of the middleware chain; at this point Tyk is about to request a round-trip to the upstream target
+- **Post** - supports an array of middleware that run at the very end of the middleware chain, just before Tyk makes a round-trip to the upstream target
 - **Response** - run only at the point the response has returned from a service upstream of the API Gateway; note that the [method signature for Response Go plugins]({{< ref "api-management/plugins/golang#creating-a-custom-response-plugin" >}}) is slightly different from the other hook types
 
 {{< note info >}}
@@ -65,6 +65,30 @@ We provide the [Tyk Plugin Compiler]({{< ref "api-management/plugins/golang#plug
 
 - https://github.com/golang/go/issues/19004
 - https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
+
+#### Understanding Plugin Compiler Security Scans
+
+The Tyk Plugin Compiler Docker image is a development tool used exclusively during the build phase to compile custom Go plugins for the Tyk Gateway. This tool:
+
+1. **Is not a runtime component** - It is never deployed as part of your production Tyk environment
+2. **Operates in isolated build environments** - It should only be used in controlled development or CI/CD pipelines
+3. **Is not designed to be network-exposed** - It should never be deployed as a service or exposed to untrusted networks
+
+##### Technical Context
+The Plugin Compiler is built on Debian Bullseye to ensure binary compatibility with RHEL8 environments, which are commonly used in enterprise Tyk deployments. Security scanning tools may flag numerous Common Vulnerabilities and Exposures (CVEs) in the base Debian Bullseye libraries included in this image.
+
+##### Security Clarification
+These CVEs do not represent an exploitable attack surface in your Tyk deployment for several reasons:
+
+1. **Build-time vs. Runtime Separation:** The Plugin Compiler is strictly a build-time tool. The compiled plugins that it produces are what get deployed to your Tyk Gateway, not the compiler itself.
+
+2. **Ephemeral Usage Pattern**: The recommended usage pattern is to run the compiler only when needed to generate plugin binaries, then discard the container.
+
+3. **Air-gapped Operation**: The compilation process typically occurs in development environments or CI/CD pipelines that are separate from production systems.
+
+4. **No Persistent Deployment**: Unlike the Tyk Gateway, Dashboard, and other runtime components, the Plugin Compiler is never deployed as a long-running service in your API management infrastructure.
+
+For optimal security, we recommend running the Plugin Compiler in isolated build environments and transferring only the compiled plugin binaries to your production Tyk deployment.
 
 
 ### Setting up your environment
@@ -778,8 +802,8 @@ Here we see:
 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
-- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud#configure-plugins" >}})
-- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud#uploading-your-bundle" >}})
+- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud/using-plugins" >}})
+- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}})
 
 ## Example custom Go plugins
 

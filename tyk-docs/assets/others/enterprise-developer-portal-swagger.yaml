@@ -18,7 +18,7 @@ info:
 
     This API requires an admin authorisation token that is available for admin
     users of the portal in the profile page.
-  version: 1.8.0
+  version: 1.14.0
 servers:
   - url: http://localhost:3001/portal-api
 tags:
@@ -66,6 +66,8 @@ tags:
     description: Posts management
   - name: SSO Profiles
     description: SSO Profiles management
+  - name: Tags
+    description: "Tags management: link API Products to blog posts and control their display."
 paths:
   /access_requests:
     get:
@@ -4180,6 +4182,7 @@ paths:
   /webhooks:
     get:
       summary: List all webhooks
+      description: Retrieves all configured webhooks.
       operationId: list-webhooks
       tags:
         - Webhooks
@@ -4192,6 +4195,7 @@ paths:
                 $ref: "#/components/schemas/Webhook-index"
     post:
       summary: Create a new webhook
+      description: Creates a new webhook configuration.
       operationId: create-webhook
       tags:
         - Webhooks
@@ -4218,6 +4222,7 @@ paths:
   /webhooks/{webhook_id}:
     get:
       summary: Get a webhook by ID
+      description: Retrieves a webhook using its unique identifier.
       operationId: get-webhook
       tags:
         - Webhooks
@@ -4242,6 +4247,7 @@ paths:
           description: Bad request
     put:
       summary: Update a webhook by ID
+      description: Updates an existing webhook's configuration using its unique identifier.
       operationId: update-webhook
       tags:
         - Webhooks
@@ -4273,6 +4279,7 @@ paths:
           description: Bad request
     delete:
       summary: Delete a webhook by ID
+      description: Removes a webhook using its unique identifier.
       operationId: delete-webhook
       tags:
         - Webhooks
@@ -4298,6 +4305,7 @@ paths:
   /webhooks/{webhook_id}/headers:
     get:
       summary: List all headers for a webhook
+      description: Retrieves all headers for a specific webhook.
       operationId: list-webhook-headers
       tags:
         - Webhooks
@@ -4322,6 +4330,7 @@ paths:
           description: Bad request
     post:
       summary: Add a new header to a webhook
+      description: Adds a new header to an existing webhook.
       operationId: create-webhook-header
       tags:
         - Webhooks
@@ -4354,6 +4363,9 @@ paths:
   /webhooks/{webhook_id}/headers/{header_id}:
     get:
       summary: Get a header by ID for a specific webhook
+      description: >-
+        Retrieves the details of a specific header associated with a given webhook. 
+        Useful for inspecting custom headers configured for webhook delivery.
       operationId: get-webhook-header
       tags:
         - Webhooks
@@ -4383,6 +4395,7 @@ paths:
           description: Bad request
     put:
       summary: Update a header by ID for a specific webhook
+      description: Updates an existing header in a webhook.
       operationId: update-webhook-header
       tags:
         - Webhooks
@@ -4425,6 +4438,7 @@ paths:
           description: Validation error
     delete:
       summary: Delete a header by ID for a specific webhook
+      description: Removes a header from a webhook.
       operationId: delete-webhook-header
       tags:
         - Webhooks
@@ -5873,6 +5887,18 @@ components:
           type: integer
           description: UID of a user to whom this application will belong
           example: 1
+        Visibility:
+          type: string
+          description: >-
+            Controls who can access this application. Options are:
+            `personal` (visible only to you), `team` (shared with your team),
+            and `organisation` (accessible to all members of your organisation).
+          enum:
+            - personal
+            - team
+            - organisation
+          example: personal
+          default: organisation
       type: object
     Client-ID-attributes:
       properties:

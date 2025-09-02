@@ -1,0 +1,55 @@
+name: Run n8n Workflow to Generate Release Notes
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      component_version:
+        description: 'Component version ID'
+        required: true
+        type: string
+      component_name:
+        description: 'Component name (e.g gateway etc..)'
+        required: true
+        type: string
+      component_version_number:
+        description: 'Component version (e.g v5.8.5 etc.)'
+        required: false
+        type: string
+
+run-name: "Release Notes for ${{ github.event.inputs.component_name }} ${{ github.event.inputs.component_version_number }}"
+
+jobs:
+  run-n8n:
+    runs-on: ubuntu-latest
+
+    env:
+      N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Create input.json
+        run: |
+          mkdir -p n8n-data
+          echo '[{ "version": "${{ github.event.inputs.component_version }}" }]' > n8n-data/input.json
+
+      - name: Set write permissions for n8n-data
+        run: chmod -R 777 n8n-data
+
+      - name: Run n8n container
+        run: |
+          docker run --rm \
+            --name n8n \
+            --entrypoint /data/run.sh \
+            -e N8N_ENCRYPTION_KEY="${N8N_ENCRYPTION_KEY}" \
+            -v ${{ github.workspace }}/n8n-data:/data \
+            docker.n8n.io/n8nio/n8n
+
+      - name: Show changelog output
+        run: |
+          echo "---- changelog.md ----"
+          cat n8n-data/changelog.md || echo "changelog.md not found"

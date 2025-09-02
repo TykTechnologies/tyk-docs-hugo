@@ -37,11 +37,11 @@ The demo shows a classic pattern: a user request becomes an event on a bus, a wo
 sequenceDiagram
     autonumber
     participant Client
-    participant GatewayIn as Gateway<br/>`in` stream
+    participant GatewayIn as Gateway<br/>in stream
     participant KafkaJobs as Kafka<br/>topic **jobs**
-    participant Worker as Worker<br/>`Worker` stream
+    participant Worker as Worker<br/>Worker stream
     participant KafkaCompleted as Kafka<br/>topic **completed**
-    participant GatewayOut as Gateway<br/>`out` stream
+    participant GatewayOut as Gateway<br/>out stream
 
     %% synchronous request from client
     Client ->> GatewayIn: POST /push-event **(sync)**

@@ -505,7 +505,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-However, if you are upgrading to [Tyk Operator v1.0]({{< ref "developer-support/release-notes/operator#100-release-notes" >}}) using the Helm Chart, please read the [license requirement]({{< ref "developer-support/release-notes/operator#breaking-changesv1.0.0" >}}) and Tyk Operator [installation and upgrade instructions]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}) carefully.
+However, if you are upgrading to [Tyk Operator v1.0]({{< ref "developer-support/release-notes/operator#100-release-notes" >}}) using the Helm Chart, please read the [license requirement]({{< ref "developer-support/release-notes/operator#breaking-changesv1.0.0" >}}) and Tyk Operator [installation and upgrade instructions]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}) carefully.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -703,7 +703,7 @@ From this version of Tyk Charts we also set the following configuration option t
 **Action required:**
 
 - Familiarize yourself with URL matching in Tyk [here]({{< ref "getting-started/key-concepts/url-matching" >}}).
-- For production setup guidance, see [this guide]({{< ref "tyk-self-managed#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match" >}}).
+- For production setup guidance, see [this guide]({{< ref "planning-for-production#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match" >}}).
 - Configure the new options via the Helm chart, and test the changes in a non-production environment before upgrading.
 
 ##### 2. Default Tyk Component Versions
@@ -1194,7 +1194,7 @@ Additionally, a disclaimer statement was added below the table, for customers to
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
-With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versioning/) on November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versioning/) on November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1399,7 +1399,7 @@ mdcb:
 
 `global.components.operator` added to determine whether the Tyk Operator component should be installed.
 
-This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}) for detailed information on pre-requisites.
+This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}) for detailed information on pre-requisites.
 
 ```yaml
 global:
@@ -1639,7 +1639,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>OSS: Simplify Tyk Operator setup with Kubernetes Secret creation</summary>
 
-When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}).
+When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}).
 </details>
 </li>
 
@@ -1802,7 +1802,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-driver" >}}) when you need to change driver setting.
+For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings#choose-a-mongodb-driver" >}}) when you need to change driver setting.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -2011,7 +2011,7 @@ To enable it, set `gateway.pdb.enabled` to `true` and configure `gateway.pdb.min
 <details>
 <summary>Gateway: Added Ingress template for gateway control service</summary>
 
-When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{< ref "tyk-self-managed#change-your-control-port" >}}).
+When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{< ref "planning-for-production#change-your-control-port" >}}).
 </details>
 </li>
 
@@ -2149,7 +2149,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Global config: Update default MongoDB driver to `mongo-go`</summary>
 
-Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please change `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-driver" >}}) when you need to change driver setting.
+Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please change `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings#choose-a-mongodb-driver" >}}) when you need to change driver setting.
 </details>
 </li>
 </ul>
