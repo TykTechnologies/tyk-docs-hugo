@@ -24,7 +24,7 @@ jobs:
     #   ((github.event_name == 'pull_request' || github.event_name == 'issues') && 
     #    github.event.action == 'labeled' && github.event.label.name == 'probe')
     # Use the reusable workflow from your repository (replace <your-org/repo> and <ref>)
-    uses: buger/probe/.github/workflows/probe.yml@main
+    uses: probelabs/probe/.github/workflows/probe.yml@main
     # Pass required inputs
     with:
       command_prefix: "/probe" # Or '/ai', '/ask', etc.
