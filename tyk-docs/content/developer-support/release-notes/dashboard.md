@@ -5231,10 +5231,6 @@ New detailed logging changes are available only to our Self-Managed customers cu
 
 [Read More]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}})
 
-##### Better Redis failover
-
-Now, if Redis is not available, Tyk will be more gracefully handle this scenario, and instead of simply timing out the Redis connection, will dynamically disable functionality which depends on redis, like rate limits or quotas, and will re-enable it back once Redis is available. The Tyk Gateway can even be started without Redis, which makes possible scenarios, such as when the Gateway proxies Redis though itself, like in a Redis Sentinel setup.
-
 ##### Weight-Based Load Balancing
 
 The Tyk Dashboard now allows you to control weighting of the upstreams, when using load balancing functionality. For example now you can configure Tyk to send 20% of traffic to one upstream, with 80% to another upstream service.
