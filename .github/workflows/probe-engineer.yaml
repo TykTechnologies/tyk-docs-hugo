@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   trigger_probe_implement:
-    uses: buger/probe/.github/workflows/probe.yml@main
+    uses: probelabs/probe/.github/workflows/probe.yml@main
     with:
       command_prefix: "/writer" # Or '/ai', '/ask', etc.
       allow_edit: true
