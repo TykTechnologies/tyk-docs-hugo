@@ -21,6 +21,123 @@ aliases:
 Our minor releases are supported until our next minor comes out. 
 
 ---
+## 4.0 Release Notes
+
+### 4.0.0 Release Notes
+
+#### Release Date 6th August 2025
+
+#### Release Highlights
+
+This release includes improvements to support for Redis Sentinel deployments and updates the default charts to install the most recent Tyk LTS release [5.8.4]({{< ref "developer-support/release-notes/dashboard#584-release-notes" >}}) and Developer Portal [1.14.0]({{< ref "developer-support/release-notes/portal#1140-release-notes" >}}).
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v4.0.0) below.
+
+#### Breaking Changes
+
+In this release, the MongoDB GraphQL Pump is not enabled by default. If you are using this Tyk Pump then you will need to enable it explicitly in your charts.
+
+#### Dependencies {#dependencies-4.0}
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency  | Tested Versions  | Compatible Versions  | Comments | 
+| ------------------------| ---------------- | -------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)   | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+ | | 
+| [Helm](https://helm.sh)               | 3.14.x              | 3.x  | | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x  | 5.x, 6.x, 7.x | |
+| [Valkey](https://valkey.io/download/) | 7.2.x, 8.0.x, 8.1.x | 7.2.x, 8.0.x, 8.1.x | |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8 | 5, 6, 7, 8 | Used by Tyk Dashboard, Pump, and MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x | 13.x - 17.x | Used by Tyk Dashboard, Pump, and MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecation in this release.
+
+#### Upgrade instructions
+You can use helm upgrade to upgrade your release
+
+```bash
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
+```
+
+#### Downloads
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v4.0.0.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/4.0.0)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/4.0.0)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/4.0.0)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/4.0.0)
+
+#### Changelog {#Changelog-v4.0.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Add Redis Sentinel Global Config Handler for Dashboard and MDCB Charts</summary>
+
+Added Helm Chart support for Redis Sentinel configurations using global values for both the Tyk Dashboard and MDCB charts to match the existing support in Tyk Gateway and Pump charts.
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated default versions of Tyk components</summary>
+
+Tyk Charts 4.0 will install the following Tyk components:
+
+- Tyk Gateway v5.8.4
+- Tyk Dashboard v5.8.4
+- Tyk Pump v1.12.0
+- Tyk MDCB v2.8.2
+- Tyk Developer Portal v1.14.0
+- Tyk Operator v1.2.0
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Pump Helm Chart: GraphQL Pump disabled by default</summary>
+
+The Tyk Pump Helm Chart has been updated to disable the GraphQL Pump configuration by default for both MongoDB and PostgreSQL backends. This change provides users with explicit control to enable the pump via Helm values (e.g., `pump.mongoGraph.enabled`), addressing concerns about rapid storage increase. Users currently relying on the GraphQL Pump will need to enable it explicitly after this update.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Helm Charts bootstrap failure</summary>
+
+Resolved an issue where the Helm Charts bootstrap post-install job for tyk-stack failed due to an unnecessary requirement for an operator license, even when the operator was disabled by default. The bootstrap process now completes successfully without requiring the operator license.
+</details>
+</li>
+<li>
+<details>
+<summary>Incorrect fsGroup Placement in Tyk Helm Chart</summary>
+
+Corrected the placement of the `fsGroup` field in the `tyk-stack` chart's `values.yaml` from `containerSecurityContext` to `podSecurityContext` to resolve pre-install job failures.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Redis Sentinel Password Configuration in Helm Charts</summary>
+
+Resolved an issue where the Redis Sentinel password ([TYK_GW_STORAGE_SENTINELPASSWORD]({{< ref "tyk-oss-gateway/configuration#storagesentinel_password" >}})) was not correctly picked up by Helm charts. Previously, both Redis and Sentinel passwords referenced the same secret key, leading to the Sentinel password defaulting to the regular Redis password. This fix ensures correct handling of distinct Sentinel passwords.
+</details>
+</li>
+</ul>
+
+---
 ## 3.0 Release Notes
 
 ### 3.0.0 Release Notes
