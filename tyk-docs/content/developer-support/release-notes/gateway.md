@@ -44,6 +44,8 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.9 Release Notes 
 
+### 5.9.2 Release Notes
+
 ### 5.9.1 Release Notes
 
 #### Release Date 14th August 2025
