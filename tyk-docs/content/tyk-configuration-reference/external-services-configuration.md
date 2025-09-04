@@ -93,7 +93,7 @@ Each service type (`oauth`, `storage`, `webhooks`, `health`, `discovery`) suppor
 }
 ```
 
-**mTLS Configuration:**
+**mTLS Configuration (File-based):**
 ```json
 "mtls": {
   "enabled": true,
@@ -106,19 +106,39 @@ Each service type (`oauth`, `storage`, `webhooks`, `health`, `discovery`) suppor
 }
 ```
 
+**mTLS Configuration (Certificate Store):**
+```json
+"mtls": {
+  "enabled": true,
+  "cert_id": "oauth-client-cert-id",
+  "ca_cert_ids": ["ca-cert-id-1", "ca-cert-id-2"],
+  "insecure_skip_verify": false,
+  "tls_min_version": "1.2",
+  "tls_max_version": "1.3"
+}
+```
+
 #### mTLS Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `enabled` | boolean | Yes | Enable/disable mTLS for this service |
+| **File-based Configuration** | | | |
 | `cert_file` | string | Yes* | Path to client certificate file |
 | `key_file` | string | Yes* | Path to client private key file |
 | `ca_file` | string | No | Path to CA certificate for server verification |
+| **Certificate Store Configuration** | | | |
+| `cert_id` | string | Yes** | Certificate ID from Tyk certificate store |
+| `ca_cert_ids` | array[string] | No | CA certificate IDs from certificate store |
+| **Common Parameters** | | | |
 | `insecure_skip_verify` | boolean | No | Skip server certificate verification (not recommended for production) |
 | `tls_min_version` | string | No | Minimum TLS version ("1.2", "1.3") |
 | `tls_max_version` | string | No | Maximum TLS version ("1.2", "1.3") |
 
-*Required when `enabled: true`
+*Required for file-based configuration when `enabled: true`  
+**Required for certificate store configuration when `enabled: true`
+
+**Note**: Cannot specify both file-based and certificate store configuration. Certificate store configuration takes priority when both `cert_id` and file paths are provided.
 
 ### Configuration Hierarchy and Precedence
 
@@ -157,6 +177,26 @@ Settings are applied in the following priority order (highest to lowest):
 - **Webhook service**: Uses environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`)
 - **Other services**: Use global proxy settings
 
+### Certificate Store vs File-based Configuration
+
+#### Certificate Store Benefits
+- **Centralized Management**: Store and manage all mTLS certificates through Tyk Dashboard or API
+- **Hot Reloading**: Certificate updates without service restart for zero downtime operations
+- **Automatic Rotation**: Seamless certificate renewal and rotation workflows
+- **Unified Lifecycle**: Single point of control for certificate management across all services
+- **Enhanced Security**: Certificates stored securely in Redis with access control via Tyk authorization
+
+#### File-based Benefits
+- **Direct Control**: Full file system control over certificate storage and access
+- **Tool Integration**: Easy integration with existing certificate management tools and workflows
+- **Container Friendly**: Simple deployment in containerized environments with volume mounts
+- **No Dependencies**: Independent operation without requiring Tyk certificate store functionality
+
+#### Configuration Priority
+1. **Certificate Store** - If `cert_id` is provided, certificate store is used
+2. **File-based** - If `cert_file` and `key_file` are provided (and no `cert_id`)
+3. **CA-only** - If only `ca_file` or `ca_cert_ids` are provided (for server verification only)
+
 ## Configuration Examples
 
 ### 1. Basic Proxy Setup (Local Testing)
@@ -172,7 +212,7 @@ Settings are applied in the following priority order (highest to lowest):
 }
 ```
 
-### 2. OAuth with Dedicated Proxy and mTLS
+### 2. OAuth with Dedicated Proxy and mTLS (File-based)
 ```json
 {
   "external_services": {
@@ -191,6 +231,31 @@ Settings are applied in the following priority order (highest to lowest):
         "cert_file": "/etc/tyk/certs/oauth-client.crt",
         "key_file": "/etc/tyk/certs/oauth-client.key",
         "ca_file": "/etc/tyk/certs/oauth-ca.crt",
+        "tls_min_version": "1.2"
+      }
+    }
+  }
+}
+```
+
+### 2a. OAuth with Certificate Store and mTLS
+```json
+{
+  "external_services": {
+    "proxy": {
+      "http_proxy": "http://localhost:3128",
+      "https_proxy": "http://localhost:3128",
+      "no_proxy": "localhost,127.0.0.1"
+    },
+    "oauth": {
+      "proxy": {
+        "http_proxy": "http://localhost:3129",
+        "https_proxy": "http://localhost:3129"
+      },
+      "mtls": {
+        "enabled": true,
+        "cert_id": "oauth-client-cert",
+        "ca_cert_ids": ["oauth-ca-cert"],
         "tls_min_version": "1.2"
       }
     }
@@ -258,6 +323,114 @@ Settings are applied in the following priority order (highest to lowest):
     }
   }
 }
+```
+
+### 5. Production Certificate Store Configuration
+```json
+{
+  "external_services": {
+    "proxy": {
+      "http_proxy": "http://proxy.company.com:8080",
+      "https_proxy": "http://proxy.company.com:8080",
+      "no_proxy": "localhost,127.0.0.1,.company.internal"
+    },
+    "oauth": {
+      "mtls": {
+        "enabled": true,
+        "cert_id": "oauth-client-prod",
+        "ca_cert_ids": ["oauth-ca-prod", "intermediate-ca"],
+        "tls_min_version": "1.2"
+      }
+    },
+    "storage": {
+      "mtls": {
+        "enabled": true,
+        "cert_id": "redis-client-prod",
+        "ca_cert_ids": ["redis-ca-prod"]
+      }
+    },
+    "webhooks": {
+      "mtls": {
+        "enabled": true,
+        "cert_id": "webhook-client-prod",
+        "ca_cert_ids": ["webhook-ca-prod"]
+      }
+    }
+  }
+}
+```
+
+## Certificate Store Integration
+
+### Overview
+
+The External Services Configuration feature integrates seamlessly with Tyk's centralized certificate store, providing enhanced certificate management capabilities for mTLS connections.
+
+### Certificate Store Benefits
+
+**Centralized Management:**
+- Store all mTLS certificates in Tyk's certificate store
+- Unified certificate lifecycle management
+- Integration with Tyk Dashboard for GUI management
+- API-driven certificate operations
+
+**Hot Reloading:**
+- Certificate updates without service restart
+- Zero downtime certificate rotation
+- Automatic pickup of updated certificates
+
+**Enhanced Security:**
+- Certificates stored securely in Redis
+- Access controlled via Tyk authorization
+- No file system dependencies
+- Audit trail for certificate operations
+
+### Certificate Store Setup
+
+1. **Upload Client Certificate:**
+   ```bash
+   curl -X POST \
+     "http://localhost:8080/tyk/certs" \
+     -H "x-tyk-authorization: your-secret" \
+     -H "Content-Type: multipart/form-data" \
+     -F "cert=@oauth-client.crt" \
+     -F "key=@oauth-client.key" \
+     -F "certID=oauth-client-prod"
+   ```
+
+2. **Upload CA Certificate:**
+   ```bash
+   curl -X POST \
+     "http://localhost:8080/tyk/certs" \
+     -H "x-tyk-authorization: your-secret" \
+     -H "Content-Type: multipart/form-data" \
+     -F "cert=@ca.crt" \
+     -F "certID=oauth-ca-prod"
+   ```
+
+### Certificate Store Operations
+
+**List Certificates:**
+```bash
+curl -H "x-tyk-authorization: your-secret" \
+  "http://localhost:8080/tyk/certs" | jq 'keys[]'
+```
+
+**Get Certificate Details:**
+```bash
+curl -H "x-tyk-authorization: your-secret" \
+  "http://localhost:8080/tyk/certs/oauth-client-prod" | jq .
+```
+
+**Update Certificate:**
+```bash
+curl -X POST \
+  "http://localhost:8080/tyk/certs" \
+  -H "x-tyk-authorization: your-secret" \
+  -H "Content-Type: multipart/form-data" \
+  -F "cert=@updated-oauth-client.crt" \
+  -F "key=@updated-oauth-client.key" \
+  -F "certID=oauth-client-prod"
 ```
 
 ## Security Best Practices
@@ -447,10 +620,15 @@ export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTP_PROXY="http://localhost:3128"
 export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTPS_PROXY="http://localhost:3128"
 export TYK_GW_EXTERNAL_SERVICES_PROXY_NO_PROXY="localhost,127.0.0.1"
 
-# OAuth-specific settings
+# OAuth-specific settings (file-based)
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED="true"
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CERT_FILE="/etc/tyk/certs/oauth-client.crt"
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_KEY_FILE="/etc/tyk/certs/oauth-client.key"
+
+# OAuth-specific settings (certificate store)
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED="true"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CERT_ID="oauth-client-prod"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CA_CERT_IDS="oauth-ca-prod,intermediate-ca"
 ```
 
 ## Complete Configuration Reference

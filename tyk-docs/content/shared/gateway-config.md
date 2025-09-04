@@ -1070,6 +1070,18 @@ Type: `string`<br />
 
 Path to the CA certificate file for server verification. Optional but recommended for production environments.
 
+### external_services.oauth.mtls.cert_id
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CERT_ID</b><br />
+Type: `string`<br />
+
+Certificate ID from Tyk certificate store for mTLS authentication. When provided, certificate store is used instead of file-based configuration. Cannot be used together with `cert_file` and `key_file`.
+
+### external_services.oauth.mtls.ca_cert_ids
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CA_CERT_IDS</b><br />
+Type: `[]string`<br />
+
+Array of CA certificate IDs from Tyk certificate store for server verification. Used with certificate store configuration when `cert_id` is provided.
+
 ### external_services.oauth.mtls.insecure_skip_verify
 ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_INSECURE_SKIP_VERIFY</b><br />
 Type: `bool`<br />
@@ -1095,7 +1107,7 @@ Storage service-specific configuration for external storage operations including
 Service-specific proxy configuration for storage requests. Supports the same proxy configuration options as other services.
 
 ### external_services.storage.mtls
-Mutual TLS configuration for storage service communications. Supports the same mTLS configuration options as other services.
+Mutual TLS configuration for storage service communications. Supports both file-based configuration (`cert_file`, `key_file`, `ca_file`) and certificate store configuration (`cert_id`, `ca_cert_ids`). Certificate store configuration takes priority when both are provided.
 
 ### external_services.webhooks
 Webhook service-specific configuration for webhook event notifications and delivery.
@@ -1104,7 +1116,7 @@ Webhook service-specific configuration for webhook event notifications and deliv
 Service-specific proxy configuration for webhook requests. Supports the same proxy configuration options as other services.
 
 ### external_services.webhooks.mtls
-Mutual TLS configuration for webhook communications. Supports the same mTLS configuration options as other services.
+Mutual TLS configuration for webhook communications. Supports both file-based configuration (`cert_file`, `key_file`, `ca_file`) and certificate store configuration (`cert_id`, `ca_cert_ids`). Certificate store configuration takes priority when both are provided.
 
 ### external_services.health
 Health check service-specific configuration for health check requests and uptime monitoring.
@@ -1113,7 +1125,7 @@ Health check service-specific configuration for health check requests and uptime
 Service-specific proxy configuration for health check requests. Supports the same proxy configuration options as other services.
 
 ### external_services.health.mtls
-Mutual TLS configuration for health check communications. Supports the same mTLS configuration options as other services.
+Mutual TLS configuration for health check communications. Supports both file-based configuration (`cert_file`, `key_file`, `ca_file`) and certificate store configuration (`cert_id`, `ca_cert_ids`). Certificate store configuration takes priority when both are provided.
 
 ### external_services.discovery
 Service discovery-specific configuration for service registry interactions and load balancer operations.
@@ -1122,7 +1134,7 @@ Service discovery-specific configuration for service registry interactions and l
 Service-specific proxy configuration for service discovery requests. Supports the same proxy configuration options as other services.
 
 ### external_services.discovery.mtls
-Mutual TLS configuration for service discovery communications. Supports the same mTLS configuration options as other services.
+Mutual TLS configuration for service discovery communications. Supports both file-based configuration (`cert_file`, `key_file`, `ca_file`) and certificate store configuration (`cert_id`, `ca_cert_ids`). Certificate store configuration takes priority when both are provided.
 
 ### uptime_tests
 Tyk nodes can provide uptime awareness, uptime testing and analytics for your underlying APIs uptime and availability.
