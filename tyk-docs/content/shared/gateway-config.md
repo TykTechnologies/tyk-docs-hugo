@@ -983,6 +983,147 @@ Disable keepalives between Tyk and your upstream service.
 Set this value to `true` to force Tyk to close the connection with the server, otherwise the connections will remain open for as long as your OS keeps TCP connections open.
 This can cause a file-handler limit to be exceeded. Setting to false can have performance benefits as the connection can be reused.
 
+### external_services
+External Services Configuration provides centralized HTTP client management for Tyk Gateway's external service interactions. This enterprise-grade feature supports proxy configuration, mTLS client certificates, and service-specific settings for OAuth, Storage, Webhooks, Health Checks, and Service Discovery.
+
+### external_services.proxy
+Global proxy configuration that applies to all external services unless overridden at the service level.
+
+### external_services.proxy.use_environment
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_PROXY_USE_ENVIRONMENT</b><br />
+Type: `bool`<br />
+
+Read proxy settings from environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`). When enabled, environment variables take precedence over configuration file settings.
+
+### external_services.proxy.http_proxy
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_PROXY_HTTP_PROXY</b><br />
+Type: `string`<br />
+
+HTTP proxy URL for HTTP requests to external services (e.g., `http://localhost:3128`). This setting applies globally unless overridden by service-specific configuration.
+
+### external_services.proxy.https_proxy
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_PROXY_HTTPS_PROXY</b><br />
+Type: `string`<br />
+
+HTTPS proxy URL for HTTPS requests to external services (e.g., `http://localhost:3128`). This setting applies globally unless overridden by service-specific configuration.
+
+### external_services.proxy.no_proxy
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_PROXY_NO_PROXY</b><br />
+Type: `string`<br />
+
+Comma-separated list of hosts to bypass proxy. Supports exact hostnames, IP addresses, CIDR blocks, and wildcard patterns (e.g., `localhost,127.0.0.1,.internal,*.local`).
+
+### external_services.oauth
+OAuth service-specific configuration for external OAuth providers, JWT validation, and token introspection.
+
+### external_services.oauth.proxy
+Service-specific proxy configuration for OAuth requests. Inherits from global proxy settings and allows per-service overrides.
+
+### external_services.oauth.proxy.use_environment
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_USE_ENVIRONMENT</b><br />
+Type: `bool`<br />
+
+Override to use environment variables for OAuth service proxy configuration.
+
+### external_services.oauth.proxy.http_proxy
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_HTTP_PROXY</b><br />
+Type: `string`<br />
+
+HTTP proxy URL specifically for OAuth service requests.
+
+### external_services.oauth.proxy.https_proxy
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_HTTPS_PROXY</b><br />
+Type: `string`<br />
+
+HTTPS proxy URL specifically for OAuth service requests.
+
+### external_services.oauth.proxy.no_proxy
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_NO_PROXY</b><br />
+Type: `string`<br />
+
+Hosts to bypass proxy for OAuth service requests.
+
+### external_services.oauth.mtls
+Mutual TLS configuration for OAuth service communications.
+
+### external_services.oauth.mtls.enabled
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED</b><br />
+Type: `bool`<br />
+
+Enable or disable mTLS for OAuth service requests. When enabled, `cert_file` and `key_file` are required.
+
+### external_services.oauth.mtls.cert_file
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CERT_FILE</b><br />
+Type: `string`<br />
+
+Path to the client certificate file for mTLS authentication with OAuth services. Required when `enabled: true`.
+
+### external_services.oauth.mtls.key_file
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_KEY_FILE</b><br />
+Type: `string`<br />
+
+Path to the client private key file for mTLS authentication with OAuth services. Required when `enabled: true`.
+
+### external_services.oauth.mtls.ca_file
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CA_FILE</b><br />
+Type: `string`<br />
+
+Path to the CA certificate file for server verification. Optional but recommended for production environments.
+
+### external_services.oauth.mtls.insecure_skip_verify
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_INSECURE_SKIP_VERIFY</b><br />
+Type: `bool`<br />
+
+Skip server certificate verification. Not recommended for production use. Default: false.
+
+### external_services.oauth.mtls.tls_min_version
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_TLS_MIN_VERSION</b><br />
+Type: `string`<br />
+
+Minimum TLS version for OAuth service connections. Supported values: "1.2", "1.3". Default: "1.2".
+
+### external_services.oauth.mtls.tls_max_version
+ENV: <b>TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_TLS_MAX_VERSION</b><br />
+Type: `string`<br />
+
+Maximum TLS version for OAuth service connections. Supported values: "1.2", "1.3". Default: "1.3".
+
+### external_services.storage
+Storage service-specific configuration for external storage operations including Redis connections and database interactions.
+
+### external_services.storage.proxy
+Service-specific proxy configuration for storage requests. Supports the same proxy configuration options as other services.
+
+### external_services.storage.mtls
+Mutual TLS configuration for storage service communications. Supports the same mTLS configuration options as other services.
+
+### external_services.webhooks
+Webhook service-specific configuration for webhook event notifications and delivery.
+
+### external_services.webhooks.proxy
+Service-specific proxy configuration for webhook requests. Supports the same proxy configuration options as other services.
+
+### external_services.webhooks.mtls
+Mutual TLS configuration for webhook communications. Supports the same mTLS configuration options as other services.
+
+### external_services.health
+Health check service-specific configuration for health check requests and uptime monitoring.
+
+### external_services.health.proxy
+Service-specific proxy configuration for health check requests. Supports the same proxy configuration options as other services.
+
+### external_services.health.mtls
+Mutual TLS configuration for health check communications. Supports the same mTLS configuration options as other services.
+
+### external_services.discovery
+Service discovery-specific configuration for service registry interactions and load balancer operations.
+
+### external_services.discovery.proxy
+Service-specific proxy configuration for service discovery requests. Supports the same proxy configuration options as other services.
+
+### external_services.discovery.mtls
+Mutual TLS configuration for service discovery communications. Supports the same mTLS configuration options as other services.
+
 ### uptime_tests
 Tyk nodes can provide uptime awareness, uptime testing and analytics for your underlying APIs uptime and availability.
 Tyk can also notify you when a service goes down.
