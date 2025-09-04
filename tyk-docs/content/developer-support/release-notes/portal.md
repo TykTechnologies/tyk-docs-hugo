@@ -38,6 +38,84 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.14 Release Notes
 
+### 1.14.1 Release Notes
+
+#### Release Date 4th September 2025
+
+#### Release Highlights
+
+This release delivers key bug fixes to improve stability in the Developer Portal. Updates include better handling of SSO user assignments and Organisation persistence, safeguards against cross-Organisation visibility in auto-approved registrations, and improved resilience when Teams are deleted. We’ve also fixed issues with API Product transitions and policy persistence, ensuring existing tokens remain valid.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.1) below.
+
+#### Breaking Changes {#breaking-changes-v1.14.1}
+
+There are no breaking changes in this release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are on version 1.14.0 or an older version, we recommend upgrading to this release ASAP.
+
+To upgrade the Portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}).
+
+#### Download
+- [Docker image v1.14.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.1)
+  - ```bash
+    docker pull tykio/portal:v1.14.1
+    ```
+
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.14.1)
+
+#### Changelog {#Changelog-v1.14.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Improved SSO User Assignment and Login Behavior</summary>
+
+We have resolved issues where SSO users could lose their Team assignments or the system could incorrectly reassign them to the default Organisation and Team after logging in. SSO now correctly links returning users to their existing profiles, preserving Team and Organisation memberships and preventing duplicate accounts. We have also improved the SSO configuration UI to make default and group-based Team assignments clearer.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Saving and Updating Documentation-Only Products</summary>
+
+We fixed an issue where the Portal could report an error when users added API access to a documentation-only API Product. This fix ensures seamless transitions between documentation-only and regular products, and correctly manages associated policies in Tyk Dashboard.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Corrected User Assignment in Auto-Approved Organisation Registrations</summary>
+
+Fixed an issue where auto-approved Organisation (Org) registrations could incorrectly assign a user to multiple Orgs, causing cross-Organisation visibility. Users are now always placed only in their new Org's default Team, ensuring proper isolation across both auto-approved and manual approval flows.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Handling of SSO Profiles When Teams Are Deleted</summary>
+
+Fixed an issue where deleting a Team referenced in an SSO profile’s `UserGroupMapping` caused validation errors and prevented the profile form from loading or being updated. SSO profiles now gracefully handle deleted Team references, allowing administrators to view, edit, and save changes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Persistence of Access Token Validity</summary>
+
+Resolved an issue where removing all API access from a Product would delete the associated access policy, causing previously issued tokens to stop working when access was later re-added. Now, access policies are preserved in draft status, temporarily invalidating tokens. When users add API access back to the API Product, the existing tokens will become valid again. Note that if the authentication method of the APIs within the Product is changed, all previously issued access tokens will remain invalid.
+</details>
+</li>
+</ul>
+
 ### 1.14.0 Release Notes
 
 #### Release Date 23 July 2025
