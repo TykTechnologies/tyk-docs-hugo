@@ -55,7 +55,7 @@ There are no breaking changes in this release.
 
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |--------|-------------------|-------------|
-| 5.9.2  | MDCB v2.8.3       | MDCB v2.8.3 |
+| 5.9.2  | MDCB v2.8.4       | MDCB v2.8.4 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.3       | Sync v2.1.0 |
 |        | Helm Chart v3.1.0 | Helm all versions |
