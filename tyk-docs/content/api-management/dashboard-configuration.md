@@ -4787,7 +4787,7 @@ deny["You are not allowed to change API status"] {
 ```
 
 #### Developer guide
-Since Opa rules are declarative, so in order to test them in the majority of the cases you can test your rules without using the Tyk Dashboard, and using this pre-build Rego playground https://play.openpolicyagent.org/p/x3ila2Q8Gb
+Since Opa rules are declarative, so in order to test them in the majority of the cases you can test your rules without using the Tyk Dashboard, and using this Rego playground https://play.openpolicyagent.org
 When it comes to the `TykAPIGet` and `TykDiff` functions, you can mock them in your tests.
 
 In order to understand how the Dashboard evaluates the rules, you can enable debugging mode by setting the `security.open_policy.debug` option, and in the Dashboard logs, you will see the detailed output with input and output of the rule engine. It can be useful to copy-paste the Dashboard log output to the Rego playground, fix the issue, and validate it on the Dashboard.
