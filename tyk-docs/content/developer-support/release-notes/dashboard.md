@@ -80,7 +80,7 @@ There are no breaking changes in this release.
 There are no deprecations in this release.
 
 #### Upgrade instructions {#upgrade-5.9.2}
-To resolve the compatibility issue between MDCB and Tyk Dashboard when OAS API definition paths contain dot (.) characters, you can choose **one** of the following upgrade paths:
+To resolve the compatibility issue between MDCB and Tyk Dashboard when Tyk OAS API definition paths contain dot (.) characters, you can choose **one** of the following upgrade paths:
 
 ##### Recommended Upgrade Paths
 
