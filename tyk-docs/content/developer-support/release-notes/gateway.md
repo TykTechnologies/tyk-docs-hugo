@@ -50,7 +50,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-Gateway 5.9.2 was version bumped only to align with Dashboard 5.9.2. Subsequently, no changes were encountered in release 5.9.2. For further information, please see the release notes for Dashboard [v5.9.2]({{< ref "developer-support/release-notes/dashboard#592-release-notes" >}}).
+This is a version bump to align with Dashboard v5.9.2, no changes have been implemented in this release. For further information, please see the release notes for Dashboard [v5.9.2]({{< ref "developer-support/release-notes/dashboard#592-release-notes" >}}).
 
 #### Breaking Changes
 
