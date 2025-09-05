@@ -95,6 +95,7 @@ If you are upgrading to 5.9.2, please follow the detailed [upgrade instructions]
     ``` 
 - Helm charts
   - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Gateway. You will need to modify them to install v5.9.2.
 
 - [Source code tarball of Tyk Gateway v5.9.2](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.2)
 
