@@ -44,14 +44,15 @@ Add the `external_services` section to your `tyk.conf` file:
 ```json
 {
   "external_services": {
-    "proxy": {
-      "use_environment": false,
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1,.internal,*.local"
+      "bypass_proxy": "localhost,127.0.0.1,.internal,*.local"
     },
     "oauth": {
       "proxy": {
+        "enabled": true,
         "http_proxy": "http://localhost:3128"
       },
       "mtls": {
@@ -74,22 +75,31 @@ Add the `external_services` section to your `tyk.conf` file:
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `use_environment` | boolean | No | Read proxy settings from environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`) |
+| `enabled` | boolean | No | Enable global proxy settings for all services (unless overridden at service level) |
 | `http_proxy` | string | No | HTTP proxy URL for HTTP requests (e.g., `http://localhost:3128`) |
 | `https_proxy` | string | No | HTTPS proxy URL for HTTPS requests (e.g., `http://localhost:3128`) |
-| `no_proxy` | string | No | Comma-separated list of hosts to bypass proxy |
+| `bypass_proxy` | string | No | Comma-separated list of hosts to bypass proxy |
 
 #### Service-Specific Configuration
 
 Each service type (`oauth`, `storage`, `webhooks`, `health`, `discovery`) supports:
 
+**Service-Specific Proxy Parameters:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `enabled` | boolean | No | Enable proxy settings for this specific service |
+| `http_proxy` | string | No | HTTP proxy URL for this service (overrides global setting) |
+| `https_proxy` | string | No | HTTPS proxy URL for this service (overrides global setting) |
+| `bypass_proxy` | string | No | Service-specific hosts to bypass proxy |
+
 **Proxy Configuration:**
 ```json
 "proxy": {
-  "use_environment": false,
+  "enabled": true,
   "http_proxy": "http://localhost:3128",
   "https_proxy": "http://localhost:3128",
-  "no_proxy": "localhost,127.0.0.1,.internal"
+  "bypass_proxy": "localhost,127.0.0.1,.internal"
 }
 ```
 
@@ -145,8 +155,8 @@ Each service type (`oauth`, `storage`, `webhooks`, `health`, `discovery`) suppor
 Settings are applied in the following priority order (highest to lowest):
 
 1. **Service-specific configuration** - Overrides all other settings
-2. **Global external_services configuration** - Applies to all services  
-3. **Environment variables** - Used when `use_environment: true`
+2. **Global external_services configuration** - Applies to all services when `enabled: true`
+3. **Environment variables** - Used when proxy is enabled but no specific URLs are configured
 4. **Default settings** - Built-in fallback values
 
 #### Configuration Resolution Example
@@ -154,18 +164,20 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128"
     },
     "oauth": {
       "proxy": {
+        "enabled": true,
         "https_proxy": "http://localhost:3129"
       }
     },
     "webhooks": {
       "proxy": {
-        "use_environment": true
+        "enabled": true
       }
     }
   }
@@ -174,7 +186,7 @@ Settings are applied in the following priority order (highest to lowest):
 
 **Result:**
 - **OAuth service**: Uses `http://localhost:3129` for HTTPS, `http://localhost:3128` for HTTP
-- **Webhook service**: Uses environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`)
+- **Webhook service**: Uses environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`) since no specific URLs are configured but proxy is enabled
 - **Other services**: Use global proxy settings
 
 ### Certificate Store vs File-based Configuration
@@ -203,10 +215,11 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1,.internal"
+      "bypass_proxy": "localhost,127.0.0.1,.internal"
     }
   }
 }
@@ -216,13 +229,15 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1"
+      "bypass_proxy": "localhost,127.0.0.1"
     },
     "oauth": {
       "proxy": {
+        "enabled": true,
         "http_proxy": "http://localhost:3129",
         "https_proxy": "http://localhost:3129"
       },
@@ -242,13 +257,15 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1"
+      "bypass_proxy": "localhost,127.0.0.1"
     },
     "oauth": {
       "proxy": {
+        "enabled": true,
         "http_proxy": "http://localhost:3129",
         "https_proxy": "http://localhost:3129"
       },
@@ -267,14 +284,16 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1,redis"
+      "bypass_proxy": "localhost,127.0.0.1,redis"
     },
     "storage": {
       "proxy": {
-        "no_proxy": "localhost,127.0.0.1,redis.internal"
+        "enabled": true,
+        "bypass_proxy": "localhost,127.0.0.1,redis.internal"
       },
       "mtls": {
         "enabled": true,
@@ -284,6 +303,7 @@ Settings are applied in the following priority order (highest to lowest):
     },
     "webhooks": {
       "proxy": {
+        "enabled": true,
         "http_proxy": "http://localhost:3130",
         "https_proxy": "http://localhost:3130"
       }
@@ -296,10 +316,11 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://proxy.company.com:8080",
       "https_proxy": "http://proxy.company.com:8080",
-      "no_proxy": "localhost,127.0.0.1,.company.internal"
+      "bypass_proxy": "localhost,127.0.0.1,.company.internal"
     },
     "oauth": {
       "mtls": {
@@ -313,7 +334,7 @@ Settings are applied in the following priority order (highest to lowest):
     },
     "webhooks": {
       "proxy": {
-        "use_environment": true
+        "enabled": true
       },
       "mtls": {
         "enabled": true,
@@ -329,10 +350,11 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://proxy.company.com:8080",
       "https_proxy": "http://proxy.company.com:8080",
-      "no_proxy": "localhost,127.0.0.1,.company.internal"
+      "bypass_proxy": "localhost,127.0.0.1,.company.internal"
     },
     "oauth": {
       "mtls": {
@@ -468,12 +490,13 @@ curl -X POST \
    export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTP_PROXY="http://user:$PROXY_PASSWORD@proxy:8080"
    ```
 
-3. **Network Segmentation**: Use `no_proxy` to exclude internal services
+3. **Network Segmentation**: Use `bypass_proxy` to exclude internal services
    ```json
    {
      "external_services": {
-       "proxy": {
-         "no_proxy": "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.internal"
+       "global": {
+         "enabled": true,
+         "bypass_proxy": "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.internal"
        }
      }
    }
@@ -511,8 +534,8 @@ The External Services Configuration maintains full backward compatibility:
 
 | Legacy Setting | New Location | Migration Required |
 |----------------|--------------|-------------------|
-| `http_proxy` | `external_services.proxy.http_proxy` | Optional |
-| `https_proxy` | `external_services.proxy.https_proxy` | Optional |
+| `http_proxy` | `external_services.global.http_proxy` | Optional |
+| `https_proxy` | `external_services.global.https_proxy` | Optional |
 | `jwt_ssl_insecure_skip_verify` | `external_services.oauth.mtls.insecure_skip_verify` | Recommended |
 
 ### Migration Strategy
@@ -551,7 +574,8 @@ The External Services Configuration maintains full backward compatibility:
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128"
     },
@@ -577,7 +601,7 @@ The External Services Configuration maintains full backward compatibility:
 **Solutions**:
 1. Verify proxy connectivity: `curl --proxy http://localhost:3128 https://httpbin.org/get`
 2. Check proxy configuration syntax
-3. Validate `no_proxy` settings
+3. Validate `bypass_proxy` settings
 
 #### mTLS Certificate Issues
 **Symptoms**: "tls: handshake failure", "x509: certificate signed by unknown authority"
@@ -616,9 +640,10 @@ All configuration options support environment variable overrides with the prefix
 
 ```bash
 # Global proxy settings
-export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTP_PROXY="http://localhost:3128"
-export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTPS_PROXY="http://localhost:3128"
-export TYK_GW_EXTERNAL_SERVICES_PROXY_NO_PROXY="localhost,127.0.0.1"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_ENABLED="true"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://localhost:3128"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="http://localhost:3128"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_BYPASS_PROXY="localhost,127.0.0.1"
 
 # OAuth-specific settings (file-based)
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED="true"
