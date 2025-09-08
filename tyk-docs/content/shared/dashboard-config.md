@@ -1385,8 +1385,6 @@ ENV: <b>TYK_DB_DISABLETELEMETRY</b><br />
 Type: `bool`<br />
 
 Enable or disable sending telemetry data such as analytics, API configurations, etc.
-<<<<<<< HEAD
-=======
 
 ### escape_dots_in_oas_paths
 ENV: <b>TYK_DB_ESCAPEDOTSINOASPATHS</b><br />
@@ -1396,4 +1394,3 @@ When enabled, dots in OAS field names will be escaped (to \\u002e ) and unescape
 
 Defaults to `false`.
 
->>>>>>> 9fd031163... [TT-15546] Update documentation for Dashboard (5.8.5) (#6856)
