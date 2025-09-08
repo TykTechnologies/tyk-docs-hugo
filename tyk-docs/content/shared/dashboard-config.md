@@ -1385,3 +1385,12 @@ ENV: <b>TYK_DB_DISABLETELEMETRY</b><br />
 Type: `bool`<br />
 
 Enable or disable sending telemetry data such as analytics, API configurations, etc.
+
+### escape_dots_in_oas_paths
+ENV: <b>TYK_DB_ESCAPEDOTSINOASPATHS</b><br />
+Type: `bool`<br />
+
+When enabled, dots in OAS field names will be escaped (to \\u002e ) and unescaped when required for compatibility with specific databases.
+
+Defaults to `false`.
+
