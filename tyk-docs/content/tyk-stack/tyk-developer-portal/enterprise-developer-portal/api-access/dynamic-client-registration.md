@@ -69,12 +69,12 @@ Name the scope **product_payments** and click `Create`. Repeat to create another
 The created scopes can now be assigned to OAuth Clients configured, including DCR clients when they are registered.
 
 ### Unauthenticated DCR
-The Curity Identity Server requires a {{< tooltip >}}nonce token{{< definition >}}A token that can only be used once{{< /definition >}}{{< /tooltip >}} with a `dcr` scope in order to authenticate the DCR endpoint. A workaround is to configure the DCR endpoint to use no-authentication. 
+The Curity Identity Server by default requires a {{< tooltip >}}nonce token{{< definition >}}A token that can only be used once{{< /definition >}}{{< /tooltip >}} with a `dcr` scope in order to authenticate the DCR endpoint. It obtains this via normal OAuth flows. It is however not possible to define an OAuth client_id and secret in Tyk to obtain such a token. A workaround is to disable authentication of the DCR endpoint in the Curity Identity Server by setting it to use no-authentication. 
 
 {{< warning success >}}
 **Use in secure environments only**
 
-Make sure that the communication between Tyk and the Curity Identity Server is appropriately secured. The DCR endpoint on the Curity Identity Server if set to `no-authentication` should only be accessible by Tyk.
+When configuring the DCR endpoint in the Curity Identity Server to use no-authentication, make sure that the communication between Tyk and the Curity Identity Server is appropriately secured in such a way that it is only accessible to Tyk.
 
 To configure this in the AdminUI of the Curity Identity Server, go to Profiles &#8594; Token Service &#8594; Dynamic Registration &#8594; scroll to the **Non-templatized** section and set **Authentication Method** to `no-authentication`. 
 
