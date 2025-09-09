@@ -17,7 +17,99 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+{{< note success >}}
+**Note on Tyk Sync version 2.2.1**  
+
+Tyk Sync 2.1.1 was accidentally also released to DockerHub as Tyk Sync v2.2.1.
+<br>That version should not be used.
+<br>We recommend the most recent version of Tyk Sync, which is first in the following list.
+{{< /note >}}
+
 ## 2.1 Release Notes
+
+### 2.1.3 Release Notes
+
+#### Release Date 4 September 2025
+
+#### Release Highlights
+
+This patch release upgrades Tyk Sync to use Go 1.24 for enhanced security and stability.
+
+Please refer to the [changelog]({{< ref "#Changelog-v2.1.3">}}) below for detailed explanation.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.1.2, we strongly recommend promptly upgrading to the latest release. If you are working with an older version, it is advisable to bypass version 2.1.2 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.1.3](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.1.3)
+  - ```bash
+    docker pull tykio/tyk-sync:v2.1.3
+    ```
+
+#### Changelog {#Changelog-v2.1.3}
+
+##### Updated
+<ul>
+<li>
+<details>
+<summary>Upgraded to Golang 1.24</summary>
+
+Tyk Sync now runs on Golang 1.24, bringing:
+
+  - Improved build performance and runtime efficiency
+  - Enhanced security with latest Go security patches
+  - Better dependency management and module support
+</details>
+</li>
+</ul>
+
+### 2.1.2 Release Notes
+
+#### Release Date 27 June 2025
+
+#### Release Highlights
+
+This patch release uplifts a dependent library for better interoperability with the rest of the Tyk stack. Please refer to the [changelog]({{< ref "#Changelog-v2.1.2">}}) below for detailed explanation.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.1.1, we strongly recommend promptly upgrading to the latest release. If you are working with an older version, it is advisable to bypass version 2.1.1 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.1.2](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.1.2)
+  - ```bash
+    docker pull tykio/tyk-sync:v2.1.2
+    ```
+
+#### Changelog {#Changelog-v2.1.2}
+
+##### Updated
+<ul>
+<li>
+<details>
+<summary>Updated to use latest kin-openapi</summary>
+
+Upgraded to use the latest version of kin-openapi (v0.132.0). This ensures improved compatibility, full stack interoperability, and continued support for existing OpenAPI 3.0.x specifications.
+</details>
+</li>
+</ul>
 
 ### 2.1.1 Release Notes
 
@@ -26,6 +118,12 @@ Our minor releases are supported until our next minor comes out.
 #### Release Highlights
 
 This patch release contains a bug fix. Please refer to the [changelog]({{< ref "#Changelog-v2.1.1">}}) below for detailed explanation.
+
+{{< note success >}}
+**Note**  
+
+This release was accidentally also released to DockerHub as Tyk Sync v2.2.1. That version should not be used.
+{{< /note >}}
 
 #### Breaking Changes
 
