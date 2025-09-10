@@ -102,6 +102,38 @@ We have refined the Dashboard UI to make creating and editing policies and keys 
 </details>
 </li>
 
+<li>
+<details>
+<summary>[OAS] Pre-Configure API Versioning Metadata</summary>
+
+Introduced the ability to define versioning metadata (such as version key, location, and default settings) on a Tyk OAS API before creating additional versions. This makes it possible to prepare versioning configuration in advance without triggering validation errors. Versioning is automatically enabled when the first child version is added, and automatically disabled when all child versions are removed, while preserving metadata for future use.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Core Registered Claims Validation for JWTs</summary>
+
+Added support for validating JWT registered claims including subject, issuer, and audience. The Dashboard can now also enforce the existence of the JWT ID claim and distinguish between JWTs from multiple identity providers by allowing different names for subject, base policy, and scope-to-policy mapping claims. This configuration is currently available only for Tyk OAS APIs and must be set directly in the API definition (not via the API Designer).
+</details>
+</li>
+
+<li>
+<details>
+<summary>Implement Certificate Metadata Storage in Dashboard</summary>
+
+Implemented an in-memory certificate metadata repository in the Dashboard to cache and persist certificate details needed to check for expiring certificates.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dashboard Certificate Expiry Notifications</summary>
+
+The Dashboard now includes a built-in notification system to alert administrators when mTLS certificates are expiring soon or have already expired.
+</details>
+</li>
+
 </ul>
 
 ##### Changed
@@ -231,6 +263,14 @@ Fixed an issue where the default version of a Tyk OAS API was incorrectly reset 
 <summary>Corrected Error Reporting in API Debugger for Response Middleware</summary>
 
 Fixed an issue where the Tyk OAS API Debugger incorrectly reported errors on endpoints using the Response Body Transform middleware, even when API calls succeeded. The debugger now accurately reflects successful responses without displaying false error logs.
+</details>
+</li>
+
+<li>
+<details>
+<summary>GraphQL API Creation via Upstream Introspection Fixed</summary>
+
+Resolved an issue where creating GraphQL APIs using Upstream Introspection in the Dashboard could fail with '502 Bad Gateway' errors. This occurred when OPA rules modified the request body without updating the 'ContentLength'. The Dashboard now recalculates the content length correctly, ensuring stable and error-free introspection requests.
 </details>
 </li>
 
