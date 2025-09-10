@@ -566,6 +566,15 @@ Resolved an issue in OAS API definitions where ReadableDuration values, such as 
 </details>
 </li>
 
+<li>
+<details>
+<summary>Improved Gateway Registration Reliability During Upgrades</summary>
+
+We’ve resolved an issue that could cause Gateways to fail re-registration when restarting under certain licensing configurations during upgrades. This fix introduces support for new “Unlimited Gateway” licenses, enhances Gateway's Dashboard authentication retry logic, and ensures a smoother upgrade experience for large-scale deployments. Gateways now register reliably without entering failure loops, even under heavy churn or rolling upgrades.
+</details>
+</li>
+
+
 
 </ul>
 
