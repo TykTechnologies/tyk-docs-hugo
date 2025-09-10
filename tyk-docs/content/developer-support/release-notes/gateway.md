@@ -99,13 +99,39 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 ##### Added
 
 <ul>
+  
 <li>
 <details>
-<summary>Support for OR Logic in OAS API Authentication</summary>
+<summary>[OAS] Pre-Configure API Versioning Metadata</summary>
 
-Tyk Gateway now fully supports the OpenAPI specification for authentication by allowing OR logic across multiple security requirements. This means APIs can be configured with alternative authentication methods (e.g., API key or JWT or mTLS), and satisfying any one of them grants access. Existing APIs with single or multi-scheme (AND) authentication remain unaffected, ensuring backward compatibility while enabling more flexible, multi-audience security patterns.
+Introduced the ability to define versioning metadata (such as version key, location, and default settings) on a Tyk OAS API before creating additional versions. This makes it possible to prepare versioning configuration in advance without triggering validation errors. Versioning is automatically enabled when the first child version is added, and automatically disabled when all child versions are removed, while preserving metadata for future use.
 </details>
 </li>
+
+<li>
+<details>
+<summary>Core Registered Claims Validation for JWTs</summary>
+
+Added support for validating JWT registered claims including subject, issuer, and audience. The Dashboard can now also enforce the existence of the JWT ID claim and distinguish between JWTs from multiple identity providers by allowing different names for subject, base policy, and scope-to-policy mapping claims. This configuration is currently available only for Tyk OAS APIs and must be set directly in the API definition (not via the API Designer).
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway Certificate Expiry Notification Events</summary>
+
+Introduced a proactive event system to warn administrators when mTLS certificates are approaching expiration. A new 'CertificateExpiringSoon' event is fired when a certificate is within a configurable threshold (e.g., 30 days) of expiry, helping teams renew certificates before they cause outages. Additionally, a new 'CertificateExpired' event is fired whenever an expired certificate is detected, giving administrators clear visibility into failed requests caused by outdated certificates.  
+</details>
+</li>
+
+<li>
+<details>
+<summary>Enhanced JWKS Caching</summary>
+
+Improved JWT validation performance and reliability by adding configurable JWKS cache timeouts, the ability to invalidate caches on demand, and pre-fetching of keys when APIs are loaded. These changes reduce latency and ensure smoother key rotation handling.
+</details>
+</li>
+
 
 </ul>
 
@@ -235,6 +261,14 @@ Fixed an issue where Gateways could fail to re-register with the Dashboard after
 <summary>Fixed Body decompression error with GraphQL and Analytics</summary>
 
 Fixed a problem causing repeated `Body decompression error: EOF` logs when analytics were enabled for GraphQL APIs. The gateway attempted to decompress the response body after it had been consumed, which triggered the EOF errors.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Gateway Registration Reliability During Upgrades</summary>
+
+We’ve resolved an issue that could cause Gateways to fail re-registration when restarting under certain licensing configurations during upgrades. This fix introduces support for new “Unlimited Gateway” licenses, enhances Gateway's Dashboard authentication retry logic, and ensures a smoother upgrade experience for large-scale deployments. Gateways now register reliably without entering failure loops, even under heavy churn or rolling upgrades.
 </details>
 </li>
 
