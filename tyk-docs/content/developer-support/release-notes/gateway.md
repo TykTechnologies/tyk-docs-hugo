@@ -387,7 +387,7 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 #### Release Highlights
 
-
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.6" >}}).
 
 #### Breaking Changes
 
