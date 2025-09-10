@@ -339,11 +339,11 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.5 | MDCB v2.8.4     | MDCB v2.8.4 |
+| 5.8.6 | MDCB v2.8.4     | MDCB v2.8.4 |
 |         | Operator v1.2.0  | Operator v0.17 |
 |         | Sync v2.1.3    | Sync v2.1.1 |
 |         | Helm Chart v3.0  | Helm all versions |
-| | EDP v1.14 | EDP all versions |
+| | EDP v1.14.1 | EDP all versions |
 | | Pump v1.12.1 | Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
@@ -366,11 +366,7 @@ There are no deprecations in this release.
 
 #### Upgrade instructions {#upgrade-5.8.6}
 
-If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
-
-##### Recommended Upgrade Paths
-
-If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions](#upgrading-tyk).
+If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
 
