@@ -323,7 +323,7 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 ### 5.8.6 Release Notes
 
-#### Release Date 18th August 2025
+#### Release Date  2025
 
 #### Release Highlights
 
@@ -523,6 +523,14 @@ Fixed an issue where providing a non-existent 'base_api_id' when creating a new 
 <summary>Dashboard default page_size behavior fixed</summary>
 
 Fixed an issue where Tyk did not correctly apply a default `page_size`, which could cause unexpected behaviour if none was set in the Dashboard configuration. It now defaults to 10 as described in the documentation.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Changes to global webhooks were not immediately applied in event handling</summary>
+
+Fixed an issue where updating a [global webhook]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) did not trigger a Gateway reload for Tyk OAS APIs using that webhook. The impact of this was that the old settings would be used when the associated event was triggered. Now, making a change to the webhook configuration will trigger a Gateway reload for all impacted APIs so that the new settings will be used.
 </details>
 </li>
 
