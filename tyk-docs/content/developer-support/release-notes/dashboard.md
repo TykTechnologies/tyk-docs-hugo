@@ -522,6 +522,14 @@ Fixed an issue where updating a [global webhook]({{< ref "api-management/gateway
 </details>
 </li>
 
+<li>
+<details>
+<summary>GraphQL API Creation via Upstream Introspection Fixed</summary>
+
+Resolved an issue where creating GraphQL APIs using Upstream Introspection in the Dashboard could fail with '502 Bad Gateway' errors. This occurred when OPA rules modified the request body without updating the 'ContentLength'. The Dashboard now recalculates the content length correctly, ensuring stable and error-free introspection requests.
+</details>
+</li>
+
 
 </ul>
 
