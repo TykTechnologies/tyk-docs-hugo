@@ -96,7 +96,149 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 
 #### Changelog {#Changelog-v5.10.0}
 
-Since this release was version-bumped only to align with Dashboard v5.10.0, no changes were encountered in this release.
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Support for OR Logic in OAS API Authentication</summary>
+
+Tyk Gateway now fully supports the OpenAPI specification for authentication by allowing OR logic across multiple security requirements. This means APIs can be configured with alternative authentication methods (e.g., API key or JWT or mTLS), and satisfying any one of them grants access. Existing APIs with single or multi-scheme (AND) authentication remain unaffected, ensuring backward compatibility while enabling more flexible, multi-audience security patterns.
+</details>
+</li>
+
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Go 1.24 Upgrade for Tyk Gateway</summary>
+
+The Tyk Gateway has been updated to Go 1.24, improving security by staying up-to-date with Go versions.
+</details>
+</li>
+
+</ul>
+
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed: Unnecessary 'header' object generation in Tyk OAS API Key import</summary>
+
+Resolved an issue where importing an OpenAPI description with an 'apiKey' security scheme, while using the 'authentication' query parameter, led to the unnecessary generation of a 'header' object within the 'x-tyk-api-gateway' extension. The authentication object in the Tyk Vendor Extension will now correctly contain only basic 'enabled' status and scheme information, without the redundant 'header' configuration, aligning with the OpenAPI security scheme definition.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Corrected '/versions' Endpoint Behavior for Tyk OAS APIs</summary>
+
+Fixed an issue where the '/api/apis/oas/{apiId}/versions' endpoint returned version data for APIs without versioning, including non-OAS and Classic APIs. The endpoint now strictly validates requests, returning 'HTTP 422 Unprocessable Entity' unless the query targets a valid Tyk OAS base API, ensuring accurate and consistent results.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed API migration error for Swagger 2.0 APIs without explicit versions</summary>
+
+Resolved an issue where migrating Swagger 2.0 APIs without explicit versioning to Tyk OAS failed because the `versions` field was incorrectly set to `null` instead of an empty array, causing validation errors. The fix ensures `versions` is always an array, allowing successful migration.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed: Mock Responses Not Working with Internal API Proxying</summary>
+
+Fixed an issue where mock response middleware did not work when internal API proxying was enabled. Now you can redirect a request to another API on Tyk via [internal looping]() and return a mock response if configured in the target API.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Base API CORS settings were used for child API versions</summary>
+
+Fixed an issue where CORS settings were not applied correctly for versioned Tyk OAS APIs. The CORS check was being performed before the request was routed to the child API, so the configuration from the base API was applied even if it differed from the child API definition. This has been corrected so that the request is routed to the correct version (base or child) prior to the CORS settings being applied, allowing different settings for different versions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Mandatory 'negate' Field for OAS URL Rewrite Middleware</summary>
+
+Addressed a schema inconsistency where the 'negate' field (used to define match logic) was optional in Tyk OAS API definitions. It is now required to explicitly declare whether a URL rewrite rule should match or not match the configured pattern, ensuring consistent behavior between the Dashboard UI and backend validation.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fix: Body transform middleware not applied with regex in URL rewrite</summary>
+
+Fixed an issue where response body transformation middleware failed to apply when URL rewrite patterns contained regex characters (e.g., $, ^, (), []), as these metacharacters interfered with the transformation's pattern-matching process. Request body transformation and URL rewrites themselves were unaffected.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Inconsistent Null Handling for API Versions in Policies and Keys</summary>
+
+Resolved inconsistencies in how null or empty array values for the 'versions' field within 'access_rights' are handled for policies and keys. This update standardizes validation and data representation across API and UI workflows, improving reliability and preventing errors when managing API versions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed: Schema validation for ReadableDuration values in OAS API definitions</summary>
+
+Resolved an issue in OAS API definitions where ReadableDuration values, such as uptime test timeouts, were automatically converted to decimal formats (e.g., '4.5s') upon reopening the API editor. This conversion previously caused schema validation warnings, which are now prevented by ensuring duration values are serialized to integer-based formats (e.g., '4s500ms').
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed: TLS configuration for Redis rate limiting</summary>
+
+Fix TLS certificate verification issue in rate limiting Redis connection that causes 429 errors due to incomplete TLS configuration in the rate limiter's Redis client.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Corrected Error Reporting in API Debugger for Response Middleware</summary>
+
+Fixed an issue where the Tyk OAS API Debugger incorrectly reported errors on endpoints using the Response Body Transform middleware, even when API calls succeeded. The debugger now accurately reflects successful responses without displaying false error logs.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fix: Gateway crash when deleting API with Uptime Test enabled</summary>
+
+Addresses a bug where deleting an API that has the 'Uptime test' feature enabled could cause the Gateway to crash due to an invalid memory access (nil pointer dereference). A nil check has been added to prevent this panic.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway Re-registration Failures</summary>
+
+Fixed an issue where Gateways could fail to re-register with the Dashboard after restart when using the updated license handler, resulting in 'Authorization failed (Nonce empty)' errors and crash loops. The registration logic has been hardened to prevent these failures.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Body decompression error with GraphQL and Analytics</summary>
+
+Fixed a problem causing repeated `Body decompression error: EOF` logs when analytics were enabled for GraphQL APIs. The gateway attempted to decompress the response body after it had been consumed, which triggered the EOF errors.
+</details>
+</li>
+
+</ul>
 
 ## 5.9 Release Notes 
 
