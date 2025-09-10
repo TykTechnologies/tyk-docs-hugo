@@ -1,8 +1,25 @@
 {
     "home": "tyk-sync",
     "licensed": true,
+<<<<<<< HEAD
     "latest": "2.1.0",
     "releaseNotesPath": "developer-support/release-notes/sync",
+=======
+    "latest": "2.1.3",
+    "releaseNotesPath": "developer-support/release-notes/sync",
+    "2.1.3": {
+      "date": "04/09/2025",
+      "docker": "https://hub.docker.com/r/tykio/tyk-sync/tags?page=1&name=v2.1.3"
+    },
+    "2.1.2": {
+      "date": "27/06/2025",
+      "docker": "https://hub.docker.com/r/tykio/tyk-sync/tags?page=1&name=v2.1.2"
+    },
+    "2.1.1": {
+      "date": "13/05/2025",
+      "docker": "https://hub.docker.com/r/tykio/tyk-sync/tags?page=1&name=v2.1.1"
+    },
+>>>>>>> 9b8be06f9... [DX-2098] RN for Tyk Sync 2.1.2 and 2.1.3 (#6916)
     "2.1.0": {
       "date": "14/12/2024",
       "docker": "https://hub.docker.com/r/tykio/tyk-sync/tags?page=1&name=v2.1.0"
