@@ -468,14 +468,6 @@ Resolved an issue where orphaned child APIs of a versioned OAS API would disappe
 
 <li>
 <details>
-<summary>Fixed: Schema validation for ReadableDuration values in OAS API definitions</summary>
-
-Resolved an issue in OAS API definitions where ReadableDuration values, such as uptime test timeouts, were automatically converted to decimal formats (e.g., '4.5s') upon reopening the API editor. This conversion previously caused schema validation warnings, which are now prevented by ensuring duration values are serialized to integer-based formats (e.g., '4s500ms').
-</details>
-</li>
-
-<li>
-<details>
 <summary>Fixed Inconsistent Null Handling for API Versions in Policies and Keys</summary>
 
 Resolved inconsistencies in how null or empty array values for the 'versions' field within 'access_rights' are handled for policies and keys. This update standardizes validation and data representation across API and UI workflows, improving reliability and preventing errors when managing API versions.
