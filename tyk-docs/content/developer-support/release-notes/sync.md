@@ -20,7 +20,7 @@ Our minor releases are supported until our next minor comes out.
 {{< note success >}}
 **Note on Tyk Sync version 2.2.1**  
 
-Tyk Sync 2.1.1 was accidentally also released to DockerHub as Tyk Sync v2.2.1.
+Tyk Sync 2.1.1 was accidentally also released to [DockerHub](https://hub.docker.com/layers/tykio/tyk-sync/v2.2.1/images/sha256-cf21fef955add971a9bdfeadd2674fc1f22fbee2d0bf12dab38a78bfae5b7716) as Tyk Sync v2.2.1.
 <br>That version should not be used.
 <br>We recommend the most recent version of Tyk Sync, which is first in the following list.
 {{< /note >}}
@@ -122,7 +122,7 @@ This patch release contains a bug fix. Please refer to the [changelog]({{< ref "
 {{< note success >}}
 **Note**  
 
-This release was accidentally also released to DockerHub as Tyk Sync v2.2.1. That version should not be used.
+This release was accidentally also released to [DockerHub](https://hub.docker.com/layers/tykio/tyk-sync/v2.2.1/images/sha256-cf21fef955add971a9bdfeadd2674fc1f22fbee2d0bf12dab38a78bfae5b7716) as Tyk Sync v2.2.1. That version should not be used.
 {{< /note >}}
 
 #### Breaking Changes
