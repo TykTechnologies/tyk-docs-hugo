@@ -63,8 +63,8 @@ In this tutorial, we'll configure Tyk Gateway to use a corporate HTTP proxy for 
     - In the `confs/tyk.env` file, add the following environment variables:
 
     ```bash
-    export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTP_PROXY="http://localhost:4000"
-    export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTPS_PROXY="https://localhost:4000"
+    export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://localhost:4000"
+    export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="https://localhost:4000"
     ```
 
 2. **Update docker compose file**
@@ -116,11 +116,11 @@ External Service Configuration is defined in the `external_services` section of 
 {
 // Partial config from tyk.conf
     "external_services": {
-      "proxy": {
-        "use_environment": false,
+      "global": {
+        "enabled": true,
         "http_proxy": "http://localhost:3128",
         "https_proxy": "http://localhost:3128",
-        "no_proxy": "localhost,127.0.0.1,.internal,*.local"
+        "bypass_proxy": "localhost,127.0.0.1,.internal,*.local"
       },
       "oauth": {
         "proxy": {
@@ -156,9 +156,9 @@ All configuration options support environment variable overrides with the prefix
 
 ```bash
 # Global proxy settings
-export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTP_PROXY="http://localhost:3128"
-export TYK_GW_EXTERNAL_SERVICES_PROXY_HTTPS_PROXY="http://localhost:3128"
-export TYK_GW_EXTERNAL_SERVICES_PROXY_NO_PROXY="localhost,127.0.0.1"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://localhost:3128"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="http://localhost:3128"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_NO_PROXY="localhost,127.0.0.1"
 
 # OAuth-specific settings
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED="true"
@@ -186,7 +186,7 @@ Settings are applied in the following priority order (highest to lowest):
 
 1. **Service-specific configuration** - Overrides all other settings
 2. **Global external_services configuration** - Applies to all services  
-3. **Environment variables** - Used when `use_environment: true`
+3. **Environment variables** - Used when proxy is enabled but no specific URLs are configured
 4. **Default settings** - Built-in fallback values
 
 ### Configuration Examples
@@ -195,10 +195,11 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1,.internal"
+      "bypass_proxy": "localhost,127.0.0.1,.internal"
     }
   }
 }
@@ -208,13 +209,15 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1"
+      "bypass_proxy": "localhost,127.0.0.1"
     },
     "oauth": {
       "proxy": {
+        "enabled": true,
         "http_proxy": "http://localhost:3129",
         "https_proxy": "http://localhost:3129"
       },
@@ -234,13 +237,15 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1"
+      "bypass_proxy": "localhost,127.0.0.1"
     },
     "oauth": {
       "proxy": {
+        "enabled": true,
         "http_proxy": "http://localhost:3129",
         "https_proxy": "http://localhost:3129"
       },
@@ -259,14 +264,16 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128",
-      "no_proxy": "localhost,127.0.0.1,redis"
+      "bypass_proxy": "localhost,127.0.0.1,redis"
     },
     "storage": {
       "proxy": {
-        "no_proxy": "localhost,127.0.0.1,redis.internal"
+        "enabled": true,
+        "bypass_proxy": "localhost,127.0.0.1,redis.internal"
       },
       "mtls": {
         "enabled": true,
@@ -276,6 +283,7 @@ Settings are applied in the following priority order (highest to lowest):
     },
     "webhooks": {
       "proxy": {
+        "enabled": true,
         "http_proxy": "http://localhost:3130",
         "https_proxy": "http://localhost:3130"
       }
@@ -288,10 +296,11 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://proxy.company.com:8080",
       "https_proxy": "http://proxy.company.com:8080",
-      "no_proxy": "localhost,127.0.0.1,.company.internal"
+      "bypass_proxy": "localhost,127.0.0.1,.company.internal"
     },
     "oauth": {
       "mtls": {
@@ -305,7 +314,7 @@ Settings are applied in the following priority order (highest to lowest):
     },
     "webhooks": {
       "proxy": {
-        "use_environment": true
+        "enabled": true
       },
       "mtls": {
         "enabled": true,
@@ -321,10 +330,11 @@ Settings are applied in the following priority order (highest to lowest):
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://proxy.company.com:8080",
       "https_proxy": "http://proxy.company.com:8080",
-      "no_proxy": "localhost,127.0.0.1,.company.internal"
+      "bypass_proxy": "localhost,127.0.0.1,.company.internal"
     },
     "oauth": {
       "mtls": {
@@ -426,7 +436,8 @@ The External Services Configuration maintains full backward compatibility:
 ```json
 {
   "external_services": {
-    "proxy": {
+    "global": {
+      "enabled": true,
       "http_proxy": "http://localhost:3128",
       "https_proxy": "http://localhost:3128"
     },
