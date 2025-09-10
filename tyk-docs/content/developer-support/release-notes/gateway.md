@@ -72,7 +72,7 @@ There are no breaking changes in this release.
 
 | Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
 | ---------------------- | --------------- | ------------------- | -------- | 
-| [Go](https://go.dev/dl/)               | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Go](https://go.dev/dl/)               | 1.24                   |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
 | [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
 | [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
