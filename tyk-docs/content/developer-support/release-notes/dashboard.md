@@ -35,6 +35,73 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 5.10 Release Notes 
+
+#### Release Date xx 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.0" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.10.0}
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|-------------|
+| 5.10.0  | MDCB v2.8.4       | MDCB v2.8.4 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.3       | Sync v2.1.0 |
+|        | Helm Chart v3.1.0 | Helm all versions |
+|        | EDP v1.14.1       | EDP all versions |
+|        | Pump v1.12.1      | Pump all versions |
+|        | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.10.0}
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)          | 1.24 | 1.24 | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
+| [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.10.0}
+
+If you are upgrading to 5.10.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.10.0)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.10.0
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Dashboard. You will need to modify them to install v5.10.0.
+
+#### Changelog {#Changelog-v5.10.0}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary></summary>
+
+</details>
+</li>
+</ul>
+
 ## 5.9 Release Notes 
 
 ### 5.9.2 Release Notes
