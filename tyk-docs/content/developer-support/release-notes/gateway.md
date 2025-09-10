@@ -438,19 +438,6 @@ If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.8.6}
 
-##### Added
-
-<ul>
-<li>
-<details>
-<summary></summary>
-
-
-</details>
-</li>
-
-</ul>
-
 ##### Changed
 
 <ul>
@@ -568,6 +555,14 @@ Resolved an issue where migrating Swagger 2.0 APIs without explicit versioning t
 <summary>Fixed: Unnecessary 'header' object generation in Tyk OAS API Key import</summary>
 
 Resolved an issue where importing an OpenAPI description with an 'apiKey' security scheme, while using the 'authentication' query parameter, led to the unnecessary generation of a 'header' object within the 'x-tyk-api-gateway' extension. The authentication object in the Tyk Vendor Extension will now correctly contain only basic 'enabled' status and scheme information, without the redundant 'header' configuration, aligning with the OpenAPI security scheme definition.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed: Schema validation for ReadableDuration values in OAS API definitions</summary>
+
+Resolved an issue in OAS API definitions where ReadableDuration values, such as uptime test timeouts, were automatically converted to decimal formats (e.g., '4.5s') upon reopening the API editor. This conversion previously caused schema validation warnings, which are now prevented by ensuring duration values are serialized to integer-based formats (e.g., '4s500ms').
 </details>
 </li>
 
@@ -2802,6 +2797,7 @@ Corrected an issue where GraphQL OTel attributes were missing from spans when re
 Fixed a gateway panic issue observed by users when using the *Persist GQL* middleware without defined arguments. The gateway will no longer throw panics in these cases.
 </details>
 </li>
+
 <li>
 <details>
 <summary>Resolved issue with GraphQL APIs handling OPTIONS requests</summary>
@@ -2809,6 +2805,7 @@ Fixed a gateway panic issue observed by users when using the *Persist GQL* middl
 Fixed an issue with GraphQL API's Cross-Origin Resource Sharing (CORS) configuration, which previously caused the API to fail in respecting CORS settings. This resulted in an inability to proxy requests to upstream servers and handle OPTIONS/CORS requests correctly. With this fix, users can now seamlessly make requests, including OPTIONS method requests, without encountering the previously reported error.
 </details>
 </li>
+
 <li>
 <details>
 <summary>Resolved conflict with multiple APIs sharing listen path on different domains</summary>
