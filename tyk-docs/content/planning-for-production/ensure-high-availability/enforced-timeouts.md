@@ -48,10 +48,6 @@ If you are using the Service Discovery option, if an enforced timeout is trigger
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-oas-apis" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-classic-apis" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Enforced Timeout middleware summary
   - The Enforced Timeout is an optional stage in Tyk's API Request processing chain, activated when the request is proxied to the upstream service.
