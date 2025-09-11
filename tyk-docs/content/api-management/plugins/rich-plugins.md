@@ -138,7 +138,8 @@ type CoProcessObject struct {
 
 `Coprocess.Dispatcher` describes a very simple interface for implementing the dispatcher logic, the required methods are: `Dispatch`, `DispatchEvent` and `Reload`.
 
-`Dispatch` accepts a pointer to a `struct CoProcessObject` (as described above) and must return an object of the same type. This method will be called for every configured hook on every request. Traditionally this method will perform a single function call on the target language side (like `Python_DispatchHook` in `coprocess_python`), and the corresponding logic will be handled from there (mostly because different languages have different ways of loading, referencing or calling middlewares).
+`Dispatch` accepts a pointer to a struct `CoProcessObject` (as described above) and must return an object of the same type. This method is called for every configured hook on every request.
+Typically, it performs a single function call in the target language (such as `Python_DispatchHook` in `coprocess_python`), where the corresponding logic is handled—mainly because different languages have different ways of loading, referencing, or calling middleware.
 
 `DispatchEvent` provides a way of dispatching Tyk events to a target language. This method doesn't return any variables but does receive a JSON-encoded object containing the event data. For extensibility purposes, this method doesn't use Protocol Buffers, the input is a `[]byte`, the target language will take this (as a `char`) and perform the JSON decoding operation.
 
@@ -146,7 +147,7 @@ type CoProcessObject struct {
 
 ### Coprocess Dispatcher - Hooks
 
-This component is in charge of dispatching your HTTP requests to the custom middlewares. The list, from top to bottom, shows the order of execution. The dispatcher follows the standard middleware chain logic and provides a simple mechanism for "hooking" your custom middleware behavior, the supported hooks are:
+This component is in charge of dispatching your HTTP requests to the custom middleware. The list, from top to bottom, shows the order of execution. The dispatcher follows the standard middleware chain logic and provides a simple mechanism for "hooking" your custom middleware behavior, the supported hooks are:
 
 *   **Pre**: gets executed before the request is sent to your upstream target and before any authentication information is extracted from the header or parameter list of the request. When enabled, this applies to both keyless and protected APIs.
 *   **AuthCheck**: gets executed as a custom authentication middleware, instead of the standard ones provided by Tyk. Use this to provide your own authentication mechanism.
@@ -807,7 +808,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 
 #### Requirements
 
-* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) for more installation options.
+* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
 
 ##### Dependencies
 
@@ -2302,7 +2303,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 - Configure an appropriate web server and path to serve your plugin bundles.
 
-[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
+[1]: /tyk-self-managed/install
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/api_settings.png
 [4]: /img/dashboard/system-management/plugin_options.png
@@ -2601,7 +2602,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 - Configure an appropriate web server and path to serve your plugin bundles.
 - See the following [GitHub repo](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet) for a gRPC based .NET plugin that incorporates authentication based on Microsoft SQL Server. 
 
-[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
+[1]: /tyk-self-managed/install
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/plugin_options.png
 [4]: /img/dashboard/system-management/plugin_auth_mode.png
@@ -2616,7 +2617,7 @@ The sample code that we'll use implements a very simple authentication layer usi
 
 #### Requirements
 
-- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "/tyk-self-managed#installation-options-for-tyk-self-managed" >}}) for more installation options.
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
 - The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
 - In Tyk 2.8 and upwards the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 - NodeJS v6.x.x [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
@@ -2799,7 +2800,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 - Configure an appropriate web server and path to serve your plugin bundles.
 
-[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
+[1]: /tyk-self-managed/install
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/plugin_options.png
 [4]: /img/dashboard/system-management/plugin_auth_mode.png

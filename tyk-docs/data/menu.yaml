@@ -470,10 +470,62 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "Quick Start"
+              path: /getting-started/quick-start
+              category: Page
+              show: True
+            - title: "Demos"
+              path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
+              category: Page
+              show: True
+            - title: "Installation Options"
+              path: /tyk-self-managed/install
+              category: Page
+              show: True
             - title: "Configuration"
               category: Directory
               show: True
               menu:
+              - title: "Planning for Production"
+                path: /planning-for-production
+                category: Page
+                show: True
+              - title: "Database Management"
+                path: /planning-for-production/database-settings
+                category: Page
+                show: True
+              - title: "Circuit Breakers"
+                path: /planning-for-production/ensure-high-availability/circuit-breakers
+                category: Page
+                show: True
+              - title: "Enforced Timeouts"
+                path: /planning-for-production/ensure-high-availability/enforced-timeouts
+                category: Page
+                show: True
+              - title: "Health Checks"
+                path: /planning-for-production/ensure-high-availability/health-check
+                category: Page
+                show: True
+              - title: "Load Balancing"
+                path: /planning-for-production/ensure-high-availability/load-balancing
+                category: Page
+                show: True
+              - title: "Service Discovery"
+                path: /planning-for-production/ensure-high-availability/service-discovery
+                category: Page
+                show: True
+              - title: "Uptime Tests"
+                path: /planning-for-production/ensure-high-availability/uptime-tests
+                category: Page
+                show: True
+              - title: "Key Value Store"
+                path: /tyk-configuration-reference/kv-store
+                category: Page
+                show: True
+              - title: "Monitoring"
+                path: /planning-for-production/monitoring/tyk-components
+                category: Page
+                show: True
               - title: "Redis"
                 path: /tyk-configuration-reference/redis-cluster-sentinel
                 category: Page
@@ -1099,9 +1151,9 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Installation (Helm/K8s)"
+              - title: "Installation (Kubernetes)"
                 category: Page
-                path: /ai-management/ai-studio/deployment-helm-k8s
+                path: /ai-management/ai-studio/deployment-k8s
                 show: True
               - title: "Initial Configuration"
                 category: Page

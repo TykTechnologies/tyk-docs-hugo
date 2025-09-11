@@ -38,6 +38,57 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.13 Release Notes
 
+### 1.13.2 Release Notes
+
+#### Release Date 20 June 2025
+
+#### Release Highlights
+
+This patch release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.2) below.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are on 1.13.1 or an older version, we advise you to upgrade ASAP to this release.
+
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
+
+#### Download
+- [Docker image v1.13.2](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.2)
+  - ```bash
+    docker pull tykio/portal:v1.13.2
+    ```
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.13.2)
+
+#### Changelog {#Changelog-v1.13.2}
+
+#### Fixed 
+
+<ul>
+<li>
+<details>
+<summary>Preserved JWT Scope Mappings When Enabling DCR</summary>
+
+Fixed an issue where enabling DCR for an API would delete scope-to-policy mappings from the API definition, invalidating access tokens containing the expected scopes. Scope-to-policy mappings are now correctly managed when modified on Tyk Portal or Tyk Dashboard, with the source of truth being the API definition registered with the Dashboard.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed API Middleware Error from Dashboard–Portal Mismatch</summary>
+
+Fixed an issue where middleware configuration for an API could be corrupted (for example, [Request header transform middleware]({{<ref "api-management/traffic-transformation/#request-header-transform" >}})) when settings were changed in Developer Portal. This was due to a misalignment between Dashboard and Developer Portal in their interpretation of the API definition and has now been corrected.
+</details>
+</li>
+</ul>
+
+
 ### 1.13.1 Release Notes
 
 #### Release Date 19 April 2025
@@ -557,7 +608,7 @@ There are no deprecations in this release.
 #### Release Highlights
 The v1.11.0 release includes the following new features and improvements:
 - New Portal admin UI.
-- Closer to API Parity: APIs for Tags, Blogposts, Product images, Webhooks, and rotate credentials. A total of 23 new endpoints. 
+- Closer to API Parity: APIs for Tags, blog posts, Product images, Webhooks, and rotate credentials. A total of 23 new endpoints.
 - [22 bugs fixed](#fixed)
 - [19 CVEs fixed](#fixed)
 - CSRF protection, new TLS configuration and better recovery link security.

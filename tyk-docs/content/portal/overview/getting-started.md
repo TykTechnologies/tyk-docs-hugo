@@ -41,7 +41,7 @@ When the connection is established, the portal will import policies as API Produ
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
 - The Enterprise portal installed.
 - A login for the portal admin app.
 
@@ -80,7 +80,7 @@ There are two ways of creating API Products and Plans in the Developer Portal:
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}})
 - Have APIs [created in your Tyk installation]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
@@ -191,7 +191,7 @@ In this section, you will learn how to publish the API products and plans to the
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "portal/overview/getting-started#connect-to-a-provider" >}})
 - [Created and imported API Products and Plans from Tyk]({{< ref "portal/overview/getting-started#create-api-products-and-plans" >}})
 

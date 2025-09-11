@@ -45,15 +45,19 @@ The **Apps View** is used to manage user-created applications that interact with
 
 1. **Encapsulation of Resources**:
    - Apps bundle together the LLMs, tools, and data sources a user needs to access through the AI Gateway.
+   - Users can subscribe to tools from the [AI Portal]({{< ref "ai-management/ai-studio/ai-portal" >}}) tool catalogue, similar to how they access LLMs and data sources.
 
 2. **RESTful Access via Credentials**:
    - Each app is linked to a set of credentials that users can use to authenticate API requests.
    - Credentials must be activated by an administrator after an app is submitted.
 
-3. **Integration with Upstream LLMs**:
+3. **Integration with Upstream LLMs and Tools**:
    - Apps allow users to access LLMs through the following methods:
      - **Vendor-Native SDKs**: Direct interaction with the upstream provider's SDK.
      - **OpenAI-Compatible API**: Requests translated into a standardized API format.
+   - Tools can be accessed through multiple protocols:
+     - **REST APIs**: Direct HTTP API access to tool endpoints.
+     - **MCP (Model Context Protocol)**: Standardized tool interaction protocol for enhanced compatibility.
 
 4. **Centralized Administration**:
    - Administrators can manage all user-created apps, ensuring proper governance and access control.
@@ -64,15 +68,17 @@ The **Apps View** is used to manage user-created applications that interact with
 
 1. **App Creation**:
    - A user creates an app and specifies the LLMs, tools, and data sources required for their use case.
+   - Tools can be discovered and subscribed to through the AI Portal's tool catalogue interface.
 
 2. **Credential Activation**:
    - Once the app is submitted, an admin reviews and activates the app's credentials, enabling the app to interact with the AI Gateway.
 
 3. **API Integration**:
    - The user integrates their app with their systems using the provided credentials and API endpoints.
+   - Multiple access methods are available: REST APIs, OpenAI-compatible APIs, and MCP protocol.
 
 4. **Real-Time Usage**:
-   - The app facilitates RESTful communication with the specified resources via the AI Gateway.
+   - The app facilitates communication with the specified resources via the AI Gateway using the chosen protocol.
 
 ---
 
@@ -127,6 +133,9 @@ The **App Details View** provides a comprehensive overview of a specific app, in
 
 5. **Datasources**:
    - Lists the data sources configured for use with this app (e.g., `Tyk Documentation`).
+
+6. **Tools**:
+   - Shows the tools subscribed to and available for this app (e.g., `JIRA API`, `Weather Service`).
 
 ---
 
@@ -211,6 +220,11 @@ The **App Edit View** allows administrators to modify app details and manage cre
 5. **Datasources** *(Dropdown)*:
    - Add or remove data sources the app can access.
    - Example: `Tyk Documentation`.
+
+6. **Tools** *(Dropdown)*:
+   - Subscribe to or remove tools the app can use.
+   - Tools are available from the AI Portal tool catalogue.
+   - Example: `JIRA API`, `Weather Service`.
 
 ---
 

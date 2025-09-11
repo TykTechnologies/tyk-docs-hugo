@@ -37,7 +37,7 @@ The resource owner password credentials grant (also known simply as **Password G
 
 If your upstream service requires that Tyk authenticates via an OAuth auth server, you will first need to obtain credentials for the OAuth Client created in the auth server. You select which grant type to use and provide the required credentials in the API definition.
 
-To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only references included in the API definition.
+To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-self-managed/install" >}}), with only references included in the API definition.
 
 Some auth servers will return *additional metadata* with the access token (for example, the URL of the upstream server that should be addressed using the token if this can vary per client). Tyk can accommodate this using the optional `extraMetadata` field in the API definition. The response from the auth server will be parsed for any fields defined in `extraMetadata`; any matches will be saved to the request context where they can be accessed from other middleware (for our example, the [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) middleware could be used to modify the upstream target URL).
 

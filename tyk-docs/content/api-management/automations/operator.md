@@ -4887,7 +4887,7 @@ spec:
 #### APIDefinition CRD
 Tyk stores API configurations as JSON objects called API Definitions. If you are using Tyk Dashboard to manage Tyk, then these are stored in either Postgres or MongoDB, as specified in the database settings. On the other hand, if you are using Tyk OSS, these configurations are stored as files in the /apps directory of the Gateway which is located at the default path /opt/tyk-gateway.
 
-An API Definition has many settings and middlewares that influence the way incoming requests are processed.
+An API definition includes various settings and middleware that control how incoming requests are processed.
 
 ##### API Types
 Tyk supports various API types, including HTTP, HTTPS, TCP, TLS, and GraphQL. It also includes Universal Data Graph versions for unified data access and federation, allowing seamless querying across multiple services.

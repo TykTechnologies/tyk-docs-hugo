@@ -2170,7 +2170,7 @@ We are going to configure an Tyk Cloud Control Plane to use a custom authenticat
 
 Here are the requirements:
 
-1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "tyk-self-managed#install-tyk-on-debian-or-ubuntu" >}}).
+1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "tyk-self-managed/install#install-tyk-on-debian-or-ubuntu" >}}).
 2. Ensure you have a currently stable [Python 3.x version](https://www.python.org/downloads/) installed 
 3. You need install the build tools `apt-get install -y build-essential`
 4. Install our required modules:
@@ -2237,7 +2237,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.

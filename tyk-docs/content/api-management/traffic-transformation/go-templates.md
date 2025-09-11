@@ -55,7 +55,7 @@ We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) wh
 
 ## Additional resources
 
-Here's a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) and [YouTube tutorial](https://www.youtube.com/watch?v=k5wJv4XO7a0) that can help you to learn about using Go templates. 
+Here's a useful [blog post](https://blog.gopheracademy.com/advent-2017/using-go-templates/) and [YouTube tutorial](https://www.youtube.com/watch?v=k5wJv4XO7a0) that can help you to learn about using Go templates. 
 
 ## Go templating examples
 Here we provide worked examples for both [JSON]({{< ref "#example-json-transformation-template" >}}) and [XML]({{< ref "#example-xml-transformation-template" >}}) formatted inputs. We also explain examples using the [jsonMarshal]({{< ref "#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.

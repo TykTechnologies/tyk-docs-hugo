@@ -3,7 +3,7 @@
 
 Tyk Self-Managed is the easiest way to install Tyk Full Lifecycle API Management solution in your infrastructure. There is no calling home, and there are no usage limits. You have complete control. 
 
-See [licensing]({{< ref "tyk-self-managed#getting-started-with-tyk-self-managed" >}}) and [deployment models]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) to learn about the different deployment options for Self-Managed.
+See [licensing]({{< ref "getting-started/quick-start" >}}) and [deployment models]({{< ref "tyk-self-managed/install" >}}) to learn about the different deployment options for Self-Managed.
 
 Contact us to get started with Tyk Self Managed.
 

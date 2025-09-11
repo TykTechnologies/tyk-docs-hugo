@@ -1,8 +1,12 @@
 {
   "home": "tyk-developer-portal/tyk-enterprise-developer-portal",
   "licensed": true,
-  "latest": "1.13.1",
+  "latest": "1.13.2",
   "releaseNotesPath": "developer-support/release-notes/portal",
+  "1.13.2": {
+    "date": "20/06/2025",
+    "docker":"https://hub.docker.com/r/tykio/portal/tags?page=1&name=1.13.2"
+  },
   "1.13.1": {
     "date": "19/04/2025",
     "docker":"https://hub.docker.com/r/tykio/portal/tags?page=1&name=1.13.1"

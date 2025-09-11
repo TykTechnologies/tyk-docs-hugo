@@ -52,8 +52,6 @@ Our upgrade process adheres to the following standards:
 - **Preparations:** Review the [preparation guidelines]({{< ref "#upgrade-guidelines" >}}) before starting the upgrade.
 - **Release notes:** Always check the "Upgrade Instructions" section in the relevant release notes.
 - **Backups:** Follow our [comprehensive backup guide]({{< ref "developer-support/faq#tyk-configuration" >}}) before starting the upgrade.
-- Docker: Upgrading with Docker is straightforward—pull the new images from public repositories. Refer to the following links for our releases:
-
 - **Docker:** Upgrading with Docker is straightforward - pull the new images from public repositories. Refer to the following links for our releases:
     - Docker & Kubernetes - Docker Hub - https://hub.docker.com/u/tykio
     - Helm install - Artifact Hub - https://artifacthub.io/packages/search?repo=tyk-helm
@@ -83,7 +81,7 @@ Tyk offers supporting tools for database migration and backing up APIs and polic
 
 ##### Migrating from MongoDB to SQL
 
-Use our [migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
+Use our [migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
 
 ##### Backup APIs Script
 

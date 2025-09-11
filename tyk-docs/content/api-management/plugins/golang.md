@@ -29,14 +29,14 @@ The [Go plugin writing guide]({{< ref "api-management/plugins/golang#writing-cus
 
 All of Tyk's [custom middleware hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) support Go plugins. They represent different stages in the request and response [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) where custom functionality can be added.
 
-- **Pre** - supports an array of middlewares to be run before any others (i.e. before authentication)
+- **Pre** - supports an array of middleware that run before any others (i.e. before authentication)
 - **Auth** - this middleware performs custom authentication and adds API key session info into the request context and can be used only if the API definition has both:
   - `"use_keyless": false`
   - `"use_go_plugin_auth": true`
 - **Post-Auth** - supports an array of middleware to be run after authentication; at this point, we have authenticated the session API key for the given key (in the request context) so we can perform any extra checks. This can be used only if the API definition has both:
   - `"use_keyless": false`
   - an authentication method specified
-- **Post** - supports an array of middlewares to be run at the very end of the middleware chain; at this point Tyk is about to request a round-trip to the upstream target
+- **Post** - supports an array of middleware that run at the very end of the middleware chain, just before Tyk makes a round-trip to the upstream target
 - **Response** - run only at the point the response has returned from a service upstream of the API Gateway; note that the [method signature for Response Go plugins]({{< ref "api-management/plugins/golang#creating-a-custom-response-plugin" >}}) is slightly different from the other hook types
 
 {{< note info >}}
