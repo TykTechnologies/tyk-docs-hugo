@@ -83,10 +83,6 @@ The Request Body Transform supports two helper functions that you can use in you
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "#request-body-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "#request-body-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Body Transform middleware summary
   - The Request Body Transform middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
