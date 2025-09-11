@@ -61,10 +61,6 @@ You can enrich the response headers by injecting data from context variables or 
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "#response-headers-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "#response-headers-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Response Header Transform middleware summary
   - The Response Header Transform is an optional stage in Tyk's API Response processing chain, sitting between the [TBC]() and [TBC]() middleware.
