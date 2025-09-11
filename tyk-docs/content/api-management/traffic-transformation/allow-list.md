@@ -54,10 +54,6 @@ Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-ma
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "#allow-list-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "#allow-list-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Allow List middleware summary
   - The Allow List is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
