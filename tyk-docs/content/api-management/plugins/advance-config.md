@@ -95,7 +95,7 @@ This step uploads the Bundle to both GitHub and an AWS S3 bucket.  Obviously, yo
 {{< note success >}}
 **Note**  
 
-For seamless deployments, take a look at multi-version [plugin support]({{< ref "tyk-cloud#configure-plugins" >}}) to enable zero downtime deployments of your Tyk Gateway installs
+For seamless deployments, take a look at multi-version [plugin support]({{< ref "tyk-cloud/using-plugins" >}}) to enable zero downtime deployments of your Tyk Gateway installs
 
 {{< /note >}}
 
@@ -163,7 +163,7 @@ You can find more information about enabling OpenTelemetry [here]({{< ref "api-m
 DetailedTracing must be enabled in the API definition to see the plugin spans in the traces.
 {{< /note >}}
 
-In order to instrument our plugins we will be using Tyk’s OpenTelemetry library implementation.
+In order to instrument our plugins we will be using Tyk's OpenTelemetry library implementation.
 You can import it by running the following command:
 
 ```console
@@ -184,7 +184,7 @@ In this case, we are using our own OpenTelemetry library for convenience. You ca
 
 The function takes three parameters:
 
-1. `Context`: This is usually the current request’s context. However, you can also derive a new context from it, complete with timeouts and cancelations, to suit your specific needs.
+1. `Context`: This is usually the current request's context. However, you can also derive a new context from it, complete with timeouts and cancelations, to suit your specific needs.
 2. `TracerName`: This is the identifier of the tracer that will be used to create the span. If you do not provide a name, the function will default to using the `tyk` tracer.
 3. `SpanName`: This parameter is used to set an initial name for the child span that is created. This name can be helpful for later identifying and referencing the span.
 
@@ -212,7 +212,7 @@ In your exporter (in this case, Jaeger) you should see something like this:
 
 {{< img src="/img/plugins/span_from_context.png" alt="OTel Span from context" >}}
 
-As you can see, the name we set is present: `GoPlugin_first-span` and it’s the first child of the `GoPluginMiddleware` span.
+As you can see, the name we set is present: `GoPlugin_first-span` and it's the first child of the `GoPluginMiddleware` span.
 
 ### Modifying span name and set status
 
@@ -378,5 +378,253 @@ In the above code, the `NewFuncWithError` function demonstrates error handling i
 {{< img src="/img/plugins/span_error_handling.png" alt="OTel Span error handling" >}}
 
 
+## Highly Available gRPC Servers in Kubernetes
 
+When deploying gRPC servers to host [rich plugins]({{< ref "api-management/plugins/rich-plugins#using-grpc" >}}) in Kubernetes, implementing proper health checks on those servers is crucial so that you can achieve high availability and enable seamless rolling updates. 
+
+Kubernetes needs to know when your gRPC server is ready to accept traffic otherwise:
+
+- Traffic may be routed to pods that aren't ready
+- Failed pods won't be automatically restarted
+- Load balancing becomes unreliable
+- Rolling deployments can cause service disruption
+
+When using gRPC plugins to implement custom processing of API requests, this is especially important since the Gateway depends on having reliable access to these services to process requests. If Tyk is unable to reach the gRPC server, then it will be unable to correctly execute the plugins hosted there, leading to API requests failing.
+
+### Key Benefits of Health Checks for Rolling Updates
+
+1. **Zero-Downtime Deployments**
+- Readiness probes ensure new pods are fully ready before receiving traffic
+- Old pods continue serving until new ones are ready
+- Traffic is never routed to non-functional pods
+
+2. **Graceful Shutdown**
+- SIGTERM triggers immediate graceful shutdown sequence
+- Health status changes to "not serving" during shutdown
+- gRPC server stops gracefully, finishing in-flight requests
+- 30-second timeout ensures forced shutdown if graceful shutdown hangs
+
+3. **Failure Recovery**
+- Liveness probes detect and restart unhealthy pods
+- Startup probes give adequate time for slow-starting services
+- Failed deployments are automatically rolled back
+
+### Using gRPC Health Probes with Tyk
+
+Tyk's native support for gRPC health probes is provided via the Health Checking service in the standard gRPC Go library and provides several benefits:
+
+1. **Native Integration**: Uses the same transport protocol as your main service
+2. **Service-Specific Checks**: Can check the health of individual gRPC services
+3. **Better Resource Utilization**: No need for a separate HTTP server
+4. **Consistent Protocol**: Maintains gRPC throughout the stack
+
+#### gRPC Health Checking Protocol
+
+The following example uses the [gRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md) instead of HTTP endpoints.
+
+#### Health Check Implementation Details
+
+The gRPC health server manages two service states:
+
+- `""` (empty string): Overall server health
+- `"coprocess.Dispatcher"`: Specific service health for readiness checks
+
+Health states transition as follows:
+- **Startup**: `NOT_SERVING` → `SERVING` (when ready)
+- **Shutdown**: `SERVING` → `NOT_SERVING` (immediate)
+- **Error**: `SERVING` → `NOT_SERVING` (on failure)
+
+#### Example Implementation
+
+##### Required Dependencies
+
+You should add this to your `go.mod`:
+
+```go
+require (
+    google.golang.org/grpc v1.50.0 // or later
+)
+```
+
+##### main.go Setup
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"net"
+	"os"
+	"os/signal"
+	"sync/atomic"
+	"syscall"
+	"time"
+
+	"github.com/TykTechnologies/tyk/coprocess"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
+)
+
+const (
+	ListenAddress = ":50051"
+)
+
+func main() {
+	// Track server readiness
+	var isReady int32
+
+	lis, err := net.Listen("tcp", ListenAddress)
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
+	}
+
+	log.Printf("starting grpc server on %v", ListenAddress)
+	s := grpc.NewServer()
+	
+	// Register the main coprocess service
+	coprocess.RegisterDispatcherServer(s, &Dispatcher{})
+	
+	// Register health service
+	healthServer := health.NewServer()
+	grpc_health_v1.RegisterHealthServer(s, healthServer)
+	
+	// Initially mark all services as not serving
+	healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+	healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+
+	// Channel to listen for errors coming from the listener.
+	serverErrors := make(chan error, 1)
+
+	// Start the service listening for requests.
+	go func() {
+		// Mark as ready once server is initialized
+		atomic.StoreInt32(&isReady, 1)
+		
+		// Set health status to serving
+		healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_SERVING)
+		healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_SERVING)
+		
+		log.Printf("gRPC server is ready to accept connections")
+		serverErrors <- s.Serve(lis)
+	}()
+
+	// Channel to listen for an interrupt or terminate signal from the OS.
+	shutdown := make(chan os.Signal, 1)
+	signal.Notify(shutdown, os.Interrupt, syscall.SIGTERM)
+
+	// Blocking main and waiting for shutdown.
+	select {
+	case err := <-serverErrors:
+		atomic.StoreInt32(&isReady, 0)
+		// Mark services as not serving
+		healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+		healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+		log.Fatalf("Server error: %v", err)
+	case sig := <-shutdown:
+		atomic.StoreInt32(&isReady, 0)
+		log.Printf("Received signal: %v", sig)
+		
+		// Mark services as not serving during shutdown
+		healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+		healthServer.SetServingStatus("coprocess.Dispatcher", grpc_health_v1.HealthCheckResponse_NOT_SERVING)
+		
+		// Give outstanding requests 5 seconds to complete.
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+
+		stopped := make(chan struct{})
+		go func() {
+			s.GracefulStop()
+			close(stopped)
+		}()
+
+		select {
+		case <-ctx.Done():
+			log.Printf("Graceful shutdown timed out")
+			s.Stop()
+		case <-stopped:
+			log.Printf("Graceful shutdown completed")
+		}
+	}
+}
+
+```
+
+##### Kubernetes Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tyk-grpc-coprocess
+  labels:
+    app: tyk-grpc-coprocess
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: tyk-grpc-coprocess
+  template:
+    metadata:
+      labels:
+        app: tyk-grpc-coprocess
+    spec:
+      containers:
+      - name: grpc-server
+        image: your-registry/tyk-grpc-coprocess:latest
+        ports:
+        - containerPort: 50051
+          name: grpc
+        
+        ## Readiness probe - determines when pod is ready for traffic
+        readinessProbe:
+          grpc:
+            port: 50051
+            service: coprocess.Dispatcher
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+          successThreshold: 1
+        
+        ## Liveness probe - determines when to restart pod
+        livenessProbe:
+          grpc:
+            port: 50051
+          initialDelaySeconds: 15
+          periodSeconds: 20
+          timeoutSeconds: 5
+          failureThreshold: 3
+        
+        ## Startup probe - gives more time for initial startup
+        startupProbe:
+          grpc:
+            port: 50051
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 30
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tyk-grpc-coprocess-service
+spec:
+  selector:
+    app: tyk-grpc-coprocess
+  ports:
+  - name: grpc
+    port: 50051
+    targetPort: 50051
+    protocol: TCP
+  type: ClusterIP
+```
 

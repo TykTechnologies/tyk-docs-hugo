@@ -46,7 +46,8 @@ It fully complies with the latest GraphQL specifications, as outlined on the [Gr
 
 - **[Queries](https://spec.graphql.org/October2021/#sec-Query)** – Fetching data  
 - **[Mutations](https://spec.graphql.org/October2021/#sec-Mutations)** – Modifying data  
-- **[Subscriptions](https://spec.graphql.org/October2021/#sec-Subscription)** – Real-time updates  
+- **[Subscriptions](https://spec.graphql.org/October2021/#sec-Subscription)** – Real-time updates
+- **[Schema Types]({{< ref "api-management/graphql/graphql-schema-types" >}})** - Defining your data structure
 
 
 ### What can you do with GraphQL and Tyk?
@@ -284,7 +285,7 @@ In order to complete the next steps, you need to have the [Tyk OSS]({{< ref "tyk
 
 #### Creation Methods
 
-With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here]({{< ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configurations" >}}).
+With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [in the file-based configuration section]({{< ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configuration" >}}).
 
 
 #### Steps for Configuration
@@ -2004,6 +2005,24 @@ The values for subscription types are the same on all API types:
 - `graphql-ws`
 - `graphql-transport-ws`
 - `sse` (Server-Sent Events)
+
+##### HTTP method for Server-Sent Event subscription
+
+When using `subscription_type=sse`, Tyk will use the HTTP `GET` method to subscribe to the upstream service. For some use cases, for example, to support larger subscription payloads or to increase security by keeping the subscription payload out of server logs, the upstream requires HTTP `POST`. In Tyk 5.9.0, we have added `POST` support for SSE with the introduction of the boolean `use_sse_post` option, which is only relevant if `subscription_type=sse`.
+
+```json
+{
+  "graphql": {
+    "proxy": {
+      "subscription_type": "sse",
+      "sse_use_post": true
+    }
+  }
+}
+```
+
+If you need to use HTTP `GET` then you can omit `sse_use_post` or set it to `false`.
+
 
 ##### GraphQL Proxy
 

@@ -55,7 +55,7 @@ We have created a few guidelines to help with creating PR. To make sure these re
    2. Check the `PR Agent` bot for any important suggestions, spelling mistakes or typos
    3. The `PR Agent` bot creates a description for you. If needed, please add more info to it. Link to a GitHub issue if it exists.
 
-### Pull Request Review Schedule
+#### Pull Request Review Schedule
 
 PRs will be reviewed weekly, every Tuesday and Thursday. New reviews will be
 reviewed on Tuesdays and review responses will be done on Thursdays.

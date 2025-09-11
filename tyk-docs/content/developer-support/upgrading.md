@@ -2,19 +2,11 @@
 date: 2017-03-27T16:05:33+01:00
 title: Tyk Upgrading Guide
 tags: ["configuration files backup", "backup tyk", "tyk.conf", "upgrade tyk", "database backup"]
-tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
-tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
-weight: 230
-menu:
-    main:
-        parent: "FAQ"
 aliases:
   - /developer-support/cloud-saas
-  - /developer-support/documentation-projects/inclusive-naming
   - /developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins
   - /developer-support/upgrading-tyk/deployment-model/self-managed/mdcb
   - /developer-support/backups/backup-apis-and-policies
-  - /upgrading-tyk
   - /developer-support/upgrading-tyk/preparations/upgrade-guidelines
   - /developer-support/upgrading-tyk/preparations/upgrade-strategies
   - /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
@@ -28,6 +20,7 @@ aliases:
   - /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
   - /developer-support/upgrading-tyk/deployment-model/open-source
   - /developer-support/upgrading-tyk/go-plugins
+  - /upgrading-tyk
 ---
 
 ## Overview
@@ -183,7 +176,7 @@ specified order. Adhering to the provided sequence is crucial for a smooth and s
 
 **Step 1. Upgrade Control Plane**
 
-Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}}).
+Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-cloud-control-planes" >}}).
 
 **Step 2. Upgrade Go Plugins**
 
@@ -213,7 +206,7 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 
 ###### Step 3. Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
-Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane" >}}).
+Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-deployments/managing-gateways" >}}).
 
 **Upgrade Guide Video**
 Please refer to our [upgrade guide video](https://youtu.be/2rzU8YdKKFM) below for visual guidance:
@@ -251,7 +244,7 @@ following order:
 
 **Step 1. Upgrade your control plane**
 
-See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-cloud-control-planes" >}})
 
 **Step 2 Upgrade Go plugins**
 
@@ -344,7 +337,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     }
     ```
 
-2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 **Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0**
@@ -388,7 +381,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     then *“_v5.2.0_linux_amd64”* would be appended to the shared object filename that the compiler creates
     - Your bundle zip file should include both the current version and target versions of the plugin.
 
-2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 ### Tyk Self Managed Upgrade Guide 

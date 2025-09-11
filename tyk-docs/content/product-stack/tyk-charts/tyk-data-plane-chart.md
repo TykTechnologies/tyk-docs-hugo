@@ -14,7 +14,7 @@ It includes the following components:
 
 Furthermore, it has all the required modifications to easily connect to Tyk Cloud or Multi Data Center (MDCB) control plane.
 
-[Supported MDCB versions]({{< ref "tyk-cloud#tyk-cloud-mdcb-supported-versions" >}})
+[Supported MDCB versions]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways#tyk-cloud-mdcb-supported-versions" >}})
 
 By default, this chart installs following components as subcharts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
 
@@ -27,7 +27,7 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For a quick start guide, please see [deploy hybrid gateway]({{< ref "tyk-cloud#deploy-hybrid-gateways" >}}).
+For a quick start guide, please see [deploy hybrid gateway]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}).
 
 ## Prerequisites
 
@@ -212,7 +212,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.

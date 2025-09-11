@@ -25,13 +25,13 @@ graph LR
     D["AI Assistant"] <--> C
     C <--> E["Your API"]
     
-    style A fill:#d3e5ef,stroke:#333,stroke-width:2px,font-size:18px
-    style B fill:#d5f5e3,stroke:#333,stroke-width:2px,font-size:18px
-    style C fill:#d5f5e3,stroke:#333,stroke-width:2px,font-size:18px
-    style D fill:#eeeeee,stroke:#333,stroke-width:2px,font-size:18px
-    style E fill:#fdebd0,stroke:#333,stroke-width:2px,font-size:18px
+    style A fill:#ffffff,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style B fill:#d5f5e3,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style C fill:#d5f5e3,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style D fill:#eeeeee,stroke:#D1D1E0,stroke-width:1px,font-size:18px
+    style E fill:#ffffff,stroke:#D1D1E0,stroke-width:1px,font-size:18px
     
-    linkStyle default stroke-width:3px
+    linkStyle default stroke-width:2px
 ```
 
 ## Key Features
@@ -44,7 +44,7 @@ graph LR
 - **MCP Extensions:** Support for custom x-mcp extensions to override tool names and descriptions
 - **Multiple Integration Options:** Works with Claude Desktop, Cursor, Vercel AI SDK, and other MCP-compatible environments
 
-Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp#features) is available in our GitHub repository.
+Check the [complete features list](https://github.com/TykTechnologies/api-to-mcp#features) is available in Tyk's *api-to-mcp* GitHub repository.
 
 ## Quick Start {#quick-start}
 
@@ -85,9 +85,9 @@ To enable the tool, paste the above configuration into your AI assistant’s MCP
 **Step 2.**
 Once connected, ask the AI to perform an operation (e.g., "List all pets" or "Create a new user").
 
-## How It Works {#how-it-works}
+## How It Works
 
-### User flow in *API to MCP** user flow
+### User flow in API to MCP user flow
 
 1.  **Input**: Your OpenAPI specification (required) and optional overlays
 2.  **Processing**: The API to MCP tool loads the spec, applies any overlays, and transforms API operations into MCP tools
@@ -134,9 +134,11 @@ flowchart LR
     class A,B input;
     class C,D,E,F tool;
     class G,H,I runtime;
+
+linkStyle default stroke-width:2px
 ```
 
-### Request lifecycle: how an AI assistant invokes an API tool”
+### Request lifecycle: how an AI assistant invokes an API tool
 
 The following diagram illustrates the flow of a request through the system at runtime:
 
@@ -167,6 +169,7 @@ sequenceDiagram
         Tool->>MCP: Map to MCP Error
         MCP-->>AI: Tool Execution Error
     end
+
 ```
 
 API to MCP  can be found in [api-to-mcp GitHub repository](https://github.com/TykTechnologies/api-to-mcp)

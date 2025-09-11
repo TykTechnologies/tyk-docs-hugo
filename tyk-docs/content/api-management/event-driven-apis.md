@@ -198,7 +198,7 @@ The following sections will guide you through the prerequisites and steps to con
 
 - **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
 - **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
-- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license.
+- **Dashboard License**: We will configure Streams API using Dashboard. [Contact our team](https://tyk.io/contact/) to obtain a license or get self-managed trial license by completing the registration on our [website]
 - **Curl and JQ**: These tools will be used for testing.
 
 ### Instructions
@@ -225,7 +225,7 @@ The following sections will guide you through the prerequisites and steps to con
    TYK_GW_STREAMING_ENABLED=true
    ```
 
-   - `DASHBOARD_LICENCE`: Add your license key. Contact [support](https://tyk.io/contact/) to obtain a license.
+   - `DASHBOARD_LICENCE`: Add your license key. Contact [our team](https://tyk.io/contact/) to obtain a license.
    - `GATEWAY_IMAGE_REPO`: Tyk Streams is available as part of the Enterprise Edition of the Gateway.
    - `TYK_DB_STREAMING_ENABLED` and `TYK_GW_STREAMING_ENABLED`: These must be set to `true` to enable Tyk Streams in the Dashboard and Gateway, respectively. Refer to the [configuration options]({{< ref "tyk-oss-gateway/configuration#streaming" >}}) for more details.
 
@@ -586,7 +586,7 @@ sequenceDiagram
 1.  **Request Arrival & Gateway Pre-processing**: A client sends a request to an API endpoint managed by Tyk Gateway. The request passes through the initial middleware, such as authentication, key validation, and rate limiting.
 2.  **Streaming Middleware Interception**: The request reaches the `Stream Middleware`. It checks the request path against the stream routes defined in the API configuration.
 3.  **Path Matching**:
-    *   **If No Match**: The request is not destined for a stream. The `Stream Middleware` does nothing, and the request continues down the standard Tyk middleware chain, typically being proxied to the configured upstream service. <!-- TODO: this behavior is true until 5.8.x. From 5.9.0 onwards it will return 404 Not Found. -->
+    *   **If No Match**: The `Stream Middleware` will respond with a `404 Not Found` status code.
     *   **If Match**: The request is intended for a stream. The `Stream Middleware` takes control of the request handling.
 4.  **Stream Manager Coordination**: The middleware interacts with the `Stream Manager` associated with the API's stream configuration. The `Stream Manager` ensures the required `Stream Instance`(s) are initialized and running based on the loaded configuration. This might involve creating a new instance or reusing a cached one.
 5.  **Stream Instance Execution**: The instance then executes its defined logic, interacting with the configured `Upstream Service / Event Broker` (e.g., publishing a message to Kafka, subscribing to an MQTT topic, forwarding data over a WebSocket).
@@ -845,17 +845,6 @@ pipeline:
     - mapping: |
         root = this.merge({ "high_value_order": true })
 ```
-
-{{< note success >}}
-**Note:**
-
-The `Mapping` processor is currently available and working, but it will be officially supported starting from version 5.9.0.
-
-You’re welcome to explore and experiment with this feature in non-production environments today. For production use, we recommend waiting for the official release in 5.9.0 to ensure full support.
-{{< /note >}}
-<!--
-TODO: Official bloblang support from 5.9.0 onwards
--->
 
 In this example:
 

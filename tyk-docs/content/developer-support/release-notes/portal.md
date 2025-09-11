@@ -36,6 +36,219 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 1.14 Release Notes
+
+### 1.14.1 Release Notes
+
+#### Release Date 4th September 2025
+
+#### Release Highlights
+
+This release delivers key bug fixes to improve stability in the Developer Portal. Updates include better handling of SSO user assignments and Organisation persistence, safeguards against cross-Organisation visibility in auto-approved registrations, and improved resilience when Teams are deleted. We’ve also fixed issues with API Product transitions and policy persistence, ensuring existing tokens remain valid.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.1) below.
+
+#### Breaking Changes {#breaking-changes-v1.14.1}
+
+There are no breaking changes in this release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are on version 1.14.0 or an older version, we recommend upgrading to this release ASAP.
+
+To upgrade the Portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}).
+
+#### Download
+- [Docker image v1.14.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.1)
+  - ```bash
+    docker pull tykio/portal:v1.14.1
+    ```
+
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.14.1)
+
+#### Changelog {#Changelog-v1.14.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Improved SSO User Assignment and Login Behavior</summary>
+
+We have resolved issues where SSO users could lose their Team assignments or the system could incorrectly reassign them to the default Organisation and Team after logging in. SSO now correctly links returning users to their existing profiles, preserving Team and Organisation memberships and preventing duplicate accounts. We have also improved the SSO configuration UI to make default and group-based Team assignments clearer.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Saving and Updating Documentation-Only Products</summary>
+
+We fixed an issue where the Portal could report an error when users added API access to a documentation-only API Product. This fix ensures seamless transitions between documentation-only and regular products, and correctly manages associated policies in Tyk Dashboard.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Corrected User Assignment in Auto-Approved Organisation Registrations</summary>
+
+Fixed an issue where auto-approved Organisation (Org) registrations could incorrectly assign a user to multiple Orgs, causing cross-Organisation visibility. Users are now always placed only in their new Org's default Team, ensuring proper isolation across both auto-approved and manual approval flows.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Handling of SSO Profiles When Teams Are Deleted</summary>
+
+Fixed an issue where deleting a Team referenced in an SSO profile’s `UserGroupMapping` caused validation errors and prevented the profile form from loading or being updated. SSO profiles now gracefully handle deleted Team references, allowing administrators to view, edit, and save changes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Persistence of Access Token Validity</summary>
+
+Resolved an issue where removing all API access from a Product would delete the associated access policy, causing previously issued tokens to stop working when access was later re-added. Now, access policies are preserved in draft status, temporarily invalidating tokens. When users add API access back to the API Product, the existing tokens will become valid again. Note that if the authentication method of the APIs within the Product is changed, all previously issued access tokens will remain invalid.
+</details>
+</li>
+</ul>
+
+### 1.14.0 Release Notes
+
+#### Release Date 23 July 2025
+
+#### Release Highlights
+
+##### Tyk Streams APIs Come To Developer Portal
+
+We’ve added support for [Tyk Streams APIs]({{< ref "api-management/event-driven-apis" >}}) in the Developer Portal, allowing API Providers to expose access to event-driven APIs alongside traditional REST APIs.
+Developers can now subscribe to Products that enable webhook delivery for specific events,
+receiving real-time messages routed through Tyk Streams. 
+This opens up new integration patterns for async APIs, such as push notifications, system alerts, or data change events.
+
+
+##### New Developer App Visibility Controls
+
+We have added more flexible Developer App visibility controls, giving team members the ability to limit the visibility of their apps to themselves (Personal), their Team, or their Organisation (Org). This means that when logged into the Developer Portal, team members will only see their apps, apps shared within their teams, and apps marked as visible to the entire organization. Org Admin users will continue to have visibility of all developer apps created in their Organisation. The exceptions to this rule are for the Default Team, where team-level visibility is not implemented, and the Default Org, where all apps are treated as personal (private).
+
+##### Enhanced Team Management
+
+We have also enhanced the user and team management experience. Now, users can be removed from the default team (which should only be used for inactive users). This allows platform teams to ensure that users can only see the other members of their team, rather than all users in their Organisation. We've also fixed a bug where Org Admins could add users to other Organisations deployed on the Portal.
+
+##### Prevent Web Crawlers From Indexing Your Portal
+
+We have added a `/robots.txt` endpoint, allowing administrators to define crawler directives in a plain text entry form in the Portal Admin UI.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.0) below.
+
+#### Breaking Changes {#breaking-changes-v1.14.0}
+
+There are no breaking changes in this release.
+
+For the complete API specification, see [Tyk EDP API documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
+
+#### Deprecations
+
+SQLite has reached its End of Life in this release, aligning with the Tyk Dashboard. SQLite was previously recommended for use only in basic proofs of concept. Now, for such scenarios and in production, we recommend using PostgreSQL or MySQL for improved scalability and support.
+
+#### Upgrade instructions
+
+If you are on version 1.13.0 or an older version, we recommend upgrading to this release ASAP.
+
+To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization/themes#upgrading-themes" >}}) for the portal's themes.
+
+#### Download
+- [Docker image v1.14.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.14.0)
+  - ```bash
+    docker pull tykio/portal:v1.14.0
+    ```
+
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.14.0)
+
+#### Changelog {#Changelog-v1.14.0}
+
+##### Added
+<ul>
+<li>
+<details>
+<summary>New Application Visibility Controls</summary>
+
+Added the facility to limit the visibility of developer apps to the user, team, or Organisation (org). Org Admin users will continue to have visibility of all developer apps created in their Organisation. To minimize the risk of unintentional visibility when users are members of the default teams and/or organization, team-level visibility is not implemented in the Default Team for each organization, and all apps are treated as personal (private) in the default organization. To avoid breaking existing setups, all current apps will default to organisation visibility.
+</details>
+</li>
+<li>
+<details>
+<summary>Added Support for Asynchronous APIs</summary>
+
+The Developer Portal now supports Tyk Streams, enabling developers to request access to event-driven APIs. Developers can authenticate with portal tokens and receive real-time webhook notifications.  
+</details>
+</li>
+<li>
+<details>
+<summary>API Product Tag Access in Theme Templates</summary>
+
+Portal theme templates now have access to API product tags, allowing for the dynamic display or categorization of API products based on these tags.
+</details>
+</li>
+<li>
+<details>
+<summary>Configurable Robots.txt Support</summary>
+
+Added native support for serving a configurable `robots.txt` file via a new `/robots.txt` endpoint. Portal admins can now define and manage crawler directives directly from the Portal Admin UI.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Team and User Management</summary>
+
+We have enhanced team and user access controls by restricting team members from viewing other users' details, limiting Admin Users to adding users only to teams to which they belong, automatically assigning users to the default organization team if no team is selected during invitation, and allowing Admin Users to assign users to multiple teams.
+</details>
+</li>
+</ul>
+
+##### Changed 
+
+<ul>
+<li>
+<details>
+<summary>Upgrade to Go 1.23</summary>
+
+The Developer Portal has been upgraded from Golang 1.22 to Golang 1.23, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>API Product Metadata Loss when Updating the Developer Portal Catalog</summary>
+
+Fixed an issue where API Product metadata could be lost when modifying the product in the Developer Portal. This was due to incorrect manipulation of the underlying Tyk policy object.
+</details>
+</li>
+<li>
+<details>
+<summary>API Product Synchronization Fixes</summary>
+
+Fixed an issue where associations with APIs or even entire Products could be lost during synchronization with the Tyk Dashboard. The synchronization logic has been improved to ensure that all associated APIs and product details are consistently preserved.
+</details>
+</li>
+<li>
+<details>
+<summary>Scope-to-Policy Mapping Lost when Configuring DCR</summary>
+
+Fixed an issue where existing scope-to-policy mapping for an API could be lost when DCR is enabled via the Developer Portal. The logic has been improved to ensure that scope-to-policy mapping is preserved.
+</details>
+</li>
+</ul>
+
+---
+
 ## 1.13 Release Notes
 
 ### 1.13.2 Release Notes
@@ -74,16 +287,16 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 <ul>
 <li>
 <details>
-<summary>Preserved JWT Scope Mappings When Enabling DCR</summary>
+<summary>Preserved JWT scope mappings when enabling DCR</summary>
 
 Fixed an issue where enabling DCR for an API would delete scope-to-policy mappings from the API definition, invalidating access tokens containing the expected scopes. Scope-to-policy mappings are now correctly managed when modified on Tyk Portal or Tyk Dashboard, with the source of truth being the API definition registered with the Dashboard.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed API Middleware Error from Dashboard–Portal Mismatch</summary>
+<summary>Fixed API middleware error from dashboard–portal mismatch</summary>
 
-Fixed an issue where middleware configuration for an API could be corrupted (for example, [Request header transform middleware]({{<ref "api-management/traffic-transformation/#request-header-transform" >}})) when settings were changed in Developer Portal. This was due to a misalignment between Dashboard and Developer Portal in their interpretation of the API definition and has now been corrected.
+Fixed an issue where middleware configuration for an API could be corrupted (for example, [Request header transform middleware]({{<ref "api-management/traffic-transformation#request-header-transform" >}}) settings were changed in Developer Portal. This was due to a misalignment between Dashboard and Developer Portal in their interpretation of the API definition and has now been corrected.
 </details>
 </li>
 </ul>
@@ -121,34 +334,35 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 <ul>
 <li>
 <details>
-<summary>Revoking One Client Credential No Longer Deletes All from Keycloak</summary>
+<summary>Revoking one client credential no longer deletes all from Keycloak</summary>
 
 Fixed an issue where all client credentials associated with an app would be incorrectly removed from Keycloak when credentials are revoked in the Tyk Portal. This would lead to credentials existing in the Tyk Developer Portal but not in Keycloak. Now, when an app with multiple client credentials has one set of credentials revoked in the Tyk Developer Portal, only those credentials will be removed from Keycloak, with the others remaining valid.
 </details>
 </li>
 <li>
 <details>
-<summary>SSO Now Works Properly with Multiple Portal Replicas</summary>
+<summary>SSO now works properly with multiple portal replicas</summary>
 
 Fixed an issue where users couldn't log in via SSO when multiple instances (replicas) of Portal were deployed
 </details>
 </li>
 <li>
 <details>
-<summary>Password No Longer Overwritten on User Profile Updates</summary>
+<summary>Password no longer overwritten on user profile updates</summary>
 
 Addressed an issue where editing and saving a user’s profile in the admin portal would unintentionally change their password due to double encryption. Admins can now safely update user details without affecting login credentials. Passwords will only change when explicitly updated.
 </details>
 </li>
 <li>
 <details>
-<summary>API Description Field Restored</summary>
+<summary>API description field restored</summary>
 
 Resolved a regression introduced in v1.13.0 that removed the ability to view or edit API descriptions on the API Product page. The API description field is now visible and editable again, restoring parity with earlier versions and ensuring API documentation remains complete and user-friendly.
 </details>
 </li>
 </ul>
 
+---
 
 ### 1.13.0 Release Notes
 
@@ -198,7 +412,7 @@ To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref 
 <ul>
 <li>
 <details>
-<summary>Improved UX for Products and Plan listing</summary>
+<summary>Improved UX for products and plan listing</summary>
 
 The portal now provides an enhanced UI for browsing and managing products and plans, making it easier for administrators to organize and maintain their API offerings.
 
@@ -206,7 +420,7 @@ The portal now provides an enhanced UI for browsing and managing products and pl
 </li>
 <li>
 <details>
-<summary>Product and Plan Management</summary>
+<summary>Product and plan management</summary>
 
 Administrators can now create, edit, and remove `Products` and `Plans` directly from the portal admin UI, eliminating the need to manage these through the Tyk Dashboard. The new features include the following:
 
@@ -221,7 +435,7 @@ With the added features, Portal provides greater control over the API lifecycle 
 </li>
 <li>
 <details>
-<summary>Documentation-only Products</summary>
+<summary>Documentation-only products</summary>
 
 Added support for creating documentation-only products in the Enterprise Developer Portal. This feature allows API Providers to:
 
@@ -235,7 +449,7 @@ This is particularly useful for scenarios where APIs are in development or when 
 </li>
 <li>
 <details>
-<summary>Custom ID Support for Resources</summary>
+<summary>Custom ID support for resources</summary>
 
 EDP Resources now supports custom IDs (in addition to auto-increment integer IDs) to facilitate migration and reference between environments. This feature covers:
 
@@ -249,7 +463,7 @@ This enhancement makes it easier to maintain consistency across different enviro
 </li>
 <li>
 <details>
-<summary>Enhanced Login Controls</summary>
+<summary>Enhanced login controls</summary>
 
 Admins can now configure more enhanced login controls, such as limits, expiration and intervals.
 
@@ -258,7 +472,7 @@ These settings can be adjusted in the General Settings section of the portal adm
 </li>
 <li>
 <details>
-<summary>SSO Profile Management APIs</summary>
+<summary>SSO profile management APIs</summary>
 
 Added new APIs for managing SSO profiles, enabling programmatic control over SSO configurations. These APIs allow administrators to:
 
@@ -280,7 +494,7 @@ This addition complements the embedded Tyk Identity Broker functionality introdu
 </li>
 <li>
 <details>
-<summary>Product and Plan Management APIs</summary>
+<summary>Product and plan management APIs</summary>
 
 Added new APIs for managing Products and Plans programmatically, enabling automation of the product lifecycle. These APIs include:
 
@@ -313,7 +527,7 @@ These APIs complement the UI-based product management capabilities, enabling aut
 <ul>
 <li>
 <details>
-<summary>App edit CSRF Token Validation</summary>
+<summary>App edit CSRF token validation</summary>
 
 Fixed an issue where CSRF token validation was failing during application edits, which prevented users from saving changes to their applications. This has been resolved by implementing proper token lifecycle management and validation.
 
@@ -321,7 +535,7 @@ Fixed an issue where CSRF token validation was failing during application edits,
 </li>
 <li>
 <details>
-<summary>Fixed MySQL SSO Profile handling</summary>
+<summary>Fixed MySQL SSO profile handling</summary>
 
 Fixed an issue where EDP embedded Tyk Identity Broker profiles weren't being properly handled in MySQL environments, which caused storing SSO profiles failures. This has been resolved by correcting the database query handling for SSO profile data.
 
@@ -329,7 +543,7 @@ Fixed an issue where EDP embedded Tyk Identity Broker profiles weren't being pro
 </li>
 <li>
 <details>
-<summary>Custom Attribute deletion</summary>
+<summary>Custom attribute deletion</summary>
 
 Fixed an issue where deleting a single custom attribute would inadvertently remove all user custom attributes, which caused loss of user profile data. This has been resolved by implementing proper scoping for attribute deletion operations.
 
@@ -337,7 +551,7 @@ Fixed an issue where deleting a single custom attribute would inadvertently remo
 </li>
 <li>
 <details>
-<summary>Catalog Deletion Impact</summary>
+<summary>Catalog deletion impact</summary>
 
 Fixed an issue where removing an active catalog would cause UI rendering problems for developers, which resulted in a poor user experience. This has been resolved by implementing proper cascading deletion of catalog resources.
 
@@ -345,7 +559,7 @@ Fixed an issue where removing an active catalog would cause UI rendering problem
 </li>
 <li>
 <details>
-<summary>Theme Upload Validation</summary>
+<summary>Theme upload validation</summary>
 
 Fixed an issue where uploading themes containing nested theme directories would corrupt the original theme, which caused theme installation failures. This has been resolved by implementing validation to detect and prevent nested theme uploads.
 
@@ -429,7 +643,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Embedded Tyk Identity Broker</summary>
+<summary>Embedded Tyk Identity Broker (TIB)</summary>
 
 From this release, you can configure the portal to serve an internal Tyk Identity Broker. This means that you don't need to deploy a separate Tyk Identity Broker service to SSO into the portal.
 This enables a new section under the portal admin UI where admins can manage SSO profiles for admins and developers.
@@ -446,7 +660,7 @@ You can read more about the supported SSO providers [here]({{< ref "tyk-identity
 </li>
 <li>
 <details>
-<summary>Creation of Apps and Credentials</summary>
+<summary>Creation of apps and credentials</summary>
 
 Admins now have enhanced control over application and credential creation in the portal, streamlining the onboarding process and reducing the need for API-based setups. With this update, admins can create applications and assign them to specific users, making it easier to onboard developers who aren't using self-service options.
 
@@ -498,7 +712,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Upgrade to Go 1.22 </summary>
+<summary>Upgrade to Go 1.22</summary>
 
 The Enterprise Developer Portal has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance,
 strengthened security, and access to the latest features available in the new Golang release.

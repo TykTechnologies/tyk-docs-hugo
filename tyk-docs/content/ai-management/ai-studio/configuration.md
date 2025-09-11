@@ -1,21 +1,27 @@
 ---
-title: "Initial Configuration"
+title: "First Steps"
 date: 2025-04-25
-tags: ["AI Studio", "AI Management"]
-description: "Configuration of Tyk AI Studio"
-keywords: ["AI Studio", "AI Management"]
+tags: ["AI Studio", "AI Management", "Configuration"]
+description: "Essential first steps to configure Tyk AI Studio after installation"
+keywords: ["AI Studio", "AI Management", "Configuration", "Setup"]
 ---
 
-This guide covers the essential first steps to take within the Tyk AI Studio UI after successfully deploying the platform using the [Installation Guide]({{< ref "ai-management/ai-studio/deployment-k8s" >}}).
+This guide covers the essential first steps to take within the Tyk AI Studio UI after successfully deploying the platform and registering your first user.
 
 ## 1. First Login
 
-1.  **Access the UI:** Open your web browser and navigate to the `SITE_URL` (or the Ingress host configured for `app.yourdomain.com`) specified during deployment.
-2.  **Admin Credentials:** Log in using the initial administrator credentials. This is typically:
-    *   **Email:** The `ADMIN_EMAIL` configured during deployment (e.g., `admin@yourdomain.com`).
-    *   **Password:** Check the deployment logs or default configuration for the initial admin password setup. You may be required to set a new password upon first login.
+After completing the [installation process]({{< ref "ai-management/ai-studio/quickstart" >}}) and registering your first user:
+
+1.  **Access the UI:** Open your web browser and navigate to your configured `SITE_URL`
+2.  **Admin Login:** Log in using the administrator account you created during registration:
+    *   **Email:** The email address you used during registration (should match your `ADMIN_EMAIL` environment variable)
+    *   **Password:** The password you set during the registration process
 
     {{< img src="/img/ai-management/login-screen.png" alt="Login Screen" >}}
+
+{{< note >}}
+**Reminder**: If you haven't completed the initial registration yet, go back to your [installation guide]({{< ref "ai-management/ai-studio/quickstart" >}}) and follow the "First User Registration" section.
+{{< /note >}}
 
 ## 2. Configure Your First LLM
 

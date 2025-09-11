@@ -1,13 +1,14 @@
-## Preview Link
+## Contributor checklist
 
-## Checklist
+- [ ] Reviewed *PR Code suggestions* and updated accordingly
+- [ ] **Tyklings:** Labled the PR with the relevant releases
+- [ ] **Tyklings:** Added Jira DX PR ticket to the subject
 
-- [ ] Added a **preview link**
-- [ ] Reviewed AI PR Agent suggestions
-- [ ] **For Tyk Members** - Added Jira DX PR ticket to the subject
-- [ ] **For Tyk Members** - Added the appropriate release labels (for fixes add the latest release)
+---
 
 ## New Contributors 
-- [ ] Make sure you have started *your change* off *our latest `master`*.
-- [ ] I have [reviewed the guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md) for contributing to this repository.
-- [ ] I have [read the technical guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md) for contributing to this repository.
+- [ ] Start the PR branch from our latest `master`
+- [ ] I have read the [repository contribution guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md)
+- [ ] I have read the [repository technical guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md)
+
+---

@@ -1,9 +1,34 @@
 {
   "home": "tyk-oss-gateway",
   "licensed": false,
-  "latest": "5.8.1",
-  "lts": "5.8.1",
+  "latest": "5.9.2",
+  "lts": "5.8.5",
   "releaseNotesPath": "developer-support/release-notes/gateway",
+  "5.9.2": {
+    "date": "04/09/2025",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.9.2",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.9.2"
+  },
+  "5.9.1": {
+    "date": "14/08/2025",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.9.1",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.9.1"
+  },
+  "5.9.0": {
+    "date": "04/08/2025",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.9.0",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.9.0"
+  },
+  "5.8.3": {
+    "date": "14/07/2025",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.8.3",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.8.3"
+  },
+  "5.8.2": {
+    "date": "01/07/2025",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.8.2",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.8.2"
+  },
   "5.8.1": {
     "date": "09/05/2025",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.8.1",
