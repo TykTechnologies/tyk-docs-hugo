@@ -52,19 +52,12 @@ In this tutorial, we'll configure Tyk Gateway to use a corporate HTTP proxy for 
 
 <TODO: Add Diagram>
 
-### Prerequisites
-
-- Setup Tyk Self Managed using this [guide]({{< ref "getting-started/quick-start#quick-setup" >}})
-
 ### Instructions
 
-1. **Configure External Service**
+1. **Clone the repository**
 
-    - In the `confs/tyk.env` file, add the following environment variables:
-
-    ```bash
-    export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://localhost:4000"
-    export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="https://localhost:4000"
+    ```
+    git clone https://github.com/TykTechnologies/tyk-self-managed-trial && cd tyk-self-managed-trial
     ```
 
 2. **Update docker compose file**
@@ -87,15 +80,35 @@ In this tutorial, we'll configure Tyk Gateway to use a corporate HTTP proxy for 
     2. Add `nginx-proxy` as a dependency for `tyk-gateway` service:
 
         ```yaml
-            depends_on:
-            - nginx-proxy
+        depends_on:
+        - nginx-proxy
         ```
 
-3. **Restart Tyk Gateway to apply the configuration changes**
+3. **Configure External Service**
+
+    In the `confs/tyk.env` file, add the following environment variables:
+
     ```bash
-    docker-compose down
-    docker-compose up -d
+    TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://localhost:4000"
+    TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="https://localhost:4000"
     ```
+
+3. **Start the Tyk stack**
+
+    ```
+    docker compose up -d
+    ```
+    
+    Once all containers are running, you can verify their status with:
+
+    ```
+    docker compose ps
+    ```
+
+    {{< img src="/img/self-managed/self-managed-trial-docker-status.png" alt="Docker Container Status of Tyk Self Managed Trial" >}}
+
+    You should see all services listed as "Up".
+
 4. **Check logs to verify connections are going through the proxy**
 
     When the gateway starts, it establishes a connection to the Redis service through the corporate proxy (nginx). You can check the logs of the `nginx-proxy` container to verify that the connections are being routed through it:
@@ -108,7 +121,28 @@ In this tutorial, we'll configure Tyk Gateway to use a corporate HTTP proxy for 
 
 ## Configuration Options
 
-External Service Configuration is defined in the `external_services` section of the Gateway `tyk.conf` file. Below are the configuration options available:
+External Service Configuration allows you to control how Tyk Gateway connects to external services like OAuth providers, storage systems, and webhooks. This section explains the configuration structure and available options.
+
+The configuration is organized into two levels:
+
+1. **Global settings** - Apply to all service types unless overridden
+2. **Service-specific settings** - Override global settings for particular service types
+
+All settings are defined in the `external_services` section of the Gateway `tyk.conf` file.
+
+
+### Global Configuration
+
+Global settings apply to all external service connections unless overridden by service-specific settings.
+
+| Option | Type | Required | Description |
+|--------|------|----------|-------------|
+| `enabled` | Boolean | Yes | Activates global proxy settings for all services |
+| `http_proxy` | String | No | HTTP proxy URL for HTTP requests (e.g., "http://localhost:3128") |
+| `https_proxy` | String | No | HTTPS proxy URL for HTTPS requests (e.g., "https://localhost:3128") |
+| `bypass_proxy` | String | No | Comma-separated list of hosts to bypass proxy (e.g., "localhost,127.0.0.1,.internal") |
+
+#### Example Configuration
 
 {{< tabs_start >}}
 {{< tab_start "Config File" >}}
@@ -118,33 +152,10 @@ External Service Configuration is defined in the `external_services` section of 
     "external_services": {
       "global": {
         "enabled": true,
-        "http_proxy": "http://localhost:3128",
-        "https_proxy": "http://localhost:3128",
-        "bypass_proxy": "localhost,127.0.0.1,.internal,*.local"
-      },
-      "oauth": {
-        "proxy": {
-          "enabled": true,
-          "http_proxy": "http://localhost:3128"
-        },
-        "mtls": {
-          "enabled": true,
-          "cert_file": "/etc/tyk/certs/oauth-client.crt",
-          "key_file": "/etc/tyk/certs/oauth-client.key",
-          "ca_file": "/etc/tyk/certs/oauth-ca.crt",
-          "insecure_skip_verify": false,
-          "tls_min_version": "1.2",
-          "tls_max_version": "1.3"
-        }
-      },
-      "storage": {
-      },
-      "webhooks": {
-      },
-      "health": {
-      },
-      "discovery": {
-      },
+        "http_proxy": "http://proxy.example.com:8080",
+        "https_proxy": "https://proxy.example.com:8080",
+        "no_proxy": "localhost,127.0.0.1,.internal,*.local"
+      }
     }
 // ... more config follows
 }
@@ -155,22 +166,19 @@ External Service Configuration is defined in the `external_services` section of 
 All configuration options support environment variable overrides with the prefix `TYK_GW_EXTERNAL_SERVICES_`:
 
 ```bash
-# Global proxy settings
-export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://localhost:3128"
-export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="http://localhost:3128"
-export TYK_GW_EXTERNAL_SERVICES_GLOBAL_NO_PROXY="localhost,127.0.0.1"
-
-# OAuth-specific settings
-export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED="true"
-export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CERT_FILE="/etc/tyk/certs/oauth-client.crt"
-export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_KEY_FILE="/etc/tyk/certs/oauth-client.key"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_ENABLED="true"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://proxy.example.com:8080"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="https://proxy.example.com:8080"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_NO_PROXY="localhost,127.0.0.1,.internal,*.local"
 ```
 {{< tab_end >}}
 {{< tabs_end >}}
 
 Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#external_services" >}}) for more details on this setting.
 
-### Supported External Services
+### Service-Specific Configuration
+
+Tyk supports service-specific configurations for the following service types:
 
 | Service Type | Description | Components |
 |--------------|-------------|------------|
@@ -180,14 +188,98 @@ Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/conf
 | `health` | [Health check requests]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}) | Host checker, uptime monitoring |  
 | `discovery` | [Service discovery requests]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}}) | Load balancer, service registry |
 
+Each service type supports the following configuration sections:
+
+#### Proxy Configuration
+
+Service-specific proxy settings override global proxy settings.
+
+| Option | Type | Required | Description |
+|--------|------|----------|-------------|
+| `enabled` | Boolean | Yes | Activates proxy settings for this service |
+| `http_proxy` | String | No | HTTP proxy URL for this service |
+| `https_proxy` | String | No | HTTPS proxy URL for this service |
+| `bypass_proxy` | String | No | Comma-separated list of hosts to bypass proxy for this service |
+
+#### Mutual TLS (mTLS) Configuration
+
+mTLS settings enable client certificate authentication for secure connections.
+
+| Option | Type | Required | Description |
+|--------|------|----------|-------------|
+| `enabled` | Boolean | Yes | Activates mTLS for this service |
+| `cert_file` | String | No* | Path to client certificate file |
+| `key_file` | String | No* | Path to client private key file |
+| `ca_file` | String | No | Path to CA certificate file for server verification |
+| `cert_id` | String | No* | Certificate ID from Tyk certificate store |
+| `ca_cert_ids` | Array | No | Array of CA certificate IDs from Tyk certificate store |
+| `insecure_skip_verify` | Boolean | No | Skip server certificate verification (default: false) |
+| `tls_min_version` | String | No | Minimum TLS version (e.g., "1.2", default: "1.2") |
+| `tls_max_version` | String | No | Maximum TLS version (e.g., "1.3", default: "1.3") |
+
+> Either file-based configuration (`cert_file`/`key_file`) or certificate store configuration (`cert_id`) must be provided when mTLS is enabled. For mTLS, certificate store configuration (cert_id) takes precedence over file-based configuration (cert_file/key_file) if both are provided.
+
+#### Example Configuration
+
+{{< tabs_start >}}
+{{< tab_start "Config File" >}}
+```json
+{
+// Partial config from tyk.conf
+    "external_services": {
+      "oauth": {
+        "proxy": {
+          "enabled": true,
+          "http_proxy": "http://oauth-proxy.example.com:8080",
+          "https_proxy": "https://oauth-proxy.example.com:8080",
+          "no_proxy": "localhost,127.0.0.1,auth.internal"
+        },
+        "mtls": {
+          "enabled": true,
+          "cert_file": "/etc/tyk/certs/oauth-client.crt",
+          "key_file": "/etc/tyk/certs/oauth-client.key",
+          "ca_file": "/etc/tyk/certs/oauth-ca.crt",
+          "insecure_skip_verify": false,
+          "tls_min_version": "1.2"
+        }
+      }
+    }
+// ... more config follows
+}
+```
+{{< tab_end >}}
+{{< tab_start "Environment Variable" >}}
+
+All configuration options support environment variable overrides with the prefix `TYK_GW_EXTERNAL_SERVICES_`:
+
+```bash
+# OAuth proxy settings
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_ENABLED="true"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_HTTP_PROXY="http://oauth-proxy.example.com:8080"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_HTTPS_PROXY="https://oauth-proxy.example.com:8080"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_NO_PROXY="localhost,127.0.0.1,auth.internal"
+
+# OAuth mTLS settings
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED="true"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CERT_FILE="/etc/tyk/certs/oauth-client.crt"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_KEY_FILE="/etc/tyk/certs/oauth-client.key"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_CA_FILE="/etc/tyk/certs/oauth-ca.crt"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_INSECURE_SKIP_VERIFY="false"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_TLS_MIN_VERSION="1.2"
+```
+{{< tab_end >}}
+{{< tabs_end >}}
+
+Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#external_services" >}}) for more details on this setting.
+
 ### Hierarchy and Precedence
 
 Settings are applied in the following priority order (highest to lowest):
 
 1. **Service-specific configuration** - Overrides all other settings
 2. **Global external_services configuration** - Applies to all services  
-3. **Environment variables** - Used when proxy is enabled but no specific URLs are configured
-4. **Default settings** - Built-in fallback values
+3. **Standard proxy environment variables** - When proxy is enabled but no specific URLs are configured, Tyk falls back to using standard `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables. These are system-wide variables commonly used by HTTP clients to route traffic through proxy servers and are not specific to Tyk's configuration system.
+4. **Default settings** - If a setting is not specified, Tyk uses sensible defaults. You can find these in the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#external_services" >}}).
 
 ### Configuration Examples
 
@@ -198,12 +290,17 @@ Settings are applied in the following priority order (highest to lowest):
     "global": {
       "enabled": true,
       "http_proxy": "http://localhost:3128",
-      "https_proxy": "http://localhost:3128",
+      "https_proxy": "https://localhost:3128",
       "bypass_proxy": "localhost,127.0.0.1,.internal"
     }
   }
 }
 ```
+
+**What this does:**
+- Routes all external service connections through a local proxy server (port 3128)
+- Bypasses the proxy for localhost, 127.0.0.1, and any domain ending with .internal
+- Applies these settings globally to all service types (OAuth, webhooks, storage, etc.)
 
 #### 2. OAuth with Dedicated Proxy and mTLS (File-based)
 ```json
@@ -212,14 +309,14 @@ Settings are applied in the following priority order (highest to lowest):
     "global": {
       "enabled": true,
       "http_proxy": "http://localhost:3128",
-      "https_proxy": "http://localhost:3128",
+      "https_proxy": "https://localhost:3128",
       "bypass_proxy": "localhost,127.0.0.1"
     },
     "oauth": {
       "proxy": {
         "enabled": true,
         "http_proxy": "http://localhost:3129",
-        "https_proxy": "http://localhost:3129"
+        "https_proxy": "https://localhost:3129"
       },
       "mtls": {
         "enabled": true,
@@ -233,6 +330,12 @@ Settings are applied in the following priority order (highest to lowest):
 }
 ```
 
+**What this does:**
+- Sets a global proxy for most services (port 3128)
+- Configures OAuth services to use a different dedicated proxy (port 3129)
+- Enables mutual TLS for OAuth connections using file-based certificates
+- Enforces minimum TLS version 1.2 for OAuth connections
+
 #### 2a. OAuth with Certificate Store and mTLS
 ```json
 {
@@ -240,14 +343,14 @@ Settings are applied in the following priority order (highest to lowest):
     "global": {
       "enabled": true,
       "http_proxy": "http://localhost:3128",
-      "https_proxy": "http://localhost:3128",
+      "https_proxy": "https://localhost:3128",
       "bypass_proxy": "localhost,127.0.0.1"
     },
     "oauth": {
       "proxy": {
         "enabled": true,
         "http_proxy": "http://localhost:3129",
-        "https_proxy": "http://localhost:3129"
+        "https_proxy": "https://localhost:3129"
       },
       "mtls": {
         "enabled": true,
@@ -260,6 +363,11 @@ Settings are applied in the following priority order (highest to lowest):
 }
 ```
 
+**What this does:**
+- Similar to example 2, but uses Tyk's certificate store instead of file paths
+- References certificates by their IDs in the certificate store
+- Allows for centralized certificate management through the Tyk Dashboard
+
 #### 3. Mixed Environment and Service-Specific Configuration
 ```json
 {
@@ -267,7 +375,7 @@ Settings are applied in the following priority order (highest to lowest):
     "global": {
       "enabled": true,
       "http_proxy": "http://localhost:3128",
-      "https_proxy": "http://localhost:3128",
+      "https_proxy": "https://localhost:3128",
       "bypass_proxy": "localhost,127.0.0.1,redis"
     },
     "storage": {
@@ -285,12 +393,22 @@ Settings are applied in the following priority order (highest to lowest):
       "proxy": {
         "enabled": true,
         "http_proxy": "http://localhost:3130",
-        "https_proxy": "http://localhost:3130"
+        "https_proxy": "https://localhost:3130"
       }
     }
   }
 }
 ```
+
+**What this does:**
+
+- **Global configuration**: Sets a baseline proxy (port 3128) for all external services with a general bypass list that includes "redis"
+- **Storage service customization**: 
+  - Inherits the global proxy URLs (3128) but overrides the bypass list to include "redis.internal"
+  - This allows direct connections to internal Redis instances while still routing other storage traffic through the proxy
+  - Adds mTLS security specifically for Redis connections, ensuring encrypted and authenticated communication with the database
+- **Webhook customization**:
+  - Routes webhook traffic through a separate dedicated proxy (port 3130)
 
 #### 4. Production Enterprise Configuration
 ```json
@@ -299,7 +417,7 @@ Settings are applied in the following priority order (highest to lowest):
     "global": {
       "enabled": true,
       "http_proxy": "http://proxy.company.com:8080",
-      "https_proxy": "http://proxy.company.com:8080",
+      "https_proxy": "https://proxy.company.com:8080",
       "bypass_proxy": "localhost,127.0.0.1,.company.internal"
     },
     "oauth": {
@@ -326,6 +444,19 @@ Settings are applied in the following priority order (highest to lowest):
 }
 ```
 
+**What this does:**
+- **Corporate proxy integration**: 
+  - Routes all external traffic through the company's central proxy server
+  - Bypasses the proxy for internal company domains (.company.internal) for direct access to internal services
+- **OAuth security hardening**:
+  - Implements mTLS for all OAuth provider connections (JWT validation, token introspection)
+  - Includes a CA certificate for validating the OAuth provider's server certificate
+  - Explicitly disables insecure certificate verification (`insecure_skip_verify: false`)
+  - Enforces TLS 1.2 minimum to prevent downgrade attacks
+- **Webhook security**:
+  - Uses the global proxy settings (inherits from global configuration)
+  - Adds a separate client certificate specifically for webhook connections
+
 #### 5. Production Certificate Store Configuration
 ```json
 {
@@ -333,7 +464,7 @@ Settings are applied in the following priority order (highest to lowest):
     "global": {
       "enabled": true,
       "http_proxy": "http://proxy.company.com:8080",
-      "https_proxy": "http://proxy.company.com:8080",
+      "https_proxy": "https://proxy.company.com:8080",
       "bypass_proxy": "localhost,127.0.0.1,.company.internal"
     },
     "oauth": {
@@ -361,6 +492,21 @@ Settings are applied in the following priority order (highest to lowest):
   }
 }
 ```
+
+**What this does:**
+- Similar to example 4, but uses certificate store for all mTLS configurations
+- **Certificate store integration**:
+  - Instead of file paths, all certificates are referenced by IDs in Tyk's certificate store
+  - This enables centralized certificate management through the Tyk Dashboard
+  - Certificates can be rotated, renewed, or replaced without changing configuration files
+- **Comprehensive mTLS deployment**:
+  - Every service type (OAuth, storage, webhooks) has its own dedicated client certificate
+  - This provides service-specific identity and enables granular access control
+  - Each service also has its own CA certificate configuration for validating server certificates
+- **Certificate chain support**:
+  - The OAuth configuration includes multiple CA certificates (`["oauth-ca-prod", "intermediate-ca"]`)
+  - This supports complex PKI setups with intermediate certificate authorities
+  - Ensures proper validation of certificate chains in enterprise environments
 
 ### Performance Optimization
 
@@ -392,13 +538,26 @@ Before the introduction of the External Service Configuration feature, Tyk Gatew
 
 ### Backward Compatibility
 
-The External Services Configuration maintains full backward compatibility:
+The External Services Configuration provides a new way to configure external service connections while maintaining compatibility with legacy settings. Here's how it works:
 
-| Legacy Setting | New Location | Migration Required |
-|----------------|--------------|-------------------|
-| `http_proxy` | `external_services.proxy.http_proxy` | Optional |
-| `https_proxy` | `external_services.proxy.https_proxy` | Optional |
-| `jwt_ssl_insecure_skip_verify` | `external_services.oauth.mtls.insecure_skip_verify` | Recommended |
+1. **Legacy settings continue to function**: Existing configurations using the legacy settings will continue to work without modification.
+
+2. **Precedence rules**: When both legacy and new settings are configured with different values:
+   - The new `external_services` settings take precedence over legacy settings
+   - Legacy settings are only used if the corresponding new settings are not specified
+
+3. **Migration path**: You can migrate gradually by moving settings to the new structure as needed:
+
+| Legacy Setting | New Location | Behavior When Both Are Set |
+|----------------|--------------|----------------------------|
+| `http_proxy` | `external_services.global.http_proxy` | `external_services` setting takes precedence |
+| `https_proxy` | `external_services.global.https_proxy` | `external_services` setting takes precedence |
+| `jwt_ssl_insecure_skip_verify` | `external_services.oauth.mtls.insecure_skip_verify` | `external_services` setting takes precedence |
+
+4. **Recommended approach**:
+   - For new deployments: Use only the new `external_services` structure
+   - For existing deployments: You can continue using legacy settings or gradually migrate to the new structure
+   - For production environments: We recommend migrating to the new structure as it provides more flexibility and service-specific configuration options
 
 ### Migration Strategy
 
@@ -439,14 +598,14 @@ The External Services Configuration maintains full backward compatibility:
     "global": {
       "enabled": true,
       "http_proxy": "http://localhost:3128",
-      "https_proxy": "http://localhost:3128"
+      "https_proxy": "https://localhost:3128"
     },
     "oauth": {
       "mtls": {
         "enabled": true,
         "cert_file": "/etc/tyk/certs/oauth-client.crt",
         "key_file": "/etc/tyk/certs/oauth-client.key",
-        "insecure_skip_verify": false
+        "insecure_skip_verify": true
       }
     }
   }
@@ -490,15 +649,30 @@ No, it only affects outbound connections that Tyk itself initiates.
 
 </details> 
 
-<details> <summary><b>Can I use environment variables for proxy configuration?</b></summary>
-
-Yes, set `use_environment: true` to read proxy settings from HTTP_PROXY, HTTPS_PROXY, and NO_PROXY environment variables.
-
-</details> 
-
 <details> <summary><b>How do I troubleshoot connection issues?</b></summary>
 
-Enable debug logging in Tyk and check for proxy-related log messages.
+Enable debug logging in Tyk and check for proxy-related log messages. Look for the following patterns in your logs:
+
+**Proxy Configuration Issues:**
+```
+[ExternalServices] Failed to configure proxy: invalid HTTP proxy URL: parse "http://badproxy:wrong_port": invalid port "wrong_port" after host
+[ExternalServices] Failed to create JWK HTTP client
+```
+
+**Certificate/TLS Issues:**
+```
+[ExternalServices] Failed to configure TLS: invalid mTLS configuration: both cert_file and key_file must be specified for file-based configuration
+[ExternalServices] Failed to load client certificate: open /etc/tyk/certs/oauth-client.crt: no such file or directory
+[ExternalServices] Certificate not found in store: oauth-client-cert
+```
+
+**Connection Failures:**
+```
+error happened during the introspection call: dial tcp: lookup oauth.example.com: no such host
+status does not indicate success: code: 407, body: Proxy Authentication Required
+```
+
+To enable debug logging, set `"log_level": "debug"` in your `tyk.conf` file or use the environment variable `TYK_GW_LOGLEVEL=debug`.
 
 </details> 
 
