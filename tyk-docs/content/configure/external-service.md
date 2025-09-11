@@ -84,9 +84,33 @@ In this tutorial, we'll configure Tyk Gateway to use a corporate HTTP proxy for 
         - nginx-proxy
         ```
 
+    3. Add `nginx.conf` file in the root directory with the following content:
+
+        ```nginx
+        worker_processes  1;
+
+        events {
+            worker_connections  1024;
+        }
+
+        stream {
+            log_format basic '$remote_addr [$time_local] '
+                            '$protocol $status $bytes_sent $bytes_received '
+                            '$session_time';
+
+            access_log /var/log/nginx/access.log basic;
+            error_log  /var/log/nginx/error.log info;
+
+            server {
+                listen 4000;
+                proxy_pass redis:6379;   # Upstream Redis container
+            }
+        }
+        ```
+        
 3. **Configure External Service**
 
-    In the `confs/tyk.env` file, add the following environment variables:
+    In the `confs/tyk.env` (a list of environment variables for docker compose) file, add the following environment variables:
 
     ```bash
     TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://localhost:4000"
@@ -137,10 +161,10 @@ Global settings apply to all external service connections unless overridden by s
 
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
-| `enabled` | Boolean | Yes | Activates global proxy settings for all services |
-| `http_proxy` | String | No | HTTP proxy URL for HTTP requests (e.g., "http://localhost:3128") |
-| `https_proxy` | String | No | HTTPS proxy URL for HTTPS requests (e.g., "https://localhost:3128") |
-| `bypass_proxy` | String | No | Comma-separated list of hosts to bypass proxy (e.g., "localhost,127.0.0.1,.internal") |
+| `enabled` | Boolean | Required if using a proxy | Enables proxy settings for all external services. When true, Tyk will use the configured proxy URLs if specified, or fall back to environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`) if no URLs are specified. Set to false to disable proxy usage for all services (unless overridden by service-specific settings). |
+| `http_proxy` | String | No | HTTP proxy URL for HTTP requests (e.g., "http://localhost:3128"). Required if `enabled` is true and you're not relying on environment variables. |
+| `https_proxy` | String | No | HTTPS proxy URL for HTTPS requests (e.g., "https://localhost:3128"). Required if `enabled` is true and you're not relying on environment variables. |
+| `bypass_proxy` | String | No | Comma-separated list of hosts to bypass proxy (e.g., "localhost,127.0.0.1,.internal"). Hosts in this list will be accessed directly, bypassing the proxy. |
 
 #### Example Configuration
 
@@ -154,7 +178,7 @@ Global settings apply to all external service connections unless overridden by s
         "enabled": true,
         "http_proxy": "http://proxy.example.com:8080",
         "https_proxy": "https://proxy.example.com:8080",
-        "no_proxy": "localhost,127.0.0.1,.internal,*.local"
+        "bypass_proxy": "localhost,127.0.0.1,.internal,*.local"
       }
     }
 // ... more config follows
@@ -169,7 +193,7 @@ All configuration options support environment variable overrides with the prefix
 export TYK_GW_EXTERNAL_SERVICES_GLOBAL_ENABLED="true"
 export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTP_PROXY="http://proxy.example.com:8080"
 export TYK_GW_EXTERNAL_SERVICES_GLOBAL_HTTPS_PROXY="https://proxy.example.com:8080"
-export TYK_GW_EXTERNAL_SERVICES_GLOBAL_NO_PROXY="localhost,127.0.0.1,.internal,*.local"
+export TYK_GW_EXTERNAL_SERVICES_GLOBAL_BYPASS_PROXY="localhost,127.0.0.1,.internal,*.local"
 ```
 {{< tab_end >}}
 {{< tabs_end >}}
@@ -180,7 +204,7 @@ Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/conf
 
 Tyk supports service-specific configurations for the following service types:
 
-| Service Type | Description | Components |
+| Service Type | Description | Example Services |
 |--------------|-------------|------------|
 | `oauth` | [OAuth/JWT token validation and introspection]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) | JWT auth interactions with Auth Server (Identity Provider) |
 | `storage` | [External storage operations]({{< ref "planning-for-production/database-settings" >}}) | Redis connections, database interactions |
@@ -208,16 +232,26 @@ mTLS settings enable client certificate authentication for secure connections.
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
 | `enabled` | Boolean | Yes | Activates mTLS for this service |
-| `cert_file` | String | No* | Path to client certificate file |
-| `key_file` | String | No* | Path to client private key file |
+| `cert_file` | String | No | Path to client certificate file |
+| `key_file` | String | No | Path to client private key file |
 | `ca_file` | String | No | Path to CA certificate file for server verification |
-| `cert_id` | String | No* | Certificate ID from Tyk certificate store |
-| `ca_cert_ids` | Array | No | Array of CA certificate IDs from Tyk certificate store |
+| `cert_id` | String | No | Certificate ID from Tyk [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) |
+| `ca_cert_ids` | Array | No | Array of CA certificate IDs from Tyk [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) |
 | `insecure_skip_verify` | Boolean | No | Skip server certificate verification (default: false) |
 | `tls_min_version` | String | No | Minimum TLS version (e.g., "1.2", default: "1.2") |
 | `tls_max_version` | String | No | Maximum TLS version (e.g., "1.3", default: "1.3") |
 
-> Either file-based configuration (`cert_file`/`key_file`) or certificate store configuration (`cert_id`) must be provided when mTLS is enabled. For mTLS, certificate store configuration (cert_id) takes precedence over file-based configuration (cert_file/key_file) if both are provided.
+> **Important mTLS Configuration Requirements:**
+>
+> * **For client authentication:** Either file-based configuration (`cert_file`/`key_file`) or certificate store configuration (`cert_id`) must be provided.
+>
+> * **For server verification:** Either `ca_file` or `ca_cert_ids` should be provided to verify the server's certificate. Without these, you must set `insecure_skip_verify: true` (not recommended for production).
+>
+> * **For complete mTLS security:** Both client certificates AND CA certificates should be configured.
+>
+> * **Configuration precedence:** Certificate store configuration (`cert_id`) takes precedence over file-based configuration if both are provided.
+>
+> * **CA-only configuration:** You can enable mTLS with only CA certificates (no client certificates) if you only need server certificate verification without client authentication.
 
 #### Example Configuration
 
@@ -232,7 +266,7 @@ mTLS settings enable client certificate authentication for secure connections.
           "enabled": true,
           "http_proxy": "http://oauth-proxy.example.com:8080",
           "https_proxy": "https://oauth-proxy.example.com:8080",
-          "no_proxy": "localhost,127.0.0.1,auth.internal"
+          "bypass_proxy": "localhost,127.0.0.1,auth.internal"
         },
         "mtls": {
           "enabled": true,
@@ -257,7 +291,7 @@ All configuration options support environment variable overrides with the prefix
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_ENABLED="true"
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_HTTP_PROXY="http://oauth-proxy.example.com:8080"
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_HTTPS_PROXY="https://oauth-proxy.example.com:8080"
-export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_NO_PROXY="localhost,127.0.0.1,auth.internal"
+export TYK_GW_EXTERNAL_SERVICES_OAUTH_PROXY_BYPASS_PROXY="localhost,127.0.0.1,auth.internal"
 
 # OAuth mTLS settings
 export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_ENABLED="true"
@@ -364,8 +398,8 @@ Settings are applied in the following priority order (highest to lowest):
 ```
 
 **What this does:**
-- Similar to example 2, but uses Tyk's certificate store instead of file paths
-- References certificates by their IDs in the certificate store
+- Similar to example 2, but uses Tyk's [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) instead of file paths
+- References certificates by their IDs in the [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}})
 - Allows for centralized certificate management through the Tyk Dashboard
 
 #### 3. Mixed Environment and Service-Specific Configuration
@@ -494,9 +528,9 @@ Settings are applied in the following priority order (highest to lowest):
 ```
 
 **What this does:**
-- Similar to example 4, but uses certificate store for all mTLS configurations
+- Similar to example 4, but uses [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) for all mTLS configurations
 - **Certificate store integration**:
-  - Instead of file paths, all certificates are referenced by IDs in Tyk's certificate store
+  - Instead of file paths, all certificates are referenced by IDs in Tyk's [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}})
   - This enables centralized certificate management through the Tyk Dashboard
   - Certificates can be rotated, renewed, or replaced without changing configuration files
 - **Comprehensive mTLS deployment**:
@@ -512,25 +546,31 @@ Settings are applied in the following priority order (highest to lowest):
 
 #### Connection Pooling
 
-Tyk implements optimized connection pooling for each service type:
+Tyk implements connection pooling for each service type with built-in default values:
 
-| Service Type | Max Connections | Per Host | Idle Timeout | Reasoning |
-|--------------|-----------------|----------|--------------|-----------|
-| OAuth | 50 | 10 | 30s | Frequent auth requests, connection reuse |
-| Health | 20 | 5 | 15s | Quick, frequent health checks |
-| Storage | 50 | 15 | 90s | Longer-lived connections, bulk operations |
-| Discovery | 30 | 5 | 20s | Service registry lookups |
-| Webhooks | 50 | 10 | 30s | Reliable delivery, connection reuse |
+| Service Type | Max Connections | Per Host | Idle Timeout |
+|--------------|-----------------|----------|--------------|
+| OAuth | 50 | 10 | 30s |
+| Health | 20 | 5 | 15s |
+| Storage | 50 | 15 | 90s |
+| Discovery | 30 | 5 | 20s |
+| Webhooks | 50 | 10 | 30s |
+
+> **Note:** These connection pooling settings are built into Tyk and are not configurable through the configuration file. They are optimized defaults based on the typical usage patterns of each service type. "Per Host" refers to the maximum number of idle connections maintained per upstream host.
 
 #### Service-Specific Timeouts
 
-| Service Type | Client Timeout | Purpose |
-|--------------|----------------|---------|
-| OAuth | 15 seconds | Quick authentication responses |
-| Health | 10 seconds | Fast health check responses |
-| Discovery | 10 seconds | Quick service discovery |
-| Storage | 20 seconds | Storage operation variability |
-| Webhooks | 30 seconds | Reliable delivery with timeout |
+Tyk applies different default timeout values for each service type:
+
+| Service Type | Client Timeout |
+|--------------|----------------|
+| OAuth | 15 seconds |
+| Health | 10 seconds |
+| Discovery | 10 seconds |
+| Storage | 20 seconds |
+| Webhooks | 30 seconds |
+
+> **Note:** These timeout values are built into Tyk and are not configurable through the configuration file. They represent the maximum time Tyk will wait for a response from the external service before timing out the request. These values are optimized based on the expected response times and criticality of each service type.
 
 ## Migration from Legacy Configuration
 
@@ -612,7 +652,6 @@ The External Services Configuration provides a new way to configure external ser
 }
 ```
 
-
 ## Glossary
 
 ### External Service
@@ -628,7 +667,7 @@ External identity providers or authorization servers that Tyk connects to for va
 {{< note success >}}
 **Important Note**
 
-<b>External Services</b> are not the same as the <b>upstream services</b> to which your APIs proxy. With Tyk, API definitions determine how client requests are proxied to upstream services; the External Service Configuration determines how Tyk itself connects to supporting infrastructure.
+**External Services** are not the same as the **upstream services** to which your APIs proxy. With Tyk, API definitions determine how client requests are proxied to upstream services; the External Service Configuration determines how Tyk itself connects to supporting infrastructure.
 
 - When a client requests an API hosted on Tyk, the request is proxied to an upstream service based on the API definition
 - When Tyk needs to validate a JWT token, it might connect to an external OAuth provider using the External Service Configuration
@@ -646,6 +685,29 @@ Yes, you can configure service-specific proxy settings that override the global 
 <details> <summary><b>Does External Service Configuration affect incoming API requests?</b></summary>
 
 No, it only affects outbound connections that Tyk itself initiates.
+
+</details>
+
+<details> <summary><b>What happens if the proxy server becomes unavailable?</b></summary>
+
+If the configured proxy server becomes unavailable, Tyk's behavior depends on the specific scenario:
+
+**For new connections:**
+- Requests to external services will fail with connection timeout or connection refused errors
+- Tyk will log errors such as `dial tcp: i/o timeout` or `connection refused` in the logs
+- These failures can impact various gateway functions depending on which services are affected:
+  - OAuth/JWT validation failures could prevent API access
+  - Webhook delivery failures might cause event notifications to be lost
+  - Health check failures could affect load balancing decisions
+
+**For existing connections:**
+- Established connections in the connection pool may continue to work briefly
+- Once the connection pool needs to establish new connections, requests will begin to fail
+
+**Recovery behavior:**
+- Tyk does not automatically retry failed proxy connections
+- The gateway will continue to attempt to use the configured proxy for new requests
+- When the proxy becomes available again, new connections will succeed without requiring a gateway restart
 
 </details> 
 
