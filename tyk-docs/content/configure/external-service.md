@@ -680,7 +680,7 @@ To enable debug logging, set `"log_level": "debug"` in your `tyk.conf` file or u
 
 The difference between **External Service Configuration** and Normal **API Definition** is about **who initiates the connection**:
 
-1. **External Service Configuration:** Controls connections that Tyk itself initiates to external services as part of its internal operations:
+1. **External Service Configuration:** Controls connections that Tyk initiates to external services as part of its internal operations, such as:
    - Retrieving a JWKS from an external OAuth server (Identity Provider)
    - Sending analytics data to storage
 
