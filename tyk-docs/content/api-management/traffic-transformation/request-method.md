@@ -38,10 +38,6 @@ This is a very simple middleware that is assigned to an endpoint and configured 
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request method transform middleware [here]({{< ref "#request-method-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request method transform middleware [here]({{< ref "#request-method-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Method Transform middleware summary
   - The Request Method Transform is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
