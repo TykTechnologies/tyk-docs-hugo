@@ -13,24 +13,7 @@ Tyk Governance is a comprehensive API Governance hub designed to provide central
 
 At its core, Tyk Governance is a federated control plane that sits above your existing API infrastructure, regardless of whether you're using Tyk exclusively or a mix of different API management solutions. It collects, analyzes, and governs API definitions from various sources, ensuring they adhere to your organization's standards and best practices.
 
-```mermaid
-flowchart LR
-    subgraph "Tyk Governance hub"
-        GS["Governance Service"] --- RE["Rule Engine"]
-        GS --- AR["API Repository"]
-        GS --- RP["Reporting"]
-    end
-    
-    subgraph "API Ecosystem"
-        TG["Tyk Dashboard"] --- AG1["Agent"]
-        AWS["AWS API Gateway"] --- AG2["Agent"]
-        OTHER["Other sources (Future support)"] --- AG3["Agent"]
-    end
-    
-    AG1 --> GS
-    AG2 --> GS
-    AG3 --> GS
-```
+{{< img src="/img/governance/architecture.png" alt="Tyk API Governance Architecture" >}}
 
 ## Federated API Management
 
@@ -123,6 +106,8 @@ The Tyk Governance roadmap includes plans to expand support to additional platfo
 ## How It Works
 
 Tyk Governance operates through a distributed architecture that combines a centralized cloud-hosted governance service with distributed agents that run in your environments.
+
+{{< img src="/img/governance/automated-governance.png" alt="How Tyk API Governance Works" >}}
 
 ### Technical Architecture
 
