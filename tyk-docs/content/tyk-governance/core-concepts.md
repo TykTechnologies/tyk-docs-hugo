@@ -107,7 +107,7 @@ The Tyk Governance roadmap includes plans to expand support to additional platfo
 
 Tyk Governance operates through a distributed architecture that combines a centralized cloud-hosted governance service with distributed agents that run in your environments.
 
-{{< img src="/img/governance/runtime-governance.png" alt="How Tyk API Governance Works" >}}
+{{< img src="/img/governance/automated-governance.png" alt="How Tyk API Governance Works" >}}
 
 ### Technical Architecture
 
