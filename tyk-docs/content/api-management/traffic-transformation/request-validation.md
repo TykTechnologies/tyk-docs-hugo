@@ -43,10 +43,6 @@ When using the legacy [Tyk Classic APIs]({{< ref "api-management/traffic-transfo
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Validate Request middleware summary
   - The Validate Request middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
