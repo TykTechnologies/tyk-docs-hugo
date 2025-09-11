@@ -45,10 +45,6 @@ Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-ma
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the block list middleware [here]({{< ref "#block-list-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the block list middleware [here]({{< ref "#block-list-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Block List middleware summary
   - The Block List is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
