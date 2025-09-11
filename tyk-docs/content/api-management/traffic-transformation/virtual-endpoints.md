@@ -68,10 +68,6 @@ Virtual endpoints are not available in Tyk Cloud Classic.
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "#virtual-endpoints-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "#virtual-endpoints-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Virtual Endpoint middleware summary
   - The Virtual Endpoint middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
