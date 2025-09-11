@@ -35,7 +35,7 @@ graph LR
     ExternalConfig["External Service Configuration"] --> |"Controls the outbound connections to the external services"| TykGateway
 ```
 
-External Service Configuration in Tyk [Gateway]({{< ref "tyk-oss-gateway" >}}) enables you to control how Tyk connects to [external services]({{< ref "#external-service" >}}) that it needs to function correctly. This feature enables you to configure proxy settings, mTLS authentication, and other connection parameters for Tyk's outbound connections to services such as OAuth providers, analytics systems, and webhooks.
+External Service Configuration gives you control over how Tyk Gateway securely connects to the [external services]({{< ref "configure/external-service#external-service" >}}) that it needs to function correctly. You can configure proxy settings, mTLS authentication, and other connection parameters for Tyk's outbound connections to services such as OAuth providers, analytics systems, and webhook endpoints.
 
 ### Key Benefits
 
@@ -174,11 +174,11 @@ Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/conf
 
 | Service Type | Description | Components |
 |--------------|-------------|------------|
-| `oauth` | OAuth/JWT token validation and introspection | JWT middleware, External OAuth middleware, JWK fetching |
-| `storage` | External storage operations | Redis connections, database interactions |
-| `webhooks` | Webhook event notifications | Event handlers, notification delivery |
-| `health` | Health check requests | Host checker, uptime monitoring |  
-| `discovery` | Service discovery requests | Load balancer, service registry |
+| `oauth` | [OAuth/JWT token validation and introspection]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) | JWT auth interactions with Auth Server (Identity Provider) |
+| `storage` | [External storage operations]({{< ref "planning-for-production/database-settings" >}}) | Redis connections, database interactions |
+| `webhooks` | [Webhook event notifications]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) | Event handlers, notification delivery |
+| `health` | [Health check requests]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}) | Host checker, uptime monitoring |  
+| `discovery` | [Service discovery requests]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}}) | Load balancer, service registry |
 
 ### Hierarchy and Precedence
 
@@ -366,7 +366,7 @@ Settings are applied in the following priority order (highest to lowest):
 
 #### Connection Pooling
 
-The feature implements optimized connection pooling for each service type:
+Tyk implements optimized connection pooling for each service type:
 
 | Service Type | Max Connections | Per Host | Idle Timeout | Reasoning |
 |--------------|-----------------|----------|--------------|-----------|
@@ -467,11 +467,10 @@ External identity providers or authorization servers that Tyk connects to for va
    - Example: Retrieving JWK sets from Okta
 
 {{< note success >}}
-**Note**
+**Important Note**
 
-External services in this context are not the same as the upstream services that your APIs proxy to. While API definitions in Tyk determine how client requests are proxied to upstream services, External Service Configuration determines how Tyk itself connects to its supporting infrastructure.
+<b>External Services</b> are not the same as the <b>upstream services</b> to which your APIs proxy. With Tyk, API definitions determine how client requests are proxied to upstream services; the External Service Configuration determines how Tyk itself connects to supporting infrastructure.
 
-For example:
 - When a client requests an API hosted on Tyk, the request is proxied to an upstream service based on the API definition
 - When Tyk needs to validate a JWT token, it might connect to an external OAuth provider using the External Service Configuration
 
@@ -508,14 +507,14 @@ Enable debug logging in Tyk and check for proxy-related log messages.
 The difference between **External Service Configuration** and Normal **API Definition** is about **who initiates the connection**:
 
 1. **External Service Configuration:** Controls connections that Tyk itself initiates to external services as part of its internal operations:
-   - Validating JWTs with external OAuth servers
-   - Sending analytics data
+   - Retrieving a JWKS from an external OAuth server (Identity Provider)
+   - Sending analytics data to storage
 
-2. **API Definition:** Controls how Tyk handles connections initiated by clients to your APIs.
+2. **API Definition:** Controls how Tyk handles connections initiated by clients to your services (both the client-gateway and gateway-upstream connections)
 
 Think of External Service Configuration as configuring Tyk's own HTTP client behavior, while API definitions configure Tyk's HTTP server behavior. They operate at different layers of the system.
 
-Without External Service Configuration, you would have no way to control how Tyk makes its own outbound connections, which could prevent Tyk from working properly in environments with strict network policies or security requirements.
+External Service Configuration gives you control over how Tyk makes its own outbound connections, allowing it to work properly in environments with strict network policies or security requirements.
 
 </details> 
 
