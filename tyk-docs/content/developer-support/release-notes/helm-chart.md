@@ -94,10 +94,10 @@ Added Helm Chart support for Redis Sentinel configurations using global values f
 
 Tyk Charts 4.0 will install the following Tyk components:
 
-- Tyk Gateway v5.8.4
-- Tyk Dashboard v5.8.4
+- Tyk Gateway v5.8.5
+- Tyk Dashboard v5.8.5
 - Tyk Pump v1.12.0
-- Tyk MDCB v2.8.2
+- Tyk MDCB v2.8.4
 - Tyk Developer Portal v1.14.0
 - Tyk Operator v1.2.0
 </details>
