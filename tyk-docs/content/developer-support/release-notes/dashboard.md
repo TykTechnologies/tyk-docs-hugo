@@ -2367,7 +2367,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 ### 5.3.12 Release Notes
 
-#### Release Date XXX
+#### Release Date 12th September 2025
 
 #### Release Highlights
 
