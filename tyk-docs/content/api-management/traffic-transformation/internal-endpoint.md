@@ -57,10 +57,6 @@ Or from within `/api1/endpoint1_ext` as:
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the Internal Endpoint middleware [here]({{< ref "#internal-endpoint-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the Internal Endpoint middleware [here]({{< ref "#internal-endpoint-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Internal Endpoint middleware summary
   - The Internal Endpoint middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.

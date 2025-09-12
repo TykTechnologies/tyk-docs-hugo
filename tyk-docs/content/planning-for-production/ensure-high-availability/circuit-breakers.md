@@ -102,10 +102,6 @@ Tyk does not have an API-level circuit breaker that can be applied across all en
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-oas-api-definition" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-classic-api-definition" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Circuit Breaker middleware summary
   - The Circuit Breaker is an optional stage in Tyk's API Request processing chain, activated when the request is proxied to the upstream service.
