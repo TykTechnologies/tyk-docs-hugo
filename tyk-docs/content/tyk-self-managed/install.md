@@ -3,12 +3,6 @@ title: "Installation Options for Tyk Self-Managed"
 date: 2025-02-10
 keywords: ["tyk self-managed", "tyk on-premise", "tyk installation", "tyk docker", "tyk kubernetes", "tyk helm chart", "tyk operator"]
 description: "Explore the various installation options for Tyk Self-Managed, including Docker, Kubernetes, Ansible, and more."
-
-{{< note success >}}
-**Important Prerequisites**
-
-Redis is an essential requirement for all Tyk products. Before proceeding with any installation, please ensure you have a Redis instance available that meets our [Redis requirements and recommendations]({{< ref "planning-for-production/redis-requirements" >}}). Tyk will not function without Redis.
-{{< /note >}}
 aliases:
   - /tyk-self-managed/tyk-helm-chart
   - /get-started/with-tyk-on-premise/installation/docker
@@ -74,6 +68,13 @@ aliases:
   - /tyk-on-premises/on-ubuntu
   - /tyk-on-premises/redhat-rhel-centos
 ---
+
+{{< note success >}}
+**Important Prerequisites**
+
+Redis is an essential requirement for all Tyk products. Before proceeding with any installation, please ensure you have a Redis instance available that meets our [Redis requirements and recommendations]({{< ref "planning-for-production/redis-requirements" >}}). Tyk will not function without Redis.
+{{< /note >}}
+
 ## Introduction
 
 {{< grid >}}

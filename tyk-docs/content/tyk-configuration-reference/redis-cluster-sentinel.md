@@ -7,6 +7,131 @@ aliases:
   - /tyk-stack/tyk-gateway/configuration/redis-cluster
 ---
 
+## Introduction
+
+Redis is an essential prerequisite for the operation of Tyk products. It serves as the primary data store for various components across the Tyk Stack, handling critical functions such as key management, analytics storage, distributed rate limiting, and inter-node communication. Without Redis, Tyk components cannot function properly, making it a mandatory requirement for any Tyk deployment.
+
+## Tyk Components Using Redis
+
+| Component               | Redis Usage                                   |
+|--------------------------|-----------------------------------------------|
+| **Tyk Gateway**          | Session Management, Rate Limiting, Cache, Analytics, Cluster Synchronization |
+| **Tyk Dashboard**        | Session Management, API Configuration, Developer Portal, Cluster Notifications |
+| **Tyk Pump**             | Analytics Processing, Uptime Data            |
+| **Tyk Identity Broker**  | Profile Storage, Token Caching               |
+| **MDCB**                 | Configuration Synchronization, Analytics Aggregation |
+
+## Supported Redis Versions
+
+[Tyk components]({{< ref "developer-support/release-notes/overview" >}}) are regularly updated to maintain compatibility with current [Redis versions](https://redis.io/docs/latest/operate/rs/release-notes/). For specific Redis version compatibility information for each Tyk component:
+
+Refer to the release notes of your specific Tyk component and version, which include documentation links and the compatibility matrix.
+
+<TODO: Add links to release notes for each component here when available.>
+
+| Tyk Component        | Release Notes                     |
+|----------------------|----------------------------------------------|
+| **Tyk Gateway**      | [5.8]({{< ref "developer-support/release-notes/gateway#3rd-party-dependencies--tools-8" >}}), 5.9                |
+| **Tyk Dashboard**    | 5.8, 5.9                |
+| **Tyk Pump**         | 1.12                |
+| **Tyk Identity Broker** | 1.7             |
+| **MDCB**             | 2.8                | 
+
+## Redis Deployment Options
+
+Tyk supports various Redis deployment configurations to meet different scalability and availability requirements:
+
+This document provides architectural guidance for Redis deployment in Tyk Data Plane environments within Multi Data Center Bridge (MDCB) configurations. The recommendations are structured around different Service Level Agreements (SLAs), Recovery Time Objectives (RTOs), and Recovery Point Objectives (RPOs), ranging from simple ephemeral deployments to enterprise-grade high availability solutions.
+
+In Tyk's MDCB architecture, the **Data Plane** consists of Tyk Gateway workers that serve API traffic and require Redis for session management, rate limiting, and caching. The Redis deployment strategy significantly impacts the overall system's availability, performance, and operational complexity.
+
+As noted in Tyk's documentation:  
+*"To provide resilience and availability, multiple Gateways should be deployed and load balanced within the cluster. If you want this Data Plane deployment to be resilient, available, and independent from the Control Plane during a disconnection event, it is advised to make the Redis data store persistent."*
+
+However, for containerized environments and simpler use cases, ephemeral Redis deployments can be sufficient while maintaining operational simplicity.
+
+---
+
+# Architecture Options Overview
+
+| Architecture      | RTO         | RPO        | Availability | Complexity | Use Case                     |
+|-------------------|-------------|------------|--------------|------------|------------------------------|
+| Single Redis      | 5–15 min    | 0–5 min    | 99.5%        | Low        | Development/Testing           |
+| Redis with Sentinel | 30–60 sec | <1 min     | 99.9%        | Medium     | Production (Standard)         |
+| Redis Cluster     | 10–30 sec   | <30 sec    | 99.95%       | High       | High-throughput Production    |
+| Redis Enterprise  | <10 sec     | <10 sec    | 99.99%+      | Medium     | Mission-critical Enterprise   |
+
+
+### 1. Standalone Redis
+- Simplest deployment option
+- Suitable for development, testing, and small production environments
+- Configuration example in `tyk.conf`:
+  ```json
+  "storage": {
+    "type": "redis",
+    "host": "redis",
+    "port": 6379,
+    "username": "",
+    "password": "",
+    "database": 0,
+    "optimisation_max_idle": 2000,
+    "optimisation_max_active": 4000
+  }
+  ```
+
+### 2. Redis Sentinel
+- Provides high availability through automatic failover
+- Recommended for production environments requiring high availability
+- Enabled through configuration:
+  ```json
+  "storage": {
+    "type": "redis",
+    "host": "",
+    "port": 0,
+    "master_name": "master",
+    "sentinel_addresses": ["sentinel1:26379", "sentinel2:26379", "sentinel3:26379"],
+    "username": "",
+    "password": "",
+    "database": 0
+  }
+  ```
+
+### 3. Redis Cluster
+- Provides horizontal scalability and high availability
+- Recommended for large-scale deployments with high throughput requirements
+- Enabled through configuration:
+  ```json
+  "storage": {
+    "type": "redis",
+    "host": "",
+    "port": 0,
+    "hosts": {
+      "redis-cluster-node-1:7000": "",
+      "redis-cluster-node-2:7000": "",
+      "redis-cluster-node-3:7000": ""
+    },
+    "username": "",
+    "password": "",
+    "enable_cluster": true
+  }
+  ```
+
+### 4. Redis with TLS
+- Provides encrypted communication with Redis
+- Recommended for production environments with security requirements
+- Enabled through configuration:
+  ```json
+  "storage": {
+    "type": "redis",
+    "host": "redis.example.com",
+    "port": 6379,
+    "username": "",
+    "password": "password",
+    "use_ssl": true,
+    "ssl_insecure_skip_verify": false
+  }
+  ```
+
 ## Configure Redis Cluster
 
 Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redis Cluster allows data to be automatically sharded across multiple Redis Nodes. To setup Redis Cluster correctly, we recommend you read the [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial). You must use the same settings across the Gateway, Dashboard and Pump.
@@ -16,11 +141,6 @@ Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redi
 
 Redis Cluster operates differently from a Redis setup where one instance serves as the primary and others as replicas.
 {{< /note >}}
-
-### Supported Versions
-- Tyk 5.3 supports Redis 6.2.x, 7.0.x, and 7.2.x
-- Tyk 5.2.x and earlier supports Redis 6.0.x and Redis 6.2.x only.
-
 
 ### Redis Cluster and Tyk Gateway 
 
@@ -205,11 +325,6 @@ From v2.9.3 Redis Sentinel is supported.
 Similar to Redis Cluster, our Gateway, Dashboard and Pump all support integration with Redis Sentinel.
 
 To configure Tyk to work with Redis Sentinel, list your servers under `addrs` and set the master name in your Gateway, Dashboard, Pump and MDCB config. Unlike Redis Cluster, `enable_cluster` should **not** be set.  Indicative config snippets as follows:
-
-### Supported Versions
-- Tyk 5.3 supports Redis 6.2.x, 7.0.x, and 7.2.x
-- Tyk 5.2.x and earlier supports Redis 6.0.x and Redis 6.2.x only.
-
 
 ### Redis Sentinel and Gateway
 
