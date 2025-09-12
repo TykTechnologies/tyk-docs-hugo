@@ -446,7 +446,7 @@ Fixed an issue where the default version of a Tyk OAS API was incorrectly reset 
 <details>
 <summary>Dashboard API now rejects PATCH requests with Tyk Vendor Extensions for OAS APIs</summary>
 
-Resolved an inconsistency where the Dashboard API's PATCH /api/apis/oas/{apiId} endpoint incorrectly accepted full Tyk OAS API definitions, including Tyk Vendor Extensions. The API now correctly validates and rejects these requests with a 400 Bad Request, aligning its behavior with the UI and ensuring only standard OpenAPI descriptions can be updated via this endpoint.
+Resolved an inconsistency where the Dashboard API's PATCH `/api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions, including Tyk Vendor Extensions. The API now correctly validates and rejects these requests with a 400 Bad Request, aligning its behavior with the UI and ensuring only standard OpenAPI descriptions can be updated via this endpoint.
 </details>
 </li>
 
@@ -470,23 +470,23 @@ Resolved an issue where orphaned child APIs of a versioned OAS API would disappe
 <details>
 <summary>Fixed Inconsistent Null Handling for API Versions in Policies and Keys</summary>
 
-Resolved inconsistencies in how null or empty array values for the 'versions' field within 'access_rights' are handled for policies and keys. This update standardizes validation and data representation across API and UI workflows, improving reliability and preventing errors when managing API versions.
+Resolved inconsistencies in how null or empty array values for the `versions` field within `access_rights` are handled for policies and keys. This update standardizes validation and data representation across API and UI workflows, improving reliability and preventing errors when managing API versions.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Mandatory 'negate' Field for OAS URL Rewrite Middleware</summary>
+<summary>Mandatory `negate` Field for OAS URL Rewrite Middleware</summary>
 
-Addressed a schema inconsistency where the 'negate' field (used to define match logic) was optional in Tyk OAS API definitions. It is now required to explicitly declare whether a URL rewrite rule should match or not match the configured pattern, ensuring consistent behavior between the Dashboard UI and backend validation.
+Addressed a schema inconsistency where the `negate` field (used to define match logic) was optional in Tyk OAS API definitions. It is now required to explicitly declare whether a URL rewrite rule should match or not match the configured pattern, ensuring consistent behavior between the Dashboard UI and backend validation.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Corrected '/versions' Endpoint Behavior for Tyk OAS APIs</summary>
+<summary>Corrected `/versions` Endpoint Behavior for Tyk OAS APIs</summary>
 
-Fixed an issue where the '/api/apis/oas/{apiId}/versions' endpoint returned version data for APIs without versioning, including non-OAS and Classic APIs. The endpoint now strictly validates requests, returning 'HTTP 422 Unprocessable Entity' unless the query targets a valid Tyk OAS base API, ensuring accurate and consistent results.
+Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint returned version data for APIs without versioning, including non-OAS and Classic APIs. The endpoint now strictly validates requests, returning `HTTP 422 Unprocessable Entity` unless the query targets a valid Tyk OAS base API, ensuring accurate and consistent results.
 </details>
 </li>
 
@@ -500,9 +500,9 @@ Resolved an issue where creating a new version of a Tyk OAS API would incorrectl
 
 <li>
 <details>
-<summary>Validation Added for 'base_api_id' When Creating Versioned APIs</summary>
+<summary>Validation Added for `base_api_id` When Creating Versioned APIs</summary>
 
-Fixed an issue where providing a non-existent 'base_api_id' when creating a new version of a Tyk OAS API via the Dashboard API would still create the API but leave it invisible in the Dashboard. The system now validates this parameter and returns a '400 Bad Request' error if the base API does not exist, ensuring data consistency and preventing orphaned APIs.
+Fixed an issue where providing a non-existent `base_api_id` when creating a new version of a Tyk OAS API via the Dashboard API would still create the API but leave it invisible in the Dashboard. The system now validates this parameter and returns a `400 Bad Request` error if the base API does not exist, ensuring data consistency and preventing orphaned APIs.
 </details>
 </li>
 
@@ -526,7 +526,7 @@ Fixed an issue where updating a [global webhook]({{< ref "api-management/gateway
 <details>
 <summary>GraphQL API Creation via Upstream Introspection Fixed</summary>
 
-Resolved an issue where creating GraphQL APIs using Upstream Introspection in the Dashboard could fail with '502 Bad Gateway' errors. This occurred when OPA rules modified the request body without updating the 'ContentLength'. The Dashboard now recalculates the content length correctly, ensuring stable and error-free introspection requests.
+Resolved an issue where creating GraphQL APIs using Upstream Introspection in the Dashboard could fail with `502 Bad Gateway` errors. This occurred when OPA rules modified the request body without updating the `ContentLength`. The Dashboard now recalculates the content length correctly, ensuring stable and error-free introspection requests.
 </details>
 </li>
 
