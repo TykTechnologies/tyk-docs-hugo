@@ -118,6 +118,14 @@ Added support for validating JWT registered claims including subject, issuer, an
 
 <li>
 <details>
+<summary>Custom Claims Validation for JWTs</summary>
+
+Added support for validating custom JWT claims in Tyk OAS APIs. Administrators can now enforce rules such as required claims, exact matches, or value containment, with support for nested claims and different data types. Rules can be set as blocking or non-blocking, enabling advanced access control and custom authorization scenarios.
+</details>
+</li>
+
+<li>
+<details>
 <summary>Gateway Certificate Expiry Notification Events</summary>
 
 Introduced a proactive event system to warn administrators when mTLS certificates are approaching expiration. A new 'CertificateExpiringSoon' event is fired when a certificate is within a configurable threshold (e.g., 30 days) of expiry, helping teams renew certificates before they cause outages. Additionally, a new 'CertificateExpired' event is fired whenever an expired certificate is detected, giving administrators clear visibility into failed requests caused by outdated certificates.  
