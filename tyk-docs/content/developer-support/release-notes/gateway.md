@@ -148,6 +148,14 @@ Introduced a new `securityProcessingMode` setting for Tyk OAS APIs. This allows 
 </details>
 </li>
 
+<li>
+<details>
+<summary>Enhanced External Service Integration with Proxy and mTLS Support</summary>
+
+Introduced proxy and mTLS support across key external service integrations. OAuth/JWT middleware now supports proxy-aware JWK fetching and token introspection, analytics data can flow through corporate proxies, webhooks can deliver reliably via proxy infrastructure, and health checks/uptime tests can operate through proxies. These improvements ensure Tyk works seamlessly in enterprise environments with strict network requirements, while maintaining backward compatibility for existing configurations.
+</details>
+</li>
+
 
 </ul>
 
