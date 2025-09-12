@@ -2686,7 +2686,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.12 Release Notes
 
-#### Release Date xxx
+#### Release Date 12th September 2025
 
 #### Release Highlights
 
