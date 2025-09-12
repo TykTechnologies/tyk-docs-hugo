@@ -120,14 +120,6 @@ Added support for validating JWT registered claims including subject, issuer, an
 
 <li>
 <details>
-<summary>Implement Certificate Metadata Storage in Dashboard</summary>
-
-Implemented an in-memory certificate metadata repository in the Dashboard to cache and persist certificate details needed to check for expiring certificates.
-</details>
-</li>
-
-<li>
-<details>
 <summary>Dashboard Certificate Expiry Notifications</summary>
 
 The Dashboard now includes a built-in notification system to alert administrators when mTLS certificates are expiring soon or have already expired.
