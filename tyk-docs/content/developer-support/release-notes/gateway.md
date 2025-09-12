@@ -2918,7 +2918,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.12 Release Notes
 
-#### Release Date xxx
+#### Release Date 12th September 2025
 
 #### Release Highlights
 
@@ -2930,7 +2930,7 @@ This patch release contains bug fixes. For a comprehensive list of changes, plea
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.3.12 | MDCB v2.8.0     | MDCB v2.8.0 |
+| 5.3.12 | MDCB v2.8.4     | MDCB v2.8.0 |
 |         | Operator v1.2.0  | Operator v0.17 |
 |         | Sync v2.1.0    | Sync v2.1.0 |
 |         | Helm Chart v3.0  | Helm all versions |
