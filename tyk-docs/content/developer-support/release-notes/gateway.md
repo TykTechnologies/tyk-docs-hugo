@@ -296,6 +296,14 @@ Fixed an issue where users could create child Tyk OAS API versions without speci
 </details>
 </li>
 
+<li>
+<details>
+<summary>Consistent Middleware Updates for OAS API PATCH Requests</summary>
+
+Fixed an issue where updating an API via `PATCH /tyk/apis/oas/{apiId}` on Gateway CE did not properly update the Tyk vendor extension `(x-tyk-api-gateway)`. Middleware definitions for removed or modified endpoints could persist incorrectly, leaving API definitions out of sync. The extension is now rebuilt correctly to reflect changes made in the OpenAPI description.
+</details>
+</li>
+
 </ul>
 
 ## 5.9 Release Notes 
