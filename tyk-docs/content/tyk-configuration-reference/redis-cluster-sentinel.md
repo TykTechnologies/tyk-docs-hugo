@@ -23,9 +23,9 @@ Redis is a hard dependency for the operation of Tyk products. It serves as the p
 
 ## Supported Redis Versions
 
-[Tyk components]({{< ref "developer-support/release-notes/overview" >}}) are regularly updated to maintain compatibility with current [Redis versions](https://redis.io/docs/latest/operate/rs/release-notes/). For specific Redis version compatibility information for each Tyk component:
+[Tyk components]({{< ref "developer-support/release-notes/overview" >}}) are regularly updated to maintain compatibility with the latest [Redis versions](https://redis.io/docs/latest/operate/rs/release-notes/).
 
-Refer to the release notes of your specific Tyk component and version, which include documentation links and the compatibility matrix.
+To check the specific Redis versions supported by each Tyk component, please refer to the release notes of your specific Tyk component and version.
 
 - **[Tyk Gateway]({{< ref "developer-support/release-notes/gateway#3rd-party-dependencies--tools" >}})**
 - **[Tyk Dashboard]({{< ref "developer-support/release-notes/dashboard#3rd-party-dependencies--tools" >}})**
