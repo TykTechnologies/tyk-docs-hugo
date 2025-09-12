@@ -183,8 +183,13 @@ menu:
                 show: True
               - title: "Database Management"
                 path: /planning-for-production/database-settings
-                category: Page
+                category: Directory
                 show: True
+                menu:
+                - title: "Redis"
+                  path: /tyk-configuration-reference/redis-cluster-sentinel
+                  category: Page
+                  show: True
               - title: "Circuit Breakers"
                 path: /planning-for-production/ensure-high-availability/circuit-breakers
                 category: Page
@@ -215,10 +220,6 @@ menu:
                 show: True
               - title: "Monitoring"
                 path: /planning-for-production/monitoring/tyk-components
-                category: Page
-                show: True
-              - title: "Redis"
-                path: /tyk-configuration-reference/redis-cluster-sentinel
                 category: Page
                 show: True
               - title: "Graceful Shutdown"
