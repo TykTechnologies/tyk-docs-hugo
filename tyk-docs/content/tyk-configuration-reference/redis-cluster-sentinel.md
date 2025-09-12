@@ -37,17 +37,17 @@ Refer to the release notes of your specific Tyk component and version, which inc
 
 Tyk supports various Redis deployment configurations to meet different scalability and availability requirements:
 
-This section provides architectural guidance for Redis deployment in Tyk Data Plane environments within Multi Data Center Bridge (MDCB) configurations. The recommendations are structured around different Service Level Agreements (SLAs), Recovery Time Objectives (RTOs), and Recovery Point Objectives (RPOs), ranging from simple ephemeral deployments to enterprise-grade high availability solutions.
+This section provides architectural guidance for Redis deployment in Tyk [Data Plane]({{< ref "api-management/mdcb#setup-mdcb-data-plane" >}}) environments within [Multi Data Center Bridge]({{< ref "api-management/mdcb" >}}) (MDCB) configurations.
 
 In Tyk's MDCB architecture, the **Data Plane** consists of Tyk Gateway workers that serve API traffic and require Redis for session management, rate limiting, and caching. The Redis deployment strategy significantly impacts the overall system's availability, performance, and operational complexity.
 
-This section is written with the MDCB data plane in mind, but the same principles apply to single-data-center Tyk deployments.
+<br>
+
+> This section is written with the MDCB data plane in mind, but the same principles apply to standalone Tyk deployments.
 
 ### 1. Standalone Redis (Basic)
 
 A single Redis instance provides the simplest deployment model suitable for development, testing, or low-criticality environments.
-
-<TODO: Add link to tyk.conf reference page when available.>
 
 ```mermaid
 graph TB
@@ -197,6 +197,8 @@ parallel-syncs: 1
 - Asynchronous replication can lead to data loss
 - Requires careful network partition handling
 
+To configure Tyk to work with Redis Sentinel, see the [Redis Sentinel configuration section]({{< ref "#configure-redis-sentinel" >}}) below.
+
 ### 3. Redis Cluster (Horizontal Scaling)
 
 Redis Cluster offers horizontal scaling capabilities through automatic sharding, making it suitable for high-throughput environments that require linear scalability.
@@ -290,6 +292,8 @@ min-replicas-to-write: 1
 - No support for multiple databases
 - Higher infrastructure costs
 - Complex monitoring and troubleshooting
+
+To configure Tyk to work with Redis Sentinel, see the [Redis Sentinel configuration section]({{< ref "#configure-redis-cluster" >}}) below.
 
 ### 4. Redis Enterprise (Mission-Critical)
 
