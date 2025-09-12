@@ -9,7 +9,7 @@ aliases:
 
 ## Introduction
 
-Redis is an essential prerequisite for the operation of Tyk products. It serves as the primary data store for various components across the Tyk Stack, handling critical functions such as key management, analytics storage, distributed rate limiting, and inter-node communication. Without Redis, Tyk components cannot function properly, making it a mandatory requirement for any Tyk deployment.
+Redis is a hard dependency for the operation of Tyk products. It serves as the primary data store for various components across the Tyk Stack, handling critical functions such as key management, analytics storage, distributed rate limiting, and inter-node communication. **Without Redis, Tyk components cannot function properly, making it a mandatory requirement for any Tyk deployment.**
 
 ## Tyk Components Using Redis
 
@@ -648,7 +648,7 @@ See the Redis and Sentinel authentication section of the [Redis Sentinel docs](h
 
 ## FAQ
 
-<details> <summary><b>What is Tyk Streams and what problem does it solve?</b></summary>
+<details> <summary><b>Tyk Components fail to start when using Redis Cluster?</b></summary>
 
 If you find that Tyk components fail to initialise when using Redis clustering, for example, the application does not start. The last log file entry shows a message such as `Using clustered mode`. Try setting the environment variable `REDIGOCLUSTER_SHARDCOUNT` to `128` on all hosts that connect to the Redis Cluster, i.e., Gateway, Dashboard, Pump, and MDCB. E.g.
 
