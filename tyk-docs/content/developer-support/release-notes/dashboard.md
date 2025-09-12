@@ -530,6 +530,14 @@ Resolved an issue where creating GraphQL APIs using Upstream Introspection in th
 </details>
 </li>
 
+<li>
+<details>
+<summary>Stricter Validation for OAS API Version Names</summary>
+
+Fixed an issue where users could create child Tyk OAS API versions without specifying a valid version name `(new_version_name)`. The Gateway and Dashboard APIs will now reject such requests with an HTTP 422 error, ensuring all versions have meaningful identifiers and preventing unusable or empty version entries.
+</details>
+</li>
+
 
 </ul>
 
