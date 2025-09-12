@@ -182,17 +182,10 @@ menu:
                 category: Page
                 show: True
               - title: "Database Management"
+                path: /planning-for-production/database-settings
                 category: Directory
                 show: True
                 menu:
-                - title: "Postgres"
-                  path: /planning-for-production/database-settings
-                  category: Page
-                  show: True
-                - title: "MongoDB"
-                  path: /planning-for-production/database-settings
-                  category: Page
-                  show: True
                 - title: "Redis"
                   path: /tyk-configuration-reference/redis-cluster-sentinel
                   category: Page
