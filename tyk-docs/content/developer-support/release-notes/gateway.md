@@ -466,23 +466,23 @@ Fixed an issue where the Tyk OAS API Debugger incorrectly reported errors on end
 <details>
 <summary>Fixed Inconsistent Null Handling for API Versions in Policies and Keys</summary>
 
-Resolved inconsistencies in how null or empty array values for the 'versions' field within 'access_rights' are handled for policies and keys. This update standardizes validation and data representation across API and UI workflows, improving reliability and preventing errors when managing API versions.
+Resolved inconsistencies in how null or empty array values for the `versions` field within `access_rights` are handled for policies and keys. This update standardizes validation and data representation across API and UI workflows, improving reliability and preventing errors when managing API versions.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Mandatory 'negate' Field for OAS URL Rewrite Middleware</summary>
+<summary>Mandatory `negate` Field for OAS URL Rewrite Middleware</summary>
 
-Addressed a schema inconsistency where the 'negate' field (used to define match logic) was optional in Tyk OAS API definitions. It is now required to explicitly declare whether a URL rewrite rule should match or not match the configured pattern, ensuring consistent behavior between the Dashboard UI and backend validation.
+Addressed a schema inconsistency where the `negate` field (used to define match logic) was optional in Tyk OAS API definitions. It is now required to explicitly declare whether a URL rewrite rule should match or not match the configured pattern, ensuring consistent behavior between the Dashboard UI and backend validation.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Corrected '/versions' Endpoint Behavior for Tyk OAS APIs</summary>
+<summary>Corrected `/versions` Endpoint Behavior for Tyk OAS APIs</summary>
 
-Fixed an issue where the '/api/apis/oas/{apiId}/versions' endpoint returned version data for APIs without versioning, including non-OAS and Classic APIs. The endpoint now strictly validates requests, returning 'HTTP 422 Unprocessable Entity' unless the query targets a valid Tyk OAS base API, ensuring accurate and consistent results.
+Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint returned version data for APIs without versioning, including non-OAS and Classic APIs. The endpoint now strictly validates requests, returning `HTTP 422 Unprocessable Entity` unless the query targets a valid Tyk OAS base API, ensuring accurate and consistent results.
 </details>
 </li>
 
@@ -498,7 +498,7 @@ Fixed a problem causing repeated `Body decompression error: EOF` logs when analy
 <details>
 <summary>Gateway Re-registration Failures</summary>
 
-Fixed an issue where Gateways could fail to re-register with the Dashboard after restart when using the updated license handler, resulting in 'Authorization failed (Nonce empty)' errors and crash loops. The registration logic has been hardened to prevent these failures.
+Fixed an issue where Gateways could fail to re-register with the Dashboard after restart when using the updated license handler, resulting in `Authorization failed (Nonce empty)` errors and crash loops. The registration logic has been hardened to prevent these failures.
 </details>
 </li>
 
@@ -506,7 +506,7 @@ Fixed an issue where Gateways could fail to re-register with the Dashboard after
 <details>
 <summary>Fix: Gateway crash when deleting API with Uptime Test enabled</summary>
 
-Addresses a bug where deleting an API that has the 'Uptime test' feature enabled could cause the Gateway to crash due to an invalid memory access (nil pointer dereference). A nil check has been added to prevent this panic.
+Addresses a bug where deleting an API that has the `Uptime test` feature enabled could cause the Gateway to crash due to an invalid memory access (nil pointer dereference). A nil check has been added to prevent this panic.
 </details>
 </li>
 
@@ -538,7 +538,7 @@ Fixed an issue where CORS settings were not applied correctly for versioned Tyk 
 <details>
 <summary>Fixed: Mock Responses Not Working with Internal API Proxying</summary>
 
-Fixed an issue where mock response middleware did not work when internal API proxying was enabled. Now you can redirect a request to another API on Tyk via [internal looping]() and return a mock response if configured in the target API.
+Fixed an issue where mock response middleware did not work when internal API proxying was enabled. Now you can redirect a request to another API on Tyk via `internal looping()` and return a mock response if configured in the target API.
 </details>
 </li>
 
@@ -552,9 +552,9 @@ Resolved an issue where migrating Swagger 2.0 APIs without explicit versioning t
 
 <li>
 <details>
-<summary>Fixed: Unnecessary 'header' object generation in Tyk OAS API Key import</summary>
+<summary>Fixed: Unnecessary `header` object generation in Tyk OAS API Key import</summary>
 
-Resolved an issue where importing an OpenAPI description with an 'apiKey' security scheme, while using the 'authentication' query parameter, led to the unnecessary generation of a 'header' object within the 'x-tyk-api-gateway' extension. The authentication object in the Tyk Vendor Extension will now correctly contain only basic 'enabled' status and scheme information, without the redundant 'header' configuration, aligning with the OpenAPI security scheme definition.
+Resolved an issue where importing an OpenAPI description with an `apiKey` security scheme, while using the `authentication` query parameter, led to the unnecessary generation of a `header` object within the `x-tyk-api-gateway` extension. The authentication object in the Tyk Vendor Extension will now correctly contain only basic `enabled` status and scheme information, without the redundant `header` configuration, aligning with the OpenAPI security scheme definition.
 </details>
 </li>
 
