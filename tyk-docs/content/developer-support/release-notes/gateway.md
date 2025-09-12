@@ -140,6 +140,14 @@ Improved JWT validation performance and reliability by adding configurable JWKS 
 </details>
 </li>
 
+<li>
+<details>
+<summary>Configurable Security Processing Modes</summary>
+
+Introduced a new `securityProcessingMode` setting for Tyk OAS APIs. This allows administrators to choose between the legacy behavior (requiring all authentication methods in the first security entry) and a new compliant mode that follows the OpenAPI specification, supporting OR logic across multiple authentication methods. Proprietary auth methods such as HMAC, mTLS, and custom auth can now be combined with OpenAPI-defined schemes in compliant mode. This ensures more flexible, standards-compliant authentication while maintaining backward compatibility.
+</details>
+</li>
+
 
 </ul>
 
