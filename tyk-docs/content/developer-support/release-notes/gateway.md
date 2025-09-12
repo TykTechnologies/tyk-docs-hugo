@@ -156,6 +156,14 @@ Introduced proxy and mTLS support across key external service integrations. OAut
 </details>
 </li>
 
+<li>
+<details>
+<summary>Support for OR Logic in Multi-Authentication for Tyk OAS APIs</summary>
+
+Added support for OpenAPI-compliant authentication logic in Tyk OAS APIs. When multiple authentication methods are defined, the Gateway can now evaluate them as alternatives (OR conditions), instead of requiring all to succeed (AND).
+</details>
+</li>
+
 
 </ul>
 
