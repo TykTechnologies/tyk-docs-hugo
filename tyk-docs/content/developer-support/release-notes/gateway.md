@@ -148,14 +148,6 @@ Introduced a new `securityProcessingMode` setting for Tyk OAS APIs. This allows 
 </details>
 </li>
 
-<li>
-<details>
-<summary>Stricter Validation for OAS API Version Names</summary>
-
-Fixed an issue where users could create child Tyk OAS API versions without specifying a valid version name `(new_version_name)`. The Gateway and Dashboard APIs will now reject such requests with an HTTP 422 error, ensuring all versions have meaningful identifiers and preventing unusable or empty version entries.
-</details>
-</li>
-
 
 </ul>
 
@@ -293,6 +285,14 @@ Fixed a problem causing repeated `Body decompression error: EOF` logs when analy
 <summary>Improved Gateway Registration Reliability During Upgrades</summary>
 
 We’ve resolved an issue that could cause Gateways to fail re-registration when restarting under certain licensing configurations during upgrades. This fix introduces support for new “Unlimited Gateway” licenses, enhances Gateway's Dashboard authentication retry logic, and ensures a smoother upgrade experience for large-scale deployments. Gateways now register reliably without entering failure loops, even under heavy churn or rolling upgrades.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Stricter Validation for OAS API Version Names</summary>
+
+Fixed an issue where users could create child Tyk OAS API versions without specifying a valid version name `(new_version_name)`. The Gateway and Dashboard APIs will now reject such requests with an HTTP 422 error, ensuring all versions have meaningful identifiers and preventing unusable or empty version entries.
 </details>
 </li>
 
