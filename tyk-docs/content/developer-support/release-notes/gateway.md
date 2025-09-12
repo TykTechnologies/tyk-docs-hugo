@@ -2684,6 +2684,101 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ## 5.3 Release Notes
 
+### 5.3.12 Release Notes
+
+#### Release Date xxx
+
+#### Release Highlights
+
+This patch release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.12" >}}) below.
+
+#### Dependencies {#dependencies-5.3.12}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.12 | MDCB v2.8.0     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.3.12}
+
+If you are upgrading to 5.3.12, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.12)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.12
+    ``` 
+
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.3.12}
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
+  
+Resolved an issue introduced in Tyk 5.3.10 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Stale RPC Connections After DNS Changes</summary>
+
+We’ve fixed an issue where RPC connections remained stale when DNS records changed (such as ELB IP updates), leading to timeout errors. Based on direct customer reports, we’ve enhanced DNS resolution so all connections in the RPC pool now properly reconnect when endpoint IPs change. This eliminates service disruptions during infrastructure updates and ensures more resilient connectivity.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Resolved MDCB Policy Sync Issue Caused by RPC Timeouts</summary>
+
+Fixed a bug where a timeout in an RPC call to MDCB would lead to policies not being synchronised to the data plane.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Gateway Registration Reliability During Upgrades</summary>
+
+We’ve resolved an issue that could cause Gateways to fail re-registration when restarting under certain licensing configurations during upgrades. This fix introduces support for new “Unlimited Gateway” licenses, enhances Gateway's Dashboard authentication retry logic, and ensures a smoother upgrade experience for large-scale deployments. Gateways now register reliably without entering failure loops, even under heavy churn or rolling upgrades.
+</details>
+</li>
+
+</ul>
+
+
+---
+
 ### 5.3.11 Release Notes
 
 #### Release Date 7 May 2025
