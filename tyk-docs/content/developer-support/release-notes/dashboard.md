@@ -40,8 +40,7 @@ Our minor releases are supported until our next minor comes out.
 #### Release Date xx 2025
 
 #### Release Highlights
-
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.0" >}}).
+This release builds on the recent release of [Tyk 5.8.6]({{< ref "developer-support/release-notes/dashboard#586-release-notes" >}}), adding a collection of new capabilities. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.0" >}}).
 
 #### Breaking Changes
 
