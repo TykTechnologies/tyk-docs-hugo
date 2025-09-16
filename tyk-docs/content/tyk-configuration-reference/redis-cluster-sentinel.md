@@ -9,7 +9,9 @@ aliases:
 
 ## Introduction
 
-Redis is a hard dependency for the operation of Tyk products. It serves as the primary data store for various components across the Tyk Stack, handling critical functions such as key management, analytics storage, distributed rate limiting, and inter-node communication. **Without Redis, Tyk components cannot function properly, making it a mandatory requirement for any Tyk deployment.**
+**Redis is a requirement for the operation of Tyk products**. It serves as the primary data store for various components across the Tyk Stack, handling critical functions such as key management, analytics storage, distributed rate limiting, and inter-node communication. 
+
+Without Redis, Tyk components cannot function properly, making it a mandatory requirement for any Tyk deployment.
 
 ## Tyk Components Using Redis
 
@@ -38,8 +40,6 @@ To check the specific Redis versions supported by each Tyk component, please ref
 Tyk supports various Redis deployment configurations to meet different scalability and availability requirements:
 
 This section provides architectural guidance for Redis deployment in Tyk [Data Plane]({{< ref "api-management/mdcb#setup-mdcb-data-plane" >}}) environments within [Multi Data Center Bridge]({{< ref "api-management/mdcb" >}}) (MDCB) configurations.
-
-In Tyk's MDCB architecture, the **Data Plane** consists of Tyk Gateway workers that serve API traffic and require Redis for session management, rate limiting, and caching. The Redis deployment strategy significantly impacts the overall system's availability, performance, and operational complexity.
 
 <br>
 
@@ -78,21 +78,11 @@ graph TB
 
 #### Characteristics
 
-- **RTO**: 5-15 minutes (manual intervention required)
-- **RPO**: 0-5 minutes (depending on persistence configuration)
+- **[RTO](https://en.wikipedia.org/wiki/IT_disaster_recovery#Recovery_Time_Objective)**: 5-15 minutes (manual intervention required)
+- **[RPO](https://en.wikipedia.org/wiki/IT_disaster_recovery#Recovery_Point_Objective)**: 0-5 minutes (depending on persistence configuration)
 - **Availability**: ~99.5%
 - **Complexity**: Low
 - **Cost**: Lowest
-
-#### Configuration Recommendations
-
-```yaml
-# Redis Configuration
-
-persistence: optional
-backup-schedule: daily
-monitoring: basic
-```
 
 #### Pros
 
@@ -110,7 +100,7 @@ monitoring: basic
 
 ### 2. Redis Sentinel (High Availability)
 
-Redis Sentinel provides automated failover capabilities with a master-replica setup, offering a good balance between availability and complexity.
+[Redis Sentinel](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/) provides automated failover capabilities with a master-replica setup, offering a good balance between availability and complexity.
 
 ```mermaid
 graph TB
@@ -162,25 +152,9 @@ graph TB
 - **Complexity**: Medium
 - **Cost**: Medium
 
-#### Configuration Recommendations
-
-```yaml
-# Redis Master Configuration
-persistence: enabled
-replication: async
-save: "900 1 300 10 60 10000"
-
-# Sentinel Configuration
-quorum: 2
-down-after-milliseconds: 5000
-failover-timeout: 10000
-parallel-syncs: 1
-```
-
 #### Deployment Considerations
 
 - Deploy 3 or 5 Sentinel instances (odd numbers recommended)
-- Configure Tyk Gateways to connect through Sentinel
 - Enable Redis persistence for data durability
 - Monitor Sentinel logs for failover events
 
@@ -201,7 +175,7 @@ To configure Tyk to work with Redis Sentinel, see the [Redis Sentinel configurat
 
 ### 3. Redis Cluster (Horizontal Scaling)
 
-Redis Cluster offers horizontal scaling capabilities through automatic sharding, making it suitable for high-throughput environments that require linear scalability.
+[Redis Cluster](https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/) offers horizontal scaling capabilities through automatic sharding, making it suitable for high-throughput environments that require linear scalability.
 
 ```mermaid
 graph TB
@@ -256,27 +230,10 @@ graph TB
 - **Complexity**: High
 - **Cost**: High
 
-#### Configuration Recommendations
-
-```yaml
-# Redis Cluster Configuration
-cluster-enabled: yes
-cluster-config-file: nodes.conf
-cluster-node-timeout: 5000
-cluster-require-full-coverage: yes
-cluster-migration-barrier: 1
-
-# Minimum 6 nodes (3 masters + 3 replicas)
-min-replicas-to-write: 1
-```
-
 #### Deployment Considerations
 
 - Minimum six nodes (3 masters, three replicas) for production
 - Only database 0 is available (no multiple logical databases)
-- Multi-key operations require keys in the same hash slot
-- Use hashtags for related keys:
-    `{user:123}:session`, `{user:123}:profile`
 
 #### Pros
 
@@ -293,11 +250,11 @@ min-replicas-to-write: 1
 - Higher infrastructure costs
 - Complex monitoring and troubleshooting
 
-To configure Tyk to work with Redis Sentinel, see the [Redis Sentinel configuration section]({{< ref "#configure-redis-cluster" >}}) below.
+To configure Tyk to work with Redis Cluster, see the [Redis Cluster configuration section]({{< ref "#configure-redis-cluster" >}}) below.
 
 ### 4. Redis Enterprise (Mission-Critical)
 
-Redis Enterprise provides enterprise-grade features including active-active replication, sub-millisecond latency, and 99.999% availability guarantees.
+[Redis Enterprise](https://redis.io/docs/latest/operate/rs/) provides enterprise-grade features including active-active replication, sub-millisecond latency, and 99.999% availability guarantees.
 
 ```mermaid
 graph TB
@@ -376,14 +333,14 @@ graph TB
 #### Cons
 
 - Highest cost
-- Vendor lock-in
+- [Vendor lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in)
 - May be overkill for smaller deployments
 
 ### Decision Matrix
 
 The following table summarizes the key characteristics of each Redis deployment option:
 
-| Architecture      | RTO         | RPO        | Availability | Complexity | Use Case                     |
+| Architecture      | [RTO](https://en.wikipedia.org/wiki/IT_disaster_recovery#Recovery_Time_Objective)         | [RPO](https://en.wikipedia.org/wiki/IT_disaster_recovery#Recovery_Point_Objective)        | Availability | Complexity | Use Case                     |
 |-------------------|-------------|------------|--------------|------------|------------------------------|
 | Single Redis      | 5–15 min    | 0–5 min    | 99.5%        | Low        | Development/Testing           |
 | Redis with Sentinel | 30–60 sec | <1 min     | 99.9%        | Medium     | Production (Standard)         |
