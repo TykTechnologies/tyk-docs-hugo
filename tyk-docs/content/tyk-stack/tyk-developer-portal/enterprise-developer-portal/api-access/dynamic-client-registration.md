@@ -47,9 +47,44 @@ Whilst many providers require initial access tokens, they are optional. Please r
 
 Tyk uses OAuth2.0 scope to enforce access control and rate limit for API Products. Therefore, creating at least two scopes for an API Product and plan is required. 
 
-The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below.
+The below example demonstrates how to achieve that with Curity, Keycloak and Okta in the tabs below.
 
 {{< tabs_start >}}
+{{< tab_start "Curity" >}}
+
+1. **Navigate to Profiles &#8594; Token Service &#8594; Scopes**
+
+    Click `+ New` to create a new scope.
+    
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-add-scope.jpg" alt="Navigate to the Scopes menu" >}}
+
+2. **Give the new scope a name**
+
+    Name the scope **product_payments** and click `Create`. Repeat to create another scope and give it the name **free_plan**.
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-product.jpg" alt="Name the scope product_payments" >}}
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-plan.jpg" alt="Name the scope free_plan" >}}
+
+    The created scopes can now be assigned to OAuth Clients configured, including DCR clients when they are registered.
+
+**Unauthenticated DCR**
+
+The Curity Identity Server by default requires a {{< tooltip >}}nonce token{{< definition >}}A token that can only be used once{{< /definition >}}{{< /tooltip >}} with a `dcr` scope to authenticate the DCR endpoint. It obtains this via normal OAuth flows. It is, however, not possible to define an OAuth client_id and secret in Tyk to obtain such a token. A workaround is to disable authentication of the DCR endpoint in the Curity Identity Server by setting it to use no-authentication. 
+
+<br>
+
+{{< warning success >}}
+**Use in secure environments only**
+
+When configuring the DCR endpoint in the Curity Identity Server to use `no-authentication`, ensure that the communication between Tyk and the Curity Identity Server is secured so that it is only accessible to Tyk.
+
+To configure this in the AdminUI of the Curity Identity Server, go to Profiles &#8594; Token Service &#8594; Dynamic Registration &#8594; scroll to the **Non-templatized** section and set **Authentication Method** to `no-authentication`.  
+
+{{< /warning >}}
+
+{{< tab_end >}}
+
 {{< tab_start "Keycloak" >}}
 
 1. **Navigate to the Client scopes menu item**
@@ -214,9 +249,16 @@ First of all, select your IdP from the `Identity provider` dropdown list. Differ
 
 Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the `SSL secure skip verify` checkbox.
 
-The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below.
+The below example demonstrates how to achieve that with Curity, Keycloak and Okta in the tabs below.
 
 {{< tabs_start >}}
+
+{{< tab_start "Curity" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-oauth-provider.jpg" alt="Specify connection setting" >}}
+
+Set a **Name**, set the **Identity Provider Type** to `Other`, and the **OIDC well-known configuration URL** aproppriately.
+{{< tab_end >}}
 
 {{< tab_start "Keycloak" >}}
 
@@ -251,9 +293,15 @@ To configure a client type, you need to specify the following settings:
 
 Please note that your IdP might override some of these settings based on its configuration.
 
-The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below. After configuring a client type, scroll to the top of the page to save it by clicking on the `SAVE CHANGES` button.
+The below example demonstrates how to achieve that with Curity, Keycloak and Okta in the tabs below. After configuring a client type, scroll to the top of the page to save it by clicking on the `SAVE CHANGES` button.
 
 {{< tabs_start >}}
+
+{{< tab_start "Curity" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-client-type.jpg" alt="Configure a client type" >}}
+
+{{< tab_end >}}
 
 {{< tab_start "Keycloak" >}}
 
@@ -288,6 +336,12 @@ After that, specify the scope for this API product. You should have at least one
 Finally, select one or multiple types of clients that were created in [the Create client configurations]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-client-configurations" >}}) section of this guide to associate them with that product.
 
 {{< tabs_start >}}
+
+{{< tab_start "Curity" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-enable-product-dcr.jpg" alt="Configure an API Product to work with the DCR flow" >}}
+
+{{< tab_end >}}
 
 {{< tab_start "Keycloak" >}}
 
