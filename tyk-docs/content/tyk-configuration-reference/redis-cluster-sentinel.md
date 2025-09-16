@@ -1,6 +1,6 @@
 ---
 title: "Redis Deployment and Configuration with Tyk"
-description: "This page guides on configuring Tyk to work with Redis Cluster and Sentinel, including TLS encryption and troubleshooting tips."
+description: "This page provides an overview of Redis deployment options and configuration settings for Tyk components"
 tags: ["configuration", "redis", "cluster", "sentinel", "tyk-gateway", "tyk-dashboard", "tyk-pump"]
 aliases:
   - /tyk-stack/tyk-gateway/configuration/redis-sentinel
