@@ -82,9 +82,6 @@ The Response Body Transform supports two helper functions that you can use in yo
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "#response-body-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "#response-body-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Response Body Transform middleware summary
