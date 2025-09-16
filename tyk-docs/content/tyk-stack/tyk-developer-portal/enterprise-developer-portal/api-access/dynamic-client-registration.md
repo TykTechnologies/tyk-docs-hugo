@@ -54,22 +54,25 @@ The below example demonstrates how to achieve that with Curity, Keycloak and Okt
 
 1. **Navigate to Profiles &#8594; Token Service &#8594; Scopes**
 
-Click `+ New` to create a new scope.
-
-{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-add-scope.jpg" alt="Navigate to the Scopes menu" >}}
+    Click `+ New` to create a new scope.
+    
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-add-scope.jpg" alt="Navigate to the Scopes menu" >}}
 
 2. **Give the new scope a name**
 
-Name the scope **product_payments** and click `Create`. Repeat to create another scope and give it the name **free_plan**.
+    Name the scope **product_payments** and click `Create`. Repeat to create another scope and give it the name **free_plan**.
+    
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-product.jpg" alt="Name the scope product_payments" >}}
+    
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-plan.jpg" alt="Name the scope free_plan" >}}
+    
+    The created scopes can now be assigned to OAuth Clients configured, including DCR clients when they are registered.
 
-{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-product.jpg" alt="Name the scope product_payments" >}}
+**Unauthenticated DCR**
 
-{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-plan.jpg" alt="Name the scope free_plan" >}}
-
-The created scopes can now be assigned to OAuth Clients configured, including DCR clients when they are registered.
-
-### Unauthenticated DCR
 The Curity Identity Server by default requires a {{< tooltip >}}nonce token{{< definition >}}A token that can only be used once{{< /definition >}}{{< /tooltip >}} with a `dcr` scope in order to authenticate the DCR endpoint. It obtains this via normal OAuth flows. It is however not possible to define an OAuth client_id and secret in Tyk to obtain such a token. A workaround is to disable authentication of the DCR endpoint in the Curity Identity Server by setting it to use no-authentication. 
+
+<br>
 
 {{< warning success >}}
 **Use in secure environments only**
