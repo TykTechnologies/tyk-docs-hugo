@@ -370,7 +370,7 @@ If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions]
 
 #### Downloads
 
-- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.6)
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.6)
   - ```bash
     docker pull tykio/tyk-dashboard:v5.8.6
     ``` 
