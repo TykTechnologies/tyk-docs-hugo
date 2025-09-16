@@ -399,7 +399,7 @@ We have refined the Dashboard UI to make creating and editing policies and keys 
 <ul>
 <li>
 <details>
-<summary>Go 1.24 Upgrade for Tyk Dashboard</summary>
+<summary>Upgrade Tyk Dashboard to Golang 1.24 </summary>
 
 The Tyk Dashboard has been updated to Go 1.24, improving security by staying up-to-date with Go versions.
 </details>
