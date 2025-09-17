@@ -576,7 +576,7 @@ Tyk Gateway will now generate two spans for each request made to your APIs, enca
 
 You can generate more detailed traces for requests to an API by setting the [server.detailedTracing]({{< ref "api-management/gateway-config-tyk-oas#detailedtracing" >}}) flag in the Tyk Vendor Extension of the API definition.
 
-For users of the Tyk Dashboard UI, the **Enable Detailed Tracing** option in the Tyk OAS API Designer allows you to set and unset this option for the API.
+For users of the Tyk Dashboard UI, the **OpenTelemetry Tracing** option in the Tyk OAS API Designer allows you to set and unset this option for the API.
 
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-oas.png" alt="Detailed Tracing Disabled" width="800px" >}}
 
