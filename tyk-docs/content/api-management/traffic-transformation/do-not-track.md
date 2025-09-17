@@ -42,10 +42,6 @@ When working with Tyk Classic APIs, you can disable tracking at the API or endpo
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "api-management/traffic-transformation/do-not-track#do-not-track-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "#do-not-track-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Do-Not-Track middleware summary
   - The Do-Not-Track middleware is an optional stage in Tyk's API Request processing chain sitting between the [TBC]() and [TBC]() middleware.
