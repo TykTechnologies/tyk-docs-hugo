@@ -342,6 +342,49 @@ The custom rate limit key capability uses only metadata objects, such as credent
 
 This capability works with [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}) or higher.
 
+### Custom Plugin Rate Limiter Example
+
+It's common to use custom authentication plugins, and yet more common to want to set rate limit patterns.  Perhaps you want to rate limit individual end users on your applications, or on entire applications, or anything else.
+
+Let's take a look at implementing an IP Based Rate Limiter in a custom go plugin.  
+
+Same process as non-custom auth methods -- we simply set the meta data on the session object, and Tyk takes care of the rest.
+
+```go
+// IP Rate Limiter
+func Authenticate(rw http.ResponseWriter, r *http.Request) {
+	requestedAPI := ctx.GetDefinition(r)
+	if requestedAPI == nil {
+		logger.Error("Could not get API Definition")
+		rw.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	realIp := request.RealIP(r)
+
+	sessionObject := &user.SessionState{}
+	sessionObject = &user.SessionState{
+		OrgID: requestedAPI.OrgID,
+		Rate:  2,
+		Per:   5,
+		AccessRights: map[string]user.AccessDefinition{
+			requestedAPI.APIID: {
+				APIID: requestedAPI.APIID,
+			},
+		},
+		MetaData: map[string]interface{}{
+			"rate_limit_pattern": realIp,
+		},
+	}
+
+	logger.Info("Session Alias: ", sessionObject.Alias)
+
+	// Set session state using session object
+	ctx.SetSession(r, sessionObject, false)
+	logger.Info("Session created for request")
+}
+```
+
 ## Rate Limiting Layers
 
 You can protect your upstream services from being flooded with requests by configuring rate limiting in Tyk Gateway. Rate limits in Tyk are configured using two parameters: allow `rate` requests in any `per` time period (given in seconds).
