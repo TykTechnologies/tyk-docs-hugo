@@ -79,7 +79,7 @@ The Curity Identity Server by default requires a {{< tooltip >}}nonce token{{< d
 
 When configuring the DCR endpoint in the Curity Identity Server to use `no-authentication`, ensure that the communication between Tyk and the Curity Identity Server is secured so that it is only accessible to Tyk.
 
-To configure this in the AdminUI of the Curity Identity Server, go to Profiles &#8594; Token Service &#8594; Dynamic Registration &#8594; scroll to the **Non-templatized** section and set **Authentication Method** to `no-authentication`.  
+To configure this in the AdminUI of the Curity Identity Server, go to Profiles &#8594; Token Service &#8594; Dynamic Registration &#8594; scroll to the Non-templatized section and set Authentication Method to `no-authentication`.  
 
 {{< /warning >}}
 
