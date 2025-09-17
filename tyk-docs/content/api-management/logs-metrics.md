@@ -728,7 +728,6 @@ Whether you're using Tyk API Gateway in an open-source (OSS) or commercial deplo
         receivers: [otlp]
         processors: [batch]
         exporters: [datadog]
-
     ```
 
 2. **Configure a test API**

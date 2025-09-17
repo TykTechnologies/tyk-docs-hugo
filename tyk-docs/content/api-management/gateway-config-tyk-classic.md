@@ -160,10 +160,7 @@ This field contains a list of middleware configurations and to which paths they 
 }
 ```
 
-Each entry must include the `method` and `path` (identifying the endpoint) for which the middleware should be run. The other options for each middleware are documented in the [Traffic Transformation]({{< ref "" >}}) section. Note that mock response functionality is provided via the `black_list[]`, `white_list[]` and `ignore[]` middleware.
-
-
-
+Each entry must include the method and path (identifying the endpoint) where the middleware runs. You can find the other options for each middleware on its respective [Traffic Transformation]({{< ref "api-management/traffic-transformation" >}}) page under the [Classic API Definition]({{< ref "api-management/traffic-transformation/allow-list#api-definition-1" >}}) section. The black_list[], white_list[], and ignore[] middleware provide mock response functionality.
 
 
 ## Configuring authentication for Tyk Classic APIs
