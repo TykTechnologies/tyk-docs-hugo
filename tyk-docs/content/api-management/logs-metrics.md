@@ -753,7 +753,7 @@ Whether you're using Tyk API Gateway in an open-source (OSS) or commercial deplo
         },
         "proxy": {
           "listen_path": "/hello-world/",
-          "target_url": "http://echo.tyk-demo.com:8080/",
+          "target_url": "http://httpbin.org/",
           "strip_listen_path": true
         },
         "active": true
@@ -1278,7 +1278,7 @@ Ensure the following prerequisites are met before proceeding:
         },
         "proxy": {
           "listen_path": "/hello-world/",
-          "target_url": "http://echo.tyk-demo.com:8080/",
+          "target_url": "http://httpbin.org/",
           "strip_listen_path": true
         },
         "active": true
@@ -1454,7 +1454,7 @@ Please make sure you are installing Redis versions that are supported by Tyk. Pl
       protocol: http
       active: true
       proxy:
-        target_url: http://echo.tyk-demo.com:8080/
+        target_url: http://httpbin.org/
         listen_path: /hello-world
         strip_listen_path: true
     ```
