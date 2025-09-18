@@ -79,6 +79,10 @@ Paid plans and Enterprise trials allow users to select one of 6 AWS locations as
 - aws-us-west-2, Oregon, USA
 - aws-ap-southeast-2, Australia
 
+### Checking the Tyk Cloud status
+
+If you want to check if there are issues with the environments and any upcoming down times, you can go to the [Tyk Status](https://status.tyk.io/) page.
+
 ## Quick Start Tyk Cloud
 
 {{< note trial >}}
