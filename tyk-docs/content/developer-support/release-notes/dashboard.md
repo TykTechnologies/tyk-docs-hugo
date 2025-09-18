@@ -386,9 +386,9 @@ If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Improved Policy and Key Management for Versioned APIs</summary>
+<summary>Fixed Policy and Key Management UI for versioned APIs</summary>
 
-We have refined the Dashboard UI to make creating and editing policies and keys more intuitive. The API Versions field is now shown only when relevant, specifically for versioned Tyk Classic APIs. It will no longer appear for Tyk OAS APIs or non-versioned Tyk Classic APIs, preventing confusion and ensuring policies and keys can be saved without unnecessary validation errors.
+Fixed UI issues in policy and key management that caused confusion and unnecessary validation errors. The API Versions field in the Dashboard UI now appears only when relevant - specifically for versioned Tyk Classic APIs. The field is no longer displayed for Tyk OAS APIs or non-versioned Tyk Classic APIs, eliminating confusion about when version selection is required and preventing policies and keys from failing to save due to irrelevant validation requirements.
 </details>
 </li>
 
