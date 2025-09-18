@@ -339,10 +339,10 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.6 | MDCB v2.8.4     | MDCB v2.8.4 |
+| 5.8.6 | MDCB v2.8.5    | MDCB v2.8.5 |
 |         | Operator v1.2.0  | Operator v0.17 |
 |         | Sync v2.1.3    | Sync v2.1.1 |
-|         | Helm Chart v3.0  | Helm all versions |
+|         | Helm Chart v4.0  | Helm all versions |
 | | EDP v1.14.1 | EDP all versions |
 | | Pump v1.12.1 | Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
@@ -375,7 +375,7 @@ If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-dashboard:v5.8.6
     ``` 
 - Helm charts
-  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 
 - [Source code tarball of Tyk Gateway v5.8.6](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.6)
 
@@ -412,129 +412,136 @@ The Tyk Dashboard has been updated to [Golang 1.24](https://tip.golang.org/doc/g
 <ul>
 <li>
 <details>
-<summary>Response Middleware Visibility in OAS API Debugger Restored</summary>
+<summary>Fixed Missing Response Middleware in Tyk OAS API Debugger</summary>
 
-Fixed an issue where the Test Your API panel in the Tyk OAS API Designer did not display response middleware execution. The debugger now shows both request and response middleware, providing a complete view of the request–response cycle.
+Fixed an issue where the Tyk OAS API Debugger (Test Your API panel) only displayed request middleware execution, omitting response middleware from the debug output. The test debugger now correctly shows both request and response middleware execution, providing complete visibility into the entire request-response cycle for better API testing and troubleshooting.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Improved Support for Custom Domains with Regex Variables</summary>
+<summary>Fixed OpenAPI `servers` section handling for regex-based custom domains</summary>
 
-Fixed an issue where custom domains containing regular expressions were not properly represented in the OpenAPI servers section. The Dashboard now parses these domains into valid server entries with variables, ensuring accurate API documentation and preventing errors during editing. Additional syntax and regex validation have been added, along with fixes for capture group handling that previously could cause Gateway crashes.
+Fixed an issue where custom domains containing regular expressions were not correctly parsed and stored in the `servers` section of OpenAPI descriptions for Tyk OAS APIs. The Dashboard now properly converts regex-based domains into valid OpenAPI `servers` entries with appropriate variables, ensuring accurate API documentation and preventing validation errors during API editing. This fix includes enhanced syntax validation for regex patterns and improved capture group handling that previously could cause Gateway crashes.
+
 </details>
 </li>
 
 <li>
 <details>
-<summary>Corrected Error Reporting in API Debugger for Response Middleware</summary>
+<summary>Fixed false error reporting for Response Body Transform middleware in API Debugger</summary>
 
-Fixed an issue where the Tyk OAS API Debugger incorrectly reported errors on endpoints using the Response Body Transform middleware, even when API calls succeeded. The debugger now accurately reflects successful responses without displaying false error logs.
+Fixed an issue where the Tyk OAS API Debugger (Test Your API panel) incorrectly reported errors for endpoints using Response Body Transform middleware, even when API calls completed successfully. The debugger now accurately displays the execution status and eliminates false error messages that could mislead developers during API testing and troubleshooting.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Correct Default Version Handling in OAS API Versioning</summary>
+<summary>Fixed default version reset issue when creating new child API versions</summary>
 
-Fixed an issue where the default version of a Tyk OAS API was incorrectly reset to the base API when creating new versions. The default version now remains unchanged unless explicitly updated, ensuring consistent version routing.
+Fixed an issue where creating new versions of a Tyk OAS API would incorrectly reset the default version back to the base API, overriding any previously configured default version. The system now preserves the existing default version setting when new versions are created, ensuring consistent API routing behavior unless the default is explicitly changed by the user.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Dashboard API now rejects PATCH requests with Tyk Vendor Extensions for OAS APIs</summary>
+<summary>Fixed PATCH endpoint validation to reject Tyk OAS API definitions when expecting OpenAPI description</summary>
 
-Resolved an inconsistency where the Dashboard API's PATCH `/api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions, including Tyk Vendor Extensions. The API now correctly validates and rejects these requests with a 400 Bad Request, aligning its behavior with the UI and ensuring only standard OpenAPI descriptions can be updated via this endpoint.
+Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions containing Tyk Vendor Extensions, when it should only accept standard OpenAPI descriptions. The endpoint now properly validates incoming requests and returns a 400 Bad Request error if the Tyk Vendor Extension is present, ensuring consistent behavior with the Dashboard UI and maintaining the intended separation between OpenAPI description updates and full API configuration changes.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Fixed Dashboard API panic on missing timestamp parameters with PostgreSQL</summary>
+<summary>Fixed Dashboard API panic when accessing logs without timestamp parameters in PostgreSQL</summary>
 
-Addressed an issue in the Tyk Dashboard API where accessing the `/api/logs` endpoint without `start` and `end` timestamp parameters caused a panic and 500 error in PostgreSQL environments with table sharding. The API now returns a 400 Bad Request with a clear error message in such cases.
+Fixed an issue where the Tyk Dashboard API would panic and return a 500 Internal Server Error when accessing the `/api/logs` endpoint without the required `start` and `end` timestamp parameters in PostgreSQL environments using table sharding. The API now properly handles missing parameters by returning `HTTP 400 Bad Request` with a descriptive error message, improving error handling and API reliability.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Fixed visibility of orphaned OAS API versions in Dashboard for PostgreSQL</summary>
+<summary>Fixed orphaned Tyk OAS API versions visibility when using PostgreSQL</summary>
 
-Resolved an issue where orphaned child APIs of a versioned OAS API would disappear from the Dashboard UI after their base API was deleted, specifically when using PostgreSQL as the datastore. Orphaned APIs now remain visible, consistent across all datastores.
+Fixed an issue where orphaned child versions of a Tyk OAS API would disappear from the Dashboard UI after their base API was deleted, specifically when using PostgreSQL as the datastore. Orphaned Tyk OAS API versions now remain visible in the Dashboard, ensuring consistent behavior across all supported datastores and preventing loss of access to existing API versions.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Fixed Inconsistent Null Handling for API Versions in Policies and Keys</summary>
+<summary>Fixed cross-interface compatibility for keys and policies with Tyk OAS and non-versioned Tyk Classic APIs</summary>
 
-Resolved inconsistencies in how null or empty array values for the `versions` field within `access_rights` are handled for policies and keys. This update standardizes validation and data representation across API and UI workflows, improving reliability and preventing errors when managing API versions.
+Fixed an issue where keys and policies created or updated via the Dashboard API were sometimes rejected by the Dashboard UI, and vice versa, due to inconsistent handling of the `versions` field for non-versioned Tyk Classic APIs. The issue occurred because the API and UI used different formats when populating the versions list in access rights. Both interfaces now consistently accept either `null` or `[]` (empty array) values in the `versions` field of the access control list, ensuring seamless interoperability between API and UI workflows for policy and key management. Tyk OAS APIs use a [different approach]({{< ref "api-management/api-versioning#how-api-versioning-works-with-tyk" >}}) to versioning, with each (base or child) version having a unique API ID that is added to the access list.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Mandatory `negate` Field for OAS URL Rewrite Middleware</summary>
 
-Addressed a schema inconsistency where the `negate` field (used to define match logic) was optional in Tyk OAS API definitions. It is now required to explicitly declare whether a URL rewrite rule should match or not match the configured pattern, ensuring consistent behavior between the Dashboard UI and backend validation.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Corrected `/versions` Endpoint Behavior for Tyk OAS APIs</summary>
+<summary>Fixed `/versions` endpoint to only accept valid Tyk OAS base APIs</summary>
 
-Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint returned version data for APIs without versioning, including non-OAS and Classic APIs. The endpoint now strictly validates requests, returning `HTTP 422 Unprocessable Entity` unless the query targets a valid Tyk OAS base API, ensuring accurate and consistent results.
+Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint incorrectly returned version data for Tyk Classic APIs and non-versioned Tyk OAS APIs. The endpoint now properly validates requests and returns `HTTP 422 Unprocessable Entity` when the target API is not a valid Tyk OAS base API, ensuring the endpoint only returns meaningful version information.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Fix: Default API version not retaining selection when creating new versions</summary>
 
-Resolved an issue where creating a new version of a Tyk OAS API would incorrectly reset the default API version to the base API, even when `set_default=true` was not specified.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Validation Added for `base_api_id` When Creating Versioned APIs</summary>
+<summary>Fixed multiple issues with creating child versions of Tyk OAS APIs</summary>
 
-Fixed an issue where providing a non-existent `base_api_id` when creating a new version of a Tyk OAS API via the Dashboard API would still create the API but leave it invisible in the Dashboard. The system now validates this parameter and returns a `400 Bad Request` error if the base API does not exist, ensuring data consistency and preventing orphaned APIs.
+Fixed several issues that affected creating new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
+
+UI and API Creation:
+- Resolved an issue that prevented users from creating new versions via the API Designer's Manage Versions screen
+- Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully but leave it invisible in the Dashboard UI
+- Added stricter validation for version names - users can no longer create API versions without specifying a valid `new_version_name`, preventing unusable or empty version entries
+- Improved error messaging when the `base_api_version_name`
+parameter is missing or incorrectly specified
+
+Version Management:
+- Fixed an issue where creating new child versions would incorrectly reset the default version back to the base API, overriding previously configured settings
+
+The system now provides comprehensive validation with clear error responses (`HTTP 400` and `HTTP 422`), ensures all API versions have meaningful identifiers, and maintains proper default version settings during child version creation.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Dashboard default page_size behavior fixed</summary>
+<summary>Fixed Dashboard default page_size behavior</summary>
 
-Fixed an issue where Tyk did not correctly apply a default `page_size`, which could cause unexpected behaviour if none was set in the Dashboard configuration. It now defaults to 10 as described in the documentation.
+Fixed an issue where the Tyk Dashboard did not correctly apply a default `page_size` value when none was specified in the Dashboard configuration, potentially causing unexpected pagination behavior. The Dashboard now properly defaults to a page size of 10 items as documented, ensuring consistent and predictable pagination across all Dashboard views.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Changes to global webhooks were not immediately applied in event handling</summary>
+<summary>Fixed delayed application of global webhook changes for Tyk OAS APIs</summary>
 
-Fixed an issue where updating a [global webhook]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) did not trigger a Gateway reload for Tyk OAS APIs using that webhook. The impact of this was that the old settings would be used when the associated event was triggered. Now, making a change to the webhook configuration will trigger a Gateway reload for all impacted APIs so that the new settings will be used.
+Fixed an issue where updates to [global webhooks]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) were not immediately applied to Tyk OAS APIs using those webhooks. When global webhook configurations were modified, the Gateway would continue using the previous settings for affected Tyk OAS APIs until a manual reload occurred. The system now automatically triggers a Gateway reload for all impacted Tyk OAS APIs when global webhook configurations are changed, ensuring updated webhook settings take effect immediately.
 </details>
 </li>
 
 <li>
 <details>
-<summary>GraphQL API Creation via Upstream Introspection Fixed</summary>
+<summary>Fixed GraphQL API creation via upstream introspection when OPA rules modify requests</summary>
 
-Resolved an issue where creating GraphQL APIs using Upstream Introspection in the Dashboard could fail with `502 Bad Gateway` errors. This occurred when OPA rules modified the request body without updating the `ContentLength`. The Dashboard now recalculates the content length correctly, ensuring stable and error-free introspection requests.
+Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body. The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now properly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Stricter Validation for OAS API Version Names</summary>
 
-Fixed an issue where users could create child Tyk OAS API versions without specifying a valid version name `(new_version_name)`. The Gateway and Dashboard APIs will now reject such requests with an HTTP 422 error, ensuring all versions have meaningful identifiers and preventing unusable or empty version entries.
 </details>
 </li>
 
