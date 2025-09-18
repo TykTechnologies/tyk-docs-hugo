@@ -495,7 +495,7 @@ parameter is missing or incorrectly specified
 Version Management:
 - Fixed an issue where creating new child versions would incorrectly reset the default version back to the base API, overriding previously configured settings
 
-The system now provides comprehensive validation with clear error responses (`HTTP 400` and `HTTP 422`), ensures all API versions have meaningful identifiers, and maintains proper default version settings during child version creation.
+The system now provides comprehensive validation with clear error responses (`HTTP 400 Bad Request` and `HTTP 422 Unprocessable Entity`), ensures all API versions have meaningful identifiers, and maintains proper default version settings during child version creation.
 </details>
 </li>
 
