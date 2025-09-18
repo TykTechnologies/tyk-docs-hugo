@@ -381,18 +381,6 @@ If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.8.6}
 
-##### Added
-
-<ul>
-<li>
-<details>
-<summary>Fixed Policy and Key Management UI for versioned APIs</summary>
-
-Fixed UI issues in policy and key management that caused confusion and unnecessary validation errors. The API Versions field in the Dashboard UI now appears only when relevant - specifically for versioned Tyk Classic APIs. The field is no longer displayed for Tyk OAS APIs or non-versioned Tyk Classic APIs, eliminating confusion about when version selection is required and preventing policies and keys from failing to save due to irrelevant validation requirements.
-</details>
-</li>
-
-</ul>
 
 ##### Changed
 
@@ -447,7 +435,7 @@ Fixed an issue where creating new versions of a Tyk OAS API would incorrectly re
 <details>
 <summary>Fixed PATCH endpoint validation to reject Tyk OAS API definitions when expecting OpenAPI description</summary>
 
-Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions containing Tyk Vendor Extensions, when it should only accept standard OpenAPI descriptions. The endpoint now properly validates incoming requests and returns a 400 Bad Request error if the Tyk Vendor Extension is present, ensuring consistent behavior with the Dashboard UI and maintaining the intended separation between OpenAPI description updates and full API configuration changes.
+Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions containing Tyk Vendor Extensions, when it should only accept standard OpenAPI descriptions. The endpoint now properly validates incoming requests and returns `HTTP 400 Bad Request` if the Tyk Vendor Extension is present, ensuring consistent behavior with the Dashboard UI and maintaining the intended separation between OpenAPI description updates and full API configuration changes.
 </details>
 </li>
 
@@ -455,7 +443,7 @@ Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` e
 <details>
 <summary>Fixed Dashboard API panic when accessing logs without timestamp parameters in PostgreSQL</summary>
 
-Fixed an issue where the Tyk Dashboard API would panic and return a 500 Internal Server Error when accessing the `/api/logs` endpoint without the required `start` and `end` timestamp parameters in PostgreSQL environments using table sharding. The API now properly handles missing parameters by returning `HTTP 400 Bad Request` with a descriptive error message, improving error handling and API reliability.
+Fixed an issue where the Tyk Dashboard API would panic and return `HTTP 500 Internal Server Error` when accessing the `/api/logs` endpoint without the required `start` and `end` timestamp parameters in PostgreSQL environments using table sharding. The API now properly handles missing parameters by returning `HTTP 400 Bad Request` with a descriptive error message, improving error handling and API reliability.
 </details>
 </li>
 
@@ -477,7 +465,9 @@ Fixed an issue where keys and policies created or updated via the Dashboard API 
 
 <li>
 <details>
+<summary>Fixed Policy and Key Management UI for versioned APIs</summary>
 
+Fixed UI issues in policy and key management that caused confusion and unnecessary validation errors. The API Versions field in the Dashboard UI now appears only when relevant - specifically for versioned Tyk Classic APIs. The field is no longer displayed for Tyk OAS APIs or non-versioned Tyk Classic APIs, eliminating confusion about when version selection is required and preventing policies and keys from failing to save due to irrelevant validation requirements.
 </details>
 </li>
 
@@ -486,12 +476,6 @@ Fixed an issue where keys and policies created or updated via the Dashboard API 
 <summary>Fixed `/versions` endpoint to only accept valid Tyk OAS base APIs</summary>
 
 Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint incorrectly returned version data for Tyk Classic APIs and non-versioned Tyk OAS APIs. The endpoint now properly validates requests and returns `HTTP 422 Unprocessable Entity` when the target API is not a valid Tyk OAS base API, ensuring the endpoint only returns meaningful version information.
-</details>
-</li>
-
-<li>
-<details>
-
 </details>
 </li>
 
