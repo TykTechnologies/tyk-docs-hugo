@@ -9,9 +9,9 @@ aliases:
 
 ## Introduction
 
-**Redis is a requirement for the operation of Tyk products**. It serves as the primary data store for various components across the Tyk Stack, handling critical functions such as key management, analytics storage, distributed rate limiting, and inter-node communication. 
+Redis serves as the primary data store for various components across the Tyk Stack, handling critical functions such as key management, analytics storage, distributed rate limiting, and inter-node communication. 
 
-Without Redis, Tyk components cannot function properly, making it a mandatory requirement for any Tyk deployment.
+**Redis is a requirement for the proper functioning of Tyk components**. For your Tyk deployments to be highly available and reliable, Tyk recommends using persistent and recoverable Redis deployments.
 
 ## Tyk Components Using Redis
 
@@ -252,59 +252,6 @@ graph TB
 
 To configure Tyk to work with Redis Cluster, see the [Redis Cluster configuration section]({{< ref "#configure-redis-cluster" >}}) below.
 
-### 4. Redis Enterprise (Mission-Critical)
-
-[Redis Enterprise](https://redis.io/docs/latest/operate/rs/) provides enterprise-grade features including active-active replication, sub-millisecond latency, and 99.999% availability guarantees.
-
-```mermaid
-graph TB
-    subgraph "Data Plane - Region A"
-        LB1[Load Balancer]
-        GW1[Tyk Gateway 1]
-        GW2[Tyk Gateway 2]
-        
-        subgraph "Redis Enterprise Cluster A"
-            REA1[Redis Enterprise Node 1]
-            REA2[Redis Enterprise Node 2]
-            REA3[Redis Enterprise Node 3]
-        end
-        
-        LB1 --> GW1
-        LB1 --> GW2
-        GW1 --> REA1
-        GW2 --> REA1
-    end
-    
-    subgraph "Data Plane - Region B"
-        LB2[Load Balancer]
-        GW3[Tyk Gateway 3]
-        GW4[Tyk Gateway 4]
-        
-        subgraph "Redis Enterprise Cluster B"
-            REB1[Redis Enterprise Node 1]
-            REB2[Redis Enterprise Node 2]
-            REB3[Redis Enterprise Node 3]
-        end
-        
-        LB2 --> GW3
-        LB2 --> GW4
-        GW3 --> REB1
-        GW4 --> REB1
-    end
-    
-    REA1 <--> REB1
-    REA2 <--> REB2
-    REA3 <--> REB3
-    
-    subgraph "Control Plane"
-        CP[MDCB Control Plane]
-    end
-    
-    GW1 -.-> CP
-    GW2 -.-> CP
-    GW3 -.-> CP
-    GW4 -.-> CP
-```
 
 #### Characteristics
 
@@ -345,7 +292,6 @@ The following table summarizes the key characteristics of each Redis deployment 
 | Single Redis      | 5–15 min    | 0–5 min    | 99.5%        | Low        | Development/Testing           |
 | Redis with Sentinel | 30–60 sec | <1 min     | 99.9%        | Medium     | Production (Standard)         |
 | Redis Cluster     | 10–30 sec   | <30 sec    | 99.95%       | High       | High-throughput Production    |
-| Redis Enterprise  | <10 sec     | <10 sec    | 99.99%+      | Medium     | Mission-critical Enterprise   |
 
 ## Configure Redis with TLS
 
@@ -602,16 +548,4 @@ To support the use of Redis Sentinel AUTH (introduced in Redis 5.0.1), we have a
 These settings allow you to support Sentinel password-only authentication in Redis version 5.0.1 and above.
 
 See the Redis and Sentinel authentication section of the [Redis Sentinel docs](https://redis.io/topics/sentinel) for more details.
-
-## FAQ
-
-<details> <summary><b>Tyk Components fail to start when using Redis Cluster?</b></summary>
-
-If you find that Tyk components fail to initialise when using Redis clustering, for example, the application does not start. The last log file entry shows a message such as `Using clustered mode`. Try setting the environment variable `REDIGOCLUSTER_SHARDCOUNT` to `128` on all hosts that connect to the Redis Cluster, i.e., Gateway, Dashboard, Pump, and MDCB. E.g.
-
-`REDIGOCLUSTER_SHARDCOUNT=128`
-
-If setting to `128` does not resolve the issue, try `256` instead.
-
-</details> 
 
