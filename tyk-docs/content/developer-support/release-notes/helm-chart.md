@@ -29,7 +29,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release includes improvements to support for Redis Sentinel deployments and updates the default charts to install the most recent Tyk LTS release [5.8.4]({{< ref "developer-support/release-notes/dashboard#584-release-notes" >}}) and Developer Portal [1.14.0]({{< ref "developer-support/release-notes/portal#1140-release-notes" >}}).
+This release includes improvements to support for Redis Sentinel deployments and updates the default charts to install the most recent Tyk LTS release [5.8.5]({{< ref "developer-support/release-notes/dashboard#585-release-notes" >}}) and Developer Portal [1.14.0]({{< ref "developer-support/release-notes/portal#1140-release-notes" >}}).
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v4.0.0) below.
 
