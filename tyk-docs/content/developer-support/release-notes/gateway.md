@@ -445,7 +445,7 @@ If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions]
 <details>
 <summary>Go 1.24 Upgrade for Tyk Gateway</summary>
 
-The Tyk Gateway has been updated to Go 1.24, improving security by staying up-to-date with Go versions.
+The Tyk Gateway has been updated to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying up-to-date with Go versions.
 </details>
 </li>
 
