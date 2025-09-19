@@ -287,6 +287,20 @@ Fixed an issue where users could create child Tyk OAS API versions without speci
 
 </ul>
 
+##### Security Fixes
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security
+vulnerabilities:
+- [CVE-2024-47875](NVD - CVE-2024-47875)
+- [CVE-2024-45801](NVD - CVE-2024-45801)
+</details>
+</li>
+</ul>
+
+
 ## 5.9 Release Notes 
 
 ### 5.9.2 Release Notes
