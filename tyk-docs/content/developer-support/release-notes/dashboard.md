@@ -523,13 +523,6 @@ Fixed an issue where creating GraphQL APIs using upstream introspection in the D
 </details>
 </li>
 
-<li>
-<details>
-
-</details>
-</li>
-
-
 </ul>
 
 ### 5.8.5 Release Notes
