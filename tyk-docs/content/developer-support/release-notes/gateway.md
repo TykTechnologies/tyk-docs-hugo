@@ -473,7 +473,7 @@ Fixed an issue where Gateways could fail to re-register with the Dashboard after
 
 <li>
 <details>
-<summary>Fixed Gateway crash when deleting APIs with Uptime Test enabled/summary>
+<summary>Fixed Gateway crash when deleting APIs with Uptime Test enabled</summary>
 
 Fixed a bug where deleting an API with the Uptime Test feature enabled could cause the Gateway to crash due to a nil pointer dereference during cleanup operations. The Gateway now properly handles memory cleanup when removing APIs with active uptime tests, preventing crashes and ensuring stable API lifecycle management.
 </details>
