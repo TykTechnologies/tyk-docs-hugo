@@ -533,8 +533,8 @@ Fixed an issue where creating GraphQL APIs using upstream introspection in the D
 <summary>High priority CVEs fixed</summary>
 Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security
 vulnerabilities:
-- [CVE-2024-47875](https://nvd.nist.gov/vuln/detail/CVE-2024-47875)
-- [CVE-2024-45801](https://nvd.nist.gov/vuln/detail/CVE-2024-45801)
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-47875" target="_blank">CVE-2024-47875</a>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-45801" target="_blank">CVE-2024-45801</a>
 </details>
 </li>
 </ul>
