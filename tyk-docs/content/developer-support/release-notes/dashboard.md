@@ -259,14 +259,6 @@ Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` e
 
 <li>
 <details>
-<summary>Fixed false error reporting for Response Body Transform middleware in API Debugger</summary>
-
-Fixed an issue where the Tyk OAS API Debugger (Test Your API panel) incorrectly reported errors for endpoints using Response Body Transform middleware, even when API calls completed successfully. The debugger now accurately displays the execution status and eliminates false error messages that could mislead developers during API testing and troubleshooting.
-</details>
-</li>
-
-<li>
-<details>
 <summary>Fixed GraphQL API creation via upstream introspection when OPA rules modify requests</summary>
 
 Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body. The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now properly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
