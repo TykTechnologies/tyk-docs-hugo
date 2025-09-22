@@ -473,9 +473,9 @@ Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint incorrectly r
 
 <li>
 <details>
-<summary>Fixed multiple issues with creating child versions of Tyk OAS APIs</summary>
+<summary>Fixed multiple issues with creation of child versions of Tyk OAS APIs</summary>
 
-Fixed several issues that affected creating new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
+Fixed several issues that affected creation of new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
 
 UI and API Creation:
 - Resolved an issue that prevented users from creating new versions via the API Designer's Manage Versions screen
