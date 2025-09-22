@@ -915,6 +915,7 @@ menu:
                 path: /developer-support/documentation-projects/inclusive-naming
                 category: Page
                 show: True
+<<<<<<< HEAD
               - title: "UI Example: Pill Label Shortcode"
                 path: /ui-examples/test-pill-label
                 category: Page
@@ -928,6 +929,9 @@ menu:
                 category: Page
                 show: true
   - title: "Developer Portal"
+=======
+  - title: "API Publishing"
+>>>>>>> 5caf6dea0... Remove UI examples (#6953)
     category: Tab
     show: True
     path: /portal/overview/intro
