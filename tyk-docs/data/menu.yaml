@@ -913,18 +913,6 @@ menu:
                 path: /developer-support/documentation-projects/inclusive-naming
                 category: Page
                 show: True
-              - title: "UI Example: Pill Label Shortcode"
-                path: /ui-examples/test-pill-label
-                category: Page
-                show: true
-              - title: "UI Example: Feature Cards shortcode"
-                path: /ui-examples/feature-cards
-                category: Page
-                show: true
-              - title: "UI Example: YouTube Video Embed shortcode"
-                path: /ui-examples/youtube-video-embed
-                category: Page
-                show: true
   - title: "API Publishing"
     category: Tab
     show: True
