@@ -481,8 +481,7 @@ UI and API Creation:
 - Resolved an issue that prevented users from creating new versions via the API Designer's Manage Versions screen
 - Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully but leave it invisible in the Dashboard UI
 - Added stricter validation for version names - users can no longer create API versions without specifying a valid `new_version_name`, preventing unusable or empty version entries
-- Improved error messaging when the `base_api_version_name`
-parameter is missing or incorrectly specified
+- Improved error messaging when the `base_api_version_name` parameter is missing or incorrectly specified
 
 Version Management:
 - Fixed an issue where creating new child versions would incorrectly reset the default version back to the base API, overriding previously configured settings
