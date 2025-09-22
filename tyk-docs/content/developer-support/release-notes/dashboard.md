@@ -425,14 +425,6 @@ Fixed an issue where the Tyk OAS API Debugger (Test Your API panel) incorrectly 
 
 <li>
 <details>
-<summary>Fixed default version reset issue when creating new child API versions</summary>
-
-Fixed an issue where creating new versions of a Tyk OAS API would incorrectly reset the default version back to the base API, overriding any previously configured default version. The system now preserves the existing default version setting when new versions are created, ensuring consistent API routing behavior unless the default is explicitly changed by the user.
-</details>
-</li>
-
-<li>
-<details>
 <summary>Fixed PATCH endpoint validation to reject Tyk OAS API definitions when expecting OpenAPI description</summary>
 
 Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions containing Tyk Vendor Extensions, when it should only accept standard OpenAPI descriptions. The endpoint now properly validates incoming requests and returns `HTTP 400 Bad Request` if the Tyk Vendor Extension is present, ensuring consistent behavior with the Dashboard UI and maintaining the intended separation between OpenAPI description updates and full API configuration changes.
