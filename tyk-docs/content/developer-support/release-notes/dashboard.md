@@ -323,7 +323,7 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 ### 5.8.6 Release Notes
 
-#### Release Date 2025
+#### Release Date 23rd September 2025
 
 #### Release Highlights
 
@@ -518,10 +518,12 @@ Fixed an issue where creating GraphQL APIs using upstream introspection in the D
 
 
 ##### Security Fixes
+
 <ul>
 <li>
 <details>
 <summary>High priority CVEs fixed</summary>
+
 Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security
 vulnerabilities:<br>
 - <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-47875" target="_blank">CVE-2024-47875</a><br>

@@ -383,7 +383,7 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 ### 5.8.6 Release Notes
 
-#### Release Date  2025
+#### Release Date 23rd September 2025
 
 #### Release Highlights
 
