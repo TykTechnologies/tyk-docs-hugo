@@ -362,7 +362,7 @@ This is allocated by Tyk to locate the API definition in the Dashboard main stor
 This field is used by Tyk Dashboard to control whether the API will serve traffic. If set to `false` then on Gateway start, restart or reload, the API will be ignored and all paths and routes for that API will cease to be proxied. Any keys assigned to it will still exist, though they will not be let through for that particular API.
 
 **Field: `internal`**
-This field makes the API accessible only internally within Tyk. When set to `true`, the API will not be loaded by the Gateway for external access and will not be included in API listings returned by the Gateway's management APIs.
+This field controls the exposure of the API on the Gateway. When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs; it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}).
 
 ### Access token management
 

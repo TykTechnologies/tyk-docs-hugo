@@ -2518,7 +2518,7 @@ Connect holds plugin configuration for CONNECT requests.
 
 ### **Paths**
 
-Paths is a mapping of API endpoints to Path plugin configurations. This field is part of the [Middleware](#middleware) structure and is used during the conversion between classic API definitions and OAS.
+Paths is a mapping of API endpoints to Path plugin configurations. This field is part of the [Middleware](#middleware) structure.
 
 **Important Note:** While the Paths field may appear orphaned in the documentation, it is actually linked dynamically to the [Middleware](#middleware) struct in the code. In the implementation, Paths is populated and accessed through the Middleware struct during API definition processing.
 
