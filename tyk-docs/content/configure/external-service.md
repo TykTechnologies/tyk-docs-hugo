@@ -246,19 +246,20 @@ mTLS settings enable client certificate authentication for secure connections.
 | `tls_min_version` | String | No | Minimum TLS version (e.g., "1.2", default: "1.2") |
 | `tls_max_version` | String | No | Maximum TLS version (e.g., "1.3", default: "1.3") |
 
-**Client authentication:** for Tyk to sign the outbound messages you must indicate which certificate should be used via `cert_id` or `cert_file`/`key_file`.
-**Server verification:** for Tyk to verify the certificate provided by the external service, you must provide the CA certificates via `ca_cert_ids` or `ca_file`. If you do not need to validate the server's certificate (for example in a trusted test environment) you can set `insecure_skip_verify: true` (not recommended for production).
->
-**For complete mTLS security:** both client and CA certificates should be configured.
-**CA-only configuration:** you can enable mTLS with only CA certificates (no client certificates) if you only need server certificate verification without client authentication.
->
+- **Client authentication:** for Tyk to sign the outbound messages you must indicate which certificate should be used via `cert_id` or `cert_file`/`key_file`.
+- **Server verification:** for Tyk to verify the certificate provided by the external service, you must provide the CA certificates via `ca_cert_ids` or `ca_file`. If you do not need to validate the server's certificate (for example in a trusted test environment) you can set `insecure_skip_verify: true` (not recommended for production).
+
+- **For complete mTLS security:** both client and CA certificates should be configured.
+- **CA-only configuration:** you can enable mTLS with only CA certificates (no client certificates) if you only need server certificate verification without client authentication.
+
 {{< note success >}}
+
 **Note**  
 Tyk Certificate Store configuration takes precedence over file-based configuration if both are provided.
 
 {{< /note >}}
 
-### Example Configuration
+#### Example Configuration
 
 {{< tabs_start >}}
 {{< tab_start "Config File" >}}
@@ -690,7 +691,7 @@ Yes, you can configure service-specific proxy settings that override the global 
 
 No, it only affects outbound connections that Tyk itself initiates.
 
-</details>
+</details> 
 
 <details> <summary><b>What happens if the proxy server becomes unavailable?</b></summary>
 
