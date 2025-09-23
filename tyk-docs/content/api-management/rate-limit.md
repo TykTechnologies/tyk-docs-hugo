@@ -344,7 +344,7 @@ This capability works with [Tyk 5.3.0]({{< ref "developer-support/release-notes/
 
 ### Custom Plugin Rate Limiter Example
 
-It's common to use custom authentication plugins, and yet more common to want to set rate limit patterns.  Perhaps you want to rate limit individual end users on your applications, or on entire applications, or anything else.
+It's common to use custom [authentication plugins]({{< ref "api-management/plugins/plugin-types#authentication-plugins" ), and yet more common to want to set rate limit patterns.  Perhaps you want to rate limit individual end users on your applications, or on entire applications, or anything else.
 
 Let's take a look at implementing an IP Based Rate Limiter in a custom go plugin.  
 
