@@ -258,7 +258,7 @@ Tyk Certificate Store configuration takes precedence over file-based configurati
 
 {{< /note >}}
 
-#### Example Configuration
+### Example Configuration
 
 {{< tabs_start >}}
 {{< tab_start "Config File" >}}
@@ -320,9 +320,9 @@ Settings are applied in the following priority order (highest to lowest):
 3. **Standard proxy environment variables** - When proxy is enabled but no specific URLs are configured, Tyk falls back to using standard `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables. These are system-wide variables commonly used by HTTP clients to route traffic through proxy servers and are not specific to Tyk's configuration system.
 4. **Default settings** - If a setting is not specified, Tyk uses sensible defaults. You can find these in the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#external_services" >}}).
 
-### Configuration Examples
+## Example Configurations
 
-#### 1. Basic Proxy Setup (Local Testing)
+### 1. Basic Proxy Setup (Local Testing)
 ```json
 {
   "external_services": {
@@ -341,7 +341,9 @@ Settings are applied in the following priority order (highest to lowest):
 - Bypasses the proxy for localhost, 127.0.0.1, and any domain ending with .internal
 - Applies these settings globally to all service types (OAuth, webhooks, storage, etc.)
 
-#### 2. OAuth with Dedicated Proxy and mTLS (File-based)
+### 2. OAuth with Dedicated Proxy and mTLS
+
+#### Using certificates in the file system
 ```json
 {
   "external_services": {
@@ -375,7 +377,7 @@ Settings are applied in the following priority order (highest to lowest):
 - Enables mutual TLS for OAuth connections using file-based certificates
 - Enforces minimum TLS version 1.2 for OAuth connections
 
-#### 2a. OAuth with Certificate Store and mTLS
+#### Using Tyk Certificate Store
 ```json
 {
   "external_services": {
@@ -403,11 +405,11 @@ Settings are applied in the following priority order (highest to lowest):
 ```
 
 **What this does:**
-- Similar to example 2, but uses Tyk's [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) instead of file paths
-- References certificates by their IDs in the [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}})
+- Similar to previous example, but uses [Tyk Certificate Store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) instead of file paths
+- References certificates by their IDs in the certificate store
 - Allows for centralized certificate management through the Tyk Dashboard
 
-#### 3. Mixed Environment and Service-Specific Configuration
+### 3. Mixed Environment and Service-Specific Configuration
 ```json
 {
   "external_services": {
@@ -449,7 +451,7 @@ Settings are applied in the following priority order (highest to lowest):
 - **Webhook customization**:
   - Routes webhook traffic through a separate dedicated proxy (port 3130)
 
-#### 4. Production Enterprise Configuration
+### 4. Production Enterprise Configuration
 ```json
 {
   "external_services": {
@@ -496,7 +498,7 @@ Settings are applied in the following priority order (highest to lowest):
   - Uses the global proxy settings (inherits from global configuration)
   - Adds a separate client certificate specifically for webhook connections
 
-#### 5. Production Certificate Store Configuration
+### 5. Production Certificate Store Configuration
 ```json
 {
   "external_services": {
@@ -547,9 +549,9 @@ Settings are applied in the following priority order (highest to lowest):
   - This supports complex PKI setups with intermediate certificate authorities
   - Ensures proper validation of certificate chains in enterprise environments
 
-### Performance Optimization
+## Performance Optimization
 
-#### Connection Pooling
+### Connection Pooling
 
 Tyk implements connection pooling for each service type with built-in default values:
 
@@ -563,7 +565,7 @@ Tyk implements connection pooling for each service type with built-in default va
 
 > **Note:** These connection pooling settings are built into Tyk and are not configurable through the configuration file. They are optimized defaults based on the typical usage patterns of each service type. "Per Host" refers to the maximum number of idle connections maintained per upstream host.
 
-#### Service-Specific Timeouts
+### Service-Specific Timeouts
 
 Tyk applies different default timeout values for each service type:
 
