@@ -84,14 +84,14 @@ Tyk Gateway now provides enterprise-grade JWT validation capabilities exclusivel
 
 **Complete registered claim validation**
 
-**Multi-Identity Provider support**: Validate issuer, audience, and subject claims against multiple allowed values
-**Flexible claim mapping**: Configure different claim names for subject, policy, and scope mapping to support various Identity Providers (Keycloak, Okta, Auth0, etc.) within the same API
+**Multi-Identity Provider support**: Validate issuer, audience, and subject claims against multiple allowed values<br>
+**Flexible claim mapping**: Configure different claim names for subject, policy, and scope mapping to support various Identity Providers (Keycloak, Okta, Auth0, etc.) within the same API<br>
 **JWT ID enforcement**: Require unique token identifiers for enhanced security
 
 **Advanced custom claim validation**
 
-**Flexible validation rules**: Define validation for any JWT claim using required, exact match, or containment rules
-**Rich data type support**: Handle strings, numbers, booleans, and arrays with nested claim access using dot notation
+**Flexible validation rules**: Define validation for any JWT claim using required, exact match, or containment rules<br>
+**Rich data type support**: Handle strings, numbers, booleans, and arrays with nested claim access using dot notation<br>
 **Non-blocking validation**: Monitor claim compliance without rejecting requests, perfect for gradual policy enforcement
 
 **Real-world applications**
@@ -145,7 +145,7 @@ This improvement simplifies deployment in enterprise environments where proxy se
 - Simplified proxy configuration for containerized deployments
 - Consistent external service connection handling across all Tyk components
 
-For more details, please see the dedicated [section]]({{< ref "configure/external-service" >}}).
+For more details, please see the dedicated [section]({{< ref "configure/external-service" >}}).
 
 
 ##### Proactive Certificate Expiry Monitoring
