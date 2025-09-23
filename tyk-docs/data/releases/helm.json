@@ -4,7 +4,7 @@
   "latest": "4.0.0",
   "releaseNotesPath": "developer-support/release-notes/helm-chart",
   "4.0.0": {
-    "date": "01/09/2025",
+    "date": "23/09/2025",
     "tag": "https://github.com/TykTechnologies/tyk-charts/releases/tag/v4.0.0" 
   },
   "3.0.0": {
