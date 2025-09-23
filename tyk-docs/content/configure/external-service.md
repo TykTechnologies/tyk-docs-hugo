@@ -145,26 +145,26 @@ In this tutorial, we'll configure Tyk Gateway to use a corporate HTTP proxy for 
 
 ## Configuration Options
 
-External Service Configuration allows you to control how Tyk Gateway connects to external services like OAuth providers, storage systems, and webhooks. This section explains the configuration structure and available options.
+External Service Configuration allows you to control how Tyk Gateway connects to external services such as OAuth 2.0 Authorization Servers, storage systems, and webhook targets. This section explains the configuration structure and available options.
 
 The configuration is organized into two levels:
 
-1. **Global settings** - Apply to all service types unless overridden
+1. **Global settings** - Applied to all service types unless overridden
 2. **Service-specific settings** - Override global settings for particular service types
 
-All settings are defined in the `external_services` section of the Gateway `tyk.conf` file.
+All settings are defined in the `external_services` section of the Gateway `tyk.conf` file (or the equivalent [environment variables]({{< ref "tyk-oss-gateway/configuration#external_services" >}}).
 
 
 ### Global Configuration
 
-Global settings apply to all external service connections unless overridden by service-specific settings.
+Global Settings are used to configure Tyk to make external service connections through a proxy server. Separate servers can be configured for HTTP and HTTPS connections. If required, connections to specific hosts can bypass the common proxies. The Global Settings will be applied to all external service connections unless overridden by [service-specific settings]({{< ref "configure/external-service#service-specific-configuration" >}}).
 
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
-| `enabled` | Boolean | Required if using a proxy | Enables proxy settings for all external services. When true, Tyk will use the configured proxy URLs if specified, or fall back to environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`) if no URLs are specified. Set to false to disable proxy usage for all services (unless overridden by service-specific settings). |
-| `http_proxy` | String | No | HTTP proxy URL for HTTP requests (e.g., "http://localhost:3128"). Required if `enabled` is true and you're not relying on environment variables. |
-| `https_proxy` | String | No | HTTPS proxy URL for HTTPS requests (e.g., "https://localhost:3128"). Required if `enabled` is true and you're not relying on environment variables. |
-| `bypass_proxy` | String | No | Comma-separated list of hosts to bypass proxy (e.g., "localhost,127.0.0.1,.internal"). Hosts in this list will be accessed directly, bypassing the proxy. |
+| `enabled` | Boolean | Required if using a proxy | Applies Global Settings for all external services. If no URL is provided for any of the Global Settings, the value configured in the legacy environment variable (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`) will be applied. Set to `false` to disable proxy usage for all services (unless overridden by service-specific settings). |
+| `http_proxy` | String | No | HTTP proxy URL for HTTP requests (e.g., "http://localhost:3128"). This will be used if `enabled` is set to `true`. If not set, then Tyk will apply the URL from the standard `HTTP_PROXY` environment variable. |
+| `https_proxy` | String | No | HTTPS proxy URL for HTTPS requests (e.g., "https://localhost:3128").  This will be used if `enabled` is set to `true`. If not set, then Tyk will apply the URL from the standard `HTTPS_PROXY` environment variable. |
+| `bypass_proxy` | String | No | Comma-separated list of hosts to bypass proxy (e.g., `"localhost,127.0.0.1,.internal"`). Hosts in this list will be accessed directly, bypassing the proxy if `enabled` is set to `true`. If not set, then Tyk will use the list of hosts from the standard `NO_PROXY` environment variable|
 
 #### Example Configuration
 
@@ -202,7 +202,9 @@ Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/conf
 
 ### Service-Specific Configuration
 
-Tyk supports service-specific configurations for the following service types:
+In addition to the Global Settings, which are applied to all services, you can optionally set alternative proxies and mutual TLS (mTLS) configurations for specific services. The specific settings will override the global settings for and service for which both are configured.
+
+Service-specific settings can be configured for the following services:
 
 | Service Type | Description | Example Services |
 |--------------|-------------|------------|
@@ -212,7 +214,10 @@ Tyk supports service-specific configurations for the following service types:
 | `health` | [Health check requests]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}) | Host checker, uptime monitoring |  
 | `discovery` | [Service discovery requests]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}}) | Load balancer, service registry |
 
-Each service type supports the following configuration sections:
+For each type of service, you can configure:
+
+- specific proxies for HTTP, HTTPS and lists of hosts that should not be proxied
+- mTLS certificates, versions and insecure mode
 
 #### Proxy Configuration
 
@@ -220,7 +225,7 @@ Service-specific proxy settings override global proxy settings.
 
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
-| `enabled` | Boolean | Yes | Activates proxy settings for this service |
+| `enabled` | Boolean | Yes | Activates specific proxy settings for this service |
 | `http_proxy` | String | No | HTTP proxy URL for this service |
 | `https_proxy` | String | No | HTTPS proxy URL for this service |
 | `bypass_proxy` | String | No | Comma-separated list of hosts to bypass proxy for this service |
@@ -235,9 +240,9 @@ mTLS settings enable client certificate authentication for secure connections.
 | `cert_file` | String | No | Path to client certificate file |
 | `key_file` | String | No | Path to client private key file |
 | `ca_file` | String | No | Path to CA certificate file for server verification |
-| `cert_id` | String | No | Certificate ID from Tyk [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) |
-| `ca_cert_ids` | Array | No | Array of CA certificate IDs from Tyk [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) |
-| `insecure_skip_verify` | Boolean | No | Skip server certificate verification (default: false) |
+| `cert_id` | String | No | Certificate ID from [Tyk Certificate Store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) |
+| `ca_cert_ids` | Array | No | Array of CA certificate IDs from [Tyk Certificate Store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) |
+| `insecure_skip_verify` | Boolean | No | Insecure mode, skip server certificate verification; this should only be used in non-production environments (default: false) |
 | `tls_min_version` | String | No | Minimum TLS version (e.g., "1.2", default: "1.2") |
 | `tls_max_version` | String | No | Maximum TLS version (e.g., "1.3", default: "1.3") |
 
@@ -304,7 +309,7 @@ export TYK_GW_EXTERNAL_SERVICES_OAUTH_MTLS_TLS_MIN_VERSION="1.2"
 {{< tab_end >}}
 {{< tabs_end >}}
 
-Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#external_services" >}}) for more details on this setting.
+Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#external_services" >}}) for more details.
 
 ### Hierarchy and Precedence
 
@@ -528,9 +533,9 @@ Settings are applied in the following priority order (highest to lowest):
 ```
 
 **What this does:**
-- Similar to example 4, but uses [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) for all mTLS configurations
+- Similar to example 4, but uses [Tyk Certificate Store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}}) for all mTLS configurations
 - **Certificate store integration**:
-  - Instead of file paths, all certificates are referenced by IDs in Tyk's [certificate store]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}})
+  - All certificates are referenced using their IDs in the certificate store
   - This enables centralized certificate management through the Tyk Dashboard
   - Certificates can be rotated, renewed, or replaced without changing configuration files
 - **Comprehensive mTLS deployment**:
@@ -660,7 +665,7 @@ In the context of Tyk Gateway, an **External Service** refers to any third-party
 
 **Example OAuth Providers**: 
 
-External identity providers or authorization servers that Tyk connects to for validating tokens, retrieving JWKs (JSON Web Key Sets), or performing token introspection
+External Identity Providers or OAuth 2.0 Authorization Servers that Tyk connects to for validating tokens, retrieving JWKS (JSON Web Key Sets), or performing token introspection
    - Example: Connecting to Auth0 to validate JWT tokens
    - Example: Retrieving JWK sets from Okta
 
@@ -695,7 +700,7 @@ If the configured proxy server becomes unavailable, Tyk's behavior depends on th
 **For new connections:**
 - Requests to external services will fail with connection timeout or connection refused errors
 - Tyk will log errors such as `dial tcp: i/o timeout` or `connection refused` in the logs
-- These failures can impact various gateway functions depending on which services are affected:
+- These failures can impact various Gateway functions depending on which services are affected:
   - OAuth/JWT validation failures could prevent API access
   - Webhook delivery failures might cause event notifications to be lost
   - Health check failures could affect load balancing decisions
@@ -706,8 +711,8 @@ If the configured proxy server becomes unavailable, Tyk's behavior depends on th
 
 **Recovery behavior:**
 - Tyk does not automatically retry failed proxy connections
-- The gateway will continue to attempt to use the configured proxy for new requests
-- When the proxy becomes available again, new connections will succeed without requiring a gateway restart
+- The Gateway will continue to attempt to use the configured proxy for new requests
+- When the proxy becomes available again, new connections will succeed without requiring a Gateway restart
 
 </details> 
 
@@ -738,7 +743,7 @@ To enable debug logging, set `"log_level": "debug"` in your `tyk.conf` file or u
 
 </details> 
 
-<details> <summary><b>Difference between External Service Configuration and Normal API Definition?</b></summary>
+<details> <summary><b>What's the difference between External Service Configuration and API Definition configuration?</b></summary>
 
 The difference between **External Service Configuration** and Normal **API Definition** is about **who initiates the connection**:
 
@@ -746,7 +751,7 @@ The difference between **External Service Configuration** and Normal **API Defin
    - Retrieving a JWKS from an external OAuth server (Identity Provider)
    - Sending analytics data to storage
 
-2. **API Definition:** Controls how Tyk handles connections initiated by clients to your services (both the client-gateway and gateway-upstream connections)
+2. **API Definition:** Controls how Tyk handles connections initiated by clients to your services (both the client-Gateway and Gateway-upstream connections)
 
 Think of External Service Configuration as configuring Tyk's own HTTP client behavior, while API definitions configure Tyk's HTTP server behavior. They operate at different layers of the system.
 
