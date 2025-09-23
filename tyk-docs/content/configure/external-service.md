@@ -246,17 +246,17 @@ mTLS settings enable client certificate authentication for secure connections.
 | `tls_min_version` | String | No | Minimum TLS version (e.g., "1.2", default: "1.2") |
 | `tls_max_version` | String | No | Maximum TLS version (e.g., "1.3", default: "1.3") |
 
-> **Important mTLS Configuration Requirements:**
+**Client authentication:** for Tyk to sign the outbound messages you must indicate which certificate should be used via `cert_id` or `cert_file`/`key_file`.
+**Server verification:** for Tyk to verify the certificate provided by the external service, you must provide the CA certificates via `ca_cert_ids` or `ca_file`. If you do not need to validate the server's certificate (for example in a trusted test environment) you can set `insecure_skip_verify: true` (not recommended for production).
 >
-> * **For client authentication:** Either file-based configuration (`cert_file`/`key_file`) or certificate store configuration (`cert_id`) must be provided.
+**For complete mTLS security:** both client and CA certificates should be configured.
+**CA-only configuration:** you can enable mTLS with only CA certificates (no client certificates) if you only need server certificate verification without client authentication.
 >
-> * **For server verification:** Either `ca_file` or `ca_cert_ids` should be provided to verify the server's certificate. Without these, you must set `insecure_skip_verify: true` (not recommended for production).
->
-> * **For complete mTLS security:** Both client certificates AND CA certificates should be configured.
->
-> * **Configuration precedence:** Certificate store configuration (`cert_id`) takes precedence over file-based configuration if both are provided.
->
-> * **CA-only configuration:** You can enable mTLS with only CA certificates (no client certificates) if you only need server certificate verification without client authentication.
+{{< note success >}}
+**Note**  
+Tyk Certificate Store configuration takes precedence over file-based configuration if both are provided.
+
+{{< /note >}}
 
 #### Example Configuration
 
@@ -643,13 +643,10 @@ The External Services Configuration provides a new way to configure external ser
     "global": {
       "enabled": true,
       "http_proxy": "http://localhost:3128",
-      "https_proxy": "https://localhost:3128"
     },
     "oauth": {
       "mtls": {
         "enabled": true,
-        "cert_file": "/etc/tyk/certs/oauth-client.crt",
-        "key_file": "/etc/tyk/certs/oauth-client.key",
         "insecure_skip_verify": true
       }
     }
