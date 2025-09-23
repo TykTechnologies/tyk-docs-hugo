@@ -323,7 +323,7 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 ### 5.8.6 Release Notes
 
-#### Release Date  2025
+#### Release Date 2025
 
 #### Release Highlights
 
@@ -410,7 +410,7 @@ Fixed an issue where the Tyk OAS API Debugger (Test Your API panel) only display
 <details>
 <summary>Fixed OpenAPI `servers` section handling for regex-based custom domains</summary>
 
-Fixed an issue where custom domains containing regular expressions were not correctly parsed and stored in the `servers` section of OpenAPI descriptions for Tyk OAS APIs. The Dashboard now properly converts regex-based domains into valid OpenAPI `servers` entries with appropriate variables, ensuring accurate API documentation and preventing validation errors during API editing. This fix includes enhanced syntax validation for regex patterns and improved capture group handling that previously could cause Gateway crashes.
+Fixed an issue where custom domains containing regular expressions were not correctly parsed and stored in the `servers` section of OpenAPI descriptions for Tyk OAS APIs. The Dashboard now properly converts regex-based domains into valid OpenAPI `servers` entries with appropriate variables, ensuring accurate API documentation and preventing validation errors during API editing. This fix includes enhanced syntax validation for regular expression (regex) patterns and improved capture group handling, which previously could cause Gateway crashes.
 
 </details>
 </li>
@@ -473,20 +473,20 @@ Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint incorrectly r
 
 <li>
 <details>
-<summary>Fixed multiple issues with creation of child versions of Tyk OAS APIs</summary>
+<summary>Fixed multiple issues with the creation of child versions of Tyk OAS APIs</summary>
 
-Fixed several issues that affected creation of new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
+Fixed several issues that affected the creation of new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
 
 UI and API Creation:
 - Resolved an issue that prevented users from creating new versions via the API Designer's Manage Versions screen
-- Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully but leave it invisible in the Dashboard UI
+- Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully, but leave it invisible in the Dashboard UI
 - Added stricter validation for version names - users can no longer create API versions without specifying a valid `new_version_name`, preventing unusable or empty version entries
 - Improved error messaging when the `base_api_version_name` parameter is missing or incorrectly specified
 
 Version Management:
 - Fixed an issue where creating new child versions would incorrectly reset the default version back to the base API, overriding previously configured settings
 
-The system now provides comprehensive validation with clear error responses (`HTTP 400 Bad Request` and `HTTP 422 Unprocessable Entity`), ensures all API versions have meaningful identifiers, and maintains proper default version settings during child version creation.
+The system now provides comprehensive validation with clear error responses (`HTTP 400 Bad Request` and `HTTP 422 Unprocessable Entity`), ensures that all API versions have meaningful identifiers, and maintains proper default version settings during the creation of child versions.
 </details>
 </li>
 
@@ -502,7 +502,7 @@ Fixed an issue where the Tyk Dashboard did not correctly apply a default `page_s
 <details>
 <summary>Fixed delayed application of global webhook changes for Tyk OAS APIs</summary>
 
-Fixed an issue where updates to [global webhooks]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) were not immediately applied to Tyk OAS APIs using those webhooks. When global webhook configurations were modified, the Gateway would continue using the previous settings for affected Tyk OAS APIs until a manual reload occurred. The system now automatically triggers a Gateway reload for all impacted Tyk OAS APIs when global webhook configurations are changed, ensuring updated webhook settings take effect immediately.
+Fixed an issue where updates to [global webhooks]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) were not immediately applied to Tyk OAS APIs using those webhooks. When global webhook configurations were modified, the Gateway would continue using the previous settings for affected Tyk OAS APIs until a manual reload occurred. The system now automatically triggers a Gateway reload for all impacted Tyk OAS APIs when global webhook configurations are updated, ensuring that the new webhook settings take effect immediately.
 </details>
 </li>
 
@@ -510,7 +510,7 @@ Fixed an issue where updates to [global webhooks]({{< ref "api-management/gatewa
 <details>
 <summary>Fixed GraphQL API creation via upstream introspection when OPA rules modify requests</summary>
 
-Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body. The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now properly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
+Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body. The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now correctly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
 </details>
 </li>
 

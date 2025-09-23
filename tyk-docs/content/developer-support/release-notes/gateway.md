@@ -445,7 +445,7 @@ If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions]
 <details>
 <summary>Go 1.24 Upgrade for Tyk Gateway</summary>
 
-The Tyk Gateway has been updated to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying up-to-date with Go versions.
+The Tyk Gateway has been updated to [Golang 1.24](https://tip.golang.org/doc/go1.24), enhancing security by staying up-to-date with the latest Go versions.
 </details>
 </li>
 
@@ -457,9 +457,9 @@ The Tyk Gateway has been updated to [Golang 1.24](https://tip.golang.org/doc/go1
 
 <li>
 <details>
-<summary>Fixed body decompression errors with GraphQL APIs when analytics enabled</summary>
+<summary>Fixed body decompression errors with GraphQL APIs when analytics is enabled</summary>
 
-Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in EOF (End of File) errors. The Gateway now properly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
+Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in EOF (End of File) errors. The Gateway now correctly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
 </details>
 </li>
 
@@ -467,7 +467,7 @@ Fixed an issue that caused repeated `Body decompression error: EOF` log messages
 <details>
 <summary>Fixed Gateway re-registration failures after restart</summary>
 
-Fixed an issue where Gateways could fail to re-register with the Dashboard after restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
+Fixed an issue where Gateways could fail to re-register with the Dashboard after a restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
 </details>
 </li>
 
@@ -515,7 +515,7 @@ Fixed an issue where Tyk OAS mock response middleware failed to execute when int
 <details>
 <summary>Fixed duplication of version identifier configuration when importing OpenAPI description</summary>
 
-Fixed an issue where importing an OpenAPI description with an `apiKey` security scheme, while using the `authentication` query parameter, resulted in the unnecessary generation of a `header` object within the Tyk Vendor Extension (`x-tyk-api-gateway`) duplicating information already present in the declared OpenAPI security scheme.
+Fixed an issue where importing an OpenAPI description with an `apiKey` security scheme, while using the `authentication` query parameter, resulted in the unnecessary generation of a `header` object within the Tyk Vendor Extension (`x-tyk-api-gateway`), duplicating information already present in the declared OpenAPI security scheme.
 </details>
 </li>
 
