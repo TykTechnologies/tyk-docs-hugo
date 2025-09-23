@@ -518,6 +518,12 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+{{< note warning >}}
+**Note**  
+
+The Session is set during the (custom) Authentication layer - meaning it won't be set until the middleware chain after the authentication middleware layer.    Trying to use `ctx.GetSession` in a custom auth plugin would always return an empty object.
+{{< /note >}}
+
 The invocation of `ctx.GetSession(r)` returns an SessionState object.
 The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/user/session.go#L106).
 
