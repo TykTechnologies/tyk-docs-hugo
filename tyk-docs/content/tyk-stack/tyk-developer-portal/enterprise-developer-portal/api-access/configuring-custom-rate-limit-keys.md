@@ -34,7 +34,7 @@ The Tyk Enterprise Developer Portal facilitates the configuration of various rat
 To achieve this, the portal, by default, populates the following attributes in the credential metadata, which can be used as part of a custom rate limit key:
 - **ApplicationID**: The ID of the application to which the credential belongs.
 - **DeveloperID**: The ID of the developer who created the credential.
-- **OrganizationID**: The ID of the organization to which the developer belongs.
+- **OrganisationID**: The ID of the organization to which the developer belongs.
 
 Additionally, it's possible to attach [custom attribute values]({{< ref "portal/customization/user-model#add-custom-attributes-to-the-user-model" >}}) defined in a developer profile as metadata fields to credentials.
 
