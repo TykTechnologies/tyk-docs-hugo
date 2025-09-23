@@ -204,7 +204,7 @@ Active enables the API so that Tyk will listen for and process requests made to 
 Tyk classic API definition: `active`.
 
 **Field: `internal` (`boolean`)**
-Internal makes the API accessible only internally. When set to `true`, the API will not be loaded by the Gateway for external access and will not be included in API listings returned by the Gateway's management APIs.
+This field controls the exposure of the API on the Gateway. When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs; it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) or as a [child API version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
 
 Tyk classic API definition: `internal`.
 
@@ -2522,7 +2522,7 @@ Paths is a mapping of API endpoints to Path plugin configurations. This field is
 
 **Important Note:** While the Paths field may appear orphaned in the documentation, it is actually linked dynamically to the [Middleware](#middleware) struct in the code. In the implementation, Paths is populated and accessed through the Middleware struct during API definition processing.
 
-The string keys in this object represent URL path patterns (`/users`, `/users/{id}`, `/api/*`) that match API endpoints.
+The string keys in this object represent URL path patterns (e.g. `/users`, `/users/{id}`, `/api/*`) that match API endpoints.
 
 Type defined as object of `Path` values, see [Path](#path) definition.
 
@@ -2539,7 +2539,7 @@ Block request by allowance.
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
 IgnoreAuthentication ignores authentication on request by allowance.
 
-Tyk classic API definition: version_data.versions..extended_paths.ignored[].
+Tyk Classic API definition: version_data.versions..extended_paths.ignored[].
 
 **Field: `transformRequestMethod` ([TransformRequestMethod](#transformrequestmethod))**
 TransformRequestMethod allows you to transform the method of a request.
