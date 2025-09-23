@@ -64,10 +64,6 @@ You can enrich the request headers by injecting data from context variables or s
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "#request-headers-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "#request-headers-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Header Transform middleware summary
   - The Request Header Transform is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.

@@ -45,10 +45,6 @@ Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-ma
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "#ignore-authentication-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "#ignore-authentication-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Ignore Authentication middleware summary
   - The Ignore Authentication middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
