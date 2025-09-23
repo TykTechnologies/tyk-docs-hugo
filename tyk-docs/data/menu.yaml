@@ -549,7 +549,7 @@ menu:
             category: Page
             show: True
           - title: "API Management in Kubernetes"
-            category: Page
+            category: Directory
             show: True
             menu:
               - title: "Overview"

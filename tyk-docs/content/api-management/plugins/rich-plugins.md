@@ -2296,7 +2296,7 @@ To publish the plugin, copy or upload `bundle.zip` to a local web server like Ng
 
 {{< include "grpc-include" >}}
 
-#### What's Next? {what-is-next}
+#### What's Next? {#what-is-next}
 
 In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
 
