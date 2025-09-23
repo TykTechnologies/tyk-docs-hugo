@@ -233,7 +233,7 @@ An API Gateway serves as the single point of entry into your ecosystem, introduc
 2. **[Performance Tuning Your Gateway](https://tyk.io/blog/performance-tuning-your-tyk-api-gateway/)**  
    A step-by-step guide to fine-tuning your Gateway for maximum performance.  
 
-3. **[Manual Performance Testing on AWS](https://tyk.io/a-manual-for-simple-performance-testing-with-tyk-on-aws/)**  
+3. **[Manual Performance Testing on AWS](https://tyk.io/blog/a-manual-for-simple-performance-testing-with-tyk-on-aws/)**  
    Best practices for setting up and running manual performance tests on AWS to ensure your Gateway is optimized.  
 
 
