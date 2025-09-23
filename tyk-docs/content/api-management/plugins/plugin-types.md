@@ -163,7 +163,7 @@ The following languages are supported for custom authentication plugins:
 - All Rich Plugins (gRPC, Python, Lua)
 - GoLang
 
-See the [supported languages]({{< ref "api-management/plugins/overview#supported-languages" >}}) section for custom authentication plugin examples in a language of your choosing. There's also a [blog that walks you through setting up gRPC custom auth in Java](https://tyk.io/how-to-setup-custom-authentication-middleware-using-grpc-and-java/).
+See the [supported languages]({{< ref "api-management/plugins/overview#supported-languages" >}}) section for custom authentication plugin examples in a language of your choosing. There's also a [blog that walks you through setting up gRPC custom auth in Java](https://tyk.io/blog/how-to-setup-custom-authentication-middleware-using-grpc-and-java/).
 
 ### Tyk Operator
 
