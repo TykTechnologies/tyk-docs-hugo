@@ -57,15 +57,16 @@ Tyk Gateway now supports true OpenAPI specification compliant authentication wor
 
 OpenAPI compliant authentication brings:
 
-**Multiple authentication paths**: Process all entries in the OpenAPI `security` section, not just the first one
-**Flexible security combinations**: Enable authentication scenarios like (OAuth2 AND API Key) OR (Basic Auth) OR (mTLS) where clients can choose their preferred method
-**Proprietary method integration**: Seamlessly combine standard OpenAPI authentication with Tyk's proprietary methods (mTLS, HMAC) using the same flexible logic
-**Standards compliance**: Follow OpenAPI security specification patterns that developers expect
+- **Multiple authentication paths**: Process all entries in the OpenAPI `security` section, not just the first one
+- **Flexible security combinations**: Enable authentication scenarios like (OAuth2 AND API Key) OR (Basic Auth) OR (mTLS) where clients can choose their preferred method
+- **Proprietary method integration**: Seamlessly combine standard OpenAPI authentication with Tyk's proprietary methods (mTLS, HMAC) using the same flexible logic
+- **Standards compliance**: Follow OpenAPI security specification patterns that developers expect
 
 Backward compatibility guaranteed:
-**Legacy mode preserved**: Existing APIs continue to work unchanged with the current AND-only logic
-**Opt-in enhancement**: Switch to compliant mode via the `securityProcessingMode` configuration when ready
-**No breaking changes**: Existing multi-security configurations remain functional
+
+- **Legacy mode preserved**: Existing APIs continue to work unchanged with the current AND-only logic
+- **Opt-in enhancement**: Switch to compliant mode via the `securityProcessingMode` configuration when ready
+- **No breaking changes**: Existing multi-security configurations remain functional
 
 **Real-world applications**
 
@@ -84,15 +85,15 @@ Tyk Gateway now provides enterprise-grade JWT validation capabilities exclusivel
 
 **Complete registered claim validation**
 
-**Multi-Identity Provider support**: Validate issuer, audience, and subject claims against multiple allowed values<br>
-**Flexible claim mapping**: Configure different claim names for subject, policy, and scope mapping to support various Identity Providers (Keycloak, Okta, Auth0, etc.) within the same API<br>
-**JWT ID enforcement**: Require unique token identifiers for enhanced security<br>
+- **Multi-Identity Provider support**: Validate issuer, audience, and subject claims against multiple allowed values
+- **Flexible claim mapping**: Configure different claim names for subject, policy, and scope mapping to support various Identity Providers (Keycloak, Okta, Auth0, etc.) within the same API
+- **JWT ID enforcement**: Require unique token identifiers for enhanced security
 
 **Advanced custom claim validation**
 
-**Flexible validation rules**: Define validation for any JWT claim using required, exact match, or containment rules<br>
-**Rich data type support**: Handle strings, numbers, booleans, and arrays with nested claim access using dot notation<br>
-**Non-blocking validation**: Monitor claim compliance without rejecting requests, perfect for gradual policy enforcement<br>
+- **Flexible validation rules**: Define validation for any JWT claim using required, exact match, or containment rules
+- **Rich data type support**: Handle strings, numbers, booleans, and arrays with nested claim access using dot notation
+- **Non-blocking validation**: Monitor claim compliance without rejecting requests, perfect for gradual policy enforcement
 
 **Real-world applications**
 
@@ -281,6 +282,7 @@ Note: Available only for Tyk OAS APIs and configured directly in the API definit
 Enhanced the JWKS (JSON Web Key Set) caching system with three key improvements to reduce latency and provide better control over JWT validation:
 
 Configurable cache timeout - Tyk OAS APIs can now specify custom cache timeout values for JWKS endpoints in their JWT validation configuration, allowing fine-tuned control over cache refresh intervals based on Identity Provider requirements.
+
 - Cache invalidation API - Administrators can now manually invalidate JWKS cache entries via new Gateway API endpoints (`DELETE /tyk/cache/jwks/{apiID}` and `DELETE /tyk/cache/jwks`), either targeting specific APIs or purging all cached JWKS data. This enables immediate cache refresh when Identity Provider keys are rotated.
 - Automatic pre-fetching - For Tyk OAS APIs, JWKS data is now automatically fetched and cached when API definitions are loaded, eliminating cold-start delays for JWT validation. Pre-fetching includes comprehensive logging of fetch attempts and results, and failures do not prevent API initialization.
 
