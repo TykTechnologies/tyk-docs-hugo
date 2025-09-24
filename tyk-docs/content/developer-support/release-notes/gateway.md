@@ -58,8 +58,8 @@ Tyk Gateway now supports true OpenAPI specification compliant authentication wor
 OpenAPI compliant authentication brings:
 
 - **Multiple authentication paths**: Process all entries in the OpenAPI `security` section, not just the first one
-- **Flexible security combinations**: Enable authentication scenarios like (OAuth2 AND API Key) OR (Basic Auth) OR (mTLS) where clients can choose their preferred method
-- **Proprietary method integration**: Seamlessly combine standard OpenAPI authentication with Tyk's proprietary methods (mTLS, HMAC) using the same flexible logic
+- **Flexible security combinations**: Enable authentication scenarios like "OAuth2 OR Auth Token" where clients can choose their preferred method
+- **Proprietary method integration**: Seamlessly combine standard OpenAPI authentication with Tyk's proprietary methods (Custom Authentication plugin, HMAC) using the same flexible logic
 - **Standards compliance**: Follow OpenAPI security specification patterns that developers expect
 
 Backward compatibility guaranteed:
@@ -236,8 +236,8 @@ Added OpenAPI Specification compliant multi-authentication support for Tyk OAS A
 
 **Compliant mode (new)**
 - Processes all entries in the OpenAPI `security` section sequentially, not just the first entry
-- Supports a local `security` section in the Tyk vendor extension for proprietary authentication methods (mTLS, HMAC)
-- Uses AND logic within each security entry and OR logic between entries, enabling flexible authentication combinations such as: (OAuth2 AND API Key) OR (Basic Auth) OR (mTLS AND HMAC)
+- Supports a local `security` section in the Tyk vendor extension for proprietary authentication methods (Custom Authentication plugin, HMAC)
+- Uses AND logic within each security entry and OR logic between entries, enabling flexible authentication combinations such as: OAuth2 OR Auth Token
 - Allows clients to authenticate using any of the defined security combinations
 
 **Legacy mode (existing behavior)**
