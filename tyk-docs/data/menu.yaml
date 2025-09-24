@@ -375,6 +375,10 @@ menu:
           path: /api-management/event-driven-apis
           category: Page
           show: True
+        - title: "Monetize Async APIs"
+          path: /api-management/monetize-event-driven-apis
+          category: Page
+          show: True
         - title: "Tyk Streams Reference"
           path: /api-management/stream-config
           category: Page
