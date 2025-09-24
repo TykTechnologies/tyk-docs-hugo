@@ -383,7 +383,7 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 ### 5.8.6 Release Notes
 
-#### Release Date 24rd September 2025
+#### Release Date 25th September 2025
 
 #### Release Highlights
 
@@ -399,7 +399,7 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----     |---- |---- |
-| 5.8.6   | MDCB v2.8.5     | MDCB v2.8.4 |
+| 5.8.6   | MDCB v2.8.4     | MDCB v2.8.4 |
 |         | Operator v1.2.0 | Operator v0.17 |
 |         | Sync v2.1.3     | Sync v2.1.1 |
 |         | Helm Chart v4.0 | Helm all versions |
