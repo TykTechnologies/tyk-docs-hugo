@@ -1097,7 +1097,7 @@ When using external TIB, this is the URL where it's reachable
 ENV: <b>TYK_DB_TIB_HOST_CONNECTIONSTRING</b><br />
 Type: `string`<br />
 
-The URL to the host. It must be in the form: `http://domain:port`.
+The URL to the host. It must be in the form: http://domain:port.
 Set this value only if you need to use external Tyk Identity Broker
 
 ### identity_broker.host.secret
@@ -1381,7 +1381,5 @@ Enable or disable sending telemetry data such as analytics, API configurations, 
 ENV: <b>TYK_DB_ESCAPEDOTSINOASPATHS</b><br />
 Type: `bool`<br />
 
-When enabled, dots in OAS field names will be escaped (to \\u002e ) and unescaped when required for compatibility with specific databases.
-
-Defaults to `false`.
+When enabled, dots in OAS field names will be escaped to \\u002e for DocumentDB compatibility
 
