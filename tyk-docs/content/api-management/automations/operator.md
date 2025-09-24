@@ -5,7 +5,6 @@ tags: ["Tyk API Management", "Tyk Sync", "Tyk Operator", "Github", "Kubernetes",
 description: Kubernetes native API management using Tyk Operator
 keywords: ["Tyk API Management", "Tyk Sync", "Tyk Operator", "Github", "Kubernetes", "Automations"]
 aliases:
-  - /product-stack/tyk-operator/advanced-configurations/custom-plugins
   - /getting-started/key-concepts/gitops-with-tyk
   - /product-stack/tyk-operator/advanced-configurations/api-categories
   - /product-stack/tyk-operator/advanced-configurations/api-versioning
@@ -37,7 +36,6 @@ aliases:
   - /tyk-stack/tyk-operator/access-an-api
   - /tyk-stack/tyk-operator/getting-started-tyk-operator
   - /tyk-stack/tyk-operator/migration
-  - /tyk-stack/tyk-operator/publish-an-api
   - /tyk-stack/tyk-operator/secure-an-api
   - /tyk-stack/tyk-operator/tyk-operator-reconciliation
 ---
