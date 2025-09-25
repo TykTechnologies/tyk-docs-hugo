@@ -32,17 +32,17 @@ For API management, FIPS matters because it ensures:
 
 Tyk provides a **FIPS-compliant package** of the Tyk Gateway (Enterprise Edition) and Tyk Pump (together, the *FIPS Tyk Product*). Please note that the FIPS Tyk Product has not been submitted to a [NIST](https://www.nist.gov/federal-information-processing-standards-fips) testing lab for validation and Tyk is not FIPS certified.. 
 
-**FIPS-compliant means** that the FIPS Tyk Product only uses FIPS 140-2 approved cryptographic algorithms (see below) while running in FIPS mode. This is only available to specific Tyk-built packages or Docker images of the FIPS Tyk Product. These packages and images are not publicly accessible.
+**FIPS-compliant** means that the FIPS Tyk Product only uses FIPS 140-2 approved cryptographic algorithms (see below) when running in FIPS mode. This is only available to specific Tyk-built packages or Docker images of the FIPS Tyk Product. These packages and images are not publicly accessible.
 
 * The FIPS Tyk Product uses the **[BoringCrypto module](https://boringssl.googlesource.com/boringssl/+/master/crypto/fipsmodule/FIPS.md#fips-140_2)**, enabling only FIPS 140-2 approved algorithms when run in FIPS mode.
 
-* These packages are distributed separately, identifiable by the `-fips` suffix (e.g. `tyk-gateway-fips`, `tyk-pump-fips`).
+* These packages are distributed separately, identifiable by the `-fips` suffix (e.g., `tyk-gateway-fips`, `tyk-pump-fips`).
 
 * The FIPS Tyk Product is available for selected enterprise-supported Linux distributions. Please [contact](https://tyk.io/contact/) your account manager for details.
 
-* The FIPS Tyk Product **has not been submitted to a NIST testing lab**. It is therefore *FIPS-compliant* per the above definition,and is not *FIPS-certified*.
+* The FIPS Tyk Product **has not been submitted to a NIST testing lab**. It is therefore *FIPS-compliant*, as per the above definition, and is not *FIPS-certified*.
 
-* Compliance applies only to the binaries we ship as part of the FIPS Tyk Product only, not to the entire system or deployment environment or otherwise. Customers remain responsible for ensuring compliance of their overall deployment.
+* Compliance applies only to the binaries we ship as part of the FIPS Tyk Product only, not to the entire system or deployment environment or otherwise. Customers remain responsible for ensuring compliance with their overall deployment.
 
 ## Configuring Tyk for FIPS Mode
 
@@ -76,7 +76,7 @@ Tyk provides compliance by ensuring that in FIPS mode, only FIPS 140-2 approved 
 
 <details> <summary><b>Can I use Tyk in FIPS mode in the Tyk Cloud environment?</b></summary>
 
-Yes, on the data plane  with hybrid gateways using the Tyk FIPS product deployed on your premises that connect to the Tyk Cloud control plane.
+Yes, on the data plane with hybrid gateways using the Tyk FIPS product deployed on your premises that connect to the Tyk Cloud control plane.
 
 </details> 
 
@@ -88,6 +88,6 @@ There is no expected impact on performance.
 
 <details> <summary><b>Are all Tyk components FIPS-compliant?</b></summary>
 
-Compliance applies only to the specific FIPS Tyk Product binaries. Other components, plugins, and integrations must be reviewed separately by customers for compliance.The Tyk FIPS Product is provided in certain linux distributions . Docker images are also available containing these binaries, however Tyk does not claim FIPS compliance at the image level, only the binaries.
+Compliance applies only to the specific FIPS Tyk Product binaries. Other components, plugins, and integrations must be reviewed separately by customers for compliance. The Tyk FIPS Product is provided in certain Linux distributions. Docker images are also available containing these binaries, however Tyk does not claim FIPS compliance at the image level, only the binaries.
 
 </details> 
