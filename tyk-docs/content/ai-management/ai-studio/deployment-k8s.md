@@ -117,7 +117,7 @@ spec:
     spec:
       containers:
       - name: ai-studio
-        image: tykio/ai-studio:latest
+        image: tykio/tyk-ai-studio:latest
         envFrom:
         - secretRef:
             name: tyk-ai-config
@@ -201,7 +201,7 @@ spec:
     spec:
       containers:
       - name: ai-studio
-        image: tykio/ai-studio:latest
+        image: tykio/tyk-ai-studio:latest
         envFrom:
         - secretRef:
             name: tyk-ai-config
@@ -315,7 +315,7 @@ spec:
     spec:
       containers:
       - name: ai-studio
-        image: tykio/ai-studio:latest
+        image: tykio/tyk-ai-studio:latest
         envFrom:
         - secretRef:
             name: tyk-ai-config
@@ -616,7 +616,7 @@ To upgrade an existing installation:
 kubectl apply -f your-deployment.yaml
 
 # Or update just the image
-kubectl set image deployment/tyk-ai-studio ai-studio=tykio/ai-studio:new-version -n tyk-ai-studio
+kubectl set image deployment/tyk-ai-studio ai-studio=tykio/tyk-ai-studio:new-version -n tyk-ai-studio
 ```
 
 ### Uninstalling
