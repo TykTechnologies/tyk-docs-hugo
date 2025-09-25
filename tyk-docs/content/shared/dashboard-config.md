@@ -1368,6 +1368,30 @@ Type: `bool`<br />
 
 This flag enables the Tyk Streaming feature.
 
+### streaming.enable_all_experimental
+ENV: <b>TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL</b><br />
+Type: `bool`<br />
+
+EnableAllExperimental indicates whether all experimental features for streaming are enabled. This is useful for testing purposes.
+
+Warning:
+  This flag should not be enabled in production environments.
+
+### notifications.certificate_expiry_monitor
+Represents the configuration for monitoring certificate expiry and metadata refresh settings.
+
+### notifications.certificate_expiry_monitor.metadata_refresh_interval_minutes
+ENV: <b>TYK_DB_NOTIFICATIONS_CERTIFICATEEXPIRYMONITOR_METADATAREFRESHINTERVALMINUTES</b><br />
+Type: `int`<br />
+
+Specifies the interval (in minutes) for refreshing certificate metadata.
+
+### notifications.certificate_expiry_monitor.warning_threshold_days
+ENV: <b>TYK_DB_NOTIFICATIONS_CERTIFICATEEXPIRYMONITOR_WARNINGTHRESHOLDDAYS</b><br />
+Type: `int`<br />
+
+Defines the threshold (in days) to trigger warnings before certificate expiry.
+
 ### labs
 Experimental and beta features configuration settings
 
