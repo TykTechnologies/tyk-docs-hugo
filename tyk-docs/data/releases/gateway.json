@@ -1,13 +1,8 @@
 {
   "home": "tyk-oss-gateway",
   "licensed": false,
-<<<<<<< HEAD
-  "latest": "5.8.5",
-  "lts": "5.8.5",
-=======
-  "latest": "5.9.2",
+  "latest": "5.8.6",
   "lts": "5.8.6",
->>>>>>> c3ecc75cf... [TT-15665] Release Notes 5.8.6 (#6920)
   "releaseNotesPath": "developer-support/release-notes/gateway",
   "5.8.5": {
     "date": "18/08/2025",
