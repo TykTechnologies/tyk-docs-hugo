@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-
+This release significantly enhances MDCB's operational reliability. We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures by implementing intelligent exponential backoff retry logic that ensures continuous operation during Redis outages and network disruptions. Additionally, we've upgraded the platform to Golang 1.24, strengthening security through the latest language improvements and maintaining our commitment to using current, supported runtime environments.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.5" >}}).
 
@@ -66,8 +66,29 @@ If you are upgrading to 2.8.5, please follow the detailed [upgrade instructions]
     ```
 #### Changelog {#Changelog-v2.8.5}
 
+#### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgrade Tyk MDCB to Golang 1.24</summary>
+
+Tyk MDCB has been upgraded to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying current with the latest Go versions.
+</details>
+</li>
+</ul>
+
 ##### Fixed
 
+<ul>
+<li>
+<details>
+<summary>Enhanced Redis Connection Resilience with Intelligent Retry Logic</summary>
+
+We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures. The system now implements robust exponential backoff retry logic that continues indefinitely until successful reconnection, ensuring your API infrastructure maintains continuous operation during Redis outages, network disruptions, or server restarts. Previously, MDCB would attempt only a single reconnection before silently abandoning the sync process while appearing healthy, leaving Gateways without updates. With this enhancement, both pub/sub and keyspace listeners automatically recover from transient Redis issues, provide clear logging of retry attempts for improved observability, and eliminate the need for manual MDCB restarts to restore synchronization.
+</details>
+</li>
+</ul>
 
 ### 2.8.4 Release Notes
 
