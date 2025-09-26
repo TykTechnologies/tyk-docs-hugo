@@ -66,7 +66,7 @@ If you are upgrading to 2.8.5, please follow the detailed [upgrade instructions]
     ```
 #### Changelog {#Changelog-v2.8.5}
 
-#### Changed
+##### Changed
 
 <ul>
 <li>
