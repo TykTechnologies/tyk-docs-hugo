@@ -28,7 +28,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-
+This release strengthens Tyk Pump's security foundation with updates, including an upgrade to Golang 1.24 for enhanced runtime security and the resolution of two CVEs (CVE-2025-22871 and CVE-2025-22869), ensuring robust protection against identified security vulnerabilities.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.2" >}}) below.
 
@@ -65,7 +65,32 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 
 #### Changelog {#Changelog-v1.12.2}
 
-##### Fixed
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgrade Tyk Pump to Golang 1.24</summary>
+
+Tyk Pump has been upgraded to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying current with the latest Go versions.
+</details>
+</li>
+</ul>
+
+##### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+Fixed the following high-priority CVEs identified in Tyk Pump, providing increased protection against security
+vulnerabilities:<br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22871" target="_blank">CVE-2025-22871</a><br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22869" target="_blank">CVE-2025-22869</a>
+</details>
+</li>
+</ul>
+
 
 ### 1.12.1 Release Notes
 
