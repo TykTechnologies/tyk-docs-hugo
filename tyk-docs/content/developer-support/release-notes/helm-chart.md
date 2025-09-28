@@ -28,7 +28,7 @@ Our minor releases are supported until our next minor comes out.
 #### Release Date xx
 
 #### Release Highlights
-Tyk Charts 4.0.1 is a version alignment release that ensures compatibility with Tyk Gateway and Dashboard v5.10.0 (latest) and v5.8.6 (LTS). No functional changes have been implemented in this release.
+Tyk Charts 4.0.1 is a version alignment release that ensures compatibility with the most recent Tyk LTS release [5.8.6]({{< ref "developer-support/release-notes/dashboard#585-release-notes" >}}). No functional changes have been implemented in this release.
 
 #### Breaking Changes
 This release has no breaking changes.
