@@ -32,7 +32,7 @@ Tyk Sync 2.1.1 was accidentally also released to [DockerHub](https://hub.docker.
 #### Release Date xx
 
 #### Release Highlights
-Tyk Sync 2.1.4 is a version alignment release that ensures compatibility with Tyk Gateway and Dashboard v5.10.0 (latest) and v5.8.6 (LTS). No functional changes have been implemented in this release.
+Tyk Sync 2.1.4 is a version alignment release that ensures compatibility with the most recent Tyk LTS release [5.8.6]({{< ref "developer-support/release-notes/dashboard#586-release-notes" >}}). No functional changes have been implemented in this release.
 
 #### Breaking Changes
 This release has no breaking changes.
