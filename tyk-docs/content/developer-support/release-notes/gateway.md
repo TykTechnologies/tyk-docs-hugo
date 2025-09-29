@@ -65,7 +65,7 @@ There are no breaking changes in this release.
 | 5.9.2  | MDCB v2.8.4       | MDCB v2.8.4 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.3       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | Pump v1.12.1      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
@@ -128,7 +128,7 @@ There are no breaking changes in this release.
 | 5.9.1  | MDCB v2.8.3       | MDCB v2.8.3 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | Pump v1.12.0      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
@@ -282,7 +282,7 @@ This issue will be fixed in Tyk 5.9.1, where we're going to make negate field op
 | 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | Pump v1.12.0      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
