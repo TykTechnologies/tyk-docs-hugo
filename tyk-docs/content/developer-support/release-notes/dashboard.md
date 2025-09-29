@@ -58,7 +58,7 @@ There are no breaking changes in this release.
 | 5.9.2  | MDCB v2.8.4       | MDCB v2.8.4 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.3       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | EDP v1.14.1       | EDP all versions |
 |        | Pump v1.12.1      | Pump all versions |
 |        | TIB (if using standalone) v1.7.0 | TIB all versions |
@@ -149,7 +149,7 @@ Since 5.9.0, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint 
 | 5.9.1  | MDCB v2.8.3       | MDCB v2.8.3 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | EDP v1.14.0       | EDP all versions |
 |        | Pump v1.12.0      | Pump all versions |
 |        | TIB (if using standalone) v1.7.0 | TIB all versions |
@@ -230,7 +230,7 @@ Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (
 | 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | EDP v1.14.0       | EDP all versions |
 |        | Pump v1.12.0      | Pump all versions |
 |        | TIB (if using standalone) v1.7.0 | TIB all versions |
