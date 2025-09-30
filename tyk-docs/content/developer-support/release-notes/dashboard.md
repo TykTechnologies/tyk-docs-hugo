@@ -78,7 +78,7 @@ Perfect for teams managing multiple API versions or planning version rollout str
 The Tyk Dashboard now provides proactive certificate lifecycle management to help prevent service outages caused by expired mTLS certificates.
 
 Proactive monitoring capabilities:
-- **Event-driven alerts**: Certificate expiry events now available in the Tyk OAS API Designer for webhook and event handler configuration
+- **Event-driven alerts**: Certificate expiry events are now available in the Tyk OAS API Designer for webhook and event handler configuration
 - **Dashboard API notifications**: New endpoint provides programmatic access to certificate status information
   - **Smart monitoring**: Automatic detection of certificates approaching expiry or already expired with configurable warning thresholds
   - **Duplicate prevention**: Intelligent notification system prevents alert flooding while ensuring visibility
@@ -137,7 +137,8 @@ If you are upgrading to 5.10.0, please follow the detailed [upgrade instructions
     docker pull tykio/tyk-dashboard:v5.10.0
     ```
 - Helm charts
-  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
 Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Dashboard. You will need to modify them to install v5.10.0.
 
 #### Changelog {#Changelog-v5.10.0}
@@ -162,7 +163,7 @@ Completely redesigned the versioning experience for Tyk OAS APIs with an intuiti
 
 - **New "Versions" tab**: Unified interface displaying version identifier configuration and complete version list for both base and child APIs
 - **Pre-configuration support**: Set up version identifier location, key name, and proxy options before creating any child versions, preparing non-versioned APIs to become base APIs
-- **Clear configuration visibility**: Version identifier and proxy settings prominently displayed above version list
+- **Clear configuration visibility**: Version identifier and proxy settings prominently displayed above the version list
 - **Inline editing capabilities**: Edit version names directly for any API version, and modify versioning configuration from the base API
 - **Streamlined access**: Create new versions from any API (base or child) with direct access to the creation wizard
 
@@ -180,7 +181,7 @@ This enhancement significantly simplifies API versioning workflows and provides 
 <details>
 <summary>Certificate expiry notifications and event handling</summary>
 
-Added comprehensive certificate expiry monitoring capabilities to help administrators proactively manage certificate lifecycles and prevent service outages.
+Added certificate expiry monitoring capabilities to help administrators proactively manage certificate lifecycles and prevent service outages.
 
 **Event handling integration**
 
@@ -198,7 +199,7 @@ Added comprehensive certificate expiry monitoring capabilities to help administr
 - **Rich metadata**: Each notification includes certificate ID, expiry date, days remaining, and other relevant details
 - **Duplicate prevention**: Hash-based system prevents duplicate notifications for the same certificate status
 
-Note: This release provides the foundational API and event integration for certificate monitoring. Enhanced UI functionality for certificate management will be available in a future release.
+**Note:** This release provides the foundational API and event integration for certificate monitoring. Enhanced UI functionality for certificate management will be available in a future release.
 
 This enhancement provides multiple layers of certificate expiry visibility through Gateway events and API-based notifications, ensuring administrators can maintain certificate health across their API infrastructure.
 </details>
@@ -212,9 +213,9 @@ Updated the Tyk OAS API Designer to support multiple claim sources for JWT authe
 
 **UI enhancements**
 
-- **Multiple subject claims**: Replace single "Subject identity claim" field with support for multiple claim sources
-- **Multiple policy claims**: Replace single "Policy claim" field with support for multiple claim mapping sources
-- **Multiple scope claims**: Replace single "Scope claim" field with support for multiple scope claim sources
+- **Multiple subject claims**: Replace the single "Subject identity claim" field with support for multiple claim sources
+- **Multiple policy claims**: Replace the single "Policy claim" field with support for multiple claim mapping sources
+- **Multiple scope claims**: Replace the single "Scope claim" field with support for multiple scope claim sources
 
 **Current implementation**
 
@@ -225,7 +226,7 @@ Updated the Tyk OAS API Designer to support multiple claim sources for JWT authe
 
 This enhancement supports scenarios where different Identity Providers use different claim names (e.g., Keycloak's `scope` vs Okta's `scp`) within the same API configuration, laying the foundation for comprehensive JWT claim validation workflows.
 
-Note: Full API Designer integration for these fields will be available in a future release.
+**Note:** Full API Designer integration for these fields will be available in a future release.
 </details>
 </li>
 
@@ -247,9 +248,9 @@ Added initial support for OpenAPI Specification compliant multi-authentication c
 - OpenAPI import with automatic authentication configuration continues to configure legacy mode by default (no change to existing behavior)
 - Advanced authentication combinations (OR logic between security entries) must be configured directly in the API definition
 
-This enhancement provides the foundation for OpenAPI compliant authentication workflows while maintaining full backward compatibility with existing authentication configurations.
+This enhancement provides the foundation for OpenAPI compliant authentication workflows while maintaining complete backward compatibility with existing authentication configurations.
 
-Note: Full integration for compliant mode authentication configuration will be available in a future release.
+**Note:** Full integration for compliant mode authentication configuration will be available in a future release.
 </details>
 </li>
 
@@ -287,12 +288,12 @@ Fixed UI issues in policy and key management that caused confusion and unnecessa
 
 Fixed some issues in the Tyk OAS API Debugger (Test Your API panel) when inspecting API tests:
 
-- the debugger only displayed request middleware execution, omitting response middleware from the debug output
-- the debugger did not show the details of the transformations applied by Request Body Transform and Request Header Transform middleware
-- the debugger incorrectly reported errors for endpoints using Response Body Transform middleware, even when API calls completed successfully
+- The debugger only displayed request middleware execution, omitting response middleware from the debug output
+- The debugger did not show the details of the transformations applied by Request Body Transform and Request Header Transform middleware
+- The debugger incorrectly reported errors for endpoints using Response Body Transform middleware, even when API calls completed successfully
 
 
-The test debugger now correctly shows both request and response middleware execution,and accurately displays the execution status and eliminates false error messages that could mislead developers during API testing and troubleshooting.
+The test debugger now correctly shows both request and response middleware execution, accurately displays the execution status, and eliminates false error messages that could mislead developers during API testing and troubleshooting.
 </details>
 </li>
 
@@ -306,20 +307,20 @@ Fixed an issue where the Tyk Dashboard did not correctly apply a default `page_s
 
 <li>
 <details>
-<summary>Fixed multiple issues with creation of child versions of Tyk OAS APIs</summary>
+<summary>Fixed multiple issues with the creation of child versions of Tyk OAS APIs</summary>
 
-Fixed several issues that affected creation of new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
+Fixed several issues that affected the creation of new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
 
 UI and API Creation:
 - Resolved an issue that prevented users from creating new versions via the API Designer's Manage Versions screen
-- Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully but leave it invisible in the Dashboard UI
+- Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully, but leave it invisible in the Dashboard UI
 - Added stricter validation for version names - users can no longer create API versions without specifying a valid `new_version_name`, preventing unusable or empty version entries
 - Improved error messaging when the `base_api_version_name` parameter is missing or incorrectly specified
 
 Version Management:
 - Fixed an issue where creating new child versions would incorrectly reset the default version back to the base API, overriding previously configured settings
 
-The system now provides comprehensive validation with clear error responses (`HTTP 400 Bad Request` and `HTTP 422 Unprocessable Entity`), ensures all API versions have meaningful identifiers, and maintains proper default version settings during child version creation.
+The system now provides comprehensive validation with clear error responses (`HTTP 400 Bad Request` and `HTTP 422 Unprocessable Entity`), ensures that all API versions have meaningful identifiers, and maintains proper default version settings during the creation of child versions.
 </details>
 </li>
 
@@ -335,7 +336,7 @@ Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint incorrectly r
 <details>
 <summary>Fixed OpenAPI `servers` section handling for regex-based custom domains</summary>
 
-Fixed an issue where custom domains containing regular expressions were not correctly parsed and stored in the `servers` section of OpenAPI descriptions for Tyk OAS APIs. The Dashboard now properly converts regex-based domains into valid OpenAPI `servers` entries with appropriate variables, ensuring accurate API documentation and preventing validation errors during API editing. This fix includes enhanced syntax validation for regex patterns and improved capture group handling that previously could cause Gateway crashes.
+Fixed an issue where custom domains containing regular expressions were not correctly parsed and stored in the `servers` section of OpenAPI descriptions for Tyk OAS APIs. The Dashboard now properly converts regex-based domains into valid OpenAPI `servers` entries with appropriate variables, ensuring accurate API documentation and preventing validation errors during API editing. This fix includes enhanced syntax validation for regular expression (regex) patterns and improved capture group handling, which previously could cause Gateway crashes.
 </details>
 </li>
 
@@ -343,7 +344,7 @@ Fixed an issue where custom domains containing regular expressions were not corr
 <details>
 <summary>Fixed delayed application of global webhook changes for Tyk OAS APIs</summary>
 
-Fixed an issue where updates to [global webhooks]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) were not immediately applied to Tyk OAS APIs using those webhooks. When global webhook configurations were modified, the Gateway would continue using the previous settings for affected Tyk OAS APIs until a manual reload occurred. The system now automatically triggers a Gateway reload for all impacted Tyk OAS APIs when global webhook configurations are changed, ensuring updated webhook settings take effect immediately.
+Fixed an issue where updates to [global webhooks]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) were not immediately applied to Tyk OAS APIs using those webhooks. When global webhook configurations were modified, the Gateway would continue using the previous settings for affected Tyk OAS APIs until a manual reload occurred. The system now automatically triggers a Gateway reload for all impacted Tyk OAS APIs when global webhook configurations are updated, ensuring that the new webhook settings take effect immediately.
 </details>
 </li>
 
@@ -367,7 +368,7 @@ Fixed an issue where orphaned child versions of a Tyk OAS API would disappear fr
 <details>
 <summary>Fixed inconsistent ordering of Tyk OAS API versions in Dashboard UI</summary>
 
-Fixed an issue where the child versions of a Tyk OAS API were sorted by creation date in the **Created APIs** and alphabetically by version name (e.g. v1, v2) in the **Versions** list. Now versions are always sorted alphabetically by version name, providing predictable and controllable ordering. 
+Fixed an issue where the child versions of a Tyk OAS API were sorted by creation date in the **Created APIs** and alphabetically by version name (e.g., v1, v2) in the **Versions** list. Now versions are always sorted alphabetically by version name, providing predictable and controllable ordering. 
 </details>
 </li>
 
