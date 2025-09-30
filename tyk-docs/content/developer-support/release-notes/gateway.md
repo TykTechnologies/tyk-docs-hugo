@@ -373,7 +373,9 @@ Fixed an issue where Tyk OAS mock response middleware failed to execute when int
 <details>
 <summary>Base API CORS settings incorrectly applied to child API versions</summary>
 
-Fixed an issue where CORS settings from the base API were incorrectly applied to all versions of a Tyk OAS API, preventing child API versions from using their own CORS configuration. This occurred because the CORS check was performed before the request was routed to the correct API version. The processing order has been corrected so that requests are first routed to the appropriate version (base or child), then the correct CORS settings are applied, allowing each API version to have its own CORS configuration.
+Fixed an issue where CORS settings from the base API were incorrectly applied to all versions of a Tyk OAS API, preventing child API versions from using their own CORS configuration. This occurred because the CORS check was performed before the request was routed to the correct API version.
+
+The processing order has been corrected so that requests are first routed to the appropriate version (base or child), then the correct CORS settings are applied, allowing each API version to have its own CORS configuration.
 </details>
 </li>
 
@@ -389,7 +391,9 @@ Fixed an issue where Response Body Transformation middleware failed to apply to 
 <details>
 <summary>Fixed duration format validation errors in Tyk OAS API definitions</summary>
 
-Resolved an issue where the Gateway automatically converted Readable Duration values (such as uptime test timeouts) in Tyk OAS API definitions from integer-based formats to decimal formats, which triggered schema validation warnings. The effect of this was seen in the Tyk OAS API editor in the Dashboard UI where, for example, a duration of '4s500ms' would be converted to '4.5s' when reopening an API definition. Duration values are now consistently serialized and maintained in their original, integer-based format, preventing these validation errors.
+Resolved an issue where the Gateway automatically converted Readable Duration values (such as uptime test timeouts) in Tyk OAS API definitions from integer-based formats to decimal formats, which triggered schema validation warnings. The effect of this was seen in the Tyk OAS API editor in the Dashboard UI where, for example, a duration of '4s500ms' would be converted to '4.5s' when reopening an API definition. 
+
+Duration values are now consistently serialized and maintained in their original, integer-based format, preventing these validation errors.
 </details>
 </li>
 
@@ -413,7 +417,9 @@ Fixed a bug where deleting an API with the Uptime Test feature enabled could cau
 <details>
 <summary>Fixed Gateway re-registration failures after restart</summary>
 
-Fixed an issue where Gateways could fail to re-register with the Dashboard after a restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
+Fixed an issue where Gateways could fail to re-register with the Dashboard after a restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. 
+
+The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
 </details>
 </li>
 
@@ -421,8 +427,9 @@ Fixed an issue where Gateways could fail to re-register with the Dashboard after
 <details>
 <summary>Fixed body decompression errors with GraphQL APIs when analytics is enabled</summary>
 
-Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in End of File (EOF) errors. The Gateway now properly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
+Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in End of File (EOF) errors. 
 
+The Gateway now properly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
 </details>
 </li>
 
@@ -438,7 +445,9 @@ Fixed an issue where users could create child Tyk OAS API versions using the `/t
 <details>
 <summary>Fixed inconsistent middleware updates for Tyk OAS API `PATCH` requests</summary>
 
-Fixed an issue where updating a Tyk OAS API via `PATCH /tyk/apis/oas/{apiId}` did not properly update the Tyk Vendor Extension (`x-tyk-api-gateway`). When endpoints were removed or modified in the OpenAPI description, their corresponding middleware definitions could persist incorrectly in the vendor extension, leaving the API definition in an inconsistent state. The vendor extension is now correctly rebuilt to reflect all changes made to the OpenAPI description.
+Fixed an issue where updating a Tyk OAS API via `PATCH /tyk/apis/oas/{apiId}` did not properly update the Tyk Vendor Extension (`x-tyk-api-gateway`). When endpoints were removed or modified in the OpenAPI description, their corresponding middleware definitions could persist incorrectly in the vendor extension, leaving the API definition in an inconsistent state. 
+
+The vendor extension is now correctly rebuilt to reflect all changes made to the OpenAPI description.
 </details>
 </li>
 
