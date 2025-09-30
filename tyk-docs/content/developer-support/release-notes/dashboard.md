@@ -104,7 +104,7 @@ If you are upgrading to 5.9.2, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-dashboard:v5.9.2
     ```
 - Helm charts
-  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Dashboard. You will need to modify them to install v5.9.2.
 
 #### Changelog {#Changelog-v5.9.2}
@@ -181,7 +181,7 @@ If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-dashboard:v5.9.1
     ```
 - Helm charts
-  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 
 #### Changelog {#Changelog-v5.9.1}
 
@@ -262,7 +262,7 @@ If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-dashboard:v5.9.0
     ```
 - Helm charts
-  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 
 #### Changelog {#Changelog-v5.9.0}
 
