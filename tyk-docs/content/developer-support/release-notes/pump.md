@@ -83,7 +83,8 @@ Tyk Pump has been upgraded to [Golang 1.24](https://tip.golang.org/doc/go1.24), 
 <li>
 <details>
 <summary>High priority CVEs fixed</summary>
-Fixed the following high-priority CVEs identified in Tyk Pump, providing increased protection against security
+Fixed the following high-priority CVEs identified in Tyk Pump, providing increased protection against security threats.
+
 vulnerabilities:<br>
 - <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22871" target="_blank">CVE-2025-22871</a><br>
 - <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22869" target="_blank">CVE-2025-22869</a>
