@@ -146,7 +146,7 @@ When Tyk generates an [event]({{< ref "api-management/gateway-events#event-types
 - `cert_id` (string): the certificate ID
 - `cert_name` (string): the name of the certificate
 - `expired_at` (string, RFC3339): the date when the certificate expired
-- `days_since_expiry` (integer): the amount of days since the certificate expired
+- `days_since_expiry` (integer): the number of days since the certificate expired
 - `api_id`(string): the ID of the API that triggered the event
 
 {{< tab_end >}}
