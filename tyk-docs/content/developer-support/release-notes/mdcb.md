@@ -34,7 +34,8 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release significantly enhances MDCB's operational reliability. We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures by implementing intelligent exponential backoff retry logic that ensures continuous operation during Redis outages and network disruptions. Additionally, we've upgraded the platform to Golang 1.24, strengthening security through the latest language improvements and maintaining our commitment to using current, supported runtime environments.
+This release enhances the operational reliability of MDCB. We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures by implementing intelligent exponential backoff retry logic, ensuring continuous operation during Redis outages and network disruptions.
+Additionally, we've upgraded the platform to Golang 1.24, strengthening security through the latest language improvements and maintaining our commitment to using current, supported runtime environments.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.5" >}}).
 
