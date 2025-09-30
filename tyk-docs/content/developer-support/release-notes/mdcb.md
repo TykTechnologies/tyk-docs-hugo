@@ -86,7 +86,11 @@ Tyk MDCB has been upgraded to [Golang 1.24](https://tip.golang.org/doc/go1.24), 
 <details>
 <summary>Enhanced Redis Connection Resilience with Intelligent Retry Logic</summary>
 
-We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures. The system now implements robust exponential backoff retry logic that continues indefinitely until successful reconnection, ensuring your API infrastructure maintains continuous operation during Redis outages, network disruptions, or server restarts. Previously, MDCB would attempt only a single reconnection before silently abandoning the sync process while appearing healthy, leaving Gateways without updates. With this enhancement, both pub/sub and keyspace listeners automatically recover from transient Redis issues, provide clear logging of retry attempts for improved observability, and eliminate the need for manual MDCB restarts to restore synchronization.
+We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures. The system now implements robust exponential backoff retry logic that continues indefinitely until a successful reconnection is achieved, ensuring your API infrastructure maintains continuous operation during Redis outages, network disruptions, or server restarts. 
+
+Previously, MDCB would attempt only a single reconnection before silently abandoning the sync process while appearing healthy, leaving Gateways without updates. 
+
+With this enhancement, both pub/sub and keyspace listeners automatically recover from transient Redis issues, provide clear logging of retry attempts for improved observability, and eliminate the need for manual MDCB restarts to restore synchronization.
 </details>
 </li>
 </ul>
