@@ -104,10 +104,9 @@ Tyk Gateway now provides enterprise-grade JWT validation capabilities exclusivel
 
 This enhancement makes Tyk's JWT middleware the primary validation mechanism for complex enterprise authentication scenarios, providing the flexibility needed for modern Identity Provider integrations while maintaining backward compatibility.
 
-Perfect for organizations requiring sophisticated JWT validation beyond standard token checks.
+Ideal for organizations that require sophisticated JWT validation beyond standard token checks.
 
 For more details, please see the dedicated [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#managing-authorization-with-jwt" >}}) section.
-
 
 ##### Advanced JWKS Cache Management for Tyk OAS APIs
 
@@ -128,7 +127,6 @@ This enhancement is particularly valuable for organizations migrating to Tyk OAS
 
 For more details, please see the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#jwt-signatures" >}}) section.
 
-
 ##### Centralized External Service Configuration
 
 Tyk Gateway now provides unified configuration for all external service connections through the new
@@ -136,7 +134,7 @@ Tyk Gateway now provides unified configuration for all external service connecti
 
 - **Proxy configuration**: Apply proxy settings globally or per service, with automatic support for standard environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`)
 - **mTLS certificate management**:Centralized certificate configuration for secure connections to external services
-- **Comprehensive service coverage**: Covers all external integrations including databases, OAuth providers, and webhook endpoints
+- **Comprehensive service coverage**: Covers all external integrations, including databases, OAuth providers, and webhook endpoints
 
 This improvement simplifies deployment in enterprise environments where proxy servers and certificate management are critical, while maintaining full backward compatibility with existing configurations.
 
@@ -147,7 +145,6 @@ This improvement simplifies deployment in enterprise environments where proxy se
 - Consistent external service connection handling across all Tyk components
 
 For more details, please see the dedicated [section]({{< ref "configure/external-service" >}}).
-
 
 ##### Proactive Certificate Expiry Monitoring
 
@@ -172,7 +169,6 @@ These events integrate seamlessly with existing monitoring and alerting systems 
 Perfect for organizations managing multiple certificates across complex API infrastructures where manual tracking becomes impractical.
 
 For more details, please see the dedicated [Gateway events]({{< ref "api-management/gateway-events" >}}) section.
-
 
 #### Breaking Changes
 
@@ -266,12 +262,12 @@ Tyk OAS APIs now support comprehensive validation of JWT registered claims, exte
 **Custom claim validation framework**
 
 - **Flexible validation rules**: Define validation for any custom JWT claim using three rule types: `required` (claim must exist), `exact_match` (claim equals specific values), or `contains` (claim contains specific values)
-- **Advanced data support**: Handle string, number, boolean, and array data types with nested claim access using dot notation (e.g. `user.department`)
+- **Advanced data support**: Handle string, number, boolean, and array data types with nested claim access using dot notation (e.g., `user.department`)
 - **Non-blocking validation**: Configure rules to log warnings instead of rejecting requests for monitoring and gradual enforcement scenarios
 
-These features enable advanced use cases like role-based access control, department validation, and custom permission schemes while maintaining backward compatibility with existing JWT configurations.
+These features enable advanced use cases, such as role-based access control, department validation, and custom permission schemes, while maintaining backward compatibility with existing JWT configurations.
 
-Note: Available only for Tyk OAS APIs and configured directly in the API definition via the Tyk Vendor Extension.
+**Note:** Available only for Tyk OAS APIs and configured directly in the API definition via the Tyk Vendor Extension.
 </details>
 </li>
 
@@ -286,7 +282,7 @@ Configurable cache timeout - Tyk OAS APIs can now specify custom cache timeout v
 - Cache invalidation API - Administrators can now manually invalidate JWKS cache entries via new Gateway API endpoints (`DELETE /tyk/cache/jwks/{apiID}` and `DELETE /tyk/cache/jwks`), either targeting specific APIs or purging all cached JWKS data. This enables immediate cache refresh when Identity Provider keys are rotated.
 - Automatic pre-fetching - For Tyk OAS APIs, JWKS data is now automatically fetched and cached when API definitions are loaded, eliminating cold-start delays for JWT validation. Pre-fetching includes comprehensive logging of fetch attempts and results, and failures do not prevent API initialization.
 
-Note: For Tyk Classic APIs, JWKS caching behavior remains unchanged with on-demand fetching during token validation using the default cache timeout (60 seconds). Cache invalidation via the new API endpoints works for both Classic and OAS APIs.
+**Note:** For Tyk Classic APIs, JWKS caching behavior remains unchanged with on-demand fetching during token validation using the default cache timeout (60 seconds). Cache invalidation via the new API endpoints works for both Classic and OAS APIs.
 
 These enhancements improve JWT validation performance for Tyk OAS APIs and provide administrators with better tools for managing JWKS cache lifecycle when Identity Provider keys change.
 </details>
@@ -310,7 +306,7 @@ Tyk Gateway can now apply proxy settings from standard environment variables (`H
 Introduced a proactive event system to warn administrators when mTLS certificates are approaching expiry. The Gateway now emits two new [API events]({{< ref "api-management/gateway-events#api-events" >}}) to provide visibility into certificate status:
 
 - `CertificateExpiringSoon` - Generated when a certificate is used in an API request (either client-to-Gateway or Gateway-to-upstream) within a configurable time period of its expiry date
-- `CeretificateExpired` - Generated when an attempt is made to use an already expired certificate, in addition to the standard error response sent to the API client
+- `CertificateExpired` - Generated when an attempt is made to use an already expired certificate, in addition to the standard error response sent to the API client
 
 A cooldown mechanism prevents event flooding by throttling the generation of these notifications. The threshold for the `CertificateExpiringSoon` event and cooldown parameters are configured in the Gateway configuration:
 
@@ -346,13 +342,12 @@ Implemented changes to the validation of Tyk OAS API definitions to support the 
 </li>
 </ul>
 
-
 ##### Fixed
 
 <ul>
 <li>
 <details>
-<summary>Fixed panic when unexpected query parameter provided to Gateway API</summary>
+<summary>Fixed panic when an unexpected query parameter is provided to the Gateway API</summary>
 
 Fixed an issue where sending certain unexpected query parameters to the `GET /tyk/apis/oas/{id}` endpoint could cause a panic.
 </details>
@@ -362,7 +357,7 @@ Fixed an issue where sending certain unexpected query parameters to the `GET /ty
 <details>
 <summary>Fixed duplication of version identifier configuration when importing OpenAPI description</summary>
 
-Fixed an issue where importing an OpenAPI description with an `apiKey` security scheme, while using the `authentication` query parameter, resulted in the unnecessary generation of a `header` object within the Tyk Vendor Extension (`x-tyk-api-gateway`) duplicating information already present in the declared OpenAPI security scheme.
+Fixed an issue where importing an OpenAPI description with an `apiKey` security scheme, while using the `authentication` query parameter, resulted in the unnecessary generation of a `header` object within the Tyk Vendor Extension (`x-tyk-api-gateway`), duplicating information already present in the declared OpenAPI security scheme.
 </details>
 </li>
 
@@ -394,7 +389,7 @@ Fixed an issue where Response Body Transformation middleware failed to apply to 
 <details>
 <summary>Fixed duration format validation errors in Tyk OAS API definitions</summary>
 
-Resolved an issue where the Gateway automatically converted Readable Duration values (such as uptime test timeouts) in Tyk OAS API definitions from integer-based formats to decimal formats, which triggered schema validation warnings. The effect of this was seen in the Tyk OAS API editor in the Dashboard UI where, for example, a duration of '4s500ms' would be converted to '4.5s' when reopening an API definition. Duration values are now consistently serialized and maintained in their original integer-based format to prevent these validation errors.
+Resolved an issue where the Gateway automatically converted Readable Duration values (such as uptime test timeouts) in Tyk OAS API definitions from integer-based formats to decimal formats, which triggered schema validation warnings. The effect of this was seen in the Tyk OAS API editor in the Dashboard UI where, for example, a duration of '4s500ms' would be converted to '4.5s' when reopening an API definition. Duration values are now consistently serialized and maintained in their original, integer-based format, preventing these validation errors.
 </details>
 </li>
 
@@ -418,15 +413,15 @@ Fixed a bug where deleting an API with the Uptime Test feature enabled could cau
 <details>
 <summary>Fixed Gateway re-registration failures after restart</summary>
 
-Fixed an issue where Gateways could fail to re-register with the Dashboard after restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
+Fixed an issue where Gateways could fail to re-register with the Dashboard after a restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
 </details>
 </li>
 
 <li>
 <details>
-<summary>Fixed body decompression errors with GraphQL APIs when analytics enabled</summary>
+<summary>Fixed body decompression errors with GraphQL APIs when analytics is enabled</summary>
 
-Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in EOF (End of File) errors. The Gateway now properly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
+Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in End of File (EOF) errors. The Gateway now properly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
 
 </details>
 </li>
