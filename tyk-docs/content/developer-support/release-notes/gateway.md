@@ -65,7 +65,7 @@ There are no breaking changes in this release.
 | 5.9.2  | MDCB v2.8.4       | MDCB v2.8.4 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.3       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | Pump v1.12.1      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
@@ -94,7 +94,7 @@ If you are upgrading to 5.9.2, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.9.2
     ``` 
 - Helm charts
-  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Gateway. You will need to modify them to install v5.9.2.
 
 - [Source code tarball of Tyk Gateway v5.9.2](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.2)
@@ -128,7 +128,7 @@ There are no breaking changes in this release.
 | 5.9.1  | MDCB v2.8.3       | MDCB v2.8.3 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | Pump v1.12.0      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
@@ -157,7 +157,7 @@ If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.9.1
     ``` 
 - Helm charts
-  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 
 - [Source code tarball of Tyk Gateway v5.9.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.1)
 
@@ -282,7 +282,7 @@ This issue will be fixed in Tyk 5.9.1, where we're going to make negate field op
 | 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.2       | Sync v2.1.0 |
-|        | Helm Chart v3.1.0 | Helm all versions |
+|        | Helm Chart v4.0   | Helm all versions |
 |        | Pump v1.12.0      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools
@@ -311,7 +311,7 @@ If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.9.0
     ``` 
 - Helm charts
-  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 
 - [Source code tarball of Tyk Gateway v5.9.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.0)
 
