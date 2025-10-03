@@ -976,7 +976,7 @@ TYK_PMP_PUMPS_ELASTICSEARCH_META_BULKCONFIG_FLUSHINTERVAL=60
 
 This is a step by step guide to setting up [Moesif API Analytics and Monetization platform](https://www.moesif.com/solutions/track-api-program?language=tyk-api-gateway&utm_medium=docs&utm_campaign=partners&utm_source=tyk) to understand [customer API usage](https://www.moesif.com/features/api-analytics?utm_medium=docs&utm_campaign=partners&utm_source=tyk) and [setup usage-based billing](https://www.moesif.com/solutions/metered-api-billing?utm_medium=docs&utm_campaign=partners&utm_source=tyk).
 
-We also have a [blog post](https://tyk.io/tyk-moesif-the-perfect-pairing/) which highlights how Tyk and Moesif work together.
+We also have a [blog post](https://tyk.io/blog/tyk-moesif-the-perfect-pairing/) which highlights how Tyk and Moesif work together.
 
 The assumptions are that you have Docker installed and Tyk Self-Managed already running.
 See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.
@@ -984,7 +984,7 @@ See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.
 
 #### Overview 
 
-With the Moesif Tyk plugin, your API logs are sent to Moesif asynchronously to provide analytics on customer API usage along with your API payloads like JSON and XML. This plugin also enables you to monetize your API with [billing meters](https://www.moesif.com/solutions/metered-api-billing?utm_medium=docs&utm_campaign=partners&utm_source=tyk) and provide a self-service onboarding experience. Moesif also collects information such as the authenticated user (AliasId or OAuthId) to identify customers using your API. An overview on how Moesif and Tyk works together is [available here](https://tyk.io/tyk-moesif-the-perfect-pairing/).
+With the Moesif Tyk plugin, your API logs are sent to Moesif asynchronously to provide analytics on customer API usage along with your API payloads like JSON and XML. This plugin also enables you to monetize your API with [billing meters](https://www.moesif.com/solutions/metered-api-billing?utm_medium=docs&utm_campaign=partners&utm_source=tyk) and provide a self-service onboarding experience. Moesif also collects information such as the authenticated user (AliasId or OAuthId) to identify customers using your API. An overview on how Moesif and Tyk works together is [available here](https://tyk.io/blog/tyk-moesif-the-perfect-pairing/).
 
 #### Steps for Configuration
 
