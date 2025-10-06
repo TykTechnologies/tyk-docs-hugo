@@ -14,7 +14,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-This release introduces mongobetween, a specialized MongoDB proxy that optimizes database connections
+This release introduces mongobetween, a specialized MongoDB proxy that optimizes database connections.
 
 For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.30.1" >}}) below.
 
@@ -861,6 +861,7 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
 
 
 
