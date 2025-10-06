@@ -14,9 +14,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-This release introduces mongobetween, a specialized MongoDB proxy that optimizes database connections.
-
-For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.30.1" >}}) below.
+In release 1.30.1, we've improved the stability of our database connectivity. No other changes have been added to this release.
 
 ### Breaking Changes
 
@@ -31,18 +29,7 @@ There are no deprecations in this release.
 
 ### Changelog {#Changelog-v1.30.1}
 
-#### Added
-
-<ul>
-
-<li>
-<details>
-<summary>Enhanced Database Connections</summary>
-Ara 1.30.1 introduces mongobetween to handle connection limits through a proxy. This infrastructure improvement enhances system stability, prevents connection exhaustion during peak loads, and provides better handling of database connections, resulting in more consistent performance and improved reliability for all API operations without requiring any action from customers.
-</details>
-</li> 
-
-</ul>
+There is no changelog in this release.
 
 ## 1.30.0 Release Notes
 
@@ -861,6 +848,7 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
 
 
 
