@@ -6,7 +6,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ---
 
-## 1.30 
+# 1.30 Release Notes
 
 ## 1.30.1 Release Notes
 
@@ -139,7 +139,7 @@ Users can now opt into automatic upgrades for Control Plane deployments and conf
 
 </ul>
 
-## 1.28
+# 1.28 Release Notes
 
 ## 1.28.1 Release Notes
 
@@ -861,6 +861,7 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
 
 
 
