@@ -65,10 +65,6 @@ Three different categories of *event handler* can be registered for each event:
 Remember that <b>quota usage monitoring</b> has a [dedicated mechanism]({{< ref "api-management/gateway-events#monitoring-quota-consumption" >}}) for handling these special events.
 {{< /note >}}
 
-### Event metadata
-
-When an API event is fired, if there is an *event handler* registered for that combination of API and event then the handler will be provided with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
-
 ## Event Types
 
 The built-in events that Tyk Gateway will generate are:
@@ -118,19 +114,25 @@ The built-in events that Tyk Gateway will generate are:
 
 ## Event Metadata
 
-When Tyk generates an [event]({{< ref "api-management/gateway-events#event-types" >}}) it will compile the following metadata that is passed to the event handler:
+When an event is fired, and an *event handler* is registered for that specific API and event combination, Tyk Gateway provides the handler with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}). The external system (webhook) or custom (JavaScript) code can then use this metadata to decide what action to take.
 
-{{< tabs_start >}}
-{{< tab_start "General" >}}
+Each event metadata type includes the following common fields:
 
-- `Message` (string): a human readable message from Tyk Gateway that adds detail about the event
-- `Path` (string): the path of the API endpoint request that led to the event being fired
-- `Origin` (string): origin data for the source of the request (if this exists)
-- `Key` (string): the key that was used in the request
-- `OriginatingRequest` (string): Based64-encoded [raw inbound request](#raw-request-data)
+- `message` (string): a human-readable message from Tyk Gateway that provides details about the event
+- `path` (string): the path of the API endpoint request that led to the event being fired
+- `origin` (string): origin data for the source of the request (if this exists)
+- `key` (string): the key that was used in the request
+- `originating_request` (string): a Base64-encoded [raw inbound request]({{< ref "#raw-request-data" >}})
 
-{{< tab_end >}}
-{{< tab_start "CertificateExpiringSoon" >}}
+### Specific Event Metadata
+
+In addition to the common fields, each event type provides additional metadata specific to that event. The following sections detail the additional metadata provided for each event type.
+
+<ul>
+
+<li>
+<details>
+<summary>CertificateExpiringSoon</summary>
 
 - `message` (string): a human readable message from Tyk Gateway that adds detail about the event
 - `cert_id` (string): the certificate ID
@@ -139,8 +141,12 @@ When Tyk generates an [event]({{< ref "api-management/gateway-events#event-types
 - `days_remaining` (integer): the remaining days until the certificate expires
 - `api_id`(string): the ID of the API that triggered the event
 
-{{< tab_end >}}
-{{< tab_start "CertificateExpired" >}}
+</details>
+</li>
+
+<li>
+<details>
+<summary>CertificateExpired</summary>
 
 - `message` (string): a human readable message from Tyk Gateway that adds detail about the event
 - `cert_id` (string): the certificate ID
@@ -149,8 +155,10 @@ When Tyk generates an [event]({{< ref "api-management/gateway-events#event-types
 - `days_since_expiry` (integer): the number of days since the certificate expired
 - `api_id`(string): the ID of the API that triggered the event
 
-{{< tab_end >}}
-{{< tabs_end >}}
+</details>
+</li>
+
+</ul>
 
 {{< note success >}}
 **Note**
