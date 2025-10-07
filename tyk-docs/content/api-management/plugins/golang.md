@@ -521,7 +521,8 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 {{< note warning >}}
 **Note**  
 
-The Session is set during the (custom) Authentication layer - meaning it won't be set until the middleware chain after the authentication middleware layer.    Trying to use `ctx.GetSession` in a custom auth plugin would always return an empty object.
+Tyk Gateway sets the session in the [Authentication layer]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) of the middleware chain. Because of this, the session object does not exist until the middleware chain runs after the authentication middleware. If you call `ctx.GetSession` inside a custom auth plugin, it will always return an empty object.
+
 {{< /note >}}
 
 The invocation of `ctx.GetSession(r)` returns an SessionState object.
