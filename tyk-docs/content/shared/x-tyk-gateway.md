@@ -1286,12 +1286,6 @@ PostAuthenticationPlugin configures post authentication plugins.
 Plugins configures custom plugins to be run on pre authentication stage.
 The plugins would be executed in the order of configuration in the list.
 
-### **CustomPlugins**
-
-CustomPlugins is a list of CustomPlugin objects.
-
-Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
-
 ### **PostPlugin**
 
 PostPlugin configures post plugins.
@@ -1300,12 +1294,6 @@ PostPlugin configures post plugins.
 Plugins configures custom plugins to be run on post stage.
 The plugins would be executed in the order of configuration in the list.
 
-### **CustomPlugins**
-
-CustomPlugins is a list of CustomPlugin objects.
-
-Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
-
 ### **ResponsePlugin**
 
 ResponsePlugin configures response plugins.
@@ -1313,12 +1301,6 @@ ResponsePlugin configures response plugins.
 **Field: `plugins` ([CustomPlugins](#customplugins))**
 Plugins configures custom plugins to be run on post stage.
 The plugins would be executed in the order of configuration in the list.
-
-### **CustomPlugins**
-
-CustomPlugins is a list of CustomPlugin objects.
-
-Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
 
 ### **Cache**
 
