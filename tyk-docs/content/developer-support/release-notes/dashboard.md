@@ -914,14 +914,6 @@ Fixed an issue where updates to [global webhooks]({{< ref "api-management/gatewa
 </details>
 </li>
 
-<li>
-<details>
-<summary>Fixed GraphQL API creation via upstream introspection when OPA rules modify requests</summary>
-
-Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body. The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now correctly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
-</details>
-</li>
-
 </ul>
 
 
