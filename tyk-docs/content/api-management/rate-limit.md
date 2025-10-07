@@ -342,7 +342,7 @@ The custom rate limit key capability uses only metadata objects, such as credent
 
 As mentioned above, we can easily configure custom rate limit keys for simple scenarios that do not require awareness of the request context. When more complex logic or integration with external services is required to determine the rate-limiting key, for example when you want to rate limit per requester IP address, a [custom authentication plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}) can be used to identify and generate the rate limiter key.
 
-This example demonstrates how to implement custom rate limiting using an [Authentication middleware plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}). 
+We use an authentication plugin because [it lets us modify the session object]({{< ref "api-management/plugins/plugin-types#hook-capabilities" >}}). 
 
 <br>
 
@@ -364,7 +364,6 @@ The example below shows an IP based rate limiter implemented as a custom Go plug
 
 When Tyk processes subsequent requests, it uses the IP address as the rate-limiting key, allowing you to rate-limit by IP address.
 
-#### OAS API Implementation
 
 
 ```go
