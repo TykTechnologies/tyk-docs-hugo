@@ -338,9 +338,9 @@ $tyk_meta.DeveloperID|$tyk_meta.PlanID
 The custom rate limit key capability uses only metadata objects, such as credentials metadata available in a session. Therefore, if the `rate_limit_pattern` relies on credentials metadata, this capability will work only if those values are present. If, after evaluating the `rate_limit_pattern`, its value is equal to an empty string, the rate limiter behavior defaults to rate limiting by credential IDs.
 {{< /note >}}
 
-### Custom Plugin Rate Limiter Example
+### Advanced Custom Rate Limiting
 
-We can configure custom rate limiting using the [Dashboard UI]({{< ref "#configuring-custom-rate-limit-keys" >}}) for simple request context-aware scenarios, but some use cases require complex logic or integration with external services to determine the rate-limiting key. In Tyk, [Custom Plugins]({{< ref "api-management/plugins/overview" >}}) can be used to implement such complex logic.
+As mentioned above, we can easily configure custom rate limit keys for simple scenarios that do not require awareness of the request context. When more complex logic or integration with external services is required to determine the rate-limiting key, for example when you want to rate limit per requester IP address, a [custom authentication plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}) can be used to identify and generate the rate limiter key.
 
 This example demonstrates how to implement custom rate limiting using an [Authentication middleware plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}). 
 
@@ -349,13 +349,13 @@ This example demonstrates how to implement custom rate limiting using an [Authen
 {{< note warning >}}
 **Note**  
 
-To configure custom rate limiting, we need to set the `rate_limit_pattern` in the session's metadata. We are using an authentication plugin because it lets us modify the session object. This mechanism works only for authenticated APIs, since the authentication plugin does not run for unauthenticated (keyless) APIs.
+This mechanism works only for authenticated APIs, since the authentication plugin is not invoked for unauthenticated (keyless) APIs.
 
 {{< /note >}}
 
-#### What This Does
+#### Example: Rate Limiting by IP Address
 
-The example below shows an IP based rate limiter implemented as a custom Go plugin.
+The example below shows an IP based rate limiter implemented as a custom Go plugin for a Tyk OAS API. Note that the Go library function to [obtain the API definition]({{< ref "api-management/plugins/golang#accessing-the-api-definition" >}}) is specific to Tyk OAS APIs, so you would need to modify the plugin for a Tyk Classic API.
 
 1. It extracts the client's IP address from the request
 2. Creates a session object with rate limiting parameters (2 requests per 5 seconds)
@@ -366,15 +366,14 @@ When Tyk processes subsequent requests, it uses the IP address as the rate-limit
 
 #### OAS API Implementation
 
-For Tyk OAS APIs, use the following code in your authentication plugin:
 
 ```go
-// IP Rate Limiter for OAS APIs
+// IP Rate Limiter for Tyk OAS APIs
 func Authenticate(rw http.ResponseWriter, r *http.Request) {
-	// Get the OAS API definition
+	// Get the API definition
 	requestedAPI := ctx.GetOASDefinition(r)
 	if requestedAPI == nil {
-		logger.Error("Could not get OAS API Definition")
+		logger.Error("Could not get Tyk OAS API Definition")
 		rw.WriteHeader(http.StatusInternalServerError)
 		return
 	}
