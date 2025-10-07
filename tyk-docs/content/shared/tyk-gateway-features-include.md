@@ -42,6 +42,6 @@ Built from the ground up to be the fastest API gateway on the planet. It does no
 
 **Hitless reloads** - Tyk configurations can be altered dynamically and the service restarted without affecting any active request
 
-**Kubernetes native declarative API:** using Open Source [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) (more info in OSS section)
+**Kubernetes native declarative API:** using [Tyk Operator](https://github.com/TykTechnologies/tyk-operator)
 
 _...and everything else you expect from a Cloud Native API Gateway_
