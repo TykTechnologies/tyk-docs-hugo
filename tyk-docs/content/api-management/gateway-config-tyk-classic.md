@@ -160,10 +160,7 @@ This field contains a list of middleware configurations and to which paths they 
 }
 ```
 
-Each entry must include the `method` and `path` (identifying the endpoint) for which the middleware should be run. The other options for each middleware are documented in the [Traffic Transformation]({{< ref "" >}}) section. Note that mock response functionality is provided via the `black_list[]`, `white_list[]` and `ignore[]` middleware.
-
-
-
+Each entry must include the method and path (identifying the endpoint) where the middleware runs. You can find full documentation for each middleware in the [Traffic Transformation]({{< ref "api-management/traffic-transformation" >}}) section including configuration instructions for the Tyk Classic API definition, for example the [allow list]({{< ref "api-management/traffic-transformation/allow-list#api-definition-1" >}}). When using Tyk Classic, the mock response functionality is configured via the `black_list[]`, `white_list[]` or `ignore[]` middleware.
 
 
 ## Configuring authentication for Tyk Classic APIs
@@ -363,6 +360,9 @@ This is allocated by Tyk to locate the API definition in the Dashboard main stor
 
 **Field: `active`**
 This field is used by Tyk Dashboard to control whether the API will serve traffic. If set to `false` then on Gateway start, restart or reload, the API will be ignored and all paths and routes for that API will cease to be proxied. Any keys assigned to it will still exist, though they will not be let through for that particular API.
+
+**Field: `internal`**
+This field controls the exposure of the API on the Gateway. When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs; it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}).
 
 ### Access token management
 
