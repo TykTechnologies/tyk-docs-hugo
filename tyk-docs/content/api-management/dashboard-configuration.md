@@ -5417,7 +5417,7 @@ TYK_DB_STORAGE_<LAYER>_TYPE
 TYK_DB_STORAGE_<LAYER>_CONNECTIONSTRING
 ```
 
-where *LAYER* can be *ANALYTICS*, *LOGS* or *UPTIME*.
+where *LAYER* can be *MAIN*, *ANALYTICS*, *LOGS* or *UPTIME*.
 
 For example, to configure Tyk Dashboard to read logs from a mongo database, the following environment variables are required:
 
