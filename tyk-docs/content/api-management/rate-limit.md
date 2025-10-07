@@ -408,7 +408,7 @@ func Authenticate(rw http.ResponseWriter, r *http.Request) {
 
 1. **Build and Deploy plugin**: Build the plugin and deploy it to your Tyk Gateway. Refer to the [Go Plugin Development Guide]({{< ref "api-management/plugins/golang#setting-up-your-environment" >}}) for instructions on building and deploying Go plugins.
 
-2. **Configure your API**: Create an authenticated API and set up your API to use the [custom authentication plugin]({{< ref "api-management/plugins/golang#loading-custom-go-plugins-into-tyk" >}}).
+2. **Configure your API**: Create an authenticated API and set up your API to use the [custom authentication plugin]({{< ref "api-management/plugins/golang#loading-custom-go-plugins-into-tyk" >}}). Note that you will need to select the [multiple authentication]({{< ref "basic-config-and-security/security/authentication-authorization/multiple-auth" >}}) method to invoke both the plugin and your chosen auth method.
 
 3. **Test your implementation**: Make requests to your API and verify that rate limiting is applied based on client IP addresses.
 
