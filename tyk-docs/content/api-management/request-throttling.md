@@ -106,7 +106,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
 
         </details>
 
-#### Configure Policy and Rate Limit {#policy-setup}
+#### Configure Policy and Rate Limit
 
 2.  **Create and Configure an Security Policy with Rate Limiting:**
 
