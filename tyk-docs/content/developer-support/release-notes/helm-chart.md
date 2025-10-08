@@ -84,7 +84,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 
 In this release, the MongoDB GraphQL Pump is not enabled by default. If you are using this Tyk Pump then you will need to enable it explicitly in your charts.
 
-#### Dependencies {#dependencies-4.0}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency  | Tested Versions  | Compatible Versions  | Comments | 
@@ -200,7 +200,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 #### Breaking Changes
 Tyk Charts 3.0 introduces a breaking configuration changes for Tyk Dashboard: To provide a default secure configuration, `security.forbid_admin_view_access_token` and `security.forbid_admin_reset_access_token` are set to `true` to restrict admin users from being able to view and reset other users' Dashboard API Access Credentials.
 
-#### Dependencies {#dependencies-3.0}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -434,7 +434,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-#### Dependencies {#dependencies-2.2}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
@@ -706,7 +706,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-#### Dependencies {#dependencies-2.1}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
@@ -1186,7 +1186,7 @@ Tyk Charts 1.6 will install the following Tyk component versions by default.
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/1.6.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/1.6.0)
 
-#### Changelog {#Changelog-v1.6.0}
+#### Changelog
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):

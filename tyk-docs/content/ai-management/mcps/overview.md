@@ -41,7 +41,7 @@ Tyk extends the MCP model for enterprise deployments with the following capabili
 
 These features enable enterprises to scale AI integrations securely while ensuring compliance and operational control.
 
-## Ready-to-use MCP options {#ready-to-use-mcp-options}
+## Ready-to-use MCP options
 
 Tyk offers several ready-to-use MCP integrations:
 
