@@ -48,7 +48,7 @@ This release delivers key bug fixes to improve stability in the Developer Portal
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.1) below.
 
-#### Breaking Changes {#breaking-changes-v1.14.1}
+#### Breaking Changes
 
 There are no breaking changes in this release.
 
@@ -144,7 +144,7 @@ We have added a `/robots.txt` endpoint, allowing administrators to define crawle
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.14.0) below.
 
-#### Breaking Changes {#breaking-changes-v1.14.0}
+#### Breaking Changes
 
 There are no breaking changes in this release.
 

@@ -41,7 +41,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-2.8.4}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -114,7 +114,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-2.8.3}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -168,7 +168,7 @@ Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-2.8.2}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
@@ -191,7 +191,7 @@ If you are upgrading to 2.8.2, please follow the detailed [upgrade instructions]
   - ```bash
     docker pull tykio/tyk-mdcb-docker:v2.8.2
     ```
-#### Changelog {#Changelog-v2.8.2}
+#### Changelog
 
 ##### Added
 
@@ -228,7 +228,7 @@ This is a version bump to align with Gateway and Dashboard v5.8.1; no changes ha
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-2.8.1}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -250,7 +250,7 @@ If you are upgrading to 2.8.1, please follow the detailed [upgrade instructions]
   - ```bash
     docker pull tykio/tyk-mdcb-docker:v2.8.1
     ```
-#### Changelog {#Changelog-v2.8.1}
+#### Changelog
 
 No changes in this release.
 
@@ -268,7 +268,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Breaking Changes
 This release removes support for SQLite in MDCB, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
 
-#### Dependencies {#dependencies-2.8.0}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -344,7 +344,7 @@ Tyk MDCB 2.7.2 has been updated to support API configurations from Tyk 5.7.0.
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-X.Y.Z}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -369,7 +369,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     docker pull tykio/tyk-mdcb-docker:v2.7.2
     ```
 
-#### Changelog {#Changelog-v2.7.2}
+#### Changelog
 
 ##### Updated
 <ul>
@@ -430,7 +430,7 @@ MDCB (Multi-Data Center Bridge) has been enhanced to support the storage of Grap
   ```
 
 
-#### Changelog {#Changelog-v2.7.1}
+#### Changelog
 
 ##### Added
 <ul>
@@ -903,7 +903,7 @@ This release resolved an issue causing partial outages in Tyk Cloud Hybrid gatew
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.3/images/sha256-832f461782fbc6182382798a89025b0489f529427521f92683f33df1ebbd4218?context=explore)
 
-#### Changelog {#Changelog-v2.4.3}
+#### Changelog
 
 ##### Fixed
 <ul>
