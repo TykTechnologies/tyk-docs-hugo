@@ -127,7 +127,7 @@ Communicate with stakeholders and users about the upgrade schedule and expected 
   - Identify and plan for custom Go plugin recompilation and testing
   - Communicate with stakeholders
 
-#### Next Steps {#next-steps}
+#### Next Steps
 
 Use the [Upgrade Guides ToC]({{< ref "#tyk-upgrade-guides-for-different-deployment-models" >}}) to choose the appropriate upgrade guide for
 your platform.
