@@ -11,7 +11,7 @@ aliases:
   - /advanced-configuration/transform-traffic/request-headers
 ---
 
-## Overview {#request-headers-overview}
+## Overview
 
 Tyk allows you to modify the headers of incoming requests to your API endpoints before they are passed to your upstream service.
 

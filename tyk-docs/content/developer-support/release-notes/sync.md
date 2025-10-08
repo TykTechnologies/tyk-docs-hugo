@@ -470,7 +470,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     docker pull tykio/tyk-sync:v1.5.1
     ```
 
-#### Changelog {#Changelog-v1.5.1}
+#### Changelog
 
 ##### Fixed
 
