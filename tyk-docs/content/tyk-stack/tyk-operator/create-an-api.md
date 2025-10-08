@@ -635,8 +635,8 @@ You can obtain the API name and API ID from `name` and `status.api_id` field.
 
 In our example, it is as follows:
 
-- {API-NAME}: httpbin
-- {API-ID}: ZGVmYXVsdC9odHRwYmlu
+- API-NAME: httpbin
+- API-ID: ZGVmYXVsdC9odHRwYmlu
 
 When you have successfully created a key, you can use it to access the `httpbin` API.
 
