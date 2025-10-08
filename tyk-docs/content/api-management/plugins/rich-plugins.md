@@ -95,7 +95,7 @@ When using Python plugins, the middleware function names are set globally. So, i
 
 ## How do rich plugins work ?
 
-### ID Extractor & Auth Plugins {#id-extractor-auth-plugin}
+### ID Extractor & Auth Plugins
 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
@@ -2293,7 +2293,7 @@ To publish the plugin, copy or upload `bundle.zip` to a local web server like Ng
 
 {{< include "grpc-include" >}}
 
-#### What's Next? {#what-is-next}
+#### What's Next?
 
 In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
 
@@ -2322,7 +2322,7 @@ The sample code that we’ll use implements a very simple authentication layer u
 
 #### Create the Plugin
 
-##### Create .NET Project {#create-dotnet-project}
+##### Create .NET Project
 
 We use the .NET CLI tool to generate the initial files for our project:
 
@@ -2345,7 +2345,7 @@ dotnet add package Google.Protobuf --version 3.4.0
 - The `ThreadPool` package is used by `Grpc`.
 - The `Protobuf` package will be used by our gRPC bindings.
 
-##### Install the gRPC Tools {#install-grpc-tools}
+##### Install the gRPC Tools
 
 We need to install the gRPC tools to generate the bindings. We recommended you follow the official guide here: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code.
 

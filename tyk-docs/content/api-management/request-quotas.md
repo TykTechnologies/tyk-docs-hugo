@@ -125,7 +125,7 @@ In this tutorial, we will configure Request Quotas on a Tyk Security Policy to l
         ```
         </details>
 
-#### Configure Policy and Quota {#policy-setup}
+#### Configure Policy and Quota
 
 2.  **Create and Configure a Security Policy with a Request Quota:**
 

@@ -50,7 +50,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.6}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -81,7 +81,7 @@ Given the potential time difference between your upgrade and the release of this
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.6}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -255,7 +255,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.5}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -349,7 +349,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 Since 5.8.3, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.4 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
-#### Dependencies {#dependencies-5.8.4}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -363,7 +363,7 @@ Since 5.8.3, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint 
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.4}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -378,7 +378,7 @@ Since 5.8.3, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint 
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.4}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -419,7 +419,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.3 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
 
-#### Dependencies {#dependencies-5.8.3}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -433,7 +433,7 @@ Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.3}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -448,7 +448,7 @@ Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.3}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -598,7 +598,7 @@ This is a version bump to align with Gateway v5.8.2, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.2}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -612,7 +612,7 @@ There are no breaking changes in this release.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.2}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -627,7 +627,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.2}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -659,7 +659,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -673,7 +673,7 @@ There are no breaking changes in this release.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.1}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -688,7 +688,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.1}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -791,7 +791,7 @@ To accompany the launch of fully featured Tyk OAS capabilities, we have made a r
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.0}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -805,7 +805,7 @@ There are no breaking changes in this release.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.0}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -820,7 +820,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.0}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -1015,7 +1015,7 @@ This is a version bump to align with Gateway v5.7.3, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.3}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1029,7 +1029,7 @@ There are no breaking changes in this release.
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.3}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1044,7 +1044,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.7.3}
+#### Upgrade instructions
 
 If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -1074,7 +1074,7 @@ This release focuses mainly on a security fix. For a comprehensive list of chang
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.2}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1088,7 +1088,7 @@ There are no breaking changes in this release.
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.2}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1103,7 +1103,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release
 
-#### Upgrade instructions {#upgrade-5.7.2}
+#### Upgrade instructions
 If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -1165,7 +1165,7 @@ This release focuses mainly on bug fixes. For a comprehensive list of changes, p
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1179,7 +1179,7 @@ There are no breaking changes in this release.
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1194,7 +1194,7 @@ There are no breaking changes in this release.
 
 We have deprecated the obsolescent `http_server_options.prefer_server_ciphers` configuration option. This legacy control no longer has any effect on the underlying library and users are advised to remove this setting from their configurations.
 
-#### Upgrade instructions {#upgrade-5.7.1}
+#### Upgrade instructions
 If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -1248,7 +1248,7 @@ Tyk 5.7.0 enhances Audit Log management with new features designed for efficienc
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -1265,7 +1265,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1319,7 +1319,7 @@ This change enables:
 * Better compatibility with **RHEL8**
 * Fewer dependencies and improved portability
 
-#### Upgrade instructions {#upgrade-5.7.0}
+#### Upgrade instructions
 If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -1522,7 +1522,7 @@ This is a version bump to align with Gateway v5.6.1, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.6.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1537,7 +1537,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.6.1}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1557,7 +1557,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.6.1}
+#### Upgrade instructions
 
 If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -1600,7 +1600,7 @@ We’ve tightened up the rules that govern a user's ability to create admin user
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.6.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -1617,7 +1617,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.6.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1661,7 +1661,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
 <!-- ###### Future deprecations
 -->
-#### Upgrade instructions {#upgrade-5.6.0}
+#### Upgrade instructions
 If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -1802,7 +1802,7 @@ This release replaces Tyk Dashboard 5.5.1 which was accidentally released as a n
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.2}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1816,7 +1816,7 @@ There are no breaking changes in this release.
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.2}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1831,7 +1831,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.5.2}
+#### Upgrade instructions
 
 If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -1843,7 +1843,7 @@ If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions]
 - Helm charts
   - [Tyk Charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
-#### Changelog {#Changelog-v5.5.2}
+#### Changelog
 
 No changes in this release.
 
@@ -1861,7 +1861,7 @@ This is a version bump to align with Gateway v5.5.1, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1875,7 +1875,7 @@ There are no breaking changes in this release.
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.1}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1890,7 +1890,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.5.1}
+#### Upgrade instructions
 
 If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -1929,7 +1929,7 @@ Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -1946,7 +1946,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1970,7 +1970,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
 <!-- ###### Future deprecations
 -->
-#### Upgrade instructions {#upgrade-5.5.0}
+#### Upgrade instructions
 If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -2097,7 +2097,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 **Attention: Please read this section carefully**
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.4.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -2114,7 +2114,7 @@ An illustrative example is shown below. -->
 | | Pump v1.10.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.4.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -2138,7 +2138,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
 <!-- ###### Future deprecations
 -->
-#### Upgrade instructions {#upgrade-5.4.0}
+#### Upgrade instructions
 If you are upgrading to 5.4.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 Add upgrade steps here if necessary.
 
@@ -2162,7 +2162,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
 - Helm charts
   - [tyk-charts v1.5]({{< ref "developer-support/release-notes/helm-chart#150-release-notes" >}})
 
-#### Changelog {#Changelog-v5.4.0}
+#### Changelog
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
@@ -2310,7 +2310,7 @@ This is a version bump to align with Gateway v5.3.12, no changes have been imple
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.3.12}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -2324,7 +2324,7 @@ There are no breaking changes in this release.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.12}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -2338,7 +2338,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.3.12}
+#### Upgrade instructions
 
 If you are upgrading to 5.3.12, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -2370,7 +2370,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.3.11}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -2384,7 +2384,7 @@ There are no breaking changes in this release.
 | | Pump v1.12.0| Pump all versions |
 | | TIB (if using standalone) v1.7.0 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.0}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -2399,7 +2399,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.3.11}
+#### Upgrade instructions
 
 If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -2474,7 +2474,7 @@ In this release, we upgraded the Golang version to `v1.23` and fixed a [CVE-2025
 
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-5.3.10}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -2489,7 +2489,7 @@ This release has no breaking changes.
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.10}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
@@ -2565,7 +2565,7 @@ This release contains bug fixes. For a comprehensive list of changes, please ref
 
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-5.3.9}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -2581,7 +2581,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.9}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -2664,7 +2664,7 @@ This release focuses mainly on bug fixes. For a comprehensive list of changes, p
 
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-5.3.8}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -2680,7 +2680,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.8}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -2768,7 +2768,7 @@ This is a version bump to align with Gateway v5.3.7, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.3.7}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -2784,7 +2784,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.7}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -2802,7 +2802,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.3.7}
+#### Upgrade instructions
 
 If you are upgrading to 5.3.7, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -2840,7 +2840,7 @@ There are no deprecations in this release.
 #### Upgrade Instructions
 When upgrading to 5.3.6, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
-#### Dependencies {#dependencies-5.3.6}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -3012,7 +3012,7 @@ There are no deprecations in this release.
 When upgrading to 5.3.5, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 
-#### Dependencies {#dependencies-5.3.5}
+#### Dependencies
 
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -3087,7 +3087,7 @@ When upgrading to 5.3.4 please follow the [detailed upgrade instructions](#upgra
 #### Release Highlights
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.4" >}}) below.
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -3112,7 +3112,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.4}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -3202,7 +3202,7 @@ When upgrading to 5.3.3 please follow the [detailed upgrade instructions](#upgra
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.3" >}}) below.
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -3335,7 +3335,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.2" >}}) below.
 
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 
@@ -3479,7 +3479,7 @@ When upgrading to 5.3.1, please follow the [detailed upgrade instructions](#upgr
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1" >}}) below.
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -3673,7 +3673,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-s
   
 **Important:** Please go to the [backup]({{< ref "#upgrade-instructions" >}}) section for essential instructions on how to backup before upgrading to v5.3.0
  
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -3715,7 +3715,7 @@ Given the potential time difference between your upgrade and the release of this
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions {#upgrade-5.3.0}
+#### Upgrade Instructions
 
 **The following steps are essential to follow before upgrading**
 
@@ -4402,7 +4402,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.1/images/sha256-2f9d8af0e57f7fe4afb618dcf34772c001104dc0ec62a27541d12dc9ae90d5c8?context=explore)
 
-#### Changelog {#Changelog-v5.2.1}
+#### Changelog
 
 ##### Added
 
@@ -4748,7 +4748,7 @@ This is a version bump to align with Gateway v5.0.15, no changes have been imple
 
 There are no breaking changes in this release.
 
-#### Upgrade instructions {#upgrade-5.0.15}
+#### Upgrade instructions
 
 If you are upgrading to 5.0.15, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -4759,7 +4759,7 @@ No changes in this release.
 
 ---
 
-### 5.0.14 Release Notes {#rn-v5.0.14}
+### 5.0.14 Release Notes
 
 #### Release Date 18th September 2024
 
@@ -4775,7 +4775,7 @@ Go to the [Upgrading Tyk]({{< ref "developer-support/release-notes/gateway#upgra
 
 This release fixes some display issues in Tyk Dashboard and Tyk Classic Portal when using PostgreSQL.
 
-#### Changelog {#Changelog-v5.0.14}
+#### Changelog
 
 ##### Fixed
 
@@ -4974,7 +4974,7 @@ Additionally we’ve added Dashboard support for introspection control on policy
 
 [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0/images/sha256-3d736b06b023e23f406b1591f4915b3cb15a417fcb953d380eb8b4d71829f20f?tab=vulnerabilities)
 
-#### Changelog {#Changelog-v5.0.0}
+#### Changelog
 
 ##### Added
 - Numerous UX improvements
