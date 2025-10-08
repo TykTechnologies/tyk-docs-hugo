@@ -10,7 +10,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/allow-list-tyk-classic
 ---
 
-## Overview {#allow-list-overview}
+## Overview
 
 The Allow List middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 

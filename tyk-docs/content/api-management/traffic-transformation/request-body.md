@@ -11,7 +11,7 @@ aliases:
   - /advanced-configuration/transform-traffic/request-body
 ---
 
-## Overview {#request-body-overview}
+## Overview
 
 Tyk enables you to modify the payload of API requests before they are proxied to the upstream. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to HTTP methods that can support a request body (i.e. PUT, POST or PATCH).
 
