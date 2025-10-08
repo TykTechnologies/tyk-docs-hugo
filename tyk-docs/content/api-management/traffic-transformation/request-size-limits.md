@@ -10,7 +10,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic
 ---
 
-## Overview {#request-size-limits-overview}
+## Overview
 
 With Tyk, you can apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
 

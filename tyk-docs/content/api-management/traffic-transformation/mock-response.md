@@ -12,7 +12,7 @@ aliases:
   - /getting-started/using-oas-definitions/mock-response
 ---
 
-## Overview {#mock-response-overview}
+## Overview
 
 A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API service. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
 
