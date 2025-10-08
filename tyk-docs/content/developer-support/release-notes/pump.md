@@ -273,7 +273,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.2)
 
-#### Changelog {#Changelog-v1.11.2}
+#### Changelog
   
 ##### Fixed
 
@@ -339,7 +339,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.1)
 
-#### Changelog {#Changelog-v1.11.1}
+#### Changelog
   
 ##### Changed
 
@@ -404,7 +404,7 @@ This release focuses on improving security and compliance, enhancing integration
   ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.0)
 
-#### Changelog {#Changelog-v1.11.0}
+#### Changelog
 
 
 ##### Added
@@ -469,7 +469,7 @@ This release focuses on improving security and compliance, enhancing integration
   ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.10.0)
 
-### Changelog {#Changelog-v1.10.0}
+### Changelog
 
 #### Added
 
@@ -575,7 +575,7 @@ There has been a significant enhancement in Tyk Graph Pump with the removal of t
   ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.9.0)
 
-### Changelog {#Changelog-v1.9.0}
+### Changelog
 
 #### Added
 
