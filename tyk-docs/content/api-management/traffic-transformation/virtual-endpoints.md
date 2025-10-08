@@ -12,7 +12,7 @@ aliases:
   - /compose-apis/virtual-endpoints
 ---
 
-## Overview {#virtual-endpoints-overview}
+## Overview
 
 Tyk's Virtual Endpoint is a programmable middleware component that is invoked towards the end of the request processing chain. It can be enabled at the per-endpoint level and can perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
 
