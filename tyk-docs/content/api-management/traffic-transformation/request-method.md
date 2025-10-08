@@ -10,7 +10,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/request-method-tyk-classic
 ---
 
-## Overview {#request-method-overview}
+## Overview
 
 Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this to map `POST` requests from clients to upstream services that support only `PUT` and `DELETE` operations, providing a modern interface to your users. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation/request-body" >}}) to apply more complex transformation to requests.
 
