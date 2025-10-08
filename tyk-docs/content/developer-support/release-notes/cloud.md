@@ -507,7 +507,7 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-### Changelog {#Changelog-v1.25.0}
+### Changelog
 
 #### Added
 
