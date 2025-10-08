@@ -35,7 +35,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-1.2}
+#### Dependencies
 ##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -183,7 +183,7 @@ Tyk Operator v1.1 supports management of Tyk Streams APIs through the new **`Tyk
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-1.1}
+#### Dependencies
 ##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -217,7 +217,7 @@ Go to the [Upgrading Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-ty
   - tyk-charts v2.2.0 <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
-#### Changelog {#Changelog-v1.1.0}
+#### Changelog
 
 ##### Added
 
@@ -323,7 +323,7 @@ the dashboard and gateway. We must clarify this at the time of publishing this R
 |                 |                           | TIB vX - vY             |
       -->
 
-#### Dependencies {#dependencies-1.1}
+#### Dependencies
 ##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
