@@ -109,14 +109,14 @@ The built-in events that Tyk Gateway will generate are:
 
 ### Certificate expiry events
 
-- `CertificateExpiringSoon`: a certificate is about to expire within the expiry threshold
-- `CertificateExpired`: a certificate has expired
+- `CertificateExpiringSoon`: a certificate has been used within the expiry threshold and should be updated
+- `CertificateExpired`: an expired certificate has been used in a request
 
 ## Event Metadata
 
 When an event is fired, and an *event handler* is registered for that specific API and event combination, Tyk Gateway provides the handler with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}). The external system (webhook) or custom (JavaScript) code can then use this metadata to decide what action to take.
 
-Each event metadata type includes the following common fields:
+Most events provide common metadata as follows:
 
 - `message` (string): a human-readable message from Tyk Gateway that provides details about the event
 - `path` (string): the path of the API endpoint request that led to the event being fired
@@ -137,7 +137,7 @@ In addition to the common fields, each event type provides additional metadata s
 - `message` (string): a human readable message from Tyk Gateway that adds detail about the event
 - `cert_id` (string): the certificate ID
 - `cert_name` (string): the name of the certificate
-- `expires_at` (string, RFC3339): the date for when the certificate expires
+- `expires_at` (string, RFC3339): the certificate expiry date
 - `days_remaining` (integer): the remaining days until the certificate expires
 - `api_id`(string): the ID of the API that triggered the event
 
