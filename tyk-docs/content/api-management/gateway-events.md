@@ -126,7 +126,7 @@ Most events provide common metadata as follows:
 
 ### Specific Event Metadata
 
-In addition to the common fields, each event type provides additional metadata specific to that event. The following sections detail the additional metadata provided for each event type.
+Some events provide alternative metadata specific to that event. The following sections detail the event-specific metadata provided for such events.
 
 <ul>
 
