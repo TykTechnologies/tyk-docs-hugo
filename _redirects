@@ -17,3 +17,5 @@
 /docs/5.8/* https://release-5-8--tyk-docs.netlify.app/docs/:splat 200!
 
 /docs/5.9/* https://release-5-9--tyk-docs.netlify.app/docs/:splat 200!
+
+/docs/5.10/* https://release-5-10--tyk-docs.netlify.app/docs/:splat 200!
