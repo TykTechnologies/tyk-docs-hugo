@@ -160,12 +160,6 @@ In addition to the common fields, each event type provides additional metadata s
 
 </ul>
 
-{{< note success >}}
-**Note**
-
-Circuit breaker events provide different metadata, see [Circuit Breakers]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers/" >}}) to see what is provided when the `BreakerTripped`, `BreakerReset` or `BreakerTriggered` events are generated.
-{{< /note >}}
-
 ### Using the metadata
 
 The metadata are exposed so that they can be used by the event handler (webhook or custom) using Go templating. For details of how each type of event handler can access these data, please see the appropriate section for [webhook]({{< ref "api-management/gateway-events#webhook-payload" >}}) or [custom]({{< ref "api-management/gateway-events#the-event-object" >}}) event handlers.
