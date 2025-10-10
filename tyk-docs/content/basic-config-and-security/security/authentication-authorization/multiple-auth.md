@@ -1,5 +1,5 @@
 ---
-title: Combine Authentication Methods
+title: Combining Authentication Methods
 description: "How to combine multiple authentication methods in Tyk to enhance security and flexibility."
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Multi Authentication", "Chained Authentication"]
 keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Multi Authentication", "Chained Authentication"]
@@ -8,39 +8,266 @@ aliases:
 
 ## Introduction
 
-Tyk allows you to chain multiple authentication methods together so that each authentication must be successful for access to be granted to the API (for example, you can use an Access Token in combination with Basic Auth).
+Tyk allows you to chain multiple [authentication methods]({{< ref "api-management/client-authentication#what-does-tyk-support" >}}) together so that each authentication method or a combination of some must be successful for access to be granted to the API (for example, you can use an Access Token in combination with Basic Auth).
 
-From Tyk 5.10.0, Tyk OAS support includes enhanced flexibility allowing you to create APIs that support various authentication schemes simultaneously (for example, Auth Token or JSON Web Token).
+```mermaid
+graph LR
+    Client([Client]) -->|Request| Gateway[Tyk Gateway]
+    
+    subgraph "Multiple Authentication"
+        Gateway --> Auth1[Authentication Method 1<br>e.g., API Key]
+        Auth1 --> Auth2[Authentication Method 2<br>e.g., Basic Auth]
+        Auth2 --> Auth3[Authentication Method N<br>e.g., JWT]
+        Auth3 --> SessionCreation[Create Session<br>& Apply Policies]
+        SessionCreation --> AccessDecision{Access<br>Decision}
+    end
+    
+    AccessDecision -->|Granted| Upstream[(Upstream<br>API)]
+    AccessDecision -->|Denied| Reject[Reject Request]
+    
+    %% Styling
+    classDef client fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef gateway fill:#d4edda,stroke:#28a745,stroke-width:2px
+    classDef auth fill:#e2f0fb,stroke:#0275d8,stroke-width:1px
+    classDef session fill:#d1ecf1,stroke:#17a2b8,stroke-width:1px
+    classDef decision fill:#cce5ff,stroke:#0275d8,stroke-width:2px
+    classDef upstream fill:#f8f9fa,stroke:#6c757d,stroke-width:2px
+    classDef reject fill:#f8d7da,stroke:#dc3545,stroke-width:2px
+    
+    class Client client
+    class Gateway gateway
+    class Auth1,Auth2,Auth3 auth
+    class SessionCreation session
+    class AccessDecision decision
+    class Upstream upstream
+    class Reject reject
+```
 
-## Common Use Cases
+## Use Cases
 
 - **Multi-tenant APIs**: Different tenants using different identity providers
 - **Migration scenarios**: Supporting both legacy and modern auth during transitions  
-- **Partner integrations**: External partners using mTLS while internal users use JWT
+- **Partner integrations**: External partners use mTLS while internal users use JWT
 - **Mobile + Web**: Different auth methods for different client types
 
-## Basic Concepts
+<!-- ## Quick Start
 
-### What is Multi-Auth?
+<TODO: Work in Progress>
 
-Multi-auth allows an API to accept requests authenticated through different methods. For example, your API could require both API token and an HMAC signature, giving additional security and message reliability.
+In this quick-start guide, we will configure a Tyk OAS API with multiple authentication methods. We will demonstrate how to set up an API that supports both Basic Auth and API Key authentication, allowing clients to authenticate using either method.
 
-### Authentication Processing Modes
+### Prerequisites
 
-Tyk OAS offers two processing modes for handling authentication:
+- **Working Tyk Environment:** You need access to a running Tyk instance that includes both the Tyk Gateway and Tyk Dashboard components. For setup instructions using Docker, please refer to the [Tyk Quick Start](https://github.com/TykTechnologies/tyk-pro-docker-demo?tab=readme-ov-file#quick-start).
+- **Curl**: These tools will be used for testing.
+
+### Instructions
+
+#### Create an API
+
+#### Configuration
+
+#### Testing -->
+
+## Understanding Authentication Modes
+
+```mermaid
+graph LR
+    Client([Client]) -->|Request| Gateway[Tyk Gateway]
+    
+    subgraph "Tyk Multiple Authentication"
+        Gateway --> AuthConfig{Authentication<br>Configuration}
+        
+        %% Legacy Mode
+        AuthConfig -->|Legacy Mode| LegacyAuth["AND Logic<br>(All must pass)"]
+        LegacyAuth --> Auth1[Auth Method 1]
+        Auth1 --> Auth2[Auth Method 2]
+        Auth2 --> SessionCreation["Create Session<br>(from BaseIdentityProvider)"]
+        
+        %% Compliant Mode
+        AuthConfig -->|Compliant Mode| CompliantAuth["OR Logic<br>(Any group can pass)"]
+        CompliantAuth --> Group1["Group 1<br>(AND Logic)"]
+        CompliantAuth --> Group2["Group 2<br>(AND Logic)"]
+        
+        Group1 --> G1Auth1["Auth Method A"]
+        G1Auth1 --> G1Auth2["Auth Method B"]
+        
+        Group2 --> G2Auth1["Auth Method C"]
+        G2Auth1 --> G2Auth2["Auth Method D"]
+        
+        G1Auth2 --> DynamicSession1["Create Session<br>(from last auth in group)"]
+        G2Auth2 --> DynamicSession2["Create Session<br>(from last auth in group)"]
+        
+        SessionCreation --> AccessDecision
+        DynamicSession1 --> AccessDecision
+        DynamicSession2 --> AccessDecision
+        
+        AccessDecision{Access<br>Decision}
+    end
+    
+    AccessDecision -->|Granted| Upstream[(Upstream<br>API)]
+    AccessDecision -->|Denied| Reject[Reject Request]
+    
+    %% Styling
+    classDef client fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef gateway fill:#d4edda,stroke:#28a745,stroke-width:2px
+    classDef auth fill:#e2f0fb,stroke:#0275d8,stroke-width:1px
+    classDef group fill:#fff3cd,stroke:#ffc107,stroke-width:1px
+    classDef session fill:#d1ecf1,stroke:#17a2b8,stroke-width:1px
+    classDef decision fill:#cce5ff,stroke:#0275d8,stroke-width:2px
+    classDef upstream fill:#f8f9fa,stroke:#6c757d,stroke-width:2px
+    classDef reject fill:#f8d7da,stroke:#dc3545,stroke-width:2px
+    
+    class Client client
+    class Gateway gateway
+    class Auth1,Auth2,G1Auth1,G1Auth2,G2Auth1,G2Auth2,LegacyAuth,CompliantAuth auth
+    class Group1,Group2 group
+    class SessionCreation,DynamicSession1,DynamicSession2 session
+    class AuthConfig,AccessDecision decision
+    class Upstream upstream
+    class Reject reject
+```
+
+Tyk OAS offers two modes for configuring multiple authentication methods:
 
 - **Legacy Mode** (Default): Maintains backward compatibility with existing Tyk implementations
-- **Compliant Mode**: Provides enhanced flexibility with true OR logic between authentication methods
+- **Compliant Mode**: Introduced in 5.10.0, it provides enhanced flexibility by supporting a combination of AND and OR logic between authentication methods
 
 {{< note success >}}
 **Note**  
 
-Tyk Classic APIs, and pre-5.10 Tyk OAS APIs only support the legacy mode.
+Tyk Classic APIs and pre-5.10 Tyk OAS APIs only support the legacy mode.
 {{< /note >}}
 
-## Getting Started
+### Legacy Mode
 
-### Configuring Authentication Processing Mode
+The Legacy mode is the traditional implementation of multi-auth, supported by Tyk Classic APIs and Tyk OAS APIs prior to Tyk 5.10. 
+
+In this mode, all configured authentication methods must be satisfied in the request (i.e., they are combined using AND logic).
+
+**How does the operation differ between Tyk Classic and Tyk OAS APIs?**
+
+- **Tyk Classic API**: All configured authentication methods must be satisfied in the request
+
+- **Tyk OAS API**: Only the **first** security requirement object in the OAS `security` array is processed together. All the authentication methods in the first object must be satisfied in the request.
+
+    ```
+    security:
+      - api_key: []      # Only this option is processed where both methods must be satisfied
+        basic_auth: []  
+      - jwt_auth: []     # Ignored in Legacy mode
+    ```
+
+#### Session Object Handling
+
+In Legacy mode, the `baseIdentityProvider` setting determines which authentication method provides the [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}). This setting must be configured to one of the enabled authentication methods (e.g., `auth_token`, `basic_auth_user`, `jwt_claim`, etc.).
+
+All configured authentication methods must be satisfied in the request (AND logic), but only the method specified by `baseIdentityProvider` will contribute its metadata to the session object.
+
+### Compliant Mode
+
+The Compliant mode is named as such because Tyk complies with the security requirements declared in the OpenAPI description, combining different authentication methods using AND and OR logic as required.
+
+#### OpenAPI Security Requirements
+
+In OpenAPI, security is defined using **Security Requirement Objects** in the `security` section:
+
+```
+security:
+  - api_key: []
+    basic_auth: []  
+  - jwt_auth: []
+    oauth2: []
+```
+
+- Each security requirement object in the OAS `security` array represents an **alternative**, these are evaluated with **OR** logic.
+- Within a single security requirement object, multiple security schemes are combined with **AND** logic (i.e., all listed schemes must succeed together).
+- A request is authorized if **any one** of the defined security requirement objects is successfully validated.
+- The session object is determined dynamically based on which security requirement is satisfied
+- This structure enables **multi-auth configurations**, supporting both **combined (AND)** and **alternative (OR)** authentication methods.
+
+#### How OR Logic Works
+
+When using Compliant mode with multiple security requirements:
+
+- Tyk attempts each authentication method in sequence
+- If any method succeeds, the request is authorized
+- If all methods fail, the request is rejected with the error from the last attempted method
+
+#### How AND Logic Works
+
+Within a single security requirement object that contains multiple schemes:
+
+- All schemes within that security requirement must be satisfied (AND logic)
+- The request is only authorized if all schemes are valid
+- If any scheme fails, the entire security requirement fails, and Tyk moves to the next one
+- This allows for combining different authentication methods that must all be present
+
+#### Examples
+
+Here's an example API definition with both AND and OR logic:
+
+```json
+{
+  "security": [
+    {
+      "api_key": []
+    },
+    {
+      "jwt": [],
+      "oauth2": []
+    }
+  ]
+}
+```
+
+In this example, the request will be authorized if either:
+- A valid API key is provided (first security requirement)
+- OR
+- Both a valid JWT token AND a valid OAuth2 token are provided (second security requirement with AND logic)
+
+#### Session Object Handling
+
+The [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) (determining rate limits, quotas, and access rights) comes from the successful authentication method. This allows different auth methods to have different associated policies and permissions.
+
+When using **Compliant** mode, the session object handling is more dynamic:
+
+1. Between different security requirement objects (OR logic): The first security requirement that successfully authenticates will provide the session object.
+
+2. Within a single security requirement object (AND logic): When multiple authentication methods are specified in the same requirement object (as in your example below), all methods must pass, and the **last** successfully processed authentication method will provide the session object.
+
+```
+security:
+  - api_key: []
+    basic_auth: []  
+```
+
+{{< note success >}}
+**Note**  
+
+Due to the nature of how security requirements are processed, the order in which authentication methods are evaluated within a single requirement object is not guaranteed to be deterministic. This means that if both `api_key` and `basic_auth` pass authentication, either one might end up providing the session object.
+
+{{< /note >}}
+
+**Important note**: Due to the nature of how security requirements are processed, the order in which authentication methods are evaluated within a single requirement object is not guaranteed to be deterministic. This means that if both `api_key` and `basic_auth` pass authentication, either one might end up providing the session object.
+
+### Choosing the Right Mode
+
+**Use Legacy Mode when:**
+
+- Migrating from or using Tyk Classic APIs
+- You need all auth methods to be required (AND logic)
+
+**Use Compliant Mode when:**
+
+- You need alternative auth methods (OR logic)
+- Supporting multiple client types or identity providers
+- For APIs that need to serve diverse client bases with different security requirements
+- Building new APIs with flexible authentication requirements
+
+## Configuration Options
+
+### Authentication Processing Mode
 
 The `securityProcessingMode` option in the Tyk Vendor Extension allows you to specify which authentication processing mode to use. This controls how Tyk will interpret the authentication settings in the OpenAPI description and the Vendor Extension.
 
@@ -108,49 +335,13 @@ You can configure chained authentication by following these steps:
 
     {{< img src="/img/api-management/security/multiple-auth-legacy.png" alt="Select Legacy mode" >}}  
 
-    You can now configure each of the individual authentication methods in the usual manner using the options in the API designer.
+    You can now configure each authentication method in the usual manner using the options in the API designer.
 
     {{< img src="/img/api-management/security/multiple-auth-configure_legacy.png" alt="Configure the Auth Methods for Legacy mode" >}}
 
     {{< tab_end >}}
 
     {{< tabs_end >}}  
-
-
-## Understanding Authentication Modes
-
-### Legacy Mode
-
-The Legacy mode is the traditional implementation of multi-auth supported by Tyk Classic APIs (and Tyk OAS APIs prior to Tyk 5.10).
-
-In the Tyk Classic API, all configured authentication methods must be satisfied in the request - i.e. they are combined using AND logic.
-
-In the Tyk OAS API, only the **first** security requirement object in the OAS `security` array is processed together with any proprietary authentication methods enabled in the Tyk Vendor Extension. All of these methods must be satisfied in the API request - i.e. they are combined using AND logic.
-
-The authentication method that should be used to provide metadata for the session object is determined by the `baseIdentityProvider` setting as explained [here]({{< ref "basic-config-and-security/security/authentication-authorization/multiple-auth#session-object-handling" >}}).
-
-### Compliant Mode
-
-The Compliant mode is so-named because Tyk complies with the security requirements declared in the OpenAPI description, combining the different authentication methods using AND and OR logic as required.
-
-- All security requirement objects in the OAS `security` array are processed with OR logic
-- A request is authorized if any of the defined security requirements are satisfied
-- The session object is determined dynamically based on the validated security requirement
-- Allows true multi-auth functionality with alternative auth methods working simultaneously
-
-### Choosing the Right Mode
-
-**Use Legacy Mode when:**
-
-- Migrating from or using Tyk Classic APIs
-- You need all auth methods to be required (AND logic)
-
-**Use Compliant Mode when:**
-
-- You need alternative auth methods (OR logic)
-- Supporting multiple client types or identity providers
-- For APIs that need to serve diverse client bases with different security requirements
-- Building new APIs with flexible authentication requirements
 
 
 ## Advanced Configuration
@@ -191,35 +382,6 @@ x-tyk-api-gateway:
 
 The extended security requirements in the vendor extension (`x-tyk-api-gateway.server.authentication.security`) are concatenated onto the requirements declared in the OpenAPI description. This configuration allows three authentication methods: JWT, API Key with HMAC, and Custom Auth.
 
-### Authentication Priority and Session Management
-
-In Compliant mode, authentication methods are tried in the order they appear in the `security` requirements. The first successful authentication method determines the [session properties]({{< ref "basic-config-and-security/security/authentication-authorization/multiple-auth#session-object-handling" >}}).
-
-## Implementation Details
-
-### How OR Logic Works
-
-When using Compliant mode with multiple security requirements:
-
-- Tyk attempts each authentication method in sequence
-- If any method succeeds, the request is authorized
-- If all methods fail, the request is rejected with the error from the last attempted method
-- Each authentication attempt uses a clean request object to prevent side effects
-
-### Session Object Handling
-
-The [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) (determining rate limits, quotas, and access rights) comes from the successful authentication method. This allows different auth methods to have different associated policies and permissions.
-
-When using **Compliant** mode, the first successful authentication method will be used to generate the session object.
-
-When using **Legacy** mode, you must declare which of the authentication methods used in the validation should be used to generate the session object. You declare this *base identity provider* using the [server.authentication.baseIdentityProvider]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) field in the Tyk Vendor Extension (Tyk Classic: `base_identity_provided_by`).
-
-{{< note success >}}
-**Note**  
-
-It is important not to set the `baseIdentityProvider` when using the Compliant mode; it should only be configured for Legacy mode.
-{{< /note >}}
-
 ## Migration Considerations
 
 ### Moving from Legacy to Compliant Mode
@@ -228,7 +390,7 @@ When migrating from Legacy to Compliant mode:
 
 - Review your API's authentication configuration
 - Ensure all required security schemes are properly defined
-- Test thoroughly as authentication behavior will change
+- Test thoroughly, as authentication behavior will change
 - Be aware that the session object may come from different sources depending on which auth method succeeds
 
 ### Backward Compatibility
@@ -237,9 +399,7 @@ When migrating from Legacy to Compliant mode:
 
 ## Troubleshooting
 
-### Common Issues
-
-#### Authentication Fails Unexpectedly
+<details> <summary><b>Authentication Fails Unexpectedly</b></summary>
 
 **Problem**: API returns 401 errors even with valid credentials.
 
@@ -281,8 +441,9 @@ When migrating from Legacy to Compliant mode:
     - Ensure you're not mixing `baseIdentityProvider` (Legacy) with complex security arrays (Compliant)
     - Check that `securityProcessingMode` matches your intended configuration
 
+</details> 
 
-#### Wrong Policies or Rate Limits Applied
+<details> <summary><b>Wrong Policies or Rate Limits Applied</b></summary>
 
 **Problem**: Requests are authenticated but get unexpected rate limits or access denials.
 
@@ -310,7 +471,9 @@ When migrating from Legacy to Compliant mode:
     "log_level": "debug"
     ```
 
-#### Performance Issues
+</details> 
+
+<details> <summary><b>Performance Issues</b></summary>
 
 **Problem**: Slower response times with multiple authentication methods.
 
@@ -333,7 +496,10 @@ When migrating from Legacy to Compliant mode:
     grep "OR wrapper" /var/log/tyk/tyk.log
     ```
 
-### Debugging Tips
+</details> 
+
+<details> <summary><b>Debugging Tips</b></summary>
+
 Enable detailed logging in your Tyk Gateway to see which authentication methods are being attempted and which one succeeds:
 
 ```json
@@ -351,3 +517,6 @@ Look for these log entries:
     - In Compliant mode, this shows which auth methods are being tried
 - `BaseIdentityProvider set to`
     - In Legacy mode, this shows which auth method succeeded
+
+
+</details> 
