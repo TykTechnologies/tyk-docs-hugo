@@ -1,5 +1,5 @@
 ---
-title: Combining Authentication Methods
+title: Combine Authentication Methods
 description: "How to combine multiple authentication methods in Tyk to enhance security and flexibility."
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Multi Authentication", "Chained Authentication"]
 keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Multi Authentication", "Chained Authentication"]
