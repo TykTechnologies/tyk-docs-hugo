@@ -6,7 +6,7 @@ keywords: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authori
 aliases:
 ---
 
-## Introduction
+## Introduction 
 
 Tyk allows you to chain multiple [authentication methods]({{< ref "api-management/client-authentication#what-does-tyk-support" >}}) together so that each authentication method or a combination of some must be successful for access to be granted to the API (for example, you can use an Access Token in combination with Basic Auth).
 
