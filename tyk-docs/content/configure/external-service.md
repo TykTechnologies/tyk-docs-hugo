@@ -43,7 +43,7 @@ External Service Configuration gives you control over how Tyk Gateway securely c
 - Enhances security through mTLS client certificate authentication for external service connections
 - Provides granular control over connection parameters for different service types
 - Ensures compliance with security requirements for outbound connections
-
+<!-- 
 ## Quick Start
 
 <TODO: Verify this>
@@ -142,7 +142,8 @@ In this tutorial, we'll configure Tyk Gateway to use a corporate HTTP proxy for 
     ```
 
     <TODO: Add sample log output>
-
+ -->
+ 
 ## Configuration Options
 
 External Service Configuration allows you to control how Tyk Gateway connects to external services such as OAuth 2.0 Authorization Servers, storage systems, and webhook targets. This section explains the configuration structure and available options.
