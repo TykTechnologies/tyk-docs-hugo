@@ -162,7 +162,6 @@ In this mode, all configured authentication methods must be satisfied in the req
 
 In Legacy mode, the `baseIdentityProvider` setting determines which authentication method provides the [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}). This setting must be configured to one of the enabled authentication methods (e.g., `auth_token`, `basic_auth_user`, `jwt_claim`, etc.).
 
-All configured authentication methods must be satisfied in the request (AND logic), but only the method specified by `baseIdentityProvider` will contribute its metadata to the session object.
 
 ### Compliant Mode
 
