@@ -259,7 +259,6 @@ Due to the nature of how security requirements are processed, the order in which
 
 {{< /note >}}
 
-**Important note**: Due to the nature of how security requirements are processed, the order in which authentication methods are evaluated within a single requirement object is not guaranteed to be deterministic. This means that if both `api_key` and `basic_auth` pass authentication, either one might end up providing the session object.
 
 ### Choosing the Right Mode
 
