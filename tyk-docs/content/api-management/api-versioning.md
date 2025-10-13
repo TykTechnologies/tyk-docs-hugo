@@ -267,11 +267,11 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## API versioning in the Tyk Dashboard API Designer
 
-You can use the API Designer in the Tyk Dashboard to add and manage versions for your APIs.
+You can use the API Designer in the Tyk Dashboard to manage versions for your APIs.
 
 ### Configure versioning
 
-From Tyk 5.10, you can pre-configure the versioning metadata for an API before you've created the first child API.
+From Tyk 5.10, you can pre-configure the versioning metadata for an API before you've created the first [child API]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
 
 1. Choose the API for which you want to create a new version (this can be an unversioned or versioned API) and go to the **Versions** tab
 
@@ -285,7 +285,7 @@ From Tyk 5.10, you can pre-configure the versioning metadata for an API before y
     - [Stripping identifier from upstream request]({{< ref "api-management/api-versioning#stripping-version-identifier" >}})
     - [Default fallback behaviour]({{< ref "api-management/api-versioning#fallback-to-default" >}})
 
-3. Don't forget to select **Save API** when you are ready.
+3. Click **Save API** 
 
 ### Create a new child version
 
