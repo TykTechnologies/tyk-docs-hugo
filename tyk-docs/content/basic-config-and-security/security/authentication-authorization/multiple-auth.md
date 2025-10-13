@@ -246,18 +246,27 @@ When using **Compliant** mode, the session object handling is more dynamic:
 
 2. Within a single security requirement object (AND logic): When multiple authentication methods are specified in the same requirement object (as in your example below), all methods must pass, and the **last** successfully processed authentication method will provide the session object.
 
+Auth methods are always validated in the following order (and skipped if not included in the security requirement):
+
+1. [Tyk OAuth 2.0]({{< ref "api-management/authentication/oauth-2" >}})
+2. External OAuth (([deprecated]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}))
+3. [Basic Auth]({{< ref "api-management/authentication/basic-authentication" >}})
+4. [HMAC]({{< ref "basic-config-and-security/security/authentication-authorization/hmac-signatures" >}})
+5. [JWT]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}})
+6. OpenID Connect ([deprecated]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}))
+7. [Custom Plugin Auth]({{< ref "api-management/authentication/custom-auth" >}})
+8. [Bearer / Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) (API Key)
+
+For example, if this security requirement is satisfied in the request, the session metadata will come from the Auth Token, despite it being declared first in the security requirement:
+
 ```
 security:
   - api_key: []
     basic_auth: []  
 ```
 
-{{< note success >}}
-**Note**  
 
-Due to the nature of how security requirements are processed, the order in which authentication methods are evaluated within a single requirement object is not guaranteed to be deterministic. This means that if both `api_key` and `basic_auth` pass authentication, either one might end up providing the session object.
 
-{{< /note >}}
 
 
 ### Choosing the Right Mode
@@ -265,7 +274,7 @@ Due to the nature of how security requirements are processed, the order in which
 **Use Legacy Mode when:**
 
 - Migrating from or using Tyk Classic APIs
-- You need all auth methods to be required (AND logic)
+- You need the session metadata to be taken from an auth method earlier in the middleware processing order
 
 **Use Compliant Mode when:**
 
