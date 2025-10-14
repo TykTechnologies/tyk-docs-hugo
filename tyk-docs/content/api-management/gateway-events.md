@@ -114,7 +114,7 @@ The built-in events that Tyk Gateway will generate are:
 
 ## Event Metadata
 
-When an event is fired, and an *event handler* is registered for that specific API and event combination, Tyk Gateway provides the handler with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}). The external system (webhook) or custom (JavaScript) code can then use this metadata to decide what action to take.
+When an event is fired, and an *event handler* is registered for that specific API and event combination, Tyk Gateway provides the handler with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata" >}}). The external system (webhook) or custom (JavaScript) code can then use this metadata to decide what action to take.
 
 Most events provide common metadata as follows:
 
@@ -251,7 +251,7 @@ When an API circuit breaker triggers due to an unresponsive upstream service, th
 
 With Tyk Gateway, the webhook event handler is a process that runs asynchronously in response to an API event being fired. It will issue an HTTP request to any open endpoint and is fully configurable within the API definition.
 
-The HTTP method, body, header values, and target URL can all be configured in the API definition. The [request body](#webhook-payload) is generated using a Tyk template file that has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}).
+The HTTP method, body, header values, and target URL can all be configured in the API definition. The [request body](#webhook-payload) is generated using a Tyk template file that has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata" >}}).
 
 The webhook event handler runs in its own process and so does not block the operation of the Gateway.
 
@@ -265,7 +265,7 @@ When your webhook event handler is triggered, it will send an HTTP request to th
 
 If no template is provided in the webhook event handler configuration in the API definition, Tyk Gateway will look for the default file `templates/default_webhook.json`. Any text file accessible to the Gateway can be used to store the Go template to be used by the event handler when constructing the payload.
 
-The event handler has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) and this can be accessed by the template using the `{{.Meta.XXX}}` namespace.
+The event handler has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata" >}}) and this can be accessed by the template using the `{{.Meta.XXX}}` namespace.
 
 The [event type]({{< ref "api-management/gateway-events#event-types" >}}) that triggered the event handler can be accessed as `{{.Type}}`.
 
@@ -778,7 +778,7 @@ sampleHandler.NewHandler(function(event, context) {
 
 #### The `event` object
 
-This contains the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) in the following structure:
+This contains the [event metadata]({{< ref "api-management/gateway-events#event-metadata" >}}) in the following structure:
 
 ```json
 {
