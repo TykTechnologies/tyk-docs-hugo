@@ -8,7 +8,7 @@ date: 2025-01-10
 
 ## Introduction
 
-JSON Web Tokens contain claims - key-value pairs that provide information about the token and its subject. Tyk can validate these claims to ensure that incoming JWTs meet your security requirements before granting access to your APIs.
+JSON Web Tokens contain claims, which are key-value pairs that provide information about the token and its subject. Tyk can validate these claims to ensure that incoming JWTs meet your security requirements before granting access to your APIs.
 
 Tyk supports validation of both:
 
@@ -68,7 +68,7 @@ Registered Claims are standardized by the JWT specification ([RFC 7519](https://
 | `sub` | Subject    | Identifies the subject of the token |
 | `exp` | Expiration Time | When the token expires |
 | `iat` | Issued At  | When the token was issued |
-| `nbf` | Not Before | When the token becomes valid |	
+| `nbf` | Not Before | When the token becomes valid | 
 | `jti` | JWT ID     | Unique identifier for the token |
 
 Custom Claims are application-specific and can contain any information relevant to your use case, such as user roles, permissions, department, or metadata.
@@ -94,7 +94,7 @@ Tyk can validate the seven registered JWT claims defined in [RFC 7519](https://d
 
 ### Temporal Claims (exp, iat, nbf)
 
-Temporal claims define when a JWT is valid. Tyk automatically validates these claims when present in the token.
+Temporal claims define the validity period of a JWT. Tyk automatically validates these claims when present in the token.
 
 - **Expiration Time (exp)**: the `exp` claim specifies when the token expires (as a Unix timestamp). Tyk rejects tokens where the current time is after the expiration time.
 - **Issued At (iat)**: the `iat` claim specifies when the token was issued. Tyk rejects tokens that claim to be issued in the future.
@@ -122,7 +122,7 @@ x-tyk-api-gateway:
 {{< note success >}}
 **Note**  
 
-Temporal claim validation and the associated clock skew controls were supported by Tyk prior to 5.10.0 and also for [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}})
+Temporal claim validation and the associated clock skew controls were supported by Tyk before 5.10.0 and also for [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}})
 {{< /note >}}
 
 ### Identity Claims (iss, aud, sub, jti)
@@ -131,7 +131,7 @@ Identity claims provide information about the token's origin and intended use. U
 
 #### Issuer Validation (iss)
 
-Validates that the token was issued by a trusted Identity Provider:
+Validates that a trusted Identity Provider issued the token:
 
 ```yaml
 x-tyk-api-gateway:
@@ -161,7 +161,7 @@ x-tyk-api-gateway:
             - "mobile-app"
 ```
 
-The `aud` claim can be a string or array. Tyk accepts tokens if any audience value matches any configured audience. If `allowedAudiences` is empty, no audience validation is performed.
+The `aud` claim can be a string or an array. Tyk accepts tokens if any audience value matches any configured audience. If `allowedAudiences` is empty, no audience validation is performed.
 
 #### Subject Validation (sub)
 
@@ -231,7 +231,7 @@ x-tyk-api-gateway:
           subjectClaims: ["sub", "username"]
 ```
 
-In this example we expect one Identity Provider to present the subject in the `sub` claim, and the other to present it in the `username` claim.
+In this example, we expect one Identity Provider to present the subject in the `sub` claim, and the other to present it in the `username` claim.
 
 ## Custom Claims Validation
 
@@ -239,7 +239,7 @@ Custom claims validation allows you to enforce business-specific rules on JWT to
 
 **Use Cases**:
 
-- **Role-based access control**: Validate that users have required roles (for example `admin`, `editor` ,`viewer`)
+- **Role-based access control**: Validate that users have required roles (for example, `admin`, `editor`, `viewer`)
 - **Department restrictions**: Ensure users belong to authorized departments
 - **Feature flags**: Check if users have access to specific features or API endpoints
 - **Geographic restrictions**: Validate user location or region-based access
@@ -247,7 +247,7 @@ Custom claims validation allows you to enforce business-specific rules on JWT to
 
 ### Validation Types
 
-Three distinct validation types are supported by the custom claims validation. These validation types can be applied to any custom claim in your JWT tokens, providing flexible control over your authorization logic.
+The custom claims validation supports three distinct validation types. These validation types can be applied to any custom claim in your JWT tokens, providing flexible control over your authorization logic.
 
 #### Required
 
@@ -285,9 +285,9 @@ Exact match type validation verifies that a claim's value exactly matches one of
 
 **Use Cases:**
 
-- Role validation (e.g. `admin`, `editor`, `viewer`)
-- Environment-specific access (e.g. `production`, `staging`, `development`)
-- Subscription tier validation (e.g. `premium`, `standard`, `basic`)
+- Role validation (e.g., `admin`, `editor`, `viewer`)
+- Environment-specific access (e.g., `production`, `staging`, `development`)
+- Subscription tier validation (e.g., `premium`, `standard`, `basic`)
 - Boolean flag validation (`true`, `false`)
 
 **Behavior:**
@@ -325,7 +325,7 @@ The Contains type validation checks whether a claim's value contains or includes
 
 **Use Cases:**
 
-- Permission arrays (`["read:users", "write:posts", "admin:system"]`)
+- Permission arrays (`["read: users", "write: posts", "admin: system"]`)
 - Tag-based access control
 - Partial string matching for departments or locations
 - Multi-value scope validation
@@ -341,7 +341,7 @@ Strings:
 - ❌ Fails if none of the specified substrings are found
 
 Other Types:
-- Converts to string and performs substring matching
+- Converts to a string and performs substring matching
 
 Example Configuration:
 
@@ -355,7 +355,7 @@ x-tyk-api-gateway:
             permissions:
               type: contains
               allowedValues:
-              - admin:system
+              - admin: system
               - write:api
             department_code:
               type: contains
@@ -368,13 +368,13 @@ With this configuration, a token might contain these claims:
 
 ```json
 {
-  "permissions": ["read:users", "write:posts", "admin:system"],
+  "permissions": ["read: users", "write: posts", "admin: system"],
   "department_code": "ENG-BACKEND",
 }
 ```
 
 In this example:
-- `permissions` validation passes because the array contains `"admin:system"`
+- `permissions` validation passes because the array contains `"admin: system"`
 - `department_code` validation passes because the string contains `"ENG"`
 
 ### Data Type Support
@@ -435,7 +435,7 @@ Numeric claims (integers and floating-point numbers) are validated with type-awa
 
 - **Required**: Passes if the number exists (including `0`)
 - **Exact Match**: Performs numeric equality comparison (`42` matches `42.0`)
-- **Contains**: Converts to string and performs substring matching
+- **Contains**: Converts to a string and performs substring matching
 
 **Example**
 
@@ -526,7 +526,7 @@ Claims:
 ```json
 {
   "roles": ["user", "editor"],
-  "permissions": ["read:posts", "write:posts", "delete:own"],
+  "permissions": ["read: posts", "write: posts", "delete: own"],
   "departments": ["engineering", "product"],
   "tags": []
 }
@@ -544,8 +544,8 @@ x-tyk-api-gateway:
             permissions:
               type: contains
               allowedValues:
-              - write:posts
-              - admin:system
+              - write: posts
+              - admin: system
             roles:
               type: contains
               allowedValues:
@@ -564,7 +564,7 @@ Complex object claims can be validated, though typically you'll want to validate
 
 - **Required**: Passes if the object exists (including empty objects `{}`)
 - **Exact Match**: Performs deep object comparison (rarely used)
-- **Contains**: Converts to JSON string and performs substring matching
+- **Contains**: Converts to a JSON string and performs substring matching
 
 **Example**
 
@@ -617,7 +617,7 @@ Arrays containing different data types are supported. The `contains` validation 
 
 When the expected value type doesn't match the claim type, Tyk performs intelligent conversion:
 
-- Numbers to strings: `42` become `"42"`
+- Numbers to strings: `42` becomes `"42"`
 - Booleans to strings: `true` becomes "`true"`
 - Objects/arrays to strings: Converted to JSON representation
 
@@ -637,7 +637,7 @@ JSON Web Tokens often contain complex, hierarchical data structures with nested 
 - `user.name` - Access the `name` property within the `user` object
 - `metadata.department.code` - Access the `code` property within `department` within `metadata`
 - `permissions.api.read` - Access the `read` property within `api` within `permissions`
-- `permissions.0.resource` - Access the `resource` property of the first element in the `permissions` array
+- `permissions 0.resource` - Access the `resource` property of the first element in the `permissions` array
 
 {{< note success >}}
 **Note**  
@@ -735,7 +735,7 @@ x-tyk-api-gateway:
 
 ### Non-blocking Validation
 
-The non-blocking validation feature specifically enables a gradual rollout approach to validation rules by allowing you to monitor validation failures without rejecting requests.
+The non-blocking validation feature enables a gradual rollout approach to validation rules, allowing you to monitor validation failures without rejecting requests.
 
 #### How Non-blocking Validation Works
 
@@ -782,3 +782,4 @@ x-tyk-api-gateway:
 ```
 
 The `nonBlocking` flag in the validation rule for `user.preferences.notifications` means that if this claim is missing from the received token, the token will not fail validation, but a warning will be logged.
+
