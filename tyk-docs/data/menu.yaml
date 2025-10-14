@@ -540,7 +540,7 @@ menu:
             category: Page
             show: True
           - title: "Tyk Cloud"
-            category: Page
+            category: Directory
             show: True
             menu:
             - title: "Overview"
@@ -548,7 +548,7 @@ menu:
               category: Page
               show: True
             - title: "Management"
-              category: Page
+              category: Directory
               show: True
               menu:
               - title: "Organizations"
@@ -585,7 +585,7 @@ menu:
                 show: True
             - title: "Configuration"
               path: /tyk-open-source
-              category: Page
+              category: Directory
               show: True
               menu:
               - title: "Developer Portal"
