@@ -30,7 +30,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 2.8.5 Release Notes
 
-#### Release Date xx
+#### Release Date 13th October 2025
 
 #### Release Highlights
 
