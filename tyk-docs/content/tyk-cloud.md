@@ -21,7 +21,6 @@ aliases:
   - /tyk-cloud/configuration-options
   - /tyk-cloud/environments-&-deployments
   - /tyk-cloud/environments-deployments
-  - /tyk-cloud/environments-deployments/managing-gateways
   - /tyk-cloud/glossary
   - /tyk-cloud/what-is-tyk-cloud
   - /deployment-and-operations/tyk-cloud-platform/quick-start
