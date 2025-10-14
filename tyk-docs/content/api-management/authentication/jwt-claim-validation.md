@@ -28,6 +28,14 @@ JWT claim validation - with the exception of [temporal claims]({{< ref "basic-co
 ### What are JWT Claims?
 A JSON Web Token consists of three parts separated by dots: `header.payload.signature`. The payload contains the claims - a set of key-value pairs that carry information about the token and its subject.
 
+<br>
+
+{{< note success >}}
+**Viewing JWT Claims**
+
+To inspect the claims in a JWT, use online tools like [jwt.io](https://jwt.io) for quick debugging
+{{< /note >}}
+
 ```json
 {
   "iss": "https://auth.company.com",
@@ -67,9 +75,12 @@ Custom Claims are application-specific and can contain any information relevant 
 
 After [verifying]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}) that the token hasn't been tampered with, Tyk processes claims in this order:
 
-- [Registered Claims Validation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#registered-claims-validation" >}}): Checks standard claims against your configuration
-- [Custom Claims Validation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#custom-claims-validation" >}}): Applies your business rules to custom claims
-- [Authorization]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#managing-authorization" >}}): Uses validated claims to determine API access and apply policies
+1. **Claims Extraction**: All claims from the JWT payload are extracted and stored in context variables with the format `jwt_claims_CLAIMNAME`. For example, a claim named `role` becomes accessible as `jwt_claims_role`.
+
+2. **Claims Validation**:
+   - [Registered Claims Validation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#registered-claims-validation" >}}): Checks standard claims against your configuration
+   - [Custom Claims Validation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#custom-claims-validation" >}}): Applies your business rules to custom claims
+   - [Authorization]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#managing-authorization" >}}): Uses validated claims to determine API access and apply policies
 
 If any validation step fails, Tyk rejects the request with a specific error message indicating which claim validation failed and why.
 
@@ -164,7 +175,7 @@ x-tyk-api-gateway:
             - "admin"
 ```
 
-Useful for restricting API access to specific types of subjects or known entities. If `allowedSubjects` is empty, no audience validation is performed.
+Useful for restricting API access to specific types of subjects or known entities. If `allowedSubjects` is empty, no subject validation is performed.
 
 #### JWT ID Validation (jti)
 
@@ -273,7 +284,7 @@ Exact match type validation verifies that a claim's value exactly matches one of
 **Behavior:**
 
 - ✅ Passes if the claim value exactly matches any value in the allowedValues array
-- ❌ Fails if the claim value doesn't match any allowed value or if the claim is missing
+- ❌ Fails if the claim value doesn't match any allowed value, if the claim is missing, or if allowedValues is empty
 - Case-sensitive for string comparisons
 - Type-sensitive (string "true" ≠ boolean true)
 
@@ -582,6 +593,46 @@ JSON Web Tokens often contain complex, hierarchical data structures with nested 
 - `user.name` - Access the `name` property within the `user` object
 - `metadata.department.code` - Access the `code` property within `department` within `metadata`
 - `permissions.api.read` - Access the `read` property within `api` within `permissions`
+- `permissions.0.resource` - Access the `resource` property of the first element in the `permissions` array
+
+{{< note success >}}
+**Note**  
+
+Array elements can be accessed using numeric indices in dot notation (e.g., `permissions.0.read` for the first element). The index follows the dot notation format rather than bracket notation (`permissions[0]`).
+{{< /note >}}
+
+#### Nested Array Validation
+
+**Example Token**
+
+```json
+{
+  "permissions": [
+    {
+      "resource": "users",
+      "actions": ["read", "write"]
+    },
+    {
+      "resource": "reports",
+      "actions": ["read"]
+    }
+  ]
+}
+```
+
+You can validate specific array elements:
+
+```yaml
+customClaimValidation:
+  "permissions.0.resource":
+    type: exact_match
+    allowedValues: ["users"]
+  "permissions.1.actions.0":
+    type: exact_match
+    allowedValues: ["read"]
+```
+
+This allows for precise validation of specific elements within arrays, while the `contains` validation type remains useful for checking array contents without caring about position.
 
 #### Nested Object Validation
 
@@ -635,10 +686,11 @@ When configured, a validation rule can be set to "non-blocking" mode, which mean
 
 1. If validation passes, the request proceeds normally
 2. If validation fails, instead of rejecting the request:
- - a warning is logged in the gateway [system logs]({{< ref "api-management/logs-metrics#system-logs" >}})
- - the request is allowed to proceed to the upstream API
+   - A warning is logged to the Tyk Gateway log file at the `WARN` log level
+   - The validation process continues to evaluate other custom claims
+   - The request is allowed to proceed to the upstream API
 
-This allows you to:
+This behavior allows you to:
 
 - Monitor how new validation rules would affect traffic without disrupting users
 - Gradually roll out stricter validation requirements
@@ -668,4 +720,3 @@ Non-blocking mode can be configured for any custom claim validation rule with th
 ```
 
 The `nonBlocking` flag in the validation rule for `user.preferences.notifications` means that if this claim is missing from the received token, the token will not fail validation, but a warning will be logged.
-
