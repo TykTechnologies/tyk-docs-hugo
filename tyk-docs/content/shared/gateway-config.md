@@ -114,6 +114,36 @@ Type: `[]string`<br />
 
 Certificates used for MDCB Mutual TLS
 
+### security.certificate_expiry_monitor
+CertificateExpiryMonitor configures the certificate expiry monitoring and notification feature
+
+### security.certificate_expiry_monitor.warning_threshold_days
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_WARNINGTHRESHOLDDAYS</b><br />
+Type: `int`<br />
+
+WarningThresholdDays specifies the number of days before certificate expiry that the Gateway will start generating CertificateExpiringSoon events when the certificate is used
+Default: DefaultWarningThresholdDays (30 days)
+
+### security.certificate_expiry_monitor.check_cooldown_seconds
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_CHECKCOOLDOWNSECONDS</b><br />
+Type: `int`<br />
+
+CheckCooldownSeconds specifies the minimum time in seconds that the Gateway will leave between checking for the expiry of a certificate when it is used in an API request - if a certificate is used repeatedly this prevents unnecessary expiry checks
+Default: DefaultCheckCooldownSeconds (3600 seconds = 1 hour)
+
+### security.certificate_expiry_monitor.event_cooldown_seconds
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_EVENTCOOLDOWNSECONDS</b><br />
+Type: `int`<br />
+
+EventCooldownSeconds specifies the minimum time in seconds between firing the same certificate expiry event - this prevents unnecessary events from being generated for an expiring or expired certificate being used repeatedly; note that the higher of the value configured here or the default (DefaultEventCooldownSeconds) will be applied
+Default: DefaultEventCooldownSeconds (86400 seconds = 24 hours)
+
+### external_services
+ENV: <b>TYK_GW_EXTERNALSERVICES</b><br />
+Type: `ExternalServiceConfig`<br />
+
+External service configuration for proxy and mTLS support
+
 ### http_server_options
 Gateway HTTP server configuration
 
