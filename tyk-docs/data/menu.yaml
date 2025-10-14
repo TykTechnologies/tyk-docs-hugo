@@ -678,7 +678,7 @@ menu:
                 path: /basic-config-and-security/security/authentication-authorization/open-keyless
                 category: Page
                 show: True
-              - title: "Combine Authentication"
+              - title: "Multi Auth"
                 path: /basic-config-and-security/security/authentication-authorization/multiple-auth
                 category: Page
                 show: True
