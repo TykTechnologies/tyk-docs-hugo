@@ -12,7 +12,6 @@ tags:
 - API Gateway
 title: Create Tyk Account
 aliases:
-    - /tyk-cloud/initial-portal-config
 ---
 
 
