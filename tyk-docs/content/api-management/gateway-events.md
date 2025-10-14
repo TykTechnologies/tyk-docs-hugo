@@ -60,14 +60,10 @@ Three different categories of *event handler* can be registered for each event:
 - your own [custom event handler]({{< ref "api-management/gateway-events#custom-api-event-handlers" >}}) that will run in a JavaScript virtual machine on the Tyk server
 
 {{< note success >}}
-**Note**  
+**Note**
 
 Remember that <b>quota usage monitoring</b> has a [dedicated mechanism]({{< ref "api-management/gateway-events#monitoring-quota-consumption" >}}) for handling these special events.
 {{< /note >}}
-
-### Event metadata
-
-When an API event is fired, if there is an *event handler* registered for that combination of API and event then the handler will be provided with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
 
 ## Event Types
 
@@ -111,21 +107,58 @@ The built-in events that Tyk Gateway will generate are:
 - `TokenUpdated`: a token has been changed/updated
 - `TokenDeleted`: a token has been deleted
 
+### Certificate expiry events
+
+- `CertificateExpiringSoon`: a certificate has been used within the expiry threshold and should be updated
+- `CertificateExpired`: an expired certificate has been used in a request
+
 ## Event Metadata
 
-When Tyk generates an [event]({{< ref "api-management/gateway-events#event-types" >}}) it will compile the following metadata that is passed to the event handler:
+When an event is fired, and an *event handler* is registered for that specific API and event combination, Tyk Gateway provides the handler with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata" >}}). The external system (webhook) or custom (JavaScript) code can then use this metadata to decide what action to take.
 
-- `Message` (string): a human readable message from Tyk Gateway that adds detail about the event
-- `Path` (string): the path of the API endpoint request that led to the event being fired
-- `Origin` (string): origin data for the source of the request (if this exists)
-- `Key` (string): the key that was used in the request
-- `OriginatingRequest` (string): Based64-encoded [raw inbound request](#raw-request-data)
+Most events provide common metadata as follows:
 
-{{< note success >}}
-**Note**  
+- `message` (string): a human-readable message from Tyk Gateway that provides details about the event
+- `path` (string): the path of the API endpoint request that led to the event being fired
+- `origin` (string): origin data for the source of the request (if this exists)
+- `key` (string): the key that was used in the request
+- `originating_request` (string): a Base64-encoded [raw inbound request]({{< ref "#raw-request-data" >}})
 
-Circuit breaker events provide different metadata, see [Circuit Breakers]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers/" >}}) to see what is provided when the `BreakerTripped`, `BreakerReset` or `BreakerTriggered` events are generated.
-{{< /note >}}
+### Specific Event Metadata
+
+Some events provide alternative metadata specific to that event. The following sections detail the event-specific metadata provided for such events.
+
+<ul>
+
+<li>
+<details>
+<summary>CertificateExpiringSoon</summary>
+
+- `message` (string): a human readable message from Tyk Gateway that adds detail about the event
+- `cert_id` (string): the certificate ID
+- `cert_name` (string): the name of the certificate
+- `expires_at` (string, RFC3339): the certificate expiry date
+- `days_remaining` (integer): the remaining days until the certificate expires
+- `api_id`(string): the ID of the API that triggered the event
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>CertificateExpired</summary>
+
+- `message` (string): a human readable message from Tyk Gateway that adds detail about the event
+- `cert_id` (string): the certificate ID
+- `cert_name` (string): the name of the certificate
+- `expired_at` (string, RFC3339): the date when the certificate expired
+- `days_since_expiry` (integer): the number of days since the certificate expired
+- `api_id`(string): the ID of the API that triggered the event
+
+</details>
+</li>
+
+</ul>
 
 ### Using the metadata
 
@@ -143,7 +176,7 @@ The Tyk platform can be configured to log at various verbosity levels (info, deb
 
 <br>
 {{< note success >}}
-**Note**  
+**Note**
 
 Logging event handlers are currently only supported by Tyk Classic APIs.
 {{< /note >}}
@@ -218,7 +251,7 @@ When an API circuit breaker triggers due to an unresponsive upstream service, th
 
 With Tyk Gateway, the webhook event handler is a process that runs asynchronously in response to an API event being fired. It will issue an HTTP request to any open endpoint and is fully configurable within the API definition.
 
-The HTTP method, body, header values, and target URL can all be configured in the API definition. The [request body](#webhook-payload) is generated using a Tyk template file that has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}).
+The HTTP method, body, header values, and target URL can all be configured in the API definition. The [request body](#webhook-payload) is generated using a Tyk template file that has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata" >}}).
 
 The webhook event handler runs in its own process and so does not block the operation of the Gateway.
 
@@ -232,7 +265,7 @@ When your webhook event handler is triggered, it will send an HTTP request to th
 
 If no template is provided in the webhook event handler configuration in the API definition, Tyk Gateway will look for the default file `templates/default_webhook.json`. Any text file accessible to the Gateway can be used to store the Go template to be used by the event handler when constructing the payload.
 
-The event handler has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) and this can be accessed by the template using the `{{.Meta.XXX}}` namespace.
+The event handler has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata" >}}) and this can be accessed by the template using the `{{.Meta.XXX}}` namespace.
 
 The [event type]({{< ref "api-management/gateway-events#event-types" >}}) that triggered the event handler can be accessed as `{{.Type}}`.
 
@@ -454,7 +487,7 @@ Note, however, that to test this you will need to create a *global webhook* in y
 <br>
 <br>
 {{< note success >}}
-**Note**  
+**Note**
 
 When a *global webhook* is registered to a Tyk OAS API, Tyk will create a read-only copy of the webhook [configuration](#local-webhook-configuration) (`url`, `method`, `bodyTemplate`, `headers`) within the API definition. This is so that Tyk Gateway knows how to handle the event, as it does not have access to the store of *global webhooks* registered with Tyk Dashboard.
 <br>
@@ -465,7 +498,7 @@ If the global webhook is subsequently deleted from the Tyk Dashboard, the webhoo
 
 #### Set up a webhook event handler in the Tyk Dashboard
 
-It is very simple to register webhooks to be triggered in response to specific API events when using Tyk OAS APIs with the Tyk Dashboard. The API Designer in the Dashboard allows you to define *local webhooks* and to register *global webhooks* to handle events. 
+It is very simple to register webhooks to be triggered in response to specific API events when using Tyk OAS APIs with the Tyk Dashboard. The API Designer in the Dashboard allows you to define *local webhooks* and to register *global webhooks* to handle events.
 
 If you want to use a *global webhook* then you'll need to declare it first, following [these instructions]({{< ref "api-management/gateway-events#creating-a-global-webhook-definition-using-tyk-dashboard" >}}).
 
@@ -663,7 +696,7 @@ The Tyk platform can be configured to log at various verbosity levels (info, deb
 
 <br>
 {{< note success >}}
-**Note**  
+**Note**
 
 Logging event handlers are currently only supported by Tyk Classic APIs.
 {{< /note >}}
@@ -720,7 +753,7 @@ Custom event handlers have access to the [JavaScript API]({{< ref "api-managemen
 
 <br>
 {{< note success >}}
-**Note**  
+**Note**
 
 Custom event handlers are currently only supported by Tyk Classic APIs.
 {{< /note >}}
@@ -745,7 +778,7 @@ sampleHandler.NewHandler(function(event, context) {
 
 #### The `event` object
 
-This contains the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) in the following structure:
+This contains the [event metadata]({{< ref "api-management/gateway-events#event-metadata" >}}) in the following structure:
 
 ```json
 {
@@ -821,7 +854,7 @@ Unlike API event [webhooks]({{< ref "api-management/gateway-events#event-handlin
 
 <br>
 {{< note success >}}
-**Note**  
+**Note**
 
 Advanced quota threshold monitoring is currently only supported by Tyk Classic APIs.
 {{< /note >}}
@@ -861,7 +894,7 @@ With this configuration, a monitor is configured to issue a request to `POST htt
 
 <br>
 {{< note success >}}
-**Note**  
+**Note**
 
 If you are using our [Classic Developer Portal]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-events-notifications" >}}), developers registered in the portal will also receive emails about quota threshold limits being reached.
 {{< /note >}}
@@ -904,7 +937,7 @@ When the quota consumption monitor is fired, the webhook request that is issued 
 
 <br>
 {{< warning success >}}
-**Warning**  
+**Warning**
 
 When the monitor is triggered by a user hitting their quota threshold, the <b>raw API key</b> is provided in the webhook payload. It is important to secure the webhook endpoint and to handle the payload securely on the receiving end.
 {{< /warning >}}
