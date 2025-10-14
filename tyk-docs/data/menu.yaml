@@ -47,7 +47,6 @@ menu:
             category: Page
             show: True
 
-
       - title: "Deploy Tyk"
         category: Label
         show: True
@@ -57,7 +56,7 @@ menu:
             category: Page
             show: True
           - title: "Tyk Cloud"
-            category: Page
+            category: Directory
             show: True
             menu:
             - title: "Overview"
@@ -65,7 +64,7 @@ menu:
               category: Page
               show: True
             - title: "Management"
-              category: Page
+              category: Directory
               show: True
               menu:
               - title: "Organizations"
@@ -102,7 +101,7 @@ menu:
                 show: True
             - title: "Configuration"
               path: /tyk-open-source
-              category: Page
+              category: Directory
               show: True
               menu:
               - title: "Developer Portal"
@@ -254,12 +253,10 @@ menu:
                 path: /product-stack/tyk-charts/tyk-oss-chart
                 category: Page
                 show: True
-
           - title: "Manage Distributed Gateways"
             path: /api-management/mdcb
             category: Page
             show: True
-
       - title: "Managing APIs"
         category: Label
         show: True
