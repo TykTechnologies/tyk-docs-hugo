@@ -208,6 +208,10 @@ menu:
                 path: /planning-for-production/ensure-high-availability/uptime-tests
                 category: Page
                 show: True
+              - title: "External Service Config"
+                path: /configure/external-service
+                category: Page
+                show: True
               - title: "Key Value Store"
                 path: /tyk-configuration-reference/kv-store
                 category: Page
