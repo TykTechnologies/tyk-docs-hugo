@@ -20,7 +20,9 @@ By validating JWT claims, you can enforce fine-grained access control policies, 
 {{< note success >}}
 **Note**
 
-JWT claim validation - with the exception of [temporal claims]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#temporal-claims-exp-iat-nbf" >}}) - is available exclusively for Tyk OAS APIs and from Tyk 5.10.0 onwards.
+JWT claim validation has different support levels across API types:
+- **Temporal claims** (`exp`, `iat`, `nbf`): Supported in both Tyk Classic APIs and Tyk OAS APIs
+- **All other claims** (identity claims and custom claims): Available exclusively in Tyk OAS APIs from Tyk 5.10.0 onwards
 {{< /note >}}
 
 ## JWT Claims Fundamentals
@@ -86,7 +88,9 @@ If any validation step fails, Tyk rejects the request with a specific error mess
 
 ## Registered Claims Validation
 
-Tyk can validate the seven registered JWT claims defined in [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1). These claims are grouped into **temporal claims** (time-based validation) and **identity claims** (content-based validation).
+Tyk can validate the seven registered JWT claims defined in [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1). These claims are grouped into:
+- **Temporal claims** (time-based validation): Supported in both Tyk Classic APIs and OAS APIs
+- **Identity claims** (content-based validation): Available only in Tyk OAS APIs
 
 ### Temporal Claims (exp, iat, nbf)
 
@@ -263,11 +267,16 @@ Required type validation ensures that a specific claim exists in the JWT token, 
 **Example Configuration:**
 
 ```yaml
-customClaimValidation:
-  department:
-    type: required
-  user_metadata:
-    type: required
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            department:
+              type: required
+            user_metadata:
+              type: required
 ```
 
 #### Exact Match
@@ -291,18 +300,23 @@ Exact match type validation verifies that a claim's value exactly matches one of
 **Example Configuration:**
 
 ```yaml
-customClaimValidation:
-  role:
-    type: exact_match
-    allowedValues:
-    - admin
-    - editor
-    - viewer
-  subscription_tier:
-    type: exact_match
-    allowedValues:
-    - premium
-    - standard
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            role:
+              type: exact_match
+              allowedValues:
+              - admin
+              - editor
+              - viewer
+            subscription_tier:
+              type: exact_match
+              allowedValues:
+              - premium
+              - standard
 ```
 
 #### Contains
@@ -332,17 +346,22 @@ Other Types:
 Example Configuration:
 
 ```yaml
-customClaimValidation:
-  permissions:
-    type: contains
-    allowedValues:
-    - admin:system
-    - write:api
-  department_code:
-    type: contains
-    allowedValues:
-    - ENG
-    - SALES
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            permissions:
+              type: contains
+              allowedValues:
+              - admin:system
+              - write:api
+            department_code:
+              type: contains
+              allowedValues:
+              - ENG
+              - SALES
 ```
 
 With this configuration, a token might contain these claims:
@@ -389,18 +408,23 @@ Claims:
 Validation configuration:
 
 ```yaml
-customClaimValidation:
-  department:
-    type: exact_match
-    allowedValues:
-    - Engineering
-    - Sales
-    - Marketing
-  email:
-    type: contains
-    allowedValues:
-    - "@company.com"
-    - "@partner.com"
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            department:
+              type: exact_match
+              allowedValues:
+              - Engineering
+              - Sales
+              - Marketing
+            email:
+              type: contains
+              allowedValues:
+              - "@company.com"
+              - "@partner.com"
 ```
 
 ##### Numeric Values
@@ -428,17 +452,22 @@ Claims:
 Validation configuration:
 
 ```yaml
-customClaimValidation:
-  user_level:
-    type: exact_match
-    allowedValues:
-    - 1
-    - 2
-    - 3
-    - 4
-    - 5
-  account_balance:
-    type: required
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            user_level:
+              type: exact_match
+              allowedValues:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+            account_balance:
+              type: required
 ```
 
 ##### Boolean Values
@@ -466,13 +495,18 @@ Claims:
 Validation configuration:
 
 ```yaml
-customClaimValidation:
-  is_admin:
-    type: exact_match
-    allowedValues:
-    - true
-  email_verified:
-    type: required
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            is_admin:
+              type: exact_match
+              allowedValues:
+              - true
+            email_verified:
+              type: required
 ```
 
 ##### Array Values
@@ -501,20 +535,25 @@ Claims:
 Validation configuration:
 
 ```yaml
-customClaimValidation:
-  permissions:
-    type: contains
-    allowedValues:
-    - write:posts
-    - admin:system
-  roles:
-    type: contains
-    allowedValues:
-    - admin
-    - editor
-    - moderator
-  tags:
-    type: required
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            permissions:
+              type: contains
+              allowedValues:
+              - write:posts
+              - admin:system
+            roles:
+              type: contains
+              allowedValues:
+              - admin
+              - editor
+              - moderator
+            tags:
+              type: required
 ```
 
 ##### Object Values
@@ -545,11 +584,16 @@ Claims:
 Configuration:
 
 ```yaml
-customClaimValidation:
-  user_metadata:
-    type: required
-  preferences:
-    type: required
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            user_metadata:
+              type: required
+            preferences:
+              type: required
 ```
 
 ##### Type Coercion and Edge Cases
@@ -599,6 +643,8 @@ JSON Web Tokens often contain complex, hierarchical data structures with nested 
 **Note**  
 
 Array elements can be accessed using numeric indices in dot notation (e.g., `permissions.0.read` for the first element). The index follows the dot notation format rather than bracket notation (`permissions[0]`).
+
+When a nested path doesn't exist (e.g., `user.profile.level` but `profile` doesn't exist) or when an array index is out of bounds (e.g., `permissions.999.resource`), the claim is treated as missing. This will cause validation to fail for blocking rules or generate a warning for non-blocking rules.
 {{< /note >}}
 
 #### Nested Array Validation
@@ -623,13 +669,18 @@ Array elements can be accessed using numeric indices in dot notation (e.g., `per
 You can validate specific array elements:
 
 ```yaml
-customClaimValidation:
-  "permissions.0.resource":
-    type: exact_match
-    allowedValues: ["users"]
-  "permissions.1.actions.0":
-    type: exact_match
-    allowedValues: ["read"]
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            "permissions.0.resource":
+              type: exact_match
+              allowedValues: ["users"]
+            "permissions.1.actions.0":
+              type: exact_match
+              allowedValues: ["read"]
 ```
 
 This allows for precise validation of specific elements within arrays, while the `contains` validation type remains useful for checking array contents without caring about position.
@@ -662,18 +713,24 @@ The most common use case for dot notation is validating properties within nested
 You could set the following configuration to validate the requester's department and level:
 
 ```yaml
-{
-  "customClaimValidation": {
-    "user.profile.department": {
-      "type": "exact_match",
-      "allowedValues": ["Engineering", "Sales", "Marketing"]
-    },
-    "user.profile.level": {
-      "type": "contains",
-      "allowedValues": ["senior", "lead", "principal"]
-    }
-  }
-}
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            user.profile.department:
+              type: exact_match
+              allowedValues:
+                - Engineering
+                - Sales
+                - Marketing
+            user.profile.level:
+              type: contains
+              allowedValues:
+                - senior
+                - lead
+                - principal
 ```
 
 ### Non-blocking Validation
@@ -701,22 +758,27 @@ This behavior allows you to:
 Non-blocking mode can be configured for any custom claim validation rule with the addition of the boolean `nonBlocking` flag, for example:
 
 ```yaml
-{
-  "customClaimValidation": {
-    "user.profile.department": {
-      "type": "exact_match",
-      "allowedValues": ["Engineering", "Sales", "Marketing"]
-    },
-    "user.profile.level": {
-      "type": "contains",
-      "allowedValues": ["senior", "lead", "principal"]
-    },
-    "user.preferences.notifications": {
-      "type": "required",
-      "nonBlocking": true
-    }
-  }
-}
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            user.profile.department:
+              type: exact_match
+              allowedValues:
+                - Engineering
+                - Sales
+                - Marketing
+            user.profile.level:
+              type: contains
+              allowedValues:
+                - senior
+                - lead
+                - principal
+            user.preferences.notifications:
+              type: required
+              nonBlocking: true
 ```
 
 The `nonBlocking` flag in the validation rule for `user.preferences.notifications` means that if this claim is missing from the received token, the token will not fail validation, but a warning will be logged.
