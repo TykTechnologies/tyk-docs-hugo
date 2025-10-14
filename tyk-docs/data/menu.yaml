@@ -46,6 +46,219 @@ menu:
             path: /getting-started/using-tyk-dashboard
             category: Page
             show: True
+<<<<<<< HEAD
+=======
+
+      - title: "Deploy Tyk"
+        category: Label
+        show: True
+        menu:
+          - title: "Tyk Stack"
+            path: /tyk-stack
+            category: Page
+            show: True
+          - title: "Tyk Cloud"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-cloud
+              category: Page
+              show: True
+            - title: "Management"
+              category: Directory
+              show: True
+              menu:
+              - title: "Organizations"
+                path: /tyk-cloud/environments-deployments/managing-organisations
+                category: Page
+                show: True
+              - title: "Teams and Users"
+                path: /tyk-cloud/teams-users
+                category: Page
+                show: True
+              - title: "Environments"
+                path: /tyk-cloud/environments-deployments/managing-environments
+                category: Page
+                show: True
+              - title: "Control Plane"
+                path: /tyk-cloud/environments-deployments/managing-control-planes
+                category: Page
+                show: True
+              - title: "Data Plane"
+                path: /tyk-cloud/environments-deployments/managing-gateways
+                category: Page
+                show: True
+              - title: "Accounts and Billing"
+                path: /tyk-cloud/account-billing
+                category: Page
+                show: True
+              - title: "Hybrid Gateways"
+                path: /tyk-cloud/environments-deployments/hybrid-gateways
+                category: Page
+                show: True
+              - title: "Managing APIs"
+                path: /tyk-cloud/securing-your-apis
+                category: Page
+                show: True
+            - title: "Configuration"
+              path: /tyk-open-source
+              category: Directory
+              show: True
+              menu:
+              - title: "Developer Portal"
+                path: /tyk-cloud/initial-portal-config
+                category: Page
+                show: True
+              - title: "Custom Plugins"
+                path: /tyk-cloud/using-plugins
+                category: Page
+                show: True
+              - title: "Custom Domains"
+                path: /tyk-cloud/using-custom-domains
+                category: Page
+                show: True
+              - title: "Audit Logs"
+                path: /api-management/cloud/audit-logs
+                category: Page
+                show: True
+              - title: "Monitor Metrics"
+                path: /tyk-cloud/environments-deployments/monitoring-how-it-works
+                category: Page
+                show: True
+              - title: "Configure Telemetry"
+                path: /tyk-cloud/telemetry
+                category: Page
+                show: True
+              - title: "Single Sign On (SSO)"
+                path: /tyk-cloud/teams-users/single-sign-on
+                category: Page
+                show: True
+            - title: "Troubleshooting"
+              path: /tyk-cloud/troubleshooting-support
+              category: Page
+              show: True
+          - title: "Tyk Open Source"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-open-source
+              category: Page
+              show: True
+            - title: "Quick Start"
+              path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
+              category: Page
+              show: True
+            - title: "Installation Options"
+              path: /apim/open-source/installation
+              category: Page
+              show: True
+          - title: "Tyk Self Managed"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-self-managed
+              category: Page
+              show: True
+            - title: "Getting Started"
+              path: /getting-started/quick-start
+              category: Page
+              show: True
+            - title: "Demos"
+              path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
+              category: Page
+              show: True
+            - title: "Installation Options"
+              path: /tyk-self-managed/install
+              category: Page
+              show: True
+            - title: "Configuration"
+              category: Directory
+              show: True
+              menu:
+              - title: "Planning for Production"
+                path: /planning-for-production
+                category: Page
+                show: True
+              - title: "Database Management"
+                path: /planning-for-production/database-settings
+                category: Page
+                show: True
+              - title: "Circuit Breakers"
+                path: /planning-for-production/ensure-high-availability/circuit-breakers
+                category: Page
+                show: True
+              - title: "Enforced Timeouts"
+                path: /planning-for-production/ensure-high-availability/enforced-timeouts
+                category: Page
+                show: True
+              - title: "Health Checks"
+                path: /planning-for-production/ensure-high-availability/health-check
+                category: Page
+                show: True
+              - title: "Load Balancing"
+                path: /planning-for-production/ensure-high-availability/load-balancing
+                category: Page
+                show: True
+              - title: "Service Discovery"
+                path: /planning-for-production/ensure-high-availability/service-discovery
+                category: Page
+                show: True
+              - title: "Uptime Tests"
+                path: /planning-for-production/ensure-high-availability/uptime-tests
+                category: Page
+                show: True
+              - title: "External Service Config"
+                path: /configure/external-service
+                category: Page
+                show: True
+              - title: "Key Value Store"
+                path: /tyk-configuration-reference/kv-store
+                category: Page
+                show: True
+              - title: "Monitoring"
+                path: /planning-for-production/monitoring/tyk-components
+                category: Page
+                show: True
+              - title: "Redis"
+                path: /tyk-configuration-reference/redis-cluster-sentinel
+                category: Page
+                show: True
+              - title: "Graceful Shutdown"
+                path: /planning-for-production/ensure-high-availability/graceful-shutdown
+                category: Page
+                show: True
+          - title: "Tyk Helm Charts"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /product-stack/tyk-charts/overview
+                category: Page
+                show: True
+              - title: "Tyk Stack Chart"
+                path: /product-stack/tyk-charts/tyk-stack-chart
+                category: Page
+                show: True
+              - title: "Tyk Control Plane Chart"
+                path: /product-stack/tyk-charts/tyk-control-plane-chart
+                category: Page
+                show: True
+              - title: "Tyk Data Plane Chart"
+                path: /product-stack/tyk-charts/tyk-data-plane-chart
+                category: Page
+                show: True
+              - title: "Tyk Open Source Chart"
+                path: /product-stack/tyk-charts/tyk-oss-chart
+                category: Page
+                show: True
+          - title: "Manage Distributed Gateways"
+            path: /api-management/mdcb
+            category: Page
+            show: True
+>>>>>>> d55d34a3f... Mintlify feedback fixes (#7057)
       - title: "Managing APIs"
         category: Label
         show: True
