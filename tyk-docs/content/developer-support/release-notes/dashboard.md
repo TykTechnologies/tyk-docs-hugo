@@ -789,8 +789,65 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.8.7}
 
+##### Added
 
-##### Changed
+<ul>
+  
+<li>
+<details>
+<summary>Added Open Policy Agent</summary>
+
+Added new Open Policy Agent (OPA) helper functions `isTykOAS`, `isTykStreams`, and `isTykClassic` to enable differentiated policy enforcement based on API type. This enhancement allows OPA rules to target specific API types (Classic, OAS, or Streams) and resolves compatibility issues when importing OAS definitions with existing OPA policies that were designed for Classic APIs only.
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+  
+<li>
+<details>
+<summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+
+Fixed an issue where Tyk would fall back to previously configured authentication methods when Custom Authentication was enabled, but the plugin bundle was disabled or failed to load. The system now fails safely by rejecting all API requests when Custom Authentication is configured, but the required plugin cannot be loaded, preventing unauthorized access through old authentication tokens.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed inconsistent sorting of OAS API subversions</summary>
+
+Fixed an issue where Tyk OAS API subversions were sorted inconsistently between different Dashboard screens chronologically by creation date on the APIs listing page and alphabetically by version name on the manage versions page. All API version listings now use consistent alphabetical sorting by version name, providing a more predictable and user-friendly experience when navigating between different screens.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed incorrect date labels and data aggregation in analytics charts</summary>
+
+Fixed multiple critical issues in the analytics aggregation layer when using PostgreSQL backend that caused incorrect chart rendering and service panics. Resolved problems, including hourly charts showing nonsensical dates like "30 Nov 1899", monthly charts displaying incorrect months, incomplete time-series data due to improper date padding, and API activity being incorrectly split across multiple rows.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed insufficient logging for Request Transform middleware in debugger</summary>
+
+Fixed an issue where the API debugger did not display sufficient information about transformations applied by Request Body Transform and Request Header Transform middleware. The debugger now shows detailed logs matching the format used for Response Transform middleware, including specific details about injected headers (e.g., "Adding: key: value") and body transformations, providing better visibility into request processing for debugging purposes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed 502 error creating GraphQL APIs with OPA rules in place</summary>
+
+Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body. The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now properly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
+</details>
+</li>
+
+</ul>
 
 ### 5.8.6 Release Notes
 
