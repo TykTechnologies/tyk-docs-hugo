@@ -94,7 +94,55 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 
 #### Changelog {#Changelog-v5.10.1}
 
-##### Changed
+##### Added
+<ul>
+<li>
+<details>
+<summary>Added Open Policy Agent</summary>
+Added new Open Policy Agent (OPA) helper functions isTykOAS, isTykStreams, and isTykClassic to enable differentiated policy enforcement based on API type. This enhancement allows OPA rules to target specific API types (Classic, OAS, or Streams) and resolves compatibility issues when importing OAS definitions with existing OPA policies that were designed for Classic APIs only.
+
+</details>
+</li>
+</ul>
+
+
+##### Fixed
+
+<ul>
+  
+<li>
+<details>
+<summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+Fixed an issue where Tyk would fall back to previously configured authentication methods when Custom Authentication was enabled, but the plugin bundle was disabled or failed to load. The system now fails safely by rejecting all API requests when Custom Authentication is configured, but the required plugin cannot be loaded, preventing unauthorized access through old authentication tokens.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+Fixed an issue where Tyk would fall back to previously configured authentication methods when Custom Authentication was enabled, but the plugin bundle was disabled or failed to load. The system now fails safely by rejecting all API requests when Custom Authentication is configured, but the required plugin cannot be loaded, preventing unauthorized access through old authentication tokens.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed inconsistent sorting of OAS API subversions</summary>
+Fixed an issue where Tyk OAS API subversions were sorted inconsistently between different Dashboard screens chronologically by creation date on the APIs listing page and alphabetically by version name on the manage versions page. All API version listings now use consistent alphabetical sorting by version name, providing a more predictable and user-friendly experience when navigating between different screens.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed broken UI of API editor on the Import API page</summary>
+Fixed a UI issue in the API editor on the Import API page where the Monaco code editor would display incorrectly when scrolling, with the editor margin overflowing its container. The editor now properly maintains its layout and boundaries within the designated container area, providing a consistent editing experience when importing API definitions.
+
+</details>
+</li>
+
+</ul>
 
 ### 5.10.0 Release Notes 
 
