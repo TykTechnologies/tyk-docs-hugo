@@ -6,31 +6,19 @@ keywords: ["Authentication", "JWT", "JSON Web Tokens", "Claims", "Validation"]
 date: 2025-01-10
 ---
 
+## Availability
+
+| Component   | Editions |
+|-------------| ------------------------- |
+| Tyk Gateway | Community and Enterprise |
+
 ## Introduction
 
-JSON Web Tokens contain claims, which are key-value pairs that provide information about the token and its subject. Tyk can validate these claims to ensure that incoming JWTs meet your security requirements before granting access to your APIs.
+A JSON Web Token consists of three parts separated by dots: `header.payload.signature`. The payload contains the claims, a set of key-value pairs that carry information about the token and its subject.
 
-Tyk supports validation of both:
-
-- **Registered claims**: standardized claims defined in the JWT specification (such as `iss`, `aud`, `exp`)
-- **Custom claims**: application-specific claims that contain business logic or additional metadata
+Tyk can validate these claims to ensure that incoming JWTs meet your security requirements before granting access to your APIs.
 
 By validating JWT claims, you can enforce fine-grained access control policies, ensure tokens originate from trusted sources, and verify that users have the appropriate permissions for your APIs.
-
-{{< note success >}}
-**Note**
-
-JWT claim validation has different support levels across API types:
-- **Temporal claims** (`exp`, `iat`, `nbf`): Supported in both Tyk Classic APIs and Tyk OAS APIs
-- **All other claims** (identity claims and custom claims): Available exclusively in Tyk OAS APIs from Tyk 5.10.0 onwards
-{{< /note >}}
-
-## JWT Claims Fundamentals
-
-### What are JWT Claims?
-A JSON Web Token consists of three parts separated by dots: `header.payload.signature`. The payload contains the claims - a set of key-value pairs that carry information about the token and its subject.
-
-<br>
 
 {{< note success >}}
 **Viewing JWT Claims**
@@ -38,40 +26,61 @@ A JSON Web Token consists of three parts separated by dots: `header.payload.sign
 To inspect the claims in a JWT, use online tools like [jwt.io](https://jwt.io) for quick debugging
 {{< /note >}}
 
+<!-- ## Quick Start -->
+
+## JWT Claims Fundamentals
+
+### Registered vs Custom Claims
+
+JWT claims can be categorized into two types:
+
+- **Registered Claims**:
+
+    Registered Claims are standardized by the JWT specification ([RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1)) and have predefined meanings.
+
+    These claims are further grouped into:
+
+    - **Temporal Claims:** time-based validation
+    - **Identity Claims:** content-based validation
+
+    | Claim | Name            | Purpose                                  | Type     |
+    | ----- | --------------- | ---------------------------------------- | -------- |
+    | `iss` | Issuer          | Identifies who issued the token          | Identity |
+    | `aud` | Audience        | Identifies who the token is intended for | Identity |
+    | `sub` | Subject         | Identifies the subject of the token      | Identity |
+    | `exp` | Expiration Time | When the token expires                   | Temporal |
+    | `iat` | Issued At       | When the token was issued                | Temporal |
+    | `nbf` | Not Before      | When the token becomes valid             | Temporal |
+    | `jti` | JWT ID          | Unique identifier for the token          | Identity |
+
+- **Custom Claims**:
+
+  Custom Claims are application-specific and can contain any information relevant to your use case, such as user roles, permissions, department, or metadata.
+
+**Example JWT Payload with Both Registered and Custom Claims**:
+
 ```json
 {
+  // Registered claims
   "iss": "https://auth.company.com",
   "aud": "api.company.com", 
   "sub": "user123",
   "exp": 1735689600,
   "iat": 1735603200,
+
+  // Custom claims
   "department": "engineering",
   "role": "admin"
 }
 ```
 
-Claims serve different purposes:
+### Supported Claims and API Types
 
-- **Identity information**: who the token represents (`sub`, `iss`)
-- **Access control**: what the token can access (`aud`, custom permissions)
-- **Validity period**: when the token is valid (`exp`, `iat`, `nbf`)
-- **Business logic**: application-specific data (`department`, `role`)
-
-### Registered vs Custom Claims
-
-Registered Claims are standardized by the JWT specification ([RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1)) and have predefined meanings:
-
-| Claim | Name       | Purpose |
-|-------|------------|---------|
-| `iss` | Issuer     | Identifies who issued the token |
-| `aud` | Audience   | Identifies who the token is intended for |
-| `sub` | Subject    | Identifies the subject of the token |
-| `exp` | Expiration Time | When the token expires |
-| `iat` | Issued At  | When the token was issued |
-| `nbf` | Not Before | When the token becomes valid | 
-| `jti` | JWT ID     | Unique identifier for the token |
-
-Custom Claims are application-specific and can contain any information relevant to your use case, such as user roles, permissions, department, or metadata.
+| Claim Category        | Sub-Category                              | Tyk OAS APIs | Tyk Classic APIs | Version |
+| --------------------- | ----------------------------------------- | ------------------------- | ----------------------------- | ------------------ |
+| **Registered Claims** | **Temporal** (`exp`, `iat`, `nbf`)        | ✅ Yes                     | ✅ Yes                         | All versions       |
+| **Registered Claims** | **Identity** (`iss`, `aud`, `sub`, `jti`) | ✅ Yes                     | ❌ Yes                         | 5.10+       |
+| **Custom Claims**     | —                                         | ✅ Yes                     | ❌ No                         | 5.10+       |
 
 ### How Tyk Processes JWT Claims
 
@@ -88,11 +97,11 @@ If any validation step fails, Tyk rejects the request with a specific error mess
 
 ## Registered Claims Validation
 
-Tyk can validate the seven registered JWT claims defined in [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1). These claims are grouped into:
+[Registered Claims]({{< ref "#registered-vs-custom-claims" >}}) are grouped into:
 - **Temporal claims** (time-based validation): Supported in both Tyk Classic APIs and OAS APIs
 - **Identity claims** (content-based validation): Available only in Tyk OAS APIs
 
-### Temporal Claims (exp, iat, nbf)
+### Temporal Claims
 
 Temporal claims define the validity period of a JWT. Tyk automatically validates these claims when present in the token.
 
@@ -125,7 +134,7 @@ x-tyk-api-gateway:
 Temporal claim validation and the associated clock skew controls were supported by Tyk before 5.10.0 and also for [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}})
 {{< /note >}}
 
-### Identity Claims (iss, aud, sub, jti)
+### Identity Claims
 
 Identity claims provide information about the token's origin and intended use. Unlike temporal claims, these require explicit configuration to enable validation.
 
@@ -628,68 +637,25 @@ When the expected value type doesn't match the claim type, Tyk performs intellig
 - Consider Empty Values: Remember that empty strings, arrays, and objects pass `required` validation
 - Test Type Coercion: Verify behavior when token types don't match expected types
 
-### Nested Claims (Dot Notation)
+### Nested Claims
 
-JSON Web Tokens often contain complex, hierarchical data structures with nested objects and arrays. Tyk's custom claims validation framework supports dot notation syntax, allowing you to validate specific values deep within nested claim structures without having to validate entire objects.
+JSON Web Tokens often contain complex, hierarchical data structures with nested objects and arrays. Tyk's custom claims validation framework supports validating nested claim structures using dot notation syntax.
 
 **Basic Syntax:**
 
 - `user.name` - Access the `name` property within the `user` object
-- `metadata.department.code` - Access the `code` property within `department` within `metadata`
-- `permissions.api.read` - Access the `read` property within `api` within `permissions`
-- `permissions 0.resource` - Access the `resource` property of the first element in the `permissions` array
+- `permissions.0.resource` - Access the `resource` property of the first element in the `permissions` array
 
 {{< note success >}}
-**Note**  
+**Dot Notation** 
 
-Array elements can be accessed using numeric indices in dot notation (e.g., `permissions.0.read` for the first element). The index follows the dot notation format rather than bracket notation (`permissions[0]`).
+Tyk uses [gjson](https://github.com/tidwall/gjson) to parse dot notation paths.
 
-When a nested path doesn't exist (e.g., `user.profile.level` but `profile` doesn't exist) or when an array index is out of bounds (e.g., `permissions.999.resource`), the claim is treated as missing. This will cause validation to fail for blocking rules or generate a warning for non-blocking rules.
 {{< /note >}}
-
-#### Nested Array Validation
-
-**Example Token**
-
-```json
-{
-  "permissions": [
-    {
-      "resource": "users",
-      "actions": ["read", "write"]
-    },
-    {
-      "resource": "reports",
-      "actions": ["read"]
-    }
-  ]
-}
-```
-
-You can validate specific array elements:
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      securitySchemes:
-        jwtAuth:
-          customClaimValidation:
-            "permissions.0.resource":
-              type: exact_match
-              allowedValues: ["users"]
-            "permissions.1.actions.0":
-              type: exact_match
-              allowedValues: ["read"]
-```
-
-This allows for precise validation of specific elements within arrays, while the `contains` validation type remains useful for checking array contents without caring about position.
 
 #### Nested Object Validation
 
 The most common use case for dot notation is validating properties within nested objects, such as user metadata, organizational information, or configuration settings.
-
-[OAuth 2.0 Token Exchange](https://datatracker.ietf.org/doc/html/rfc8693#name-act-actor-claim) relies upon nesting for the `act` (actor) claim.
 
 **Example Token**
 
@@ -733,9 +699,65 @@ x-tyk-api-gateway:
                 - principal
 ```
 
+
+#### Nested Array Validation
+
+Arrays are commonly used in JWT claims to represent lists of permissions, roles, or other multi-value attributes. Tyk supports validating specific elements within arrays using dot notation with numeric indices.
+
+**Example Token**
+
+```json
+{
+  "permissions": [
+    {
+      "resource": "users",
+      "actions": ["read", "write"]
+    },
+    {
+      "resource": "reports",
+      "actions": ["read"]
+    }
+  ]
+}
+```
+
+You can validate specific array elements:
+
+```yaml
+x-tyk-api-gateway:
+  server:
+    authentication:
+      securitySchemes:
+        jwtAuth:
+          customClaimValidation:
+            "permissions.0.resource":
+              type: exact_match
+              allowedValues: ["users"]
+            "permissions.1.actions.0":
+              type: exact_match
+              allowedValues: ["read"]
+```
+
+{{< note warning >}}
+**Dot Notation** 
+
+When a nested path doesn't exist (e.g., `user.profile.level` but `profile` doesn't exist) or when an array index is out of bounds (e.g., `permissions.999.resource`), the claim is treated as missing. This will cause validation to fail for blocking rules or generate a warning for non-blocking rules.
+
+{{< /note >}}
+
+#### Recommendations
+
+Test your nested claim validation rules with representative JWT tokens to ensure they behave as expected. Use online tools like [gjson.dev](https://gjson.dev/) to experiment with dot notation paths and verify they correctly access the desired values.
+
 ### Non-blocking Validation
 
-The non-blocking validation feature enables a gradual rollout approach to validation rules, allowing you to monitor validation failures without rejecting requests.
+Non-blocking validation allows JWT claims to fail validation with a warning logged but still permits the request to proceed, enabling gradual rollout of validation rules by monitoring before enforcing.
+
+This behavior allows you to:
+
+- Monitor how new validation rules would affect traffic without disrupting users
+- Gradually roll out stricter validation requirements
+- Debug validation issues in production environments
 
 #### How Non-blocking Validation Works
 
@@ -746,12 +768,6 @@ When configured, a validation rule can be set to "non-blocking" mode, which mean
    - A warning is logged to the Tyk Gateway log file at the `WARN` log level
    - The validation process continues to evaluate other custom claims
    - The request is allowed to proceed to the upstream API
-
-This behavior allows you to:
-
-- Monitor how new validation rules would affect traffic without disrupting users
-- Gradually roll out stricter validation requirements
-- Debug validation issues in production environments
 
 #### Configuring Non-Blocking Mode
 
@@ -770,12 +786,6 @@ x-tyk-api-gateway:
                 - Engineering
                 - Sales
                 - Marketing
-            user.profile.level:
-              type: contains
-              allowedValues:
-                - senior
-                - lead
-                - principal
             user.preferences.notifications:
               type: required
               nonBlocking: true
