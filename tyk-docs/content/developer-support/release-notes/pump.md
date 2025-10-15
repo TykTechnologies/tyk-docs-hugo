@@ -1,11 +1,13 @@
 ---
 title: Tyk Pump Release Notes
 date: 2024-02-02
-description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
-tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
+description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.X.X series."
+tags: ["Tyk Pump", "Release notes", "v1.11", "v1.12", "v1.13", "changelog"]
 aliases:
   - /product-stack/tyk-pump/release-notes/pump-1.10
   - /product-stack/tyk-pump/release-notes/pump-1.11
+  - /product-stack/tyk-pump/release-notes/pump-1.12
+  - /product-stack/tyk-pump/release-notes/pump-1.13
   - /product-stack/tyk-pump/release-notes/pump-1.9
   - /release-notes/pump-1.8
 ---
@@ -19,6 +21,49 @@ aliases:
 Our minor releases are supported until our next minor comes out.
 
 ---
+
+## 1.13 Release Notes
+
+### 1.13.0 Release Notes
+
+#### Release Date xx October 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.13.0" >}}) below.
+
+#### Breaking Changes
+This release has no breaking changes
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.13.0, we strongly recommend promptly upgrading to the latest release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.13.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.13.0)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.13.0
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.13.0)
+
+#### Changelog {#Changelog-v1.13.0}
 
 ## 1.12 Release Notes
 
