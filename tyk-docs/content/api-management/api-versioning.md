@@ -271,7 +271,7 @@ You can use the API Designer in the Tyk Dashboard to manage versions for your AP
 
 ### Configure versioning
 
-From Tyk 5.10, you can pre-configure the versioning metadata for an API before you've created the first [child API]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
+From Tyk 5.10, you can pre-configure the [versioning metadata]({{< ref "#how-api-versioning-works-with-tyk" >}}) for an API before you've created the first [child API]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
 
 1. Choose the API for which you want to create a new version (this can be an unversioned or versioned API) and go to the **Versions** tab
 
