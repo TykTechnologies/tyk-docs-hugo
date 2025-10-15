@@ -43,6 +43,66 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 5.10 Release Notes 
 
+### 5.10.1 Release Notes 
+
+#### Release Date xx October 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.1" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.10.1}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|---- |
+| 5.10.0 | MDCB v2.8.5       | MDCB v2.8.5 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.4       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | Pump v1.12.2      | Pump all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.24                   |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.10.1}
+
+If you are upgrading to 5.10.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.10.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.10.1
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Gateway. You will need to modify them to install v5.10.1.
+
+- [Source code tarball of Tyk Gateway v5.10.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.10.1)
+
+#### Changelog {#Changelog-v5.10.1}
+
+##### Added
+
 ### 5.10.0 Release Notes 
 
 #### Release Date 13th October 2025
