@@ -1,7 +1,7 @@
 {
   "home": "tyk-pump",
   "licensed": false,
-  "latest": "1.12.1",
+  "latest": "1.13.0",
   "releaseNotesPath": "developer-support/release-notes/pump",
   "1.12.1": {
     "date": "18/08/2025",
