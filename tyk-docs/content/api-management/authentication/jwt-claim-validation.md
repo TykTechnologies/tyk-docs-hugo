@@ -751,7 +751,7 @@ Test your nested claim validation rules with representative JWT tokens to ensure
 
 ### Non-blocking Validation
 
-Non-blocking validation allows JWT claims to fail validation with a warning logged but still permits the request to proceed, enabling gradual rollout of validation rules by monitoring before enforcing.
+Non-blocking validation allows JWT claims to fail validation with a warning logged, while still permitting the request to proceed.
 
 This behavior allows you to:
 
@@ -792,4 +792,3 @@ x-tyk-api-gateway:
 ```
 
 The `nonBlocking` flag in the validation rule for `user.preferences.notifications` means that if this claim is missing from the received token, the token will not fail validation, but a warning will be logged.
-
