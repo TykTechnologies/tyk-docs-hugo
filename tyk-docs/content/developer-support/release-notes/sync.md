@@ -29,7 +29,7 @@ Tyk Sync 2.1.1 was accidentally also released to [DockerHub](https://hub.docker.
 
 ### 2.1.4 Release Notes
 
-#### Release Date xx
+#### Release Date 15th October 2025
 
 #### Release Highlights
 Tyk Sync 2.1.4 is a version alignment release that ensures compatibility with the most recent Tyk LTS release [5.8.6]({{< ref "developer-support/release-notes/dashboard#586-release-notes" >}}). No functional changes have been implemented in this release.
