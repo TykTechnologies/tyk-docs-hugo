@@ -61,13 +61,13 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |--------|-------------------|---- |
-| 5.10.0 | MDCB v2.8.5       | MDCB v2.8.5 |
+| 5.10.1 | MDCB v2.8.5       | MDCB v2.8.5 |
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.4       | Sync v2.1.0 |
 |        | Helm Chart v4.0   | Helm all versions |
 |        | Pump v1.12.2      | Pump all versions |
 
-##### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.10.1}
 
 | Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
 | ---------------------- | --------------- | ------------------- | -------- | 
