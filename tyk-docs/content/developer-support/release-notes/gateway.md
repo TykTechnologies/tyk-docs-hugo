@@ -849,10 +849,6 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.8.7}
 
-##### Added
-
-
-
 ##### Fixed
 
 <ul>
