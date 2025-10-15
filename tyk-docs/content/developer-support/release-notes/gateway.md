@@ -101,7 +101,58 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 
 #### Changelog {#Changelog-v5.10.1}
 
-##### Added
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed issue with invalid or missing bundle manifests</summary>
+Fixed an issue where the Gateway would load and attempt to use plugin bundles even when the manifest file was invalid or missing. The Gateway now properly validates bundle manifests and fails safely by rejecting API requests when bundles cannot be properly loaded or verified. This prevents risks from corrupted or tampered bundles and ensures that APIs with invalid plugin configurations are not accessible, maintaining the integrity of authentication and authorization checks implemented by plugins.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed JWT key activation when toggling default policy from draft to active</summary>
+Fixed an issue where JWT authentication keys would remain deactivated (showing "Key is inactive, please renew" errors) when a default policy was changed from draft to active status, particularly when the policy had never been previously applied through a request. The Gateway now properly evaluates the current state of all applied policies at request time, ensuring that keys become valid immediately when policies are reactivated or when switching between policies, eliminating the need for manual key deletion to restore access.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed potential resource exhaustion vulnerability in Tyk Gateway</summary>
+Fixed a vulnerability where the Gateway could be subjected to resource exhaustion attacks through maliciously crafted gzip-compressed responses (zip bombs) that could cause Out-of-Memory conditions when processing response body transformations. Added a new configuration option `HttpServerOptions.MaxResponseBodySize` to limit the maximum size of response bodies that can be processed. When the limit is exceeded, the Gateway returns an HTTP 500 "Response Body Too Large" error instead of attempting to process the oversized content, protecting against memory exhaustion attacks.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed plugin loading failure errors being ignored for gRPC, Python, and Lua plugins</summary>
+Fixed an issue where plugin loading failure errors were ignored for gRPC, Python, and Lua plugins, allowing API requests to be processed even when plugins failed to load. This could lead to vulnerabilities, particularly when Custom Plugin authentication was configured, but the plugin couldn't be loaded due to incorrect paths or configurations. The Gateway now properly validates plugin drivers during request processing and fails safely by returning HTTP 500 Internal Server Error when any plugin fails to load, ensuring consistent behavior across all plugin types.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed random version selection when `not_versioned` is set to true</summary>
+
+Fixed an issue where a Tyk Classic API with inconsistent versioning configuration would process requests using the configuration for a random version. A non-versioned API should have a single entry in the `version_data.versions` containing the configuration for the API; the `version_data.not_versioned` flag should be set to `true`. If, however, there were multiple entries in the `version_data.versions` array, the Gateway would select randomly among those versions. Now, if there are multiple entries in `version_data.versions` and `version_data.not_versioned` is set to `true`, Tyk will use the config for the entry with the key `"default"`, `"Default"` or `""` and will return an error if no such version exists.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Zip Slip vulnerability during bundle decompression</summary>
+Fixed a vulnerability where maliciously crafted zip bundles could exploit path traversal (Zip Slip) during decompression to write arbitrary files outside the intended bundle directory, potentially leading to remote code execution. The Gateway now validates all file paths within zip bundles before extraction, rejecting bundles containing path traversal patterns (e.g., "../") or absolute paths. Bundle extraction fails immediately upon detecting malicious paths, with detailed error logging, ensuring that only legitimate bundles with valid relative paths are processed.
+
+</details>
+</li>
+
+</ul>
 
 ### 5.10.0 Release Notes 
 
