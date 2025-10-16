@@ -50,7 +50,7 @@ To associate a session with the authenticated user, Tyk Gateway extracts the uni
     {{< note success >}}
 **Note**
 
-Prior to Tyk 5.10, the subject identity claim was retrieved from `identityBaseField`; see [using multiple identity providers]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
+Prior to Tyk 5.10, the subject identity claim was retrieved from `identityBaseField`; see [using multiple identity providers]({{< ref "#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
     {{< /note >}}
 
 3. The `sub` [registered claim]({{< ref "api-management/authentication/jwt-claim-validation#registered-vs-custom-claims" >}}).
@@ -110,7 +110,7 @@ In the JWT, you should then provide the list of policy Ids as an array of values
 {{< note success >}}
 **Note**
 
-Prior to Tyk 5.10, the base policy claim was retrieved from `policyFieldName`; see [using multiple identity providers]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
+Prior to Tyk 5.10, the base policy claim was retrieved from `policyFieldName`; see [using multiple identity providers]({{< ref "#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
 {{< /note >}}
 
 ### Default policies
@@ -163,7 +163,7 @@ In this example, Tyk will check the `accessScopes` claim within the incoming JWT
 {{< note success >}}
 **Note**
 
-Prior to Tyk 5.10, the authorization scopes claim was retrieved from `scopes.claimName`; see [using multiple identity providers]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
+Prior to Tyk 5.10, the authorization scopes claim was retrieved from `scopes.claimName`; see [using multiple identity providers]({{< ref "#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
 {{< /note >}}
 
 #### Declaring Multiple Scopes

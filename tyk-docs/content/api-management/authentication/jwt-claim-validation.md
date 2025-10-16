@@ -89,9 +89,9 @@ After [verifying]({{< ref "basic-config-and-security/security/authentication-aut
 1. **Claims Extraction**: All claims from the JWT payload are extracted and stored in context variables with the format `jwt_claims_CLAIMNAME`. For example, a claim named `role` becomes accessible as `jwt_claims_role`.
 
 2. **Claims Validation**:
-   - [Registered Claims Validation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#registered-claims-validation" >}}): Checks standard claims against your configuration
-   - [Custom Claims Validation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#custom-claims-validation" >}}): Applies your business rules to custom claims
-   - [Authorization]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#managing-authorization" >}}): Uses validated claims to determine API access and apply policies
+   - [Registered Claims Validation]({{< ref "#registered-claims-validation" >}}): Checks standard claims against your configuration
+   - [Custom Claims Validation]({{< ref "#custom-claims-validation" >}}): Applies your business rules to custom claims
+   - [Authorization]({{< ref "api-management/authentication/jwt-authorization" >}}): Uses validated claims to determine API access and apply policies
 
 If any validation step fails, Tyk rejects the request with a specific error message indicating which claim validation failed and why.
 
@@ -567,7 +567,7 @@ x-tyk-api-gateway:
 
 ##### Object Values
 
-Complex object claims can be validated, though typically you'll want to validate specific nested properties using [dot notation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#nested-claims-dot-notation" >}}).
+Complex object claims can be validated, though typically you'll want to validate specific nested properties using [dot notation]({{< ref "#nested-claims" >}}).
 
 **Validation Behavior**
 

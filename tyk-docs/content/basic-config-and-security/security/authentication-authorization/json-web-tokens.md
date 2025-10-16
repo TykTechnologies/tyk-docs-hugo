@@ -183,7 +183,7 @@ This diagram outlines the flow when using JWT Auth to secure access to your API.
         - if signature validation fails, the request is rejected
     - if the token is valid and not expired, the request is authenticated as coming from the client, and is accepted
 
-5. Next, Tyk will create an internal session for the request which will be used to control access rights, rate limits, usage quotas and in tracking logs (step 5). The session is linked to Alice using an identity that is [extracted from the JWT claims]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#identifying-the-session-owner" >}}).
+5. Next, Tyk will create an internal session for the request which will be used to control access rights, rate limits, usage quotas and in tracking logs (step 5). The session is linked to Alice using an identity that is [extracted from the JWT claims]({{< ref "api-management/authentication/jwt-authorization#identifying-the-session-owner" >}}).
 
 6. In step 6 Tyk will proceed to enforce authorization by checking other claims to determine which Security Policies should be applied to the session:
     - check for the value in the policy claim within the JWT (identified by the value stored in `basePolicyClaims`)
