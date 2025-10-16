@@ -42,8 +42,8 @@ To associate a session with the authenticated user, Tyk Gateway extracts the uni
 
     1. Tyk tries each claim **in the exact order they appear** in the array
     2. For each claim, Tyk checks if:
-      - The claim exists in the token
-      - The claim value is a string and is not empty
+        - The claim exists in the token
+        - The claim value is a string and is not empty
     3. Tyk uses the **first valid, non-empty value** it finds and stops processing further claims
     4. If none of the claims yield a valid identity, Tyk proceeds to check the `sub` claim as a fallback
 
@@ -264,9 +264,13 @@ The following [session attributes]({{< ref "api-management/policies#session-obje
 4. **Metadata**: Custom metadata from the policies is added to the session
 5. **Tags**: Policy tags are added to the session
 
-In addition to updating the session, Tyk extracts claims from the JWT token and makes them available as context variables for use in other middleware. These context variables can be accessed in URL rewrites, header transforms, and other middleware components using the $tyk_context variable.
+In addition to updating the session, Tyk extracts claims from the JWT token and makes them available as context variables for use in other [middleware]({{< ref "api-management/traffic-transformation" >}}).
+
+{{< note success >}}
 
 When a JWT's claims change (for example, configuring different scopes or policies), Tyk will update the session with the new policies on the next request made with the token.
+
+{{< /note >}}
 
 ## Advanced Configuration
 
