@@ -1,6 +1,6 @@
 ---
 title: JWT Authorization
-description: How to implement JWT authorization in Tyk API Gateway.
+description: How JWT authorization works in Tyk API Gateway.
 tags: ["Authentication", "Authorization", "JWT", "JSON Web Tokens", "Claims", "Validation"]
 keywords: ["Authentication", "Authorization", "JWT", "JSON Web Tokens", "Claims", "Validation"]
 date: 2025-01-10
@@ -8,57 +8,54 @@ date: 2025-01-10
 
 ## Introduction
 
-JSON Web Token claims are used to configure the Authorization for the request.
+[JSON Web Tokens (JWT)]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) is a popular method for authentication and authorization.
 
-Tyk creates an internal [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) for the request. The session is used to apply the appropriate security policies to ensure that rate limits, quotas, and access controls specific to the user are correctly applied. The session also enable tracking and analytics for the user's API usage.
+In Tyk, after a JWT has been validated during the [authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}) step, Tyk uses the claims within the token to determine what security policies (access rights, rate limits and quotas) should be applied to the request.
+
+In this page, we explain how Tyk performs JWT authorization, including how it identifies the user and the policies to be applied.
 
 ## JWT Authorization Flow
 
-When a request with a JWT token arrives at Tyk, the following process occurs:
+When a request with a JWT token arrives at Tyk Gateway, after the authentication (token and claim validation) step, Tyk performs the following steps to authorize the request:
 
-1. **Token Extraction**: Token is extracted from the request.
-
-2. **Token Validation**: The token's signature is verified using the configured signing method.
-
-3. **Claims Validation**: Token claims are validated as per the configuration.
-
-4. **Identity Extraction**: The user identity is extracted from the token, using one of:
+1. **Identity Extraction**: The user identity is extracted from the token, using one of:
    - The `kid` header (unless `skipKid` is enabled)
-   - A custom claim specified in `identityBaseField`
+   - A custom claim specified in `subjectClaims`
    - The standard `sub` claim as fallback
 
-5. **Policy Resolution**: Tyk determines which policy to apply to the request:
-   - From a claim specified in `policyFieldName`
-   - From a client ID in `clientBaseField`
+2. **Policy Resolution**: Tyk determines which policy to apply to the request:
    - From scope-to-policy mapping
    - From default policies
 
-6. **Session Creation**: A session is created or updated with the resolved policies, which determines access rights, rate limits, and quotas.
+3. **Update Session**: The session is updated with unique identify and policies (determines access rights, rate limits, and quotas).
+
+In the following sections, we explain each of these steps in more detail.
 
 ## Identifying the Session Owner
 
-In order that this session can be correctly associated with the authenticated user, Tyk must extract a unique identity from the token.
-
-The JWT specification [defines](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2) the optional `sub` claim which identifies the principal that is the subject of the JWT. In OAuth/OIDC contexts this will usually be the end user (resource owner) on whose behalf the token was issued and so is typically used to identify the session owner.
-
-Tyk provides a flexible approach to identifying the session owner, to account for other use cases where the `sub` field is not supplied or appropriate. The identity is extracted from the token by checking the following fields in order of precedence:
+To associate a session with the authenticated user, Tyk Gateway extracts the unique identity from the JWT token by checking the following fields in order of precedence:
 
 1. The standard Key ID header (`kid`) in the JWT (unless the `skipKid` option is enabled)
 2. The subject identity claim identified by the value(s) stored in `subjectClaims` (which allows API administrators to designate any JWT claim as the identity source (e.g., user_id, email, etc.).
-3. The `sub` registered claim
 
-{{< note success >}}
+    When multiple values are provided in the `subjectClaims` array, Tyk processes them as follows:
+
+    1. Tyk tries each claim **in the exact order they appear** in the array
+    2. For each claim, Tyk checks if:
+      - The claim exists in the token
+      - The claim value is a string and is not empty
+    3. Tyk uses the **first valid, non-empty value** it finds and stops processing further claims
+    4. If none of the claims yield a valid identity, Tyk proceeds to check the `sub` claim as a fallback
+
+    {{< note success >}}
 **Note**
 
 Prior to Tyk 5.10, the subject identity claim was retrieved from `identityBaseField`; see [using multiple identity providers]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
-{{< /note >}}
+    {{< /note >}}
 
-When an identity has been determined, it is stored in the session object in three locations:
-- in the `Alias` field
-- it is used to generate a hashed session Id stored in the `keyID` field
-- in the session metadata as `TykJWTSessionID`
+3. The `sub` [registered claim]({{< ref "api-management/authentication/jwt-claim-validation#registered-vs-custom-claims" >}}).
 
-Note that session objects can be cached to improve performance, so the identity extraction is only performed on the first request with a JWT, or when the cache is refreshed.
+**Example**
 
 In this example, `skipKid` has been set to `true`, so Tyk checks the `subjectClaims` and determines that the value in the custom claim `user_id` within the JWT should be used as the identity for the session object.
 
@@ -72,6 +69,13 @@ x-tyk-api-gateway:
           subjectClaims: [user_id]
 ```
 
+{{< note success >}}
+**Note**
+
+Session objects can be cached to improve performance, so the identity extraction is only performed on the first request with a JWT, or when the cache is refreshed.
+
+{{< /note >}}
+
 ## Identifying the Tyk Policies to be applied
 
 [Security Policies]({{< ref "api-management/policies" >}}) are applied (or mapped) to the session object to configure authorization for the request. Policies must be [registered]({{< ref "api-management/policies#how-you-can-create-policies" >}}) with Tyk, such that they have been allocated a unique *Tyk Policy Id*.
@@ -82,11 +86,9 @@ Tyk supports three different types of policy mapping, which are applied in this 
 2. Scope policy mapping
 3. Default policy mapping
 
-Note that, whilst a *default policy* must be configured for each API using JWT Auth, this will only be applied if there are no policies mapped in step 1 or 2. If *scope policies* are activated, these will be applied on top of the previously applied direct policies as explained in more detail in the section on [combining policies]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#combining-policies" >}}).
-
 ### Direct policies
 
-You can optionally specify policies to be applied to the session via the *policy claim* in the JWT. This is a [Private Claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.3) and can be anything you want, but typically we recommend the use of `pol`. You must instruct Tyk where to look for the policy claim by configuring the `basePolicyClaims` field in the API definition.
+You can optionally specify policies to be applied to the session via the *policy claim* in the JWT. This is a [Private Claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.3) (not a standard JWT claim) and can be anything you want, but typically we recommend the use of `pol`. You must instruct Tyk where to look for the policy claim by configuring the `basePolicyClaims` field in the API definition.
 
 In this example, Tyk has been configured to check the `pol` claim in the JWT to find the *Policy Ids* for the policies to be applied to the session object:
 
@@ -115,6 +117,13 @@ Prior to Tyk 5.10, the base policy claim was retrieved from `policyFieldName`; s
 
 You **must** configure one or more *default policies* that will be applied if no specific policies are identified in the JWT claims. These are configured using the `defaultPolicies` field in the API definition, which accepts a list of policy Ids.
 
+{{< note success >}}
+**Note**
+
+When using default policies with JWT authentication, the Gateway will return a `403 Forbidden` error if no default policies are configured, if referenced policy IDs don’t exist, or if policies are invalid or incorrectly formatted.
+
+{{< /note >}}
+
 ```yaml
 x-tyk-api-gateway:
   server:
@@ -128,7 +137,9 @@ x-tyk-api-gateway:
 
 ### Scope policies
 
-Directly mapping policies to APIs relies upon the sharing of Tyk Policy Ids with the IdP (so that they can be included in the JWT) and may not provide the flexibility required. Tyk supports a more advanced approach where policies are applied based upon *scopes* declared in the JWT. This keeps separation between the IdP and Tyk-specific concepts, and supports much more flexible configuration.
+Directly mapping policies to APIs relies upon the sharing of Tyk Policy Ids with the IdP (so that they can be included in the JWT) and may not provide the flexibility required.
+
+Tyk supports a more advanced approach where policies are applied based upon *scopes* declared in the JWT. This keeps separation between the IdP and Tyk-specific concepts, and supports much more flexible configuration.
 
 Within the JWT, you identify a Private Claim that will hold the authorization (or access) scopes for the API. You then provide, within that claim, a list of *scopes*. In your API definition, you configure the `scopes.claims` to instruct Tyk where to look for the scopes and then you declare a mapping of scopes to policies within the `scopes.scopeToPolicyMapping` object.
 
@@ -155,20 +166,51 @@ In this example, Tyk will check the `accessScopes` claim within the incoming JWT
 Prior to Tyk 5.10, the authorization scopes claim was retrieved from `scopes.claimName`; see [using multiple identity providers]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#using-multiple-identity-providers" >}}) for details and for the Tyk Classic API alternative.
 {{< /note >}}
 
-Multiple scopes can be declared by setting the value of the authorization scopes claim in any of four configurations:
+#### Declaring Multiple Scopes
 
-- a string with space delimited list of values (by standard)<br>
-    `"permissions": "read:users write:users"`
-- an array of strings<br>
-    `"permissions": ["read:users", "write:users"]`
-- a string with space delimited list of values inside a nested key<br>
-    `"permissions": { "access": "read:users write:users" }`
-- an array of strings inside a nested key<br>
-    `"permissions": { "access": ["read:users", "write:users"] }`
+You can declare multiple scopes by setting the value of the **authorization scopes claim** in one of the following ways:
 
-If there is a nested key then you must use dot notation in the value configured for `scopes.claims` so, for the first two examples above, `scopes.claims` should be set to `permissions` whilst for the the two nested examples you would use `permissions.access`.
+* **String with space-delimited list of values (standard format)**
 
-This example of a fragment of a JWT, if provided to an API with the configuration above, will cause Tyk to apply both policies to the session object:
+  ```json
+  "accessScopes": "read:users write:users"
+  ```
+
+* **Array of strings**
+
+  ```json
+  "accessScopes": ["read:users", "write:users"]
+  ```
+
+* **String with space-delimited list inside a nested key**
+
+  ```json
+  "accessScopes": { "access": "read:users write:users" }
+  ```
+
+* **Array of strings inside a nested key**
+
+  ```json
+  "accessScopes": { "access": ["read:users", "write:users"] }
+  ```
+
+**Important:**
+
+* If your scopes are defined inside a nested key, use **dot notation** for the `scopes.claims` value.
+
+  * For **examples 1 and 2**, set `scopes.claims` to:
+
+    ```
+    accessScopes
+    ```
+  * For **examples 3 and 4**, set `scopes.claims` to:
+
+    ```
+    accessScopes.access
+    ```
+
+**Example JWT fragment:**
+If this JWT is provided to an API configured as described above, Tyk will apply both policies to the session object.
 
 ```json
 {
@@ -212,27 +254,53 @@ To ensure these policies work correctly when combined:
 
 ## Session Updates
 
+After authenticating the JWT token and extracting the necessary identity and policy information, Tyk creates or updates a session object that controls access to the API.
+
+The following [session attributes]({{< ref "api-management/policies#session-object" >}}) are modified based on the policies:
+
+1. **Access Rights**: Determines which API endpoints the token can access
+2. **Rate Limits**: Controls how many requests per second/minute the token can make
+3. **Quotas**: Sets maximum number of requests allowed in a time period
+4. **Metadata**: Custom metadata from the policies is added to the session
+5. **Tags**: Policy tags are added to the session
+
+In addition to updating the session, Tyk extracts claims from the JWT token and makes them available as context variables for use in other middleware. These context variables can be accessed in URL rewrites, header transforms, and other middleware components using the $tyk_context variable.
+
 When a JWT's claims change (for example, configuring different scopes or policies), Tyk will update the session with the new policies on the next request made with the token.
 
-## Missing Policies
+## Advanced Configuration
 
-If a policy Id is mapped to a session, but there is no policy with that Id, Tyk will fail safe and reject the request returning the `HTTP 403 Forbidden` response with `Key not authorized: no matching policy`. Tyk Gateway will also log the error: `Policy ID found is invalid!`.
+### Using Multiple Identity Providers
 
-## Using Multiple Identity Providers
+When using multiple Identity Providers (IdPs), you may need to check different claim locations for the same information. Tyk supports defining **multiple claim locations** for subject identity and policy IDs.
 
-When using multiple Identity Providers, you may need to check different claim locations for the same information. Tyk supports multiple claim locations for the subject identity and policy Ids.
+* **Before Tyk 5.10 (and for Tyk Classic APIs):**
 
-Prior to Tyk 5.10 and for Tyk Classic APIs, the Gateway could be configured to check single claims for the subject identity, base policy and scope-to-policy mapping. This did not support the scenario where different IdPs used different claims - for example, for the policy mapping, Keycloak uses `scope`, whereas Okta uses `scp`.
+  * The Gateway could only check **single claims** for:
 
-From Tyk 5.10+, Tyk OAS APIs can be configured to check multiple claim names to locate these data in the received token.
+    * Subject identity
+    * Base policy
+    * Scope-to-policy mapping
+  * This setup didn’t support multiple IdPs using different claim names (e.g **Keycloak** uses `scope` and **Okta** uses `scp`)
 
-| API Configuration Type | Tyk Version | Subject Identity Locator | Base Policy Locator | Scope-to-Policy Mapping Locator |
-|-------------|----------|---|---|---|
-| Tyk OAS     | pre-5.10 | `identityBaseField` | `policyFieldName` | `scopes.claimName` |
-| Tyk OAS     | 5.10+    | `subjectClaims` | `basePolicyClaims` | `scopes.claims`|  
-| Tyk Classic | all      | `jwt_identity_base_field` | `jwt_policy_field_name` | `jwt_scope_claim_name` |
+* **From Tyk 5.10 onwards (Tyk OAS APIs):**
 
-For example:
+  * You can configure **multiple claim names** for:
+
+    * Subject identity
+    * Base policy
+    * Scope-to-policy mapping
+  * This allows Tyk to locate data across various tokens and IdPs more flexibly.
+
+**Configuration summary:**
+
+| API Configuration Type | Tyk Version | Subject Identity Locator  | Base Policy Locator     | Scope-to-Policy Mapping Locator |
+| ---------------------- | ----------- | ------------------------- | ----------------------- | ------------------------------- |
+| Tyk OAS                | pre-5.10    | `identityBaseField`       | `policyFieldName`       | `scopes.claimName`              |
+| Tyk OAS                | 5.10+       | `subjectClaims`           | `basePolicyClaims`      | `scopes.claims`                 |
+| Tyk Classic            | all         | `jwt_identity_base_field` | `jwt_policy_field_name` | `jwt_scope_claim_name`          |
+
+**Example configuration:**
 
 ```yaml
 x-tyk-api-gateway:
@@ -246,7 +314,14 @@ x-tyk-api-gateway:
           # New multi-location support (Tyk 5.10+)
           subjectClaims:
             - "sub"
-            - "username" 
+            - "username"
             - "user_id"
 ```
 
+#### Backward Compatibility
+
+The new configuration is fully backward compatible:
+
+- Existing `identityBaseField`, `policyFieldName`, and `scopes.claimName` settings continue to work
+- If both old and new fields are specified, the new fields take precedence
+- When using only new fields, the first element in each array is used to set the corresponding legacy field for backward compatibility
