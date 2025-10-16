@@ -35,7 +35,7 @@ When a request with a JWT token arrives at Tyk Gateway, after the authentication
 
 3. **Update Session**: The session is updated with unique identify and policies (determines access rights, rate limits, and quotas).
 
-In the following sections, we explain each of these steps in more detail.
+In the following sections, we provide a detailed explanation of each of these steps.
 
 ## Identifying the Session Owner
 
@@ -107,7 +107,7 @@ x-tyk-api-gateway:
           basePolicyClaims: [pol]
 ```
 
-In the JWT, you should then provide the list of policy Ids as an array of values in that claim, for example you might declare:
+In the JWT, you should then provide the list of policy IDs as an array of values in that claim, for example you might declare:
 
 ```
   "pol": ["685a8af28c24bdac0dc21c28", "685bd90b8c24bd4b6d79443d"]
@@ -121,7 +121,7 @@ Prior to Tyk 5.10, the base policy claim was retrieved from `policyFieldName`; s
 
 ### Default policies
 
-You **must** configure one or more *default policies* that will be applied if no specific policies are identified in the JWT claims. These are configured using the `defaultPolicies` field in the API definition, which accepts a list of policy Ids.
+You **must** configure one or more *default policies* that will be applied if no specific policies are identified in the JWT claims. These are configured using the `defaultPolicies` field in the API definition, which accepts a list of policy IDs.
 
 {{< note success >}}
 **Note**
@@ -143,9 +143,9 @@ x-tyk-api-gateway:
 
 ### Scope policies
 
-Directly mapping policies to APIs relies upon the sharing of Tyk Policy Ids with the IdP (so that they can be included in the JWT) and may not provide the flexibility required.
+Directly mapping policies to APIs relies on the sharing of Tyk Policy IDs with the IdP (so that they can be included in the JWT) and may not provide the required flexibility.
 
-Tyk supports a more advanced approach where policies are applied based upon *scopes* declared in the JWT. This keeps separation between the IdP and Tyk-specific concepts, and supports much more flexible configuration.
+Tyk supports a more advanced approach where policies are applied based on scopes declared in the JWT. This keeps separation between the IdP and Tyk-specific concepts, and supports much more flexible configuration.
 
 Within the JWT, you identify a Private Claim that will hold the authorization (or access) scopes for the API. You then provide, within that claim, a list of *scopes*. In your API definition, you configure the `scopes.claims` to instruct Tyk where to look for the scopes and then you declare a mapping of scopes to policies within the `scopes.scopeToPolicyMapping` object.
 
@@ -157,14 +157,14 @@ x-tyk-api-gateway:
         jwtAuth:
           scopes:
             scopeToPolicyMapping:
-              - scope: read:users
+              - scope: read: users
                 policyId: 685bd90b8c24bd4b6d79443d
-              - scope: write:users
+              - scope: write: users
                 policyId: 685a8af28c24bdac0dc21c28
             claims: [accessScopes]
 ```
 
-In this example, Tyk will check the `accessScopes` claim within the incoming JWT and apply the appropriate policy if that claim contains the value `read:users` or `write:users`. If neither scope is declared in the claim, or the claim is missing, then the default policy will be applied.
+In this example, Tyk will check the `accessScopes` claim within the incoming JWT and apply the appropriate policy if that claim contains the value `read: users` or `write: users`. If neither scope is declared in the claim, or the claim is missing, then the default policy will be applied.
 
 {{< note success >}}
 **Note**
@@ -179,25 +179,25 @@ You can declare multiple scopes by setting the value of the **authorization scop
 * **String with space-delimited list of values (standard format)**
 
   ```json
-  "accessScopes": "read:users write:users"
+  "accessScopes": "read: users write: users"
   ```
 
 * **Array of strings**
 
   ```json
-  "accessScopes": ["read:users", "write:users"]
+  "accessScopes": ["read: users", "write: users"]
   ```
 
 * **String with space-delimited list inside a nested key**
 
   ```json
-  "accessScopes": { "access": "read:users write:users" }
+  "accessScopes": { "access": "read: users write: users" }
   ```
 
 * **Array of strings inside a nested key**
 
   ```json
-  "accessScopes": { "access": ["read:users", "write:users"] }
+  "accessScopes": { "access": ["read: users", "write: users"] }
   ```
 
 **Important:**
@@ -222,21 +222,21 @@ If this JWT is provided to an API configured as described above, Tyk will apply 
 {
   "sub": "1234567890",
   "name": "Alice Smith",
-  "accessScopes": ["read:users", "write:users"]
+  "accessScopes": ["read: users", "write: users"]
 }
 ```
 
 ### Combining policies
 
-Where multiple policies are mapped to a session (for example, if several scopes are declared in the JWT claim, or if you set multiple *default policies*) Tyk will apply all the matching policies to the request, combining their access rights and using the most permissive rate limits and quotas. It's important when creating those policies to ensure that they do not conflict with each other.
+Where multiple policies are mapped to a session (for example, if several scopes are declared in the JWT claim, or if you set multiple *default policies*), Tyk will apply all the matching policies to the request, combining their access rights and using the most permissive rate limits and quotas. It's important when creating those policies to ensure that they do not conflict with each other.
 
 Policies are combined as follows:
 
-1. Apply direct mapped policies declared via `basePolicyClaims`
-2. Apply scope mapped policies declared in `scopeToPolicyMapping` based upon scopes in the JWT
+1. Apply direct-mapped policies declared via `basePolicyClaims`
+2. Apply scope-mapped policies declared in `scopeToPolicyMapping` based upon scopes in the JWT
 3. If no policies have been applied in steps 1 or 2, apply the default policies from `defaultPolicies`
 
-When multiple policies are combined the following logic is applied:
+When multiple policies are combined, the following logic is applied:
 
 - **access rights** A user gets access to an endpoint if ANY of the applied policies grant access
 - **rate limits** Tyk uses the most permissive values (highest quota, lowest rate limit)
@@ -266,7 +266,7 @@ The following [session attributes]({{< ref "api-management/policies#session-obje
 
 1. **Access Rights**: Determines which API endpoints the token can access
 2. **Rate Limits**: Controls how many requests per second/minute the token can make
-3. **Quotas**: Sets maximum number of requests allowed in a time period
+3. **Quotas**: Sets the maximum number of requests allowed in a time period
 4. **Metadata**: Custom metadata from the policies is added to the session
 5. **Tags**: Policy tags are added to the session
 
@@ -274,7 +274,7 @@ In addition to updating the session, Tyk extracts claims from the JWT token and 
 
 {{< note success >}}
 
-When a JWT's claims change (for example, configuring different scopes or policies), Tyk will update the session with the new policies on the next request made with the token.
+When a JWT's claims change (for example, by configuring different scopes or policies), Tyk updates the session with the new policies on the subsequent request made with the token.
 
 {{< /note >}}
 
@@ -335,3 +335,4 @@ The new configuration is fully backward compatible:
 - Existing `identityBaseField`, `policyFieldName`, and `scopes.claimName` settings continue to work
 - If both old and new fields are specified, the new fields take precedence
 - When using only new fields, the first element in each array is used to set the corresponding legacy field for backward compatibility
+
