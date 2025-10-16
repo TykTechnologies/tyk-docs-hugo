@@ -49,7 +49,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.1" >}}).
+This is a patch fix; For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.1" >}}).
 
 #### Breaking Changes
 
