@@ -6,6 +6,12 @@ keywords: ["Authentication", "Authorization", "JWT", "JSON Web Tokens", "Claims"
 date: 2025-01-10
 ---
 
+## Availability
+
+| Component   | Editions |
+|-------------| ------------------------- |
+| Tyk Gateway | Community and Enterprise |
+
 ## Introduction
 
 [JSON Web Tokens (JWT)]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) is a popular method for authentication and authorization.
