@@ -122,9 +122,8 @@ Fixed an issue where JWT authentication keys would remain deactivated (showing "
 
 <li>
 <details>
-<summary>Fixed potential resource exhaustion vulnerability in Tyk Gateway</summary>
-Fixed a vulnerability where the Gateway could be subjected to resource exhaustion attacks through maliciously crafted gzip-compressed responses (zip bombs) that could cause Out-of-Memory conditions when processing response body transformations. Added a new configuration option `HttpServerOptions.MaxResponseBodySize` to limit the maximum size of response bodies that can be processed. When the limit is exceeded, the Gateway returns an HTTP 500 "Response Body Too Large" error instead of attempting to process the oversized content, protecting against memory exhaustion attacks.
-
+<summary>Added new configuration option for limiting response body size.</summary>
+Added a new configuration option, `HttpServerOptions.MaxResponseBodySize`, to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns an HTTP 500 "Response Body Too Large" error instead of attempting to process the oversized content.
 </details>
 </li>
 
@@ -146,9 +145,8 @@ Fixed an issue where a Tyk Classic API with inconsistent versioning configuratio
 
 <li>
 <details>
-<summary>Fixed Zip Slip vulnerability during bundle decompression</summary>
-Fixed a vulnerability where maliciously crafted zip bundles could exploit path traversal (Zip Slip) during decompression to write arbitrary files outside the intended bundle directory, potentially leading to remote code execution. The Gateway now validates all file paths within zip bundles before extraction, rejecting bundles containing path traversal patterns (e.g., "../") or absolute paths. Bundle extraction fails immediately upon detecting malicious paths, with detailed error logging, ensuring that only legitimate bundles with valid relative paths are processed.
-
+<summary>Improved path handling during bundle decompression.</summary>
+Tyk Gateway now validates all file paths within zip bundles before extraction, rejecting bundles containing invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
 </details>
 </li>
 
