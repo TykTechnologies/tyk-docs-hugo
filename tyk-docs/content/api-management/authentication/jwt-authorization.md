@@ -6,7 +6,7 @@ keywords: ["Authentication", "Authorization", "JWT", "JSON Web Tokens", "Claims"
 date: 2025-01-10
 ---
 
-## Availability
+## Availability 
 
 | Component   | Editions |
 |-------------| ------------------------- |
