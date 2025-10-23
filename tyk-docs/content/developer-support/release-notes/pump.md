@@ -106,20 +106,6 @@ Added a new `batchbytes` configuration option (`TYK_PMP_PUMPS_KAFKA_META_BATCHBY
 
 </ul>
 
-#### Fixed
-
-<ul>
-<li>
-<details>
-<summary>Fixed missing GraphQL columns in SQL sharded tables during Pump upgrades</summary>
-
-Fixed an issue where upgrading Tyk Pump from version 1.6.0 to 1.11.0+ with SQL table sharding enabled would cause repeated error messages about missing GraphQL-related columns in existing day-specific tables (e.g., "column 'graphql_stats_variables' of relation 'tyk_analytics_20240916' does not exist"). The Pump now automatically migrates the current day's sharded table to include the required GraphQL columns (graphql_stats_variables, graphql_stats_has_errors, graphql_stats_is_graph_ql, etc.) during startup, ensuring seamless upgrades without analytics data loss or error messages during purge cycles.
-
-</details>
-</li>
-
-</ul>
-
 ## 1.12 Release Notes
 
 ### 1.12.1 Release Notes
