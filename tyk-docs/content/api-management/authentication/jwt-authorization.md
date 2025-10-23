@@ -14,32 +14,34 @@ date: 2025-01-10
 
 ## Introduction
 
-[JSON Web Tokens (JWT)]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) is a popular method for authentication and authorization.
+[JSON Web Tokens (JWT)](https://www.jwt.io/introduction) are a popular method for client authentication and authorization that can be used to secure access to your APIs via Tyk's [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method.
 
-In Tyk, after a JWT has been validated during the [authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}) step, Tyk uses the claims within the token to determine what security policies (access rights, rate limits and quotas) should be applied to the request.
+After the JWT signature has been [validated]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}), Tyk uses the **claims** within the token to determine which security policies (access rights, rate limits and quotas) should be applied to the request.
+
+From Tyk 5.10, Tyk can perform optional [validation]({{< ref "basic-config-and-security/security/authentication-authorization/jwt-claim-validation" >}}) of these claims.
 
 In this page, we explain how Tyk performs JWT authorization, including how it identifies the user and the policies to be applied.
 
 ## JWT Authorization Flow
 
-When a request with a JWT token arrives at Tyk Gateway, after the authentication (token and claim validation) step, Tyk performs the following steps to authorize the request:
+When a request with a JWT arrives at Tyk Gateway, after the authentication (signature and claim validation) step, Tyk performs the following steps to authorize the request:
 
-1. **Identity Extraction**: The user identity is extracted from the token, using one of:
+1. **Identity Extraction**: The user identity is extracted from the token according to this order of precedence:
    - The `kid` header (unless `skipKid` is enabled)
-   - A custom claim specified in `subjectClaims`
-   - The standard `sub` claim as fallback
+   - A custom claim (specified in `subjectClaims`)
+   - The standard `sub` claim (fallback)
 
-2. **Policy Resolution**: Tyk determines which policy to apply to the request:
+2. **Policy Resolution**: Tyk determines which [policy]({{< ref "api-management/policies#what-is-a-security-policy" >}}) to apply to the request:
    - From scope-to-policy mapping
    - From default policies
 
-3. **Update Session**: The session is updated with unique identify and policies (determines access rights, rate limits, and quotas).
+3. **Update Session**: The [session]({{< ref "api-management/policies#what-is-a-session-object" >}}) is updated with the identity and policies.
 
 In the following sections, we provide a detailed explanation of each of these steps.
 
 ## Identifying the Session Owner
 
-To associate a session with the authenticated user, Tyk Gateway extracts the unique identity from the JWT token by checking the following fields in order of precedence:
+A unique identity is stored in the session object to associate it with the authenticated user. This identifier is extracted from the JWT by checking the following fields in order of precedence:
 
 1. The standard Key ID header (`kid`) in the JWT (unless the `skipKid` option is enabled)
 2. The subject identity claim identified by the value(s) stored in `subjectClaims` (which allows API administrators to designate any JWT claim as the identity source (e.g., user_id, email, etc.).
@@ -51,7 +53,7 @@ To associate a session with the authenticated user, Tyk Gateway extracts the uni
         - The claim exists in the token
         - The claim value is a string and is not empty
     3. Tyk uses the **first valid, non-empty value** it finds and stops processing further claims
-    4. If none of the claims yield a valid identity, Tyk proceeds to check the `sub` claim as a fallback
+    4. If none of the claims yield a valid identity, Tyk proceeds to the next stage (the `sub` claim)
 
     {{< note success >}}
 **Note**
@@ -94,7 +96,9 @@ Tyk supports three different types of policy mapping, which are applied in this 
 
 ### Direct policies
 
-You can optionally specify policies to be applied to the session via the *policy claim* in the JWT. This is a [Private Claim](https://datatracker.ietf.org/doc/html/rfc7519#section-4.3) (not a standard JWT claim) and can be anything you want, but typically we recommend the use of `pol`. You must instruct Tyk where to look for the policy claim by configuring the `basePolicyClaims` field in the API definition.
+You can optionally specify policies to be applied to the session via the *policy claim* in the JWT. This is a [Private](https://datatracker.ietf.org/doc/html/rfc7519#section-4.3) Claim (not a registered claim) and can be anything you want, but typically we recommend the use of `pol`. You must instruct Tyk where to look for the policy claim by configuring the `basePolicyClaims` field in the API definition.
+
+Note that we typically refer to Private Claims as Custom Claims.
 
 In this example, Tyk has been configured to check the `pol` claim in the JWT to find the *Policy Ids* for the policies to be applied to the session object:
 
@@ -107,7 +111,7 @@ x-tyk-api-gateway:
           basePolicyClaims: [pol]
 ```
 
-In the JWT, you should then provide the list of policy IDs as an array of values in that claim, for example you might declare:
+In the JWT, you should then provide the list of Tyk policy IDs as an array of values in that claim, for example you might declare:
 
 ```
   "pol": ["685a8af28c24bdac0dc21c28", "685bd90b8c24bd4b6d79443d"]
@@ -121,12 +125,12 @@ Prior to Tyk 5.10, the base policy claim was retrieved from `policyFieldName`; s
 
 ### Default policies
 
-You **must** configure one or more *default policies* that will be applied if no specific policies are identified in the JWT claims. These are configured using the `defaultPolicies` field in the API definition, which accepts a list of policy IDs.
+You **must** configure one or more *default policies* that will be applied if no specific policies are identified from the JWT claims. These are configured using the `defaultPolicies` field in the API definition, which accepts a list of policy IDs. This prevents a session from being created with no authorization to interact with APIs on the Gateway.
 
 {{< note success >}}
 **Note**
 
-When using default policies with JWT authentication, the Gateway will return a `403 Forbidden` error if no default policies are configured, if referenced policy IDs don’t exist, or if policies are invalid or incorrectly formatted.
+The Gateway will return `HTTP 403 Forbidden` if no default policies are configured, if the referenced policies don’t exist, or if policies are invalid or incorrectly formatted.
 
 {{< /note >}}
 
@@ -164,7 +168,7 @@ x-tyk-api-gateway:
             claims: [accessScopes]
 ```
 
-In this example, Tyk will check the `accessScopes` claim within the incoming JWT and apply the appropriate policy if that claim contains the value `read: users` or `write: users`. If neither scope is declared in the claim, or the claim is missing, then the default policy will be applied.
+In this example, Tyk will check the `accessScopes` claim within the incoming JWT and apply the appropriate policy if that claim contains the value `read: users` or `write: users`. If neither scope is declared in the claim, or the claim is missing, the default policy will be applied.
 
 {{< note success >}}
 **Note**
@@ -239,7 +243,7 @@ Policies are combined as follows:
 When multiple policies are combined, the following logic is applied:
 
 - **access rights** A user gets access to an endpoint if ANY of the applied policies grant access
-- **rate limits** Tyk uses the most permissive values (highest quota, lowest rate limit)
+- **consumption limits** Tyk uses the most permissive values (highest quota, highest throughput )
 - **other settings** The most permissive settings from any policy are applied
 
 ### Policy Best Practices
@@ -260,7 +264,7 @@ To ensure these policies work correctly when combined:
 
 ## Session Updates
 
-After authenticating the JWT token and extracting the necessary identity and policy information, Tyk creates or updates a session object that controls access to the API.
+After authenticating the token and extracting the necessary identity and policy information, Tyk creates or updates a session object that controls access to the API.
 
 The following [session attributes]({{< ref "api-management/policies#session-object" >}}) are modified based on the policies:
 
@@ -270,7 +274,7 @@ The following [session attributes]({{< ref "api-management/policies#session-obje
 4. **Metadata**: Custom metadata from the policies is added to the session
 5. **Tags**: Policy tags are added to the session
 
-In addition to updating the session, Tyk extracts claims from the JWT token and makes them available as context variables for use in other [middleware]({{< ref "api-management/traffic-transformation" >}}).
+In addition to updating the session, Tyk extracts claims from the JWT and makes them available as context variables for use in other [middleware]({{< ref "api-management/traffic-transformation" >}}).
 
 {{< note success >}}
 
@@ -282,7 +286,7 @@ When a JWT's claims change (for example, by configuring different scopes or poli
 
 ### Using Multiple Identity Providers
 
-When using multiple Identity Providers (IdPs), you may need to check different claim locations for the same information. Tyk supports defining **multiple claim locations** for subject identity and policy IDs.
+When using multiple Identity Providers (IdPs), you may need to check different claim locations for the same information. Tyk supports definition of **multiple claim locations** for subject identity and policy IDs.
 
 * **Before Tyk 5.10 (and for Tyk Classic APIs):**
 
