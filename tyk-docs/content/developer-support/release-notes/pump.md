@@ -41,6 +41,7 @@ This release has no breaking changes, but does include the deprecation of two gl
 | [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
 | [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
 | [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+| [Valkey](https://valkey.io/download/)                     | 8.0.x, 8.1.x      | 7.2.x, 8.0.x, 8.1.x      |                            | 
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
