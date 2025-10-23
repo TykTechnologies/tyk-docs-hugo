@@ -28,10 +28,6 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Date xx October 2025
 
-#### Release Highlights
-
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.13.0" >}}) below.
-
 #### Breaking Changes
 This release has no breaking changes, but does include the deprecation of two global configuration options (`DecodeRawRequest` and `DecodeRawResponse`) that did not previously work. There is no change to functionality from these deprecations.
 
