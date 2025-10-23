@@ -86,7 +86,7 @@ JWT claims can be categorized into two types:
 
 After [verifying]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}) that the token hasn't been tampered with, Tyk processes claims in this order:
 
-1. **Claims Extraction**: All claims from the JWT payload are extracted and stored in context variables with the format `jwt_claims_CLAIMNAME`. For example, a claim named `role` becomes accessible as `jwt_claims_role`.
+1. **Claims Extraction**: All claims from the JWT payload are extracted and stored in [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}) with the format `jwt_claims_CLAIMNAME`. For example, a claim named `role` becomes accessible as `jwt_claims_role`.
 
 2. **Claims Validation**:
    - [Registered Claims Validation]({{< ref "#registered-claims-validation" >}}): Checks standard claims against your configuration
