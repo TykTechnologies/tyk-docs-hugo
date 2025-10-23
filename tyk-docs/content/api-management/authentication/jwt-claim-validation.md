@@ -55,7 +55,7 @@ JWT claims can be categorized into two types:
 
 - **Custom Claims**:
 
-  Custom Claims are application-specific and can contain any information relevant to your use case, such as user roles, permissions, department, or metadata.
+  Custom Claims, referred to as Private Claims in the [JWT Specification](https://datatracker.ietf.org/doc/html/rfc7519#section-4.3), are application-specific and can contain any information relevant to your use case, such as user roles, permissions, department, or metadata.
 
 **Example JWT Payload with Both Registered and Custom Claims**:
 
