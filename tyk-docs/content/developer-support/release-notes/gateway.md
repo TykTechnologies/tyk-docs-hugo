@@ -215,7 +215,7 @@ This enhancement makes Tyk's JWT middleware the primary validation mechanism for
 
 Ideal for organizations that require sophisticated JWT validation beyond standard token checks.
 
-For more details, please see the dedicated [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#managing-authorization-with-jwt" >}}) section.
+For more details, please see the dedicated [JWT Auth]({{< ref "api-management/authentication/jwt-authorization" >}}) section.
 
 ##### Advanced JWKS Cache Management for Tyk OAS APIs
 
@@ -234,7 +234,7 @@ Tyk Gateway now provides comprehensive JWKS (JSON Web Key Set) cache control for
 
 This enhancement is particularly valuable for organizations migrating to Tyk OAS APIs or those requiring consistent low-latency JWT validation performance with multiple Identity Providers that have different key rotation policies.
 
-For more details, please see the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#jwt-signatures" >}}) section.
+For more details, please see the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}) section.
 
 ##### Centralized External Service Configuration
 
