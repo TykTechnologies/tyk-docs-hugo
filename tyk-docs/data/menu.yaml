@@ -659,9 +659,21 @@ menu:
                 category: Page
                 show: True
               - title: "JSON Web Tokens"
-                path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
-                category: Page
+                category: Directory
                 show: True
+                menu:
+                - title: "Overview"
+                  path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
+                  category: Page
+                  show: True
+                - title: "Claim Validation"
+                  path: /api-management/authentication/jwt-claim-validation
+                  category: Page
+                  show: True
+                - title: "Authorization"
+                  path: /api-management/authentication/jwt-authorization
+                  category: Page
+                  show: True
               - title: "HMAC Signatures"
                 path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
                 category: Page
