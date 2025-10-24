@@ -106,7 +106,7 @@ Allow unrestricted access for public APIs.
 Tyk has previously offered two types of OAuth authentication flow; [Tyk as the authorization server]() and Tyk connecting to an external *auth server* via a dedicated *External OAuth* option. The dedicated external *auth server* option was deprecated in Tyk 5.7.0.
 <br>
 
-For third-party OAuth integration we recommend using the JSON Web Token (JWT) middleware which is described [above]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
+For third-party OAuth integration we recommend using the JSON Web Token (JWT) middleware which is described [here]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
 <br>
 
 The remainder of this section is left for reference and is not maintained.

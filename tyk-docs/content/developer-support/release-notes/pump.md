@@ -22,6 +22,76 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.12 Release Notes
 
+### 1.12.2 Release Notes
+
+#### Release 15th October 2025
+
+#### Release Highlights
+
+This release strengthens Tyk Pump's security foundation with updates, including an upgrade to Golang 1.24 for enhanced runtime security and the resolution of two CVEs (CVE-2025-22871 and CVE-2025-22869), ensuring robust protection against identified security vulnerabilities.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.2" >}}) below.
+
+#### Breaking Changes
+This release has no breaking changes
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.12.1, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.12.1 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.12.2](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.12.2)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.12.2
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.2)
+
+#### Changelog {#Changelog-v1.12.2}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgrade Tyk Pump to Golang 1.24</summary>
+
+Tyk Pump has been upgraded to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying current with the latest Go versions.
+</details>
+</li>
+</ul>
+
+##### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high-priority CVEs identified in Tyk Pump, providing increased protection against security vulnerabilities:<br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22871" target="_blank">CVE-2025-22871</a><br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22869" target="_blank">CVE-2025-22869</a>
+</details>
+</li>
+</ul>
+
+
 ### 1.12.1 Release Notes
 
 #### Release Date 18 August 2025

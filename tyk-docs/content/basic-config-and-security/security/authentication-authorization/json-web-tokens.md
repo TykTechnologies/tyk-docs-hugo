@@ -275,7 +275,7 @@ You must provide Tyk with the secret or key to be used to validate the incoming 
 
 ##### Locally Stored Keys and Secrets
 
-When storing the key or secret in the API definition, it is first base64 encoded and then configured in `server.authentication.securitySchemes.<jwtAuthScheme>.source`. For improved separation of concerns and flexibility, the key/secret can be placed in an [external key value store]({{< ref "tyk-configuration-reference/kv-store" >}}), with the appropriate reference configured in the API definition.
+When storing the key or secret in the API definition, it is first base64 encoded and then configured in `server.authentication.securitySchemes.<jwtAuthScheme>.source` (in Tyk Classic, this is `jwt_source`). For improved separation of concerns and flexibility, the key/secret can be placed in an [external key value store]({{< ref "tyk-configuration-reference/kv-store" >}}), with the appropriate reference configured in the API definition.
 
 For example, this fragment will configure the JWT authentication middleware to use the secret located at `consul://secrets/jwt-secret` to validate the signature of incoming JWTs. Note that the external KV store reference has been base64 encoded and then stored in `source`:
 
@@ -290,9 +290,11 @@ x-tyk-api-gateway:
 
 ##### Remotely Stored Keys (JWKS endpoint)
 
-Prior to Tyk 5.9.0, the middleware can only validate the incoming JWT against a single JWKS endpoint. The full URI (including protocol) must be base64 encoded and configured in `<jwtAuthScheme>.source`.
+###### Single JWKS endpoint
 
-For example, the following fragment will configure the JWT authentication middleware to retrieve the JWKS from `https://your-tenant.auth0.com/.well-known/jwks.json` when validating the signature of incoming JWTs. Note that the JWKS endpoint has been base64 encoded and then stored in `source`:
+Prior to Tyk 5.9.0 and when using Tyk Classic APIs, Tyk can only retrieve a single JSON Web Key Set, from a JWKS endpoint configured in `server.authentication.securitySchemes.<jwtAuthScheme>.source` (in Tyk Classic, this is `jwt_source`). This field accepts the base64 encoded full URI (including protocol) of the JWKS endpoint.
+
+For example, the following Tyk OAS fragment will configure the JWT authentication middleware to retrieve the JWKS from `https://your-tenant.auth0.com/.well-known/jwks.json` when validating the signature of incoming JWTs. Note that the JWKS endpoint has been base64 encoded and then stored in `source`:
 
 ```yaml
 x-tyk-api-gateway:
@@ -303,7 +305,9 @@ x-tyk-api-gateway:
           source: aHR0cHM6Ly95b3VyLXRlbmFudC5hdXRoMC5jb20vLndlbGwta25vd24vandrcy5qc29u
 ```
 
-From **Tyk 5.9.0** onwards, Tyk can validate against multiple JWKS endpoints, allowing you to use different IdPs to issue JWTs for the same API. Multiple JWKS endpoints can be configured in the `<jwtAuthScheme>.jwksURIs` array. Note that these URIs are not base64 encoded in the API definition and so are human-readable. Tyk will retrieve the JSON Web Key Sets from each of these endpoints and these will be used to attempt validation of the received JWT.
+###### Multiple JWKS endpoints
+
+From **Tyk 5.9.0** onwards, Tyk OAS APIs can validate against multiple JWKS endpoints, allowing you to use different IdPs to issue JWTs for the same API. Multiple JWKS endpoints can be configured in the `<jwtAuthScheme>.jwksURIs` array. Note that these URIs are not base64 encoded in the API definition and so are human-readable. Tyk will retrieve the JSON Web Key Sets from each of these endpoints and these will be used to attempt validation of the received JWT.
 
 For example, the following fragment will configure the JWT authentication middleware to retrieve the JWKS from both Auth0 and Keycloak when validating the signature of incoming JWTs:
 
