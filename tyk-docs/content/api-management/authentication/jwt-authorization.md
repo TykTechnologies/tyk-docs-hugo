@@ -18,7 +18,7 @@ date: 2025-01-10
 
 After the JWT signature has been [validated]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}), Tyk uses the **claims** within the token to determine which security policies (access rights, rate limits and quotas) should be applied to the request.
 
-From Tyk 5.10, Tyk can perform optional [validation]({{< ref "basic-config-and-security/security/authentication-authorization/jwt-claim-validation" >}}) of these claims.
+From Tyk 5.10, Tyk can perform optional [validation]({{< ref "api-management/authentication/jwt-claim-validation" >}}) of these claims.
 
 In this page, we explain how Tyk performs JWT authorization, including how it identifies the user and the policies to be applied.
 
