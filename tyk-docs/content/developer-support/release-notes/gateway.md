@@ -852,6 +852,13 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 ##### Fixed
 
 <ul>
+
+<li>
+<details>
+<summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+Fixed an issue where Tyk would fall back to previously configured authentication methods when Custom Authentication was enabled, but the plugin bundle was disabled or failed to load. The system now fails safely by rejecting all API requests when Custom Authentication is configured, but the required plugin cannot be loaded, preventing unauthorized access through old authentication tokens.
+</details>
+</li>
   
 <li>
 <details>
