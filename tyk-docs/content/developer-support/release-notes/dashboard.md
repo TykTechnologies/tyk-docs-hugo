@@ -108,7 +108,7 @@ Fixed an issue where Tyk would fall back to previously configured authentication
 
 <li>
 <details>
-<summary>Fixed inconsistent sorting of OAS API subversions</summary>
+<summary>Fixed inconsistent sorting of Tyk OAS API subversions</summary>
 Fixed an issue where Tyk OAS API subversions were sorted inconsistently between different Dashboard screens chronologically by creation date on the APIs listing page and alphabetically by version name on the manage versions page. All API version listings now use consistent alphabetical sorting by version name, providing a more predictable and user-friendly experience when navigating between different screens.
 
 </details>
