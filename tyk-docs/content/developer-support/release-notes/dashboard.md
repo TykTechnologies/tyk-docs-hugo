@@ -789,20 +789,6 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.8.7}
 
-##### Added
-
-<ul>
-  
-<li>
-<details>
-<summary>Added Open Policy Agent</summary>
-
-Added new Open Policy Agent (OPA) helper functions `isTykOAS`, `isTykStreams`, and `isTykClassic` to enable differentiated policy enforcement based on API type. This enhancement allows OPA rules to target specific API types (Classic, OAS, or Streams) and resolves compatibility issues when importing OAS definitions with existing OPA policies that were designed for Classic APIs only.
-</details>
-</li>
-
-</ul>
-
 ##### Fixed
 
 <ul>
