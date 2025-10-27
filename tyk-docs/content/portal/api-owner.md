@@ -5,7 +5,6 @@ tags: ["Developer Portal", "Tyk", "Reference", "API Owner", "User Management", "
 keywords: ["Developer Portal", "Tyk", "Reference", "API Owner", "User Management", "User", "Admin"]
 description: "Tyk Developer Portal administrators"
 aliases:
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
 ---
 
