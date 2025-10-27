@@ -28,9 +28,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Breaking Changes
 
-This release add new configurations for the Kinesis pump, InfluxDB2 pump, and Kafka pump. Additionally, it deprecates the global configuration options [DecodeRawRequest]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_request_decoded" >}}) and [DecodeRawResponse]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_response_decoded" >}}). 
-
-For further information, please check the [changelog]({{< ref "#Changelog-v1.13.0" >}}) below.
+This release has no breaking changes, but does include the deprecation of two global configuration options ([DecodeRawRequest]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_request_decoded" >}}) and [DecodeRawResponse]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_response_decoded" >}})) that did not previously work. There is no change to functionality from these deprecations.
 
 #### Dependencies
 
