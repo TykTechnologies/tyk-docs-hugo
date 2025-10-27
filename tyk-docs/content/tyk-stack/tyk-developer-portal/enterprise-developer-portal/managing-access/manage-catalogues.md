@@ -28,7 +28,7 @@ In the Tyk Developer Portal, Catalogs act as the bridge between your API Product
 The Tyk Developer Portal supports two visibility modes for Catalogs:
 
 - Public Catalogs: Visible to anyone visiting your Developer Portal, even without logging in. Ideal for openly available APIs and developer recruitment.
-- Private Catalogs: Visible only to authenticated users who have logged into your Developer Portal. They can be further restricted only to members of specific [teams]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers" >}}). Perfect for partner-specific APIs, internal teams, or premium offerings.
+- Private Catalogs: Visible only to authenticated users who have logged into your Developer Portal. They can be further restricted only to members of specific [teams]({{< ref "portal/api-consumer" >}}). Perfect for partner-specific APIs, internal teams, or premium offerings.
 
 ### Catalog Structure
 
