@@ -4741,6 +4741,7 @@ patch_request[x] {
   request_permission[_] == "apis"
   request_intent == "write"
   contains(input.request.body.api_definition.name, "#external")
+  isTykClassic() # Enforce body patch only for classic (not streams and not oas) API endpoints.
 
   x := {"api_definition": {"proxy": {"transport": {"proxy_url": "http://company-proxy:8080"}}}}
 }
@@ -5055,6 +5056,7 @@ patch_request[x] {
     request_permission[_] == "apis"
     request_intent == "write"
     contains(input.request.body.api_definition.name, "#external")
+    isTykClassic() # Enforce body patch only for classic (not streams and not oas) API endpoints.
     x := {"api_definition": {"proxy": {"transport": {"proxy_url": "http://company-proxy:8080"}}}}
 }
 # You can create additional permissions for not only individual users, but also user groups in your rules.
