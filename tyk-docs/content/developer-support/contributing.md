@@ -17,10 +17,7 @@ This section provides resources and guidance for contributors to Tyk's documenta
 This contribution section includes:
 
 - **[Inclusive naming]({{< ref "developer-support/documentation-projects/inclusive-naming" >}})** - Information about Tyk's inclusive language initiative and the work done to update documentation terminology
-- **UI component examples** - Documentation and examples for using shortcodes in our documentation system:
-  - **[Pill label shortcode]({{< ref "ui-examples/test-pill-label" >}})** - For labeling content with edition indicators (Enterprise, Cloud, Lab Release, etc.)
-  - **[Feature cards shortcode]({{< ref "ui-examples/feature-cards" >}})** - For creating responsive feature highlight grids
-  - **[YouTube video embed shortcode]({{< ref "ui-examples/youtube-video-embed" >}})** - For embedding videos with proper styling and SEO
+- **UI component examples** - Documentation and examples for using shortcodes in our documentation system
 
 ## How to contribute to our docs
 
