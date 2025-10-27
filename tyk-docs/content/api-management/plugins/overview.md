@@ -101,7 +101,7 @@ git clone https://github.com/TykTechnologies/custom-go-plugin
 cd custom-go-plugin
 ```
 
-##### Choose your environment
+### Choose your environment
 
 {{< grid >}}
 {{< badge read="15 mins" imageStyle="object-fit:contain" href="api-management/plugins/overview#dashboard-plugins" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Dashboard">}}
