@@ -54,9 +54,9 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
 * **Examples**: In Examples, you will find a few sample projects we put together to help you in your journey. We suggest you start with the Tyk OAS APIs and move on to GraphQL and UDG APIs to supplement learning how to setup your API.
 
-* **Data Graphs**: Universal Data Graphs (UDGs) are a way for you to combine APIs into one usable interface. Using GraphQL, you can access multiple APIs in a single query. In this tab, you can configure your UDGs. You can learn more about Data Graph concepts and how to use them in Tyk, [here](/universal-data-graph/).
+* **Data Graphs**: Universal Data Graphs (UDGs) are a way for you to combine APIs into one usable interface. Using GraphQL, you can access multiple APIs in a single query. In this tab, you can configure your UDGs. You can learn more about Data Graph concepts and how to use them in Tyk, [here]({{< ref "api-management/data-graph" >}}).
 
-* **Webhooks**: Webhooks allow you to define redirects to handle specific events. For instance, you can configure a webhook to handle a RateLimitExceeded event to send a notification to your admin. Webhooks are very powerful tools to allow you to customize event handling, to learn more, find more information [here](/basic-config-and-security/report-monitor-trigger-events/webhooks).
+* **Webhooks**: Webhooks allow you to define redirects to handle specific events. For instance, you can configure a webhook to handle a RateLimitExceeded event to send a notification to your admin. Webhooks are very powerful tools to allow you to customize event handling, to learn more, find more information [here]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}).
 
 #### API Security
 {{< img src="/img/getting-started/tabs-api-security.png" alt="API Security Side Bar" >}}
@@ -69,7 +69,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 #### User Management
 {{< img src="/img/getting-started/tabs-user-management.png" alt="User Management Side Bar" >}}
 
-* **Users**: Here, you can add, revoke, delete, or edit the details of users that need admin access to your Tyk dashboard. 'Revoking' a user will suspend their access without deleting their account. You can learn more about users [here](/tyk-dashboard-api/users).
+* **Users**: Here, you can add, revoke, delete, or edit the details of users that need admin access to your Tyk dashboard. 'Revoking' a user will suspend their access without deleting their account. You can learn more about users [here]({{< ref "api-management/dashboard-configuration#users-api" >}}).
 * **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/api-management/dashboard-configuration#user-groups-api).
 * **User Settings**: In User Settings, you can setup [TIB profiles](/api-management/external-service-integration#exploring-tib-profiles). This allows your users to access Tyk-managed APIs using their existing credentials.
 
@@ -87,7 +87,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 #### System Management
 {{< img src="/img/getting-started/tabs-system-management.png" alt="System Management Side Bar" >}}
 
-* **OPA Rules**: You can use this tab to edit your [OPA Rules](/tyk-dashboard/open-policy-agent/)- you can use these custom rules to control the behavior of all of your dashboard APIs. For example, you can restrict regular users to GET requests only, while allowing POST requests for admin roles. 
+* **OPA Rules**: You can use this tab to edit your [OPA Rules]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}})- you can use these custom rules to control the behavior of all of your dashboard APIs. For example, you can restrict regular users to GET requests only, while allowing POST requests for admin roles.
 
 * **Nodes & Licenses**: This page provides an overview of the Tyk installation, including license usage metrics and Gateway status. This is available only for `Tyk Self Managed` installations.
 
@@ -133,7 +133,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 * **Catalogue**: Your catalogue is the full list of APIs made available in your portal. You can add APIs to your catalogue in this tab. You can learn more about how to affect your catalogues [here](/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues/).
 * **Key Requests**: For the APIs listed in your catalogue, you developers will submit key requests to gain access to them. This page allows you to view the full list of key requests, you can use it to see what APIs are gaining popularity, you can also approve or decline key requests here. You can learn more about key requests [here](/tyk-developer-portal/tyk-portal-classic/key-requests/).
 * **Developers**: Developers are the people consuming your APIs. You can [add developers](/tyk-developer-portal/tyk-portal-classic/developer-profiles/) to your portal in this tab.
-* **Pages**: As mentioned earlier, your portal is completely customizable. This tab makes it easy to add or edit the pages available in your portal. You can make this as simple or complicated as you want, you just have to add a title and URL for each page. You can learn more about adding pages to your portal [here](/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content/).
+* **Pages**: As mentioned earlier, your portal is completely customizable. This tab makes it easy to add or edit the pages available in your portal. You can make this as simple or complicated as you want, you just have to add a title and URL for each page. You can learn more about adding pages to your portal [here]({{< ref "portal/customization/pages#edit-page-content" >}}).
 * **Menus**: Next, if you want to configure the navigation of your site, you can [customize your menus](/tyk-developer-portal/tyk-portal-classic/customise/changing-the-navigation/).
 * **CSS**: In this tab, you can customize your site using CSS. Just write a custom CSS script and press the "update" button in the top right corner to publish your custom styling. For inspiration, take a look at this [tutorial](/tyk-developer-portal/tyk-portal-classic/customise/customising-using-dashboard/).
 
