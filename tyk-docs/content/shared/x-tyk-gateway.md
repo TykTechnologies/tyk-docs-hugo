@@ -204,7 +204,10 @@ Active enables the API so that Tyk will listen for and process requests made to 
 Tyk classic API definition: `active`.
 
 **Field: `internal` (`boolean`)**
-This field controls the exposure of the API on the Gateway. When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs; it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) or as a [child API version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
+Internal controls the exposure of the API on the Gateway.
+When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs;
+it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) or as a [child API version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
+
 
 Tyk classic API definition: `internal`.
 
@@ -874,7 +877,7 @@ Tyk classic API definition: `dont_set_quota_on_create`.
 
 ### **Operations**
 
-Operations holds Operation definitions. The string key in this object is the `operationID`, which is a unique identifier for each API operation. 
+Operations holds Operation definitions. The string key in this object is the `operationID`, which is a unique identifier for each API operation.
 
 Type defined as object of `Operation` values, see [Operation](#operation) definition.
 
@@ -1706,6 +1709,46 @@ Value is the value of custom plugin config data.
 
 Tyk classic API definition: `config_data`.
 
+### **CustomPlugin**
+
+CustomPlugin configures custom plugin.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom plugin.
+
+
+Tyk classic API definition: `custom_middleware.pre[].disabled`, `custom_middleware.post_key_auth[].disabled`,.
+`custom_middleware.post[].disabled`, `custom_middleware.response[].disabled` (negated).
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+
+Tyk classic API definition: `custom_middleware.pre[].name`, `custom_middleware.post_key_auth[].name`,.
+`custom_middleware.post[].name`, `custom_middleware.response[].name`.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+
+Tyk classic API definition: `custom_middleware.pre[].path`, `custom_middleware.post_key_auth[].path`,.
+`custom_middleware.post[].path`, `custom_middleware.response[].path`.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+
+Tyk classic API definition: `custom_middleware.pre[].raw_body_only`, `custom_middleware.post_key_auth[].raw_body_only`,.
+`custom_middleware.post[].raw_body_only`, `custom_middleware.response[].raw_body_only`.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
+
+
+Tyk classic API definition: `custom_middleware.pre[].require_session`, `custom_middleware.post_key_auth[].require_session`,.
+`custom_middleware.post[].require_session`, `custom_middleware.response[].require_session`.
+
 ### **Headers**
 
 Headers is an array of Header.
@@ -1800,46 +1843,6 @@ Name is the name of the header.
 
 **Field: `value` (`string`)**
 Value is the value of the header.
-
-### **CustomPlugin**
-
-CustomPlugin configures custom plugin.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the custom plugin.
-
-
-Tyk classic API definition: `custom_middleware.pre[].disabled`, `custom_middleware.post_key_auth[].disabled`,.
-`custom_middleware.post[].disabled`, `custom_middleware.response[].disabled` (negated).
-
-**Field: `functionName` (`string`)**
-FunctionName is the name of authentication method.
-
-
-Tyk classic API definition: `custom_middleware.pre[].name`, `custom_middleware.post_key_auth[].name`,.
-`custom_middleware.post[].name`, `custom_middleware.response[].name`.
-
-**Field: `path` (`string`)**
-Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
-
-
-Tyk classic API definition: `custom_middleware.pre[].path`, `custom_middleware.post_key_auth[].path`,.
-`custom_middleware.post[].path`, `custom_middleware.response[].path`.
-
-**Field: `rawBodyOnly` (`boolean`)**
-RawBodyOnly if set to true, do not fill body in request or response object.
-
-
-Tyk classic API definition: `custom_middleware.pre[].raw_body_only`, `custom_middleware.post_key_auth[].raw_body_only`,.
-`custom_middleware.post[].raw_body_only`, `custom_middleware.response[].raw_body_only`.
-
-**Field: `requireSession` (`boolean`)**
-RequireSession if set to true passes down the session information for plugins after authentication.
-RequireSession is used only with JSVM custom middleware.
-
-
-Tyk classic API definition: `custom_middleware.pre[].require_session`, `custom_middleware.post_key_auth[].require_session`,.
-`custom_middleware.post[].require_session`, `custom_middleware.response[].require_session`.
 
 ### **IDExtractorConfig**
 
@@ -2028,7 +2031,7 @@ Supported types:
 - exact_match: validates that the claim in the JWT equals one of the allowed values (case-sensitive).
 - contains: validates that the claim in the JWT contains one of the allowed values.
 
-**Field: `allowedValues` (`[]&ast.InterfaceType{Interface:194869, Methods:(*ast.FieldList)(0xc000371170), Incomplete:false}`)**
+**Field: `allowedValues` (`[]string|int|boolean|array`)**
 AllowedValues contains the values that Tyk will use to validate the claim for "exact_match" and "contains" validation types.
 Not used for "required" validation type.
 Supports string, number, boolean, and array values.
@@ -2227,7 +2230,7 @@ JWK represents a JSON Web Key Set containing configuration for the JWKS endpoint
 **Field: `url` (`string`)**
 URL is the JWKS endpoint.
 
-**Field: `cacheTimeout` (`int64`)**
+**Field: `cacheTimeout` (`string`)**
 CacheTimeout defines how long the JWKS will be kept in the cache before forcing a refresh from the JWKS endpoint.
 
 ### **JWT**
@@ -2507,6 +2510,7 @@ Block request by allowance.
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
 IgnoreAuthentication ignores authentication on request by allowance.
 
+
 Tyk classic API definition: version_data.versions..extended_paths.ignored[].
 
 **Field: `internal` ([Internal](#internal))**
@@ -2599,8 +2603,6 @@ Connect holds plugin configuration for CONNECT requests.
 ### **Paths**
 
 Paths is a mapping of API endpoints to Path plugin configurations. This field is part of the [Middleware](#middleware) structure.
-
-
 The string keys in this object represent URL path patterns (e.g. `/users`, `/users/{id}`, `/api/*`) that match API endpoints.
 
 Type defined as object of `Path` values, see [Path](#path) definition.
@@ -2618,7 +2620,8 @@ Block request by allowance.
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
 IgnoreAuthentication ignores authentication on request by allowance.
 
-Tyk Classic API definition: version_data.versions..extended_paths.ignored[].
+
+Tyk classic API definition: version_data.versions..extended_paths.ignored[].
 
 **Field: `transformRequestMethod` ([TransformRequestMethod](#transformrequestmethod))**
 TransformRequestMethod allows you to transform the method of a request.

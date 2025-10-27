@@ -323,6 +323,18 @@ A value of zero (default) means that no maximum is set and API requests will not
 See more information about setting request size limits here:
 https://tyk.io/docs/api-management/traffic-transformation/#request-size-limits
 
+### http_server_options.max_response_body_size
+ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXRESPONSEBODYSIZE</b><br />
+Type: `int64`<br />
+
+MaxResponseBodySize configures an upper limit for the size of the response body (payload) in bytes.
+
+This limit is currently applied only if the Response Body Transform middleware is enabled.
+
+The Gateway will return `HTTP 500 Response Body Too Large` if the response payload exceeds MaxResponseBodySize+1 bytes.
+
+A value of zero (default) means that no maximum is set and response bodies will not be limited.
+
 ### version_header
 ENV: <b>TYK_GW_VERSIONHEADER</b><br />
 Type: `string`<br />
