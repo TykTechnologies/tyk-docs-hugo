@@ -747,7 +747,7 @@ There are no breaking changes in this release.
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.8.6 | MDCB v2.8.5    | MDCB v2.8.5 |
+| 5.8.7 | MDCB v2.8.5    | MDCB v2.8.5 |
 |         | Operator v1.2.0  | Operator v0.17 |
 |         | Sync v2.1.4    | Sync v2.1.1 |
 |         | Helm Chart v4.0  | Helm all versions |
