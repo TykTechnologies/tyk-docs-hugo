@@ -6,6 +6,7 @@ tags: ["Developer Portal", "Tyk", "API Consumer", "Developer", "Organization", "
 keywords: ["Developer Portal", "Tyk", "API Consumer", "Developer", "Organization", "Invite Codes", "Consumer Registration"]
 description: "Tyk Developer Portal users"
 aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
   - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
   - /portal/api-consumer/invite-codes
