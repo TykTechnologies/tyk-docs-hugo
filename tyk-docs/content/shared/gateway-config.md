@@ -297,13 +297,11 @@ https://tyk.io/docs/api-management/traffic-transformation/#request-size-limits
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXRESPONSEBODYSIZE</b><br />
 Type: `int64`<br />
 
-MaxResponseBodySize configures an upper limit for the size of the response body (payload) in bytes.
-
-This limit is currently applied only if the Response Body Transform middleware is enabled.
+MaxResponseBodySize sets an upper limit on the response body (payload) size in bytes. It defaults to 0, which means there is no restriction on the response body size.
 
 The Gateway will return `HTTP 500 Response Body Too Large` if the response payload exceeds MaxResponseBodySize+1 bytes.
 
-A value of zero (default) means that no maximum is set and response bodies will not be limited.
+**Note:** The limit is applied only when the [Response Body Transform middleware]({{< ref "api-management/traffic-transformation/response-body" >}}) is enabled.
 
 ### version_header
 ENV: <b>TYK_GW_VERSIONHEADER</b><br />
