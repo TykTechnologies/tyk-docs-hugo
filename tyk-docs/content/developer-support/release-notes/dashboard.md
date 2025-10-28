@@ -100,24 +100,16 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 
 <li>
 <details>
-<summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
-Fixed an issue where Tyk would fall back to previously configured authentication methods when Custom Authentication was enabled, but the plugin bundle was disabled or failed to load. The system now fails safely by rejecting all API requests when Custom Authentication is configured, but the required plugin cannot be loaded, preventing unauthorized access through old authentication tokens.
-
-</details>
-</li>
-
-<li>
-<details>
-<summary>Fixed inconsistent sorting of Tyk OAS API subversions</summary>
-Fixed an issue where Tyk OAS API subversions were sorted inconsistently between different Dashboard screens chronologically by creation date on the APIs listing page and alphabetically by version name on the manage versions page. All API version listings now use consistent alphabetical sorting by version name, providing a more predictable and user-friendly experience when navigating between different screens.
-
-</details>
-</li>
-
-<li>
-<details>
 <summary>Fixed broken UI of API editor on the Import API page</summary>
 Fixed a UI issue in the API editor on the Import API page where the Monaco code editor would display incorrectly when scrolling, with the editor margin overflowing its container. The editor now properly maintains its layout and boundaries within the designated container area, providing a consistent editing experience when importing API definitions.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>API Editor UI Glitch When Scrolling in Import Mode</summary>
+Fixed an issue introduced in 5.10.0 where there was a graphical glitch with the code editor in the API Designer.
 
 </details>
 </li>
@@ -131,6 +123,7 @@ Fixed a UI issue in the API editor on the Import API page where the Monaco code 
 - **Fixed unicode character display in Log Browser**: Non-ASCII characters (Cyrillic, Arabic, Hindi, Telugu, Yoruba, etc.) now display correctly instead of showing garbled text when viewing request/response       logs.
 - **Fixed date range filtering showing extra day in analytics charts**: Date range selectors now accurately reflect the selected end date instead of automatically including the following day's data in charts     and legends.
 - **Fixed Log Browser querying wrong tables when SQL table sharding is enabled**: Dashboard now correctly queries sharded tables (tyk_analytics_YYYYMMDD) instead of the main tyk_analytics table when               `TYK_DB_STORAGE_LOGS_TABLESHARDING=true` is configured, ensuring analytics data displays properly with SQL database sharding.
+- **Fixed incorrect date labels and data aggregation in analytics charts**: Fixed multiple issues in the analytics aggregation layer when using PostgreSQL backend that caused incorrect chart rendering and service problems. Resolved problems, including hourly charts showing nonsensical dates like "30 Nov 1899", monthly charts displaying incorrect months, incomplete time-series data due to improper date padding, and API activity being incorrectly split across multiple rows.
 
 </details>
 </li>
