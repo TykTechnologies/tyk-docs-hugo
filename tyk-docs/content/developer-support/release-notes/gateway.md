@@ -856,7 +856,7 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 <li>
 <details>
 <summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
-Fixed an issue where Tyk would fall back to previously configured authentication methods when Custom Authentication was enabled, but the plugin bundle was disabled or failed to load. The system now fails safely by rejecting all API requests when Custom Authentication is configured, but the required plugin cannot be loaded, preventing unauthorized access through old authentication tokens.
+Fixed an issue where Custom Authentication could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
 </details>
 </li>
   
@@ -882,7 +882,7 @@ Fixed an issue where the Gateway would load and attempt to use plugin bundles ev
 <details>
 <summary>Fixed JWT key activation when toggling default policy from draft to active</summary>
 
-Fixed an issue where JWT authentication keys would remain deactivated (showing "Key is inactive, please renew" errors) when a default policy was changed from draft to active status, particularly when the policy had never been previously applied through a request. The Gateway now properly evaluates the current state of all applied policies at request time, ensuring that keys become valid immediately when policies are reactivated or when switching between policies, eliminating the need for manual key deletion to restore access.
+Fixed an issue where keys could remain deactivated when a policy applied to them was changed from `draft` to `active` status. When an access key/token is presented to Tyk in a request, policies linked to the key will be applied, configuring the authorization for that request. If any policy is in `draft` state, the key will be rejected. Toggling the policy to the `active` state should activate any keys to which the policy is applied. Previously, if the policy had never been applied when it was in `draft` state, there was an issue where keys would incorrectly be marked as `inactive`. This has now been resolved, and the policy state is correctly mapped to keys.
 
 </details>
 </li>
@@ -899,7 +899,7 @@ Added a new configuration option, `HttpServerOptions.MaxResponseBodySize` to lim
 <details>
 <summary>Fixed plugin loading failure errors being ignored for gRPC, Python, and Lua plugins</summary>
 
-Fixed an issue where plugin loading failure errors were ignored for gRPC, Python, and Lua plugins, allowing API requests to be processed even when plugins failed to load. This could lead to vulnerabilities, particularly when Custom Plugin authentication was configured, but the plugin couldn't be loaded due to incorrect paths or configurations. The Gateway now properly validates plugin drivers during request processing and fails safely by returning HTTP 500 Internal Server Error when any plugin fails to load, ensuring consistent behavior across all plugin types.
+Fixed an issue where plugin loading failure errors were ignored for gRPC, Python, and Lua plugins, allowing API requests to be processed even when plugins failed to load. The Gateway now properly validates plugin drivers during request processing and fails safely by returning `HTTP 500 Internal Server Error` when any plugin fails to load, ensuring consistent behavior across all plugin types.
 </details>
 </li>
 
@@ -932,6 +932,13 @@ Fixed an issue where mock response API requests were generating unnecessary warn
 <summary>Fixed Hybrid Gateway hanging when MDCB connection is lost</summary>
 
 Fixed an issue where Hybrid Gateway would hang for all client requests when the MDCB connection was lost and the organisation quota cache expired before the Gateway performed a health check. Previously, hybrid mode gateways enforced organisation quotas even when `TYK_GW_ENFORCEORGQUOTAS` was false. From this release, organisation quotas are only enforced when `TYK_GW_ENFORCEORGQUOTAS=true`, so customers who rely on organisation quotas should ensure that `TYK_GW_ENFORCEORGQUOTAS` is set to true.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Unnecessary Warning Logs for Mock Response APIs</summary>
+Resolved an issue where mock response API requests generated misleading warning messages in gateway logs. These warnings were incorrectly introduced and have been removed to restore the expected logging behavior.
 </details>
 </li>
 
