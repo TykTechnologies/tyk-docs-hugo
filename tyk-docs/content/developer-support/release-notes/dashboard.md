@@ -126,7 +126,7 @@ Fixed a UI issue in the API editor on the Import API page where the Monaco code 
 <details>
 <summary>Dashboard Analytics and Monitoring Fixes</summary>
   
-- **Fixed non-clickable endpoint rows in the Activity page**: Endpoint rows in the API Activity view now properly respond to clicks and navigate to endpoint detail views with appropriate hover visual feedback.
+- **Fixed non-clickable endpoint rows in the Activity page**: Fixed an issue where selecting an endpoint in the "Most Popular Endpoints" list on the "Activity Overview" screen did not direct the user to the      "Activity by Endpoint" screen.
 - **Fixed incorrect error code descriptions in API activity dashboard**: Error codes now display correct descriptions (409 shows "Conflict" instead of "Rate limit or quota exceeded", and missing descriptions     for 502, 504, 499, and 422 have been added).
 - **Fixed unicode character display in Log Browser**: Non-ASCII characters (Cyrillic, Arabic, Hindi, Telugu, Yoruba, etc.) now display correctly instead of showing garbled text when viewing request/response       logs.
 - **Fixed date range filtering showing extra day in analytics charts**: Date range selectors now accurately reflect the selected end date instead of automatically including the following day's data in charts     and legends.
