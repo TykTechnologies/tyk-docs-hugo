@@ -204,7 +204,10 @@ Active enables the API so that Tyk will listen for and process requests made to 
 Tyk classic API definition: `active`.
 
 **Field: `internal` (`boolean`)**
-This field controls the exposure of the API on the Gateway. When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs; it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) or as a [child API version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
+Internal controls the exposure of the API on the Gateway.
+When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs;
+it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) or as a [child API version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
+
 
 Tyk classic API definition: `internal`.
 
@@ -657,6 +660,15 @@ SecuritySchemes contains security schemes definitions.
 **Field: `customKeyLifetime` ([CustomKeyLifetime](#customkeylifetime))**
 CustomKeyLifetime contains configuration for the maximum retention period for access tokens.
 
+**Field: `securityProcessingMode` (`string`)**
+SecurityProcessingMode controls how Tyk will process the OpenAPI `security` field if multiple security requirement objects are declared.
+- "legacy" (default): Only the first security requirement object will be processed; uses BaseIdentityProvider to create the session object.
+- "compliant": All security requirement objects will be processed, request will be authorized if any of these are validated; the origin for the session object will be determined dynamically based on the validated security requirement.
+
+**Field: `security` (`[][]string`)**
+Security is an extension to the OpenAPI security field and is used when securityProcessingMode is set to "compliant".
+This can be used to combine any declared securitySchemes including Tyk proprietary auth methods.
+
 ### **ClientCertificates**
 
 ClientCertificates contains the configurations related to establishing static mutual TLS between the client and Tyk.
@@ -865,7 +877,7 @@ Tyk classic API definition: `dont_set_quota_on_create`.
 
 ### **Operations**
 
-Operations holds Operation definitions. The string key in this object is the `operationID`, which is a unique identifier for each API operation. 
+Operations holds Operation definitions. The string key in this object is the `operationID`, which is a unique identifier for each API operation.
 
 Type defined as object of `Operation` values, see [Operation](#operation) definition.
 
@@ -1536,6 +1548,10 @@ Tyk classic API definition:.
 - For OIDC: `scopes.oidc.scope_claim_name`
 - For JWT: `scopes.jwt.scope_claim_name`
 
+**Field: `claims` (`[]string`)**
+Claims specifies a list of claims that can be used to provide the scope-to-policy mapping.
+The first match from the list found in the token will be interrogated to retrieve the scopes that are then checked against the scopeToPolicyMapping.
+
 **Field: `scopeToPolicyMapping` ([[]ScopeToPolicy](#scopetopolicy))**
 ScopeToPolicyMapping contains the mappings of scopes to policy IDs.
 
@@ -1693,6 +1709,46 @@ Value is the value of custom plugin config data.
 
 Tyk classic API definition: `config_data`.
 
+### **CustomPlugin**
+
+CustomPlugin configures custom plugin.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom plugin.
+
+
+Tyk classic API definition: `custom_middleware.pre[].disabled`, `custom_middleware.post_key_auth[].disabled`,.
+`custom_middleware.post[].disabled`, `custom_middleware.response[].disabled` (negated).
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+
+Tyk classic API definition: `custom_middleware.pre[].name`, `custom_middleware.post_key_auth[].name`,.
+`custom_middleware.post[].name`, `custom_middleware.response[].name`.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+
+Tyk classic API definition: `custom_middleware.pre[].path`, `custom_middleware.post_key_auth[].path`,.
+`custom_middleware.post[].path`, `custom_middleware.response[].path`.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+
+Tyk classic API definition: `custom_middleware.pre[].raw_body_only`, `custom_middleware.post_key_auth[].raw_body_only`,.
+`custom_middleware.post[].raw_body_only`, `custom_middleware.response[].raw_body_only`.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
+
+
+Tyk classic API definition: `custom_middleware.pre[].require_session`, `custom_middleware.post_key_auth[].require_session`,.
+`custom_middleware.post[].require_session`, `custom_middleware.response[].require_session`.
+
 ### **Headers**
 
 Headers is an array of Header.
@@ -1787,46 +1843,6 @@ Name is the name of the header.
 
 **Field: `value` (`string`)**
 Value is the value of the header.
-
-### **CustomPlugin**
-
-CustomPlugin configures custom plugin.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the custom plugin.
-
-
-Tyk classic API definition: `custom_middleware.pre[].disabled`, `custom_middleware.post_key_auth[].disabled`,.
-`custom_middleware.post[].disabled`, `custom_middleware.response[].disabled` (negated).
-
-**Field: `functionName` (`string`)**
-FunctionName is the name of authentication method.
-
-
-Tyk classic API definition: `custom_middleware.pre[].name`, `custom_middleware.post_key_auth[].name`,.
-`custom_middleware.post[].name`, `custom_middleware.response[].name`.
-
-**Field: `path` (`string`)**
-Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
-
-
-Tyk classic API definition: `custom_middleware.pre[].path`, `custom_middleware.post_key_auth[].path`,.
-`custom_middleware.post[].path`, `custom_middleware.response[].path`.
-
-**Field: `rawBodyOnly` (`boolean`)**
-RawBodyOnly if set to true, do not fill body in request or response object.
-
-
-Tyk classic API definition: `custom_middleware.pre[].raw_body_only`, `custom_middleware.post_key_auth[].raw_body_only`,.
-`custom_middleware.post[].raw_body_only`, `custom_middleware.response[].raw_body_only`.
-
-**Field: `requireSession` (`boolean`)**
-RequireSession if set to true passes down the session information for plugins after authentication.
-RequireSession is used only with JSVM custom middleware.
-
-
-Tyk classic API definition: `custom_middleware.pre[].require_session`, `custom_middleware.post_key_auth[].require_session`,.
-`custom_middleware.post[].require_session`, `custom_middleware.response[].require_session`.
 
 ### **IDExtractorConfig**
 
@@ -2004,6 +2020,34 @@ ClientID is the application's ID.
 **Field: `clientSecret` (`string`)**
 ClientSecret is the application's secret.
 
+### **CustomClaimValidationConfig**
+
+CustomClaimValidationConfig defines the validation configuration for a custom JWT claim.
+
+**Field: `type` ([CustomClaimValidationType](#customclaimvalidationtype))**
+Type specifies the type of validation to perform on the claim.
+Supported types:
+- required: validates that the claim exists and is non-null.
+- exact_match: validates that the claim in the JWT equals one of the allowed values (case-sensitive).
+- contains: validates that the claim in the JWT contains one of the allowed values.
+
+**Field: `allowedValues` (`[]string|int|boolean|array`)**
+AllowedValues contains the values that Tyk will use to validate the claim for "exact_match" and "contains" validation types.
+Not used for "required" validation type.
+Supports string, number, boolean, and array values.
+For arrays, validation succeeds if any array element matches any allowed value.
+
+**Field: `nonBlocking` (`boolean`)**
+NonBlocking determines if validation failure should log a warning (true) or reject the request (false).
+This enables gradual rollout of validation rules by monitoring before enforcing.
+Multiple rules can be mixed, some blocking and others non-blocking.
+
+### **CustomClaimValidationType**
+
+CustomClaimValidationType represents how a JWT claim should be validated.
+This determines the validation logic used to check the claim value.
+The validation behavior varies based on both the type selected and the claim's data type.
+
 ### **EndpointPostPlugin**
 
 EndpointPostPlugin contains endpoint level post plugin configuration.
@@ -2171,6 +2215,24 @@ For introspection caching, it is suggested to use a short interval.
 
 Tyk classic API definition: `external_oauth.providers[].introspection.cache.timeout`.
 
+### **JTIValidation**
+
+JTIValidation contains the configuration for the validation of the JWT ID.
+
+**Field: `enabled` (`boolean`)**
+Enabled indicates whether JWT ID claim is required.
+When true, tokens must include a 'jti' claim.
+
+### **JWK**
+
+JWK represents a JSON Web Key Set containing configuration for the JWKS endpoint and its cache timeout.
+
+**Field: `url` (`string`)**
+URL is the JWKS endpoint.
+
+**Field: `cacheTimeout` (`string`)**
+CacheTimeout defines how long the JWKS will be kept in the cache before forcing a refresh from the JWKS endpoint.
+
 ### **JWT**
 
 JWT holds the configuration for the JWT middleware.
@@ -2187,6 +2249,9 @@ Source contains the source for the JWT.
 
 Tyk classic API definition: `jwt_source`.
 
+**Field: `jwksURIs` ([[]JWK](#jwk))**
+JwksURIs contains a list of JSON Web Key Sets (JWKS) endpoints from which Tyk will retrieve JWKS to validate JSON Web Tokens (JWTs).
+
 **Field: `signingMethod` (`string`)**
 SigningMethod contains the signing method to use for the JWT.
 
@@ -2199,6 +2264,9 @@ The identity fields that are checked in order are: `kid`, IdentityBaseField, `su
 
 
 Tyk classic API definition: `jwt_identity_base_field`.
+
+**Field: `subjectClaims` (`[]string`)**
+SubjectClaims specifies a list of claims that can be used to identity the subject of the JWT.
 
 **Field: `skipKid` (`boolean`)**
 SkipKid controls skipping using the `kid` claim from a JWT (default behaviour).
@@ -2213,6 +2281,10 @@ The policy is applied to the session as a base policy.
 
 
 Tyk classic API definition: `jwt_policy_field_name`.
+
+**Field: `basePolicyClaims` (`[]string`)**
+BasePolicyClaims specifies a list of claims from which the base PolicyID is extracted.
+The policy is applied to the session as a base policy.
 
 **Field: `clientBaseField` (`string`)**
 ClientBaseField is used when PolicyFieldName is not provided. It will get
@@ -2249,6 +2321,21 @@ ExpiresAtValidationSkew contains the duration in seconds for which the token can
 
 Tyk classic API definition: `jwt_expires_at_validation_skew`.
 
+**Field: `allowedIssuers` (`[]string`)**
+AllowedIssuers contains a list of accepted issuers for JWT validation.
+When configured, the JWT's issuer claim must match one of these values.
+
+**Field: `allowedAudiences` (`[]string`)**
+AllowedAudiences contains a list of accepted audiences for JWT validation.
+When configured, the JWT's audience claim must match one of these values.
+
+**Field: `jtiValidation` ([JTIValidation](#jtivalidation))**
+JTIValidation contains the configuration for the validation of the JWT ID.
+
+**Field: `allowedSubjects` (`[]string`)**
+AllowedSubjects contains a list of accepted subjects for JWT validation.
+When configured, the subject from kid/identityBaseField/sub must match one of these values.
+
 **Field: `idpClientIdMappingDisabled` (`boolean`)**
 IDPClientIDMappingDisabled prevents Tyk from automatically detecting the use of certain IDPs based on standard claims
 that they include in the JWT: `client_id`, `cid`, `clientId`. Setting this flag to `true` disables the mapping and avoids
@@ -2256,6 +2343,23 @@ accidentally misidentifying the use of one of these IDPs if one of their standar
 
 
 Tyk classic API definition: `idp_client_id_mapping_disabled`.
+
+**Field: `customClaimValidation` (`map[string]CustomClaimValidationConfig`)**
+CustomClaimValidation contains custom validation rules for JWT claims.
+It maps a claim name (including nested claims using dot notation) to its validation configuration.
+
+The validation can be one of three types:
+- "required": claim must exist in the token (null/empty values are considered invalid)
+- "exact_match": claim must exactly equal one of the specified values (case-sensitive)
+- "contains": for strings, must contain one of the values as substring; for arrays, must contain one of the values as element
+
+Examples:
+Basic validation: {"role": {"type": "exact_match", "allowedValues": ["admin", "user"]}}
+Nested claim: {"user.metadata.level": {"type": "contains", "allowedValues": ["gold", "silver"]}}
+Multiple rules: {"permissions": {"type": "contains", "allowedValues": ["read", "write"], "nonBlocking": true}}
+
+Claims can be of type string, number, boolean, or array. For arrays, the contains validation
+checks if any of the array elements exactly match any of the allowed values.
 
 ### **JWTValidation**
 
@@ -2406,6 +2510,7 @@ Block request by allowance.
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
 IgnoreAuthentication ignores authentication on request by allowance.
 
+
 Tyk classic API definition: version_data.versions..extended_paths.ignored[].
 
 **Field: `internal` ([Internal](#internal))**
@@ -2498,8 +2603,6 @@ Connect holds plugin configuration for CONNECT requests.
 ### **Paths**
 
 Paths is a mapping of API endpoints to Path plugin configurations. This field is part of the [Middleware](#middleware) structure.
-
-
 The string keys in this object represent URL path patterns (e.g. `/users`, `/users/{id}`, `/api/*`) that match API endpoints.
 
 Type defined as object of `Path` values, see [Path](#path) definition.
@@ -2517,7 +2620,8 @@ Block request by allowance.
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
 IgnoreAuthentication ignores authentication on request by allowance.
 
-Tyk Classic API definition: version_data.versions..extended_paths.ignored[].
+
+Tyk classic API definition: version_data.versions..extended_paths.ignored[].
 
 **Field: `transformRequestMethod` ([TransformRequestMethod](#transformrequestmethod))**
 TransformRequestMethod allows you to transform the method of a request.
