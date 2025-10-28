@@ -156,6 +156,13 @@ Tyk Gateway now validates all file paths within zip bundles before extraction, r
 </details>
 </li>
 
+<li>
+<details>
+<summary>Fixed Hybrid Gateway hanging when MDCB connection is lost</summary>
+Fixed an issue where Hybrid Gateway would hang for all client requests when the MDCB connection was lost and the organisation quota cache expired before the Gateway performed a health check. Previously, hybrid mode gateways enforced organisation quotas even when `TYK_GW_ENFORCEORGQUOTAS` was false. From this release, organisation quotas are only enforced when `TYK_GW_ENFORCEORGQUOTAS=true`, so customers who rely on organisation quotas should ensure that `TYK_GW_ENFORCEORGQUOTAS` is set to true.
+</details>
+</li>
+
 </ul>
 
 ### 5.10.0 Release Notes 
