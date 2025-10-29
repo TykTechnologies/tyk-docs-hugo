@@ -811,7 +811,11 @@ Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) w
 <details>
 <summary>Fixed inconsistent sorting of Tyk OAS API versions</summary>
 
-Fixed an issue where Tyk OAS API subversions were sorted inconsistently between different Dashboard screens chronologically by creation date on the APIs listing page and alphabetically by version name on the manage versions page. All API version listings now use consistent alphabetical sorting by version name, providing a more predictable and user-friendly experience when navigating between different screens.
+Fixed an issue where child versions of Tyk OAS APIs were sorted inconsistently between different Dashboard screens:
+- chronologically by creation date on the APIs listing page
+- alphabetically by version name on the Manage Versions page
+
+All API version listings now consistently use alphabetical sorting by version name, providing a more predictable and user-friendly experience when navigating between different screens.
 </details>
 </li>
 
