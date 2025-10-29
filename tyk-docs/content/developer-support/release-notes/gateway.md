@@ -109,7 +109,7 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 <details>
 <summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
 
-Fixed an issue where Custom Authentication could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
+Fixed an issue where [Custom Authentication]({{< ref "api-management/authentication/custom-auth" >}}) could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
 </details>
 </li>
 
@@ -132,9 +132,9 @@ Fixed an issue where keys could remain deactivated when a policy applied to them
 
 <li>
 <details>
-<summary>Added new configuration option for limiting response body size.</summary>
+<summary>Added new configuration option for limiting response body size</summary>
 
-Added a new configuration option, `HttpServerOptions.MaxResponseBodySize` to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns `HTTP 500 Response Body Too Large` instead of attempting to process the oversized content.
+Added a new configuration option, [HttpServerOptions.MaxResponseBodySize]({{< ref "tyk-oss-gateway/configuration/#http_server_optionsmax_response_body_size" >}}) to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns `HTTP 500 Response Body Too Large` instead of attempting to process the oversized content.
 </details>
 </li>
 
@@ -150,7 +150,18 @@ Fixed an issue where plugin loading failure errors were ignored for gRPC, Python
 <details>
 <summary>Fixed random version selection when `not_versioned` is set to true</summary>
 
-Fixed an issue where a Tyk Classic API with inconsistent versioning configuration would process requests using the configuration for a random version. A non-versioned API should have a single entry in the `version_data.versions` containing the configuration for the API; the `version_data.not_versioned` flag should be set to `true`. If, however, there were multiple entries in the `version_data.versions` array, the Gateway would select randomly among those versions. Now, if there are multiple entries in `version_data.versions` and `version_data.not_versioned` is set to `true`, Tyk will use the config for the entry with the key `"default"`, `"Default"` or `""` and will return an error if no such version exists.
+Fixed an issue where a **Tyk Classic API** with inconsistent versioning configuration would process requests using a **random version’s configuration**.
+A non-versioned API should:
+- Contain a single entry in `version_data.versions` with the API configuration.
+- Have the `version_data.not_versioned` flag set to `true`.
+Previously, if multiple entries existed in the `version_data.versions` array while `not_versioned` was set to `true`, the Gateway would **randomly select one** of those versions to process incoming requests.
+**New behavior:**
+When `version_data.not_versioned` is set to `true` and multiple versions are present, Tyk now deterministically selects the configuration for the **default version** instead of picking one at random.
+Tyk determines the default version as follows:
+- First, it looks for an entry named `"Default"`.
+- If not found, it checks for `"default"`.
+- If neither exists, it checks for an entry with an **empty string key** (`""`).
+- If none of these are found, Tyk returns an **error**, indicating a misconfigured non-versioned API.
 </details>
 </li>
 
@@ -158,7 +169,7 @@ Fixed an issue where a Tyk Classic API with inconsistent versioning configuratio
 <details>
 <summary>Improved path handling during bundle decompression.</summary>
 
-Tyk Gateway now validates all file paths within zip bundles before extraction, rejecting bundles containing invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
+Tyk Gateway now validates all file paths in zip bundles before extraction, rejecting bundles that contain invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
 </details>
 </li>
 
