@@ -5127,6 +5127,6 @@ Deprecated: Use pump level raw_request_decoded configuration instead.
 ENV: <b>TYK_PMP_DECODERAWRESPONSE</b><br />
 Type: `bool`<br />
 
-Setting this to true allows the Raw Response to be decoded from base 64 for all pumps. This is set to false by default.
+This option was intended to decode raw response payloads from base64 for all Pumps. However, it was never implemented and therefore has no functional effect. It has now been deprecated.
 Deprecated: Use pump level raw_response_decoded configuration instead.
 
