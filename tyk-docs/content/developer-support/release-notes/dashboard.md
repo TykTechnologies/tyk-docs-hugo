@@ -39,7 +39,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.10.1 Release Notes 
 
-#### Release Date 13th October 2025
+#### Release Date xx October 2025
 
 #### Release Highlights
 
