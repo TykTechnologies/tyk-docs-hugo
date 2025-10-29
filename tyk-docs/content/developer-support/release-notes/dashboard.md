@@ -821,7 +821,6 @@ All API version listings now consistently use alphabetical sorting by version na
 
 <li>
 <details>
-<summary>Fixed incorrect date labels and data aggregation in analytics charts</summary>
 
 Fixed multiple critical issues in the analytics aggregation layer when using PostgreSQL backend that caused incorrect chart rendering and service panics. Resolved problems, including hourly charts showing nonsensical dates like "30 Nov 1899", monthly charts displaying incorrect months, incomplete time-series data due to improper date padding, and API activity being incorrectly split across multiple rows.
 </details>
