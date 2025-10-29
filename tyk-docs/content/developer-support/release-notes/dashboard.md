@@ -745,7 +745,7 @@ There are no breaking changes in this release.
 
 ##### Compatibility Matrix For Tyk Components
 
-| Gateway Version | Recommended Releases | Backwards Compatibility |
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
 | 5.8.7 | MDCB v2.8.5    | MDCB v2.8.5 |
 |         | Operator v1.2.0  | Operator v0.17 |
