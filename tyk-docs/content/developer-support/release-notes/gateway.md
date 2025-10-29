@@ -934,7 +934,9 @@ This warning was introduced incorrectly and caused confusion, as mock responses 
 <details>
 <summary>Fixed Data Plane Gateway hanging when MDCB connection is lost</summary>
 
-Fixed an issue where Hybrid Gateway would hang for all client requests when the MDCB connection was lost and the organisation quota cache expired before the Gateway performed a health check. Previously, hybrid mode gateways enforced organisation quotas even when `TYK_GW_ENFORCEORGQUOTAS` was false. From this release, organisation quotas are only enforced when `TYK_GW_ENFORCEORGQUOTAS=true`, so customers who rely on organisation quotas should ensure that `TYK_GW_ENFORCEORGQUOTAS` is set to true.
+Fixed an issue where a Data Plane Gateway could hang for all client requests when the MDCB connection was lost. This was caused by the Gateway incorrectly checking the Organisation quota when `TYK_GW_ENFORCEORGQUOTAS` was not set. If the Organisation quota cache expired before the Gateway performed a health check, the Gateway could hang.
+
+From this release, the Gateway does not check the Organisation quota cache if this is not set. For users relying on Organisation quotas (setting `TYK_GW_ENFORCEORGQUOTAS=true`), the scenario is different and the lock does not occur.
 </details>
 </li>
 
