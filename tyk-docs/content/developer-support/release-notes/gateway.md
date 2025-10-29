@@ -908,7 +908,7 @@ Fixed an issue where plugin loading failure errors were ignored for gRPC, Python
 <details>
 <summary>Improved path handling during bundle decompression.</summary>
 
-Tyk Gateway now validates all file paths within zip bundles before extraction, rejecting bundles containing invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
+Tyk Gateway now validates all file paths in zip bundles before extraction, rejecting bundles that contain invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
 </details>
 </li>
 
