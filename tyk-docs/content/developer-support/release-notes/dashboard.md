@@ -58,7 +58,7 @@ There are no breaking changes in this release.
 |        | Sync v2.1.4       | Sync v2.1.0 |
 |        | Helm Chart v4.0   | Helm all versions |
 |        | EDP v1.14.1       | EDP all versions |
-|        | Pump v1.12.2      | Pump all versions |
+|        | Pump v1.13.0      | Pump all versions |
 |        | TIB (if using standalone) v1.7.0 | TIB all versions |
 
 ##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.10.1}
@@ -102,7 +102,7 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 <details>
 <summary>Enabled Gzip Compression for Static Assets to Improve Dashboard Load Performance</summary>
 
-Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) when the browser client requests for gzip with the `Accepted-Encoding` header. This significantly reduces the size of files transferred when loading the Dashboard, reducing bandwidth usage, and improving page load times for users.
+Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) when the browser client requests for gzip with the `Accepted-Encoding` header. This significantly reduces the file size transferred when loading the Dashboard, reducing bandwidth usage and improving page load times for users.
 </details>
 </li>
 
