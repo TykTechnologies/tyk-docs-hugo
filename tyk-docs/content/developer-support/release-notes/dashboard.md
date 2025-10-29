@@ -731,7 +731,7 @@ Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Conte
 
 ### 5.8.7 Release Notes
 
-#### Release xx October 2025
+#### Release 29 October 2025
 
 #### Release Highlights
 
