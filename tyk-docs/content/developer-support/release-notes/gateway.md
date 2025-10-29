@@ -874,7 +874,9 @@ Fixed an issue where sending certain unexpected query parameters to the Gateway'
 <details>
 <summary>Fixed issue with invalid or missing bundle manifests</summary>
 
-Fixed an issue where the Gateway would load and attempt to use plugin bundles even when the manifest file was invalid or missing. The Gateway now properly validates bundle manifests and fails safely by rejecting API requests when bundles cannot be properly loaded or verified. This prevents risks from corrupted or tampered bundles and ensures that APIs with invalid plugin configurations are not accessible, maintaining the integrity of authentication and authorization checks implemented by plugins.
+Fixed an issue where the Gateway would load and attempt to use plugin bundles even when the manifest file was invalid or missing. The Gateway now properly validates bundle manifests and fails safely by rejecting API requests when bundles cannot be properly loaded or verified.
+
+This prevents risks from corrupted or tampered bundles and ensures that APIs with invalid plugin configurations are not accessible, maintaining the integrity of authentication and authorization checks implemented by plugins.
 
 </details>
 </li>
