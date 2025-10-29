@@ -924,7 +924,7 @@ Fixed an issue where a Tyk Classic API with inconsistent versioning configuratio
 <details>
 <summary>Fixed inappropriate warning logs for mock response requests</summary>
 
-Fixed an issue where the mock response middleware generated incorrect warning level messages stating "session not found. sending inappropriate rate-limit headers" in the Gateway system logs.
+Fixed an issue where the mock response middleware generated incorrect warning-level messages stating `session not found`, sending inappropriate rate-limit headers in the Gateway system logs.
 
 This warning was introduced incorrectly and caused confusion, as mock responses don't require session objects by design. The Gateway now returns to the previous behavior where mock response requests execute without generating spurious warning messages, reducing log noise.
 </details>
