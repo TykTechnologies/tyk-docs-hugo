@@ -94,6 +94,20 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 
 #### Changelog {#Changelog-v5.10.1}
 
+##### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Enabled Gzip Compression for Static Assets to Improve Dashboard Load Performance</summary>
+
+Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) when the browser client requests for gzip with the `Accepted-Encoding` header. This significantly reduces the size of files transferred when loading the Dashboard, reducing bandwidth usage, and improving page load times for users.
+</details>
+</li>
+
+</ul>
+
 ##### Fixed
 
 <ul>
