@@ -892,7 +892,7 @@ Fixed an issue where keys could remain deactivated when a policy applied to them
 <details>
 <summary>Added new configuration option for limiting response body size.</summary>
 
-Added a new configuration option, `HttpServerOptions.MaxResponseBodySize` to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns `HTTP 500 Response Body Too Large` instead of attempting to process the oversized content.
+Added a new configuration option, [HttpServerOptions.MaxResponseBodySize]({{< ref "tyk-oss-gateway/configuration/#http_server_optionsmax_response_body_size" >}}) to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns `HTTP 500 Response Body Too Large` instead of attempting to process the oversized content.
 </details>
 </li>
 
