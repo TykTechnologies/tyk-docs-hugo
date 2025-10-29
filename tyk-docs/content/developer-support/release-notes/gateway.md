@@ -856,6 +856,7 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 <li>
 <details>
 <summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+
 Fixed an issue where Custom Authentication could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
 </details>
 </li>
@@ -938,6 +939,7 @@ Fixed an issue where Hybrid Gateway would hang for all client requests when the 
 <li>
 <details>
 <summary>Fixed Unnecessary Warning Logs for Mock Response APIs</summary>
+
 Resolved an issue where mock response API requests generated misleading warning messages in gateway logs. These warnings were incorrectly introduced and have been removed to restore the expected logging behavior.
 </details>
 </li>
