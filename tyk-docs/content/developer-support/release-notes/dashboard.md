@@ -785,7 +785,6 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 - Helm charts
   - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
 
-- [Source code tarball of Tyk Gateway v5.8.7](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.7)
 
 #### Changelog {#Changelog-v5.8.7}
 
