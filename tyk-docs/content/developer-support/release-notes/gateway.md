@@ -865,7 +865,7 @@ Fixed an issue where Custom Authentication could fall back to a previously confi
 <details>
 <summary>Fixed Gateway panic when handling unexpected query parameters</summary>
 
-Fixed an issue where sending certain unexpected query parameters (such as `?mode=public`) to the Gateway's `GET /tyk/apis/oas/{apiID}` endpoint could cause a panic instead of returning a proper HTTP 400 Bad Request response. The Gateway now handles unexpected query parameters gracefully without crashing, improving system stability and providing appropriate error responses to clients.
+Fixed an issue where sending certain unexpected query parameters to the Gateway's `GET /tyk/apis/oas/{apiID}` endpoint could cause a panic instead of returning a proper `HTTP 400 Bad Request` response. The Gateway now handles unexpected query parameters gracefully without crashing, improving system stability and providing appropriate error responses to clients.
 
 </details>
 </li>
