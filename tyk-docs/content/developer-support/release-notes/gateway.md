@@ -65,7 +65,7 @@ There are no breaking changes in this release.
 |        | Operator v1.2.0   | Operator v0.17 |
 |        | Sync v2.1.4       | Sync v2.1.0 |
 |        | Helm Chart v4.0   | Helm all versions |
-|        | Pump v1.12.2      | Pump all versions |
+|        | Pump v1.13.0      | Pump all versions |
 
 ##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.10.1}
 
