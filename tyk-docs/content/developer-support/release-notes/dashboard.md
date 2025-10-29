@@ -841,7 +841,8 @@ The problem occurred because the Dashboard did not recalculate the `Content-Leng
 <details>
 <summary>Fixed Category Validation for Tyk OAS APIs via Dashboard API</summary>
 
-Resolved an issue where the Dashboard API allowed creation of empty or duplicate categories when updating Tyk OAS APIs through the `PUT /api/apis/oas/{API_ID}/categories` endpoint. The API now properly validates category labels, automatically filtering out blank entries and duplicates to ensure data consistency. This update aligns the Dashboard API behavior with the existing validation rules in the API Designer interface.
+Resolved an issue where the [Dashboard API]({{< ref "tyk-dashboard-api" >}}) allowed creation of empty or duplicate categories when updating Tyk OAS APIs through the `PUT /api/apis/oas/{API_ID}/categories` endpoint.
+The API now properly validates category labels, automatically filtering out blank entries and duplicates to ensure data consistency. This update aligns the Dashboard API behavior with the existing validation rules in the API Designer interface.
 </details>
 </li>
 
