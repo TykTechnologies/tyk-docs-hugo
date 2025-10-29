@@ -88,7 +88,6 @@ Depending on the cryptographic style used, the options vary:
 | **Symmetric** | Yes                 | Yes                      | No                          |
 | **Asymmetric** | Yes                 | Yes                      | Yes                         |
 
-<API Definition vs UI Note>
 
 ### Locally Stored Keys and Secrets
 
