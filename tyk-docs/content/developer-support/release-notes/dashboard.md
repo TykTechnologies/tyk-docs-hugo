@@ -115,6 +115,7 @@ Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) w
 <li>
 <details>
 <summary>Fixed broken UI of API editor on the Import API page</summary>
+
 Fixed a UI issue in the API editor on the Import API page where the Monaco code editor would display incorrectly when scrolling, with the editor margin overflowing its container. The editor now properly maintains its layout and boundaries within the designated container area, providing a consistent editing experience when importing API definitions.
 
 </details>
@@ -123,6 +124,7 @@ Fixed a UI issue in the API editor on the Import API page where the Monaco code 
 <li>
 <details>
 <summary>API Editor UI Glitch When Scrolling in Import Mode</summary>
+
 Fixed an issue introduced in 5.10.0 where there was a graphical glitch with the code editor in the API Designer.
 
 </details>
