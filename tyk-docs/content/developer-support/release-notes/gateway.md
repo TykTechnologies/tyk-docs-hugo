@@ -813,7 +813,7 @@ There are no breaking changes in this release.
 | 5.8.7   | MDCB v2.8.5     | MDCB v2.8.5 |
 |         | Operator v1.2.0 | Operator v0.17 |
 |         | Sync v2.1.4     | Sync v2.1.1 |
-|         | Helm Chart v4.1 | Helm all versions |
+|         | Helm Chart v4.0 | Helm all versions |
 |         | EDP v1.14.1     | EDP all versions |
 |         | Pump v1.12.2    | Pump all versions |
 |         | TIB (if using standalone) v1.7.0 | TIB all versions |
