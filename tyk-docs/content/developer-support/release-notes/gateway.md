@@ -940,12 +940,6 @@ From this release, the Gateway does not check the Organisation quota cache if th
 </details>
 </li>
 
-<li>
-<details>
-
-</details>
-</li>
-
 </ul>
 
 ### 5.8.6 Release Notes
