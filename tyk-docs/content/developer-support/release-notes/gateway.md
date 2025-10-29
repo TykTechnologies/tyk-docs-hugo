@@ -857,7 +857,7 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 <details>
 <summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
 
-Fixed an issue where Custom Authentication could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
+Fixed an issue where [Custom Authentication]({{< ref "api-management/authentication/custom-auth" >}}) could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
 </details>
 </li>
   
