@@ -108,6 +108,7 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 <li>
 <details>
 <summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+
 Fixed an issue where Custom Authentication could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
 </details>
 </li>
@@ -115,6 +116,7 @@ Fixed an issue where Custom Authentication could fall back to a previously confi
 <li>
 <details>
 <summary>Fixed issue with invalid or missing bundle manifests</summary>
+
 Fixed an issue where the Gateway would load and attempt to use plugin bundles even when the manifest file was invalid or missing. The Gateway now properly validates bundle manifests and fails safely by rejecting API requests when bundles cannot be properly loaded or verified. This prevents risks from corrupted or tampered bundles and ensures that APIs with invalid plugin configurations are not accessible, maintaining the integrity of authentication and authorization checks implemented by plugins.
 
 </details>
@@ -123,6 +125,7 @@ Fixed an issue where the Gateway would load and attempt to use plugin bundles ev
 <li>
 <details>
 <summary>Fixed JWT key activation when toggling default policy from draft to active</summary>
+
 Fixed an issue where keys could remain deactivated when a policy applied to them was changed from `draft` to `active` status. When an access key/token is presented to Tyk in a request, policies linked to the key will be applied, configuring the authorization for that request. If any policy is in `draft` state, the key will be rejected. Toggling the policy to the `active` state should activate any keys to which the policy is applied. Previously, if the policy had never been applied when it was in `draft` state, there was an issue where keys would incorrectly be marked as `inactive`. This has now been resolved, and the policy state is correctly mapped to keys.
 </details>
 </li>
@@ -130,6 +133,7 @@ Fixed an issue where keys could remain deactivated when a policy applied to them
 <li>
 <details>
 <summary>Added new configuration option for limiting response body size.</summary>
+
 Added a new configuration option, `HttpServerOptions.MaxResponseBodySize`, to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns an HTTP 500 "Response Body Too Large" error instead of attempting to process the oversized content.
 </details>
 </li>
@@ -137,6 +141,7 @@ Added a new configuration option, `HttpServerOptions.MaxResponseBodySize`, to li
 <li>
 <details>
 <summary>Fixed plugin loading failure errors being ignored for gRPC, Python, and Lua plugins</summary>
+
 Fixed an issue where plugin loading failure errors were ignored for gRPC, Python, and Lua plugins, allowing API requests to be processed even when plugins failed to load. The Gateway now properly validates plugin drivers during request processing and fails safely by returning `HTTP 500 Internal Server Error` when any plugin fails to load, ensuring consistent behavior across all plugin types.
 </details>
 </li>
@@ -152,6 +157,7 @@ Fixed an issue where a Tyk Classic API with inconsistent versioning configuratio
 <li>
 <details>
 <summary>Improved path handling during bundle decompression.</summary>
+
 Tyk Gateway now validates all file paths within zip bundles before extraction, rejecting bundles containing invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
 </details>
 </li>
@@ -159,6 +165,7 @@ Tyk Gateway now validates all file paths within zip bundles before extraction, r
 <li>
 <details>
 <summary>Fixed Hybrid Gateway hanging when MDCB connection is lost</summary>
+
 Fixed an issue where Hybrid Gateway would hang for all client requests when the MDCB connection was lost and the organisation quota cache expired before the Gateway performed a health check. Previously, hybrid mode gateways enforced organisation quotas even when `TYK_GW_ENFORCEORGQUOTAS` was false. From this release, organisation quotas are only enforced when `TYK_GW_ENFORCEORGQUOTAS=true`, so customers who rely on organisation quotas should ensure that `TYK_GW_ENFORCEORGQUOTAS` is set to true.
 </details>
 </li>
