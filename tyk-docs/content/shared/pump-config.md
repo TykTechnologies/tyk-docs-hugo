@@ -5119,7 +5119,7 @@ Expose profiling information to support debugging of Tyk Pump. This operates in 
 ENV: <b>TYK_PMP_DECODERAWREQUEST</b><br />
 Type: `bool`<br />
 
-Setting this to true allows the Raw Request to be decoded from base 64
+This option was intended to decode raw request payloads from base64 for all Pumps. However, it was never implemented and therefore has no functional effect. It has now been deprecated.
 for all pumps. This is set to false by default.
 Deprecated: Use pump level raw_request_decoded configuration instead.
 
