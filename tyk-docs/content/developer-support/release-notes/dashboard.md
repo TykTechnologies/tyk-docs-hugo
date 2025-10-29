@@ -796,7 +796,7 @@ If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions]
 <details>
 <summary>Enabled Gzip Compression for Static Assets to Improve Dashboard Load Performance</summary>
 
-Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) when the browser client requests for gzip with the `Accepted-Encoding` header. This significantly reduces the size of files transferred when loading the Dashboard, reducing bandwidth usage, and improving page load times for users.
+Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) when the browser client requests for gzip with the `Accepted-Encoding` header. This significantly reduces the file size transferred when loading the Dashboard, reducing bandwidth usage and improving page load times for users.
 </details>
 </li>
 
