@@ -943,7 +943,6 @@ From this release, the Gateway does not check the Organisation quota cache if th
 <li>
 <details>
 
-Resolved an issue where mock response API requests generated misleading warning messages in gateway logs. These warnings were incorrectly introduced and have been removed to restore the expected logging behavior.
 </details>
 </li>
 
