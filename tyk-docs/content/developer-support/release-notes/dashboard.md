@@ -134,11 +134,11 @@ Fixed an issue introduced in 5.10.0 where there was a graphical glitch with the 
 <details>
 <summary>Dashboard Analytics and Monitoring Fixes</summary>
   
-- **Fixed non-clickable endpoint rows in the Activity page**: Fixed an issue where selecting an endpoint in the "Most Popular Endpoints" list on the "Activity Overview" screen did not direct the user to the      "Activity by Endpoint" screen.
-- **Fixed incorrect error code descriptions in API activity dashboard**: Error codes now display correct descriptions (409 shows "Conflict" instead of "Rate limit or quota exceeded", and missing descriptions     for 502, 504, 499, and 422 have been added).
-- **Fixed unicode character display in Log Browser**: Non-ASCII characters (Cyrillic, Arabic, Hindi, Telugu, Yoruba, etc.) now display correctly instead of showing garbled text when viewing request/response       logs.
-- **Fixed date range filtering showing extra day in analytics charts**: Date range selectors now accurately reflect the selected end date instead of automatically including the following day's data in charts     and legends.
-- **Fixed Log Browser querying wrong tables when SQL table sharding is enabled**: Dashboard now correctly queries sharded tables (tyk_analytics_YYYYMMDD) instead of the main tyk_analytics table when               `TYK_DB_STORAGE_LOGS_TABLESHARDING=true` is configured, ensuring analytics data displays properly with SQL database sharding.
+- **Fixed non-clickable endpoint rows in the Activity page**: Fixed an issue where selecting an endpoint in the "Most Popular Endpoints" list on the "Activity Overview" screen did not direct the user to the "Activity by Endpoint" screen.
+- **Fixed incorrect error code descriptions in API activity dashboard**: Error codes now display correct descriptions (409 shows "Conflict" instead of "Rate limit or quota exceeded", and missing descriptions for 502, 504, 499, and 422 have been added).
+- **Fixed unicode character display in Activity Logs view**: Non-ASCII characters (Cyrillic, Arabic, Hindi, Telugu, Yoruba, etc.) now display correctly instead of showing garbled text when viewing request/response logs.
+- **Fixed date range filtering showing extra day in analytics charts**: Date range selectors now accurately reflect the selected end date instead of automatically including the following day's data in charts and legends.
+- **Fixed Log Browser querying wrong tables when SQL table sharding is enabled**: Dashboard now correctly queries sharded tables (tyk_analytics_YYYYMMDD) instead of the main tyk_analytics table when `TYK_DB_STORAGE_LOGS_TABLESHARDING=true` is configured, ensuring analytics data displays properly with SQL database sharding.
 - **Fixed incorrect date labels and data aggregation in analytics charts**: Fixed multiple issues in the analytics aggregation layer when using PostgreSQL backend that caused incorrect chart rendering and service problems. Resolved problems, including hourly charts showing nonsensical dates like "30 Nov 1899", monthly charts displaying incorrect months, incomplete time-series data due to improper date padding, and API activity being incorrectly split across multiple rows.
 
 </details>
