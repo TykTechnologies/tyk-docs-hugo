@@ -883,7 +883,9 @@ Fixed an issue where the Gateway would load and attempt to use plugin bundles ev
 <details>
 <summary>Fixed JWT key activation when toggling default policy from draft to active</summary>
 
-Fixed an issue where keys could remain deactivated when a policy applied to them was changed from `draft` to `active` status. When an access key/token is presented to Tyk in a request, policies linked to the key will be applied, configuring the authorization for that request. If any policy is in `draft` state, the key will be rejected. Toggling the policy to the `active` state should activate any keys to which the policy is applied. Previously, if the policy had never been applied when it was in `draft` state, there was an issue where keys would incorrectly be marked as `inactive`. This has now been resolved, and the policy state is correctly mapped to keys.
+Fixed an issue where keys could remain deactivated when a policy applied to them was changed from `draft` to `active` status. When an access key/token is presented to Tyk in a request, policies linked to the key will be applied, configuring the authorization for that request. If any policy is in `draft` state, the key will be rejected.
+
+Toggling the policy to the `active` state should activate any keys to which the policy is applied. Previously, if the policy had never been applied when it was in `draft` state, there was an issue where keys would incorrectly be marked as `inactive`. This has now been resolved, and the policy state is correctly mapped to keys.
 
 </details>
 </li>
