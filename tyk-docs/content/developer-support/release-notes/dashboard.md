@@ -818,11 +818,6 @@ All API version listings now consistently use alphabetical sorting by version na
 </details>
 </li>
 
-<li>
-<details>
-
-</details>
-</li>
 
 <li>
 <details>
