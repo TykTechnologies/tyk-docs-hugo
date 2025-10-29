@@ -1,12 +1,12 @@
 ---
-title: JWT Signature Validation
-description: How to validate JWT signatures in Tyk API Gateway.
-tags: ["Authentication", "JWT", "JSON Web Tokens", "Signature", "Validation"]
-keywords: ["Authentication", "JWT", "JSON Web Tokens", "Signature", "Validation"]
+title: JWT Split Token
+description: Learn how to implement JWT Split Token flow in Tyk to enhance security by separating JWT components and storing sensitive data server-side.
+tags: ["Authentication", "JWT", "JSON Web Tokens", "Split Token", "Security"]
+keywords: ["Authentication", "JWT", "JSON Web Tokens", "Split Token", "Security"]
 date: 2025-01-10
 ---
 
-## Split Token Flow
+## Introduction
 
 Split Token Flow addresses a fundamental security concern with JWT tokens: when a JWT is stored on a client device (browser, mobile app, etc.), all of its contents can be easily decoded since JWTs are only base64-encoded, not encrypted. This means sensitive information in the payload is potentially exposed.
 
@@ -38,34 +38,66 @@ Consider using Split Token Flow when:
 - You need the flexibility of JWT while maintaining higher security
 - You're implementing systems that must meet strict security compliance requirements
 
-### How Split Token Flow Works
+## How Split Token Flow Works
 
 Here's how the process works with Tyk Gateway:
 
-1. Token Issuance:
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Tyk as Tyk Gateway
+    participant Redis as Tyk Redis
+    participant Auth as Authorization Server
+
+    %% Token Issuance Flow
+    rect rgb(240, 240, 255)
+        note over Client, Auth: Token Issuance
+        Client->>Tyk: Request token from /token endpoint
+        Tyk->>Auth: Forward request to Auth Server
+        Auth->>Tyk: Return complete JWT (header.payload.signature)
+        Tyk->>Tyk: Split JWT into components
+        Tyk->>Redis: Store header & payload using signature as key
+        Tyk->>Client: Return only signature as "opaque" token
+    end
+
+    %% Token Usage Flow
+    rect rgb(245, 255, 245)
+        note over Client, Auth: Token Usage
+        Client->>Tyk: API request with signature as Bearer token
+        Tyk->>Redis: Look up header & payload using signature
+        Redis->>Tyk: Return stored header & payload
+        Tyk->>Tyk: Reconstruct complete JWT
+        Tyk->>Tyk: Validate JWT
+        Tyk->>Auth: Forward request with complete JWT
+        Auth->>Tyk: Response
+        Tyk->>Client: Return response to client
+    end
+```
+
+1. **Token Issuance**:
 
     - A `/token` endpoint is configured on Tyk from which the client should request the access token
     - Tyk requests an access token from an authorization server (e.g., Keycloak) on behalf of the client
     - The authorization server returns a complete JWT
-    - Tyk intercepts this response through a Virtual Endpoint
+    - Tyk intercepts this response through a [Virtual Endpoint]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}})
     - Tyk splits the JWT into its components and stores the header and payload in its Redis database
     - Only the signature portion is returned to the client as an "opaque" token
 
-2. Token Usage:
+2. **Token Usage**:
 
     - The client makes API requests using only the signature as their access token
     - Tyk receives the request and looks up the stored header and payload using the signature
     - Tyk reconstructs the complete JWT and validates it
     - If valid, Tyk forwards the request to the upstream API with the full JWT
 
-3. Security Benefits:
+3. **Security Benefits**:
 
     - The client never possesses the complete JWT, only a meaningless signature
     - Token contents cannot be inspected by client-side code or malicious actors
     - Token validation still occurs using standard JWT verification
 
 
-### Implementing Split Token Flow
+## Implementing Split Token Flow
 
 1. **Create a Virtual Endpoint for Token Issuance**
 
