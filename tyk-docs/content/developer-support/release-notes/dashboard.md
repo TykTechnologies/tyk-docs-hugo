@@ -823,7 +823,7 @@ All API version listings now consistently use alphabetical sorting by version na
 <details>
 <summary>Improved logging of Request Transform middleware in Tyk OAS debugger</summary>
 
-Fixed an issue where the API debugger did not display sufficient information about transformations applied by Request Body Transform and Request Header Transform middleware. The debugger now shows detailed logs matching the format used for Response Transform middleware, including specific details about injected headers (e.g., "Adding: key: value") and body transformations, providing better visibility into request processing for debugging purposes.
+Fixed an issue where the API debugger did not display sufficient information about transformations applied by [Request Body Transform]({{< ref "api-management/traffic-transformation/request-body" >}}) and [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware. The debugger now shows detailed logs matching the format used for Response Transform middleware, including specific details about injected headers (e.g., "Adding: key: value") and body transformations, providing better visibility into request processing for debugging purposes.
 </details>
 </li>
 
