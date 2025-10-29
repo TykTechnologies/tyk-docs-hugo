@@ -920,7 +920,25 @@ Tyk Gateway now validates all file paths in zip bundles before extraction, rejec
 <details>
 <summary>Fixed random version selection when `not_versioned` is set to true</summary>
 
-Fixed an issue where a Tyk Classic API with inconsistent versioning configuration would process requests using the configuration for a random version. A non-versioned API should have a single entry in the `version_data.versions` containing the configuration for the API; the `version_data.not_versioned` flag should be set to `true`. If, however, there were multiple entries in the `version_data.versions` array, the Gateway would select randomly among those versions. Now, if there are multiple entries in `version_data.versions` and `version_data.not_versioned` is set to `true`, Tyk will use the config for the entry with the key `"default"`, `"Default"` or `""` and will return an error if no such version exists.
+Fixed an issue where a **Tyk Classic API** with inconsistent versioning configuration would process requests using a **random version’s configuration**.
+
+A non-versioned API should:
+
+- Contain a single entry in `version_data.versions` with the API configuration.
+- Have the `version_data.not_versioned` flag set to `true`.
+
+Previously, if multiple entries existed in the `version_data.versions` array while `not_versioned` was set to `true`, the Gateway would **randomly select one** of those versions to process incoming requests.
+
+**New behavior:**
+
+When `version_data.not_versioned` is set to `true` and multiple versions are present, Tyk now deterministically selects the configuration for the **default version** instead of picking one at random.
+
+Tyk determines the default version as follows:
+
+- First, it looks for an entry named `"Default"`.
+- If not found, it checks for `"default"`.
+- If neither exists, it checks for an entry with an **empty string key** (`""`).
+- If none of these are found, Tyk returns an **error**, indicating a misconfigured non-versioned API.
 </details>
 </li>
 
