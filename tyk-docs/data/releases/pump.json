@@ -1,10 +1,6 @@
 {
   "home": "tyk-pump",
   "licensed": false,
-<<<<<<< HEAD
-  "latest": "1.12.1",
-  "releaseNotesPath": "developer-support/release-notes/pump",
-=======
   "latest": "1.13.0",
   "releaseNotesPath": "developer-support/release-notes/pump",
   "1.13.0": {
@@ -17,7 +13,6 @@
     "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.2",
     "docker": "https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=1&name=v1.12.2"
   },
->>>>>>> e7ce5ee6f... [TT-15984] RNs 1.13.0 pump.md (#7067)
   "1.12.1": {
     "date": "18/08/2025",
     "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.1",
