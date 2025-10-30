@@ -792,6 +792,178 @@ Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensu
 
 ## 5.8 Release Notes
 
+### 5.8.7 Release Notes
+
+#### Release Date 29 October 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.7" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----     |---- |---- |
+| 5.8.7   | MDCB v2.8.5     | MDCB v2.8.5 |
+|         | Operator v1.2.0 | Operator v0.17 |
+|         | Sync v2.1.4     | Sync v2.1.1 |
+|         | Helm Chart v4.0 | Helm all versions |
+|         | EDP v1.14.1     | EDP all versions |
+|         | Pump v1.13.0    | Pump all versions |
+|         | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.24  |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.7)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.7
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.7](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.7)
+
+#### Changelog {#Changelog-v5.8.7}
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+
+Fixed an issue where [Custom Authentication]({{< ref "api-management/authentication/custom-auth" >}}) could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
+</details>
+</li>
+  
+<li>
+<details>
+<summary>Fixed Gateway panic when handling unexpected query parameters</summary>
+
+Fixed an issue where sending certain unexpected query parameters to the Gateway's `GET /tyk/apis/oas/{apiID}` endpoint could cause a panic instead of returning a proper `HTTP 400 Bad Request` response. The Gateway now handles unexpected query parameters gracefully without crashing, improving system stability and providing appropriate error responses to clients.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed issue with invalid or missing bundle manifests</summary>
+
+Fixed an issue where the Gateway would load and attempt to use plugin bundles even when the manifest file was invalid or missing. The Gateway now properly validates bundle manifests and fails safely by rejecting API requests when bundles cannot be properly loaded or verified.
+
+This prevents risks from corrupted or tampered bundles and ensures that APIs with invalid plugin configurations are not accessible, maintaining the integrity of authentication and authorization checks implemented by plugins.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed JWT key activation when toggling default policy from draft to active</summary>
+
+Fixed an issue where keys could remain deactivated when a policy applied to them was changed from `draft` to `active` status. When an access key/token is presented to Tyk in a request, policies linked to the key will be applied, configuring the authorization for that request. If any policy is in `draft` state, the key will be rejected.
+
+Toggling the policy to the `active` state should activate any keys to which the policy is applied. Previously, if the policy had never been applied when it was in `draft` state, there was an issue where keys would incorrectly be marked as `inactive`. This has now been resolved, and the policy state is correctly mapped to keys.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Added new configuration option for limiting response body size</summary>
+
+Added a new configuration option, [HttpServerOptions.MaxResponseBodySize]({{< ref "tyk-oss-gateway/configuration#http_server_optionsmax_response_body_size" >}}) to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns `HTTP 500 Response Body Too Large` instead of attempting to process the oversized content.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed plugin loading failure errors being ignored for gRPC, Python, and Lua plugins</summary>
+
+Fixed an issue where plugin loading failure errors were ignored for gRPC, Python, and Lua plugins, allowing API requests to be processed even when plugins failed to load. The Gateway now properly validates plugin drivers during request processing and fails safely by returning `HTTP 500 Internal Server Error` when any plugin fails to load, ensuring consistent behavior across all plugin types.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved path handling during bundle decompression.</summary>
+
+Tyk Gateway now validates all file paths in zip bundles before extraction, rejecting bundles that contain invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed random version selection when `not_versioned` is set to true</summary>
+
+Fixed an issue where a **Tyk Classic API** with inconsistent versioning configuration would process requests using a **random version’s configuration**.
+
+A non-versioned API should:
+
+- Contain a single entry in `version_data.versions` with the API configuration.
+- Have the `version_data.not_versioned` flag set to `true`.
+
+Previously, if multiple entries existed in the `version_data.versions` array while `not_versioned` was set to `true`, the Gateway would **randomly select one** of those versions to process incoming requests.
+
+**New behavior:**
+
+When `version_data.not_versioned` is set to `true` and multiple versions are present, Tyk now deterministically selects the configuration for the **default version** instead of picking one at random.
+
+Tyk determines the default version as follows:
+
+- First, it looks for an entry named `"Default"`.
+- If not found, it checks for `"default"`.
+- If neither exists, it checks for an entry with an **empty string key** (`""`).
+- If none of these are found, Tyk returns an **error**, indicating a misconfigured non-versioned API.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed inappropriate warning logs for mock response requests</summary>
+
+Fixed an issue where the mock response middleware generated incorrect warning-level messages stating `session not found`, sending inappropriate rate-limit headers in the Gateway system logs.
+
+This warning was introduced incorrectly and caused confusion, as mock responses don't require session objects by design. The Gateway now returns to the previous behavior where mock response requests execute without generating spurious warning messages, reducing log noise.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Data Plane Gateway hanging when MDCB connection is lost</summary>
+
+Fixed an issue where a Data Plane Gateway could hang for all client requests when the MDCB connection was lost. This was caused by the Gateway incorrectly checking the Organisation quota when `TYK_GW_ENFORCEORGQUOTAS` was not set. If the Organisation quota cache expired before the Gateway performed a health check, the Gateway could hang.
+
+From this release, the Gateway does not check the Organisation quota cache if this is not set. For users relying on Organisation quotas (setting `TYK_GW_ENFORCEORGQUOTAS=true`), the scenario is different and the lock does not occur.
+</details>
+</li>
+
+</ul>
+
 ### 5.8.6 Release Notes
 
 #### Release Date 25th September 2025
