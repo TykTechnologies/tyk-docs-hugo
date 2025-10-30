@@ -1,13 +1,8 @@
 {
   "home": "tyk-dashboard",
   "licensed": true,
-<<<<<<< HEAD
-  "latest": "5.8.6",
-  "lts": "5.8.6",
-=======
   "latest": "5.10.0",
   "lts": "5.8.7",
->>>>>>> e63900d32... [TT-15982] 5.8.7 RNs Gateway and Dashboard.md (#7065)
   "releaseNotesPath": "developer-support/release-notes/dashboard",
   "5.8.5": {
     "date": "18/08/2025",
