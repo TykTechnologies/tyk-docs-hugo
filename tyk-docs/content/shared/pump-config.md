@@ -1,10 +1,3 @@
-### purge_delay
-ENV: <b>TYK_PMP_PURGEDELAY</b><br />
-Type: `int`<br />
-
-The number of seconds the Pump waits between checking for analytics data and purge it from
-Redis.
-
 ### purge_chunk
 ENV: <b>TYK_PMP_PURGECHUNK</b><br />
 Type: `int64`<br />
@@ -20,13 +13,6 @@ Type: `int64`<br />
 The number of seconds for the analytics records TTL. It only works if `purge_chunk` is
 enabled. Defaults to `60` seconds.
 
-### dont_purge_uptime_data
-ENV: <b>TYK_PMP_DONTPURGEUPTIMEDATA</b><br />
-Type: `bool`<br />
-
-Setting this to `false` will create a pump that pushes uptime data to Uptime Pump, so the
-Dashboard can read it. Disable by setting to `true`.
-
 ### uptime_pump_config
 Example Uptime Pump configuration:
 ```{.json}
@@ -41,7 +27,7 @@ Example Uptime Pump configuration:
 
 In `uptime_pump_config` you can configure a SQL uptime pump. To do that, you need to add the
 field `uptime_type` with `sql` value. You can also use different types of SQL Uptime pumps,
-like `postgres` or `sqlite` using the `type` field.
+like `postgres` using the `type` field.
 
 An example of a SQL Postgres uptime pump would be:
 ```{.json}
@@ -176,7 +162,8 @@ Enable collection capping. It's used to set a maximum size of the collection.
 ENV: <b>TYK_PMP_UPTIMEPUMPCONFIG_TYPE</b><br />
 Type: `string`<br />
 
-The supported and tested types are `sqlite` and `postgres`.
+The only supported and tested types are `postgres` and `mysql`.
+From v1.12.0, we no longer support `sqlite` as a storage type.
 
 ### uptime_pump_config.connection_string
 ENV: <b>TYK_PMP_UPTIMEPUMPCONFIG_CONNECTIONSTRING</b><br />
@@ -383,8 +370,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_CSV_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.csv.max_record_size
 ENV: <b>TYK_PMP_PUMPS_CSV_MAXRECORDSIZE</b><br />
@@ -538,8 +525,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.dogstatsd.max_record_size
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_MAXRECORDSIZE</b><br />
@@ -784,8 +771,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.elasticsearch.max_record_size
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_MAXRECORDSIZE</b><br />
@@ -1078,8 +1065,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.graylog.max_record_size
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_MAXRECORDSIZE</b><br />
@@ -1261,8 +1248,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_HYBRID_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.hybrid.max_record_size
 ENV: <b>TYK_PMP_PUMPS_HYBRID_MAXRECORDSIZE</b><br />
@@ -1484,8 +1471,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_INFLUX_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.influx.max_record_size
 ENV: <b>TYK_PMP_PUMPS_INFLUX_MAXRECORDSIZE</b><br />
@@ -1672,8 +1659,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_KAFKA_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.kafka.max_record_size
 ENV: <b>TYK_PMP_PUMPS_KAFKA_MAXRECORDSIZE</b><br />
@@ -1796,6 +1783,13 @@ Type: `string`<br />
 SASL algorithm. It's the algorithm specified for scram mechanism. It could be sha-512 or sha-256.
 Defaults to "sha-256".
 
+### pumps.kafka.meta.batch_bytes
+ENV: <b>TYK_PMP_PUMPS_KAFKA_META_BATCHBYTES</b><br />
+Type: `int`<br />
+
+BatchBytes controls the maximum size of a request in bytes before it's sent to a partition.
+If the value is 0, the writer will use the default value from kafka-go library (1MB).
+
 ### pumps.kinesis.name
 ENV: <b>TYK_PMP_PUMPS_KINESIS_NAME</b><br />
 Type: `string`<br />
@@ -1909,8 +1903,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_KINESIS_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.kinesis.max_record_size
 ENV: <b>TYK_PMP_PUMPS_KINESIS_MAXRECORDSIZE</b><br />
@@ -1967,6 +1961,13 @@ Type: `int`<br />
 Each PutRecords (the function used in this pump)request can support up to 500 records.
 Each record in the request can be as large as 1 MiB, up to a limit of 5 MiB for the entire request, including partition keys.
 Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second.
+
+### pumps.kinesis.meta.KMSKeyID
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_KMSKEYID</b><br />
+Type: `string`<br />
+
+The KMS Key ID used for server-side encryption of the Kinesis stream.
+Defaults to an empty string if not provided.
 
 ### pumps.logzio.name
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_NAME</b><br />
@@ -2081,8 +2082,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.logzio.max_record_size
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_MAXRECORDSIZE</b><br />
@@ -2269,8 +2270,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_MOESIF_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.moesif.max_record_size
 ENV: <b>TYK_PMP_PUMPS_MOESIF_MAXRECORDSIZE</b><br />
@@ -2510,8 +2511,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_MONGO_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.mongo.max_record_size
 ENV: <b>TYK_PMP_PUMPS_MONGO_MAXRECORDSIZE</b><br />
@@ -2771,8 +2772,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.mongoaggregate.max_record_size
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_MAXRECORDSIZE</b><br />
@@ -2890,10 +2891,10 @@ prevent discovery, such as with SSH tunneling. Default is false.
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_USEMIXEDCOLLECTION</b><br />
 Type: `bool`<br />
 
-If set to `true` your pump will store analytics to both your organization defined
-collections `z_tyk_analyticz_aggregate_{ORG ID}` and your org-less tyk_analytics_aggregates
-collection. When set to 'false' your pump will only store analytics to your org defined
-collection.
+If set to `true` the Mongo Aggregate pump will send analytics to two collections:
+- z_tyk_analyticz_aggregate_{ORG ID}
+- tyk_analytics_aggregates
+When set to 'false' your pump will only store analytics to z_tyk_analyticz_aggregate_{ORG ID}.
 
 ### pumps.mongoaggregate.meta.track_all_paths
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_TRACKALLPATHS</b><br />
@@ -3058,8 +3059,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.mongoselective.max_record_size
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_MAXRECORDSIZE</b><br />
@@ -3300,8 +3301,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.prometheus.max_record_size
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_MAXRECORDSIZE</b><br />
@@ -3487,8 +3488,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.splunk.max_record_size
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_MAXRECORDSIZE</b><br />
@@ -3596,6 +3597,15 @@ Type: `bool`<br />
 
 If this is set to `true`, pump is going to send the analytics records in batch to Splunk.
 Default value is `false`.
+
+### pumps.splunk.meta.batch_max_content_length
+ENV: <b>TYK_PMP_PUMPS_SPLUNK_META_BATCHMAXCONTENTLENGTH</b><br />
+Type: `int`<br />
+
+Max content length in bytes to be sent in batch requests. It should match the
+`max_content_length` configured in Splunk. If the purged analytics records size don't reach
+the amount of bytes, they're send anyways in each `purge_loop`. Default value is 838860800
+(~ 800 MB), the same default value as Splunk config.
 
 ### pumps.splunk.meta.max_retries
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_META_MAXRETRIES</b><br />
@@ -3717,8 +3727,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_SQL_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.sql.max_record_size
 ENV: <b>TYK_PMP_PUMPS_SQL_MAXRECORDSIZE</b><br />
@@ -3757,7 +3767,8 @@ Defaults to `TYK_PMP_PUMPS_SQL_META`
 ENV: <b>TYK_PMP_PUMPS_SQL_META_TYPE</b><br />
 Type: `string`<br />
 
-The supported and tested types are `sqlite` and `postgres`.
+The only supported and tested types are `postgres` and `mysql`.
+From v1.12.0, we no longer support `sqlite` as a storage type.
 
 ### pumps.sql.meta.connection_string
 ENV: <b>TYK_PMP_PUMPS_SQL_META_CONNECTIONSTRING</b><br />
@@ -3944,8 +3955,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.sqlaggregate.max_record_size
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_MAXRECORDSIZE</b><br />
@@ -3984,7 +3995,8 @@ Defaults to `TYK_PMP_PUMPS_SQLAGGREGATE_META`
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_TYPE</b><br />
 Type: `string`<br />
 
-The supported and tested types are `sqlite` and `postgres`.
+The only supported and tested types are `postgres` and `mysql`.
+From v1.12.0, we no longer support `sqlite` as a storage type.
 
 ### pumps.sqlaggregate.meta.connection_string
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING</b><br />
@@ -4202,8 +4214,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_STATSD_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.statsd.max_record_size
 ENV: <b>TYK_PMP_PUMPS_STATSD_MAXRECORDSIZE</b><br />
@@ -4375,8 +4387,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_STDOUT_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.stdout.max_record_size
 ENV: <b>TYK_PMP_PUMPS_STDOUT_MAXRECORDSIZE</b><br />
@@ -4537,8 +4549,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.syslog.max_record_size
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_MAXRECORDSIZE</b><br />
@@ -4726,8 +4738,8 @@ If there is a timeout configured, but pump's write operation is still taking lon
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to `false`.
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to `false`.
 
 ### pumps.timestream.max_record_size
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_MAXRECORDSIZE</b><br />
@@ -4823,13 +4835,6 @@ ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_NAMEMAPPINGS</b><br />
 Type: `map[string]string`<br />
 
 A name mapping for both Dimensions and Measures names. It's not required
-
-### analytics_storage_type
-ENV: <b>TYK_PMP_ANALYTICSSTORAGETYPE</b><br />
-Type: `string`<br />
-
-Sets the analytics storage type. Where the pump will be fetching data from. Currently, only
-the `redis` option is supported.
 
 ### analytics_storage_config
 Example Temporal storage configuration:
@@ -5004,12 +5009,20 @@ Type: `bool`<br />
 Set this to `true` to tell Pump to ignore database's cert validation.
 Deprecated: use SSLInsecureSkipVerify instead.
 
+### analytics_storage_type
+ENV: <b>TYK_PMP_ANALYTICSSTORAGETYPE</b><br />
+Type: `string`<br />
+
+Sets the type of storage from which the Pump will fetch data.
+The supported value is `redis`, which covers both Redis and the Redis-compatible Valkey.
+Pump will default to assume Redis if no alternative is provided, so this configuration can be ignored at present.
+
 ### statsd_connection_string
 ENV: <b>TYK_PMP_STATSDCONNECTIONSTRING</b><br />
 Type: `string`<br />
 
 Connection string for StatsD monitoring for information please see the
-[Instrumentation docs](https://tyk.io/docs/api-management/logs-metrics/#statsd-instrumentation).
+[Instrumentation docs]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}).
 
 ### statsd_prefix
 ENV: <b>TYK_PMP_STATSDPREFIX</b><br />
@@ -5041,20 +5054,23 @@ ENV: <b>TYK_PMP_HEALTHCHECKENDPOINTNAME</b><br />
 Type: `string`<br />
 
 
-The default is "health".
+The default is "hello".
+
+### purge_delay
+ENV: <b>TYK_PMP_PURGEDELAY</b><br />
+Type: `int`<br />
+
+Controls the frequency at which Tyk Pump should perform regular collection and purge
+of traffic logs from the temporal storage (typically Redis). Set the time between purges (in seconds).
+Be careful to ensure that this is long enough for the transfer of records to the target data sink (e.g.
+persistent storage or external APM) to complete to avoid data loss, but short enough to optimise
+your temporal storage size.
 
 ### health_check_endpoint_port
 ENV: <b>TYK_PMP_HEALTHCHECKENDPOINTPORT</b><br />
 Type: `int`<br />
 
 The default port is 8083.
-
-### omit_detailed_recording
-ENV: <b>TYK_PMP_OMITDETAILEDRECORDING</b><br />
-Type: `bool`<br />
-
-Setting this to true will avoid writing raw_request and raw_response fields for each request
-in pumps. Defaults to false.
 
 ### max_record_size
 ENV: <b>TYK_PMP_MAXRECORDSIZE</b><br />
@@ -5073,6 +5089,20 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### dont_purge_uptime_data
+ENV: <b>TYK_PMP_DONTPURGEUPTIMEDATA</b><br />
+Type: `bool`<br />
+
+A default Uptime Pump will transfer uptime metrics which are used by Tyk Dashboard.
+If this is not required, you can disable that Pump by setting this option to `true`.
+
+### omit_detailed_recording
+ENV: <b>TYK_PMP_OMITDETAILEDRECORDING</b><br />
+Type: `bool`<br />
+
+Reduce the size of the traffic logs generated for each request by setting this to true. Tyk Pump will
+then not include the `raw_request` and `raw_response` in the logs. Defaults to false.
+
 ### omit_config_file
 ENV: <b>TYK_PMP_OMITCONFIGFILE</b><br />
 Type: `bool`<br />
@@ -5083,18 +5113,20 @@ Defines if tyk-pump should ignore all the values in configuration file. Speciall
 ENV: <b>TYK_PMP_HTTPPROFILE</b><br />
 Type: `bool`<br />
 
-Enable debugging of Tyk Pump by exposing profiling information, the same as the [gateway](https://tyk.io/docs/api-management/troubleshooting-debugging)
+Expose profiling information to support debugging of Tyk Pump. This operates in the same as for Tyk Gateway, as explained [here]({{< ref "troubleshooting/tyk-gateway/profiling" >}}).
 
 ### raw_request_decoded
 ENV: <b>TYK_PMP_DECODERAWREQUEST</b><br />
 Type: `bool`<br />
 
-Setting this to true allows the Raw Request to be decoded from base 64
+This option was intended to decode raw request payloads from base64 for all Pumps. However, it was never implemented and therefore has no functional effect. It has now been deprecated.
 for all pumps. This is set to false by default.
+Deprecated: Use pump level raw_request_decoded configuration instead.
 
 ### raw_response_decoded
 ENV: <b>TYK_PMP_DECODERAWRESPONSE</b><br />
 Type: `bool`<br />
 
-Setting this to true allows the Raw Response to be decoded from base 64 for all pumps. This is set to false by default.
+This option was intended to decode raw response payloads from base64 for all Pumps. However, it was never implemented and therefore has no functional effect. It has now been deprecated.
+Deprecated: Use pump level raw_response_decoded configuration instead.
 
