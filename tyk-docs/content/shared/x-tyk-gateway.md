@@ -2824,4 +2824,3 @@ XTykStreaming represents the structure for Tyk streaming configurations.
 
 **Field: `streams` (`any`)**
 Streams contains the configurations related to Tyk Streams.
-
