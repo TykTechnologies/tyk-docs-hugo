@@ -24,7 +24,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 1.13.0 Release Notes
 
-#### Release Date xx October 2025
+#### Release Date 29 October 2025
 
 #### Breaking Changes
 
@@ -109,7 +109,7 @@ These metrics can be used to calculate the Gateway processing time (`Latency.Tot
 <details>
 <summary>Added "batchbytes" configuration option for Kafka pump</summary>
 
-Added a new configuration option [TYK_PMP_PUMPS_KAFKA_META_BATCHBYTES]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#pumpskafkametabatchbytes" >}}) to the Kafka pump that allows users to configure the maximum size (in bytes) of a batch before it is sent to a Kafka partition. 
+Added a new configuration option [TYK_PMP_PUMPS_KAFKA_META_BATCHBYTES]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#pumpskafkametabatch_bytes" >}}) to the Kafka pump that allows users to configure the maximum size (in bytes) of a batch before it is sent to a Kafka partition. 
 
 This enhancement resolves issues where batched analytics data exceeded Kafka's default 1MB message size limit, causing "Message Size Too Large" errors and resulting in missing analytics data. Users can now optimize the batch size to match their Kafka topic configurations, with backward compatibility maintained through the default 1MB limit.
 
