@@ -8,7 +8,20 @@ tags: ["Tyk Dashboard", "Release notes", "changelog", "vX.Y", "X.Y.0", "X.Y", "X
 **This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
 
 ## Support Lifetime
-Our minor releases are supported until our next minor comes out. This would be <vX.Y+1> scheduled in Q<1-4> if this goes ahead as planned. If not, X.Y will remain in support until our next LTS version comes out in March 2024.
+<!--
+Please add one of the following statements to the release notes you are preparing:
+
+For non-LTS releases:
+----------------------
+**This version supersedes all previous non-LTS releases, which are no longer maintained.** 
+The [current LTS release](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline) continues to receive maintenance alongside this version. 
+For details on our release lifecycle and maintenance policies, see the [release support documentation](https://tyk.io/docs/developer-support/release-types/long-term-support/).
+
+For LTS releases:
+------------------
+This is an **LTS release**, maintained under our [Long Term Support policy](https://tyk.io/docs/developer-support/release-types/long-term-support/). 
+For maintained LTS versions, check the [current LTS releases timeline](https://tyk.io/docs/developer-support/release-types/long-term-support/#current-lts-releases-timeline). 
+-->
 
 ---
 
@@ -153,10 +166,10 @@ Repeat the release notes section above for every patch here
 
 ## Further Information
 
-### Upgrading Tyk
+### Upgrading Tyk {#upgrading-tyk}
 Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
-### API Documentation
+### API Documentation {#api-documentation}
 - [OpenAPI Document]({{< ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
