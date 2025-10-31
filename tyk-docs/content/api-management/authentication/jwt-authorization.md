@@ -1,6 +1,6 @@
 ---
 title: JWT Authorization
-description: How JWT authorization works in Tyk API Gateway.
+description: Tyk Gateway's JWT Authorization process extracts user identity and applies security policies based on JWT claims for API access control.
 tags: ["Authentication", "Authorization", "JWT", "JSON Web Tokens", "Claims", "Validation"]
 keywords: ["Authentication", "Authorization", "JWT", "JSON Web Tokens", "Claims", "Validation"]
 date: 2025-01-10

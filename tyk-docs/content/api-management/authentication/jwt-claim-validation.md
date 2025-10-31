@@ -1,6 +1,6 @@
 ---
 title: JWT Claim Validation
-description: How to validate JWT claims in Tyk API Gateway.
+description: Tyk Gateway's JWT Claim Validation enables fine-grained access control by validating registered and custom claims in JSON Web Tokens.
 tags: ["Authentication", "JWT", "JSON Web Tokens", "Claims", "Validation"]
 keywords: ["Authentication", "JWT", "JSON Web Tokens", "Claims", "Validation"]
 date: 2025-01-10
@@ -792,3 +792,27 @@ x-tyk-api-gateway:
 ```
 
 The `nonBlocking` flag in the validation rule for `user.preferences.notifications` means that if this claim is missing from the received token, the token will not fail validation, but a warning will be logged.
+
+## FAQ
+
+<ul>
+
+<li>
+<details>
+<summary>Can I restrict which issuers' tokens are accepted?</summary>
+
+Yes, you can configure `AllowedIssuers` to specify which iss (issuer) claim values are accepted. Tokens from other issuers will be rejected.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>How can I validate custom claims in the JWT?</summary>
+
+Use the `CustomClaimValidation` configuration to validate specific claims with different validation types (Required, ExactMatch, or Contains).
+
+</details>
+</li>
+
+</ul>
