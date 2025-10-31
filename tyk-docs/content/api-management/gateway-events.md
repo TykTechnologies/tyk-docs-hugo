@@ -89,6 +89,7 @@ The built-in events that Tyk Gateway will generate are:
 
 - `AuthFailure`: a key has failed authentication or has attempted access and was denied
 - `KeyExpired`: an attempt has been made to access an API using an expired key
+- `UpstreamOAuthError`: an error occurred when trying to authenticate with an upstream using an OAuth provider
 
 ### API version events
 
