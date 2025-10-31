@@ -1,5 +1,10 @@
-<div >
-<iframe class="responsive-frame" type="text/html" src="https://www.youtube.com/embed/{{ .Get "id" }}" allowfullscreen
-        {{ with .Get "title" }}title="{{ . }}"{{ end }} >
+<div class="video-container" style="display: flex; justify-content: center; margin: 20px 0;">
+<iframe type="text/html" src="https://www.youtube.com/embed/{{ .Get "id" }}" allowfullscreen
+        {{ with .Get "title" }}title="{{ . }}"{{ end }} 
+        width="{{ if .Get "width" }}{{ .Get "width" }}{{ else }}640{{ end }}"
+        height="{{ if .Get "height" }}{{ .Get "height" }}{{ else }}360{{ end }}"
+        {{ with .Get "frameborder" }}frameborder="{{ . }}"{{ else }}frameborder="0"{{ end }}
+        allow="{{ if .Get "allow" }}{{ .Get "allow" }}{{ else }}accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share{{ end }}"
+        allowfullscreen>
 </iframe>
 </div>

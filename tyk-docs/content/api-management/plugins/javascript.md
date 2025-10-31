@@ -36,7 +36,7 @@ There are three middleware components that can be scripted with Tyk:
 
 2. **Dynamic event handlers**: These components fire on certain API events (see the event handlers section), these are fired Async and do not have a cooldown timer. These are documented [here]({{< ref "api-management/gateway-events#set-up-a-webhook-event-handler-in-the-tyk-oas-api-definition" >}}).
 
-3. **Virtual endpoints**: These are powerful programmable middleware invoked towards the end of the request processing chain. Unlike the custom JavaScript plugins, the virtual endpoint terminates the request. These are documented [here]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}).
+3. **Virtual endpoints**: These are powerful programmable middleware invoked towards the end of the request processing chain. Unlike the custom JavaScript plugins, the virtual endpoint terminates the request. These are documented [here]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}}).
 
 The JavaScript (JS) [scripting guide]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}}) provides details of how to access dynamic data (such as the key session object) from your JS functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
 
@@ -118,11 +118,11 @@ The JS function must provide the `request` and `session.meta_data` objects in th
 return sampleMiddleware.ReturnData(request, session.meta_data);
 ```
 
-Custom JS plugins sit in the [middleware processing chain]({{< ref "concepts/middleware-execution-order" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "api-management/plugins/javascript#using-returnoverrides" >}}).
+Custom JS plugins sit in the [middleware processing chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "api-management/plugins/javascript#using-returnoverrides" >}}).
 
 ##### Returning from Virtual Endpoint
 
-Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation#working-14" >}}) so have a different method of returning from the JS function.
+Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation/virtual-endpoints#working" >}}) so have a different method of returning from the JS function.
 
 The function must return a `responseObject`. This is crucial as it determines the HTTP response that will be sent back to the client. The structure of this object is defined to ensure that the virtual endpoint can communicate the necessary response details back to the Tyk Gateway, which then forwards it to the client.
 
@@ -138,7 +138,7 @@ You must provide the `responseObject` together with the `session.meta_data` as p
 return TykJsResponse(responseObject, session.meta_data);
 ```
 
-You can find some examples of how this works [here]({{< ref "advanced-configuration/compose-apis/demo-virtual-endpoint" >}}).
+You can find some examples of how this works [here]({{< ref "api-management/traffic-transformation/virtual-endpoints#examples" >}}).
 
 ### JavaScript resources
 
@@ -148,7 +148,7 @@ The system API provides access to resources outside of the JavaScript Virtual Ma
 
 #### The `request` object
 
-The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
+The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
 
 The structure of the `request` object is:
 
@@ -229,8 +229,8 @@ var testJSVMData = new TykJS.TykMiddleware.NewMiddleware({});
 testJSVMData.NewProcessRequest(function(request, session, config) {
   // Logic to determine if the request should be overridden
   if (someCondition) {
-      request.ReturnOverrides.response_code = 403;
-      request.ReturnOverrides.response_body = "Access Denied";
+      request.ReturnOverrides.ResponseCode = 403;
+      request.ReturnOverrides.ResponseBody = "Access Denied";
       request.ReturnOverrides.headers = {"X-Error": "the-condition"};
       // This stops the request from proceeding to the upstream
   }
@@ -240,7 +240,7 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 
 ##### The virtual endpoint `request` object {#VirtualEndpoint-Request}
 
-For [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) functions the structure of a Javascript `request` object is:
+For [virtual endpoint]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}}) functions the structure of a Javascript `request` object is:
 
 ```typescript
 class VirtualEndpointRequest {
@@ -285,7 +285,7 @@ const httpRequest = {
 
 #### The `session` object
 
-Tyk uses an internal [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
+Tyk uses an internal [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
 
 ##### Limitations
 
@@ -394,7 +394,7 @@ Below is the list of functions currently provided by Tyk.
 - `rawlog(string)`: Calling `rawlog("this message")` will cause Tyk to log the string to Tyk's default logger output without any additional formatting, like adding prefix or date. This function can be used if you want to have own log format, and parse it later with custom tooling.
 - `b64enc` - Encode string to base64
 - `b64dec` - Decode base64 string
-- `TykBatchRequest` this function is similar to `TykMakeHttpRequest` but makes use of the Tyk Batch API. See the Batch Requests section of the [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) for more details.
+- `TykBatchRequest` this function is similar to `TykMakeHttpRequest` but makes use of Tyk's [batch request feature]({{< ref "api-management/batch-processing" >}}).
 - `TykMakeHttpRequest(JSON.stringify(requestObject))`: This method is used to make an HTTP request, requests are encoded as JSON for deserialisation in the min binary and translation to a system HTTP call. The request object has the following structure:
 
 ```js
@@ -438,7 +438,7 @@ This method does not execute asynchronously, so execution will block until a res
 
 To work with the key session object, two functions are provided: `TykGetKeyData` and `TykSetKeyData`:
 
-- `TykGetKeyData(api_key, api_id)`: Use this method to retrieve a [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) for the key and the API provided:
+- `TykGetKeyData(api_key, api_id)`: Use this method to retrieve a [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) for the key and the API provided:
 
   ```js
   // In an event handler, we can get the key idea from the event, and the API ID from the context variable.
@@ -556,6 +556,7 @@ Adding the middleware plugin is as simple as adding it to your definition file i
 ...
 "event_handlers": {},
 "custom_middleware": {
+  "driver": "otto",
   "pre": [
     {
       "name": "sampleMiddleware",
@@ -681,9 +682,9 @@ For higher performance, the plugin could be written in Golang, and a connection 
     ```
 
     ##### How to Import?
-    [Tyk Pro](https://tyk.io/docs/tyk-configuration-reference/import-apis/#import-apis-via-the-dashboard)
+    [Tyk Self-Managed]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}})
 
-    [Tyk CE](https://tyk.io/docs/try-out-tyk/tutorials/create-api/)
+    [Tyk OSS]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}})
 
 4. **Run WAF ModSecurity Using Docker**
 

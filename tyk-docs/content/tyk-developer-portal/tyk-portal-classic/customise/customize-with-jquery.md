@@ -7,7 +7,12 @@ menu:
     parent: "Customize"
 aliases:
   - /tyk-developer-portal/customise/customize-with-jquery/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 Tyk Portal comes prepackaged with jQuery.  This opens up a whole world of customization, by extending our Portal using JavaScript and HTML to create dynamic content.
 

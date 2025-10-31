@@ -5,7 +5,12 @@ menu:
   main:
     parent: "Frequently Asked Questions"
 weight: 0 
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 Use case: What if your developer portal is not exactly what I need?
 

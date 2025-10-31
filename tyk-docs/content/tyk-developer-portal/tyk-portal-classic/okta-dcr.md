@@ -7,7 +7,12 @@ menu:
 weight: 2 
 aliases:
   - /tyk-developer-portal/okta-dcr
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ## Introduction
 
@@ -26,7 +31,7 @@ The user journey is as follow:
 ### Requirements
 
 - An OKTA account (a [trial account](https://www.okta.com/free-trial/) should be enough).
-- A [Tyk Self Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
+- A [Tyk Self Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
 
 ### Getting started with OKTA
 

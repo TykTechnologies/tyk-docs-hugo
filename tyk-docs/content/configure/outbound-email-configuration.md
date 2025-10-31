@@ -7,7 +7,12 @@ menu:
 weight: 6 
 aliases:
   - /tyk-configuration-reference/outbound-email-configuration/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ### Custom Email Templates
 

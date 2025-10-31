@@ -1,11 +1,12 @@
 ---
 title: "GraphQL Federation with Tyk Operator"
-date: 2024-06-25
-tags: ["Tyk Operator", "GraphQL Federation", "Kubernetes"]
-description: ""
+tags: ["GraphQL", "Federation", "Tyk Operator", "Kubernetes"]
+description: "Learn how to implement GraphQL Federation using Tyk Operator in Kubernetes, enabling a unified API from multiple subgraphs."
 ---
 
-Tyk, with release *v4.0* offers [GraphQL federation]({{<ref "api-management/graphql#federation-version-support">}}) that allows you to divide GraphQL implementation across multiple back-end
+## Introduction
+
+Tyk, with release *v4.0* offers [GraphQL federation]({{< ref "api-management/graphql#federation-version-support" >}}) that allows you to divide GraphQL implementation across multiple back-end
 services, while still exposing them all as a single graph for the consumers.
 
 Tyk Operator supports GraphQL Federation subgraph and supergraph with following Custom Resources.
@@ -49,7 +50,7 @@ spec:
   graphql:
     enabled: true
     execution_mode: subgraph
-    graph_ref: users-subgraph ## corresponds to Subgraph resource's metadata name
+    graph_ref: users-subgraph # corresponds to Subgraph resource's metadata name
     version: "2"
     playground:
       enabled: false
@@ -97,7 +98,7 @@ spec:
   ...
   graphql:
     execution_mode: supergraph
-    graph_ref: social-media-supergraph ## corresponds to SuperGraph resource's metadata name
+    graph_ref: social-media-supergraph # corresponds to SuperGraph resource's metadata name
     enabled: true
     version: "2"
     playground:
@@ -115,7 +116,7 @@ An ApiDefinition must adhere to the following rules in order to represent an Api
 2. `graphql.execution_mode` must be set to `supergraph`,
 3. `graphql.graph_ref` must be set to the metdata name of the SuperGraph resource that you would like to refer.
 
-## Propagating updates from Subgraph CRD to Subgraph API and Supergraph APIs
+## Propagating Subgraph Changes to Supergraph
 
 Tyk Operator will automatically propagate changes in SubGraph CRD to the corresponding Subgraph ApiDefinition. Also, if the SubGraph is referenced by a SuperGraph, the corresponding SuperGraph CR and corresponding supergraph ApiDefinition will be updated too.
 
@@ -130,45 +131,45 @@ To achieve this, the developer should update the Users SubGraph CRD. Once the Su
 1. Update Users SubGraph CRD,
 2. Update Social Media Supergraph ApiDefinition since it is referencing the Users SubGraph CRD.
 
-## Deleting SubGraph
+### Deleting SubGraph
 
-### SubGraph without any reference
+- **SubGraph without any reference**
 
-If the subgraph is not referenced in any ApiDefinition CRD or SuperGraph CRD, it is easy to delete SubGraph CRDs as follows:
-```bash
-kubectl delete subgraphs.tyk.tyk.io <SUBGRAPH_NAME>
-```
+    If the subgraph is not referenced in any ApiDefinition CRD or SuperGraph CRD, it is easy to delete SubGraph CRDs as follows:
+    ```bash
+    kubectl delete subgraphs.tyk.tyk.io <SUBGRAPH_NAME>
+    ```
 
-### SubGraph referenced in ApiDefinition
+- **SubGraph referenced in ApiDefinition**
 
-If you have a subgraph which is referenced in any ApiDefinition, Tyk Operator will not delete the SubGraph.
+    If you have a subgraph which is referenced in any ApiDefinition, Tyk Operator will not delete the SubGraph.
 
-In order to delete this subgraph, the corresponding ApiDefinition CR must be updated, such that it has no reference to the
-subgraph in `graph_ref` field.
+    In order to delete this subgraph, the corresponding ApiDefinition CR must be updated, such that it has no reference to the
+    subgraph in `graph_ref` field.
 
-### SubGraph referenced in SuperGraph
+- **SubGraph referenced in SuperGraph**
 
-Although the subgraph is not referenced in any ApiDefinition, if it is referenced in the SuperGraph, Tyk Operator will
-not delete the subgraph again.
+    Although the subgraph is not referenced in any ApiDefinition, if it is referenced in the SuperGraph, Tyk Operator will
+    not delete the subgraph again.
 
-In order to delete this subgraph, SuperGraph CR should not have reference to corresponding subgraph in the `subgraph_ref`.
+    In order to delete this subgraph, SuperGraph CR should not have reference to corresponding subgraph in the `subgraph_ref`.
 
-## Deleting SuperGraph
+### Deleting SuperGraph
 
-### SuperGraph without any reference
-If the supergraph is not referenced in any ApiDefinition CRD, it can be deleted as follows:
+- **SuperGraph without any reference**
 
-```bash
-kubectl delete supergraphs.tyk.tyk.io <SUPERGRAPH_NAME>
-```
+    If the supergraph is not referenced in any ApiDefinition CRD, it can be deleted as follows:
 
-### SuperGraph referenced in ApiDefinition
-If a supergraph is referenced in any ApiDefinition, the Tyk Operator will not delete the SuperGraph CRD.
+    ```bash
+    kubectl delete supergraphs.tyk.tyk.io <SUPERGRAPH_NAME>
+    ```
 
-In order to delete this supergraph, the ApiDefinition that has a reference to the supergraph must de-reference the supergraph
-or be deleted.
+- **SuperGraph referenced in ApiDefinition**
 
-## Example Manifests
+    If a supergraph is referenced in any ApiDefinition, the Tyk Operator will not delete the SuperGraph CRD.
+
+    In order to delete this supergraph, the ApiDefinition that has a reference to the supergraph must de-reference the supergraph
+    or be deleted.
 
 ### Users Subgraph
 
@@ -568,3 +569,4 @@ spec:
     strip_listen_path: true
     listen_path: /social-media-apis-federated/
 ```
+

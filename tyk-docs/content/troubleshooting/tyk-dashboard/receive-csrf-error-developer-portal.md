@@ -4,8 +4,13 @@ title: Receive a CSRF error in the Developer Portal
 menu:
   main:
     parent: "Tyk Dashboard Troubleshooting"
-weight: 5 
+weight: 5
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ### Description
 

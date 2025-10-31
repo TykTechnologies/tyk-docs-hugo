@@ -1,7 +1,7 @@
 ---
 title: Tyk Charts Release Notes
-description: "Release notes documenting updates, enhancements and changes for Tyk Charts versions within the 2.1 series."
-tags: ["Tyk Charts", "Release notes", "changelog", "v2.1", "v2.1.0", "v2.0.0", "v1.6.0", "v1.5.0", "v1.4.0", "v1.3.0" ]
+description: "Release notes documenting updates, enhancements and changes for Tyk Charts."
+tags: ["Tyk Charts", "Release notes", "changelog"]
 aliases:
   - /product-stack/tyk-charts/release-notes/version-1.3
   - /product-stack/tyk-charts/release-notes/version-1.4
@@ -18,9 +18,365 @@ aliases:
 **This page contains all release notes for Tyk Charts displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. 
 
+---
+## 4.0 Release Notes
+
+### 4.0.1 Release Notes
+
+#### Release Date 21st October 2025
+
+#### Release Highlights
+Tyk Charts 4.0.1 is a version alignment release that ensures compatibility with the most recent Tyk LTS release [5.8.6]({{< ref "developer-support/release-notes/dashboard#586-release-notes" >}}) and Developer Portal [1.14.1]({{< ref "developer-support/release-notes/portal#1141-release-notes" >}}). No functional changes have been implemented in this release.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-4.0.1}
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency  | Tested Versions  | Compatible Versions  | Comments | 
+| ------------------------| ---------------- | -------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)   | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+ | | 
+| [Helm](https://helm.sh)               | 3.14.x              | 3.x  | | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x  | 5.x, 6.x, 7.x | |
+| [Valkey](https://valkey.io/download/) | 7.2.x, 8.0.x, 8.1.x | 7.2.x, 8.0.x, 8.1.x | |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8 | 5, 6, 7, 8 | Used by Tyk Dashboard, Pump, and MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x | 13.x - 17.x | Used by Tyk Dashboard, Pump, and MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+You can use helm upgrade to upgrade your release
+
+```bash
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
+```
+
+#### Downloads
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v4.0.1.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/4.0.1)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/4.0.1)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/4.0.1)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/4.0.1)
+
+#### Changelog {#Changelog-v4.0.1}
+No changes in this release.
+
+### 4.0.0 Release Notes
+
+#### Release Date 26th September 2025
+
+#### Release Highlights
+
+This release includes improvements to support for Redis Sentinel deployments and updates the default charts to install the most recent Tyk LTS release [5.8.5]({{< ref "developer-support/release-notes/dashboard#585-release-notes" >}}) and Developer Portal [1.14.0]({{< ref "developer-support/release-notes/portal#1140-release-notes" >}}).
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v4.0.0) below.
+
+#### Breaking Changes
+
+In this release, the MongoDB GraphQL Pump is not enabled by default. If you are using this Tyk Pump then you will need to enable it explicitly in your charts.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency  | Tested Versions  | Compatible Versions  | Comments | 
+| ------------------------| ---------------- | -------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)   | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+ | | 
+| [Helm](https://helm.sh)               | 3.14.x              | 3.x  | | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x  | 5.x, 6.x, 7.x | |
+| [Valkey](https://valkey.io/download/) | 7.2.x, 8.0.x, 8.1.x | 7.2.x, 8.0.x, 8.1.x | |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8 | 5, 6, 7, 8 | Used by Tyk Dashboard, Pump, and MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x | 13.x - 17.x | Used by Tyk Dashboard, Pump, and MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecation in this release.
+
+#### Upgrade instructions
+You can use helm upgrade to upgrade your release
+
+```bash
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
+```
+
+#### Downloads
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v4.0.0.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/4.0.0)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/4.0.0)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/4.0.0)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/4.0.0)
+
+#### Changelog {#Changelog-v4.0.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Add Redis Sentinel Global Config Handler for Dashboard and MDCB Charts</summary>
+
+Added Helm Chart support for Redis Sentinel configurations using global values for both the Tyk Dashboard and MDCB charts to match the existing support in Tyk Gateway and Pump charts.
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated default versions of Tyk components</summary>
+
+Tyk Charts 4.0 will install the following Tyk components:
+
+- Tyk Gateway v5.8.5
+- Tyk Dashboard v5.8.5
+- Tyk Pump v1.12.0
+- Tyk MDCB v2.8.4
+- Tyk Developer Portal v1.14.0
+- Tyk Operator v1.2.0
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Pump Helm Chart: GraphQL Pump disabled by default</summary>
+
+The Tyk Pump Helm Chart has been updated to disable the GraphQL Pump configuration by default for both MongoDB and PostgreSQL backends. This change provides users with explicit control to enable the pump via Helm values (e.g., `pump.mongoGraph.enabled`), addressing concerns about rapid storage increase. Users currently relying on the GraphQL Pump will need to enable it explicitly after this update.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Helm Charts bootstrap failure</summary>
+
+Resolved an issue where the Helm Charts bootstrap post-install job for tyk-stack failed due to an unnecessary requirement for an operator license, even when the operator was disabled by default. The bootstrap process now completes successfully without requiring the operator license.
+</details>
+</li>
+<li>
+<details>
+<summary>Incorrect fsGroup Placement in Tyk Helm Chart</summary>
+
+Corrected the placement of the `fsGroup` field in the `tyk-stack` chart's `values.yaml` from `containerSecurityContext` to `podSecurityContext` to resolve pre-install job failures.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Redis Sentinel Password Configuration in Helm Charts</summary>
+
+Resolved an issue where the Redis Sentinel password ([TYK_GW_STORAGE_SENTINELPASSWORD]({{< ref "tyk-oss-gateway/configuration#storagesentinel_password" >}})) was not correctly picked up by Helm charts. Previously, both Redis and Sentinel passwords referenced the same secret key, leading to the Sentinel password defaulting to the regular Redis password. This fix ensures correct handling of distinct Sentinel passwords.
+</details>
+</li>
+</ul>
+
+---
+## 3.0 Release Notes
+
+### 3.0.0 Release Notes
+
+#### Release Date 02 April 2025
+
+#### Release Highlights
+
+Tyk Charts 3.0 significantly improves configurability, reliability, and support for Tyk 5.8. This release enhances monitoring capabilities, expands Helm chart flexibility, and resolves key issues related to service availability and configuration management.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v3.0.0) below.
+
+#### Breaking Changes
+Tyk Charts 3.0 introduces a breaking configuration changes for Tyk Dashboard: To provide a default secure configuration, `security.forbid_admin_view_access_token` and `security.forbid_admin_reset_access_token` are set to `true` to restrict admin users from being able to view and reset other users' Dashboard API Access Credentials.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)                        | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+          |          | 
+| [Helm](https://helm.sh)                                    | 3.14.x                 | 3.x                    |          | 
+| [Redis](https://redis.io)                                  | 6.2.x, 7.x    | 6.2.x, 7.x    | Used by Tyk Gateway and Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 5.0.x, 6.0.x, 7.0.x | Used by Tyk Dashboard, Pump, and MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard, Pump, and MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecation in this release.
+
+#### Upgrade instructions
+You can use helm upgrade to upgrade your release
+
+```bash
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
+```
+
+#### Downloads
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v3.0.0.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/3.0.0)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/3.0.0)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/3.0.0)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/3.0.0)
+
+#### Changelog {#Changelog-v3.0.0}
+
+##### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Pump: Readiness and liveness probes</summary>
+
+Added readiness and liveness probes using Tyk Pump's health check service, allowing proactive monitoring to detect failures and improve system reliability.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Global: imageRegistry configuration</summary>
+
+Added support for a global image registry, making it easier for users to configure private registries and streamline container image management.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: Tyk Gateway startup probes</summary>
+
+Added configurable startup probes for Tyk Gateway, improving readiness checks to prevent premature traffic routing during initialization.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: Tyk Gateway access/transaction logs</summary>
+
+Added support for configuring access logs in Tyk Gateway 5.8, allowing users to track API transaction logs for enhanced monitoring and debugging.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: OpenTelemetry header from Kubernetes secrets</summary>
+
+Added support for retrieving a single OpenTelemetry Authorization header from a Kubernetes secret, enhancing security by preventing exposure of sensitive credentials in Helm values or Kubernetes manifests.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Helm chart parameterization</summary>
+	
+Replaced hardcoded values in Helm charts with configurable parameters, providing greater flexibility in deployment customization.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Operator and tyk-bootstrap: Tolerations, affinity, and node selector</summary>
+
+Added support for tolerations, affinity, and node selector configurations, enabling users to fine-tune Kubernetes scheduling for better resource allocation and workload distribution.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Configurable test pod execution</summary>
+
+Added support to enable or disable test pods, allowing users to optimize resource utilization based on their environment needs.
+</details>
+</li>
+
+</ul>
+
+##### Changed
+
+<ul>
+
+<li>
+<details>
+<summary>Support for restricting admin access token actions in Tyk Dashboard</summary>
+
+Improved security by setting security.forbid_admin_view_access_token and security.forbid_admin_reset_access_token to true by default, preventing admin users from viewing or resetting other users’ Dashboard API access credentials unless explicitly allowed.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Updated default versions of Tyk components</summary>
+
+ Tyk Charts 3.0 will install the following Tyk component versions by default.
+
+  - Tyk Gateway v5.3.10
+  - Tyk Dashboard v5.3.10
+  - Tyk Pump v1.12.0
+  - Tyk MDCB v2.8.0
+  - Tyk Developer Portal v1.13.0
+  - Tyk Operator v1.2.0
+
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Pump: Pump service annotation issue</summary>
+
+Fixed an issue where service annotations for Tyk Pump were not being applied correctly, which caused misconfigurations in Kubernetes deployments. This has been resolved by ensuring annotations are properly processed.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Operator liveness and readiness probe failure</summary>
+
+Fixed an issue where the Operator’s liveness and readiness probes were failing, causing the service to enter a CrashLoopBackOff state. This has been resolved by adjusting configurations to ensure proper startup and health checks.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Incorrect TYK_DB_TYKAPI_HOST and TYK_DB_TYKAPI_PORT values</summary>
+
+Fixed an issue where TYK_DB_TYKAPI_HOST and TYK_DB_TYKAPI_PORT environment variables were incorrectly set when the Control API was enabled, leading to connectivity issues. This has been resolved by ensuring the correct values are assigned during configuration.
+</details>
+</li>
+
+</ul>
+
+<!-- ##### Security Fixes
+This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 ## 2.2 Release Notes
 
@@ -78,7 +434,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-#### Dependencies {#dependencies-2.2}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
@@ -148,7 +504,7 @@ User can enable or disable Tyk Streams feature via `global.streaming.enabled`. T
 
 Introduced new configuration options to manage audit logging for the Tyk Dashboard. This enhancement allows users to enable, customize, and specify how audit logs are stored and formatted.
 
-To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#audit-log-configurations">}}) documentation.
+To configure, see [Tyk Stack]({{< ref "product-stack/tyk-charts/tyk-stack-chart#audit-log-configurations" >}}) documentation.
 </details>
 </li>
 
@@ -158,7 +514,7 @@ To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#a
 
 Introduced new options to enable and manage Open Policy Agent (OPA) support directly from the Helm chart. This feature simplifies the configuration process, guiding users to use the correct settings without relying on extraEnvs.
 
-To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#opa-configurations">}}) documentation.
+To configure, see [Tyk Stack]({{< ref "product-stack/tyk-charts/tyk-stack-chart#opa-configurations" >}}) documentation.
 </details>
 </li>
 
@@ -172,7 +528,7 @@ Users can now define custom configurations for these probes, providing more flex
 
 This enhancement improves deployment reliability and ensures better integration with Kubernetes health monitoring systems.
 
-To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#gateway-probes">}}) documentation.
+To configure, see [Tyk Stack]({{< ref "product-stack/tyk-charts/tyk-stack-chart#gateway-probes" >}}) documentation.
 </details>
 </li>
 
@@ -313,7 +669,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-However, if you are upgrading to [Tyk Operator v1.0]({{<ref "developer-support/release-notes/operator#100-release-notes">}}) using the Helm Chart, please read the [license requirement]({{<ref "developer-support/release-notes/operator#breaking-changesv1.0.0">}}) and Tyk Operator [installation and upgrade instructions]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}) carefully.
+However, if you are upgrading to [Tyk Operator v1.0]({{< ref "developer-support/release-notes/operator#100-release-notes" >}}) using the Helm Chart, please read the [license requirement]({{< ref "developer-support/release-notes/operator#breaking-changesv1.0.0" >}}) and Tyk Operator [installation and upgrade instructions]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}) carefully.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -350,7 +706,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-#### Dependencies {#dependencies-2.1}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
@@ -510,8 +866,8 @@ From this version of Tyk Charts we also set the following configuration option t
 
 **Action required:**
 
-- Familiarize yourself with URL matching in Tyk [here]({{<ref "getting-started/key-concepts/url-matching">}}).
-- For production setup guidance, see [this guide]({{<ref "tyk-self-managed#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match">}}).
+- Familiarize yourself with URL matching in Tyk [here]({{< ref "getting-started/key-concepts/url-matching" >}}).
+- For production setup guidance, see [this guide]({{< ref "planning-for-production#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match" >}}).
 - Configure the new options via the Helm chart, and test the changes in a non-production environment before upgrading.
 
 ##### 2. Default Tyk Component Versions
@@ -658,7 +1014,7 @@ URL path matching mode is configurable using these `tyk-gateway` chart parameter
 - `gateway.enablePathSuffixMatching` (default to `true`)
 - `gateway.enableStrictRoutes` (default to `true`)
 
-Learn more about the settings in the [URL Path Matching]({{<ref "getting-started/key-concepts/url-matching">}}) documentation.
+Learn more about the settings in the [URL Path Matching]({{< ref "getting-started/key-concepts/url-matching" >}}) documentation.
 
 </details>
 </li>
@@ -812,7 +1168,7 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 ##### Updated MDCB Health check probes
-MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
+MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{< ref "api-management/mdcb#health-check" >}}) section for information about the new probes.
 
 ##### Updated default Tyk versions
 Tyk Charts 1.6 will install the following Tyk component versions by default.
@@ -830,7 +1186,7 @@ Tyk Charts 1.6 will install the following Tyk component versions by default.
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/1.6.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/1.6.0)
 
-#### Changelog {#Changelog-v1.6.0}
+#### Changelog
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
@@ -910,7 +1266,7 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>MDCB: Updated liveness and readiness probes</summary>
 
 Updated MDCB liveness and readiness probes to `/liveness` and `/readiness` respectively. These endpoints are available from MDCB v2.7.0. If you are deploying an earlier version of MDCB, please update the paths to `/health` in values.yaml file.
-For more details about new endpoints, check [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
+For more details about new endpoints, check [MDCB Health check]({{< ref "api-management/mdcb#health-check" >}}) section.
 </details>
 </li>
 </ul>
@@ -1002,7 +1358,7 @@ Additionally, a disclaimer statement was added below the table, for customers to
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
-With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versioning/) on November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{<ref "tyk-self-managed#postgresql">}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versioning/) on November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1068,7 +1424,7 @@ Tyk Operator can now be installed as an optional component alongside any of the 
 
 With bootstrapping, the `tyk-operator-conf` secret will be automatically configured during the bootstrapping process. This means that the Tyk Operator will be ready for use with just one command, simplifying the deployment and configuration process.
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.5.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.5.0" >}}) below.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.5.0.tar.gz)
@@ -1207,14 +1563,14 @@ mdcb:
 
 `global.components.operator` added to determine whether the Tyk Operator component should be installed.
 
-This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}) for detailed information on pre-requisites.
+This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}) for detailed information on pre-requisites.
 
 ```yaml
 global:
   components:
     # operator determines whether Tyk Operator component should be installed or not.
     # Tyk Operator needs cert-manager to be installed beforehand. Make sure that cert-manager is installed.
-    # For further details, please refer to https://tyk.io/docs//api-management/automations#install-and-configure-tyk-operator/
+    # For further details, please refer to https://tyk.io/docs/api-management/automations#install-and-configure-tyk-operator/
     operator: false
 ```
 
@@ -1405,7 +1761,7 @@ We're pleased to announce the official release of the Tyk Helm Charts for Tyk Co
 
 With this release, we aim to provide a straightforward solution for deploying and managing Tyk Control Plane and Multi-Data Center Bridge (MDCB) using Helm Charts. Whether you're looking for our recommended setup configurations or need flexibility to adapt to your architectural requirements, our Helm Charts have you covered.
 
-To leverage this stable release and simplify your Tyk deployments, we invite you to explore our example setup for MDCB Control Plane using Helm Chart. Simply follow our [MDCB Control Plane setup guide]({{<ref "tyk-multi-data-centre/setup-controller-data-centre">}}) to get started.
+To leverage this stable release and simplify your Tyk deployments, we invite you to explore our example setup for MDCB Control Plane using Helm Chart. Simply follow our [MDCB Control Plane setup guide]({{< ref "api-management/mdcb#setup-mdcb-control-plane" >}}) to get started.
 
 ##### Updated default Tyk versions
 Tyk Charts 1.4 will install the following Tyk component versions by default.
@@ -1415,7 +1771,7 @@ Tyk Charts 1.4 will install the following Tyk component versions by default.
 - Tyk MDCB v2.5.1
 - Tyk Developer Portal v1.8.5
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.4.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.4.0" >}}) below.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.4.0.tar.gz)
@@ -1447,7 +1803,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>OSS: Simplify Tyk Operator setup with Kubernetes Secret creation</summary>
 
-When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}).
+When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}).
 </details>
 </li>
 
@@ -1610,7 +1966,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{<ref "tyk-self-managed#choose-a-mongodb-driver">}}) when you need to change driver setting.
+For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings#choose-a-mongodb-driver" >}}) when you need to change driver setting.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -1700,16 +2056,16 @@ Tyk Charts 1.3 will install the following Tyk component versions by default.
 - Tyk MDCB v2.5.0
 - Tyk Developer Portal v1.8.3
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.3.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.3.0" >}}) below.
 
 ##### Support new features available from Tyk v5.3.0
 Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 5.3.0. These include: Support use of SSL certificates when connecting to Redis, Configurations for OAS Validate examples and OAS Validate Schema defaults.
 
 ##### Graph Pump
-Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "api-management/tyk-pump#graph-pump-setup">}}) to learn more about the GraphQL-specific metrics available.
+Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{< ref "api-management/tyk-pump#graph-pump-setup" >}}) to learn more about the GraphQL-specific metrics available.
 
 ##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
-Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.3.0.tar.gz)
@@ -1819,7 +2175,7 @@ To enable it, set `gateway.pdb.enabled` to `true` and configure `gateway.pdb.min
 <details>
 <summary>Gateway: Added Ingress template for gateway control service</summary>
 
-When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{<ref "tyk-self-managed#change-your-control-port">}}).
+When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{< ref "planning-for-production#change-your-control-port" >}}).
 </details>
 </li>
 
@@ -1827,7 +2183,7 @@ When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be c
 <details>
 <summary>Gateway: Configure Gateway to work with MDCB synchroniser</summary>
 
-Allow users to configure worker gateway to work with [Tyk MDCB synchroniser]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) easily by setting `global.mdcbSynchronizer.enabled` in `tyk-data-plane`.
+Allow users to configure worker gateway to work with [Tyk MDCB synchroniser]({{< ref "api-management/mdcb#synchroniser-feature-with-mdcb" >}}) easily by setting `global.mdcbSynchronizer.enabled` in `tyk-data-plane`.
 The control plane should be deployed with same `global.mdcbSynchronizer.enabled` value too.
 </details>
 </li>
@@ -1860,7 +2216,7 @@ Users can configure Tyk Gateway initContainer image so that it is possible to lo
 <details>
 <summary>Dashboard: Added option to enable Tyk Identity Broker (TIB) in Tyk Dashboard</summary>
 
-You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+You can enable Internal [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 </details>
 </li>
 
@@ -1884,7 +2240,7 @@ Users can configure Tyk Dashboard service port name. Default is `http`.
 <details>
 <summary>Pump: Added Graph pump support</summary>
 
-[Graph Pumps]({{<ref "api-management/tyk-pump#graph-pump-setup">}}) will be added when the user adds `mongo` or `postgres` to `pump.backend`. When `mongo` is added to `pump.backend` the Graph MongoDB Pump will be enabled. When `postgres` is added to `pump.backend` the Graph SQL Pump and Graph SQL Aggregate Pump will be enabled.
+[Graph Pumps]({{< ref "api-management/tyk-pump#graph-pump-setup" >}}) will be added when the user adds `mongo` or `postgres` to `pump.backend`. When `mongo` is added to `pump.backend` the Graph MongoDB Pump will be enabled. When `postgres` is added to `pump.backend` the Graph SQL Pump and Graph SQL Aggregate Pump will be enabled.
 </details>
 </li>
 
@@ -1926,7 +2282,7 @@ Users can configure Tyk Developer Portal service port name. Default is `http`.
 
 A new [MDCB component chart](https://github.com/TykTechnologies/tyk-charts/tree/main/components/tyk-mdcb) has been added to deploy MDCB. 
 It is currently in Beta. For installation instructions and configurations, please
-read [Tyk Control Plane chart]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}).
+read [Tyk Control Plane chart]({{< ref "product-stack/tyk-charts/tyk-control-plane-chart" >}}).
 </details>
 </li>
 
@@ -1936,7 +2292,7 @@ read [Tyk Control Plane chart]({{<ref "product-stack/tyk-charts/tyk-control-plan
 
 A new [Tyk Control Plane umbrella chart](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-control-plane) has been added to deploy Tyk Control Plane. 
 It is currently in Beta. For installation instructions and configurations, please
-read [Tyk Control Plane chart]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}).
+read [Tyk Control Plane chart]({{< ref "product-stack/tyk-charts/tyk-control-plane-chart" >}}).
 </details>
 </li>
 
@@ -1957,7 +2313,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Global config: Update default MongoDB driver to `mongo-go`</summary>
 
-Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please change `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{<ref "tyk-self-managed#choose-a-mongodb-driver">}}) when you need to change driver setting.
+Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please change `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings#choose-a-mongodb-driver" >}}) when you need to change driver setting.
 </details>
 </li>
 </ul>

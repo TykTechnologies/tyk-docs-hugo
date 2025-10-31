@@ -1,8 +1,8 @@
 ---
 title: Tyk Dashboard Release Notes
 date: 2024-10-08T15:51:11Z
-description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.6.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
+description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard."
+tags: ["Tyk Dashboard", "Release notes", "changelog"]
 aliases:
   - /product-stack/tyk-dashboard/release-notes/overview
   - /product-stack/tyk-dashboard/release-notes/version-3.0
@@ -35,7 +35,1842 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 5.10 Release Notes 
+
+### 5.10.0 Release Notes 
+
+#### Release Date 13th October 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.0" >}}).
+
+##### Streamlined API Versioning Experience
+
+The Tyk Dashboard now provides a completely redesigned versioning experience for Tyk OAS APIs, making API version management intuitive and efficient through guided workflows and centralized controls.
+
+**Intuitive version creation**
+
+- **Step-by-step wizard**: Guided process for creating new API versions with clear configuration options at each step
+- **Smart configuration cloning**: Choose to inherit settings from existing versions or start fresh
+- **Flexible publishing**: Control version activation and Gateway deployment during creation
+- **Pre-configuration support**: Set up versioning parameters before creating any versions, preparing APIs for future versioning needs
+
+**Centralized version management**
+
+- **Unified "Versions" tab**: Single location to view and manage all aspects of API versioning
+- **Clear configuration visibility**: Version identifier settings, proxy options, and version lists displayed in one organized interface
+- **Inline editing**: Modify version names and configuration directly without navigating between screens
+- **Consistent experience**: Same interface and capabilities whether working with base or child APIs
+
+**Key benefits**
+
+- Eliminate confusion around version setup and management
+- Reduce time spent navigating between different configuration screens
+- Enable proactive versioning preparation for future API evolution
+- Provide clear visibility into version configuration and relationships
+
+Perfect for teams managing multiple API versions or planning version rollout strategies, this enhancement makes API versioning accessible to users of all experience levels while maintaining the power and flexibility that advanced users require.
+
+
+##### Certificate Expiry Monitoring and Notifications
+
+The Tyk Dashboard now provides proactive certificate lifecycle management to help prevent service outages caused by expired mTLS certificates.
+
+Proactive monitoring capabilities:
+- **Event-driven alerts**: Certificate expiry events are now available in the Tyk OAS API Designer for webhook and event handler configuration
+- **Dashboard API notifications**: New endpoint provides programmatic access to certificate status information
+  - **Smart monitoring**: Automatic detection of certificates approaching expiry or already expired with configurable warning thresholds
+  - **Duplicate prevention**: Intelligent notification system prevents alert flooding while ensuring visibility
+
+**Key benefits**
+
+- Prevent unexpected API outages due to expired certificates
+- Enable automated certificate renewal workflows through event handlers
+- Provide clear visibility into certificate health across your API infrastructure
+- Support integration with existing monitoring and alerting systems
+
+Perfect for organizations managing multiple certificates across complex API infrastructures where manual certificate tracking becomes impractical.
+
+For more details, please see the dedicated [Gateway events]({{< ref "api-management/gateway-events" >}}) section.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.10.0}
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|-------------|
+| 5.10.0 | MDCB v2.8.5       | MDCB v2.8.5 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.3       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | EDP v1.14.1       | EDP all versions |
+|        | Pump v1.12.2      | Pump all versions |
+|        | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.10.0}
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)          | 1.24 | 1.24 | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
+| [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.10.0}
+
+If you are upgrading to 5.10.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.10.0)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.10.0
+    ```
+- Helm charts
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Dashboard. You will need to modify them to install v5.10.0.
+
+#### Changelog {#Changelog-v5.10.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Enhanced versioning experience for Tyk OAS APIs</summary>
+
+Completely redesigned the versioning experience for Tyk OAS APIs with an intuitive wizard-driven workflow and centralized version management interface.
+
+**New version creation wizard**
+
+- **Guided configuration process**: Step-by-step wizard for creating new API versions with clear decision points
+- **Configuration cloning options**: Choose whether to clone settings from an existing version, with selection from available versions when multiple exist
+- **Version identifier setup**: Configure version location (header, URL path, query parameter) and key name if not already set
+- **Publishing controls**: Decide whether to immediately activate the new version and select target Gateways using segment tags
+
+**Centralized version management**
+
+- **New "Versions" tab**: Unified interface displaying version identifier configuration and complete version list for both base and child APIs
+- **Pre-configuration support**: Set up version identifier location, key name, and proxy options before creating any child versions, preparing non-versioned APIs to become base APIs
+- **Clear configuration visibility**: Version identifier and proxy settings prominently displayed above the version list
+- **Inline editing capabilities**: Edit version names directly for any API version, and modify versioning configuration from the base API
+- **Streamlined access**: Create new versions from any API (base or child) with direct access to the creation wizard
+
+**Improved user experience**
+
+- Removed legacy version management screens that were difficult to locate
+- Consistent versioning interface across all Tyk OAS APIs
+- Reduced complexity in version setup and management workflows
+
+This enhancement significantly simplifies API versioning workflows and provides better visibility into version configuration and management.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Certificate expiry notifications and event handling</summary>
+
+Added certificate expiry monitoring capabilities to help administrators proactively manage certificate lifecycles and prevent service outages.
+
+**Event handling integration**
+
+- Certificate expiry events (`CertificateExpiringSoon` and `CertificateExpired`) are now available as selectable options in the event handling section, enabling users to assign webhooks or other event handlers directly through the UI
+
+**Dashboard notifications system**
+
+- **Proactive notification endpoint**: New `GET /api/org/notifications` Dashboard API endpoint provides organization-specific notifications for expiring and expired certificates
+- **Smart monitoring**: In-memory notification repository automatically checks certificate metadata storage and creates notifications for certificates approaching expiry or already expired
+- **Configurable thresholds**: Dashboard configuration options for refresh intervals and warning thresholds:
+
+**Notification details**
+
+- **Severity classification**: Notifications marked as "warning" for soon-to-expire certificates or "critical" for expired certificates
+- **Rich metadata**: Each notification includes certificate ID, expiry date, days remaining, and other relevant details
+- **Duplicate prevention**: Hash-based system prevents duplicate notifications for the same certificate status
+
+**Note:** This release provides the foundational API and event integration for certificate monitoring. Enhanced UI functionality for certificate management will be available in a future release.
+
+This enhancement provides multiple layers of certificate expiry visibility through Gateway events and API-based notifications, ensuring administrators can maintain certificate health across their API infrastructure.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Enhanced JWT claims configuration for Tyk OAS APIs</summary>
+
+Updated the Tyk OAS API Designer to support multiple claim sources for JWT authentication, enabling multi-Identity Provider scenarios where different providers use different claim names.
+
+**UI enhancements**
+
+- **Multiple subject claims**: Replace the single "Subject identity claim" field with support for multiple claim sources
+- **Multiple policy claims**: Replace the single "Policy claim" field with support for multiple claim mapping sources
+- **Multiple scope claims**: Replace the single "Scope claim" field with support for multiple scope claim sources
+
+**Current implementation**
+
+- Updated API editor schema to accept the new multi-value claim fields
+- Multi-value claim configuration available through the API Designer interface
+- Advanced JWT validation features (custom claims framework, issuer/audience/subject validation, JWT ID enforcement) must be configured directly in the API definition via the API editor or external API calls
+- Existing single-value configurations remain functional for backward compatibility
+
+This enhancement supports scenarios where different Identity Providers use different claim names (e.g., Keycloak's `scope` vs Okta's `scp`) within the same API configuration, laying the foundation for comprehensive JWT claim validation workflows.
+
+**Note:** Full API Designer integration for these fields will be available in a future release.
+</details>
+</li>
+
+<li>
+<details>
+<summary>OpenAPI compliant multi-authentication configuration for Tyk OAS APIs</summary>
+
+Added initial support for OpenAPI Specification compliant multi-authentication configuration in Tyk OAS APIs, enabling flexible authentication workflows that follow standard OpenAPI security patterns.
+
+**UI enhancements**
+
+- We have added a new toggle in the Tyk OAS API Designer's *Server > Authentication* section to choose between "legacy" and "compliant" authentication processing modes when Multiple Authentication Methods is selected:
+  - **Legacy mode**: Existing configuration interface remains available for legacy mode behavior (AND logic for all authentication methods)
+  - **Compliant mode**: Users selecting compliant mode are directed to configure authentication directly in the API editor for full OpenAPI security specification support
+
+**Current implementation**
+
+- Manual configuration of compliant mode security settings available through the API definition editor
+- OpenAPI import with automatic authentication configuration continues to configure legacy mode by default (no change to existing behavior)
+- Advanced authentication combinations (OR logic between security entries) must be configured directly in the API definition
+
+This enhancement provides the foundation for OpenAPI compliant authentication workflows while maintaining complete backward compatibility with existing authentication configurations.
+
+**Note:** Full integration for compliant mode authentication configuration will be available in a future release.
+</details>
+</li>
+
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgrade Tyk Dashboard to Golang 1.24 </summary>
+
+The Tyk Dashboard has been updated to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying current with the latest Go versions.
+</details>
+</li>
+
+</ul>
+
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Fixed Policy and Key Management UI for versioned APIs</summary>
+
+Fixed UI issues in policy and key management that caused confusion and unnecessary validation errors. The API Versions field in the Dashboard UI now appears only when relevant - specifically for versioned Tyk Classic APIs. 
+
+The field is no longer displayed for Tyk OAS APIs or non-versioned Tyk Classic APIs, eliminating confusion about when version selection is required and preventing policies and keys from failing to save due to irrelevant validation requirements.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed issues with Tyk OAS API Debugger</summary>
+
+Fixed some issues in the Tyk OAS API Debugger (Test Your API panel) when inspecting API tests:
+
+- The debugger only displayed request middleware execution, omitting response middleware from the debug output
+- The debugger did not show the details of the transformations applied by Request Body Transform and Request Header Transform middleware
+- The debugger incorrectly reported errors for endpoints using Response Body Transform middleware, even when API calls completed successfully
+
+The test debugger now correctly shows both request and response middleware execution, accurately displays the execution status, and eliminates false error messages that could mislead developers during API testing and troubleshooting.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Dashboard default page_size behavior</summary>
+
+Fixed an issue where the Tyk Dashboard did not correctly apply a default `page_size` value when none was specified in the Dashboard configuration, potentially causing unexpected pagination behavior. 
+
+The Dashboard now properly defaults to a page size of 10 items as documented, ensuring consistent and predictable pagination across all Dashboard views.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed multiple issues with the creation of child versions of Tyk OAS APIs</summary>
+
+Fixed several issues that affected the creation of new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
+
+UI and API Creation:
+- Resolved an issue that prevented users from creating new versions via the API Designer's Manage Versions screen
+- Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully, but leave it invisible in the Dashboard UI
+- Added stricter validation for version names - users can no longer create API versions without specifying a valid `new_version_name`, preventing unusable or empty version entries
+- Improved error messaging when the `base_api_version_name` parameter is missing or incorrectly specified
+
+Version Management:
+- Fixed an issue where creating new child versions would incorrectly reset the default version back to the base API, overriding previously configured settings
+
+The system now provides comprehensive validation with clear error responses (`HTTP 400 Bad Request` and `HTTP 422 Unprocessable Entity`), ensures that all API versions have meaningful identifiers, and maintains proper default version settings during the creation of child versions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed `/versions` endpoint to only accept valid Tyk OAS base APIs</summary>
+
+Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint incorrectly returned version data for Tyk Classic APIs and non-versioned Tyk OAS APIs. The endpoint now properly validates requests and returns `HTTP 422 Unprocessable Entity` when the target API is not a valid Tyk OAS base API, ensuring the endpoint only returns meaningful version information.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed OpenAPI `servers` section handling for regex-based custom domains</summary>
+
+Fixed an issue where custom domains containing regular expressions were not correctly parsed and stored in the `servers` section of OpenAPI descriptions for Tyk OAS APIs. The Dashboard now properly converts regex-based domains into valid OpenAPI `servers` entries with appropriate variables, ensuring accurate API documentation and preventing validation errors during API editing. 
+
+This fix includes enhanced syntax validation for regular expression (regex) patterns and improved capture group handling, which previously could cause Gateway crashes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed delayed application of global webhook changes for Tyk OAS APIs</summary>
+
+Fixed an issue where updates to [global webhooks]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) were not immediately applied to Tyk OAS APIs using those webhooks. When global webhook configurations were modified, the Gateway would continue using the previous settings for affected Tyk OAS APIs until a manual reload occurred. 
+
+The system now automatically triggers a Gateway reload for all impacted Tyk OAS APIs when global webhook configurations are updated, ensuring that the new webhook settings take effect immediately.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed cross-interface compatibility for keys and policies with Tyk OAS and non-versioned Tyk Classic APIs</summary>
+
+Fixed an issue where keys and policies created or updated via the Dashboard API were sometimes rejected by the Dashboard UI, and vice versa, due to inconsistent handling of the `versions` field for non-versioned Tyk Classic APIs. The issue occurred because the API and UI used different formats when populating the versions list in access rights. 
+
+Both interfaces now consistently accept either `null` or `[]` (empty array) values in the `versions` field of the access control list, ensuring seamless interoperability between API and UI workflows for policy and key management. Tyk OAS APIs use a [different approach]({{< ref "api-management/api-versioning#how-api-versioning-works-with-tyk" >}}) to versioning, with each (base or child) version having a unique API ID that is added to the access list.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed visibility of orphaned Tyk OAS API versions when using PostgreSQL</summary>
+
+Fixed an issue where orphaned child versions of a Tyk OAS API would disappear from the Dashboard UI after their base API was deleted, specifically when using PostgreSQL as the datastore. 
+
+Orphaned Tyk OAS API versions now remain visible in the Dashboard, ensuring consistent behavior across all supported datastores and preventing loss of access to existing API versions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed inconsistent ordering of Tyk OAS API versions in Dashboard UI</summary>
+
+Fixed an issue where the child versions of a Tyk OAS API were sorted by creation date in the **Created APIs** and alphabetically by version name (e.g., v1, v2) in the **Versions** list. 
+
+Now versions are always sorted alphabetically by version name, providing predictable and controllable ordering. 
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Dashboard API panic when accessing logs without timestamp parameters in PostgreSQL</summary>
+
+Fixed an issue where the Tyk Dashboard API would panic and return `HTTP 500 Internal Server Error` when accessing the `/api/logs` endpoint without the required `start` and `end` timestamp parameters in PostgreSQL environments using table sharding. 
+
+The API now properly handles missing parameters by returning `HTTP 400 Bad Request` with a descriptive error message, improving error handling and API reliability.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed PATCH endpoint validation to reject Tyk OAS API definitions when expecting OpenAPI description</summary>
+
+Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions containing Tyk Vendor Extensions, when it should only accept standard OpenAPI descriptions. 
+
+The endpoint now properly validates incoming requests and returns `HTTP 400 Bad Request` if the Tyk Vendor Extension is present, ensuring consistent behavior with the Dashboard UI and maintaining the intended separation between OpenAPI description updates and full API configuration changes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed incorrect creation of duplicate or blank API categories</summary>
+
+Fixed an issue where duplicate or blank API categories could be created for Tyk OAS APIs when using the Dashboard API's `PUT /api/apis/oas/{API_ID}/categories` endpoint. Now, if blank or duplicate category labels are provided in the body of the `PUT` request, these will be ignored. 
+
+This matches the validation in the API Designer which does not allow blank or duplicated categories to be assigned to APIs.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed GraphQL API creation via upstream introspection when OPA rules modify requests</summary>
+
+Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body. 
+
+The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now properly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
+</details>
+</li>
+
+
+</ul>
+
+##### Security Fixes
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security
+vulnerabilities:<br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-47875" target="_blank">CVE-2024-47875</a><br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-45801" target="_blank">CVE-2024-45801</a>
+</details>
+</li>
+</ul>
+
+
+## 5.9 Release Notes 
+
+### 5.9.2 Release Notes
+
+#### Release Date 5th September 2025
+
+#### Release Highlights
+
+This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.2" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|-------------|
+| 5.9.2  | MDCB v2.8.4       | MDCB v2.8.4 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.3       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | EDP v1.14.1       | EDP all versions |
+|        | Pump v1.12.1      | Pump all versions |
+|        | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)          | 1.23 | 1.23 | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
+| [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.9.2}
+To resolve the compatibility issue between MDCB and Tyk Dashboard when Tyk OAS API definition paths contain dot (.) characters, you can choose **one** of the following upgrade paths:
+
+##### Recommended Upgrade Paths
+
+1. **Upgrade Dashboard (Preferred)**
+
+   * Upgrade to Dashboard v5.9.2 to resolve the issue.
+   * In this version, `escape_dots_in_oas_paths` defaults to `false`, and the Dashboard automatically unescapes dots in all API definitions.
+   * **No MDCB upgrade is required.**
+
+2. **Upgrade MDCB to v2.8.4 (Alternative if you cannot upgrade the Dashboard)**
+
+    - Enable `escape_dots_in_oas_paths` in both Dashboard and MDCB configurations.
+    - This ensures consistent escaping/decoding of dots across all components.
+
+If you are upgrading to 5.9.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.9.2)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.9.2
+    ```
+- Helm charts
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Dashboard. You will need to modify them to install v5.9.2.
+
+#### Changelog {#Changelog-v5.9.2}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Consistent Handling of Escaped Dots in OpenAPI Endpoint Paths</summary>
+
+Resolved a compatibility issue introduced via a fix in Dashboard v5.9.0 (LTS v5.8.3) to account for DocumentDB's handling of endpoint paths containing dots (`.`). The Dashboard now escapes dot characters (e.g., `\u002e`) when storing Tyk OAS API definitions in the database, but MDCB failed to unescape them when reading from the database. This caused the [request validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) and [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware configured on affected endpoints not to be applied. 
+
+To align MDCB's dot handling mechanism with Tyk Dashboard, a new configuration option, `escape_dots_in_oas_paths`, has been introduced in both [Dashboard]({{< ref "tyk-dashboard/configuration#escape_dots_in_oas_paths" >}}) and [MDCB]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#escape_dots_in_oas_paths" >}}):
+
+* By Default, `escape_dots_in_oas_paths` is set to `false` in both MDCB and Dashboard, restoring the Dashboard behaviour before v5.9.0 (LTS v5.8.3), where dots are unescaped.
+* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to `true`, MDCB and Dashboard encode/decode these paths consistently.
+
+Check the [Upgrade and Compatibility section]({{< ref "#upgrade-5.9.2" >}}) for details on the recommended upgrade path.
+
+</details>
+</li>
+</ul>
+
+
+### 5.9.1 Release Notes
+
+#### Release Date 14th August 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.1" >}}).
+
+#### Breaking Changes
+
+Since 5.9.0, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.1 and will be fixed in version Dashboard version 5.9.2 and MDCB version 2.8.4.
+
+#### Dependencies
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|-------------|
+| 5.9.1  | MDCB v2.8.3       | MDCB v2.8.3 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.2       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | EDP v1.14.0       | EDP all versions |
+|        | Pump v1.12.0      | Pump all versions |
+|        | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)          | 1.23 | 1.23 | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
+| [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.9.1)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.9.1
+    ```
+- Helm charts
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+#### Changelog {#Changelog-v5.9.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>URL Rewrite Middleware UI Compatibility Fix</summary>
+
+Resolved an issue in the URL Rewrite middleware UI where the absence of the `negate` field in OAS API definition configurations caused unexpected behavior. The UI now correctly interprets a missing `negate` field in URL rewrite rules as `false` by default, ensuring compatibility with APIs created in earlier versions.
+</details>
+</li>
+</ul>
+
+### 5.9.0 Release Notes
+
+#### Release Date 4th August 2025
+
+#### Release Highlights
+
+This release builds on the recent release of [Tyk 5.8.3]({{< ref "developer-support/release-notes/dashboard#583-release-notes" >}}), adding a collection of new capabilities. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.0" >}}).
+
+##### Accept JSON Web Tokens (JWTs) Issued By Multiple Identity Providers
+
+Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field, but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
+
+When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity. For full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#remotely-stored-keys-jwks-endpoint" >}}) section.
+
+**Please note that this functionality is not available for Tyk Classic APIs.**
+
+##### Compatibility with Valkey
+
+Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
+
+#### Breaking Changes
+
+1. We have implemented a [change]({{< ref "developer-support/release-notes/dashboard#Fixed-v5.9.0" >}}) to the behaviour of the `GET /api/streams/{apiID}` endpoint, which now expects an `Accept` header, not `Content-Type`.
+
+2. Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.9.0" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.9.0 and will be fixed in Dashboard version 5.9.2 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+
+#### Dependencies
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|-------------|
+| 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.2       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | EDP v1.14.0       | EDP all versions |
+|        | Pump v1.12.0      | Pump all versions |
+|        | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)          | 1.23 | 1.23 | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x    |  5.x, 6.x, 7.x    | | 
+| [Valkey](https://valkey.io/download/) | 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8  | 5, 6, 7, 8  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/) | 13.x - 17.x | 13.x - 17.x  | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.9.0)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.9.0
+    ```
+- Helm charts
+  - [tyk-charts v4.0.0]({{< ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+#### Changelog {#Changelog-v5.9.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Authenticate with Multiple JWKS Providers</summary>
+
+Added support for configuration of multiple JWKS (JSON Web Key Set) endpoints for Tyk OAS APIs. This enables the Gateway to authenticate JSON Web Tokens (JWTs) in multi-identity provider environments. The JWKS endpoints are configured in the new `jwksURIs` array in the JWT Auth `securityScheme`. This will take precedence over the existing `source` field, and existing API definitions will be automatically migrated to use the new field, while maintaining backward compatibility in case of rollback. Full support has been added to the Tyk OAS API Designer.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Valkey Database Compatibility</summary>
+
+Added compatibility with Valkey database as an alternative to Redis. This is for fresh environments, with no migration support from Redis.
+</details>
+</li>
+<li>
+<details>
+<summary>Experimental Access to Additional Input and Output Options for Tyk Streams APIs </summary>
+
+We have introduced a new Dashboard configuration option, `TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL`, to enable all experimental input and output options for Tyk Streams APIs. This is strictly provided for demos and MVPs and should not be enabled in production use.
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated to use latest kin-openapi</summary>
+
+Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensures improved compatibility, full stack interoperability, and continued support for existing OpenAPI 3.0.x specifications.
+</details>
+</li>
+</ul>
+
+##### Fixed {#Fixed-v5.9.0}
+
+<ul>
+<li>
+<details>
+<summary>Tyk Streams Endpoint Incorrectly Expected `Content-Type` Header</summary>
+
+Fixed an issue where the `/apis/streams/{apiID}` endpoint was expecting a `Content-Type` header instead of an `Accept` header for `GET` requests.
+</details>
+</li>
+</ul>
+
+---
+
+## 5.8 Release Notes
+
+### 5.8.7 Release Notes
+
+#### Release 29 October 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.7" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.7 | MDCB v2.8.5    | MDCB v2.8.5 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.4    | Sync v2.1.1 |
+|         | Helm Chart v4.0  | Helm all versions |
+| | EDP v1.14.1 | EDP all versions |
+| | Pump v1.13.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.24  |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.7)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.7
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+
+#### Changelog {#Changelog-v5.8.7}
+
+##### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Enabled Gzip Compression for Static Assets to Improve Dashboard Load Performance</summary>
+
+Implemented gzip compression for static assets (JavaScript, CSS, images, etc.) when the browser client requests for gzip with the `Accepted-Encoding` header. This significantly reduces the file size transferred when loading the Dashboard, reducing bandwidth usage and improving page load times for users.
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Fixed inconsistent sorting of Tyk OAS API versions</summary>
+
+Fixed an issue where child versions of Tyk OAS APIs were sorted inconsistently between different Dashboard screens:
+- chronologically by creation date on the APIs listing page
+- alphabetically by version name on the Manage Versions page
+
+All API version listings now consistently use alphabetical sorting by version name, providing a more predictable and user-friendly experience when navigating between different screens.
+</details>
+</li>
+
+
+<li>
+<details>
+<summary>Improved logging of Request Transform middleware in Tyk OAS debugger</summary>
+
+Fixed an issue where the API debugger did not display sufficient information about transformations applied by [Request Body Transform]({{< ref "api-management/traffic-transformation/request-body" >}}) and [Request Header Transform]({{< ref "api-management/traffic-transformation/request-headers" >}}) middleware. The debugger now shows detailed logs matching the format used for Response Transform middleware, including specific details about injected headers (e.g., "Adding: key: value") and body transformations, providing better visibility into request processing for debugging purposes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed GraphQL API creation via upstream introspection when OPA rules modify requests</summary>
+
+Fixed an issue where creating GraphQL APIs using upstream introspection in the Dashboard could fail with `HTTP 502 Bad Gateway` errors when OPA rules (typically using `patch_request`) modified the introspection request body.
+
+The problem occurred because the Dashboard did not recalculate the `Content-Length` header after OPA modifications, causing length mismatches that resulted in proxy errors. The Dashboard now properly recalculates the content length for modified introspection requests, ensuring reliable GraphQL API creation regardless of OPA rule configurations.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Category Validation for Tyk OAS APIs via Dashboard API</summary>
+
+Resolved an issue where the [Dashboard API]({{< ref "tyk-dashboard-api" >}}) allowed creation of empty or duplicate categories when updating Tyk OAS APIs through the `PUT /api/apis/oas/{API_ID}/categories` endpoint.
+The API now properly validates category labels, automatically filtering out blank entries and duplicates to ensure data consistency. This update aligns the Dashboard API behavior with the existing validation rules in the API Designer interface.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dashboard Analytics and Monitoring Fixes</summary>
+
+- **Fixed non-clickable endpoint rows in the Activity page**: Fixed an issue where selecting an endpoint in the "Most Popular Endpoints" list on the "Activity Overview" screen did not direct the user to the      "Activity by Endpoint" screen.
+- **Fixed incorrect error code descriptions in API activity dashboard**: Error codes now display correct descriptions (409 shows "Conflict" instead of "Rate limit or quota exceeded", and missing descriptions for 502, 504, 499, and 422 have been added).
+- **Fixed unicode character display in Activity Logs view**: Non-ASCII characters (Cyrillic, Arabic, Hindi, Telugu, Yoruba, etc.) now display correctly instead of showing garbled text when viewing request/response logs.
+- **Fixed date range filtering showing extra day in analytics charts**: Date range selectors now accurately reflect the selected end date instead of automatically including the following day's data in charts and legends.
+- **Fixed incorrect data tables being queried when SQL table sharding is enabled**: Dashboard now correctly queries sharded tables (tyk_analytics_YYYYMMDD) instead of the main tyk_analytics table when `TYK_DB_STORAGE_LOGS_TABLESHARDING=true` is configured, ensuring analytics data displays properly with SQL database sharding.
+- **Fixed incorrect date labels and data aggregation in analytics charts**: Fixed multiple issues in the analytics aggregation layer when using PostgreSQL backend that caused incorrect chart rendering and service problems. Resolved problems, including hourly charts showing nonsensical dates like "30 Nov 1899", monthly charts displaying incorrect months, incomplete time-series data due to improper date padding, and API activity being incorrectly split across multiple rows.
+</details>
+</li>
+
+</ul>
+
+### 5.8.6 Release Notes
+
+#### Release Date 25th September 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.6" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.6 | MDCB v2.8.4    | MDCB v2.8.4 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.3    | Sync v2.1.1 |
+|         | Helm Chart v4.0  | Helm all versions |
+| | EDP v1.14.1 | EDP all versions |
+| | Pump v1.12.2 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.24  |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.6)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.6
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.6](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.6)
+
+#### Changelog {#Changelog-v5.8.6}
+
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgrade Tyk Dashboard to Golang 1.24 </summary>
+
+The Tyk Dashboard has been updated to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying current with the latest Go versions.
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Missing Response Middleware in Tyk OAS API Debugger</summary>
+
+Fixed an issue where the Tyk OAS API Debugger (Test Your API panel) only displayed request middleware execution, omitting response middleware from the debug output. The test debugger now correctly shows both request and response middleware execution, providing complete visibility into the entire request-response cycle for better API testing and troubleshooting.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed OpenAPI `servers` section handling for regex-based custom domains</summary>
+
+Fixed an issue where custom domains containing regular expressions were not correctly parsed and stored in the `servers` section of OpenAPI descriptions for Tyk OAS APIs. The Dashboard now properly converts regex-based domains into valid OpenAPI `servers` entries with appropriate variables, ensuring accurate API documentation and preventing validation errors during API editing. This fix includes enhanced syntax validation for regular expression (regex) patterns and improved capture group handling, which previously could cause Gateway crashes.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed false error reporting for Response Body Transform middleware in API Debugger</summary>
+
+Fixed an issue where the Tyk OAS API Debugger (Test Your API panel) incorrectly reported errors for endpoints using Response Body Transform middleware, even when API calls completed successfully. The debugger now accurately displays the execution status and eliminates false error messages that could mislead developers during API testing and troubleshooting.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed PATCH endpoint validation to reject Tyk OAS API definitions when expecting OpenAPI description</summary>
+
+Fixed an inconsistency where the Dashboard API's `PATCH /api/apis/oas/{apiId}` endpoint incorrectly accepted full Tyk OAS API definitions containing Tyk Vendor Extensions, when it should only accept standard OpenAPI descriptions. The endpoint now properly validates incoming requests and returns `HTTP 400 Bad Request` if the Tyk Vendor Extension is present, ensuring consistent behavior with the Dashboard UI and maintaining the intended separation between OpenAPI description updates and full API configuration changes.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Dashboard API panic when accessing logs without timestamp parameters in PostgreSQL</summary>
+
+Fixed an issue where the Tyk Dashboard API would panic and return `HTTP 500 Internal Server Error` when accessing the `/api/logs` endpoint without the required `start` and `end` timestamp parameters in PostgreSQL environments using table sharding. The API now properly handles missing parameters by returning `HTTP 400 Bad Request` with a descriptive error message, improving error handling and API reliability.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed orphaned Tyk OAS API versions visibility when using PostgreSQL</summary>
+
+Fixed an issue where orphaned child versions of a Tyk OAS API would disappear from the Dashboard UI after their base API was deleted, specifically when using PostgreSQL as the datastore. Orphaned Tyk OAS API versions now remain visible in the Dashboard, ensuring consistent behavior across all supported datastores and preventing loss of access to existing API versions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed cross-interface compatibility for keys and policies with Tyk OAS and non-versioned Tyk Classic APIs</summary>
+
+Fixed an issue where keys and policies created or updated via the Dashboard API were sometimes rejected by the Dashboard UI, and vice versa, due to inconsistent handling of the `versions` field for non-versioned Tyk Classic APIs. The issue occurred because the API and UI used different formats when populating the versions list in access rights. Both interfaces now consistently accept either `null` or `[]` (empty array) values in the `versions` field of the access control list, ensuring seamless interoperability between API and UI workflows for policy and key management. Tyk OAS APIs use a [different approach]({{< ref "api-management/api-versioning#how-api-versioning-works-with-tyk" >}}) to versioning, with each (base or child) version having a unique API ID that is added to the access list.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Policy and Key Management UI for versioned APIs</summary>
+
+Fixed UI issues in policy and key management that caused confusion and unnecessary validation errors. The API Versions field in the Dashboard UI now appears only when relevant - specifically for versioned Tyk Classic APIs. The field is no longer displayed for Tyk OAS APIs or non-versioned Tyk Classic APIs, eliminating confusion about when version selection is required and preventing policies and keys from failing to save due to irrelevant validation requirements.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed `/versions` endpoint to only accept valid Tyk OAS base APIs</summary>
+
+Fixed an issue where the `/api/apis/oas/{apiId}/versions` endpoint incorrectly returned version data for Tyk Classic APIs and non-versioned Tyk OAS APIs. The endpoint now properly validates requests and returns `HTTP 422 Unprocessable Entity` when the target API is not a valid Tyk OAS base API, ensuring the endpoint only returns meaningful version information.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed multiple issues with the creation of child versions of Tyk OAS APIs</summary>
+
+Fixed several issues that affected the creation of new child versions of Tyk OAS APIs to ensure reliable version creation and proper validation:
+
+UI and API Creation:
+- Resolved an issue that prevented users from creating new versions via the API Designer's Manage Versions screen
+- Added validation for the `base_api_id` parameter - providing a non-existent ID would previously create the API successfully, but leave it invisible in the Dashboard UI
+- Added stricter validation for version names - users can no longer create API versions without specifying a valid `new_version_name`, preventing unusable or empty version entries
+- Improved error messaging when the `base_api_version_name` parameter is missing or incorrectly specified
+
+Version Management:
+- Fixed an issue where creating new child versions would incorrectly reset the default version back to the base API, overriding previously configured settings
+
+The system now provides comprehensive validation with clear error responses (`HTTP 400 Bad Request` and `HTTP 422 Unprocessable Entity`), ensures that all API versions have meaningful identifiers, and maintains proper default version settings during the creation of child versions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Dashboard default page_size behavior</summary>
+
+Fixed an issue where the Tyk Dashboard did not correctly apply a default `page_size` value when none was specified in the Dashboard configuration, potentially causing unexpected pagination behavior. The Dashboard now properly defaults to a page size of 10 items as documented, ensuring consistent and predictable pagination across all Dashboard views.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed delayed application of global webhook changes for Tyk OAS APIs</summary>
+
+Fixed an issue where updates to [global webhooks]({{< ref "api-management/gateway-events#local-and-global-webhooks" >}}) were not immediately applied to Tyk OAS APIs using those webhooks. When global webhook configurations were modified, the Gateway would continue using the previous settings for affected Tyk OAS APIs until a manual reload occurred. The system now automatically triggers a Gateway reload for all impacted Tyk OAS APIs when global webhook configurations are updated, ensuring that the new webhook settings take effect immediately.
+</details>
+</li>
+
+</ul>
+
+
+##### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security
+vulnerabilities:<br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-47875" target="_blank">CVE-2024-47875</a><br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-45801" target="_blank">CVE-2024-45801</a>
+</details>
+</li>
+</ul>
+
+### 5.8.5 Release Notes
+
+#### Release Date 18th August 2025
+
+#### Release Highlights
+
+This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.5" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.5 | MDCB v2.8.4     | MDCB v2.8.4 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.1 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.5}
+
+To resolve the compatibility issue between MDCB and Tyk Dashboard when OAS API definition paths contain dot (.) characters, you can choose **one** of the following upgrade paths:
+
+##### Recommended Upgrade Paths
+
+1. **Upgrade Dashboard (Preferred)**
+
+   * Upgrade to Dashboard v5.8.5 to resolve the issue.
+   * In this version, `escape_dots_in_oas_paths` defaults to `false`, and the Dashboard automatically unescapes dots in all API definitions.
+   * **No MDCB upgrade is required.**
+
+2. **Upgrade MDCB to v2.8.4 (Alternative if you cannot upgrade the Dashboard)**
+
+    - Enable `escape_dots_in_oas_paths` in both Dashboard and MDCB configurations.
+    - This ensures consistent escaping/decoding of dots across all components.
+
+If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.5)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.5
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.5](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.5)
+
+#### Changelog {#Changelog-v5.8.5}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Consistent Handling of Escaped Dots in OpenAPI Endpoint Paths</summary>
+
+Resolved a compatibility issue introduced via a fix in Dashboard v5.8.3 to account for DocumentDB's handling of endpoint paths containing dots (`.`). The Dashboard now escapes dot characters (e.g., `\u002e`) when storing Tyk OAS API definitions in the database, but MDCB failed to unescape them when reading from the database. This caused the [request validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) and [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware configured on affected endpoints not to be applied. 
+
+To align MDCB's dot handling mechanism with Tyk Dashboard, a new configuration option, `escape_dots_in_oas_paths`, has been introduced in both Dashboard and MDCB:
+
+* By Default, `escape_dots_in_oas_paths` is set to `false` in both MDCB and Dashboard, restoring the Dashboard behaviour before v5.8.3, where dots are unescaped.
+* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to `true`, MDCB and Dashboard encode/decode these paths consistently.
+
+Check the [Upgrade and Compatibility section]({{< ref "#upgrade-5.8.5" >}}) for details on the recommended upgrade path.
+</details>
+</li>
+</ul>
+
+### 5.8.4 Release Notes
+
+#### Release Date 13th August 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.4" >}}).
+
+#### Breaking Changes
+
+Since 5.8.3, Tyk Dashboard automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.4 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.4 | MDCB v2.8.3     | MDCB v2.8.3 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.4)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.4
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.4}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>URL Rewrite Middleware UI Compatibility Fix</summary>
+
+Resolved an issue in the URL Rewrite middleware UI where the absence of the `negate` field in OAS API definition configurations caused unexpected behavior. The UI now correctly interprets a missing `negate` field in URL rewrite rules as `false` by default, ensuring compatibility with APIs created in earlier versions.
+</details>
+</li>
+</ul>
+
+---
+
+### 5.8.3 Release Notes
+
+#### Release Date 15th July 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.3" >}}) below.
+
+#### Breaking Changes
+
+Tyk Dashboard now automatically escapes dots (`.`) in OpenAPI endpoint paths (e.g., <code>/v1.0</code> becomes <code>/v1\u002e0</code>) before saving to the database. This was introduced to support DocumentDB users as explained in the [change log]({{< ref "#Changelog-v5.8.3" >}}). MDCB 2.8.3 and earlier fails to properly decode these escaped paths when reading from the database. This causes the Validate Request and Mock Response middleware to malfunction for endpoints where the path contains dots; other middleware continues to work. The issue affects all MDCB deployments with Dashboard 5.8.3 and is fixed in version Dashboard version 5.8.5 and MDCB version 2.8.4. We strongly recommend that users upgrade to the latest versions of Tyk components.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.3)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.3
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.3}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Automatic Configuration of Middleware when Importing OpenAPI Description</summary>
+
+Fixed an issue where the automatic configuration options (authentication, mock response, etc) had no effect when creating an API from an OpenAPI document if the `listenPath` was not also specified via query parameter.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed the Search Function on the Traffic Activity by Key page when using MongoDB</summary>
+
+Fixed an issue where the Search function did not work correctly on the Traffic Activity by Key page that was observed only when using MongoDB for analytics storage. This was due to the specific syntax required by MongoDB for regular expressions.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed an Incompatibility with DocumentDB for Certain Endpoint Names</summary>
+
+Fixed an issue where endpoints that contain dots in the path name failed with an error when creating or updating an API. The issue was caused by the underlying storage not accepting dots as valid URI characters and was observed only with DocumentDB.
+</details>
+</li>
+<li>
+<details>
+<summary>Preserve Categories and Ownership on Tyk OAS Update</summary>
+
+Fixed an issue where API Categories and Ownership could be lost when applying an updated OpenAPI description to a Tyk OAS API.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Middleware Not Triggering in Tyk OAS Debugger</summary>
+
+Fixed an issue where some middleware (API-level rate limit and mock response) were not triggered correctly when using the Tyk OAS API designer's built in debugger to test APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed Empty Fields in Tyk Classic to Tyk OAS Conversion</summary>
+
+Fixed an issue that occurred when converting Tyk Classic API definitions to Tyk OAS format, which could result in unnecessary empty fields in the Tyk OAS API definition.
+</details>
+</li>
+<li>
+<details>
+<summary>Certificate API Filtering Added so that Relevant Certificates are Available when Configuring Upstream mTLS in Tyk OAS API Designer</summary>
+
+Fixed an issue where the Tyk OAS API designer did not always display all of the appropriate certificates for use in Gateway to Upstream connections. In this scenario Tyk is the client and so requires the private key to sign requests to the upstream server. The full list of certificates with private keys registered in the Tyk Certificate Store will now be available when configuring your API.
+
+For Dashboard API users, we’ve added a new optional `filter` query parameter to the `/api/certs` endpoint that will can be used to retrieve a subset of the certificate based on the presence of a Private Key (PK):
+
+- `omit`: (Default) Returns all certificates.
+- `with_pk`: Returns only certificates that include a Private Key.
+- `without_pk`: Returns only certificates that do not include a Private Key.
+
+For example:
+
+- To retrieve the first page of certificates: `/api/certs?mode=detailed&p=1`
+- To retrieve the first page of certificates with a Private Key: `/api/certs?mode=detailed&p=1&filter=with_pk`
+- To retrieve the first page of certificates without a Private Key: `/api/certs?mode=detailed&p=1&filter=without_pk`
+
+This new filtering capability provides more granular control over which certificates you retrieve from the Tyk Certificate Store. There is no change in behaviour if the `filter` parameter is omitted.
+</details>
+</li>
+<li>
+<details>
+<summary>Use YAML Formatted OpenAPI Description to Update a Tyk OAS API</summary>
+
+We’ve fixed an issue when importing OpenAPI descriptions using the PATCH method, so you can now update your Tyk OAS APIs using either YAML or JSON formatted OpenAPI descriptions.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Validation When Importing Tyk Streams API Definitions</summary>
+
+Fixed an issue where Dashboard did not correctly import Tyk Streams API definitions, skipping validation of the configuration.  
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Incorrect Auth Configuration when Importing OpenAPI Description</summary>
+
+Fixed an error in the Tyk OAS API Designer that added invalid config to the API definition when enabling Tyk OAuth 2.0 authentication method for an API that has an OAuth configuration in the OpenAPI description's securitySchemes.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Experience for Tyk Streams APIs in API Definition Editor</summary>
+
+Fixed some issues when using the API Definition Editor to view and modify Tyk Streams APIs. 
+</details>
+</li>
+<li>
+<details>
+<summary>Various fixes to the Dashboard UI</summary>
+
+We have implemented various fixes and improvements in the Dashboard UI to enhance usability.
+
+- The Tyk OAS API designer now fully supports the use of Key-Value storage [references]({{< ref "tyk-configuration-reference/kv-store#from-api-definitions" >}}) that are valid in the API definition.
+- Improved the error messages displayed in the Dashboard UI when there are problems importing OpenAPI documents - now they clearly explain the issue and provide guidance on how to resolve it.
+- Fixed an issue where users couldn't register Event Handlers in Tyk OAS API Designer.
+
+</details>
+</li>
+</ul>
+
+---
+
+### 5.8.2 Release Notes
+
+#### Release Date 1st July 2025
+
+#### Release Highlights
+
+This is a version bump to align with Gateway v5.8.2, no changes have been implemented in this release.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.2 | MDCB v2.8.1     | MDCB v2.8.1 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.2)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.2
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.2}
+
+No changes in this release.
+
+
+---
+
+### 5.8.1 Release Notes
+
+#### Release Date 9 May 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.1" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.1 | MDCB v2.8.1     | MDCB v2.8.1 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.1)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.1
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.1}
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>License allocation now works across multiple dashboards</summary>
+
+Fixed an issue where the Dashboard might not allow the correct number of Gateways to connect. This was due to a conflict with license management in deployments with multiple Dashboards which has now been resolved.
+</details>
+</li>
+<li>
+<details>
+<summary>Admin permissions correctly assigned during SSO login</summary>
+
+Fixed an issue where existing admin users could have their permissions overwritten by SSO group settings during login. Admin users now retain their original permissions when `sso_enable_user_lookup` is enabled. Group permissions are only applied to new or non-admin users.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed import of Tyk OAS API definitions in YAML format</summary>
+
+Fixed an issue that prevented creation of an API from a YAML format Tyk OAS API definition. You can now export your Tyk OAS API definition in YAML or JSON format and use the content of this file to create a new API.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed broken cancel button in Tyk Classic to Tyk OAS flow</summary>
+
+Fixed an issue when using API Designer to migrate an API from Tyk Classic to Tyk OAS. Previously the cancel button did not work in the pop-up when promoting a staged API.
+</details>
+</li>
+<li>
+<details>
+<summary>Multi-part OpenAPI descriptions in YAML format can now be imported</summary>
+
+Fixed an issue that prevented import of multi-part OpenAPI descriptions in YAML format.
+</details>
+</li>
+<li>
+<details>
+<summary>Various fixes to the Dashboard UI</summary>
+  
+We have implemented various fixes and improvements in the Dashboard UI to enhance usability.
+</details>
+</li>
+</ul>
+
+##### Security Fixes 
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority [CVEs](https://www.cve.org/) identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2025-46569](https://nvd.nist.gov/vuln/detail/CVE-2025-46569)
+</details>
+</li>
+</ul>
+
+### 5.8.0 Release Notes
+
+#### Release Date 28 March 2025
+
+#### Release Highlights
+
+With Tyk 5.8.0 we are delighted to unlock the power and flexibility of Tyk OAS for all users, with full feature parity with the legacy Tyk Classic style for REST APIs. We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+
+##### Full support for API configuration using Tyk OAS
+
+We have completed the journey with Tyk OAS that started back in Tyk 4.1 - and now anything that you can configure using the Tyk Classic API definition is also available in the Tyk OAS API definition. Tyk OAS is now the recommended API style for all REST services, with Tyk Classic recommended for use only for GraphQL and TCP services.
+
+With Tyk OAS we combine the industry standard OpenAPI description with the Tyk Vendor Extension, which encapsulates all of the Tyk Gateway settings that cannot be inferred from the OpenAPI Specification (OAS). You can keep your service description (OAS) as source of truth and update the OpenAPI description part of a Tyk OAS API independently from the Tyk Vendor Extension - no need to unpick distributed vendor extensions from your OAS. For more details, please see the [documentation]({{< ref "api-management/gateway-config-tyk-oas" >}}).
+
+Now that we have achieved this milestone we are keen to support users in migrating their existing Tyk Classic API portfolio to Tyk OAS and offer methods to do this both within the Tyk Dashboard Classic API Designer and via the Tyk Dashboard API. For more details of the migration tool, please see the [documentation]({{< ref "api-management/migrate-from-tyk-classic" >}}).
+
+##### Enhanced upstream authentication
+
+We are pleased to introduce advanced options for your Tyk OAS APIs when it comes to authenticating with the upstream service - a critical feature for integration with many partner services. With Tyk 5.8.0 you are now able to configure Tyk to act as an OAuth 2.0 client, retrieving an access token via the Client Credentials grant method. For legacy integrations Tyk can also support OAuth 2.0 Resource Owner Password Credentials grant and Basic Authentication methods. For more details please see the [documentation]({{< ref "api-management/upstream-authentication" >}}).
+
+##### Enhanced user experience within the Tyk Dashboard API Designer
+
+To accompany the launch of fully featured Tyk OAS capabilities, we have made a raft of improvements in the Tyk Dashboard GUI. There's an all-new API test and debug facility in the API designer, allowing you to issue requests to your APIs and then examine the debug traces produced by the Gateway without leaving the Tyk Dashboard. Our new, enhanced code editor allows you to work in YAML or JSON. We've also given the UI a spring clean to improve the usability.
+
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.0 | MDCB v2.8.0     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.0)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.0
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>YAML Support for Tyk OAS</summary>
+
+Tyk Dashboard's API and UI now support both YAML and JSON for Tyk OAS CRUD operations, giving users greater flexibility in managing their APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Added Support for External References in OpenAPI Descriptions</summary>
+
+We've enhanced Tyk's OpenAPI handling to allow the import of multi-part OpenAPI documents. This allows users to import OpenAPI descriptions that are split across multiple files, making it easier to manage complex API specifications.
+</details>
+</li>
+<li>
+<details>
+<summary>API Testing & Debugging with Tyk OAS</summary>
+
+We’ve added built-in testing and debugging capabilities to the Tyk OAS API Designer, making validating and troubleshooting your APIs easier. With a floating debugging panel and an endpoint dropdown, you can test your endpoints within the Dashboard UI.
+</details>
+</li>
+<li>
+<details>
+<summary>Support for Read/Write Endpoints on RDS for Analytics and Logs</summary>
+
+Users can now configure separate RDS endpoints for read and write operations, optimizing database performance by handling reads on replicas and writes on the primary instance.
+
+New Configuration Fields:
+
+- **ReadConnectionString**: Defines the connection string for read operations. It is only used if `ConnectionString` is not set.
+- **WriteConnectionString**: Defines the connection string for write operations. It is only used if `ConnectionString` is not set.
+
+For backward compatibility, if `ConnectionString` is set, it will take precedence over the new fields.
+</details>
+</li>
+<li>
+<details>
+<summary>Certificate Support for GraphQL Introspection During API Creation</summary>
+
+When creating a GraphQL API in the API designer, you can now attach certificates to be used during introspection of mTLS-protected upstream services. This simplifies the creation of GraphQL APIs by reducing the number of steps, as previously you had to use a dummy upstream during the initial creation and then reconfigure the API to perform introspection later.
+</details>
+</li>
+<li>
+<details>
+<summary>Convert Tyk Classic API Definitions to Tyk OAS</summary>
+
+Introduced a new [API migration facility]({{< ref "api-management/migrate-from-tyk-classic" >}}) to the Tyk Dashboard API and API Designer enabling a seamless transition from Tyk Classic to Tyk OAS. Both methods offer direct and staged conversions of individual APIs. The Tyk Dashboard API also supports bulk API conversions.
+
+Note that there is a known issue where the Cancel button in the Promote Staged API confirmation modal does not function. If you select Promote Staged API but decide not to proceed, you will need to use your browser’s Back button to exit the modal. This issue will be resolved in the next patch.
+</details>
+</li>
+<li>
+<details>
+<summary>Upstream Authentication Support in Tyk Dashboard</summary>
+
+Tyk Dashboard now supports integration with upstream services secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing flexibility in securing upstream authentication flows.
+</details>
+</li>
+<li>
+<details>
+<summary>Quick Start Wizard for New Dashboard Users on Tyk Cloud</summary>
+
+We have introduced a guided onboarding experience for Tyk Cloud users to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics - ensuring you can navigate the Dashboard and unlock its full potential from day one.
+</details>
+</li>
+<li>
+<details>
+<summary>View Audit Logs in the Dashboard UI</summary>
+
+Tyk Dashboard now provides enhanced visibility into user activity by allowing audit logs to be stored in a database and viewed directly in the Dashboard UI. Previously, these logs were only written to local files, limiting accessibility. With this update, admins can filter and review user actions more easily, improving security, and compliance tracking.
+</details>
+</li>
+
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Support for PostgreSQL 17</summary>
+
+The Dashboard now supports PostgreSQL 17, ensuring compatibility with the latest database version.
+</details>
+</li>
+<li>
+<details>
+<summary>Upgraded to Golang 1.23</summary>
+Tyk Dashboard now runs on Golang 1.23, bringing security and performance improvements. Key changes include:
+
+- unbuffered Timer/Ticker channels
+- removal of 3DES cipher suites
+- updates to X509KeyPair handling.
+
+**You may need to adjust your setup for compatibility**. For more details, please see the official Go [release notes](https://go.dev/doc/go1.23).
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Dashboard Code Editor</summary>
+
+Upgraded the code editor component library and enhanced its styling for a better user experience. With this upgrade comes the facility to work in YAML or JSON and to switch seamlessly between formats.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Labelling in Tyk Dashboard</summary>
+
+We have made minor adjustments to labels within the Dashboard UI to enhance clarity.
+</details>
+</li>
+<li>
+<details>
+<summary>"Manage Account" Link from Dashboard</summary>
+
+The "Manage Account" link in the Tyk Dashboard, which previously directed users to an outdated cloud login page, has been removed. This improves the user experience by eliminating confusion around account management and ensuring a more cohesive navigation flow between the Dashboard and Tyk Cloud.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Form Performance in API Designer</summary>
+
+We’ve optimized form validation in the API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
+</details>
+</li>
+<li>
+<details>
+<summary>Updated Default Configuration for Tyk Operator and Sync Compatibility</summary>
+
+Modified the default values of `allow_explicit_policy_id` and `enable_duplicate_slugs` to `true` in the example Dashboard configuration file, to eliminate config problems when deploying Tyk Sync and Tyk Operator. This has no impact on existing deployments.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed unsupported TLS options in Tyk Classic API Designer</summary>
+
+Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
+
+Updated OPA rules in the Dashboard to allow all users to reset their own access tokens and view their user data, improving self-service while maintaining security.
+Note that users with custom OPA rules are strongly advised to update their configurations to include the `is_self_key_reset` and `is_me` helper rules. Additionally, they should modify their rules to exclude cases where `is_self_key_reset` or `is_me` apply, in order to enable this functionality.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Control for Dashboard API Credentials</summary>
+
+Users can now always access their own Dashboard API credentials, regardless of permissions. Admins' ability to view or reset other users' credentials is now strictly controlled by security flags.
+</details>
+</li>
+</ul>
+
+---
+
 ## 5.7 Release Notes
+
+### 5.7.3 Release Notes
+
+#### Release Date 05 June 2025
+
+#### Release Highlights
+
+This is a version bump to align with Gateway v5.7.3, no changes have been implemented in this release.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.7.3 | MDCB v2.7.2     | MDCB v2.5.1 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.2    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.7.3)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.7.3
+    ```
+- Helm charts
+  - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+#### Changelog {#Changelog-v5.7.3}
+
+No changes in this release.
+
 
 ### 5.7.2 Release Notes
 
@@ -49,7 +1884,7 @@ This release focuses mainly on a security fix. For a comprehensive list of chang
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.2}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -63,21 +1898,22 @@ There are no breaking changes in this release.
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.23 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 
 There are no deprecations in this release
 
-#### Upgrade instructions {#upgrade-5.7.2}
+#### Upgrade instructions
 If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -139,7 +1975,7 @@ This release focuses mainly on bug fixes. For a comprehensive list of changes, p
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -153,21 +1989,22 @@ There are no breaking changes in this release.
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 
 We have deprecated the obsolescent `http_server_options.prefer_server_ciphers` configuration option. This legacy control no longer has any effect on the underlying library and users are advised to remove this setting from their configurations.
 
-#### Upgrade instructions {#upgrade-5.7.1}
+#### Upgrade instructions
 If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -221,7 +2058,7 @@ Tyk 5.7.0 enhances Audit Log management with new features designed for efficienc
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -238,7 +2075,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -248,22 +2085,51 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
-<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
 
-Additionally, SQLite has reached its End of Life in this release, enabling a fully static, CGO-free Tyk Dashboard optimised for RHEL8. Sqlite was previously recommended only to be used in basic proofs of concept. Now, for such scenarios and for production, we recommend migrating to PostgreSQL or MongoDB for better scalability and support.
-<!-- Optional section!
-Used to share and notify users about our plan to deprecate features, configs etc.
-Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-<!-- ###### Future deprecations
--->
-#### Upgrade instructions {#upgrade-5.7.0}
+This section highlights features and dependencies that have been deprecated.
+
+##### Authentication Methods
+
+We’ve deprecated the following authentication methods in this release:
+
+* **[External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})**
+
+  * Tyk Classic: `external_oauth`
+  * Tyk OAS: `server.authentication.securitySchemes.externalOAuth`
+
+* **[OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})**
+
+  * Tyk Classic: `auth_configs.oidc`
+  * Tyk OAS: `server.authentication.oidc`
+
+We recommend migrating to **[JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}})** for improved flexibility and long-term support.
+
+##### SQLite End of Life
+
+SQLite has reached **End of Life** for the Tyk Dashboard in this release. It was previously intended for **proof-of-concept** use only and is no longer supported.
+
+We now recommend using **PostgreSQL** or **MongoDB** for both development and production deployments, as they provide greater scalability and long-term support.
+
+**Why This Matters**
+
+* SQLite is written in **C**, and using it in Go projects typically requires [**CGO**](https://golang.org/cmd/cgo/), which enables Go code to call C libraries.
+* As long as the Dashboard had support for SQLite, CGO was required.
+* With SQLite removed, the Tyk Dashboard can now be compiled with `CGO_ENABLED=0`, resulting in a **fully static binary**.
+
+This change enables:
+
+* Easier cross-platform builds
+* Better compatibility with **RHEL8**
+* Fewer dependencies and improved portability
+
+#### Upgrade instructions
 If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -348,7 +2214,7 @@ Introduced a form on the Tyk Dashboard that allows users to easily contact Tyk s
 
 We have enhanced security for customers in highly regulated industries by introducing JSON Web Encryption (JWE) support for OIDC single sign-on (SSO). This ensures that tokens used in authentication flows are securely encrypted, providing an additional layer of protection.
 
-[Setup guide for JWE OIDC SSO]({{< ref "api-management/external-service-integration#log-into-an-app-with-github-oauth" >}})
+[Setup guide for JWE OIDC SSO]({{< ref "api-management/single-sign-on-social-idp#log-into-an-app-with-github-oauth" >}})
 </details>
 </li>
 <li>
@@ -397,7 +2263,7 @@ Removed an unnecessary field from the API Designer page under the Streams sectio
 <details>
 <summary>Automatic configuration of request validation for path-level parameters during import of OpenAPI description</summary>
 
-Tyk will now detect path-level parameters in the OpenAPI description and can be set to enable and configure the [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware automatically for these. Previously this automatic detection only worked for method-level parameters in the OpenAPI description.
+Tyk will now detect path-level parameters in the OpenAPI description and can be set to enable and configure the [Request Validation]({{< ref "api-management/traffic-transformation/request-validation#request-validation-using-tyk-oas" >}}) middleware automatically for these. Previously this automatic detection only worked for method-level parameters in the OpenAPI description.
 </details>
 </li>
 <li>
@@ -466,7 +2332,7 @@ This is a version bump to align with Gateway v5.6.1, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.6.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -481,7 +2347,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.6.1}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -491,16 +2357,17 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.6.1}
+#### Upgrade instructions
 
 If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -510,7 +2377,7 @@ If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.6.1
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
+  - [Tyk Charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
 #### Changelog {#Changelog-v5.6.1}
 
@@ -524,7 +2391,7 @@ No changes in this release.
 
 #### Release Highlights
 
-We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.6.0">}}) below.
+We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.6.0" >}}) below.
 
 ##### Per endpoint Rate Limiting for clients
 
@@ -543,7 +2410,7 @@ We’ve tightened up the rules that govern a user's ability to create admin user
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.6.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -560,7 +2427,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.6.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -570,10 +2437,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -595,7 +2463,7 @@ This feature serves a similar purpose to our JWT Authentication and may lead to 
 The low adoption of this option, along with its functional overlap with other supported authentication methods, prompts us to deprecate OIDC middleware to reduce complexity within the platform. We recommend users transition to JWT Authentication.
 
 
-We encourage users to switch to the recommended alternatives. For more detailed information, please refer to the [Documentation](https://tyk.io/docs//api-management/client-authentication#integrate-with-openid-connect-deprecated/)
+We encourage users to switch to the recommended alternatives. For more detailed information, please refer to the [Documentation]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})
 
 
 <!-- Optional section!
@@ -603,7 +2471,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
 <!-- ###### Future deprecations
 -->
-#### Upgrade instructions {#upgrade-5.6.0}
+#### Upgrade instructions
 If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -612,7 +2480,7 @@ If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.6.0
   ```
 - Helm charts
-  - [tyk-charts v2.1.0]({{<ref "developer-support/release-notes/helm-chart#210-release-notes">}})
+  - [tyk-charts v2.1.0]({{< ref "developer-support/release-notes/helm-chart#210-release-notes" >}})
 
 #### Changelog {#Changelog-v5.6.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -744,7 +2612,7 @@ This release replaces Tyk Dashboard 5.5.1 which was accidentally released as a n
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.2}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -758,21 +2626,22 @@ There are no breaking changes in this release.
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.2}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.5.2}
+#### Upgrade instructions
 
 If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -782,9 +2651,9 @@ If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.5.2
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
+  - [Tyk Charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
-#### Changelog {#Changelog-v5.5.2}
+#### Changelog
 
 No changes in this release.
 
@@ -802,7 +2671,7 @@ This is a version bump to align with Gateway v5.5.1, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -816,21 +2685,22 @@ There are no breaking changes in this release.
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.1}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.5.1}
+#### Upgrade instructions
 
 If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -840,7 +2710,7 @@ If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.5.1
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
+  - [Tyk Charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
 #### Changelog {#Changelog-v5.5.1}
 
@@ -854,7 +2724,7 @@ No changes in this release.
 
 #### Release Highlights
 
-We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
+We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0" >}}) below.
 
 ##### New Tyk brand identity
 
@@ -869,7 +2739,7 @@ Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -886,7 +2756,7 @@ An illustrative example is shown below. -->
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -896,10 +2766,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -909,7 +2780,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
 <!-- ###### Future deprecations
 -->
-#### Upgrade instructions {#upgrade-5.5.0}
+#### Upgrade instructions
 If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
@@ -1036,7 +2907,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 **Attention: Please read this section carefully**
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.4.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -1053,7 +2924,7 @@ An illustrative example is shown below. -->
 | | Pump v1.10.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.4.0}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1063,10 +2934,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -1076,7 +2948,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
 <!-- ###### Future deprecations
 -->
-#### Upgrade instructions {#upgrade-5.4.0}
+#### Upgrade instructions
 If you are upgrading to 5.4.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 Add upgrade steps here if necessary.
 
@@ -1100,7 +2972,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
 - Helm charts
   - [tyk-charts v1.5]({{< ref "developer-support/release-notes/helm-chart#150-release-notes" >}})
 
-#### Changelog {#Changelog-v5.4.0}
+#### Changelog
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
@@ -1236,19 +3108,183 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 ## 5.3 Release Notes
 
+### 5.3.12 Release Notes
+
+#### Release Date 12th September 2025
+
+#### Release Highlights
+
+This is a version bump to align with Gateway v5.3.12, no changes have been implemented in this release.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.12 | MDCB v2.8.4     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.3.12, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.12)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.3.12
+    ```
+
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.3.12}
+
+No changes in this release.
+
+---
+
+### 5.3.11 Release Notes
+
+#### Release Date 7 May 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.11" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.11 | MDCB v2.8.0     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.11)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.3.11
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v5.3.11}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>License allocation now works across multiple dashboards</summary>
+
+Fixed an issue where the Dashboard might not allow the correct number of Gateways to connect. This was due to a conflict with license management in deployments with multiple Dashboards which has now been resolved.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Control for Dashboard API Credentials</summary>
+
+Users can now always access their own Dashboard API credentials, regardless of permissions. Admins’ ability to view or reset other users’ credentials is now strictly controlled by security flags
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
+
+Updated OPA rules in the Dashboard to allow all users to reset their access tokens and view their user data, improving self-service while maintaining security.
+
+Users with custom OPA rules are <b>strongly advised</b> to add the `is_self_key_reset` and `is_me` helper rules to their configuration. They should then modify existing relevant rules to exclude cases where `is_self_key_reset` or `is_me` apply, to enable this functionality.
+</details>
+</li>
+<li>
+<details>
+<summary>Various fixes to the Dashboard UI</summary>
+
+We have implemented various fixes and improvements in the Dashboard GUI to enhance usability.
+</details>
+</li>
+</ul>
+
+#### Security Fixes 
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2025-46569](https://nvd.nist.gov/vuln/detail/CVE-2025-46569)
+</details>
+</li>
+</ul>
+
 ### 5.3.10 Release Notes
 
 #### Release Date 19 February 2025
 
 #### Release Highlights
 
-In this release, we upgraded the Golang version to `v1.23` and fixed a [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613]). For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
+In this release, we upgraded the Golang version to `v1.23` and fixed a [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613). For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
 
 #### Breaking Changes
 
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-5.3.10}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1263,15 +3299,16 @@ This release has no breaking changes.
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.10}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
-| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.23 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -1332,13 +3369,13 @@ Fixed the following critical priority CVE identified in the Dashboard UI, provid
 #### Release Date 31 December 2024
 
 #### Release Highlights
-This release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.9">}}) below.
+This release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.9" >}}) below.
 
 #### Breaking Changes
 
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-5.3.9}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1354,7 +3391,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.9}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -1362,10 +3399,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -1430,13 +3468,13 @@ Resolved CVE-2020-8911 by updating the Tyk Dashboard's email driver to use AWS S
 #### Release Date 07 November 2024
 
 #### Release Highlights
-This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
+This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8" >}}) below.
 
 #### Breaking Changes
 
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-5.3.8}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1452,7 +3490,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.8}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -1460,16 +3498,17 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
 
-This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
 
 #### Upgrade Instructions
 If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
@@ -1495,7 +3534,7 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <details>
 <summary>Advanced notice of deprecation of dedicated External OAuth and OpenID Connect auth options</summary>
 
-The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
+The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
 </details>
 </li>
 </ul>
@@ -1539,7 +3578,7 @@ This is a version bump to align with Gateway v5.3.7, no changes have been implem
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.3.7}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1555,7 +3594,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.7}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -1563,16 +3602,17 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Deprecations
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.3.7}
+#### Upgrade instructions
 
 If you are upgrading to 5.3.7, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -1582,7 +3622,7 @@ If you are upgrading to 5.3.7, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.3.7
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
+  - [Tyk Charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
 #### Changelog {#Changelog-v5.3.7}
 
@@ -1596,13 +3636,13 @@ No changes in this release.
 
 #### Release Highlights
 
-This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.6">}}) below.
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.6" >}}) below.
 
 #### Breaking Changes
 **Attention**: Please read this section carefully.
 Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in the image.  
 
-If moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+If moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0" >}}).
 
 #### Deprecations
 There are no deprecations in this release.
@@ -1610,15 +3650,15 @@ There are no deprecations in this release.
 #### Upgrade Instructions
 When upgrading to 5.3.6, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
-#### Dependencies {#dependencies-5.3.6}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -1643,10 +3683,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.22 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.6)
@@ -1768,7 +3809,7 @@ This is a version bump to align with Gateway v5.3.5, no changes have been implem
 
 **Attention**: Please read this section carefully.
 
-There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0" >}}).
 
 
 #### Deprecations
@@ -1781,16 +3822,16 @@ There are no deprecations in this release.
 When upgrading to 5.3.5, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 
-#### Dependencies {#dependencies-5.3.5}
+#### Dependencies
 
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.5).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -1817,10 +3858,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
 
@@ -1829,7 +3871,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    docker pull tykio/tyk-dashboard:v5.3.5
    ```
 - Helm charts
- - [tyk-charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
+ - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
 #### Changelog {#Changelog-v5.3.5}
 
@@ -1843,7 +3885,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 #### Breaking Changes
 **Attention**: Please read this section carefully.
-There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0" >}}).
 
 #### Deprecations
 There are no deprecations in this release.
@@ -1853,17 +3895,17 @@ When upgrading to 5.3.4 please follow the [detailed upgrade instructions](#upgra
 
 
 #### Release Highlights
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.4">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.4" >}}) below.
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -1880,7 +3922,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.4}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -1888,10 +3930,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.4)
@@ -1957,7 +4000,7 @@ Fixed Error Breakdown issues with dates (it was showing errors that happened on 
 
 #### Breaking Changes
 **Attention**: Please read this section carefully.
-There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0" >}}).
 
 #### Deprecations
 There are no deprecations in this release.
@@ -1967,17 +4010,17 @@ When upgrading to 5.3.3 please follow the [detailed upgrade instructions](#upgra
 
 #### Release Highlights
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.3">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.3" >}}) below.
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -2002,10 +4045,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x        | 12.x - 16.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.3)
@@ -2085,7 +4129,7 @@ Addressed an issue where the Dashboard displayed an empty page when accessing Ac
 **Attention**: Please read this section carefully.
 
 
-There are no breaking changes in this release, however if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+There are no breaking changes in this release, however if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0" >}}).
 
 
 #### Deprecations
@@ -2098,10 +4142,10 @@ When upgrading to 5.3.2 please follow the [detailed upgrade instructions](#upgra
 
 #### Release Highlights
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.2">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.2" >}}) below.
 
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 
@@ -2111,9 +4155,9 @@ Version compatibility with other components in the Tyk stack. This takes the for
 3rd party dependencies and tools -->
 
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -2144,8 +4188,9 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 
 #### Downloads
@@ -2231,7 +4276,7 @@ Fixed an issue in the api/usage endpoint where Dashboard+Postgres returned unfil
 #### Breaking Changes
 **Attention**: Please read this section carefully.
 
-There are no breaking changes in this release, however if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+There are no breaking changes in this release, however if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0" >}}).
 
 #### Deprecations
 There are no deprecations in this release.
@@ -2242,16 +4287,16 @@ When upgrading to 5.3.1, please follow the [detailed upgrade instructions](#upgr
 
 #### Release Highlights
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1" >}}) below.
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 
 3rd party dependencies and tools -->
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "tyk-self-managed#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.1).
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.1).
 
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -2276,10 +4321,11 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "api-management/plugins/golang#" >}}) must be built using Go 1.21 | 
-| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | | 
+| [DocumentDB](https://aws.amazon.com/documentdb/)  | 4, 5  | 4, 5  | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x        | 11.x - 15.x            | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.1)
@@ -2414,7 +4460,7 @@ This release is ready for installation on your own infrastructure.
 
 ##### Tyk OAS APIs Compatibility Caveats {#TykOAS-v5.3.0}
 
-This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}).
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/release-types/early-access-feature" >}}).
 
 - **Out of Early access**
   - This means that from now on, all Tyk OAS APIs will be backwards compatible and in case of a downgrade from 5.3.X to 5.3.0, the Tyk OAS API definitions will always work.
@@ -2426,18 +4472,18 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-s
   - If you are not using Tyk OAS APIs, Tyk will maintain backward compatibility standards.
 - **Not Forward Compatible**
   - Tyk OAS API Definitions prior to v5.3.0 are not [forward compatible](https://tinyurl.com/t3zz88ep) with Tyk Gateway v5.3.X.
-  - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard v5.3.X without being migrated to its [latest format]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}).
+  - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard v5.3.X without being migrated to its latest format.
 - **MDCB deployment and Tyk OAS APIs**
   - Tyk OAS APIs created in Tyk v5.3.0 will not be loaded by the data plane gateways if you are using MDCB v2.4 or older. This means that MDCB users already working with Tyk OAS APIs **must wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. 
   - Tyk Dashboard v5.3.0 managing Tyk OAS APIs requires Tyk Gateway v5.3.0 and MDCB v2.5.X for proper functionality. Older versions of Tyk Gateway may experience compatibility issues with Tyk OAS API definitions from v5.3.0.
 - **After upgrade (the good news)**
-  - If you had a Tyk OAS API prior to v5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}).
+  - If you had a Tyk OAS API prior to v5.3.0 then Tyk Dashboard will automatically update the API definition to latest format.
   - This means that you do not have to do anything to make your Tyk OAS APIs compatible with the new 5.3.0 release as Tyk Dashboard will take care of that during start-up.
   - As mentioned above, this upgrade of Tyk OAS API definitions is irreversible.
   
 **Important:** Please go to the [backup]({{< ref "#upgrade-instructions" >}}) section for essential instructions on how to backup before upgrading to v5.3.0
  
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -2472,21 +4518,21 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}})|
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions {#upgrade-5.3.0}
+#### Upgrade Instructions
 
 **The following steps are essential to follow before upgrading**
 
-1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "developer-support/upgrading#tyk-upgrade-guides-for-different-deployment-models">}}) documented with every release (this includes backup config file and database).
+1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{< ref "developer-support/upgrading#tyk-upgrade-guides-for-different-deployment-models" >}}) documented with every release (this includes backup config file and database).
 2. For all deployments - Backup all your API definitions (Tyk OAS API and Classic Definitions):
-   - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/upgrading#backup-apis-and-policies">}}).
-   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "api-management/automations/sync" >}}).
+   - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{< ref "developer-support/upgrading#backup-apis-and-policies" >}}).
+   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{< ref "api-management/automations/sync" >}}).
 4. Performing the upgrade - For all deployments, follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
 #### Release Highlights
@@ -2495,7 +4541,7 @@ We are excited to announce the release of 5.3.0, packed with new features, impro
 
 ##### Tyk OAS Feature Maturity
 
-Tyk OAS is now out of [Early Access]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
+Tyk OAS is now out of [Early Access]({{< ref "developer-support/release-types/early-access-feature" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
 From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Dashboard:
 - Security
     - All Tyk-supported client-gateway authentication methods including custom auth plugins
@@ -2722,7 +4768,7 @@ If internal TIB is enabled in Dashboard and the TYK_IB_SESSION_SECRET environmen
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
 
-Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. The [MongoDB supported versions](https://tyk.io/docs/tyk-self-managed#supported-versions) page provides details on how to configure MongoDB drivers in Tyk.
+Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. The [MongoDB supported versions]({{< ref "planning-for-production/database-settings#supported-versions" >}}) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
 </li>
 </ul>
@@ -2769,7 +4815,7 @@ Fixed an issue when importing reasonably large OpenAPI documents via the Dashboa
 <details>
 <summary>Removed the need for a Description to be provided in the OpenAPI schema when autogenerating a Tyk OAS mock response</summary>
 
-Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) is now even easier.
+Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation/mock-response#mock-responses-using-openapi-metadata" >}}) is now even easier.
 </details>
 </li>
 <li>
@@ -2832,7 +4878,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -2866,7 +4912,7 @@ Since this release was version bumped only to align with Gateway v5.2.5, no chan
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -2878,7 +4924,7 @@ If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest r
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.4/images/sha256-8862e98c6ffd67d47b496275b228f4f8faae4359b9c8e42bcd8bd8a47d0c45e4?context=explore)
@@ -2892,7 +4938,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  <details>
  <summary>Poor experience when using the Open Policy Agent (OPA) editor</summary>
 
- Fixed two UI issues with the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) in the Tyk Dashboard to improve experience when using this feature. Scrolling beyond the end of the OPA window does not now start to scroll the API Designer window, and minimizing then re-expanding the OPA editor no longer limits the text to one line.
+ Fixed two UI issues with the [OPA editor]({{< ref "api-management/dashboard-configuration#using-the-open-policy-agent-in-the-dashboard" >}}) in the Tyk Dashboard to improve experience when using this feature. Scrolling beyond the end of the OPA window does not now start to scroll the API Designer window, and minimizing then re-expanding the OPA editor no longer limits the text to one line.
  </details>
  </li>
  <li>
@@ -2918,7 +4964,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  </li>
  <li>
  <details>
- <summary>Confusing error message if user tries to modify Tyk OAS API using a Tyk Classic API endpoint/summary>
+ <summary>Confusing error message if user tries to modify Tyk OAS API using a Tyk Classic API endpoint </summary>
 
  Improved the error message that is returned when user tries to update a Tyk OAS API using a Tyk Classic API endpoint when `allow_unsafe_oas` is not enabled.
  </details>
@@ -2948,7 +4994,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -2960,7 +5006,7 @@ If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest r
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.3">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.3" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.3/images/sha256-7d61ed3ee3f03ff0e2f91be71a9113b90ef6637b1cef1f30d4c3e04ead09fa6a?context=explore)
@@ -2974,7 +5020,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <details>
 <summary>Unable to resize OPA editor in Tyk Dashboard</summary>
 
-Fixed an issue where the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.
+Fixed an issue where the [OPA editor]({{< ref "api-management/dashboard-configuration#using-the-open-policy-agent-in-the-dashboard" >}}) was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.
 </details>
 </li>
 <li>
@@ -3025,7 +5071,7 @@ Fixed an issue with failed GraphQL subscriptions between the upstream and the Da
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -3037,7 +5083,7 @@ If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest r
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.2/images/sha256-c6e701e270ebb2fed815483723375c454d0479ae41b5be2e1a6198b8d1e1a154?context=explore)
@@ -3051,8 +5097,8 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <details>
 <summary>Added new Dashboard configuration option `allow_unsafe_oas`</summary>
 
-Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behavior and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
-</summary>
+Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behavior and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "developer-support/release-types/early-access-feature" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
+
 </details>
 </li>
 </ul>
@@ -3149,7 +5195,7 @@ On Tyk Dashboard's Licensing Statistics screen, we have renamed the License Limi
 #### Breaking Changes
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible result in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible result in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -3161,12 +5207,12 @@ If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older v
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.1/images/sha256-2f9d8af0e57f7fe4afb618dcf34772c001104dc0ec62a27541d12dc9ae90d5c8?context=explore)
 
-#### Changelog {#Changelog-v5.2.1}
+#### Changelog
 
 ##### Added
 
@@ -3211,7 +5257,7 @@ Fixed an issue where the 'Add GraphQL Operation' checkbox in the GraphQL data so
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -3220,15 +5266,15 @@ There are no deprecations in this release.
 
 #### Release Highlights
 
-We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0" >}}) below.
 
 Configure Caching Timeouts Per API Endpoint and Enable Advanced Caching Options From Within Dashboard
 
-We’ve added the ability to [configure]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the *Tyk Dashboard* so that you can configure more of the [advanced caching]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-api-designer" >}}) options from within the UI.
+We’ve added the ability to [configure]({{< ref "api-management/response-caching#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the *Tyk Dashboard* so that you can configure more of the [advanced caching]({{< ref "api-management/response-caching#configuring-the-middleware-in-the-api-designer" >}}) options from within the UI.
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation/request-body" >}}) and [response]({{< ref "api-management/traffic-transformation/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
 ##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
@@ -3357,7 +5403,7 @@ Fixed an issue in the *API Activity* dashboard where users were unable to view r
 <details>
 <summary>Enforced timeout configuration parameter for an API endpoint was not validated</summary>
 
-Fixed an issue where the [Enforced Timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts/" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 </details>
 </li>
 <li>
@@ -3365,8 +5411,8 @@ Fixed an issue where the [Enforced Timeout]({{< ref "tyk-self-managed#enforced-t
 <summary>Duplicate APIs could be created when click save button multiple times in API Designer</summary>
 
 Fixed an issue in *Tyk Dashboard* where duplicate APIs could be created with the same names and listen paths if you clicked multiple times on the *save* button in the API Designer. Now, this is not possible anymore and there is no risk of creating multiple APIs with the same name.
-</li>
 </details>
+</li>
 <li>
 <details>
 <summary>Connection issues were encountered with MongoDB connection strings</summary>
@@ -3390,7 +5436,7 @@ Fixed an issue with *MongoDB* connection strings. To ensure consistent compatibi
 Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "api-management/plugins/golang#upgrading-your-tyk-gateway" >}}) these to maintain compatibility with the latest Gateway.
 
 ###### Tyk OAS APIs
-To provide a superior experience with OAS APIs, we have made some changes which include various security fixes, improved validation etc. Upgrading to v5.1 from v4.x.x may be irreversible, rollback to v4.x.x could break your OAS API definitions. For this reason, we recommend making a database backup so you can always restore from the backup (of v4.X.X) in case you encounter a problem during the upgrade. Please refer to our guides for detailed information on [upgrading Tyk]({{<ref "developer-support/upgrading">}}) and [how to back up tyk]({{<ref "developer-support/faq#tyk-configuration">}})
+To provide a superior experience with OAS APIs, we have made some changes which include various security fixes, improved validation etc. Upgrading to v5.1 from v4.x.x may be irreversible, rollback to v4.x.x could break your OAS API definitions. For this reason, we recommend making a database backup so you can always restore from the backup (of v4.X.X) in case you encounter a problem during the upgrade. Please refer to our guides for detailed information on [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) and [how to back up tyk]({{< ref "developer-support/faq#tyk-configuration" >}})
 
 #### Deprecation
 There are no deprecations in this release.
@@ -3463,7 +5509,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 - Added a way to display UDG examples from the [tyk-examples](https://github.com/TykTechnologies/tyk-examples) repository in the Dashboard UI
 - Added screens in Dashboard New Graph flow, that allows users to choose between creating a graph from scratch or importing one of our example graphs
 - Added a screen to display details of a UDG example API
-- Added a feature to display a full [_Tyk Sync_]({{<ref "api-management/automations/sync" >}}) command that will allow a user to import an example UDG into their Dashboard
+- Added a feature to display a full [_Tyk Sync_]({{< ref "api-management/automations/sync" >}}) command that will allow a user to import an example UDG into their Dashboard
 - Added `/examples` endpoint to Dashboard API that returns a list of available API examples that can later be imported into the Dashboard `GET /api/examples`
 - Added `/data-graphs/data-sources/import` endpoint to Dashboard API that transforms an OpenAPI document into UDG config and publishes it in Dashboard `POST /api/data-graphs/data-sources/import`
 - Added query param `apidef=true` to example detail endpoint in Dashboard API to retrieve the API definition of an example
@@ -3512,7 +5558,7 @@ This is a version bump to align with Gateway v5.0.15, no changes have been imple
 
 There are no breaking changes in this release.
 
-#### Upgrade instructions {#upgrade-5.0.15}
+#### Upgrade instructions
 
 If you are upgrading to 5.0.15, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -3523,7 +5569,7 @@ No changes in this release.
 
 ---
 
-### 5.0.14 Release Notes {#rn-v5.0.14}
+### 5.0.14 Release Notes
 
 #### Release Date 18th September 2024
 
@@ -3532,14 +5578,14 @@ No changes in this release.
 This release is not tightly coupled with Tyk Gateway v5.0.14, so you do not have to upgrade both together.
 
 
-Go to the [Upgrading Tyk](https://tyk.io/docs/developer-support/release-notes/gateway#upgrading-tyk) section for detailed upgrade instructions.
+Go to the [Upgrading Tyk]({{< ref "developer-support/release-notes/gateway#upgrading-tyk" >}}) section for detailed upgrade instructions.
 
 
 #### Release Highlights
 
 This release fixes some display issues in Tyk Dashboard and Tyk Classic Portal when using PostgreSQL.
 
-#### Changelog {#Changelog-v5.0.14}
+#### Changelog
 
 ##### Fixed
 
@@ -3640,10 +5686,10 @@ Please refer to our GitHub [release notes](https://github.com/TykTechnologies/ty
 ###### Support for MongoDB 5 and 6
 From Tyk 5.0.2, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set new Dashboard config option driver to *mongo-go*. 
 The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
-- [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions <= v4.x (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
+- [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions `<= v4.x` (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
 - [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official MongoDB driver. This driver supports MongoDB versions >= v4.x (greater or equal to v4.x). You can get more information about this driver in [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) GH repository.
 
-See how to [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-driver" >}})
+See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings#choose-a-mongodb-driver" >}})
 
 **Note: Tyk Pump 1.8.0 and MDCB 2.2 releases have been updated to support the new driver option**
 
@@ -3666,7 +5712,7 @@ See how to [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-
 
 ##### Release Highlights
 This release primarily focuses on bug fixes. 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.0.1">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.0.1" >}}) below.
 
 ##### Downloads
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0.1/images/sha256-013d971fc826507702f7226fa3f00e1c7e9d390fc0fb268bed42e410b126e89d?context=explore)
@@ -3709,11 +5755,11 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 Tyk Dashboard has been enhanced with **all the custom middleware options** for Tyk OAS APIs, so **for the first time** you can configure your custom middleware from the Dashboard; this covers the full suite of custom middleware from pre- to post- and response plugins. We’ve got support for middleware bundles, Go plugins and Tyk Virtual Endpoints, all within the new and improved Tyk Dashboard UI.
 
-[Versioning your Tyk OAS APIs]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}) is easier than ever, with the Tyk OSS Gateway now looking after the maintenance of the list of versions associated with the base API for you; we’ve also added a new endpoint on the Tyk API that will return details of the versions for a given API.
+[Versioning your Tyk OAS APIs]({{< ref "api-management/api-versioning" >}}) is easier than ever, with the Tyk OSS Gateway now looking after the maintenance of the list of versions associated with the base API for you; we’ve also added a new endpoint on the Tyk API that will return details of the versions for a given API.
 
 Tyk Dashboard hasn’t been left out, we’ve implemented a brand new version management UI for Tyk OAS APIs, to make it as easy as possible for you to manage those API versions as you develop and extend your API products with Tyk.
 
-We’ve improved support for [OAS Mock Responses]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
+We’ve improved support for [OAS Mock Responses]({{< ref "api-management/traffic-transformation/mock-response" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
 
 Another new feature in the Tyk OAS API Designer is that you can now update (PATCH) your existing Tyk OAS APIs through the Dashboard API without having to resort to curl. That should make life just that little bit easier.
 Of course, we’ve also addressed some bugs and usability issues as part of our ongoing ambition to make Tyk OAS API the best way for you to create and manage your APIs.
@@ -3723,7 +5769,7 @@ Of course, we’ve also addressed some bugs and usability issues as part of our 
 This release is all about making things easier for our users with GraphQL and Universal Data Graph.
 
 In order to get our users up and running with a working Universal Data Graph quickly, we’ve created a repository of examples that anyone can import into their Dashboard or Gateway and see what Universal Data Graph is capable of. Import can be done in two ways:
-- manually, by simply copying a Tyk API definition from GitHub - [TykTechnologies/tyk-examples](https://TykTechnologies/tyk-examples): A repository containing example API definitions and policies for Tyk products. 
+- manually, by simply copying a Tyk API definition from GitHub - [TykTechnologies/tyk-examples](https://github.com/TykTechnologies/tyk-examples): A repository containing example API definitions and policies for Tyk products. 
 - via command line [using tyk-sync]({{< ref "api-management/data-graph#udg-examples" >}})
 
 To make it easier for our users to find their way to Universal Data Graph, we’ve also given it its own space in the Dashboard. From now on you can find UDG under Data Graphs section of the menu.
@@ -3738,7 +5784,7 @@ Additionally we’ve added Dashboard support for introspection control on policy
 
 [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0/images/sha256-3d736b06b023e23f406b1591f4915b3cb15a417fcb953d380eb8b4d71829f20f?tab=vulnerabilities)
 
-#### Changelog {#Changelog-v5.0.0}
+#### Changelog
 
 ##### Added
 - Numerous UX improvements
@@ -3776,7 +5822,7 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 - authentication mechanism
 - validation request rules and limit access only to the defined paths.
 
-[Importing OAS v3 via the Dashboard]({{< ref "getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-7-using-the-tyk-dashboard-ui" >}})
+[Importing OAS v3 via the Dashboard]({{< ref "api-management/gateway-config-managing-oas#importing-an-openapi-description-to-create-an-api" >}})
 
 ##### Updated the Tyk Dashboard version of Golang, to 1.16.
 
@@ -3816,7 +5862,7 @@ Tyk Dashboard 4.3 ([docker images](https://hub.docker.com/r/tykio/tyk-dashboard/
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
 {{< note success >}}
 **Note**  
@@ -3953,7 +5999,7 @@ Tyk Dashboard 4.2
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
 ## 4.1 Release Notes
 ### 4.1.0 Release Notes
@@ -3961,11 +6007,11 @@ If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref
 #### Release Highlights
 
 ##### OpenAPI as a native API definition format
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}).
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability]({{< ref "developer-support/release-types/early-access-feature" >}}).
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
-This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}).
+This capability is available in both the open source and paid versions of Tyk. See our [Tyk OAS documentation]({{< ref "api-management/gateway-config-tyk-oas" >}}) for more details.
 
 
 ##### MDCB Synchroniser
@@ -3993,7 +6039,7 @@ So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins c
 - Dashboard boostrap instalation script extended to support SQL databases
 - Added `TYK_DB_OMITCONFIGFILE` option for Tyk Dashboard to ignore the values in the config file and load its configuration only from environment variables and default values
 - Added a new config option `identity_broker.ssl_insecure_skip_verify` that will allow customers using the embedded TIB to use IDPs exposed with a self signed certificate. Not intended to be used in production, only for testing and POC purposes.
-- Added option to configure certificates for Tyk Dashboard using [environment variables](https://tyk.io/docs/tyk-dashboard/configuration/#http_server_optionscertificates).
+- Added option to configure certificates for Tyk Dashboard using [environment variables]({{< ref "tyk-dashboard/configuration#http_server_optionscertificates" >}}).
 
 ##### Changed
 - Detailed information about certificates can be viewed from certificates listing page
@@ -4014,7 +6060,7 @@ Tyk MDCB 2.0.1
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
 ## 4.0 Release Notes
 ### 4.0.0 Release Notes
@@ -4046,14 +6092,14 @@ Until now, Tyk Dashboard has used MongoDB for storing everything from data such 
 
 From version 4.0, Tyk Dashboard and Tyk Pump will support four data storage layers, which can be configured separately, each with a different officially supported database solution (if needed). All data stored in SQL databases will provide the same information in the Dashboard that MongoDB did.
 
-While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "tyk-self-managed#postgresql" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
+While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "planning-for-production/database-settings#postgresql" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
 
 As part of SQL support we are also providing tooling to perform seamless migration of your Dashboard data from Mongo to SQL. However, at the moment migration of analytics data is not supported.
-[MongoDB to SQL migration docs]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}})
+[MongoDB to SQL migration docs]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}})
 
 #### Changelog
-- Now it is possible to configure GraphQL upstream authentification, in order for Tyk to work with its schema
-- JWT scopes now support arrray and comma delimeters
+- Now it is possible to configure GraphQL upstream authentication, in order for Tyk to work with its schema
+- JWT scopes now support arrray and comma delimiters
 - Go plugins can be attached on per-endpoint level, similar to virtual endpoints
 
 #### Updated Versions
@@ -4064,7 +6110,7 @@ Tyk Pump 1.5
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
 ## 3.2 Release Notes
 ### 3.2.0 Release Notes
@@ -4086,7 +6132,7 @@ We've updated the GraphQL functionality of our [Universal Data Graph]({{< ref "a
 
 Queries are now possible via WebSockets and Subscriptions are coming in the next Release (3.3.0).
 
-You're also able to configure [upstream Headers dynamically]({{< ref "api-management/data-graph#header-forwarding" >}}), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
+You're also able to configure [upstream Headers dynamically]({{< ref "api-management/data-graph#header-forwarding" >}}), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to access protected upstreams. 
 
 We've added an easy to use URL-Builder to make it easier for you to inject object fields into REST API URLs when stitching REST APIs within UDG.
 
@@ -4097,7 +6143,7 @@ If you’re using GraphQL upstream services with UDG, you’re now able to forwa
 
 ##### Extendable Tyk Dashboard permissions system
 
-The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "tyk-dashboard/open-policy-agent" >}}).
+The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}).
 
 In addition, you can now create your own custom permissions using the Additional Permissions API or by updating `security.additional_permissions` map in the Tyk Dashboard config, and writing Opa rule containing logic for the new permission.
 
@@ -4110,7 +6156,7 @@ https://github.com/TykTechnologies/tyk/releases/tag/v3.0.5
 Tyk Dashboard 3.2
 
 #### Upgrade process
-If you already have GraphQL or UDG APIs you need to follow this upgrade guide https://tyk.io/docs/graphql/migration-guide/
+If you already have GraphQL or UDG APIs you need to follow this [upgrade guide]({{< ref "api-management/graphql#migrating-to-32" >}}).
 
 ## 3.1 Release Notes
 ### 3.1.0 Release Notes
@@ -4121,9 +6167,9 @@ If you already have GraphQL or UDG APIs you need to follow this upgrade guide ht
 You will notice that the experience for creating a new profile in the Identity management section of the dashboard was changed to a ‘wizard’ approach which reduces the time it takes to get started and configure a profile. 
 In addition, users are now able to use SAML for the dashboard and portal login, whether you use TIB(Tyk Identity Broker) internally or externally of the dashboard.
 
-This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.0 [release notes](https://tyk.io/docs/release-notes/version-3.0/) for more information regarding this. 
+This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.0 [release notes]({{< ref "developer-support/release-notes/dashboard#tyk-identity-broker-now-built-in-to-the-dashboard" >}}) for more information regarding this. 
 
-To learn more [see the documentation](https://tyk.io/docs/getting-started/tyk-components/identity-broker/)
+To learn more [see the documentation]({{< ref "api-management/external-service-integration" >}})
 
 ##### UDG (Universal Data Graph) & GraphQL
 ###### Schema Validation
@@ -4134,7 +6180,7 @@ For any GraphQL API that is created via Dashboard or through our API, the GraphQ
 
 If you’ve configured just a proxy GraphQL API, you can now keep in sync the upstream schema with the one from the API definition, just by clicking on the `Get latest version` button on the `Schema` tab from API Designer
 
-Docs [here](https://tyk.io/docs/graphql/syncing-schema/)
+Docs [here]({{< ref "api-management/graphql#syncing-gql-schema" >}})
 
 ###### Debug logs
 
@@ -4155,7 +6201,7 @@ Example:
 
 ```{"typename": "Query", "fielname": "countries", "response_body": "{\"data\":{}}", "status_code": 200}```
 
-Docs [here](https://tyk.io/docs/graphql/graphql-playground/)
+Docs [here]({{< ref "api-management/graphql#graphql-playground" >}})
 
 ##### Portal
 ###### GraphQL Documentation
@@ -4167,7 +6213,7 @@ Also to overcome the CORS issues that you might encounter while testing document
 ###### Portal - API key is hidden in email
 You now have the option to hide the API key in the email generated after you approve the key request for a developer.
 
-[Docs here](https://tyk.io/docs/tyk-developer-portal/key-requests/)
+[Docs here]({{< ref "tyk-developer-portal/tyk-portal-classic/key-requests" >}})
 
 
 #### Changelog
@@ -4190,13 +6236,13 @@ We have bumped our major Tyk Gateway version from 2 to 3, a long overdue change 
 Importantly, such a big change in versions does not mean that we going to break backward compatibility. More-over we are restructuring our internal release strategy to guarantee more stability and to allow us to deliver all Tyk products at a faster pace. We aim to bring more clarity to our users on the stability criteria they can expect, based on the version number.
 Additionally we are introducing Long Term Releases (also known as LTS).
 
-Read more about this changes in our blogpost: https://tyk.io/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
+Read more about this changes in our blog post: https://tyk.io/blog/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
 
 ##### New Look and Feel
 
 We have a brand new look to our Tyk Dashboard. About half a year ago, we made some changes to our visual branding to better express our love for creativity and great UX. Those changes started with our website and now we are also incorporating these visual changes into the UI of our products. We do this to keep our brand consistent across the whole Tyk experience and to enhance your experience using our products. 
 
-See our updated [Tutorials]({{< ref "getting-started/installation" >}}) section.
+See our updated [Tutorials]({{< ref "tyk-self-managed" >}}) section.
 
 ##### Universal Data Graph and GraphQL
 
@@ -4206,7 +6252,8 @@ In addition to this you can also use Tyk’s integrated GraphQL engine to build 
 
 All this without even have to build your own GraphQL server. If you have existing REST APIs all you have to do is configure the UDG and Tyk has done the work for you.
 
-With the Universal Data Graph Tyk becomes your central integration point for all your internal as well as external APIs. In addition to this, the UDG benefits from all existing solutions that already come with your Tyk installation. That is, your Data Graph will be secure from the start and there’s a large array of out of the box middlewares you can build on to power your Graph.
+With the Universal Data Graph (UDG), Tyk becomes the central integration point for all your internal and external APIs.
+It also benefits from the full set of capabilities included with your Tyk installation—meaning your data graph is secure from the start and can take advantage of a wide range of out-of-the-box middleware to power your graph.
 
 Read more about the [GraphQL]({{< ref "api-management/graphql" >}}) and [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}})
 
@@ -4217,9 +6264,9 @@ We have a lot to update you on with our UX & UI revamp, but one thing we want to
 
 When you create, view or edit a key the steps are in a more logical order. We’ve removed the long form that needed to be filled out and replaced it with tabs so you can find and enter information easily. We’ve also grouped all information within each API so you know the exact set up of each of your access rights without any confusion. The new workflow should allow tasks to be completed faster and more efficiently.
 
-See updated tutorials on how to [create a policy]({{< ref "getting-started/create-security-policy" >}}) and [keys]({{< ref "getting-started/create-api-key" >}})
+See updated tutorials on how to [create a policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) and [keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}})
 
-We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
+We also have a [blog post](https://tyk.io/blog/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
 
 
 ##### Tyk Identity broker now built-in to the Dashboard
@@ -4233,7 +6280,7 @@ See [updated flow details]({{< ref "api-management/external-service-integration#
 
 Want to reference secrets from a KV store in your API definitions? We now have native Vault & Consul integration. You can even pull from a tyk.conf dictionary or environment variable file.
 
-[Read more]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}})
+[Read more]({{< ref "tyk-configuration-reference/kv-store/" >}})
 
 
 ##### Co-Process Response Plugins
@@ -4248,7 +6295,7 @@ At the moment the Response hook is supported for [Python and gRPC plugins]({{< r
 Now the standard Health Check API response include information about health of the dashboard, redis and mdcb connections.
 You can configure notifications or load balancer rules, based on new data. For example, you can be notified if your Tyk Gateway can’t connect to the Dashboard (or even if it was working correctly with the last known configuration).
 
-[Read More]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}})
+[Read More]({{< ref "planning-for-production/ensure-high-availability/health-check" >}})
 
 ##### Enhanced Detailed logging
 Detailed logging is used in a lot of the cases for debugging issues. Now as well as enabling detailed logging globally (which can cause a huge overhead with lots of traffic), you can enable it for a single key, or specific APIs. 
@@ -4257,17 +6304,13 @@ New detailed logging changes are available only to our Self-Managed customers cu
 
 [Read More]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}})
 
-##### Better Redis failover
-
-Now, if Redis is not available, Tyk will be more gracefully handle this scenario, and instead of simply timing out the Redis connection, will dynamically disable functionality which depends on redis, like rate limits or quotas, and will re-enable it back once Redis is available. The Tyk Gateway can even be started without Redis, which makes possible scenarios, such as when the Gateway proxies Redis though itself, like in a Redis Sentinel setup.
-
 ##### Weight-Based Load Balancing
 
 The Tyk Dashboard now allows you to control weighting of the upstreams, when using load balancing functionality. For example now you can configure Tyk to send 20% of traffic to one upstream, with 80% to another upstream service.
 
 This enables you to perform Canary or A/B tests of their APIs and services. Similarly, if caches require warming, then we can send a low % of traffic to these services, and when confident that they can handle the load, start incrementally sending a higher % of traffic to these services.
 
-[Read More]({{< ref "tyk-self-managed#configure-load-balancing-and-weighting-via-the-dashboard" >}})
+[Read More]({{< ref "planning-for-production/ensure-high-availability/load-balancing#configure-load-balancing-and-weighting-via-the-dashboard" >}})
 
 ##### Ability to shard analytics to different data-sinks
 
@@ -4297,7 +6340,7 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 #### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-support/release-notes/archived#upgrading-from-version-28" >}})
+If you are upgrading from version 2.8, please [read this guide]({{< ref "developer-support/release-notes/archived#upgrading-from-version-28" >}})
 
 
 ## Further Information
@@ -4314,7 +6357,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "tyk-dashboard-api" >}})
+- [OpenAPI Document]({{< ref "tyk-dashboard-api" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
 
 ### FAQ

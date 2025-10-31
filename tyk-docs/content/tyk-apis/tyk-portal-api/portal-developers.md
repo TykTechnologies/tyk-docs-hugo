@@ -7,7 +7,12 @@ menu:
 weight: 3
 aliases:
   - /tyk-dashboard-api/portal-developers/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ### List Developers
 

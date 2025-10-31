@@ -1,6 +1,6 @@
 ---
 date: 2023-08-04T18:24:52+01:00
-title: Developer Support
+title: Community Support
 tags: [
     "FAQ",
     "Troubleshooting",
@@ -9,50 +9,42 @@ tags: [
     "Developer Support",
   ]
 description: "Developer support mechanisms, release notes and upgrading information for your Tyk installation"
-menu: main
-weight: 21
 aliases:
   - /developer-support/
   - /troubleshooting/
   - /frequently-asked-questions/faq
+  - /troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo
 ---
 
-This section provides an overview of the various developer support mechanisms
-offered by Tyk to assist with troubleshooting and frequently asked questions.
+Tyk offers a range of developer support services to assist with troubleshooting and Frequently Asked Questions (FAQs).
 
-## Support
+## Expert Advice
 
-Tyk offers a range of developer support services to assist with troubleshooting
-and Frequently Asked Questions (FAQs).
+Prospective customers seeking technical advice can [contact us](https://tyk.io/contact/) to arrange a consultation with
+one of our expert engineers.
 
-### Expert Advice
+## Community support
 
-If you are a prospective customer seeking technical advice relating to a Tyk
-product then please reach out and [contact us](https://tyk.io/contact/) to
-arrange a consultation with one of our expert engineers.
+Our [community](https://community.tyk.io/) is available to everyone, offering the following channels:
 
-### Community
+| Channel | Purpose |
+|---------|---------|
+| [Support](https://community.tyk.io/c/support/) | Raise bugs and troubleshooting questions |
+| [Products](https://community.tyk.io/c/product/) | Discuss specific features of the Tyk Product Stack |
+| [Community](https://community.tyk.io/c/community/) | Access learning resources and community events |
+| [Announcements](https://community.tyk.io/c/announcements/) | Stay updated on new release announcements |
+| [Meta Feedback](https://community.tyk.io/c/meta) | Submit bug reports and forum feedback |
 
-An online [community](https://community.tyk.io/) forum is available to everyone,
-offering the following support channels:
+You can also submit bug reports and feature requests through the
+[Tyk OSS Gateway repository](https://github.com/TykTechnologies/tyk).
 
-- **Support**: Use the [support](https://community.tyk.io/c/support/) channel to raise bugs and ask troubleshooting questions.
-- **Products**: Use the [products](https://community.tyk.io/c/product/) channel to discuss and learn about specific features of the Tyk Product Stack.
-- **Community**: Use the [community](https://community.tyk.io/c/community/) channel to read learning resources and learn about community events, such as webinars etc.
-- **Announcements**: Use the [announcements](https://community.tyk.io/c/announcements/) channel to learn about release announcements
-- **Meta feedback**: Use the [meta feedback](https://community.tyk.io/c/meta) channel to submit bug reports for Tyk products and give feedback relating to the community forum.
+## Licensed
 
-Furthermore, the [Tyk OSS Gateway](https://github.com/TykTechnologies/tyk)
-repository can be used to submit bug reports and feature requests.
+Tyk Self-Managed and Tyk Cloud license holders have access to 24/7 support through our
+[helpdesk portal](https://support.tyk.io/hc/en-gb).
 
-### Licensed
 
-Tyk Self Managed and Tyk Cloud license holders can reach out on the online
-[helpdesk](https://support.tyk.io/hc/en-gb) for 24/7 support.
-
-### Other
-
-Supporting documentation is also available relating to:
+## Additional Resources
 
 - [Release Notes]({{< ref "developer-support/release-notes/gateway" >}})
 - [Upgrading Tyk]({{< ref "developer-support/upgrading" >}})

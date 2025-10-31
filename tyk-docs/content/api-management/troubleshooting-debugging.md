@@ -5,10 +5,14 @@ linkTitle: API Management
 tags: ["troubleshooting", "debugging", "Open Source", "Self-Managed", "Tyk Cloud", "API Gateway"]
 description: "Tyk troubleshooting and debugging gateway, streams, pump, dashboard"
 aliases:
-    - /api-management/troubleshotting-debugging
+    - /frequently-asked-questions/change-logging-output-location
+    - /frequently-asked-questions/clear-api-cache
+    - /frequently-asked-questions/find-gateway-logging-output
+    - /error-response-codes
+    - /frequently-asked-questions/capping-analytics-data-storage
+    - /tyk-stack/dependencies/mongodb/x509-client-auth
     - /debugging-series/debugging-series
     - /debugging-series/mongodb-debugging
-    - /developer-support/debugging-series/.placehol
     - /developer-support/debugging-series/debugging-selfmanaged
     - /frequently-asked-questions/api-definition-url-case-sensitive
     - /frequently-asked-questions/dashboard-bootstrap-error
@@ -51,18 +55,19 @@ aliases:
     - /troubleshooting/tyk-pump/pump-overloaded
     - /tyk-configuration-reference/hot-restart-tyk-gateway-process
     - /tyk-stack/tyk-pump/useful-debug-modes
-    - analytics-and-reporting/useful-debug-modes
-    - debugging-series
-    - troubleshooting/tyk-cloud
-    - troubleshooting/tyk-dashboard
+    - /analytics-and-reporting/useful-debug-modes
+    - /debugging-series
+    - /troubleshooting/tyk-cloud
+    - /troubleshooting/tyk-dashboard
     - /troubleshooting/tyk-dashboard/fatal-dashboard-port...
-    - troubleshooting/tyk-gateway
-    - troubleshooting/tyk-installation
-    - troubleshooting/tyk-multi-cloud
-    - troubleshooting/tyk-pump
-    - tyk-rest-api/hot-reload
-    - tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
-    - frequently-asked-questions/add-custom-certificates-to-docker-images
+    - /troubleshooting/tyk-gateway
+    - /troubleshooting/tyk-installation
+    - /troubleshooting/tyk-multi-cloud
+    - /troubleshooting/tyk-pump
+    - /tyk-rest-api/hot-reload
+    - /frequently-asked-questions/add-custom-certificates-to-docker-images
+    - /troubleshooting/tyk-on-premise/tyk-on-premise
+    - /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
 ---
 
 ## Gateway
@@ -120,7 +125,7 @@ aliases:
 
     When it happens on the high load, it can be a lot of different reasons.
     For example your OS is running out of system limits, like number of opened sockets, and to validate it, you need to try your system limits.
-    See this guide https://tyk.io/docs/tyk-self-managed#resource-limits
+    See [this guide]({{< ref "planning-for-production" >}}).
 
     Additionally, it can be CPU bottleneck: you can't process more than your machine  can do.
     And note that it is not only about the actual utilization %, it is also about context switches it has to do. 
@@ -128,7 +133,7 @@ aliases:
     Such problems cause internal request processing queues, which cause latency growth (highly recommend measure it). 
     And in some cases latency can grow so big, that some clients can just disconnect/timeout because of it. 
 
-    Additionally, highly recommend read the following blog post https://tyk.io/performance-tuning-your-tyk-api-gateway/.
+    Additionally, highly recommend read the following blog post https://tyk.io/blog/performance-tuning-your-tyk-api-gateway/.
     For example, you can trade memory for performance, and context switch reduction by tuning garbage collector to run less frequently: see `Tuning Tyk’s Garbage Collector` section.
 
 
@@ -167,7 +172,7 @@ aliases:
 
     **Solution**
 
-    Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1]. See [Upgrading Tyk](https://tyk.io/docs/upgrading-tyk/) for details on upgrading to the latest version. It may also be worth checking if any TLS certificates associated with the domain have expired.
+    Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1]. See [Upgrading Tyk]({{< ref "developer-support/upgrading" >}}) for details on upgrading to the latest version. It may also be worth checking if any TLS certificates associated with the domain have expired.
 
     [1]: https://packagecloud.io/tyk
 
@@ -337,7 +342,7 @@ aliases:
     curl http://127.0.0.1:8080/quickstart/headers -H 'Authorization: mycustomkey'
     ```
 
-    See also the Keys section of the [Gateway API Swagger doc](https://tyk.io/docs/tyk-rest-api/).
+    See also the Keys section of the [Tyk Gateway API documentation]({{< ref "tyk-gateway-api" >}}).
 
 
 10. ##### Redis persistence using containers
@@ -429,6 +434,158 @@ aliases:
         subPath: myCA.pem
     ```
 
+15. ##### How to change the logging output location
+
+    It's not possible to segregate out the error locations in the `tyk.conf`, but you can modify the actual initialisation files to specify the log location, we supply initialisation scripts for `SysV`, `systemd` and `upstart`.
+
+16. ##### How to clear / invalidate API cache
+
+    Use the REST API to clear the cache
+
+    **OSS**
+
+    ```
+    DELETE /tyk/cache/{api-id}
+    ```
+
+    **Tyk Dashboard**
+
+    ```
+    DELETE /api/cache/{api-id}
+    ```
+
+17. ##### How to find the Gateway logging output
+
+    You are able to see a more detailed output in your Gateway log `/var/log` or `/var/log/upstart`.
+
+## Gateway Error Response Status Codes
+
+Tyk Gateway responses include HTTP status codes that follow the [HTTP status code standard](https://datatracker.ietf.org/doc/html/rfc9110). They have three digits that describe the result of the request and the semantics of the response. 
+The first digit defines the class of response as shown in the [list](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) below:
+- 1xx (Informational): The request was received, continuing process
+- 2xx (Successful): The request was successfully received, understood, and accepted
+- 3xx (Redirection): Further action needs to be taken in order to complete the request
+- 4xx (Client Error): The request contains bad syntax or cannot be fulfilled
+- 5xx (Server Error): The server failed to fulfill an apparently valid request
+
+Here we provide a list of all the error status codes (4xx and 5xx) that may be returned by the Tyk Gateway along with their corresponding messages and some guidance on the likely cause of the error. 
+Tyk supports [error templating]({{< ref "api-management/gateway-events#error-templates" >}}), allowing you to configure the Gateway to return customised messages for certain HTTP error codes.
+
+We also support limited customisation of the error codes and messages returned by custom authentication middleware through the use of [override messages]({{< ref "tyk-oss-gateway/configuration#override_messages" >}}).
+
+| Code | Text                                                                                    | Recommended action                                                                                                                                                             |
+| :--- | :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400  | Access to this API has been disallowed                                                  | Check if the key has access to the right API version or definition. Check if the authentication key used is still valid. Check if the certificate used for authentication is present. Check if the authentication key is created and present in the database. You can use Gateway Keys APIs for confirmation. Check if API definition is using JWT auth and if auth header key and or value is empty or missing.|
+| 400  | API is not OAuth2                                                                       | Check if OAuth2 is integrated into the API by auth tokens or using Tyk OAuth flow.                                                                                      |
+| 400  | Attempted access with malformed header                                                  | Values not in basic auth format or auth data not encoded correctly.                                                                                                     |
+| 400  | Authorization Field Missing                                                             | Check if the authorization field is missing. Check if the OAuth authorization field is missing.                                                                         |
+| 400  | Batch request creation failed, request structure malformed                              | Attempted to construct unsafe requests. Check if request structure is in correct format.                                                                                |
+| 400  | Batch request malformed                                                                 | Attempted to decode request but failed. Check if request structure is in correct format.                                                                                |
+| 400  | Bearer token malformed                                                                  | Check if the OAuth authorization field is malformed.                                                                                                                    |
+| 400  | Body do not contain password or username                                                | Check if body contains both password and username. If not, then insert the correct login credentials.                                                                   |
+| 400  | Cannot parse form. Form malformed                                                       | Attempted to revoke token but could not parse the request form. Check if the request form is malformed.                                                                 |
+| 400  | Content length is not a valid Integer                                                   | Check the value provided in the Content-Length field in the header.                                                                                                |
+| 400  | Couldn’t decode instruction                                                             | Attempted to decode policy record from an update request. Check if the request body is malformed and is valid.                                                          |
+| 400  | Couldn’t decode OAS object                                                              | Attempted to import OAS Tyk API but failed to retrieve object from request. Check if request body is valid.                                                             |
+| 400  | Error API not migrated                                                                  | The supplied API definition is in OAS format. Please use the Tyk native format for this API.                                                                            |
+| 400  | Failed to create key, keys must have at least one Access Rights record set              | Attempted to create a key with master keys disabled in configurations.                                                                                                  |
+| 400  | Failed to remove the key                                                                | Failed to delete requested key. Make sure orgID and keyname are correct.                                                                                                |
+| 400  | Health checks are not enabled for this node                                             | Enable health checks for the gateway.                                                                                                                                   |
+| 400  | Key not authorized                                                                      | Check if OAuth key is present. Check if the OAuth client is not deleted. Check if there is a valid policy associated with the key/token used. Check if the policy associated with the key is not expired or if the owner is valid. Check if JWT default policies exist. |
+| 400  | Key cannot be used without a certificate                                                | Check if key contains a certificate. If not, add a certificate to the key.                                                                                              |
+| 400  | Key must be used with an existent certificate                                           | Check if the certificate on the key exist within the system.                                                                                                            |
+| 400  | Missing parameter api_id                                                                | Check if API_ID is missing. If so, fill in the api_ID field with the correct value.                                                                                     |
+| 400  | OAuth client doesn’t exist                                                              | Check if API_ID is missing. If so, fill in the api_ID field with the correct value.                                                                                     |
+| 400  | OAuth client ID is empty                                                                | Check if OAuth client ID field is empty. If so, fill in with the correct client ID value.                                                                               |
+| 400  | OAuth is not enabled for this API                                                       | Check if OAuth is enabled for the API.                                                                                                                                  |
+| 400  | Policy access rights doesn’t contain API this OAuth client belongs to                   | Check if the policy rights contains the proper api_ID for the API.                                                                                                      |
+| 400  | Request apiID does not match that in Definition! For Update operations these must match | Attempted a PUT operation using different api_ID's. Make sure the api_ID's are the same.                                                                                |
+| 400  | Request field is missing                                                                | Check if the request field is missing. If so, fill in the request field.                                                                                                |
+| 400  | Request ID does not match that in policy! For Update operations these must match        | Attempted a PUT operation using different policy ID's. Make sure both policy ID's are the same.                                                                         |
+| 400  | Request is too large                                                                   | The request body exceeds the configured size limit for the API endpoint.                                                                                                                           |
+| 400  | Request with empty authorization header                                                 | Fill in authorization header for the request.                                                                                                                           |
+| 400  | Spec field is missing                                                                   | Attempted to trace a request but spec field is missing. Fill in the spec field.                                                                                         |
+| 400  | The provided request is empty                                                           | Check if request in the GraphQL playground is correct.                                                                                                                  |
+| 401  | Authorization Field Missing                                                             | Check if the authorization field is missing. Check if the OAuth authorization field is missing.                                                                         |
+| 401  | Header missing                                                                          | Check if header field exist when making request.                                                                                                                        |
+| 401  | Key has expired, please renew                                                           | Current key has expired. Please request for a new key.                                                                                                                  |
+| 401  | OAuth Client Id Empty                                                                   | Fill in the Client ID field.                                                                                                                                            |
+| 401  | OAuth Client Secret Empty                                                               | Client secret is empty. Insert the required client secret.                                                                                                              |
+| 401  | Request signature verification failed                                                   | Possible empty signature header or validation failed.                                                                                                                   |
+| 401  | Wrong Password                                                                          | Enter the correct password. Contact an administrator if further help is needed.                                                                                         |
+| 403  | Access to this API has been disallowed                                                  | Request access to the API from an administrator.                                                                                                                        |
+| 403  | Access to this resource has been disallowed                                             | Request access to the resource from an administrator.                                                                                                                   |
+| 403  | Attempted access with non-existent cert                                                 | Check if authentication certificate exist.                                                                                                                              |
+| 403  | Attempted administrative access with invalid or missing key!                            | Check if there is correct security credentials of the Tyk API.                                                                                                          |
+| 403  | Certificate with SHA256 $certID not allowed                                             | Certificate ID is nil or invalid. Please have a valid certificate.                                                                                                      |
+| 403  | Client authorize request in with invalid redirect URI                                   | Check if Auth Redirect URI is malformed or use a valid redirect URI.                                                                                                    |
+| 403  | Client TLS certificate is required                                                      | Check if theres multiple APIs on the same domain with no certificates.                                                                                                  |
+| 403  | Certificate has expired                                                                 | Please update the certificate with one that is currently valid and has not expired.                                                                                                  |
+| 403  | Depth limit exceeded                                                                    | Exceeded the depth limit that has been applied. Check the key/policy global limits and quota section or the API limits and quota section.                               |
+| 403  | Empty Signature Header                                                                  | Fill in a signature for auth keys.                                                                                                                                      |
+| 403  | Empty Signature Path                                                                    | Check if path for signature is empty.                                                                                                                                   |
+| 403  | Failed with 403 after $x-amount of requests over quota                                  | Process request off thread with quota or process request live with rate limit or process request off thread with rate limit.                                            |
+| 403  | Found an empty user ID in predefined base field claim user_id                           | Request with valid JWT/RSA or signature/empty user_id/sub claim, or signature/no base field or no sub or no id claim.                                                   |
+| 403  | GraphQL Depth Limit Exceeded                                                            | Exceeded the depth limit that has been applied. Check the key/policy global limits and quota section or the API limits and quota section.                               |
+| 403  | Invalid Token                                                                           | Check if JWT token is valid and not malformed.                                                                                                                          |
+| 403  | Invalid Signature Header                                                                | Insert correct signature header value.                                                                                                                                  |
+| 403  | Invalid Signature Path                                                                  | Make sure signature path is correct and valid.                                                                                                                          |
+| 403  | Key is not active, please renew                                                         | Create a new key.                                                                                                                                                       |
+| 403  | Key not authorised: Unexpected signing method                                           | Invalid JWT signature, JWT access with non-existent key.                                                                                                                |
+| 403  | Key not authorised: OAuth client access was revoked                                     | Check if OAuth client exists.                                                                                                                                           |
+| 403  | Key not authorised: no matching policy                                                  | Request with invalid policy in JWT, or checking session and identity for valid key for openID.                                                                          |
+| 403  | No matching policy found in scope claim                                                 | Check if scope is wrong for JWT request.                                                                                                                                |
+| 403  | Quota Exceeded                                                                          | Quota limit has been exceeded. Check quota limit settings.                                                                                                              |
+| 403  | Run Go-plugin auth failed                                                               | Used an invalid token for authentication. Please use a valid token to authenticate.                                                                                     |
+| 403  | This API version does not seem to exist                                                 | Attempted to extract version data from a request. Version does not exist when loading version data.                                                                     |
+| 403  | This organisation access has been disabled, please contact your API administrator       | Organisation session is inactive. Contact API administrator.                                                                                                            |
+| 403  | This organisation quota has been exceeded, please contact your API administrator        | Organisation's quota limit has been exceeded. Contact API administrator.                                                                                                |
+| 403  | This organisation rate limit has been exceeded, please contact your API administrator   | Organisation's rate limit has been exceeded. Contact API administrator.                                                                                                 |
+| 403  | TLS: bad certificate                                                                    | Check if the certificates exist and have valid ID's.                                                                                                                    |
+| 403  | Version Information not found                                                           | Checking version data from request. No default version has been set or found.                                                                                           |
+| 404  | API doesn’t exist                                                                       | Checking if API exists when rotating OauthClient or if ApiSpec value is nil.                                                                                            |
+| 404  | API for this refresh token not found                                                    | When invalidating OAuth refresh or if ApiSpec value is nil.                                                                                                             |
+| 404  | API ID not found                                                                        | Check if API ID exists in the Gateway.                                                                                                                                  |
+| 404  | API not found                                                                           | Check if API exists.                                                                                                                                                    |
+| 404  | Bundle not found                                                                        | No bundles found within the Gateway.                                                                                                                                    |
+| 404  | Certificate with given SHA256 fingerprint not found                                     | No certificates exist in the certificate manager list.                                                                                                                  |
+| 404  | Couldn't find organisation session in active API list                                   | Attempted to update session object. However, spec for organisation is nil. Make sure to have the correct organisation ID.                                               |
+| 404  | Error getting oauth client                                                              | See if OAuth client id exists in the system.                                                                                                                            |
+| 404  | Key not found                                                                           | Failed to update hashed key.                                                                                                                                            |
+| 404  | No such organisation found in Active API list                                           | Make sure organisation ID is correct.                                                                                                                                   |
+| 404  | OAuth client doesn’t exist                                                              | Attempted to retrieve APIs for OAuth or client ID. Client ID was not found                                                                                              |
+| 404  | OAuth client ID not found                                                               | Check if OAuth client ID exist in storage. Check if OAuth tokens or client details are valid. Failed to retrieve OAuth client list. Failed to revoke OAuth client list. |
+| 404  | Org not found                                                                           | Could not retrieve record of org ID or failed to delete org keys. Spec for org is nil, make sure orgID value is correct                                                 |
+| 404  | Policy not found                                                                        | Could not retrieve policy data. Make sure policy ID is correct.                                                                                                         |
+| 404  | There is no such key found                                                              | Check if key is already deleted. Check if hashed key has been deleted already.                                                                                          |
+| 404  | Version Does Not Exist                                                                  | Check if version path is filled and correct.                                                                                                                            |
+| 405  | Malformed request body                                                                  | Attempted a POST request with a malformed request body. Make sure the request body is valid.                                                                            |
+| 405  | Method not supported                                                                    | Attempting to add a method that is not supported by our system.                                                                                                         |
+| 411  | Content length is required for this request                                             | You need to provide the `Content-Length` field in the request header.                                                                                                         |
+| 429  | API Rate Limit Exceeded                                                                 | Check the rate of the requests on the API level. Check the rate of requests on the API key (Auth token, certs, etc).                                                    |
+| 499  | Client closed request                                                                   | Check if the client closed the TCP connection                                                                                                                           |
+| 500  | Cache invalidation failed                                                               | Attempted to scan or delete the cache, which failed, causing cache invalidation to fail.                                                                                |
+| 500  | Can't detect loop target                                                                | Verify target API exsists. Check if URL scheme is "tyk://". Refer to 404 errors                                                                                         |
+| 500  | Could not write key data                                                                | Failed to update hashed key. Make sure key name is valid.                                                                                                               |
+| 500  | Delete failed                                                                           | Attempted to delete policy with invalid filename. Attempted to delete API with invalid filename. Attempted to delete OAuth Client with incorrect OAuth client ID.       |
+| 500  | Due to enabled service policy source, please use the Dashboard API                      | Attempted to add/update a policy and rejected due to Policysource=service. Please use the Dashboard API.                                                                |
+| 500  | Due to enabled use_dp_app_configs, please use Dashboard API                             | When trying to import OAS, when Dashboard config is set to true. Please use Dashboard API.                                                                              |
+| 500  | Error writing to key store                                                              | Attempted to update session with a new session. Make sure orgID is correct.                                                                                             |
+| 500  | Failed to create file                                                                   | When add/update policy, failed to create a file. Make sure the policy file path is correct                                                                              |
+| 500  | Failed to create key                                                                    | Check if key already exist or if the key exists with a given certificate. Ensure security settings are correct                                                          |
+| 500  | Failure in storing client data                                                          | Attempted to store data when creating a new OAuth client but failed. Make sure the storageID, or orgID is correct and valid.                                            |
+| 500  | Get client tokens failed                                                                | Failed to retrieve OAuth tokens. Make sure client ID is valid or keyName is valid.                                                                                      |
+| 500  | Marshalling failed                                                                      | Attempted to import printDef but failed. Marshalling of policy failed. Unmarshal object into the file failed when writing to file.                                      |
+| 500  | There was a problem proxying the request                                                | Check if the target URL is unavailable to the Gateway.                                                                                                                  |
+| 500  | Unmarshalling failed                                                                    | Key creation failed. Failed to create OAuth client. Failed to update OAuth client.                                                                                      |
+| 500  | Unsupported schema, unable to validate                                                  | Check if GraphQL schema is valid.                                                                                                                                       |
+| 500  | Upstreaming host lookup failed                                                          | Check if the target URL is not resolvable in DNS.                                                                                                                       |
+| 503  | Service temporarily unavailable                                                         | Check if a circuit breaker middleware is enforced.                                                                                                                      |
+| 503  | All hosts are down                                                                      | Attempted to reverse proxy a URL rewrite to a scheme and host, but all the hosts in hostlist are down.                                                                  |
+| 504  | Upstream service reached hard timeout                                                   | Timeout awaiting response headers during a request round trip.                                                                                                          |
+| 507  | Status Insufficient Storage                                                             | Attempted to update an API through a POST request but failed to due insufficient storage.                                                                               |
+
+
 ## Dashboard
 
 1. ##### Can't update policy. Please ensure at least one access rights setting is set
@@ -443,7 +600,7 @@ aliases:
 
     **Solution**
 
-    Users should first [create a new API]({{< ref "getting-started/create-api" >}}) and then [create a new policy]({{< ref "getting-started/create-security-policy" >}}) with an existing API in the Access Rights.
+    Users should first [create a new API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) and then [create a new policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) with an existing API in the Access Rights.
 
 2. ##### Dashboard not showing any analytics data
 
@@ -651,7 +808,7 @@ aliases:
 
     **Solution**
 
-    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "api-management/dashboard-configuration#organizations-api">}})]</sup> Restarting the process will then set the domain.
+    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{< ref "api-management/dashboard-configuration#organizations-api" >}})]</sup> Restarting the process will then set the domain.
 
 8. ##### runtime error invalid memory address or nil pointer dereference
 
@@ -770,7 +927,7 @@ aliases:
     As AWS DocumentDB runs with TLS enabled, we require a way to run it without disabling the TLS verification.
     DocumentDB uses self-signed certs for verification, and provides a bundle with root certificates for this purpose, so we need a way to load this bundle.
 
-    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) enabled.
+    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) enabled.
 
     So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}):
 
@@ -796,7 +953,7 @@ aliases:
 13. ##### How to disable an API
 
     You will need to GET the API from the Dashboard, then set `active` property to `false`, then PUT it back.
-    See [Dashboard API - API Definitions]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}}) for more details on how to GET and PUT an API definition.
+    See [Dashboard API - API Definitions]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition" >}}) for more details on how to GET and PUT an API definition.
 
 14. ##### How to Setup CORS
 
@@ -819,14 +976,14 @@ aliases:
     **Upstream does not handle CORS**
     If your upstream does not handle CORS, you should let Tyk manage all CORS related headers and responses. In order to do that you should **enable CORS** in Tyk and **NOT ENABLE** Options pass through.
 
-    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
+    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}}).
 
 
     **CORS middleware is allowing headers which I did not allow**
     This may be the case when you enable CORS but don't provide any headers explicitly (basically providing an empty array). In this case the CORS middleware will use some sensible defaults. 
     To allow all headers, you will need to provide `*` (although this is not recommended).
 
-    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
+    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}}).
 
     **CORS middleware is blocking my authenticated request**
     Please make sure that you did allow the authorization header name (e.g. `Authorization`) or else the request will be blocked by the CORS middleware. If you're having trouble on the developer portal with authenticated requests make sure to also allow the `Content-Type` header.
@@ -841,7 +998,7 @@ aliases:
 
 16. ##### How to rename or move existing headers in a request
 
-    To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
+    To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables]({{< ref "api-management/traffic-transformation/request-context-variables" >}}). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
 
     We do this by setting the following in our API Definition Version section:
     ```{.copyWrapper}
@@ -871,7 +1028,7 @@ aliases:
 
 18. ##### How to run two Gateways with docker-compose
 
-    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-self-managed#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
+    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
     You will need to make some minor modifications to `docker-compose.yml` and start your services as usual with `docker-compose up`.
 
     {{< note success >}}
@@ -919,7 +1076,7 @@ aliases:
 
     **What is detailed request logging?**
 
-    When [detailed request logging]({{< ref "api-management/logs-metrics#enable-detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
+    When [detailed request logging]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
 
     This mode is configured in the gateway and can be enabled at the [system]({{< ref "api-management/logs-metrics#configure-at-gateway-level" >}}), [API]({{< ref "api-management/logs-metrics#configure-at-api-level" >}}) or [access key]({{< ref "api-management/logs-metrics#configure-at-key-level" >}}) level.
 
@@ -1029,10 +1186,7 @@ aliases:
 
     **Solution**
 
-    Users are advised to upgrade to the latest version of Tyk. They must also ensure that their Pump is configured with a `purge_delay` and an `optimisation_max_active` value that's greater than 0. Packages are available to download from [Packagecloud.io][1] and further details on how to upgrade can be found [here][2].
-
-    [1]: https://packagecloud.io/tyk
-    [2]: /upgrading-v2-3-v2-2/
+    Users are advised to upgrade to the latest version of Tyk. They must also ensure that their Pump is configured with a `purge_delay` and an `optimisation_max_active` value that's greater than 0. Packages are available to download from [Packagecloud.io](https://packagecloud.io/tyk) and further details on how to upgrade can be found [here]({{< ref "developer-support/upgrading" >}})
 
 6. ##### Pump overloaded
 
@@ -1065,37 +1219,6 @@ aliases:
     **Reduce analytics record expiry time**
 
     Set `analytics_config.storage_expiration_time` to a low value e.g. `5` in the Gateway configuration file `tyk.conf`. This value  is the number of seconds beyond which analytics records will be deleted from the database. The value must be higher than the `purge_delay` set for the Pump. This will allow for analytics records to be discarded in the scenario that the system is becoming overwhelmed. Note that this results in analytics record loss, but will help prevent degraded system performance.
-
-7. ##### Tyk Pump Graceful Shutdown
-
-    From version 1.5.0, Tyk Pump has a new mechanism which is called Pump’s Graceful Shutdown.
-
-    **What does Pump’s Graceful Shutdown mean exactly?**
-
-    That means that now, when Tyk Pump gets stopped or restarts, it is going to wait until the current purge cycle finishes, determined by `purge_delay` configuration. It is also going to flush all the data of the pumps that have an inner buffer.
-
-    **Why are we doing that?**
-
-    We are adding this mechanism since we were losing data on Kubernetes environments or ephemeral containers, whenever a pump instance finishes. Now, with this change, we aren't going to lose analytics records anymore.
-
-    **When is it triggered?**
-
-    This is triggered when Tyk Pump catches one of the following signals from the OS:
-
-    - `os.Interrupt, syscall.SIGINT`
-    - `syscall.SIGTERM`
-
-    When the signal is `SIGKILL`, it will not gracefully stop its execution.
-
-    **What pumps are affected?**
-
-    The main affected pumps are:
-    - `ElasticSearch`
-    - `dogstatd`
-    - `Influx2`
-
-    As they all have some kind of in-memory buffering before sending the data to the storage. With this new mechanism, all those pumps are going to flush their data before finishing the Tyk Pump process.
-    Furthermore, in a certain way, this new feature affects all the rest of the pumps since Tyk Pump is now going to wait to finish the purge cycle per se, like the writing of the records in all the configured storages.
 
 ## Streams
 
@@ -1158,7 +1281,7 @@ Here, we'll outline the following:
 
 3. ##### Mongo version
 
-    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "tyk-self-managed#mongodb" >}}).
+    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "planning-for-production/database-settings#mongodb" >}}).
 
 4. ##### Capped collections
 
@@ -1168,7 +1291,7 @@ Here, we'll outline the following:
 
     We advise everyone to cap every collection in Mongo, as this prevents collections from growing out of control and bringing your dashboard down by hitting resource limits.
 
-    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}).
+    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "planning-for-production/database-settings#mongodb-sizing-guidelines" >}}).
 
     Here’s more information on how and why you want to [cap your collections](https://www.mongodb.com/docs/manual/core/capped-collections/).
 
@@ -1233,6 +1356,155 @@ Here, we'll outline the following:
     "mongo_ssl_insecure_skip_verify": true
     ```
 
+8. ##### How to Cap analytics data storage
+
+    What methods are available to enable me to manage my MongoDB analytics storage?
+
+    [Time Based Caps]({{< ref "api-management/tyk-pump#time-based-cap-in-single-tenant-environments" >}})
+
+    [Size Based Caps]({{< ref "api-management/tyk-pump#size-based-cap" >}})
+
+    {{< note success >}}
+**Note**  
+
+Time based caps (TTL indexes) are incompatible with already configured size based caps.
+    {{< /note >}}
+
+    {{< note success >}}
+**Note**  
+
+If you are using DocumentDB, capped collections are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
+    {{< /note >}}
+
+9. ##### MongoDB X.509 Client Authentication
+
+    You can use the *MongoDB X509 Certificate* flow to authenticate the *Tyk Dashboard*, *Tyk Pump*, and *Tyk MDCB* with your *MongoDB* install.  This is slightly different from [AWS DocumentDB setup instructions]({{< ref "api-management/troubleshooting-debugging#how-to-connect-to-documentdb-with-x509-client-cert" >}}).
+
+    Before we get into the configuration, we need to understand the two key components: connection strings and certificates.
+
+    1. **Connection Strings**
+
+        1) You must specify a username (and password if needed) in the connection string.  [Why do you need a username at all?](https://docs.mongodb.com/manual/tutorial/configure-x509-client-authentication/)
+
+        2) We must specify the following parameters: `?authSource=$external&authMechanism=MONGODB-X509"`
+
+        **An example of a connection string would be:**
+
+        ```bash
+        "mongodb://CN=tyk-mongo-client,OU=TykTest@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509"
+        ```
+
+        ##### Passwords
+        If you have to include a password, you can do it after the username in basic auth format:
+
+        ```bash
+        "mongodb://CN=tyk-mongo-client,OU=TykTest,O=TykTest:mypassword@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509"
+        ```
+
+        ##### URL Encoding Protected Characters
+        Note that you must URL encode the `:` character into `%40`.   So replace any `:` in the username field into the URL encoded version.
+
+    2. **Certificates**
+
+        You'll need to provide two certificates to complete the X509 Client Authentication:
+
+        **CA Cert** containing just the public key of the Certificate Authority (CA).
+
+        **Client Cert** containing both the public and private keys of the client.
+
+    ##### Configuration
+
+    Here's what it looks like all put together:
+
+    1. **Tyk Dashboard**
+
+        Your `tyk_analytics.conf` should include these fields at the root level:
+
+        ```json
+        {
+        ...
+        "mongo_url": "mongodb://<username>@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509",
+        "mongo_use_ssl": true,
+        "mongo_ssl_ca_file": "ca.pem",
+        "mongo_ssl_pem_keyfile": "client.pem"
+        }
+        ```
+
+        | Config File           | Environment Variable | Type   | Examples
+        | ---                   | --                   | ----   | ---- |
+        | "mongo_url"                       | TYK_DB_MONGOURL      | string | "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509" |
+        | "mongo_use_ssl"                   | TYK_DB_MONGOUSESSL      | bool | true, false |
+        | "mongo_ssl_ca_file"               | TYK_DB_MONGOSSLCAFILE      | string | "certificates/ca.pem" |
+        | "mongo_ssl_pem_keyfile"           | TYK_DB_MONGOSSLPEMKEYFILE      | string | "certificates/key.pem" |
+        | "mongo_ssl_insecure_skip_verify"  | TYK_DB_MONGOSSLINSECURESKIPVERIFY      | bool | true, false |
+        | "mongo_ssl_allow_invalid_hostnames" | TYK_DB_MONGOSSLALLOWINVALIDHOSTNAMES      | bool | true, false |
+        | "mongo_session_consistency"       | TYK_DB_MONGOSESSIONCONSISTENCY      | string | "strong", "eventual", or "monotonic". default is "strong" |
+        | "mongo_batch_size"                | TYK_DB_MONGOBATCHSIZE      | int | Default "2000", min "100" |
+
+    2. **Tyk Pump**
+
+        Tyk offers three different MongoDB pumps (`mongo`, `mongo_aggregate`, and `mongo_selective`), each of which must be separately configured for X509 certificate authentication. 
+
+        The following fields must be set under the `meta` section of each pump (or set as environment variable):
+
+        ```yaml
+        { 
+        ...
+        "pumps": {
+            "mongo": {
+            "type": "mongo",
+            "meta": {
+                "collection_name": "tyk_analytics",
+                "mongo_url": "mongodb://CN=tyk-mongo-client,OU=TykTest@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509",
+                "mongo_use_ssl": true,
+                "mongo_ssl_ca_file": "ca.pem",
+                "mongo_ssl_pem_keyfile": "client.pem"
+            }
+            }
+        }
+        }
+        ```
+
+        In addition to the other configs, these are the ones related to MongoDB:
+
+        | Config File           | Type  | Examples
+        | -- | -- | --
+        "mongo_url" | string     | "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509" |   
+        "mongo_use_ssl" | bool | true, false |
+        "mongo_ssl_ca_file" | string      | "certificates/ca.pem" |  
+        “mongo_ssl_pem_keyfile" | string     | "certificates/key.pem" |     
+        "mongo_ssl_insecure_skip_verify" | bool     | true, false |     
+        "mongo_ssl_allow_invalid_hostnames" | bool         | true, false | 
+
+    3. **Tyk MDCB**
+
+        As of Tyk MDCB v1.8.0, you have been able to secure Tyk MDCB with MongoDB using X509 Certificate Authentication flow.
+
+        The config settings are exactly the same as the Tyk Dashboard steps, just nested one level deeper:
+
+        **Example Config:**
+        ```json
+        {
+        ...
+        "analytics": {
+            "mongo_url": "mongodb://CN=tyk-mongo-client,OU=TykTest@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509",
+            "mongo_use_ssl": true,
+            "mongo_ssl_ca_file": "ca.pem",
+            "mongo_ssl_pem_keyfile": "client.pem"
+        }
+        }
+        ```
+        | Config File           | Environment Variable | Type   | Examples
+        | ---                   | --                   | ----   | ---- |
+        "analytics.mongo_url" | TYK_MDCB_ANALYTICSCONFIG_MONGOURL | string   |  "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509"
+        "analytics.mongo_use_ssl" | TYK_MDCB_ANALYTICSCONFIG_MONGOUSESSL | bool | true, false |
+        "analytics.mongo_ssl_ca_file" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLCAFILE | string |  "certificates/ca.pem" |
+        "analytics.mongo_ssl_pem_keyfile" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLPEMKEYFILE | string | "certificates/key.pem" |
+        "analytics.mongo_ssl_insecure_skip_verify" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLINSECURESKIPVERIFY | bool | true, false |
+        "analytics.mongo_ssl_allow_invalid_hostnames" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLALLOWINVALIDHOSTNAMES | bool  | true, false |
+        "analytics.mongo_session_consistency" | TYK_MDCB_ANALYTICSCONFIG_MONGOSESSIONCONSISTENCY | string |  "strong", "eventual", or "monotonic". default is "strong" |
+        "analytics.mongo_batch_size" |  TYK_MDCB_ANALYTICSCONFIG_MONGOBATCHSIZE | int |  Default "2000", min "100" |
+
 ### Tyk Self-Managed
 
 This guide should help a user of Tyk Self-Managed in debugging common issues. A helpful way to go about this is by:
@@ -1242,7 +1514,7 @@ This guide should help a user of Tyk Self-Managed in debugging common issues. A 
 
 1. ##### Gateway `/hello` endpoint
 
-    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}}).
+    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
 
     This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Tyk Dashboard, Tyk Multi-Data Center Bridge (MDCB), and Tyk Cloud. 
 
@@ -1364,14 +1636,14 @@ As shown above, the `debug` log level mode provides more information which will 
 
 #### Versions
 
-You can access all Tyk release information on the [release notes](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) overview page.
+You can access all Tyk release information on the [release notes]({{< ref "developer-support/release-notes/overview" >}}) overview page.
 
-We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for stability and long term support.
+We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-types/long-term-support" >}}) for stability and long term support.
 
 ##### Non-LTS versions
 Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behavior of your existing environment.
 
-For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) page. 
+For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary]({{< ref "developer-support/release-notes/overview" >}}) page. 
 
 #### Dashboard
 
@@ -1385,7 +1657,7 @@ As mentioned above, errors can happen in any of the components of your Tyk deplo
 ##### Dashboard Level
 
 When debugging an issue, in order to isolate the gateway from the Dashboard, try to call the same API ednpoint on both Tyk Dashboard and Tyk Gateway 
-If it works with the gateway API only, then the issue is likely to be in the Dashboard. It could be that you need to set in the Dashboard some [configuration parameters](https://tyk.io/docs/tyk-dashboard/configuration/) (using the config file or via environment variables).
+If it works with the gateway API only, then the issue is likely to be in the Dashboard. It could be that you need to set in the Dashboard some [configuration parameters]({{< ref "tyk-dashboard/configuration" >}}) (using the config file or via environment variables).
 
 ##### Gateway or API level
 

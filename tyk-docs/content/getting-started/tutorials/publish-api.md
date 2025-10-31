@@ -7,13 +7,18 @@ menu:
   main:
     parent: "Getting Started"
 weight: 6
+robots: "noindex"
 aliases:
   - /try-out-tyk/tutorials/create-portal-entry/
   - /tyk-api-gateway-v1-9/tutorials/set-up-your-portal/
   - /tyk-dashboard-v1-0/tutorials/set-up-your-portal/
   - /tyk-developer-portal/tutorials/
   - /getting-started/tutorials/create-portal-entry/
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 This is for the closed source [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}}) only
 

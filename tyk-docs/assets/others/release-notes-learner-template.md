@@ -41,7 +41,7 @@ For example, for a minor version `5.6`, it can include notes for `5.6.0`, `5.6.1
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0" >}}) below.
 -->
 
 #### Breaking Changes
@@ -81,7 +81,7 @@ the dashboard and gateway. We must clarify this at the time of publishing this R
 |                 |                           | Pump vX - vY            |
 |                 |                           | TIB vX - vY             |
       
-##### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-vX.Y.Z}
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -259,7 +259,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "" >}})
+- [OpenAPI Document]({{< ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
 ### FAQ

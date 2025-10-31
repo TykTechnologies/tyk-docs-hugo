@@ -7,7 +7,12 @@ menu:
 weight: 4 
 aliases:
   - /tyk-developer-portal/curity-dcr
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 This guide describes how to integrate [The Curity Identity Server](https://curity.io/) with the Tyk Developer Portal using [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591).
 
@@ -24,7 +29,7 @@ Use case outline:
 ### Requirements
 
 - An installation of The Curity Identity Server. Follow the [Getting Started Guide](https://curity.io/resources/getting-started/) if an installation is not already available.
-- A [Tyk Self-Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
+- A [Tyk Self-Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
 
 ### Enable DCR in The Curity Identity Server
 
@@ -161,7 +166,7 @@ Initial Registration Access Token | Token to authenticate the DCR endpoint | Add
 Tyk and The Curity Identity Server should now be configured and the flow to register an OAuth client using the Tyk Developer Portal can be tested.
 
 #### Create an OAuth Client
-Start by registering a developer by navigating to **Portal Management** &rarr; **Developers** and add a developer. Then open the Tyk Developer Portal (ex. http://<host>:3000/portal) and open the **OAuth clients** page. Start the wizard by clicking **Create first Oauth Client**.
+Start by registering a developer by navigating to **Portal Management** &rarr; **Developers** and add a developer. Then open the Tyk Developer Portal (ex. `http://<host>:3000/portal`) and open the **OAuth clients** page. Start the wizard by clicking **Create first Oauth Client**.
 
 {{< img src="/img/dcr/curity/9-split-curity-create-oauth-client-wizard.png" alt="Create OAuth client wizard" >}}
 
@@ -270,7 +275,7 @@ Initial Registration Access Token | Token to authenticate the DCR endpoint | Add
 Tyk and The Curity Identity Server should now be configured and the flow to register an OAuth client using the Tyk Developer Portal can be tested.
 
 #### Create an OAuth Client
-Start by registering a developer by navigating to **Portal Management** &rarr; **Developers** and add a developer. Then open the Tyk Developer Portal (ex. http://<host>:3000/portal) and open the **OAuth clients** page. Start the wizard by clicking **Create first Oauth Client**.
+Start by registering a developer by navigating to **Portal Management** &rarr; **Developers** and add a developer. Then open the Tyk Developer Portal (ex. `http://<host>:3000/portal`) and open the **OAuth clients** page. Start the wizard by clicking **Create first Oauth Client**.
 
 {{< img src="/img/dcr/curity/9-jwt-curity-create-oauth-client-wizard.png" alt="Create OAuth client wizard" >}}
 

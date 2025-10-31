@@ -8,7 +8,12 @@ menu:
 weight: 3 
 aliases:
   - /tyk-developer-portal/customise/customising-using-dashboard/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 The main customization that can be done with the Tyk Dashboard is via the CSS Editor.
 

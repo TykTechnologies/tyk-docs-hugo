@@ -1,6 +1,7 @@
 ---
 date: 2017-03-23T17:36:15Z
 title: Looping
+description: "Learn how to use looping in Tyk's URL Rewriting to redirect requests internally within the gateway for improved performance and flexibility."
 menu:
   main:
     parent: "URL Rewriting"
@@ -9,18 +10,18 @@ weight: 5
 
 ## Overview
 
-If you need to redirect your URL to *another endpoint* in the api or *another api in the gateway* using [URL Rewriting]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}), you can run the request pipeline one more time, internally instead of redirect it to a HTTP endpoint through the network. This is called <b>looping</b>. This is very performant because Tyk will not do another network call when a loop is detected.
+If you need to redirect your URL to *another endpoint* in the api or *another api in the gateway* using [URL Rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}), you can run the request pipeline one more time, internally instead of redirect it to a HTTP endpoint through the network. This is called <b>looping</b>. This is very performant because Tyk will not do another network call when a loop is detected.
 
 In order to specify a loop, in the target URL you specify a string in the protocol schema `tyk://` as shown below:
 
 This syntax of `tyk` in the schema protocol and `self` in the domian will loop the request to another endpoint under the current api:
 ```
-tyk://self/<path>. 
+tyk://self/<path>
 ```
 
 You can also loop to another API as by specifying the API name or id (instead of `self`): 
 ```
-tyk://<API_ID>/<path>.
+tyk://<API_ID>/<path>
 ```
 
 Combined with our advanced URL rewriter rules, it can be turned into a powerful logical block, replacing the need for writing middleware or virtual endpoints in many cases.

@@ -109,7 +109,7 @@ The Tyk Dashboard uses the `mongo-pump-aggregate` collection to display analytic
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 In v4.0 of the Tyk Dashboard, we added support for the following SQL platforms:
@@ -233,7 +233,7 @@ With this configuration, all the analytics records related to `org1` or `org2` w
 
 ### Setup Dashboard Analytics
 
-To enable [Dashboard Analytics]({{<ref "api-management/dashboard-configuration#traffic-analytics">}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
+To enable [Dashboard Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
 
 These are the different pumps that handle different kinds of analytic data.
 
@@ -294,7 +294,7 @@ The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_shard
 
 ##### Mongo Aggregate Pump
 
-**`mongo-pump-aggregate`** pump stores data in a collection called **z_tyk_analyticz_aggregate_{ORG ID}**.
+**`mongo-pump-aggregate`** pump stores data in a collection called `**z_tyk_analyticz_aggregate_{ORG ID}**`.
 
 ###### Pump Config
 
@@ -843,7 +843,7 @@ We ceated a defaulkt Tyk dashboard canvat to give our users an easier starting p
 #### Prerequisites
 
 - A working Datadog agent installed on your Environment. See the [Datadog Tyk integration docs](https://docs.datadoghq.com/integrations/tyk/) for more information.
-- Either a [Tyk Pro install]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) or [Tyk OSS Gateway install]({{< ref "tyk-open-source#installation-options-for-tyk-gateway" >}}) along with a [Tyk Pump]({{< ref "tyk-pump.md" >}}) install.
+- Either a [Tyk Pro install]({{< ref "tyk-self-managed/install" >}}) or [Tyk OSS Gateway install]({{< ref "apim/open-source/installation" >}}) along with a [Tyk Pump]({{< ref "tyk-pump" >}}) install.
 
 #### How it works
 
@@ -976,7 +976,7 @@ TYK_PMP_PUMPS_ELASTICSEARCH_META_BULKCONFIG_FLUSHINTERVAL=60
 
 This is a step by step guide to setting up [Moesif API Analytics and Monetization platform](https://www.moesif.com/solutions/track-api-program?language=tyk-api-gateway&utm_medium=docs&utm_campaign=partners&utm_source=tyk) to understand [customer API usage](https://www.moesif.com/features/api-analytics?utm_medium=docs&utm_campaign=partners&utm_source=tyk) and [setup usage-based billing](https://www.moesif.com/solutions/metered-api-billing?utm_medium=docs&utm_campaign=partners&utm_source=tyk).
 
-We also have a [blog post](https://tyk.io/tyk-moesif-the-perfect-pairing/) which highlights how Tyk and Moesif work together.
+We also have a [blog post](https://tyk.io/blog/tyk-moesif-the-perfect-pairing/) which highlights how Tyk and Moesif work together.
 
 The assumptions are that you have Docker installed and Tyk Self-Managed already running.
 See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.
@@ -984,7 +984,7 @@ See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.
 
 #### Overview 
 
-With the Moesif Tyk plugin, your API logs are sent to Moesif asynchronously to provide analytics on customer API usage along with your API payloads like JSON and XML. This plugin also enables you to monetize your API with [billing meters](https://www.moesif.com/solutions/metered-api-billing?utm_medium=docs&utm_campaign=partners&utm_source=tyk) and provide a self-service onboarding experience. Moesif also collects information such as the authenticated user (AliasId or OAuthId) to identify customers using your API. An overview on how Moesif and Tyk works together is [available here](https://tyk.io/tyk-moesif-the-perfect-pairing/).
+With the Moesif Tyk plugin, your API logs are sent to Moesif asynchronously to provide analytics on customer API usage along with your API payloads like JSON and XML. This plugin also enables you to monetize your API with [billing meters](https://www.moesif.com/solutions/metered-api-billing?utm_medium=docs&utm_campaign=partners&utm_source=tyk) and provide a self-service onboarding experience. Moesif also collects information such as the authenticated user (AliasId or OAuthId) to identify customers using your API. An overview on how Moesif and Tyk works together is [available here](https://tyk.io/blog/tyk-moesif-the-perfect-pairing/).
 
 #### Steps for Configuration
 
@@ -1019,7 +1019,7 @@ TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID=your_moesif_application_id
 
 3. **Ensure analytics is enabled**
 
-If you want to log HTTP headers and body, ensure the [detailed analytics recording](https://tyk.io/docs/analytics-and-reporting/useful-debug-modes/) flag is set to true in your [Tyk Gateway Conf](https://tyk.io/docs/tyk-oss-gateway/configuration/)
+If you want to log HTTP headers and body, ensure that [detailed analytics recording]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}}) is enabled true in your [Tyk Gateway Conf]({{< ref "tyk-oss-gateway/configuration" >}})
 
 ####### JSON / Conf File
 
@@ -1059,7 +1059,7 @@ $ curl localhost:8080
 ```
 {{< img src="/img/pump/moesif_step5.png" alt="Step5" >}}
 
-The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io/simpler-usage-tracking-token-aliases-migration-to-tyk#begin-with-tyk-cloud/) to a user id in Moesif. With a Moesif SDK, you can store additional customer demographics to break down API usage by customer email, company industry, and more.
+The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io/blog/simpler-usage-tracking-token-aliases-tyk-cloud/) to a user id in Moesif. With a Moesif SDK, you can store additional customer demographics to break down API usage by customer email, company industry, and more.
 
 #### Configuration options
 
@@ -1589,7 +1589,7 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
 
     If you have Prometheus Operator enabled on the cluster, it would look for “PodMonitor” or “ServiceMonitor” resources and scrap from specified port. The only thing you would need to modify here is the helm release name for Prometheus Operator.
 
-    Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "api-management/tyk-pump#monitor-your-apis-with-prometheus">}}) for illustration:
+    Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{< ref "api-management/tyk-pump#monitor-your-apis-with-prometheus" >}}) for illustration:
 
     ```bash
     NAMESPACE=tyk-oss
@@ -1616,7 +1616,7 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
     {{< note success >}}
@@ -1639,7 +1639,7 @@ For Custom Metrics, commas are escaped to be used in helm --set command. You can
 
     {{< img src="/img/diagrams/pump-prometheus-1.png" alt="pump-prometheus" >}}
 
-    You can check our [Guide on Monitoring API with Prometheus]({{<ref "api-management/tyk-pump#useful-queries">}}) for a list of useful queries you can setup and use.
+    You can check our [Guide on Monitoring API with Prometheus]({{< ref "api-management/tyk-pump#useful-queries" >}}) for a list of useful queries you can setup and use.
 
     e.g. The custom metrics tyk_http_requests_total can be retrieved:
 
@@ -1699,7 +1699,7 @@ For Custom Metrics, commas are escaped to be used in helm --set command. You can
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
 3. **Verification**

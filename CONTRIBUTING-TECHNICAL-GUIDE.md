@@ -14,34 +14,34 @@ GH provides great DX for making updates, committing and creating PRs via the bro
 Use GitHub GUI browser when you:
 - Have simple and only a few edits of the markdown files. 
 - Already know the syntax for adding internal links and adding images. 
-- Already know what you are going to write and you **don't** need many iterative commits to see if the result looks okay. In this case, using a local environment will be much faster (explain in the next section)
+- Already know what you are going to write and you **don't** need many iterative commits to see if the result looks okay. In this case, using a local environment will be much faster as explained in the next section.
 
 #### How To Use It?
-Will briefly explain it as it is quite trivial:
+I'll briefly explain the process as it is quite straightforward:
 1. Via the GUI you can simply click the pencil icon to start editing, then check the differences, click commit to commit the changes to a new branch, and eventually create a PR. 
 2. Check that the CI jobs started running. These jobs run tests on the website including your changes. Running CI jobs are displayed in yellow. 
 3. Once the CI job finishes it will turn green. Upon completion, you will see a preview link that you should use to check your changes on a real deployment of the Tyk docs website.
 
 
 ### 2. Local Development Environment
-Local environment means, checking out the tyk-docs repo and updating the files using an editor or an IDE. This allows you to test the changes by running Hugo locally and check for errors in Hugo or in the website Hugo generated.
+Local environment means checking out the tyk-docs repo and updating the files using an editor or an IDE. This allows you to test your changes by running Hugo locally and check for errors both in the Hugo process and in the website that Hugo generates.
 
 #### When To Use It?
 Using the browser is not always enough and you sometimes need to check out the repo and work locally.
 You normally favor using a local environment when you need to:
-- Test things yourself before you push them
-- Repeatedly push changes and test the website
+- Test your changes in real-time before pushing them
+- Repeatedly make changes and test the website
 
-Doing so by **running Hugo locally will save you a lot of time** since it takes the CI a few minutes to update the deployment with the latest changes and finish its test before it becomes green. 
+Doing so by **running Hugo locally will save you a lot of time** since it takes the CI a few minutes to update the deployment with the latest changes and complete its tests before showing a green success status.
 
 #### Use Cases For Local Development Environment
 When you need to:
-- Test things yourself before you push them
-- Check that the image you added work
+- Preview changes and verify their appearance locally
+- Check that the images you added work correctly
 - See how images are rendered on the page
 - Check that the internal links you added work
-- Are not sure about the syntax of links or images when you work on many pages
-- When adding new files, it's easier to run it locally since you cannot be sure of the internal links format and may need to validate referenced links to other content pages and sections
+- When you are not sure about the syntax of links or images when working on many pages
+- When adding new files, it's easier to run Hugo locally because you need to validate the format of internal links and references to other content pages and sections
 
 #### How To Use It?
 
@@ -62,7 +62,7 @@ For external contributions, we recommend contributing to Tyk in the following wa
 2. Run `docker-compose up` from the project directory
 
 ### Run Hugo Locally
-1. Install [Hugo v0.110.0+extended or greater](https://gohugo.io/installation/)
+1. Install [Hugo v0.145.0+extended or greater](https://gohugo.io/installation/)
 2. Run `hugo server --theme=tykio --buildDrafts --enableGitInfo` from the `tyk-docs/tyk-docs` directory
 3. Go to  [http://localhost:1313/docs/nightly/](http://localhost:1313/docs/nightly/) to view the docs locally
 4. The content itself is just markdown that follows the front matter block. After making a change, Hugo should auto-reload and you will be able to see the changes live in your browser. If not, refresh. Sometimes Hugo gets confused and you may need to re-run it
@@ -194,19 +194,19 @@ The badge shortcode can be used in differing ways to populate the 3 grid types. 
 
 {{< grid >}}
 
-{{< badge read="15 mins" href="/docs/migration-to-tyk#begin-with-tyk-cloud" image="/docs/img/tyk-cloud.svg" >}}
+{{< badge read="15 mins" href="/docs/getting-started/create-account" image="/docs/img/tyk-cloud.svg" >}}
 Sign up for our new, next level **SaaS** product.
 {{< /badge >}}
 
-{{< badge read="15 mins" href="/docs/migration-to-tyk#install-via-aws-marketplace" image="/docs/img/aws.png">}}
+{{< badge read="15 mins" href="/docs/tyk-self-managed/install#install-on-aws-marketplace" image="/docs/img/aws.png">}}
 Install our **On-Premises** product on AWS.
 {{< /badge >}}
 
-{{< badge read="10 mins" href="migration-to-tyk#install-with-docker" image="/docs/img/docker.png">}}
+{{< badge read="10 mins" href="/docs/tyk-self-managed/install#install-with-docker" image="/docs/img/docker.png">}}
 Install our **On-Premises** product with Docker.
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/migration-to-tyk#install-with-kubernetes" image="/docs/img/k8s.png">}}
+{{< badge read="10 mins" href="/docs/tyk-self-managed/install#install-on-kubernetes" image="/docs/img/k8s.png">}}
 Install our **On-Premises** product with Kubernetes.
 {{< /badge >}}
 
@@ -248,7 +248,7 @@ The Tyk Pump is our open source analytics purger that moves the data generated b
 The Tyk Developer Portal is a small CMS-like system that enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
 {{< /badge >}}
 
-{{< badge href="/docs/migration-to-tyk#implement-multi-data-centre-setup/" image="/docs/img/diagram.png" imageStyle="height:150px" >}}
+{{< badge href="/docs/api-management/mdcb" image="/docs/img/diagram.png" imageStyle="height:150px" >}}
 **MDCB**
 
 The Multi Data Center Bridge allows for centralised management of multiple independent Tyk clusters and the seamless transition of APIs between environments, availability zones and segmented nodes.
@@ -400,6 +400,31 @@ the tooltip text to display{{< /definition >}}{{< /tooltip >}}
 
 ![tooltip-demo](https://user-images.githubusercontent.com/1983518/109049790-916c4880-76d0-11eb-8b3a-ad107d317468.gif)
 
+### Pill label shortcode {#pill-label-shortcode}
+
+The `pill-label` shortcode creates small, pill-shaped labels that can be added next to headers to highlight features, statuses, or other information.
+
+Basic usage:
+```
+### Feature Name {{< pill-label text="LABEL" >}}
+```
+
+You can also specify a class or custom styling:
+```
+### Feature Name {{< pill-label text="LABEL" class="pill-red" >}}
+### Feature Name {{< pill-label text="LABEL" style="background-color: #f0f0f0; color: #333;" >}}
+```
+
+To read and view detailed examples of all the available styling options, see the [pill-label live examples page](https://tyk.io/docs/ui-examples/test-pill-label/)
+
+There's also a [security pill-label test file](./tyk-docs/tyk-docs/content/ui-examples/test-pill-label-security.md) to validate the security of the implementation. It's in a draft mode, so if you want to see it in the website, you need to run Hugo with `--buildDrafts` as follows
+
+```
+hugo server --theme=tykio --buildDrafts --enableGitInfo --port 1313
+```
+
+Then navigate to `http://localhost:1313/docs/nightly/ui-examples/test-pill-label-security/` to view the examples.
+
 ## License
 
 Tyk is released under the MPL v2.0 please see the [license file](LICENSE.md) for a full version of the license.
@@ -421,7 +446,7 @@ When you create a PR in this repository:
 **For Contributors Outside Tyk:** A Tyk team member will need to approve the Netlify CI build for your pull request (PR). You will need to wait 
 until the CI status is green.
 
-**Locating Your Changes:** Since there’s no search feature in this Netlify build, you can find your changes by following these steps:
+**Locating Your Changes:** Since there's no search feature in this Netlify build, you can find your changes by following these steps:
 	1.	Copy the file path: From the file path in GitHub, copy the portion after `/content` up to the end, excluding the `.md` file extension.
 	2.	Construct the URL: Append this copied path to the Netlify URL after `/docs/nightly`.
 	3.	Example: To see the document at tyk-docs GitHub repository, copy `/tyk-self-managed/install` (omit `.md`) and add it after /docs/nightly/ in the Netlify URL, resulting in [https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/](https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/).

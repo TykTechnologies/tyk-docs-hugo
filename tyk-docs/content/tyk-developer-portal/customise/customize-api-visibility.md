@@ -4,9 +4,12 @@ title: Customizing API Visibility
 linktitle: Customizing API Visibility
 description: "A walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers."
 tags: ["customizing EDP", EDP, "customizing APIs EDP"]
-aliases:
-  - /tyk-developer-portal/customise/customize-api-visibility/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalog. This behavior may not be desired and you may want to have more control of what APIs developers see in the catalog when accessing the portal. A common use case for this is if you have internal APIs that you want to publish only to your internal developers, and restrict view to others.
 
@@ -16,7 +19,7 @@ In a nutshell, we are going to assign a group field to an API catalog profile, t
 *Please note that this does not support multiple groups for a single API catalog entry, nor for a single developer profile.* 
 
 ## Prerequisites
-1. You have an API created in your Dashboard. See [Create an API]({{< ref "getting-started/create-api" >}}) for more details.
+1. You have an API created in your Dashboard. See [Create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) for more details.
 2. You have a Policy created in your Dashboard that has access rights to this API
 3. You have a Portal Catalog entry for this API. Here we will call it "Internal API"
 4. You have a developer account that can access your Developer Portal. 
@@ -38,7 +41,7 @@ Go to Portal Management > Developers screen
 {{< img src="/img/dashboard/portal-management/deveoper_field_group.png" alt="developer_field_group.png" width=800 >}}
 
 
-This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-portal/customise/custom-developer-portal/#updating-a-developer-example-adding-custom-fields).
+This flag can also be [set programatically]({{< ref "tyk-developer-portal/tyk-portal-classic/customise/custom-developer-portal#updating-a-developer-example-adding-custom-fields" >}}).
 
 
 ## Modify the Portal Catalog Template to add Show/Hide Logic
@@ -183,7 +186,7 @@ Now the visibility of the "Internal API" is driven by the value of the "Group" f
 If you have enabled "Enable multiple API subscriptions" option in the portal settings, you also need to modify `request_multi_key.html` template. 
 The main difference from the default template is two changes:
 1. Get user data state at the start of template: `{{$profile := .UserData }}`
-2. Before rendering <li> element, which renders list of APIs, we insert the following section:
+2. Before rendering `<li>` element, which renders list of APIs, we insert the following section:
 ```go-html-template
 {{ range $field, $value := $apiDetail.Fields }}
 	{{ $group_match := true }}

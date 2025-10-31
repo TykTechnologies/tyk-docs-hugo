@@ -6,61 +6,86 @@
 {{- $pagePath := replace $pagePath "/docs" "" -}}
 {{- $pagePath := replace $pagePath "/nightly" "" -}}
 {{- $pagePath := replace $pagePath "/" "" -}}
+{{- $parentActive := .parent_active | default false -}}
+{{- $isHome := eq $pagePath "" -}}
 
-
+{{- if not $isHome -}}
 <ul>
-  {{- range .menu -}}
+  {{- range $index, $item := .menu -}}
     {{- $is := false -}}
     {{- $has := false -}}
+    {{- $isActiveParent := false -}}
 
-    {{- $path := replace .path "/" "" -}}
+    {{- $path := replace $item.path "/" "" -}}
     {{- if eq $path $pagePath -}}
-      {{- $has = true -}}
       {{- $is = true -}}
+      {{- $isActiveParent = true -}}
     {{- end -}}
 
-    {{- if (isset . "menu") -}}
-      {{- range .menu -}}
-        {{- $path := replace .path "/" "" -}}
-        {{- if eq $path $pagePath -}}
+    {{- if (isset $item "menu") -}}
+      {{- range $child := $item.menu -}}
+        {{- $childPath := replace $child.path "/" "" -}}
+        {{- if eq $childPath $pagePath -}}
           {{- $has = true -}}
+          {{- $isActiveParent = true -}}
         {{- end -}}
-        {{- if (isset . "menu") -}}
-          {{- range .menu -}}
-            {{- $path := replace .path "/" "" -}}
-            {{- if eq $path $pagePath -}}
+        {{- if (isset $child "menu") -}}
+          {{- range $grandChild := $child.menu -}}
+            {{- $grandChildPath := replace $grandChild.path "/" "" -}}
+            {{- if eq $grandChildPath $pagePath -}}
               {{- $has = true -}}
+              {{- $isActiveParent = true -}}
             {{- end -}}
-            {{- if (isset . "menu") -}}
-              {{- range .menu -}}
-                {{- $path := replace .path "/" "" -}}
-                {{- if eq $path $pagePath -}}
+            {{- if (isset $grandChild "menu") -}}
+              {{- /* Recursively check deeper levels */ -}}
+              {{- $greatGrandHas := false -}}
+              {{- range $greatGrandChild := $grandChild.menu -}}
+                {{- $greatGrandChildPath := replace $greatGrandChild.path "/" "" -}}
+                {{- if eq $greatGrandChildPath $pagePath -}}
                   {{- $has = true -}}
+                  {{- $isActiveParent = true -}}
+                  {{- $greatGrandHas = true -}}
                 {{- end -}}
-                {{- if (isset . "menu") -}}
-                  {{- range .menu -}}
-                    {{- $path := replace .path "/" "" -}}
-                    {{- if eq $path $pagePath -}}
+                {{- if (isset $greatGrandChild "menu") -}}
+                  {{- $fifthLevelHas := false -}}
+                  {{- range $fifthLevelChild := $greatGrandChild.menu -}}
+                    {{- $fifthLevelChildPath := replace $fifthLevelChild.path "/" "" -}}
+                    {{- if eq $fifthLevelChildPath $pagePath -}}
                       {{- $has = true -}}
+                      {{- $isActiveParent = true -}}
+                      {{- $greatGrandHas = true -}}
+                      {{- $fifthLevelHas = true -}}
                     {{- end -}}
-                    {{- if (isset . "menu") -}}
-                      {{- range .menu -}}
-                        {{- $path := replace .path "/" "" -}}
-                        {{- if eq $path $pagePath -}}
+                    {{- if (isset $fifthLevelChild "menu") -}}
+                      {{- $sixthLevelHas := false -}}
+                      {{- range $sixthLevelChild := $fifthLevelChild.menu -}}
+                        {{- $sixthLevelChildPath := replace $sixthLevelChild.path "/" "" -}}
+                        {{- if eq $sixthLevelChildPath $pagePath -}}
                           {{- $has = true -}}
+                          {{- $isActiveParent = true -}}
+                          {{- $greatGrandHas = true -}}
+                          {{- $fifthLevelHas = true -}}
+                          {{- $sixthLevelHas = true -}}
                         {{- end -}}
-                        {{- if (isset . "menu") -}}
-                          {{- range .menu -}}
-                            {{- $path := replace .path "/" "" -}}
-                            {{- if eq $path $pagePath -}}
-                              {{- $has = true -}}
-                            {{- end -}}
-                          {{- end -}}
-                        {{- end -}}
+                      {{- end -}}
+                      {{- if $sixthLevelHas -}}
+                        {{- $has = true -}}
+                        {{- $isActiveParent = true -}}
+                        {{- $greatGrandHas = true -}}
+                        {{- $fifthLevelHas = true -}}
                       {{- end -}}
                     {{- end -}}
                   {{- end -}}
+                  {{- if $fifthLevelHas -}}
+                    {{- $has = true -}}
+                    {{- $isActiveParent = true -}}
+                    {{- $greatGrandHas = true -}}
+                  {{- end -}}
                 {{- end -}}
+              {{- end -}}
+              {{- if $greatGrandHas -}}
+                {{- $has = true -}}
+                {{- $isActiveParent = true -}}
               {{- end -}}
             {{- end -}}
           {{- end -}}
@@ -73,55 +98,62 @@
       {{- $has = false -}}
     {{ end }}
 
-    {{- if and (isset . "menu") (ne .category "Label") -}}
-      {{ if or (.show) ($showEmptyPages) -}}
-        <li
-          class="category-{{ .category }} {{ if $is }}active{{ end }} {{ if or $is $has (eq .category `Label`) }}
-            st-open
-          {{ else }}
-            st-collapsed
-          {{ end }}">
-          {{- if .path -}}
-            {{- $prefixPath := strings.TrimLeft "/" .path -}}
-            <a href="{{ $prefixPath | relURL }}" class="{{ if not .show }}paint-red{{ end }}">
-              {{- .title -}}
-            </a>
+    {{- $active := or $is $isActiveParent $parentActive $has -}}
+    {{- $shouldShowChildren := or $active $is -}}
+
+    {{- if and (isset $item "menu") (ne $item.category "Label") (ne $item.category "Tab") -}}
+      <li class="category-{{ $item.category }} {{ if or $is $has }}st-open{{ else }}st-collapsed{{ end }}">
+        {{- if $item.path -}}
+          {{- $prefixPath := strings.TrimLeft "/" $item.path -}}
+          {{- if eq $item.category "Directory" -}}
+            <a href="{{ $prefixPath | relURL }}" class="directory-link {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
           {{- else -}}
-            <a class="{{ if not .show }}paint-red{{ end }}">{{- .title -}}</a>
+            <a href="{{ $prefixPath | relURL }}" class="{{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
           {{- end -}}
-          <!-- If the menu item has children, include this partial template again (recursively) -->
-          {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
-        </li>
-      {{ end }}
-    {{- else if and (.show) (eq .category "Label") -}}
-      {{- if eq .title "Home" -}}
-        <a href="{{ "" | relURL }}" style="font-size: 15px;">{{ .title }}</a>
-      {{- else -}}
-        <hr />
-        <h6 style="font-size: 15px;">{{ .title }}</h6>
+        {{- else -}}
+          <a class="{{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
+        {{- end -}}
+        {{- if $shouldShowChildren -}}
+          {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" $active) -}}
+        {{- end -}}
+      </li>
+    {{- else if and ($item.show) (or (eq $item.category "Label") (eq $item.category "Tab")) -}}
+      {{- if or $active (and $isHome (eq $item.title "Home")) -}}
+        {{- if eq $item.category "Label" -}}
+          {{- if ne $index 0 }}<hr />{{- end }}
+          <h6 style="font-size: 15px;">{{ $item.title }}</h6>
+        {{- end -}}
+        <h6 style="font-size: 15px;" class="sidebar-tab-title">{{ $item.title }}</h6>
+        {{- if or $active -}}
+          {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" true) -}}
+        {{- end -}}
       {{- end -}}
-      {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
+    {{- else if and ($item.show) (eq $item.category "Tab") -}}
+      <h6 class="sidebar-tab-title">{{ $item.title }}</h6>
+      {{- if $item.menu -}}
+        {{- partial "menu_recursive.html" (dict "menu" $item.menu "page" $page "site" $site "parent_active" $active) -}}
+      {{- end -}}
     {{- else -}}
-      {{ if or (.show) ($showEmptyPages) -}}
-        <li class="st-file {{ if $is }}active{{ end }} {{ if not .show }}paint-red{{ end }}">
-          {{- $prefixPath := strings.TrimLeft "/" .path -}}
-          {{- $prefixPath := strings.TrimRight "/" .path -}}
+      {{ if or $active -}}
+        <li class="st-file {{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">
+          {{- $prefixPath := strings.TrimLeft "/" $item.path -}}
+          {{- $prefixPath := strings.TrimRight "/" $item.path -}}
           {{- $prefixPath := replace $prefixPath "--" "-&-" -}}
           {{- $prefixMD := printf "%s.md" $prefixPath -}}
 
           {{- if $prefixPath -}}
-            <a href="{{ ref $page $prefixMD }}" class="{{ if not .show }}paint-red{{ end }}">
-              {{- .title -}}
-            </a>
+            <a href="{{ ref $page $prefixMD }}" class="{{ if $is }}active{{ end }} {{ if not $item.show }}paint-red{{ end }}">{{- $item.title -}}</a>
           {{- else -}}
-            {{- .title -}}
+            {{- $item.title -}}
           {{- end -}}
 
-          {{ if not .path }}
-            {{- warnf "Found page without path %q" .title -}}
+          {{ if not $item.path }}
+            {{- warnf "Found page without path %q" $item.title -}}
           {{ end }}
         </li>
       {{- end -}}
     {{- end -}}
   {{- end -}}
 </ul>
+{{- end -}}
+

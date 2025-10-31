@@ -12,8 +12,92 @@ aliases:
 **This page contains all release notes for Tyk Identity Broker displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. 
+
+---
+
+## 1.7 Release Notes
+
+### 1.7.0 Release Notes
+
+#### Release Date 28 March 2025
+
+#### Release Highlights
+
+This release introduces enhancements to TIB, improving group-based permission mapping, adding support for proxy settings from environment variables, and allowing dynamic state values in the OAuth2 flow. 
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.7.0" >}}) below.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | All our binaries |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.x, 6.x, 7.0 | 4.4.x, 5.x, 6.x and 7.0.x | Used by Tyk Identity Broker |
+| [Redis](https://redis.io/download/)         | 6.x - 7.0        | 6.x - 7.0            | Used by Tyk Identity Broker |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.6.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.6.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-identity-broker/tags?name=1.7.0)
+  ```
+  docker pull tykio/tyk-identity-broker:v1.7.0
+  ```
+- source code tarball for oss projects - [TIB v1.7.0](https://github.com/TykTechnologies/tyk-identity-broker/releases/tag/v1.7.0)
+
+#### Changelog {#Changelog-v1.7.0}
+
+##### Added
+<ul>
+<li>
+<details>
+<summary>Load Proxy Settings from Environment Variables</summary>
+
+TIB now respects `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables when making outbound connections. This change ensures compatibility with air-gapped Kubernetes environments where external services can only be accessed via an HTTP proxy.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dynamic State Query Support in OAuth2 Flow</summary>
+
+The OAuth2 "state" field can now be dynamically set via the URL or form-encoded body. This improvement allows integration with external APIs that require custom state values, ensuring compliance with various regulatory and enterprise authentication requirements.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Multi-Group Permission Mapping for Identity Providers</summary>
+
+Previously, TIB assigned a user to the last matched group when multiple groups were mapped, regardless of the identity provider (SAML, LDAP, OAuth, OIDC, etc.). The new functionality introduces support for multi-group mapping, allowing permissions to be merged. This update is backward compatible and ensures that multi-group rights (combined permissions) are only applied if the user does not have a `groupId` assigned via the Dashboard.
+</details>
+</li>
+</ul>
+
+##### Security Fixes
+<ul>
+<li>
+<details>
+<summary>Fixed the following CVE</summary>
+
+- [GHSA-v778-237x](https://github.com/advisories/GHSA-v778-237x-gjrc)
+</details>
+</li>
+</ul>
 
 ---
 
@@ -26,7 +110,7 @@ Our minor releases are supported until our next minor comes out.
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0" >}}) below.
 -->
 ###### Enhanced Security with JWE Support for OIDC SSO
 This release introduces JSON Web Encryption (JWE) support for OpenID Connect (OIDC) Single Sign-On (SSO) in the Tyk Identity Broker (TIB). With this enhancement, organizations can achieve greater security for token handling during authentication flows. JWE token validation and processing are now seamlessly integrated, offering configurable private key support for decryption.
@@ -92,7 +176,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
   ```
 - source code tarball for oss projects - [TIB v1.6.1](https://github.com/TykTechnologies/tyk-identity-broker/releases/tag/v1.6.1)
 
-#### Changelog {#Changelog-v1.6.1}
+#### Changelog
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
@@ -115,7 +199,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 This release adds support for JSON Web Encryption (JWE) in OIDC Single Sign-On (SSO) with TIB, providing enhanced security for token handling in authentication flows. This feature enables processing and validation of JWE tokens, with configuration options for setting the private key required for decryption.
 
-For more details, refer to the [OIDC SSO with JWE]({{<ref "api-management/external-service-integration#social-profile-fields">}}) documentation.
+For more details, refer to the [OIDC SSO with JWE]({{< ref "api-management/external-service-integration#social-profile-fields" >}}) documentation.
 </details>
 </li>
 

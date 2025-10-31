@@ -1,4 +1,4 @@
-## Tyk OAS API Definition Object
+## Tyk vendor extension reference
 
 XTykAPIGateway contains custom Tyk API extensions for the OpenAPI definition.
 The values for the extensions are stored inside the OpenAPI document, under
@@ -43,6 +43,8 @@ Tyk classic API definition: `name`.
 **Field: `expiration` (`string`)**
 Expiration date.
 
+Tyk classic API definition: `expiration`.
+
 **Field: `state` ([State](#state))**
 State holds configuration for API definition states (active, internal).
 
@@ -63,20 +65,56 @@ ServiceDiscovery contains the configuration related to Service Discovery.
 
 Tyk classic API definition: `proxy.service_discovery`.
 
-**Field: `test` ([Test](#test))**
-Test contains the configuration related to uptime tests.
+**Field: `uptimeTests` ([UptimeTests](#uptimetests))**
+UptimeTests contains the configuration related to uptime tests.
+
+Tyk classic API definition: `uptime_tests` and `check_host_against_uptime_tests`.
 
 **Field: `mutualTLS` ([MutualTLS](#mutualtls))**
 MutualTLS contains the configuration for establishing a mutual TLS connection between Tyk and the upstream server.
 
+Tyk classic API definition: `upstream_certificates_disabled` and `upstream_certificates`.
+
 **Field: `certificatePinning` ([CertificatePinning](#certificatepinning))**
 CertificatePinning contains the configuration related to certificate pinning.
+
+Tyk classic API definition: `certificate_pinning_disabled` and `pinned_public_keys`.
 
 **Field: `rateLimit` ([RateLimit](#ratelimit))**
 RateLimit contains the configuration related to API level rate limit.
 
+Tyk classic API definition: `global_rate_limit`.
+
 **Field: `authentication` ([UpstreamAuth](#upstreamauth))**
 Authentication contains the configuration related to upstream authentication.
+
+Tyk classic API definition: `upstream_auth`.
+
+**Field: `loadBalancing` ([LoadBalancing](#loadbalancing))**
+LoadBalancing contains configuration for load balancing between multiple upstream targets.
+
+Tyk classic API definition: `proxy.enable_load_balancing` and `proxy.targets`.
+
+**Field: `preserveHostHeader` ([PreserveHostHeader](#preservehostheader))**
+PreserveHostHeader contains the configuration for preserving the host header.
+
+Tyk classic API definition: `proxy.preserve_host_header`.
+
+**Field: `preserveTrailingSlash` ([PreserveTrailingSlash](#preservetrailingslash))**
+PreserveTrailingSlash controls whether Tyk preserves trailing slashes in URLs when proxying
+requests to upstream services. When enabled, URLs like "/users/" will retain the trailing slash.
+
+Tyk classic API definition: `proxy.disable_strip_slash`.
+
+**Field: `tlsTransport` ([TLSTransport](#tlstransport))**
+TLSTransport contains the configuration for TLS transport settings.
+
+Tyk classic API definition: `proxy.transport`.
+
+**Field: `proxy` ([Proxy](#proxy))**
+Proxy contains the configuration for an internal proxy.
+
+Tyk classic API definition: `proxy.proxy_url`.
 
 ### **Server**
 
@@ -118,6 +156,34 @@ EventHandlers contains the configuration related to Tyk Events.
 
 Tyk classic API definition: `event_handlers`.
 
+**Field: `ipAccessControl` ([IPAccessControl](#ipaccesscontrol))**
+IPAccessControl configures IP access control for this API.
+
+
+Tyk classic API definition: `allowed_ips` and `blacklisted_ips`.
+
+**Field: `batchProcessing` ([BatchProcessing](#batchprocessing))**
+BatchProcessing contains configuration settings to enable or disable batch request support for the API.
+
+
+Tyk classic API definition: `enable_batch_request_support`.
+
+**Field: `protocol` (`string`)**
+Protocol configures the HTTP protocol used by the API.
+Possible values are:
+- "http": Standard HTTP/1.1 protocol
+- "http2": HTTP/2 protocol with TLS
+- "h2c": HTTP/2 protocol without TLS (cleartext).
+
+
+Tyk classic API definition: `protocol`.
+
+**Field: `port` (`int`)**
+Port Setting this value will change the port that Tyk listens on. Default: 8080.
+
+
+Tyk classic API definition: `listen_port`.
+
 ### **Middleware**
 
 Middleware holds configuration for Tyk's native middleware.
@@ -138,7 +204,7 @@ Active enables the API so that Tyk will listen for and process requests made to 
 Tyk classic API definition: `active`.
 
 **Field: `internal` (`boolean`)**
-Internal makes the API accessible only internally.
+This field controls the exposure of the API on the Gateway. When set to `true`, the API will not be made available for external access and will not be included in API listings returned by the Gateway's management APIs; it will be accessible only via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) or as a [child API version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}).
 
 Tyk classic API definition: `internal`.
 
@@ -297,14 +363,31 @@ EndpointReturnsList is set `true` when the response type is a list instead of an
 
 Tyk classic API definition: `service_discovery.endpoint_returns_list`.
 
-### **Test**
+### **UptimeTests**
 
-Test holds the test configuration for service discovery.
+UptimeTests configures uptime tests.
+
+**Field: `enabled` (`boolean`)**
+Enabled specifies whether the uptime tests are active or not.
+
+Tyk classic API definition: `uptime_tests.disabled`.
 
 **Field: `serviceDiscovery` ([ServiceDiscovery](#servicediscovery))**
 ServiceDiscovery contains the configuration related to test Service Discovery.
 
 Tyk classic API definition: `proxy.service_discovery`.
+
+**Field: `tests` ([[]UptimeTest](#uptimetest))**
+Tests contains individual connectivity tests defined for checking if a service is online.
+
+**Field: `hostDownRetestPeriod` (`time.ReadableDuration`)**
+HostDownRetestPeriod is the time to wait until rechecking a failed test.
+If undefined, the default testing interval (10s) is in use.
+Setting this to a lower value would result in quicker recovery on failed checks.
+
+**Field: `logRetentionPeriod` (`time.ReadableDuration`)**
+LogRetentionPeriod holds a time to live for the uptime test results.
+If unset, a value of 100 years is the default.
 
 ### **MutualTLS**
 
@@ -393,6 +476,107 @@ BasicAuth holds the basic authentication configuration for upstream API authenti
 **Field: `oauth` ([UpstreamOAuth](#upstreamoauth))**
 OAuth contains the configuration for OAuth2 Client Credentials flow.
 
+**Field: `requestSigning` ([UpstreamRequestSigning](#upstreamrequestsigning))**
+RequestSigning holds the configuration for generating signed requests to an upstream API.
+
+### **LoadBalancing**
+
+LoadBalancing represents the configuration for load balancing between multiple upstream targets.
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if load balancing is active.
+
+**Field: `skipUnavailableHosts` (`boolean`)**
+SkipUnavailableHosts determines whether to skip unavailable hosts during load balancing based on uptime tests.
+Tyk classic field: `proxy.check_host_against_uptime_tests`
+
+**Field: `targets` ([[]LoadBalancingTarget](#loadbalancingtarget))**
+Targets defines the list of targets with their respective weights for load balancing.
+
+### **PreserveHostHeader**
+
+PreserveHostHeader holds the configuration for preserving the host header.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates preserving the host header.
+
+### **PreserveTrailingSlash**
+
+PreserveTrailingSlash holds the configuration for preserving the
+trailing slash when routed to upstream services.
+
+The default behaviour of Tyk is to strip any trailing slash (/) from
+the target URL when proxying the request upstream. In some use cases the
+upstream might expect the trailing slash - or might consider /users/ to
+be a different endpoint from /users (for example).
+
+**Field: `enabled` (`boolean`)**
+Enabled activates preserving the trailing slash when routing requests.
+
+### **TLSTransport**
+
+TLSTransport contains the configuration for TLS transport settings.
+This struct allows you to specify a custom proxy and set the minimum TLS versions and any SSL ciphers.
+
+Example:
+
+	```
+	{
+	  "proxy_url": "http(s)://proxy.url:1234",
+	  "minVersion": "1.0",
+	  "maxVersion": "1.0",
+	  "ciphers": [
+	    "TLS_RSA_WITH_AES_128_GCM_SHA256",
+	    "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+	  ],
+	  "insecureSkipVerify": true,
+	  "forceCommonNameCheck": false
+	}
+	```
+
+Tyk classic API definition: `proxy.transport`
+
+**Field: `insecureSkipVerify` (`boolean`)**
+InsecureSkipVerify controls whether a client verifies the server's certificate chain and host name.
+If InsecureSkipVerify is true, crypto/tls accepts any certificate presented by the server and any host name in that certificate.
+In this mode, TLS is susceptible to machine-in-the-middle attacks unless custom verification is used.
+This should be used only for testing or in combination with VerifyConnection or VerifyPeerCertificate.
+
+
+Tyk classic API definition: `proxy.transport.ssl_insecure_skip_verify`.
+
+**Field: `ciphers` (`[]string`)**
+Ciphers is a list of SSL ciphers to be used. If unset, the default ciphers will be used.
+
+
+Tyk classic API definition: `proxy.transport.ssl_ciphers`.
+
+**Field: `minVersion` (`string`)**
+MinVersion is the minimum SSL/TLS version that is acceptable.
+
+Tyk classic API definition: `proxy.transport.ssl_min_version`.
+
+**Field: `maxVersion` (`string`)**
+MaxVersion is the maximum SSL/TLS version that is acceptable.
+
+**Field: `forceCommonNameCheck` (`boolean`)**
+ForceCommonNameCheck forces the validation of the hostname against the certificate Common Name.
+
+
+Tyk classic API definition: `proxy.transport.ssl_force_common_name_check`.
+
+### **Proxy**
+
+Proxy contains the configuration for an internal proxy.
+
+Tyk classic API definition: `proxy.proxy_url`
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if the proxy is active.
+
+**Field: `url` (`string`)**
+URL specifies the URL of the internal proxy.
+
 ### **ListenPath**
 
 ListenPath is the base path on Tyk to which requests for this API
@@ -408,7 +592,7 @@ Tyk classic API definition: `proxy.listen_path`.
 **Field: `strip` (`boolean`)**
 Strip removes the inbound listen path (as accessed by the client) when generating the outbound request for the upstream service.
 
-For example, consider the scenario where the Tyk base address is `http://acme.com/', the listen path is `example/` and the upstream URL is `http://httpbin.org/`:
+For example, consider the scenario where the Tyk base address is `http://acme.com/`, the listen path is `example/` and the upstream URL is `http://httpbin.org/`:
 
 - If the client application sends a request to `http://acme.com/example/get` then the request will be proxied to `http://httpbin.org/example/get`
 - If stripListenPath is set to `true`, the `example` listen path is removed and the request would be proxied to `http://httpbin.org/get`.
@@ -470,6 +654,18 @@ Tyk classic API definition: `auth_configs["coprocess"]`.
 **Field: `securitySchemes` ([SecuritySchemes](#securityschemes))**
 SecuritySchemes contains security schemes definitions.
 
+**Field: `customKeyLifetime` ([CustomKeyLifetime](#customkeylifetime))**
+CustomKeyLifetime contains configuration for the maximum retention period for access tokens.
+
+**Field: `securityProcessingMode` (`string`)**
+SecurityProcessingMode controls how Tyk will process the OpenAPI `security` field if multiple security requirement objects are declared.
+- "legacy" (default): Only the first security requirement object will be processed; uses BaseIdentityProvider to create the session object.
+- "compliant": All security requirement objects will be processed, request will be authorized if any of these are validated; the origin for the session object will be determined dynamically based on the validated security requirement.
+
+**Field: `security` (`[][]string`)**
+Security is an extension to the OpenAPI security field and is used when securityProcessingMode is set to "compliant".
+This can be used to combine any declared securitySchemes including Tyk proprietary auth methods.
+
 ### **ClientCertificates**
 
 ClientCertificates contains the configurations related to establishing static mutual TLS between the client and Tyk.
@@ -477,8 +673,14 @@ ClientCertificates contains the configurations related to establishing static mu
 **Field: `enabled` (`boolean`)**
 Enabled activates static mTLS for the API.
 
+
+Tyk classic API definition: `use_mutual_tls_auth`.
+
 **Field: `allowlist` (`[]string`)**
 Allowlist is the list of client certificates which are allowed.
+
+
+Tyk classic API definition: `client_certificates`.
 
 ### **GatewayTags**
 
@@ -487,8 +689,14 @@ GatewayTags holds a list of segment tags that should apply for a gateway.
 **Field: `enabled` (`boolean`)**
 Enabled activates use of segment tags.
 
+
+Tyk classic API definition: `tags_disabled` (negated).
+
 **Field: `tags` (`[]string`)**
 Tags contains a list of segment tags.
+
+
+Tyk classic API definition: `tags`.
 
 ### **Domain**
 
@@ -497,8 +705,14 @@ Domain holds the configuration of the domain name the server should listen on.
 **Field: `enabled` (`boolean`)**
 Enabled allow/disallow the usage of the domain.
 
+
+Tyk classic API definition: `domain_disabled` (negated).
+
 **Field: `name` (`string`)**
 Name is the name of the domain.
+
+
+Tyk classic API definition: `domain`.
 
 **Field: `certificates` (`[]string`)**
 Certificates defines a field for specifying certificate IDs or file paths
@@ -524,11 +738,48 @@ DetailedTracing holds the configuration of the detailed tracing.
 **Field: `enabled` (`boolean`)**
 Enabled activates detailed tracing.
 
+
+Tyk classic API definition: `detailed_tracing`.
+
 ### **EventHandlers**
 
 EventHandlers holds the list of events to be processed for the API.
 
 Type defined as array of `EventHandler` values, see [EventHandler](#eventhandler) definition.
+
+### **IPAccessControl**
+
+IPAccessControl represents IP access control configuration.
+
+**Field: `enabled` (`boolean`)**
+Enabled indicates whether IP access control is enabled.
+
+
+Tyk classic API definition: `ip_access_control_disabled` (negated).
+
+**Field: `allow` (`[]string`)**
+Allow is a list of allowed IP addresses or CIDR blocks (e.g. "192.168.1.0/24").
+Note that if an IP address is present in both Allow and Block, the Block rule will take precedence.
+
+
+Tyk classic API definition: `allowed_ips`.
+
+**Field: `block` (`[]string`)**
+Block is a list of blocked IP addresses or CIDR blocks (e.g. "192.168.1.100/32").
+If an IP address is present in both Allow and Block, the Block rule will take precedence.
+
+
+Tyk classic API definition: `blacklisted_ips`.
+
+### **BatchProcessing**
+
+BatchProcessing represents the configuration for enabling or disabling batch request support for an API.
+
+**Field: `enabled` (`boolean`)**
+Enabled determines whether batch request support is enabled or disabled for the API.
+
+
+Tyk classic API definition: `enable_batch_request_support`.
 
 ### **Global**
 
@@ -600,15 +851,37 @@ ContextVariables contains the configuration related to Tyk context variables.
 **Field: `trafficLogs` ([TrafficLogs](#trafficlogs))**
 TrafficLogs contains the configurations related to API level log analytics.
 
+**Field: `requestSizeLimit` ([GlobalRequestSizeLimit](#globalrequestsizelimit))**
+RequestSizeLimit contains the configuration related to limiting the global request size.
+
+**Field: `ignoreCase` ([IgnoreCase](#ignorecase))**
+IgnoreCase contains the configuration to treat routes as case-insensitive.
+
+**Field: `skipRateLimit` (`boolean`)**
+SkipRateLimit determines whether the rate-limiting middleware logic should be skipped.
+
+Tyk classic API definition: `disable_rate_limit`.
+
+**Field: `skipQuota` (`boolean`)**
+SkipQuota determines whether quota enforcement should be bypassed.
+
+Tyk classic API definition: `disable_quota`.
+
+**Field: `skipQuotaReset` (`boolean`)**
+SkipQuotaReset indicates if quota limits should not be reset when creating or updating quotas for the API.
+
+Tyk classic API definition: `dont_set_quota_on_create`.
+
 ### **Operations**
 
-Operations holds Operation definitions.
+Operations holds Operation definitions. The string key in this object is the `operationID`, which is a unique identifier for each API operation. 
 
 Type defined as object of `Operation` values, see [Operation](#operation) definition.
 
 ### **VersionToID**
 
 VersionToID contains a single mapping from a version name into an API ID.
+Tyk classic API definition: Entry in `version_definition.versions` map.
 
 **Field: `name` (`string`)**
 Name contains the user chosen version name, e.g. `v1` or similar.
@@ -631,6 +904,40 @@ Timeout is the TTL for a cached object in seconds.
 
 
 Tyk classic API definition: `service_discovery.cache_timeout`.
+
+### **UptimeTest**
+
+UptimeTest configures an uptime test check.
+
+**Field: `url` (`string`)**
+CheckURL is the URL for a request. If service discovery is in use,
+the hostname will be resolved to a service host.
+
+Examples:
+
+- `http://database1.company.local`
+- `https://webcluster.service/health`
+- `tcp://127.0.0.1:6379` (for TCP checks).
+
+**Field: `timeout` (`time.ReadableDuration`)**
+Timeout declares a timeout for the request. If the test exceeds
+this timeout, the check fails.
+
+**Field: `method` (`string`)**
+Method allows you to customize the HTTP method for the test (`GET`, `POST`,...).
+
+**Field: `headers` (`map[string]string`)**
+Headers contain any custom headers for the back end service.
+
+**Field: `body` (`string`)**
+Body is the body of the test request.
+
+**Field: `commands` ([[]UptimeTestCommand](#uptimetestcommand))**
+Commands are used for TCP checks.
+
+**Field: `enableProxyProtocol` (`boolean`)**
+EnableProxyProtocol enables proxy protocol support when making request.
+The back end service needs to support this.
 
 ### **DomainToCertificate**
 
@@ -684,12 +991,49 @@ ClientCredentials holds the configuration for OAuth2 Client Credentials flow.
 **Field: `password` ([PasswordAuthentication](#passwordauthentication))**
 PasswordAuthentication holds the configuration for upstream OAauth password authentication flow.
 
+### **UpstreamRequestSigning**
+
+UpstreamRequestSigning represents configuration for generating signed requests to an upstream API.
+Tyk classic API definition: `request_signing`.
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if request signing is enabled or disabled.
+
+**Field: `signatureHeader` (`string`)**
+SignatureHeader specifies the HTTP header name for the signature.
+
+**Field: `algorithm` (`string`)**
+Algorithm represents the signing algorithm used (e.g., HMAC-SHA256).
+
+**Field: `keyId` (`string`)**
+KeyID identifies the key used for signing purposes.
+
+**Field: `headers` (`[]string`)**
+Headers contains a list of headers included in the signature calculation.
+
+**Field: `secret` (`string`)**
+Secret holds the secret used for signing when applicable.
+
+**Field: `certificateId` (`string`)**
+CertificateID specifies the certificate ID used in signing operations.
+
+### **LoadBalancingTarget**
+
+LoadBalancingTarget represents a single upstream target for load balancing with a URL and an associated weight.
+
+**Field: `url` (`string`)**
+URL specifies the upstream target URL for load balancing, represented as a string.
+
+**Field: `weight` (`int`)**
+Weight specifies the relative distribution factor for load balancing, determining the importance of this target.
+
 ### **HMAC**
 
 HMAC holds the configuration for the HMAC authentication mode.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates the HMAC authentication mode.
+
 
 Tyk classic API definition: `enable_signature_checking`.
 
@@ -711,6 +1055,7 @@ Tyk classic API definition: `hmac_allowed_algorithms`.
 **Field: `allowedClockSkew` (`float64`)**
 AllowedClockSkew is the amount of milliseconds that will be tolerated for clock skew. It is used against replay attacks.
 The default value is `0`, which deactivates clock skew checks.
+
 
 Tyk classic API definition: `hmac_allowed_clock_skew`.
 
@@ -755,11 +1100,44 @@ Tyk classic API definition: `enable_coprocess_auth`/`use_go_plugin_auth`.
 **Field: `config` ([AuthenticationPlugin](#authenticationplugin))**
 Config contains configuration related to custom authentication plugin.
 
+
 Tyk classic API definition: `custom_middleware.auth_check`.
 
 ### **SecuritySchemes**
 
 SecuritySchemes holds security scheme values, filled with Import().
+
+### **CustomKeyLifetime**
+
+CustomKeyLifetime contains configuration for custom key retention.
+
+**Field: `enabled` (`boolean`)**
+Enabled enables custom maximum retention for keys for the API.
+
+**Field: `value` ([ReadableDuration](#readableduration))**
+Value configures the expiry interval for a Key.
+The value is a string that specifies the interval in a compact form,
+where hours, minutes and seconds are denoted by 'h', 'm' and 's' respectively.
+Multiple units can be combined to represent the duration.
+
+Examples of valid shorthand notations:
+- "1h"   : one hour
+- "20m"  : twenty minutes
+- "30s"  : thirty seconds
+- "1m29s": one minute and twenty-nine seconds
+- "1h30m" : one hour and thirty minutes
+
+An empty value is interpreted as "0s"
+
+
+Tyk classic API definition: `session_lifetime`.
+
+**Field: `respectValidity` (`boolean`)**
+RespectValidity ensures that Tyk respects the expiry configured in the key when the API level configuration grants a shorter lifetime.
+That is, Redis waits until the key has expired before deleting it.
+
+
+Tyk classic API definition: `session_lifetime_respects_key_expiration`.
 
 ### **EventHandler**
 
@@ -768,20 +1146,41 @@ EventHandler holds information about individual event to be configured on the AP
 **Field: `enabled` (`boolean`)**
 Enabled enables the event handler.
 
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.disabled` (negated).
+
 **Field: `trigger` (`event.Event`)**
 Trigger specifies the TykEvent that should trigger the event handler.
+
+
+Tyk classic API definition: `event_handlers.events` key.
 
 **Field: `type` ([Kind](#kind))**
 Kind specifies the action to be taken on the event trigger.
 
+
+Tyk classic API definition: `event_handlers.events[].handler`.
+
 **Field: `id` (`string`)**
 ID is the ID of event handler in storage.
+
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.id`.
 
 **Field: `name` (`string`)**
 Name is the name of event handler.
 
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.name`.
+
 **Field: `` ([WebhookEvent](#webhookevent))**
 Webhook contains WebhookEvent configs. Encoding and decoding is handled by the custom marshaller.
+
+**Field: `` ([JSVMEvent](#jsvmevent))**
+JSVMEvent holds information about JavaScript VM events.
+
+**Field: `` ([LogEvent](#logevent))**
+LogEvent represents the configuration for logging events tied to an event handler.
 
 ### **PluginConfig**
 
@@ -896,12 +1295,6 @@ PostAuthenticationPlugin configures post authentication plugins.
 Plugins configures custom plugins to be run on pre authentication stage.
 The plugins would be executed in the order of configuration in the list.
 
-### **CustomPlugins**
-
-CustomPlugins is a list of CustomPlugin objects.
-
-Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
-
 ### **PostPlugin**
 
 PostPlugin configures post plugins.
@@ -910,12 +1303,6 @@ PostPlugin configures post plugins.
 Plugins configures custom plugins to be run on post stage.
 The plugins would be executed in the order of configuration in the list.
 
-### **CustomPlugins**
-
-CustomPlugins is a list of CustomPlugin objects.
-
-Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
-
 ### **ResponsePlugin**
 
 ResponsePlugin configures response plugins.
@@ -923,12 +1310,6 @@ ResponsePlugin configures response plugins.
 **Field: `plugins` ([CustomPlugins](#customplugins))**
 Plugins configures custom plugins to be run on post stage.
 The plugins would be executed in the order of configuration in the list.
-
-### **CustomPlugins**
-
-CustomPlugins is a list of CustomPlugin objects.
-
-Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
 
 ### **Cache**
 
@@ -985,31 +1366,28 @@ TransformHeaders holds configuration about request/response header transformatio
 **Field: `enabled` (`boolean`)**
 Enabled activates Header Transform for the given path and method.
 
-**Field: `remove` (`[]string`)**
-Remove specifies header names to be removed from the request/response.
 
-**Field: `add` ([Headers](#headers))**
-Add specifies headers to be added to the request/response.
-
-### **TransformHeaders**
-
-TransformHeaders holds configuration about request/response header transformations.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates Header Transform for the given path and method.
+Tyk classic API definition: `version_data.versions..extended_paths.transform_headers[].disabled` (negated).
 
 **Field: `remove` (`[]string`)**
 Remove specifies header names to be removed from the request/response.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.transform_headers[].delete_headers`.
+
 **Field: `add` ([Headers](#headers))**
 Add specifies headers to be added to the request/response.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.transform_headers[].add_headers`.
 
 ### **ContextVariables**
 
 ContextVariables holds the configuration related to Tyk context variables.
 
 **Field: `enabled` (`boolean`)**
-Enabled enables context variables to be passed to Tyk middlewares.
+Enabled provides access to context variables from specific Tyk middleware (URL rewrite, header and body transform).
+
 
 Tyk classic API definition: `enable_context_vars`.
 
@@ -1021,6 +1399,56 @@ TrafficLogs holds configuration about API log analytics.
 Enabled enables traffic log analytics for the API.
 
 Tyk classic API definition: `do_not_track`.
+
+**Field: `tagHeaders` (`[]string`)**
+TagHeaders is a string array of HTTP headers that can be extracted
+and transformed into analytics tags (statistics aggregated by tag, per hour).
+
+**Field: `customRetentionPeriod` ([ReadableDuration](#readableduration))**
+CustomRetentionPeriod configures a custom value for how long the analytics is retained for,
+defaults to 100 years.
+
+**Field: `plugins` ([CustomAnalyticsPlugins](#customanalyticsplugins))**
+Plugins configures custom plugins to allow for extensive modifications to analytics records
+The plugins would be executed in the order of configuration in the list.
+
+### **GlobalRequestSizeLimit**
+
+GlobalRequestSizeLimit holds configuration about the global limits for request sizes.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the Request Size Limit.
+
+
+Tyk classic API definition: `version_data.versions..global_size_limit_disabled` (negated).
+
+**Field: `value` (`int64`)**
+Value contains the value of the request size limit.
+
+
+Tyk classic API definition: `version_data.versions..global_size_limit`.
+
+### **IgnoreCase**
+
+IgnoreCase will make route matching be case insensitive.
+This accepts request to `/AAA` or `/aaa` if set to true.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates case insensitive route matching.
+
+
+Tyk classic API definition: `version_data.versions..ignore_endpoint_case`.
+
+### **UptimeTestCommand**
+
+UptimeTestCommand handles additional checks for tcp connections.
+
+**Field: `name` (`string`)**
+Name can be either `send` or `expect`, designating if the
+message should be sent, or read from the connection.
+
+**Field: `message` (`string`)**
+Message contains the payload to send or expect.
 
 ### **PinnedPublicKey**
 
@@ -1039,10 +1467,12 @@ AuthSource defines an authentication source.
 **Field: `enabled` (`boolean`)**
 Enabled activates the auth source.
 
+
 Tyk classic API definition: `auth_configs[X].use_param/use_cookie`.
 
 **Field: `name` (`string`)**
 Name is the name of the auth source.
+
 
 Tyk classic API definition: `auth_configs[X].param_name/cookie_name`.
 
@@ -1093,18 +1523,39 @@ Provider defines an issuer to validate and the Client ID to Policy ID mappings.
 **Field: `issuer` (`string`)**
 Issuer contains a validation value for the issuer claim, usually a domain name e.g. `accounts.google.com` or similar.
 
+
+Tyk classic API definition: `openid_options.providers[].issuer`.
+
 **Field: `clientToPolicyMapping` ([[]ClientToPolicy](#clienttopolicy))**
 ClientToPolicyMapping contains mappings of Client IDs to Policy IDs.
+
+
+Tyk classic API definition: `openid_options.providers[].client_ids`.
 
 ### **Scopes**
 
 Scopes holds the scope to policy mappings for a claim name.
+This struct is used for both JWT and OIDC authentication.
 
 **Field: `claimName` (`string`)**
 ClaimName contains the claim name.
 
+
+Tyk classic API definition:.
+- For OIDC: `scopes.oidc.scope_claim_name`
+- For JWT: `scopes.jwt.scope_claim_name`
+
+**Field: `claims` (`[]string`)**
+Claims specifies a list of claims that can be used to provide the scope-to-policy mapping.
+The first match from the list found in the token will be interrogated to retrieve the scopes that are then checked against the scopeToPolicyMapping.
+
 **Field: `scopeToPolicyMapping` ([[]ScopeToPolicy](#scopetopolicy))**
 ScopeToPolicyMapping contains the mappings of scopes to policy IDs.
+
+
+Tyk classic API definition:.
+- For OIDC: `scopes.oidc.scope_to_policy`
+- For JWT: `scopes.jwt.scope_to_policy`
 
 ### **AuthenticationPlugin**
 
@@ -1113,17 +1564,38 @@ AuthenticationPlugin holds the configuration for custom authentication plugin.
 **Field: `enabled` (`boolean`)**
 Enabled activates custom authentication plugin.
 
+
+Tyk classic API definition: `custom_middleware.auth_check.disabled` (negated).
+
 **Field: `functionName` (`string`)**
 FunctionName is the name of authentication method.
+
+
+Tyk classic API definition: `custom_middleware.auth_check.name`.
 
 **Field: `path` (`string`)**
 Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
 
+
+Tyk classic API definition: `custom_middleware.auth_check.path`.
+
 **Field: `rawBodyOnly` (`boolean`)**
 RawBodyOnly if set to true, do not fill body in request or response object.
 
+
+Tyk classic API definition: `custom_middleware.auth_check.raw_body_only`.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession passes down the session information for plugins after authentication.
+
+
+Tyk classic API definition: `custom_middleware.auth_check.require_session`.
+
 **Field: `idExtractor` ([IDExtractor](#idextractor))**
 IDExtractor configures ID extractor with coprocess custom authentication.
+
+
+Tyk classic API definition: `custom_middleware.id_extractor`.
 
 ### **Kind**
 
@@ -1136,8 +1608,14 @@ WebhookEvent stores the core information about a webhook event.
 **Field: `url` (`string`)**
 URL is the target URL for the webhook.
 
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.target_path`.
+
 **Field: `method` (`string`)**
 Method is the HTTP method for the webhook.
+
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.method`.
 
 **Field: `cooldownPeriod` ([ReadableDuration](#readableduration))**
 CoolDownPeriod defines cool-down for the event, so it does not trigger again.
@@ -1157,11 +1635,46 @@ An empty value is interpreted as "0s", implying no cool-down.
 It's important to format the string correctly, as invalid formats will
 be considered as 0s/empty.
 
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.event_timeout`.
+
 **Field: `bodyTemplate` (`string`)**
 BodyTemplate is the template to be used for request payload.
 
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.template_path`.
+
 **Field: `headers` ([Headers](#headers))**
 Headers are the list of request headers to be used.
+
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.header_map`.
+
+### **JSVMEvent**
+
+JSVMEvent represents a JavaScript VM event configuration for event handlers.
+
+**Field: `functionName` (`string`)**
+FunctionName specifies the JavaScript function name to be executed.
+
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.method_name`.
+
+**Field: `path` (`string`)**
+Path specifies the path to the JavaScript file containing the function.
+
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.path`.
+
+### **LogEvent**
+
+LogEvent represents the configuration for logging events within an event handler.
+
+**Field: `logPrefix` (`string`)**
+LogPrefix defines the prefix used for log messages in the logging event.
+
+
+Tyk classic API definition: `event_handlers.events[].handler_meta.prefix`.
 
 ### **PluginBundle**
 
@@ -1184,94 +1697,26 @@ PluginConfigData configures config data for custom plugins.
 **Field: `enabled` (`boolean`)**
 Enabled activates custom plugin config data.
 
+
+Tyk classic API definition: `config_data_disabled` (negated).
+
 **Field: `value` (`any`)**
 Value is the value of custom plugin config data.
 
-### **CustomPlugin**
 
-CustomPlugin configures custom plugin.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the custom pre plugin.
-
-**Field: `functionName` (`string`)**
-FunctionName is the name of authentication method.
-
-**Field: `path` (`string`)**
-Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
-
-**Field: `rawBodyOnly` (`boolean`)**
-RawBodyOnly if set to true, do not fill body in request or response object.
-
-**Field: `requireSession` (`boolean`)**
-RequireSession if set to true passes down the session information for plugins after authentication.
-RequireSession is used only with JSVM custom middleware.
-
-### **CustomPlugin**
-
-CustomPlugin configures custom plugin.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the custom pre plugin.
-
-**Field: `functionName` (`string`)**
-FunctionName is the name of authentication method.
-
-**Field: `path` (`string`)**
-Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
-
-**Field: `rawBodyOnly` (`boolean`)**
-RawBodyOnly if set to true, do not fill body in request or response object.
-
-**Field: `requireSession` (`boolean`)**
-RequireSession if set to true passes down the session information for plugins after authentication.
-RequireSession is used only with JSVM custom middleware.
-
-### **CustomPlugin**
-
-CustomPlugin configures custom plugin.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the custom pre plugin.
-
-**Field: `functionName` (`string`)**
-FunctionName is the name of authentication method.
-
-**Field: `path` (`string`)**
-Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
-
-**Field: `rawBodyOnly` (`boolean`)**
-RawBodyOnly if set to true, do not fill body in request or response object.
-
-**Field: `requireSession` (`boolean`)**
-RequireSession if set to true passes down the session information for plugins after authentication.
-RequireSession is used only with JSVM custom middleware.
-
-### **CustomPlugin**
-
-CustomPlugin configures custom plugin.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the custom pre plugin.
-
-**Field: `functionName` (`string`)**
-FunctionName is the name of authentication method.
-
-**Field: `path` (`string`)**
-Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
-
-**Field: `rawBodyOnly` (`boolean`)**
-RawBodyOnly if set to true, do not fill body in request or response object.
-
-**Field: `requireSession` (`boolean`)**
-RequireSession if set to true passes down the session information for plugins after authentication.
-RequireSession is used only with JSVM custom middleware.
+Tyk classic API definition: `config_data`.
 
 ### **Headers**
 
 Headers is an array of Header.
 
 Type defined as array of `Header` values, see [Header](#header) definition.
+
+### **CustomAnalyticsPlugins**
+
+CustomAnalyticsPlugins is a list of CustomPlugin objects for analytics.
+
+Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
 
 ### **ClientToPolicy**
 
@@ -1280,18 +1725,35 @@ ClientToPolicy contains a 1-1 mapping between Client ID and Policy ID.
 **Field: `clientId` (`string`)**
 ClientID contains a Client ID.
 
+
+Tyk classic API definition: Key in `openid_options.providers[].client_ids` map.
+
 **Field: `policyId` (`string`)**
 PolicyID contains a Policy ID.
+
+
+Tyk classic API definition: Value in `openid_options.providers[].client_ids` map.
 
 ### **ScopeToPolicy**
 
 ScopeToPolicy contains a single scope to policy ID mapping.
+This struct is used for both JWT and OIDC authentication.
 
 **Field: `scope` (`string`)**
 Scope contains the scope name.
 
+
+Tyk classic API definition:.
+- For OIDC: Key in `scopes.oidc.scope_to_policy` map
+- For JWT: Key in `scopes.jwt.scope_to_policy` map.
+
 **Field: `policyId` (`string`)**
 PolicyID contains the Policy ID.
+
+
+Tyk classic API definition:.
+- For OIDC: Value in `scopes.oidc.scope_to_policy` map
+- For JWT: Value in `scopes.jwt.scope_to_policy` map.
 
 ### **IDExtractor**
 
@@ -1300,14 +1762,34 @@ IDExtractor configures ID Extractor.
 **Field: `enabled` (`boolean`)**
 Enabled activates ID extractor with coprocess authentication.
 
+
+Tyk classic API definition: `custom_middleware.id_extractor.disabled` (negated).
+
 **Field: `source` (`string`)**
 Source is the source from which ID to be extracted from.
+Valid values are:
+- `header` - Extract ID from a header
+- `form` - Extract ID from a form parameter
+- `body` - Extract ID from the request body
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extract_from`.
 
 **Field: `with` (`string`)**
 With is the type of ID extractor to be used.
+Valid values are:
+- `value` - Extract ID from a value
+- `xpath` - Extract ID using an XPath expression
+- `regex` - Extract ID using a regular expression
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extract_with`.
 
 **Field: `config` ([IDExtractorConfig](#idextractorconfig))**
 Config holds the configuration specific to ID extractor type mentioned via With.
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extractor_config`.
 
 ### **Header**
 
@@ -1319,25 +1801,85 @@ Name is the name of the header.
 **Field: `value` (`string`)**
 Value is the value of the header.
 
+### **CustomPlugin**
+
+CustomPlugin configures custom plugin.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom plugin.
+
+
+Tyk classic API definition: `custom_middleware.pre[].disabled`, `custom_middleware.post_key_auth[].disabled`,.
+`custom_middleware.post[].disabled`, `custom_middleware.response[].disabled` (negated).
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+
+Tyk classic API definition: `custom_middleware.pre[].name`, `custom_middleware.post_key_auth[].name`,.
+`custom_middleware.post[].name`, `custom_middleware.response[].name`.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+
+Tyk classic API definition: `custom_middleware.pre[].path`, `custom_middleware.post_key_auth[].path`,.
+`custom_middleware.post[].path`, `custom_middleware.response[].path`.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+
+Tyk classic API definition: `custom_middleware.pre[].raw_body_only`, `custom_middleware.post_key_auth[].raw_body_only`,.
+`custom_middleware.post[].raw_body_only`, `custom_middleware.response[].raw_body_only`.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
+
+
+Tyk classic API definition: `custom_middleware.pre[].require_session`, `custom_middleware.post_key_auth[].require_session`,.
+`custom_middleware.post[].require_session`, `custom_middleware.response[].require_session`.
+
 ### **IDExtractorConfig**
 
 IDExtractorConfig specifies the configuration for ID extractor.
 
 **Field: `headerName` (`string`)**
 HeaderName is the header name to extract ID from.
+Used when Source is set to "header" and With is set to "value".
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extractor_config.header_name`.
 
 **Field: `formParamName` (`string`)**
 FormParamName is the form parameter name to extract ID from.
+Used when Source is set to "form" and With is set to "value".
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extractor_config.form_param_name`.
 
 **Field: `regexp` (`string`)**
 Regexp is the regular expression to match ID.
+Used when With is set to "regex".
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extractor_config.regex_expression`.
 
 **Field: `regexpMatchIndex` (`int`)**
 RegexpMatchIndex is the index from which ID to be extracted after a match.
 Default value is 0, ie if regexpMatchIndex is not provided ID is matched from index 0.
+Used when With is set to "regex".
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extractor_config.regex_match_index`.
 
 **Field: `xPathExp` (`string`)**
 XPathExp is the xpath expression to match ID.
+Used when With is set to "xpath".
+
+
+Tyk classic API definition: `custom_middleware.id_extractor.extractor_config.xpath_expression`.
 
 ### **Allowance**
 
@@ -1407,16 +1949,28 @@ CachePlugin holds the configuration for the cache plugins.
 **Field: `enabled` (`boolean`)**
 Enabled is a boolean flag. If set to `true`, the advanced caching plugin will be enabled.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.advance_cache_config[].disabled` (negated).
+
 **Field: `cacheByRegex` (`string`)**
 CacheByRegex defines a regular expression used against the request body to produce a cache key.
 
 Example value: `\"id\":[^,]*` (quoted json value).
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.advance_cache_config[].cache_key_regex`.
+
 **Field: `cacheResponseCodes` (`[]int`)**
 CacheResponseCodes contains a list of valid response codes for responses that are okay to add to the cache.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.advance_cache_config[].cache_response_codes`.
+
 **Field: `timeout` (`int64`)**
 Timeout is the TTL for the endpoint level caching in seconds. 0 means no caching.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.advance_cache_config[].timeout`.
 
 ### **CircuitBreaker**
 
@@ -1426,27 +1980,32 @@ Tyk classic API definition: `version_data.versions..extended_paths.circuit_break
 **Field: `enabled` (`boolean`)**
 Enabled activates the Circuit Breaker functionality.
 
-Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].disabled`.
+
+Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].disabled` (negated).
 
 **Field: `threshold` (`float64`)**
 Threshold is the proportion from each `sampleSize` requests that must fail for the breaker to be tripped. This must be a value between 0.0 and 1.0. If `sampleSize` is 100 then a threshold of 0.4 means that the breaker will be tripped if 40 out of every 100 requests fails.
+
 
 Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].threshold_percent`.
 
 **Field: `sampleSize` (`int`)**
 SampleSize is the size of the circuit breaker sampling window. Combining this with `threshold` gives the failure rate required to trip the circuit breaker.
 
+
 Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].samples`.
 
 **Field: `coolDownPeriod` (`int`)**
 CoolDownPeriod is the period of time (in seconds) for which the circuit breaker will remain open before returning to service.
+
 
 Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].return_to_service_after`.
 
 **Field: `halfOpenStateEnabled` (`boolean`)**
 HalfOpenStateEnabled , if enabled, allows some requests to pass through the circuit breaker during the cool down period. If Tyk detects that the path is now working, the circuit breaker will be automatically reset and traffic will be resumed to the upstream.
 
-Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].disable_half_open_state`.
+
+Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].disable_half_open_state` (negated).
 
 ### **ClientAuthData**
 
@@ -1458,12 +2017,43 @@ ClientID is the application's ID.
 **Field: `clientSecret` (`string`)**
 ClientSecret is the application's secret.
 
+### **CustomClaimValidationConfig**
+
+CustomClaimValidationConfig defines the validation configuration for a custom JWT claim.
+
+**Field: `type` ([CustomClaimValidationType](#customclaimvalidationtype))**
+Type specifies the type of validation to perform on the claim.
+Supported types:
+- required: validates that the claim exists and is non-null.
+- exact_match: validates that the claim in the JWT equals one of the allowed values (case-sensitive).
+- contains: validates that the claim in the JWT contains one of the allowed values.
+
+**Field: `allowedValues` (`[]&ast.InterfaceType{Interface:194869, Methods:(*ast.FieldList)(0xc000371170), Incomplete:false}`)**
+AllowedValues contains the values that Tyk will use to validate the claim for "exact_match" and "contains" validation types.
+Not used for "required" validation type.
+Supports string, number, boolean, and array values.
+For arrays, validation succeeds if any array element matches any allowed value.
+
+**Field: `nonBlocking` (`boolean`)**
+NonBlocking determines if validation failure should log a warning (true) or reject the request (false).
+This enables gradual rollout of validation rules by monitoring before enforcing.
+Multiple rules can be mixed, some blocking and others non-blocking.
+
+### **CustomClaimValidationType**
+
+CustomClaimValidationType represents how a JWT claim should be validated.
+This determines the validation logic used to check the claim value.
+The validation behavior varies based on both the type selected and the claim's data type.
+
 ### **EndpointPostPlugin**
 
 EndpointPostPlugin contains endpoint level post plugin configuration.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates post plugin.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.go_plugin.disabled`(negated).
 
 **Field: `name` (`string`)**
 Name is the name of plugin function to be executed.
@@ -1472,8 +2062,14 @@ Deprecated: Use FunctionName instead.
 **Field: `functionName` (`string`)**
 FunctionName is the name of plugin function to be executed.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.go_plugin.symbol_name`(negated).
+
 **Field: `path` (`string`)**
 Path is the path to plugin.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.go_plugin.plugin_path`(negated).
 
 ### **EndpointPostPlugins**
 
@@ -1488,21 +2084,33 @@ EnforceTimeout holds the configuration for enforcing request timeouts.
 **Field: `enabled` (`boolean`)**
 Enabled is a boolean flag. If set to `true`, requests will enforce a configured timeout.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.hard_timeouts[].disabled` (negated).
+
 **Field: `value` (`int`)**
 Value is the configured timeout in seconds.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.hard_timeouts[].timeout`.
 
 ### **ExternalOAuth**
 
 ExternalOAuth holds configuration for an external OAuth provider.
-ExternalOAuth support will be deprecated starting from 5.7.0.
+Deprecated: ExternalOAuth support was deprecated in Tyk 5.7.0.
 To avoid any disruptions, we recommend that you use JSON Web Token (JWT) instead,
 as explained in https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates external oauth functionality.
 
+
+Tyk classic API definition: `external_oauth.enabled`.
+
 **Field: `providers` ([[]OAuthProvider](#oauthprovider))**
 Providers is used to configure OAuth providers.
+
+
+Tyk classic API definition: `external_oauth.providers`.
 
 ### **ExtractCredentialsFromBody**
 
@@ -1554,20 +2162,38 @@ Introspection holds configuration for OAuth token introspection.
 **Field: `enabled` (`boolean`)**
 Enabled activates OAuth access token validation by introspection to a third party.
 
+
+Tyk classic API definition: `external_oauth.providers[].introspection.enabled`.
+
 **Field: `url` (`string`)**
 URL is the URL of the third party provider's introspection endpoint.
+
+
+Tyk classic API definition: `external_oauth.providers[].introspection.url`.
 
 **Field: `clientId` (`string`)**
 ClientID is the public identifier for the client, acquired from the third party.
 
+
+Tyk classic API definition: `external_oauth.providers[].introspection.client_id`.
+
 **Field: `clientSecret` (`string`)**
 ClientSecret is a secret known only to the client and the authorisation server, acquired from the third party.
+
+
+Tyk classic API definition: `external_oauth.providers[].introspection.client_secret`.
 
 **Field: `identityBaseField` (`string`)**
 IdentityBaseField is the key showing where to find the user id in the claims. If it is empty, the `sub` key is looked at.
 
+
+Tyk classic API definition: `external_oauth.providers[].introspection.identity_base_field`.
+
 **Field: `cache` ([IntrospectionCache](#introspectioncache))**
 Cache is the caching mechanism for introspection responses.
+
+
+Tyk classic API definition: `external_oauth.providers[].introspection.cache`.
 
 ### **IntrospectionCache**
 
@@ -1576,9 +2202,33 @@ IntrospectionCache holds configuration for caching introspection requests.
 **Field: `enabled` (`boolean`)**
 Enabled activates the caching mechanism for introspection responses.
 
+
+Tyk classic API definition: `external_oauth.providers[].introspection.cache.enabled`.
+
 **Field: `timeout` (`int64`)**
 Timeout is the duration in seconds of how long the cached value stays.
 For introspection caching, it is suggested to use a short interval.
+
+
+Tyk classic API definition: `external_oauth.providers[].introspection.cache.timeout`.
+
+### **JTIValidation**
+
+JTIValidation contains the configuration for the validation of the JWT ID.
+
+**Field: `enabled` (`boolean`)**
+Enabled indicates whether JWT ID claim is required.
+When true, tokens must include a 'jti' claim.
+
+### **JWK**
+
+JWK represents a JSON Web Key Set containing configuration for the JWKS endpoint and its cache timeout.
+
+**Field: `url` (`string`)**
+URL is the JWKS endpoint.
+
+**Field: `cacheTimeout` (`int64`)**
+CacheTimeout defines how long the JWKS will be kept in the cache before forcing a refresh from the JWKS endpoint.
 
 ### **JWT**
 
@@ -1596,6 +2246,9 @@ Source contains the source for the JWT.
 
 Tyk classic API definition: `jwt_source`.
 
+**Field: `jwksURIs` ([[]JWK](#jwk))**
+JwksURIs contains a list of JSON Web Key Sets (JWKS) endpoints from which Tyk will retrieve JWKS to validate JSON Web Tokens (JWTs).
+
 **Field: `signingMethod` (`string`)**
 SigningMethod contains the signing method to use for the JWT.
 
@@ -1608,6 +2261,9 @@ The identity fields that are checked in order are: `kid`, IdentityBaseField, `su
 
 
 Tyk classic API definition: `jwt_identity_base_field`.
+
+**Field: `subjectClaims` (`[]string`)**
+SubjectClaims specifies a list of claims that can be used to identity the subject of the JWT.
 
 **Field: `skipKid` (`boolean`)**
 SkipKid controls skipping using the `kid` claim from a JWT (default behaviour).
@@ -1622,6 +2278,10 @@ The policy is applied to the session as a base policy.
 
 
 Tyk classic API definition: `jwt_policy_field_name`.
+
+**Field: `basePolicyClaims` (`[]string`)**
+BasePolicyClaims specifies a list of claims from which the base PolicyID is extracted.
+The policy is applied to the session as a base policy.
 
 **Field: `clientBaseField` (`string`)**
 ClientBaseField is used when PolicyFieldName is not provided. It will get
@@ -1643,16 +2303,60 @@ Tyk classic API definition: `jwt_default_policies`.
 **Field: `issuedAtValidationSkew` (`uint64`)**
 IssuedAtValidationSkew contains the duration in seconds for which token issuance can predate the current time during the request.
 
+
+Tyk classic API definition: `jwt_issued_at_validation_skew`.
+
 **Field: `notBeforeValidationSkew` (`uint64`)**
 NotBeforeValidationSkew contains the duration in seconds for which token validity can predate the current time during the request.
 
+
+Tyk classic API definition: `jwt_not_before_validation_skew`.
+
 **Field: `expiresAtValidationSkew` (`uint64`)**
 ExpiresAtValidationSkew contains the duration in seconds for which the token can be expired before we consider it expired.
+
+
+Tyk classic API definition: `jwt_expires_at_validation_skew`.
+
+**Field: `allowedIssuers` (`[]string`)**
+AllowedIssuers contains a list of accepted issuers for JWT validation.
+When configured, the JWT's issuer claim must match one of these values.
+
+**Field: `allowedAudiences` (`[]string`)**
+AllowedAudiences contains a list of accepted audiences for JWT validation.
+When configured, the JWT's audience claim must match one of these values.
+
+**Field: `jtiValidation` ([JTIValidation](#jtivalidation))**
+JTIValidation contains the configuration for the validation of the JWT ID.
+
+**Field: `allowedSubjects` (`[]string`)**
+AllowedSubjects contains a list of accepted subjects for JWT validation.
+When configured, the subject from kid/identityBaseField/sub must match one of these values.
 
 **Field: `idpClientIdMappingDisabled` (`boolean`)**
 IDPClientIDMappingDisabled prevents Tyk from automatically detecting the use of certain IDPs based on standard claims
 that they include in the JWT: `client_id`, `cid`, `clientId`. Setting this flag to `true` disables the mapping and avoids
 accidentally misidentifying the use of one of these IDPs if one of their standard values is configured in your JWT.
+
+
+Tyk classic API definition: `idp_client_id_mapping_disabled`.
+
+**Field: `customClaimValidation` (`map[string]CustomClaimValidationConfig`)**
+CustomClaimValidation contains custom validation rules for JWT claims.
+It maps a claim name (including nested claims using dot notation) to its validation configuration.
+
+The validation can be one of three types:
+- "required": claim must exist in the token (null/empty values are considered invalid)
+- "exact_match": claim must exactly equal one of the specified values (case-sensitive)
+- "contains": for strings, must contain one of the values as substring; for arrays, must contain one of the values as element
+
+Examples:
+Basic validation: `{"role": {"type": "exact_match", "allowedValues": ["admin", "user"]}}`
+Nested claim: `{"user.metadata.level": {"type": "contains", "allowedValues": ["gold", "silver"]}}`
+Multiple rules: `{"permissions": {"type": "contains", "allowedValues": ["read", "write"], "nonBlocking": true}}`
+
+Claims can be of type string, number, boolean, or array. For arrays, the contains validation
+checks if any of the array elements exactly match any of the allowed values.
 
 ### **JWTValidation**
 
@@ -1662,8 +2366,14 @@ against a third party API, usually one provided by the IDP.
 **Field: `enabled` (`boolean`)**
 Enabled activates OAuth access token validation.
 
+
+Tyk classic API definition: `external_oauth.providers[].jwt.enabled`.
+
 **Field: `signingMethod` (`string`)**
 SigningMethod to verify signing method used in jwt - allowed values HMAC/RSA/ECDSA.
+
+
+Tyk classic API definition: `external_oauth.providers[].jwt.signing_method`.
 
 **Field: `source` (`string`)**
 Source is the secret to verify signature. Valid values are:
@@ -1672,17 +2382,32 @@ Source is the secret to verify signature. Valid values are:
 - a valid JWK URL in plain text,
 - a valid JWK URL in base64 encoded format.
 
+
+Tyk classic API definition: `external_oauth.providers[].jwt.source`.
+
 **Field: `identityBaseField` (`string`)**
 IdentityBaseField is the identity claim name.
+
+
+Tyk classic API definition: `external_oauth.providers[].jwt.identity_base_field`.
 
 **Field: `issuedAtValidationSkew` (`uint64`)**
 IssuedAtValidationSkew is the clock skew to be considered while validating the iat claim.
 
+
+Tyk classic API definition: `external_oauth.providers[].jwt.issued_at_validation_skew`.
+
 **Field: `notBeforeValidationSkew` (`uint64`)**
 NotBeforeValidationSkew is the clock skew to be considered while validating the nbf claim.
 
+
+Tyk classic API definition: `external_oauth.providers[].jwt.not_before_validation_skew`.
+
 **Field: `expiresAtValidationSkew` (`uint64`)**
 ExpiresAtValidationSkew is the clock skew to be considered while validating the exp claim.
+
+
+Tyk classic API definition: `external_oauth.providers[].jwt.expires_at_validation_skew`.
 
 ### **MockResponse**
 
@@ -1710,8 +2435,14 @@ Notifications holds configuration for updates to keys.
 **Field: `sharedSecret` (`string`)**
 SharedSecret is the shared secret used in the notification request.
 
+
+Tyk classic API definition: `notifications.shared_secret`.
+
 **Field: `onKeyChangeUrl` (`string`)**
 OnKeyChangeURL is the URL a request will be triggered against.
+
+
+Tyk classic API definition: `notifications.oauth_on_keychange_url`.
 
 ### **OAuth**
 
@@ -1720,17 +2451,32 @@ OAuth configures the OAuth middleware.
 **Field: `enabled` (`boolean`)**
 Enabled activates the OAuth middleware.
 
+
+Tyk classic API definition: `use_oauth2`.
+
 **Field: `allowedAuthorizeTypes` (`[]string`)**
 AllowedAuthorizeTypes is an array of OAuth authorization types.
+
+
+Tyk classic API definition: `oauth_meta.allowed_authorize_types`.
 
 **Field: `refreshToken` (`boolean`)**
 RefreshToken enables clients using a refresh token to get a new bearer access token.
 
+
+Tyk classic API definition: `oauth_meta.allowed_access_types` (contains REFRESH_TOKEN).
+
 **Field: `authLoginRedirect` (`string`)**
 AuthLoginRedirect configures a URL to redirect to after a successful login.
 
+
+Tyk classic API definition: `oauth_meta.auth_login_redirect`.
+
 **Field: `notifications` ([Notifications](#notifications))**
 Notifications configures a URL trigger on key changes.
+
+
+Tyk classic API definition: `notifications`.
 
 ### **OAuthProvider**
 
@@ -1739,8 +2485,14 @@ OAuthProvider holds the configuration for validation and introspection of OAuth 
 **Field: `jwt` ([JWTValidation](#jwtvalidation))**
 JWT configures JWT validation.
 
+
+Tyk classic API definition: `external_oauth.providers[].jwt`.
+
 **Field: `introspection` ([Introspection](#introspection))**
 Introspection configures token introspection.
+
+
+Tyk classic API definition: `external_oauth.providers[].introspection`.
 
 ### **Operation**
 
@@ -1754,6 +2506,8 @@ Block request by allowance.
 
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
 IgnoreAuthentication ignores authentication on request by allowance.
+
+Tyk classic API definition: version_data.versions..extended_paths.ignored[].
 
 **Field: `internal` ([Internal](#internal))**
 Internal makes the endpoint only respond to internal requests.
@@ -1844,7 +2598,10 @@ Connect holds plugin configuration for CONNECT requests.
 
 ### **Paths**
 
-Paths is a mapping of API endpoints to Path plugin configurations.
+Paths is a mapping of API endpoints to Path plugin configurations. This field is part of the [Middleware](#middleware) structure.
+
+
+The string keys in this object represent URL path patterns (e.g. `/users`, `/users/{id}`, `/api/*`) that match API endpoints.
 
 Type defined as object of `Path` values, see [Path](#path) definition.
 
@@ -1860,6 +2617,8 @@ Block request by allowance.
 
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
 IgnoreAuthentication ignores authentication on request by allowance.
+
+Tyk Classic API definition: version_data.versions..extended_paths.ignored[].
 
 **Field: `transformRequestMethod` ([TransformRequestMethod](#transformrequestmethod))**
 TransformRequestMethod allows you to transform the method of a request.
@@ -1883,8 +2642,14 @@ RequestSizeLimit limits the maximum allowed size of the request body in bytes.
 **Field: `enabled` (`boolean`)**
 Enabled activates the Request Size Limit functionality.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.size_limits[].disabled` (negated).
+
 **Field: `value` (`int64`)**
 Value is the maximum allowed size of the request body in bytes.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.size_limits[].size_limit`.
 
 ### **SecurityScheme**
 
@@ -1897,30 +2662,36 @@ Signature holds the configuration for signature validation.
 **Field: `enabled` (`boolean`)**
 Enabled activates signature validation.
 
+
 Tyk classic API definition: `auth_configs[X].validate_signature`.
 
 **Field: `algorithm` (`string`)**
 Algorithm is the signature method to use.
+
 
 Tyk classic API definition: `auth_configs[X].signature.algorithm`.
 
 **Field: `header` (`string`)**
 Header is the name of the header to consume.
 
+
 Tyk classic API definition: `auth_configs[X].signature.header`.
 
 **Field: `query` ([AuthSource](#authsource))**
 Query is the name of the query parameter to consume.
+
 
 Tyk classic API definition: `auth_configs[X].signature.use_param/param_name`.
 
 **Field: `secret` (`string`)**
 Secret is the signing secret used for signature validation.
 
+
 Tyk classic API definition: `auth_configs[X].signature.secret`.
 
 **Field: `allowedClockSkew` (`int64`)**
 AllowedClockSkew configures a grace period in seconds during which an expired token is still valid.
+
 
 Tyk classic API definition: `auth_configs[X].signature.allowed_clock_skew`.
 
@@ -1928,11 +2699,13 @@ Tyk classic API definition: `auth_configs[X].signature.allowed_clock_skew`.
 ErrorCode configures the HTTP response code for a validation failure.
 If unconfigured, a HTTP 401 Unauthorized status code will be emitted.
 
+
 Tyk classic API definition: `auth_configs[X].signature.error_code`.
 
 **Field: `errorMessage` (`string`)**
 ErrorMessage configures the error message that is emitted on validation failure.
 A default error message is emitted if unset.
+
 
 Tyk classic API definition: `auth_configs[X].signature.error_message`.
 
@@ -1974,14 +2747,26 @@ TransformBody holds configuration about request/response body transformations.
 **Field: `enabled` (`boolean`)**
 Enabled activates transform request/request body middleware.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.transform[].disabled` (negated).
+
 **Field: `format` (`string`)**
 Format of the request/response body, xml or json.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.transform[].template_data.input_type`.
 
 **Field: `path` (`string`)**
 Path file path for the template.
 
+
+Tyk classic API definition: `version_data.versions..extended_paths.transform[].template_data.template_source` when `template_data.template_mode` is `file`.
+
 **Field: `body` (`string`)**
 Body base64 encoded representation of the template.
+
+
+Tyk classic API definition: `version_data.versions..extended_paths.transform[].template_data.template_source` when `template_data.template_mode` is `blob`.
 
 ### **TransformRequestMethod**
 
@@ -1996,7 +2781,7 @@ ToMethod is the http method value to which the method of an incoming request wil
 ### **URLRewrite**
 
 URLRewrite configures URL rewriting.
-Tyk classic API definition: `version_data.versions[].extended_paths.url_rewrite`.
+Tyk classic API definition: `version_data.versions..extended_paths.url_rewrite`.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates URL rewriting if set to true.
@@ -2015,6 +2800,7 @@ The triggers are processed only if the requested URL matches the pattern above.
 ### **URLRewriteCondition**
 
 URLRewriteCondition defines the matching mode for an URL rewrite rules.
+Tyk classic API definition: Matching condition in `version_data.versions..extended_paths.url_rewrite[].triggers[].on`.
 
 - Value `any` means any of the defined trigger rules may match.
 - Value `all` means all the defined trigger rules must match.
@@ -2022,6 +2808,7 @@ URLRewriteCondition defines the matching mode for an URL rewrite rules.
 ### **URLRewriteInput**
 
 URLRewriteInput defines the input for an URL rewrite rule.
+Tyk classic API definition: Input source for URL rewrite rules in `version_data.versions..extended_paths.url_rewrite[].triggers[].options`.
 
 The following values are valid:
 
@@ -2038,6 +2825,7 @@ The default `url` is used as the input source.
 ### **URLRewriteRule**
 
 URLRewriteRule represents a rewrite matching rules.
+Tyk classic API definition: `version_data.versions..extended_paths.url_rewrite[].triggers[].options`.
 
 **Field: `in` ([URLRewriteInput](#urlrewriteinput))**
 In specifies one of the valid inputs for URL rewriting.
@@ -2062,6 +2850,7 @@ such that the rewrite will be triggered if the value does not match the `pattern
 ### **URLRewriteTrigger**
 
 URLRewriteTrigger represents a set of matching rules for a rewrite.
+Tyk classic API definition: `version_data.versions..extended_paths.url_rewrite[].triggers`.
 
 **Field: `condition` ([URLRewriteCondition](#urlrewritecondition))**
 Condition indicates the logical combination that will be applied to the rules for an advanced trigger.
@@ -2093,6 +2882,9 @@ VirtualEndpoint contains virtual endpoint configuration.
 **Field: `enabled` (`boolean`)**
 Enabled activates virtual endpoint.
 
+
+Tyk classic API definition: `virtual.disabled` (negated).
+
 **Field: `name` (`string`)**
 Name is the name of plugin function to be executed.
 Deprecated: Use FunctionName instead.
@@ -2100,17 +2892,32 @@ Deprecated: Use FunctionName instead.
 **Field: `functionName` (`string`)**
 FunctionName is the name of plugin function to be executed.
 
+
+Tyk classic API definition: `virtual.response_function_name`.
+
 **Field: `path` (`string`)**
 Path is the path to JS file.
+
+
+Tyk classic API definition: `virtual.function_source_uri` when `virtual.function_source_type` is `file`.
 
 **Field: `body` (`string`)**
 Body is the JS function to execute encoded in base64 format.
 
+
+Tyk classic API definition: `virtual.function_source_uri` when `virtual.function_source_type` is `blob`.
+
 **Field: `proxyOnError` (`boolean`)**
 ProxyOnError proxies if virtual endpoint errors out.
 
+
+Tyk classic API definition: `virtual.proxy_on_error`.
+
 **Field: `requireSession` (`boolean`)**
 RequireSession if enabled passes session to virtual endpoint.
+
+
+Tyk classic API definition: `virtual.use_session`.
 
 ### **XTykStreaming**
 

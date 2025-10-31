@@ -8,7 +8,12 @@ menu:
 weight: 12
 aliases:
   - /tyk-developer-portal/tyk-portal-classic/customise
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ### Customize look and feel
 

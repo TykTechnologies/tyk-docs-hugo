@@ -1,0 +1,21 @@
+{
+    "timeout": "30s",
+    "retryOn429": true,
+    "retryCount": 5,
+    "fallbackRetryDelay": "30s",
+    "aliveStatusCodes": [ 200, 206, 403, 429 ],
+    "ignorePatterns": [
+        {
+            "pattern": "^http://localhost.*"
+        },
+        {
+            "pattern": "https://evening-beach-40625.herokuapp.com"
+        },
+        {
+            "pattern": "https://hub.docker.com/layers/tykio/tyk-{dashboard|gateway}/vX.Y.Z/images/{sha-image})"
+        },
+        {
+            "pattern": "https://my-bundle-server.com/bundles/"
+        }
+    ]
+}

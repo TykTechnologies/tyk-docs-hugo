@@ -1,20 +1,13 @@
 ---
 date: 2017-03-27T16:05:33+01:00
 title: Tyk Upgrading Guide
+description: Tyk upgrade guide for different deployment models and installation types
 tags: ["configuration files backup", "backup tyk", "tyk.conf", "upgrade tyk", "database backup"]
-tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
-tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
-weight: 230
-menu:
-    main:
-        parent: "FAQ"
 aliases:
   - /developer-support/cloud-saas
-  - /developer-support/documentation-projects/inclusive-naming
   - /developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins
   - /developer-support/upgrading-tyk/deployment-model/self-managed/mdcb
   - /developer-support/backups/backup-apis-and-policies
-  - /upgrading-tyk
   - /developer-support/upgrading-tyk/preparations/upgrade-guidelines
   - /developer-support/upgrading-tyk/preparations/upgrade-strategies
   - /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
@@ -28,6 +21,7 @@ aliases:
   - /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
   - /developer-support/upgrading-tyk/deployment-model/open-source
   - /developer-support/upgrading-tyk/go-plugins
+  - /upgrading-tyk
 ---
 
 ## Overview
@@ -48,12 +42,10 @@ Our upgrade process adheres to the following standards:
 - **Breaking changes:** Breaking changes are rare and will be explicitly stated in the release notes.
 - **Configuration files:** Upgrades do not overwrite your configuration files. However, it’s good practice to routinely back up these files (using git or another tool) before upgrading, so any customizations are saved.
 - **Migration scripts:** Migration scripts for your APIs, policies, or other assets are generally not required unless specified in the release notes.
-- **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for details on major and minor releases, patches, and support dates.
+- **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/release-types/long-term-support" >}}) for details on major and minor releases, patches, and support dates.
 - **Preparations:** Review the [preparation guidelines]({{< ref "#upgrade-guidelines" >}}) before starting the upgrade.
 - **Release notes:** Always check the "Upgrade Instructions" section in the relevant release notes.
 - **Backups:** Follow our [comprehensive backup guide]({{< ref "developer-support/faq#tyk-configuration" >}}) before starting the upgrade.
-- Docker: Upgrading with Docker is straightforward—pull the new images from public repositories. Refer to the following links for our releases:
-
 - **Docker:** Upgrading with Docker is straightforward - pull the new images from public repositories. Refer to the following links for our releases:
     - Docker & Kubernetes - Docker Hub - https://hub.docker.com/u/tykio
     - Helm install - Artifact Hub - https://artifacthub.io/packages/search?repo=tyk-helm
@@ -70,8 +62,8 @@ Use the table below to find the appropriate upgrade guide for your platform:
 | **Tyk Cloud**        | [Cloud SaaS]({{< ref "#tyk-cloud" >}}) | Guide to Tyk Cloud SaaS |
 |                      | [Hybrid]({{< ref "#tyk-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed locally or with a third-party cloud provider |
 |                      | [Go plugin]({{< ref "#go-plugin" >}}) | Guide for upgrading Go plugin on the Tyk Cloud |
-| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#linux---redhat-centos" >}}) | Guide for RPM-based Linux distributions |
-|                      | [Debian and Ubuntu]({{< ref "#linux---debian" >}}) | Guide for DEB-based Linux distributions |
+| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#upgrade-linux-redhat-centos" >}}) | Guide for RPM-based Linux distributions |
+|                      | [Debian and Ubuntu]({{< ref "#upgrade-linux-debian" >}}) | Guide for DEB-based Linux distributions |
 |                      | [Docker]({{< ref "#docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "#helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "#kubernetes" >}}) | Guide for upgrading Kubernetes environment |
@@ -83,7 +75,7 @@ Tyk offers supporting tools for database migration and backing up APIs and polic
 
 ##### Migrating from MongoDB to SQL
 
-Use our [migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
+Use our [migration tool]({{< ref "planning-for-production/database-settings#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
 
 ##### Backup APIs Script
 
@@ -136,7 +128,7 @@ Communicate with stakeholders and users about the upgrade schedule and expected 
   - Identify and plan for custom Go plugin recompilation and testing
   - Communicate with stakeholders
 
-#### Next Steps {#next-steps}
+#### Next Steps
 
 Use the [Upgrade Guides ToC]({{< ref "#tyk-upgrade-guides-for-different-deployment-models" >}}) to choose the appropriate upgrade guide for
 your platform.
@@ -166,7 +158,7 @@ A blue-green deployment involves two identical production environments, labeled 
 2. **Traffic Routing:** Use a load balancer or DNS to route traffic to the green environment (current production) while the blue environment undergoes the upgrade.
 3. **Upgrade Process:**
    - A VM snapshot is a recommended method for replication, but other methods such as a new deployment process can also be used.
-   - If using a new deployment process, follow the [deployment instructions]({{< ref "getting-started/installation" >}}) appropriate for your platform.
+   - If using a new deployment process, follow the [deployment instructions]({{< ref "tyk-self-managed" >}}) appropriate for your platform.
 4. **Switch Environments:** Once the upgrade is complete, switch the traffic to the upgraded environment.
 
 
@@ -185,7 +177,7 @@ specified order. Adhering to the provided sequence is crucial for a smooth and s
 
 **Step 1. Upgrade Control Plane**
 
-Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}}).
+Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-cloud-control-planes" >}}).
 
 **Step 2. Upgrade Go Plugins**
 
@@ -215,14 +207,12 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 
 ###### Step 3. Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
-Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane" >}}).
+Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-deployments/managing-gateways" >}}).
 
 **Upgrade Guide Video**
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
+Please refer to our [upgrade guide video](https://youtu.be/2rzU8YdKKFM) below for visual guidance:
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube 2rzU8YdKKFM >}}
 
 #### Tyk Hybrid
 
@@ -255,7 +245,7 @@ following order:
 
 **Step 1. Upgrade your control plane**
 
-See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#upgrade-cloud-control-planes" >}})
 
 **Step 2 Upgrade Go plugins**
 
@@ -295,16 +285,14 @@ Follow the instructions for component deployment type:
 
 - [Docker]({{< ref "#docker" >}})
 - [Helm]({{< ref "#helm" >}})
-- [Linux Debian]({{< ref "#linux---debian" >}})
-- [Linux RHEL/CENTOS]({{< ref "#linux---redhat-centos" >}})
+- [Linux Debian]({{< ref "#upgrade-linux-debian" >}})
+- [Linux RHEL/CENTOS]({{< ref "#upgrade-linux-redhat-centos" >}})
 
 **Upgrade Guide Video**
 
-Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for further supporting with upgrading Tyk Self-Managed (RPM).
+Please refer to our [video](https://youtu.be/HfiLSRBdrfs) for further supporting with upgrading Tyk Self-Managed (RPM).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/4nf9fggatz" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube HfiLSRBdrfs >}}
 
 #### Go Plugin
 
@@ -350,7 +338,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     }
     ```
 
-2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 **Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0**
@@ -394,7 +382,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     then *“_v5.2.0_linux_amd64”* would be appended to the shared object filename that the compiler creates
     - Your bundle zip file should include both the current version and target versions of the plugin.
 
-2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 ### Tyk Self Managed Upgrade Guide 
@@ -554,18 +542,16 @@ $ curl  localhost:8080/hello | jq .
 2. Restart the deployment
 3. Check the log file
 
-#### Linux - Debian
+#### Linux - Debian {#upgrade-linux-debian}
 
 The following guide explains how to upgrade Tyk Self-Managed running on Debian
 
 **Upgrade Guide Video**
 
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/dcyna9zwqf) below for visual guidance of
+Please refer to our [upgrade guide video](https://youtu.be/dx1tcsbo3F8) below for visual guidance of
 upgrading Tyk Self-Managed (DEB).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/dcyna9zwqf" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube dx1tcsbo3F8 >}}
 
 **Preparations**
 
@@ -799,19 +785,17 @@ sudo apt-get install tyk-dashboard=<previous version>
 These commands are provided as general guidelines and should be used with caution. It's advisable to consult with your system administrator or seek assistance from a qualified professional before executing any system-level commands
 {{< /note >}}
 
-#### Linux - RedHat (CentOS) 
+#### Linux - RedHat (CentOS) {#upgrade-linux-redhat-centos}
 
 The following guide explains how to upgrade Tyk Self-Managed running on RHL
 
 
 **Upgrade guide video**
 
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/p2c7gjzsk6) below for visual guidance of
+Please refer to our [upgrade guide video](https://youtu.be/Dm_lboEOm6w) below for visual guidance of
 upgrading Tyk Self-Managed (RPM).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/p2c7gjzsk6" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube Dm_lboEOm6w >}}
 
 ---
 
@@ -1106,7 +1090,7 @@ $ docker run \
   docker.tyk.io/tyk-gateway/tyk-gateway:v5.3
 ```
 
-For full installation details, check the usual [installation page]({{< ref "tyk-open-source#install-tyk-gateway-with-docker" >}}).
+For full installation details, check the usual [installation page]({{< ref "apim/open-source/installation#install-tyk-gateway-with-docker" >}}).
 
 **Docker compose upgrade in a simple environment**
 
@@ -1187,7 +1171,7 @@ go mod vendor
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
 
-- **Target Version <= v4.2.0**  
+- **`Target Version <= v4.2.0`**  
     ```bash
     go get github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
     # Tyk Gateway versions < 4.2 have a dependency on graphql-go-tools
@@ -1263,7 +1247,7 @@ If you are using Self Managed deployment then we recommend that you use [Tyk Syn
 
 ### Export And Restore APIs and Policies
 
-To facilitate backing up APIs and policies we have provided a Bash script [backup](https://github.com/TykTechnologies/backup) that can be used to export and restore all Tyk API definitions and Policies from Tyk Dashboard. This will be done by the *export* and *import* commands respectively. The script can be used on both Tyk Cloud and Self Managed deployments. The script is helpful for Tyk Cloud users who want to export their Tyk OAS APIs since *tyk-sync* does not currently support it on Tyk Cloud.
+To facilitate backing up APIs and policies we have provided a Bash script [backup](https://github.com/TykTechnologies/backup) that can be used to export and restore all Tyk API definitions and Policies from Tyk Dashboard. This will be done by the *export* and *import* commands respectively. The script can be used on both Tyk Cloud and Self Managed deployments.
 
 #### Export APIs and Policies
 

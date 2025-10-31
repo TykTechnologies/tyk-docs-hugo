@@ -204,3 +204,47 @@ input.button {
     width: 20px;
     height: 20px;
 }
+
+/* Pill Styles */
+.pill {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0 4px;
+    font-weight: 500;
+}
+
+/* Default pill */
+.pill-default {
+    background-color: $brandpurple-1;
+    color: $brandpurple-7;
+}
+
+/* Brand colors */
+.pill-outline-brandpurple-light {
+    background-color: transparent;
+    border: 2px solid $brandpurple-dark;
+    color: $brandpurple-dark;
+}
+
+.pill-brandpurple-dark {
+    background-color: $brandpurple-dark;
+    color: $white;
+}
+
+.pill-brandgreen {
+    background-color: $brandgreen-2;
+    color: $brand-black;
+}
+
+.pill-red {
+    background-color: $red;
+    color: $white;
+}
+
+.pill-yellow {
+    background-color: $yellow;
+    color: $brand-black;
+}

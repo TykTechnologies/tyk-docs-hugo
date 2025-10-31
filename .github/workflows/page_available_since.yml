@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   check-page-availability:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Check version a page is available
     steps:
 

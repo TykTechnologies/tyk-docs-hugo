@@ -50,6 +50,15 @@
     {{ partial "google_search_console_metadata.html" . }}
     {{ partial "site_schema.html" . }}
 
+    {{ if eq .Params.robots "noindex" }}
+    <meta name="robots" content="noindex">
+    {{ end }}
+
+    {{ if and (isset .Params "algolia") (isset .Params.algolia "importance") }}
+    <meta name="algolia-importance" content="{{ .Params.algolia.importance }}">
+    {{ else }}
+      <meta name="algolia-importance" content="100">
+    {{ end }}
 
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
@@ -78,6 +87,7 @@
       crossorigin="anonymous" />
     <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
     <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
+    <script src="{{ "js/scroll_tabs_menu.js" | relURL }}"></script>
     <script
       type="text/javascript"
       src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0"></script>
@@ -89,33 +99,29 @@
 
     {{ $scss := resources.Get "scss/main.scss" }}
     {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
-    {{ $css := $scss | resources.ToCSS $options }}
+    {{ $css := $scss | toCSS $options }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
   </head>
 
-  <body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+  <body class="page-documentation {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe
-    ></noscript>
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
     {{ partial "header.html" . }}
 
-
     <!-- Page content -->
-    <section class="section-page {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+    <section class="section-page {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
       <!-- Side menu -->
+      {{ if not .IsHome }}
       <aside class="page-submenu" data-turbolinks-permanent>
         {{ partial "side_menu.html" . }}
       </aside>
+      {{ end }}
 
-      <article class="page-content {{ if .Params.hideSidebar }}home-mobile-padding{{ end }}">
+      <article class="page-content {{ if or .Params.hideSidebar .IsHome }}home-mobile-margin{{ end }}">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
             {{ if .Params.diffTitle }}
@@ -167,8 +173,16 @@
     <!-- Footer scripts -->
     {{ partial "footer_scripts.html" . }}
 
+    <!-- Ask AI Chat -->
+    {{ partial "ai-chat-widget.html" . }}
+    <script defer src="{{ "js/chat.js" | relURL }}"></script>
 
-    <!-- Cookie Notice -->
-    {{ partial "cookie_notice.html" . }}
+
+    {{ if .Page.Store.Get "hasMermaid" }}
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    {{ end }}
   </body>
 </html>

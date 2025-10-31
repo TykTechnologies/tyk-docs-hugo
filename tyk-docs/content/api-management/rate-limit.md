@@ -1,19 +1,16 @@
 ---
 title: "Rate Limiting"
 date: 2025-01-10
-tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Request Throttling", "Quotas", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits", "Request Throttling", "Request Quotas"]
+tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits"]
 description: Overview of Rate Limiting with the Tyk Gateway
-keywords: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Request Throttling", "Quotas", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits", "Request Throttling", "Request Quotas"]
+keywords: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits"]
 aliases:
-  - /control-limit-traffic/request-quotas
   - /control-limit-traffic/rate-limiting
   - /basic-config-and-security/control-limit-traffic
   - /getting-started/key-concepts/rate-limiting
   - /basic-config-and-security/control-limit-traffic/rate-limiting
   - /product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas
   - /product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic
-  - /basic-config-and-security/control-limit-traffic/request-quotas
-  - /basic-config-and-security/control-limit-traffic/request-throttling
   - /product-stack/tyk-streaming/configuration/rate-limits/overview
   - /product-stack/tyk-streaming/configuration/rate-limits/local
 ---
@@ -60,7 +57,7 @@ Key-level rate limiting is more focused on controlling traffic from individual s
 - **key-level per-API limit** limiting the rate of calls the user of a key can make to specific individual APIs
 - **key-level per-endpoint limit** limiting the rate of calls the user of a key can make to specific individual endpoints of an API
  
-These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "getting-started/create-api-key" >}}) and [Security Policies]({{< ref "getting-started/create-security-policy" >}}).
+These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) and [Security Policies]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}).
 
 #### Which scope should I use?
 
@@ -145,7 +142,7 @@ of requests could lead to exhaustion of the limit on some gateways before others
 
 ### Redis Rate Limiter
 
-This algorithm implements a sliding window log algorithm and can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}) configuration option.
+This algorithm implements a sliding window log algorithm and can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration#enable_redis_rolling_limiter" >}}) configuration option.
 
 The characteristics of the Redis Rate Limiter (RRL) are:
 
@@ -235,13 +232,13 @@ effect for a minimum of the configured window duration (`per`). Gateway and Redi
 resource usage is increased with this option.
 
 This option can be enabled using the following configuration option
-[enable_sentinel_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_sentinel_rate_limiter" >}}).
+[enable_sentinel_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_sentinel_rate_limiter" >}}).
 
 To optimize performance, you may configure your rate limits with shorter
 window duration values (`per`), as that will cause Redis to hold less
 data at any given moment.
 
-Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
+Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
 
 Please consider the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm as an alternative, if Redis performance is an issue.
 
@@ -267,7 +264,7 @@ window and removed when the window elapses. Regardless of the traffic
 received, Redis is not impacted in a negative way, resource usage remains
 constant.
 
-This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_fixed_window_rate_limiter" >}}).
+This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration#enable_fixed_window_rate_limiter" >}}).
 
 If you need spike arrest behavior, the [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}) should be used.
 
@@ -298,8 +295,127 @@ gateways, the DRL algorithm will be used if the rate limit exceeds 10
 requests per second. If it is 10 or fewer, the system will fall back to
 the Redis Rate Limiter.
 
-See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration.md#drl_threshold" >}}) for details on how to configure this feature.
+See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration#drl_threshold" >}}) for details on how to configure this feature.
 
+
+## Custom Rate Limiting
+
+Different business models may require applying rate limits and quotas not only by credentials but also by other entities, such as per application, per developer, per organization, etc. For example, if an API Product is sold to a B2B customer, the quota of API calls is usually applied to all developers and their respective applications combined, in addition to a specific credential.
+
+To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}). This feature allows you to define custom patterns for rate limiting that go beyond the default credential-based approach.
+
+### How Custom Rate Limiting Works
+
+Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
+
+To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`. In the value field you can specify any value or expression that you want to use as a custom rate limit key for your APIs.
+
+The `rate_limit_pattern` field supports:
+- Referencing session metadata using `$tyk_meta.FIELD_NAME` syntax
+- Concatenating multiple values together using the pipe operator (`|`)
+
+### Configuring Custom Rate Limit Keys
+
+Custom rate limit keys are configured in the Tyk Dashboard by adding a metadata field to your policy:
+
+1. Navigate to your policy in the Tyk Dashboard
+2. Add a new metadata field called `rate_limit_pattern`
+3. Set the value to your desired pattern expression
+
+For example, if you want to specify a rate limit pattern to calculate the rate limit for a combination of developers and plans, where all credentials of a developer using the same plan share the same rate limit, you can use the following expression (assuming that the `DeveloperID` and `PlanID` metadata fields are available in a session):
+
+```gotemplate
+$tyk_meta.DeveloperID|$tyk_meta.PlanID
+```
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/configuring-custom-rate-limit-keys.png" alt="Configuring custom rate limit keys" >}}
+
+### Important Considerations
+
+{{< note success >}}
+**Updating credential metadata**
+
+The custom rate limit key capability uses only metadata objects, such as credentials metadata available in a session. Therefore, if the `rate_limit_pattern` relies on credentials metadata, this capability will work only if those values are present. If, after evaluating the `rate_limit_pattern`, its value is equal to an empty string, the rate limiter behavior defaults to rate limiting by credential IDs.
+{{< /note >}}
+
+### Advanced Custom Rate Limiting
+
+As mentioned above, we can easily configure custom rate limit keys for simple scenarios that do not require awareness of the request context. When more complex logic or integration with external services is required to determine the rate-limiting key, for example when you want to rate limit per requester IP address, a [custom authentication plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}) can be used to identify and generate the rate limiter key.
+
+We use an authentication plugin because [it lets us modify the session object]({{< ref "api-management/plugins/plugin-types#hook-capabilities" >}}). 
+
+<br>
+
+{{< note warning >}}
+**Note**  
+
+This mechanism works only for authenticated APIs, since the authentication plugin is not invoked for unauthenticated (keyless) APIs.
+
+{{< /note >}}
+
+#### Example: Rate Limiting by IP Address
+
+The example below shows an IP based rate limiter implemented as a custom Go plugin for a Tyk OAS API. Note that the Go library function to [obtain the API definition]({{< ref "api-management/plugins/golang#accessing-the-api-definition" >}}) is specific to Tyk OAS APIs, so you would need to modify the plugin for a Tyk Classic API.
+
+1. It extracts the client's IP address from the request
+2. Creates a session object with rate limiting parameters (2 requests per 5 seconds)
+3. Sets a custom `rate_limit_pattern` in the session's metadata to use the IP as the rate limiting key
+4. Stores this session in Tyk's session store
+
+When Tyk processes subsequent requests, it uses the IP address as the rate-limiting key, allowing you to rate-limit by IP address.
+
+
+
+```go
+// IP Rate Limiter for Tyk OAS APIs
+func Authenticate(rw http.ResponseWriter, r *http.Request) {
+	// Get the API definition
+	requestedAPI := ctx.GetOASDefinition(r)
+	if requestedAPI == nil {
+		logger.Error("Could not get Tyk OAS API Definition")
+		rw.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	// Extract the client's real IP address
+	realIp := request.RealIP(r)
+
+	// Create a session object with rate limiting parameters
+	sessionObject := &user.SessionState{}
+	sessionObject = &user.SessionState{
+		OrgID: requestedAPI.OrgID,
+		Rate:  2,                       // Allow 2 requests
+		Per:   5,                       // Per 5 seconds
+		AccessRights: map[string]user.AccessDefinition{
+			requestedAPI.APIID: {
+				APIID: requestedAPI.APIID,
+			},
+		},
+		MetaData: map[string]interface{}{
+			"rate_limit_pattern": realIp, // Use IP address as rate limit key
+		},
+	}
+
+	logger.Info("Session Alias: ", sessionObject.Alias)
+
+	// Set session state using session object
+	ctx.SetSession(r, sessionObject, false)
+	logger.Info("Session created for request")
+}
+```
+
+#### How to Use This
+
+1. **Build and Deploy plugin**: Build the plugin and deploy it to your Tyk Gateway. Refer to the [Go Plugin Development Guide]({{< ref "api-management/plugins/golang#setting-up-your-environment" >}}) for instructions on building and deploying Go plugins.
+
+2. **Configure your API**: Create an authenticated API and set up your API to use the [custom authentication plugin]({{< ref "api-management/plugins/golang#loading-custom-go-plugins-into-tyk" >}}). Note that you will need to select the [multiple authentication]({{< ref "basic-config-and-security/security/authentication-authorization/multiple-auth" >}}) method to invoke both the plugin and your chosen auth method.
+
+3. **Test your implementation**: Make requests to your API and verify that rate limiting is applied based on client IP addresses.
+
+While this example demonstrates IP-based rate limiting, you can modify the `rate_limit_pattern` to use any value you want as the rate limiting key, such as:
+- A specific header value: `request.Header.Get("X-Custom-ID")`
+- A combination of values: `userID + "-" + deviceID`
+- A value extracted from the request body or JWT claims
 
 ## Rate Limiting Layers
 
@@ -332,7 +448,7 @@ If you want to restrict an API client to a certain rate of requests to your APIs
 {{< note success >}}
 **Note**  
 
-It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) client authentication method and policies have already been created.
+It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "api-management/authentication/bearer-token" >}}) client authentication method and policies have already been created.
 {{< /note >}}
 
 You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
@@ -349,7 +465,7 @@ If you want to restrict API clients to a certain rate of requests for a specific
 {{< note success >}}
 **Note**  
 
-It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) client authentication method and policies have already been created.
+It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "api-management/authentication/bearer-token" >}}) client authentication method and policies have already been created.
 {{< /note >}}
 
 You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
@@ -376,8 +492,8 @@ If no per-endpoint rate limit is defined, the endpoint will inherit the key-leve
 {{< note success >}}
 **Note**  
 The following assumptions are made:
- - The [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware should not be enabled for the relevant endpoints.
- - If [path-based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
+ - The [ignore authentication]({{< ref "api-management/traffic-transformation/ignore-authentication" >}}) middleware should not be enabled for the relevant endpoints.
+ - If [path-based permissions]({{< ref "api-management/gateway-config-managing-classic#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
 {{< /note >}}
 
 You can configure per-endpoint rate limits from the API Designer in Tyk Dashboard as follows:
@@ -802,94 +918,3 @@ The time window to limit requests by.
 
 Type: `string`  
 Default: `"1s"`  
-
-## Request Quotas
-
-A quota is similar to a rate limit, as it allows a certain number of requests through in a time period. However traditionally these periods are much longer, For example, if you would like to have a user only have 10,000 requests to the API per month, you can create a key that has no rate limiting but will disallow access once the quota is empty. Tyk will automatically reset the quota if the time limit on reset has been exceeded.
-
-### How do Quotas Work?
-
-Quotas in Tyk use a decrementing counter in the token's session object to measure when to block inbound requests.
-
-### How do Quotas Renew?
-
-In Tyk, most things are event-driven, the same goes for quotas. Since all quotas have a reset time limit, they do not "reset" on a specific date (e.g. 1st of the month), instead they "reset" on or after a date has passed, and only when the key is actively being used. This means that the period can "move" if the token is only partially active.
-
-### Why is the Quota System Like This?
-
-In a system with 1,000,000 tokens, managing timers to watch and monitor each token is extremely expensive and inefficient. So in order to keep quotas sane and not clutter up the DB with unnecessary timers, quotas are event-driven.
-
-It is possible to have monthly quotas that set on a specific date, using the Tyk Gateway API it is possible to reset known token quotas periodically using an external timer.
-
-### Can I Disable Quotas?
-
-Yes you can - to disable the quota middleware in an API definition, select the **Disable Quotas** option in the API designer, or set the value of `disable_quota` to `true` in your API Definition.
-
-### Set a Quota with the Dashboard
-
-1.  Add a Key from the **System Management > Keys** menu.
-
-2.  Ensure the new key has access to the APIs you wish it work with by selecting the API from **Access Rights** > **Choose API**. Turn the **Set per API Limits and Quota** options on.
-
-3.  From the **Usage Quotas** section, set the **Max Requests per period** - this is the maximum number of requests that are allowed to pass through the proxy during the period.
-
-4.  Set the **Quota resets every** drop down to the period you would like the quota to be active for. If the pre-sets do not meet your requirements, the quota period can be set using the session object method and the REST API.
-
-5.  The **Remaining requests for period** field displays how many more times the API can be requested for the quota set.
-    
-{{< img src="/img/2.10/api_rate_limits_keys.png" alt="Tyk API Gateway Quotas" >}}
-
-1.  Save the token, it will be created instantly.
-
-### Set a Quota with the Session Object
-
-In order to set a quota for a token:
-
-1. Ensure that `quota_max` is set to the maximum amount of requests that a user is allowed to make in a time period.
-2. Ensure `quota_remaining` is set to the same value as `quota_max`, this is the value that will decrement on each request (failed or successful).
-3. Set the `quota_renewal_rate` to the value, in seconds, of when the quota should renew. For example, if you would like it to renew every 30 days, you would have `2592000` seconds `(((60*60) * 24) * 30 = 2592000)`.
-
-{{< note success >}}
-**Note**  
-
-To set an unlimited quota, set `quota_max` to `-1`.
-{{< /note >}}
-
-[1]: /img/dashboard/system-management/usage_quotas_2.5.png
-
-## Request Throttling
-
-### Controlling and Limiting Traffic
-
-Tyk supports controlling and limiting traffic for throttling and spike arrest use cases. Spike arrest sets a limit on the number of requests that can be processed within a specified time interval. If the incoming request rate exceeds this limit, then excess requests are throttled to ensure availability of the API server. 
-
-From v2.8, when hitting quota or rate limits, the Gateway can automatically queue and auto-retry client requests. 
-
-Throttling can be configured at a *key* or *policy* level via the following two fields: 
-
-1. `throttle_interval`: Interval (in seconds) between each request retry.
-2. `throttle_retry_limit`: Total request retry number.
-
-
-#### Can I disable Request Throttling?
-
-Yes, you can. If you set `throttle_interval` and `throttle_retry_limit` values to smaller than `0`, the feature will not work. The default value is `-1` and means it is disabled by default.    
-
-### Set Request Throttling with the Dashboard
-
-1.  At the key level: From **System Management** > **Keys** > **Add Key** or open an existing key.
-    Or
-    At the policy level: From **System Management** > **Policies** > **Add Policy** or open an existing policy.
-    
-2.  Ensure the new key or policy has access to the APIs you wish it work with by selecting the API from **Access Rights** > **Add Access Rule** and click **Add**.
-
-3.  From the **Throttling** section, select the **Throttle interval** and the **Throttle retry limit** values.
-    
-{{< img src="/img/dashboard/system-management/throttling_update.png" alt="Tyk API Gateway Throttling" >}}
-
-4.  Save the token/policy.
-
-### Set Request Throttling in the object
-
-Get the policy object with `GET /api/portal/policies/` or the key's session object via `GET /api/apis/{API-ID}/keys/` and then  set two fields, `throttle_interval` and `throttle_retry_limit` in the object and create a new object or update the exsiting one.
-

@@ -2,7 +2,7 @@
 title: "Custom Plugins"
 date: 2025-01-10
 tags: []
-description: ""
+description: "Learn how to extend Tyk's capabilities using custom plugins to enhance API functionality."
 keywords: []
 aliases:
   - /plugins
@@ -34,13 +34,13 @@ aliases:
 
 Plugins can be used to customize and enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
 
-When Tyk receives an API request, it works through a [chain]({{< ref "middleware-execution-order" >}}) of processing *middleware* that is configured using the API definition. There are a large number of built-in middleware in the processing chain that are dedicated to performing [client authentication]({{< ref "api-management/client-authentication" >}}), [request transformation]({{< ref "api-management/traffic-transformation#" >}}), [caching]({{< ref "api-management/gateway-optimizations#" >}}) and many other processes before proxying the request to the upstream.
+When Tyk receives an API request, it works through a [chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) of processing *middleware* that is configured using the API definition. There are a large number of built-in middleware in the processing chain that are dedicated to performing [client authentication]({{< ref "api-management/client-authentication" >}}), [request transformation]({{< ref "api-management/traffic-transformation" >}}), [caching]({{< ref "api-management/response-caching" >}}) and many other processes before proxying the request to the upstream.
 
 Tyk's custom plugin facility provides a powerful and flexible way to extend the middleware chain. It allows API developers to write custom middleware, in various programming languages, that can perform additional processing of requests and responses.
 
 For example, a custom authentication scheme can be implemented and executed on API requests, custom plugins can be used to provide integration with external services and databases, or additional processing can be performed on the response returned from the upstream.
 
-There are several different stages of the [API request lifecycle]({{< ref "concepts/middleware-execution-order" >}}) where custom plugins can be attached (or *hooked*) into the middleware chain allowing significant customization to meet your specific requirements.
+There are several different stages of the [API request lifecycle]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) where custom plugins can be attached (or *hooked*) into the middleware chain allowing significant customization to meet your specific requirements.
 
 Custom plugins are usually referred to by the location where they can be *hooked* into the middleware processing chain as follows:
 
@@ -80,11 +80,11 @@ To know more about plugin types and it's advanced configuration, refer the follo
 
 This section takes you through the process of running and building a quickstart **Go plugin**, included within Tyk's [getting started](https://github.com/TykTechnologies/custom-go-plugin) repository. Go plugins are the recommended plugin type and suitable for most use cases.
 
-##### Expected outcome
+### Expected outcome
 
 At the end of this process you should have a Tyk Gateway or Tyk Self-Managed environment running locally, with a simple Go plugin executing on each API request. For each reponse to an API request the example plugin will inject a *Foo* header, with a value of *Bar*.
 
-##### Prerequisites
+### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
@@ -92,7 +92,7 @@ At the end of this process you should have a Tyk Gateway or Tyk Self-Managed env
 - [Make](https://www.gnu.org/software/make)
 - OSX (Intel) -> Not a prerequisite, though these steps are tested on OSX Intel/ARM
 
-##### Before you begin
+### Before you begin
 
 Please clone the [getting started](https://github.com/TykTechnologies/custom-go-plugin) respository.
 
@@ -101,14 +101,14 @@ git clone https://github.com/TykTechnologies/custom-go-plugin
 cd custom-go-plugin
 ```
 
-##### Choose your environment
+### Choose your environment
 
 {{< grid >}}
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="plugins/tutorials/quick-starts/go/dashboard" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Dashboard">}}
+{{< badge read="15 mins" imageStyle="object-fit:contain" href="api-management/plugins/overview#dashboard-plugins" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Dashboard">}}
 Dashboard Tutorial
 {{< /badge >}}
 
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="plugins/tutorials/quick-starts/go/open-source" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Tyk OSS Gateway">}}
+{{< badge read="15 mins" imageStyle="object-fit:contain" href="api-management/plugins/overview#open-source-plugins" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Tyk OSS Gateway">}}
 Tyk OSS Gateway Tutorial
 {{< /badge >}}
 {{< /grid >}}
@@ -1100,7 +1100,7 @@ Rich plugins give ultimate flexibility in the language of implementation, howeve
 
 ### Plugin Hook Types
 
-Tyk provide 5 different phases, i.e. hooks to inject custom plugin throughout the [API execution lifecycle]({{< ref "concepts/middleware-execution-order" >}}).
+Tyk provide 5 different phases, i.e. hooks to inject custom plugin throughout the [API execution lifecycle]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}).
 
 Not all hooks are supported in every language. The following table shows you which plugin language support which phase/hook:
 
@@ -1112,7 +1112,7 @@ Not all hooks are supported in every language. The following table shows you whi
 | Python     | ✅		 |✅	        |✅	       |✅	   |✅
 | Lua        | ✅	   |✅	        |✅	       |✅	   |❌
 
-More reading on the [hook types]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}) in rich plugins and explanation with common use case for each [hook type]({{<ref "api-management/plugins/plugin-types#plugin-types">}}) 
+More reading on the [hook types]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}) in rich plugins and explanation with common use case for each [hook type]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) 
 
 
 ### Plugin Driver Names

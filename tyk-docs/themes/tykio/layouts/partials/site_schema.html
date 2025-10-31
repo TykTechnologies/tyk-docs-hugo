@@ -1,19 +1,26 @@
 <script type="application/ld+json">
 {
-    "@context" : "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "WebPage",
     "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "{{ .Site.BaseURL }}"
+        "@type": "WebPage",
+        "@id": {{ .Site.BaseURL | printf "%s" }}
     },
-    "name" : "{{ .Title }}",
-    "headline" : "{{ .Title }}",
-    "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
-    "inLanguage" : "en-US",
-    "author" : "tyk ",
-    "copyrightHolder" : "Tyk",
-    "url" : "{{ .Permalink }}",
-    "keywords" : [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}]
-
+    "name": "{{ .Title }}",
+    "headline": "{{ .Title }}",
+    "description": "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+    "inLanguage": "en-US",
+    "author": {
+        "@type": "Organization",
+        "name": "Tyk"
+    },
+    "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Tyk"
+    },
+    "url": {{ .Permalink | printf "%s" }},
+    "keywords": [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}],
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}"
 }
 </script>

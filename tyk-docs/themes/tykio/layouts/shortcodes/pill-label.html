@@ -1,0 +1,28 @@
+{{ $text := .Get "text" }}
+{{ $class := .Get "class" | default "pill-outline-brandpurple-light" }}
+{{ $style := .Get "style" }}
+
+{{/* Validate class parameter against allowlist */}}
+{{ $validClasses := slice "pill-outline-brandpurple-light" "pill-brandpurple-dark" "pill-yellow" "pill-red" "pill-default" "pill-brandgreen" }}
+{{ $safeClass := $class }}
+{{ if not (in $validClasses $class) }}
+  {{ if ne $class "" }}
+    {{ warnf "Warning: Unsupported class '%s' used in pill-label shortcode. Using default class instead." $class }}
+  {{ end }}
+  {{ $safeClass = "pill-outline-brandpurple-light" }}
+{{ end }}
+
+{{/* Sanitize text to prevent HTML injection */}}
+{{ $safeText := $text | htmlEscape }}
+
+{{/* Process style attribute safely */}}
+{{ $safeStyle := "" }}
+{{ if $style }}
+  {{ if or (findRE "script" $style) (findRE "expression" $style) (findRE "javascript" $style) }}
+    {{ warnf "Warning: Potentially unsafe style attribute in pill-label shortcode was sanitized" }}
+  {{ else }}
+    {{ $safeStyle = $style }}
+  {{ end }}
+{{ end }}
+
+<span class="pill {{ $safeClass }}"{{ if $safeStyle }} style="{{ $safeStyle }}"{{ end }}>{{ $safeText }}</span>

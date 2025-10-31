@@ -5,7 +5,12 @@ menu:
   main:
     parent: "Tyk Dashboard API"
 weight: 2
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ### Get List of Policies
 

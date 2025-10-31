@@ -4,8 +4,13 @@ title: CORS issues on developer portal
 menu:
   main:
     parent: "Tyk Dashboard Troubleshooting"
-weight: 6 
+weight: 6
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ### Description
 
@@ -31,5 +36,5 @@ Make sure that your CORS in the `Advanced Options` of the API is enabled and the
  > **Note:** When creating a new API with Dashboard v3.1 and higher the CORS settings will be prefilled with some default values (but **disabled** by default).
 
  You can learn more about CORS on this pages:
- - [CORS in API Definition]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
+ - [CORS in API Definition]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}})
  - [How to setup CORS]({{< ref "api-management/troubleshooting-debugging#how-to-setup-cors" >}}) 

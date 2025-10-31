@@ -26,7 +26,7 @@ Custom hostname for the Control API
 ENV: <b>TYK_GW_CONTROLAPIPORT</b><br />
 Type: `int`<br />
 
-Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/tyk-self-managed/#change-your-control-port.
+Set this to expose the Tyk Gateway API on a separate port. You can protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/tyk-self-managed/#change-your-control-port.
 
 ### secret
 ENV: <b>TYK_GW_SECRET</b><br />
@@ -113,6 +113,36 @@ ENV: <b>TYK_GW_SECURITY_CERTIFICATES_MDCB</b><br />
 Type: `[]string`<br />
 
 Certificates used for MDCB Mutual TLS
+
+### security.certificate_expiry_monitor
+CertificateExpiryMonitor configures the certificate expiry monitoring and notification feature
+
+### security.certificate_expiry_monitor.warning_threshold_days
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_WARNINGTHRESHOLDDAYS</b><br />
+Type: `int`<br />
+
+WarningThresholdDays specifies the number of days before certificate expiry that the Gateway will start generating CertificateExpiringSoon events when the certificate is used
+Default: DefaultWarningThresholdDays (30 days)
+
+### security.certificate_expiry_monitor.check_cooldown_seconds
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_CHECKCOOLDOWNSECONDS</b><br />
+Type: `int`<br />
+
+CheckCooldownSeconds specifies the minimum time in seconds that the Gateway will leave between checking for the expiry of a certificate when it is used in an API request - if a certificate is used repeatedly this prevents unnecessary expiry checks
+Default: DefaultCheckCooldownSeconds (3600 seconds = 1 hour)
+
+### security.certificate_expiry_monitor.event_cooldown_seconds
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_EVENTCOOLDOWNSECONDS</b><br />
+Type: `int`<br />
+
+EventCooldownSeconds specifies the minimum time in seconds between firing the same certificate expiry event - this prevents unnecessary events from being generated for an expiring or expired certificate being used repeatedly; note that the higher of the value configured here or the default (DefaultEventCooldownSeconds) will be applied
+Default: DefaultEventCooldownSeconds (86400 seconds = 24 hours)
+
+### external_services
+ENV: <b>TYK_GW_EXTERNALSERVICES</b><br />
+Type: `ExternalServiceConfig`<br />
+
+External service configuration for proxy and mTLS support
 
 ### http_server_options
 Gateway HTTP server configuration
@@ -213,13 +243,16 @@ Enabled WebSockets and server side events support
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_CERTIFICATES</b><br />
 Type: `CertsData`<br />
 
-Deprecated. SSL certificates used by Gateway server.
+Deprecated: Use `ssl_certificates`instead.
 
 ### http_server_options.ssl_certificates
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES</b><br />
 Type: `[]string`<br />
 
-SSL certificates used by your Gateway server. A list of certificate IDs or path to files.
+Index of certificates available to the Gateway for use in client and upstream communication.
+The string value in the array can be two of the following options:
+1. The ID assigned to and used to identify a certificate in the Tyk Certificate Store
+2. The path to a file accessible to the Gateway. This PEM file must contain the private key and public certificate pair concatenated together.
 
 ### http_server_options.server_name
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_SERVERNAME</b><br />
@@ -271,7 +304,7 @@ Disable automatic character escaping, allowing to path original URL data to the 
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_CIPHERS</b><br />
 Type: `[]string`<br />
 
-Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/api-management/certificates#supported-tls-cipher-suites
+Custom SSL ciphers applicable when using TLS version 1.2. See the list of ciphers here https://tyk.io/docs/api-management/certificates#supported-tls-cipher-suites
 
 ### http_server_options.max_request_body_size
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXREQUESTBODYSIZE</b><br />
@@ -288,7 +321,7 @@ Two methods are used to perform the comparison:
 A value of zero (default) means that no maximum is set and API requests will not be tested.
 
 See more information about setting request size limits here:
-https://tyk.io/docs/basic-config-and-security/control-limit-traffic/request-size-limits/#maximum-request-sizes
+https://tyk.io/docs/api-management/traffic-transformation/#request-size-limits
 
 ### version_header
 ENV: <b>TYK_GW_VERSIONHEADER</b><br />
@@ -412,7 +445,7 @@ ENV: <b>TYK_GW_PORTWHITELIST</b><br />
 Type: `PortsWhiteList`<br />
 
 Defines the ports that will be available for the API services to bind to in the format
-documented here https://tyk.io/docs/key-concepts/tcp-proxy/#allowing-specific-ports.
+documented here https://tyk.io/docs/api-management/non-http-protocols/#allowing-specific-ports.
 Ports can be configured per protocol, e.g. https, tls etc.
 If configuring via environment variable `TYK_GW_PORTWHITELIST` then remember to escape
 JSON strings.
@@ -1041,7 +1074,22 @@ The reason this value is configurable is because sample data takes up space in y
 ENV: <b>TYK_GW_HEALTHCHECKENDPOINTNAME</b><br />
 Type: `string`<br />
 
-Enables you to rename the /hello endpoint
+HealthCheckEndpointName Enables you to change the liveness endpoint.
+Default is "/hello"
+
+### readiness_check_endpoint_name
+ENV: <b>TYK_GW_READINESSCHECKENDPOINTNAME</b><br />
+Type: `string`<br />
+
+ReadinessCheckEndpointName Enables you to change the readiness endpoint
+Default is "/ready"
+
+### graceful_shutdown_timeout_duration
+ENV: <b>TYK_GW_GRACEFULSHUTDOWNTIMEOUTDURATION</b><br />
+Type: `int`<br />
+
+GracefulShutdownTimeoutDuration sets how many seconds the gateway should wait for an existing connection
+to finish before shutting down the server. Defaults to 30 seconds.
 
 ### oauth_refresh_token_expire
 ENV: <b>TYK_GW_OAUTHREFRESHEXPIRE</b><br />
@@ -1166,7 +1214,7 @@ Set this to true to have Tyk automatically match for numeric IDs, it will match 
 ENV: <b>TYK_GW_ANALYTICSCONFIG_NORMALISEURLS_CUSTOM</b><br />
 Type: `[]string`<br />
 
-This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a {var} placeholder.
+This is a list of custom patterns you can add. These must be valid regex strings. Tyk will replace these values with a `{var}` placeholder.
 
 ### analytics_config.pool_size
 ENV: <b>TYK_GW_ANALYTICSCONFIG_POOLSIZE</b><br />
@@ -1621,6 +1669,12 @@ Type: `string`<br />
 
 Authority used in GRPC connection
 
+### coprocess_options.grpc_round_robin_load_balancing
+ENV: <b>TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING</b><br />
+Type: `bool`<br />
+
+GRPCRoundRobinLoadBalancing enables round robin load balancing for gRPC services; you must provide the address of the load balanced service using `dns:///` protocol in `coprocess_grpc_server`.
+
 ### coprocess_options.python_path_prefix
 ENV: <b>TYK_GW_COPROCESSOPTIONS_PYTHONPATHPREFIX</b><br />
 Type: `string`<br />
@@ -1665,6 +1719,40 @@ Type: `string`<br />
 
 You can now configure the log format to be either the standard or json format
 If not set or left empty, it will default to `standard`.
+
+### access_logs
+AccessLogs configures the output for access logs.
+If not configured, the access log is disabled.
+
+### access_logs.enabled
+ENV: <b>TYK_GW_ACCESSLOGS_ENABLED</b><br />
+Type: `bool`<br />
+
+Enabled controls the generation of access logs by the Gateway. Default: false.
+
+### access_logs.template
+ENV: <b>TYK_GW_ACCESSLOGS_TEMPLATE</b><br />
+Type: `[]string`<br />
+
+Template configures which fields to include in the access log.
+If no template is configured, all available fields will be logged.
+
+Example: ["client_ip", "path"].
+
+Template Options:
+
+- `api_key` will include they obfuscated or hashed key.
+- `client_ip` will include the ip of the request.
+- `host` will include the host of the request.
+- `method` will include the request method.
+- `path` will include the path of the request.
+- `protocol` will include the protocol of the request.
+- `remote_addr` will include the remote address of the request.
+- `upstream_addr` will include the upstream address (scheme, host and path)
+- `upstream_latency` will include the upstream latency of the request.
+- `latency_total` will include the total latency of the request.
+- `user_agent` will include the user agent of the request.
+- `status` will include the response status code.
 
 ### tracing
 Section for configuring OpenTracing support
@@ -1854,7 +1942,7 @@ Enable distributed tracing
 ENV: <b>TYK_GW_HTTPPROFILE</b><br />
 Type: `bool`<br />
 
-Enable debugging of your Tyk Gateway by exposing profiling information through https://tyk.io/docs/troubleshooting/tyk-gateway/profiling/
+Enable debugging of your Tyk Gateway by exposing profiling information through https://tyk.io/docs/api-management/troubleshooting-debugging
 
 ### use_redis_log
 ENV: <b>TYK_GW_USEREDISLOG</b><br />
@@ -1980,7 +2068,7 @@ global session lifetime, in seconds.
 ENV: <b>TYK_GW_KV_KV</b><br />
 Type: `struct`<br />
 
-See more details https://tyk.io/docs/migration-to-tyk#store-configuration-with-key-value-store/
+See more details https://tyk.io/docs/tyk-self-managed/#store-configuration-with-key-value-store
 
 ### kv.consul.address
 ENV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />
@@ -2064,7 +2152,17 @@ KVVersion is the version number of Vault. Usually defaults to 2
 ENV: <b>TYK_GW_SECRETS</b><br />
 Type: `map[string]string`<br />
 
-Secrets are key-value pairs that can be accessed in the dashboard via "secrets://"
+Secrets configures a list of key/value pairs for the gateway.
+When configuring it via environment variable, the expected value
+is a comma separated list of key-value pairs delimited with a colon.
+
+Example: `TYK_GW_SECRETS=key1:value1,key2:/value2`
+Produces: `{"key1": "value1", "key2": "/value2"}`
+
+The secret value may be used as `secrets://key1` from the API definition.
+In versions before gateway 5.3, only `listen_path` and `target_url` fields
+have had the secrets replaced.
+See more details https://tyk.io/docs/tyk-self-managed/#how-to-access-the-externally-stored-data
 
 ### override_messages
 Override the default error code and or message returned by middleware.
@@ -2094,7 +2192,7 @@ Sample Override Message Setting
 ENV: <b>TYK_GW_CLOUD</b><br />
 Type: `bool`<br />
 
-Cloud flag shows the Gateway runs in migration-to-tyk#begin-with-tyk-cloud.
+Cloud flag shows the Gateway runs in Tyk Cloud.
 
 ### jwt_ssl_insecure_skip_verify
 ENV: <b>TYK_GW_JWTSSLINSECURESKIPVERIFY</b><br />
@@ -2133,4 +2231,22 @@ ENV: <b>TYK_GW_OAS_VALIDATESCHEMADEFAULTS</b><br />
 Type: `bool`<br />
 
 ValidateSchemaDefaults enables validation of values provided in `default` fields against the declared schemas in the OpenAPI Document. Defaults to false.
+
+### streaming
+Streaming holds the configuration for Tyk Streaming functionalities
+
+### streaming.enabled
+ENV: <b>TYK_GW_STREAMING_ENABLED</b><br />
+Type: `bool`<br />
+
+This flag enables the Tyk Streaming feature.
+
+### streaming.allow_unsafe
+ENV: <b>TYK_GW_STREAMING_ALLOWUNSAFE</b><br />
+Type: `[]string`<br />
+
+AllowUnsafe specifies a list of potentially unsafe streaming components that should be allowed in the configuration.
+By default, components that could pose security risks (like file access, subprocess execution, socket operations, etc.)
+are filtered out. This field allows administrators to explicitly permit specific unsafe components when needed.
+Use with caution as enabling unsafe components may introduce security vulnerabilities.
 

@@ -3,7 +3,12 @@ date: 2017-03-27T12:28:24+01:00
 title: API Publishing Endpoints
 description: "This page details the API endpoint used for publishing APIs to Tyk classic Dev Portal. API platform teams and API owners can use this endpoint to integrate their APIs, making them visible and accessible to developers."
 tags: ["Tyk Classic Portal API Publishing Endpoints", "Classic Portal API"]
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 This page describes the endpoints to create [catalog](#catalog) and [Swagger documentation](#documentation) for your API.
 
 </br>
@@ -40,7 +45,7 @@ The Swagger or Blueprint should be base64 encoded and included in the `documenta
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "api-management/gateway-config-managing-classic#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 #### Sample Request

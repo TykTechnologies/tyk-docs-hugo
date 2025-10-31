@@ -1,7 +1,7 @@
 ---
 title: Tyk Operator Release Notes
-tag: ["Tyk Operator", "Release notes", "v1.0", "changelog", "v1.0.0", "v0.18.0", "v0.17.1", "v0.17.0", "v0.16.0" ]
-description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Operator versions within the 1.0.x series."
+tag: ["Tyk Operator", "Release notes", "changelog"]
+description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Operator."
 aliases:
   - /product-stack/tyk-operator/release-notes/operator-0.16
   - /product-stack/tyk-operator/release-notes/operator-0.17
@@ -15,8 +15,154 @@ aliases:
 **This page contains all release notes for Tyk Operator displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 1.2 Release Notes
+### 1.2.0 Release Notes
+
+#### Release Date 02 April 2025
+
+#### Release Highlights
+
+##### Support for Tyk 5.8
+
+Tyk Operator v1.2 introduces key enhancements and critical fixes to improve API management in Kubernetes environments. This release adds support for HMAC request signing and YAML-based OAS definitions, aligning with Tyk Gateway 5.8.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.2.0) below.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)                        | 1.28.x to 1.32.x       | 1.19.x to 1.32.x       |          | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+Tyk Operator v1.2 introduced new Custom Resource Definitions (CRDs). Before upgrading to Tyk Operator v1.2 with Helm Chart, please run the following commands to install the CRDs:
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/refs/heads/main/tyk-operator-crds/crd-v1.2.0.yaml
+```
+
+
+Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) section for detailed upgrade instructions.
+
+
+#### Downloads
+- [Docker image v1.2.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v1.2.0)
+  - ```bash
+    docker pull tykio/tyk-operator:v1.2.0
+    ```
+- Helm chart
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+#### Changelog {#Changelog-v1.2.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>HMAC request signing support</summary>
+
+Tyk Operator now supports HMAC request signing, enabling enhanced security and integrity for API requests. This feature aligns with Tyk 5.8 capabilities.
+
+[Learn More]({{< ref "api-management/upstream-authentication/request-signing" >}})
+</details>
+</li>
+<li>
+<details>
+<summary>YAML-based OAS API definitions</summary>
+
+Tyk Operator now allows OAS API definitions in YAML format, increasing flexibility in API configurations.
+
+</details>
+</li>
+<li>
+<details>
+<summary>JWT OAS API policy linking </summary>
+
+Tyk Operator now supports linking of policies for JWT default policies and JWT scope-to-policy mappings using kubernetes names. They can set these fields in TykOASApiDefinition CRD.
+
+</details>
+</li>
+</ul>
+
+##### Updated
+
+<ul>
+<li>
+<details>
+<summary>Removed dependency on kube-rbac-proxy</summary>
+
+Tyk Operator removed dependency on kubebuilder's `rbac-proxy` for authentication/authorization of metrics server.
+`WithAuthenticationAndAuthorization` feature provided by Controller-Runtime will be used instead.
+
+Users are encouraged to update to Tyk Operator v1.2 to benefit from this change.
+
+For users who cannot immediately update, there is an alternative option: modifying the Operator's Helm chart configuration to replace the image `gcr.io/kubebuilder/kube-rbac-proxy` with another trusted source. For details, please see [Issue 365](https://github.com/TykTechnologies/tyk-charts/issues/365).
+
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Operator reconciliation error handling</summary>
+
+Fixed an issue where reconciliation conflicts appeared as errors in logs, which occurred because an outdated copy of the Kubernetes resource was being processed. This has been resolved by fetching the latest copy of the object from the cluster and retrying the operation.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Cert-manager dependency</summary>
+
+Users can now disable cert-manager, making it optional rather than mandatory for onboarding. This enhances flexibility in deployment configurations.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Circuit breaker schema validation</summary>
+
+Fixed an issue where user was getting validation error while setting `threshold_precent` field of classic API Definition CRD starting from Operator v1.0.0, which blocked users from upgrading. 
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Portal API Catalog infinite loop </summary>
+
+Resolved an issue where the Operator could enter an infinite loop when a PortalAPICatalogue CR was created. 
+
+</details>
+</li>
+<li>
+<details>
+<summary>Leader election flag </summary>
+
+Because of some issue in Operator helm chart, configurations options were not getting read correctly.
+Helm chart has been fixed and leader election works by default again.
+
+</details>
+</li>
+</ul>
 
 ---
 
@@ -28,7 +174,7 @@ Our minor releases are supported until our next minor comes out.
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0" >}}) below.
 -->
 ###### Support for Tyk Streams API
 Tyk Operator v1.1 supports management of Tyk Streams APIs through the new **`TykStreamsApiDefinition`** custom resource. This allows you to have declarative, versioned, and fully automated control to your streaming APIs.
@@ -37,7 +183,7 @@ Tyk Operator v1.1 supports management of Tyk Streams APIs through the new **`Tyk
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-1.1}
+#### Dependencies
 ##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -59,7 +205,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/
 ```
 
 
-Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}) section for detailed upgrade instructions.
+Go to the [Upgrading Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}) section for detailed upgrade instructions.
 
 
 #### Downloads
@@ -71,7 +217,7 @@ Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#i
   - tyk-charts v2.2.0 <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
-#### Changelog {#Changelog-v1.1.0}
+#### Changelog
 
 ##### Added
 
@@ -82,7 +228,7 @@ Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#i
 
 The `TykStreamsApiDefinition` custom resource allows you to manage Tyk Streams APIs directly within your Kubernetes environment. This enhancement offers a Kubernetes-native approach to managing Tyk APIs, streamlining operations and ensure single source of truth in Kubernetes.
 
-[Learn More]({{< ref "api-management/automations/operator#create-a-tykstreamsapidefinition-custom-resource" >}})
+[Learn More]({{< ref "tyk-stack/tyk-operator/create-an-api#create-a-tykstreamsapidefinition-custom-resource" >}})
 </details>
 </li>
 </ul>
@@ -113,7 +259,7 @@ We are excited to announce the release of **Tyk Operator v1.0**, marking a signi
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0" >}}) below.
 -->
 ##### Support for Tyk OAS API
 The Tyk Operator v1.0 release introduces powerful new features designed to enhance how you manage APIs in Kubernetes environments. One of the key highlights is the full support for Tyk OAS APIs, allowing you to define and manage APIs through the new **`TykOasApiDefinition`** custom resource. This integration extends GitOps API Management to Tyk OAS, allowing you to have declarative, versioned, and fully automated control to your APIs in Kubernetes environments.
@@ -133,13 +279,13 @@ Enhanced support for Tyk Classic APIs continues, with improvements to security p
 
 This release represents a significant upgrade for both API management and security, offering a more efficient, scalable, and Kubernetes-native way to operate Tyk. Whether you're leveraging Tyk OAS APIs or continuing with Tyk Classic, this version brings the tools and features you need to streamline your workflows and enhance operational efficiency.
 
-For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0">}}) below.
+For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0" >}}) below.
 
 
 #### Breaking Changes {#breaking-changesv1.0.0}
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 <!-- This release has no breaking changes. -->
-**License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}) to set your license key before installation or upgrade.
+**License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}) to set your license key before installation or upgrade.
 
 If the license is missing, invalid, or expired, Tyk Operator will exit with an error message. Ensure that you carefully review the setup steps to avoid any issues during the upgrade or installation process.
 
@@ -177,7 +323,7 @@ the dashboard and gateway. We must clarify this at the time of publishing this R
 |                 |                           | TIB vX - vY             |
       -->
 
-#### Dependencies {#dependencies-1.1}
+#### Dependencies
 ##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
@@ -214,7 +360,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/
 ```
 
 
-Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
+Go to the [Upgrading Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator" >}}) section for detailed upgrade instructions.
 
 
 #### Downloads
@@ -223,7 +369,7 @@ Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#u
     docker pull tykio/tyk-operator:v1.0.0
     ```
 - Helm chart
-  - [tyk-charts v2.1.0]({{<ref "developer-support/release-notes/helm-chart#210-release-notes">}}) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
+  - [tyk-charts v2.1.0]({{< ref "developer-support/release-notes/helm-chart#210-release-notes" >}}) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
 #### Changelog {#Changelog-v1.0.0}
@@ -249,7 +395,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 The `TykOasApiDefinition` custom resource allows you to manage Tyk OAS APIs directly within your Kubernetes environment. You can now categorize APIs, manage multiple versions, and simplify SSL certificate management by referencing Kubernetes secrets. This enhancement offers a Kubernetes-native approach to managing Tyk APIs, streamlining operations and reducing the complexity of versioning and certificate handling across different environments.
 
-Learn More: [Create Tyk OAS API]({{<ref "api-management/automations/operator#set-up-oas-api">}})
+Learn More: [Create Tyk OAS API]({{< ref "tyk-stack/tyk-operator/create-an-api#set-up-tyk-oas-api" >}})
 </details>
 </li>
 <li>
@@ -258,7 +404,7 @@ Learn More: [Create Tyk OAS API]({{<ref "api-management/automations/operator#set
 
 With this release, you can use the TykOasApiDefinition resource as a template for automatically creating Tyk OAS APIs based on Kubernetes Ingress specs. This simplifies the process of generating APIs by leveraging Ingress controller annotations, reducing manual intervention, and automating API creation workflows for better scalability and operational efficiency.
 
-Learn More: [Tyk Ingress Controller]({{<ref "api-management/automations/operator#control-kubernetes-ingress-resources">}})
+Learn More: [Tyk Ingress Controller]({{< ref "product-stack/tyk-operator/tyk-ingress-controller" >}})
 </details>
 </li>
 <li>
@@ -267,7 +413,7 @@ Learn More: [Tyk Ingress Controller]({{<ref "api-management/automations/operator
 
 This release introduces the ability to configure specific rate limits, quotas, and throttling rules at the API level using the `access_rights_array` in the security policy. Each API now has the flexibility to inherit global limit settings or apply custom limits, making it easier to control API usage on a per-API basis. This provides enhanced granularity in managing traffic, ensuring optimal resource allocation and improved performance under heavy loads.
 
-Learn More: [Key-Level Per-API Rate Limits and Quota]({{<ref "api-management/automations/operator#security-policy-example">}})
+Learn More: [Key-Level Per-API Rate Limits and Quota]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}})
 </details>
 </li>
 <li>
@@ -276,7 +422,7 @@ Learn More: [Key-Level Per-API Rate Limits and Quota]({{<ref "api-management/aut
 
 By configuring key-level per-endpoint limits, you can restrict the request rate for specific API clients to a specific endpoint of an API.
 
-Learn More: [Key-Level Per-Endpoint Rate Limits]({{<ref "api-management/automations/operator#security-policy-example">}})
+Learn More: [Key-Level Per-Endpoint Rate Limits]({{< ref "tyk-stack/tyk-operator/create-an-api#security-policy-example" >}})
 </details>
 </li>
 <li>
@@ -285,7 +431,7 @@ Learn More: [Key-Level Per-Endpoint Rate Limits]({{<ref "api-management/automati
 
 This update extends the security policy to include TykOasApiDefinition resources within the `access_rights_array`, allowing you to manage security policies for both Tyk Classic APIs and Tyk OAS APIs. By specifying the API kind, you can now apply rate limits, quotas, and other access controls to Tyk OAS APIs, streamlining security management in mixed environments.
 
-Learn More: [TykOasApiDefinition in Security Policy]({{<ref "api-management/automations/operator#add-a-security-policy-to-your-api">}})
+Learn More: [TykOasApiDefinition in Security Policy]({{< ref "tyk-stack/tyk-operator/create-an-api#add-a-security-policy-to-your-api" >}})
 </details>
 </li>
 <li>
@@ -294,7 +440,7 @@ Learn More: [TykOasApiDefinition in Security Policy]({{<ref "api-management/auto
 
 Tyk Operator now supports event handler integration for ApiDefinition, enabling webhooks to be triggered by specific API events. This allows for real-time, event-driven automation between Tyk and other systems, sending notifications or executing actions as events occur in the API lifecycle. The event_handlers field in the ApiDefinition CRD makes it easy to set up webhook-driven processes for better control and automation across your services.
 
-Learn More: [Event Webhook with Tyk Classic]({{<ref "api-management/gateway-events#webhook-event-handlers-with-tyk-classic-apis">}})
+Learn More: [Event Webhook with Tyk Classic]({{< ref "api-management/gateway-events#webhook-event-handlers-with-tyk-classic-apis" >}})
 </details>
 </li>
 <li>
@@ -403,12 +549,12 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade Instructions
-Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
+Go to the [Upgrading Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator" >}}) section for detailed upgrade instructions.
 
 #### Release Highlights
 This release added support for Tyk 5.4 API definition.
 
-For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0">}}) below.
+For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0" >}}) below.
 
 #### Downloads
 - [Docker image v0.18.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.18.0)
@@ -428,10 +574,10 @@ For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0">}}) bel
 
 Added to ApiDefinition [Custom Resource Definition (CRD)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/): 
 
-- [introspection]({{<ref "api-management/graphql#turning-off-introspection">}}) option to enable/disable GraphQL introspection
-- [graphql.proxy.auth_headers]({{<ref "api-management/graphql#creating-a-graphql-api-via-the-dashboard-ui">}})
-- [graphql.proxy.subscription_type]({{<ref "api-management/graphql#graphql-subscriptions">}})
-- [graphql.proxy.request_headers]({{<ref "api-management/graphql#request-headers">}})
+- [introspection]({{< ref "api-management/graphql#turning-off-introspection" >}}) option to enable/disable GraphQL introspection
+- [graphql.proxy.auth_headers]({{< ref "api-management/graphql#creating-a-graphql-api-via-the-dashboard-ui" >}})
+- [graphql.proxy.subscription_type]({{< ref "api-management/graphql#graphql-subscriptions" >}})
+- [graphql.proxy.request_headers]({{< ref "api-management/graphql#request-headers" >}})
 - graphql.proxy.use_response_extensions
 - graphql.proxy.request_headers_rewrite
 - graphql.proxy.features
@@ -453,10 +599,10 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade Instructions
-Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
+Go to the [Upgrading Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator" >}}) section for detailed upgrade instructions.
 
 #### Release Highlights
-This release is focused on bug fixes. For details please refer to the [changelog]({{< ref "#Changelog-v0.17.1">}}) below.
+This release is focused on bug fixes. For details please refer to the [changelog]({{< ref "#Changelog-v0.17.1" >}}) below.
 
 #### Downloads
 - [Docker image v0.17](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.17.1)
@@ -474,7 +620,7 @@ This release is focused on bug fixes. For details please refer to the [changelog
 <details>
 <summary>Fixed ApiDefinition Custom Resources generated by the Ingress Controller used a wrong certificate</summary>
 
-When using Tyk as an Ingress Controller with TLS enabled, the ApiDefinition Custom Resources generated by the Ingress Controller is missing the OrgID field. As a result, Tyk Gateway used a wrong certificate when serving a request. It is fixed by adding back OrgID field to ApiDefinition CRs created by Ingress Controller.</summary>
+When using Tyk as an Ingress Controller with TLS enabled, the ApiDefinition Custom Resources generated by the Ingress Controller is missing the OrgID field. As a result, Tyk Gateway used a wrong certificate when serving a request. It is fixed by adding back OrgID field to ApiDefinition CRs created by Ingress Controller.
 </details>
 </li>
 
@@ -515,12 +661,12 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade Instructions
-Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
+Go to the [Upgrading Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator" >}}) section for detailed upgrade Instructions.
 
 #### Release Highlights
 This release added support for `GraphQLIntrospectionConfig` in API definition and fixed an issue where the Tyk Operator creates duplicate APIs on Tyk.
 
-For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) below.
+For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0" >}}) below.
 
 #### Downloads
 - [Docker image v0.17](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.17.0)
@@ -573,7 +719,7 @@ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-operator/
 ```
 
 #### Release Highlights
-This release added support for analytics plugin, UDG global header, and detailed tracing setting in ApiDefinition as detailed in the [changelog]({{< ref "#Changelog-v0.16.0">}}) below.
+This release added support for analytics plugin, UDG global header, and detailed tracing setting in ApiDefinition as detailed in the [changelog]({{< ref "#Changelog-v0.16.0" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-operator/v0.16.0/images/sha256-7c5b526af96ef772e8e53b8817538f41585c4ad641388609b349368219bb3d7d?context=explore)

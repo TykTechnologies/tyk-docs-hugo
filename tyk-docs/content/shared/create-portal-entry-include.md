@@ -77,7 +77,7 @@ You can add import documentation in the following formats:
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "api-management/gateway-config-managing-classic#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 You can add your documentation before or after saving your API.

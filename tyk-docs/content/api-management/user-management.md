@@ -293,9 +293,15 @@ The Tyk Dashboard is multi-tenant capable and allows granular, role based user a
 
 It is important to note that all user roles are defined and enforced **at the Dashboard API level**, and the UI is merely reactive.
 
-### Admin users
-An *admin* user has full read/write access to all properties. The initial user created during the bootstrapping of the Dashboard is automatically assigned the *admin* role.
+### Admin Users
 
+An *admin* user has read and write access to all properties. The initial user created during the dashboard's bootstrapping process is automatically assigned the *admin* role.
+
+There are two configuration parameters that restrict the admin user’s capabilities. For enhanced security, both of these values should be set to `true`:
+
+- [security.forbid_admin_view_access_token]({{< ref "tyk-dashboard/configuration#securityforbid_admin_view_access_token" >}}): This parameter restricts admin users from viewing other users' Dashboard API Access Credentials, both in the API and the UI.
+  
+- [security.forbid_admin_reset_access_token]({{< ref "tyk-dashboard/configuration#securityforbid_admin_reset_access_token" >}}): This parameter prevents admin users from resetting the access tokens of other users.
 ### User permissions in the Tyk Dashboard API
 The permissions object, which is provided to the Dashboard API has this structure:
 
@@ -339,7 +345,7 @@ Selecting the **Account is Admin** checkbox from the Dashboard gives the user fu
 
 ### Custom User Permissions
 
-You can create your own custom permissions for use with the [Open Policy Agent (OPA)]({{< ref "tyk-dashboard/open-policy-agent" >}}) using the [Additional Permissions]({{< ref "api-management/dashboard-configuration#additional-permissions-api" >}}) endpoint in the Tyk Dashboard Admin API. This allows you to add and delete (CRUD) a list of additional (custom) permissions for your Dashboard users. Once created, a custom permission will be added to standard list of user permissions. 
+You can create your own custom permissions for use with the [Open Policy Agent (OPA)]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}) using the [Additional Permissions]({{< ref "api-management/dashboard-configuration#additional-permissions-api" >}}) endpoint in the Tyk Dashboard Admin API. This allows you to add and delete (CRUD) a list of additional (custom) permissions for your Dashboard users. Once created, a custom permission will be added to standard list of user permissions. 
 
 You can also configure these custom permissions in the `security.additional_permissions` [map]({{< ref "tyk-dashboard/configuration#securityadditional_permissions" >}}) in the Tyk Dashboard configuration file. 
 
@@ -479,7 +485,7 @@ A user that does not belong to an Organization is sometimes referred to as an *u
 ## Single Sign-On integration
 You can integrate your existing identity management server with the Tyk Dashboard, as explained in our detailed [Single Sign-On (SSO) guide]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}). **This functionality is available with all Tyk licenses except Tyk Classic Cloud.**
 
-By default all users who login via SSO are granted admin permissions. You can change this behavior by setting either default permissions for *[users]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}})* or by creating a default *[user group]({{< ref "api-management/user-management#manage-tyk-dashboard-user-groups" >}})* to which all new users are assigned. With some IDPs you can automatically assign different SSO users to different *user groups* by dynamically mapping the IDP's user groups, for example with [Azure AD]({{< ref "api-management/external-service-integration#user-group-mapping" >}}).
+By default all users who login via SSO are granted admin permissions. You can change this behavior by setting either default permissions for *[users]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}})* or by creating a default *[user group]({{< ref "api-management/user-management#manage-tyk-dashboard-user-groups" >}})* to which all new users are assigned. With some IDPs you can automatically assign different SSO users to different *user groups* by dynamically mapping the IDP's user groups, for example with [Azure AD]({{< ref "api-management/single-sign-on-oidc#user-group-mapping" >}}).
 
 If you want to maintain an individual set of permissions for your SSO users, you must first enable SSO user lookup in your Dashboard configuration by setting either of the following to `true`:
  - `"sso_enable_user_lookup"` in `tyk_analytics.conf`

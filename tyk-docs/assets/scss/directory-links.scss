@@ -1,0 +1,18 @@
+/* Styles for clickable directory items in navigation */
+.directory-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  cursor: pointer !important;
+}
+
+.category-Directory > a[href] {
+  position: relative;
+  z-index: 5;
+}
+
+.active > .directory-link {
+  font-weight: bold;
+  color: #00D9BA;
+}

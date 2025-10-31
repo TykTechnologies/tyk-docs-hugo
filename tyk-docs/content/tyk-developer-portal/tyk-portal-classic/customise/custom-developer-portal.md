@@ -9,7 +9,13 @@ weight: 5
 aliases:
   - /tyk-developer-portal/customise/custom-developer-po...
   - /tyk-developer-portal/customise/custom-developer-portal/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
+
 {{< note success >}}
 **Note**  
 

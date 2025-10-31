@@ -7,8 +7,11 @@ on:
         description: "The GitHub user ID of the primary reviewer whose approval is required for the PR."
         required: true
         default: "sharadregoti"
-      PR_SCAN_DATE:
-        description: "The date when the report was generated. Defaults to the current date (e.g., 2025-02-04)."
+      START_DATE:
+        description: "The start date of report (e.g., 2025-02-21T00:00:00.000Z)."
+        required: true
+      END_DATE:
+        description: "The end date of report. Defaults to the current date (e.g., 2025-02-25T00:00:00.000Z)."
         required: false
 
 jobs:
@@ -35,6 +38,7 @@ jobs:
           node index.js
         env:
           MAIN_REVIEWER: ${{ inputs.MAIN_REVIEWER }}
-          PR_SCAN_DATE: ${{ inputs.PR_SCAN_DATE }}
+          START_DATE: ${{ inputs.START_DATE }}
+          END_DATE: ${{ inputs.END_DATE }}
           GITHUB_TOKEN: ${{ secrets.TYK_SCRIPTS_TOKEN }}  # GitHub Token for API calls
           ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_KEY }} # Org key already available

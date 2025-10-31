@@ -23,7 +23,6 @@ aliases:
   - /getting-started/key-concepts/graphql-subscriptions
   - /graphql/migration-guide
   - /graphql/graphql-playground
-
   - /getting-started/key-concepts/creating-a-subgraph
   - /getting-started/key-concepts/graphql-overview
   - /graphql/websockets
@@ -39,6 +38,7 @@ aliases:
   - /getting-started/key-concepts/graphql-proxy-only
 ---
 
+
 ## Overview
 
 Tyk has **native** GraphQL support, so it doesn’t require any external services or middleware.
@@ -46,7 +46,8 @@ It fully complies with the latest GraphQL specifications, as outlined on the [Gr
 
 - **[Queries](https://spec.graphql.org/October2021/#sec-Query)** – Fetching data  
 - **[Mutations](https://spec.graphql.org/October2021/#sec-Mutations)** – Modifying data  
-- **[Subscriptions](https://spec.graphql.org/October2021/#sec-Subscription)** – Real-time updates  
+- **[Subscriptions](https://spec.graphql.org/October2021/#sec-Subscription)** – Real-time updates
+- **[Schema Types]({{< ref "api-management/graphql/graphql-schema-types" >}})** - Defining your data structure
 
 
 ### What can you do with GraphQL and Tyk?
@@ -87,13 +88,13 @@ GraphQL API can be created in Tyk using:
 * Tyk Dashboard API
 * Tyk Gateway API - for OSS users
 
-The process is very similar to [HTTP API creation]({{< ref "getting-started/create-api" >}}) with a few additional steps to cover GraphQL-specific functionalities.
+The process is very similar to [HTTP API creation]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) with a few additional steps to cover GraphQL-specific functionalities.
 
 ### Via Tyk Dashboard UI
 
 #### Prerequisites
 
-In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}). You can also create a 5-week trial account in Tyk Cloud.
+In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}). You can also create a 5-week trial account in Tyk Cloud.
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
 
@@ -130,7 +131,7 @@ In order to complete the next steps, you need to have [Tyk Self Managed installe
     - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
     - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. **This is a setting that might be important if your GQL includes subscription operations**.
     - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. 
-    - **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) for details on implementing mutual TLS.
+    - **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) for details on implementing mutual TLS.
 
 5. **Save the API**
 
@@ -150,7 +151,7 @@ In order to complete the next steps, you need to have [Tyk Self Managed installe
 
 #### Prerequisites
 
-It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
+It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
 
 You will need an API key for your organization and one command to create a GQL API and make it live.
 
@@ -284,7 +285,7 @@ In order to complete the next steps, you need to have the [Tyk OSS]({{< ref "tyk
 
 #### Creation Methods
 
-With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here]({{<ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configurations" >}}).
+With Tyk OSS, it is possible to create GQL APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [in the file-based configuration section]({{< ref "api-management/manage-apis/deploy-apis/deploy-apis-overview#file-based-configuration" >}}).
 
 
 #### Steps for Configuration
@@ -341,7 +342,7 @@ In order to use the Gateway API you will need an API key for your Gateway and on
 
 Notice that  when creating a GQL API you need to include your GQL service schema in the API definition. Tyk Gateway doesn't have the capacity to introspect your GQL service on its own.
 
-Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "api-management/graphql#validation">}})
+Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "api-management/graphql#validation" >}})
     {{< /note >}}
 
     **Restart or hot reload**
@@ -356,9 +357,9 @@ Including the correct schema allows Tyk Gateway to validate incoming requests ag
     Your GraphQL API is now ready to use. We recommend securing any GraphQL API before publishing it.
 
     Check the following docs for more on GraphQL-specific security options:
-    * [Field based permissions]({{< ref "api-management/graphql#field-based-permissions">}})
-    * [Complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1">}})
-    * [Introspection]({{< ref "api-management/graphql#introspection">}})
+    * [Field based permissions]({{< ref "api-management/graphql#field-based-permissions" >}})
+    * [Complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}})
+    * [Introspection]({{< ref "api-management/graphql#introspection" >}})
 
 ## GraphQL Proxy Only
 
@@ -366,7 +367,6 @@ Including the correct schema allows Tyk Gateway to validate incoming requests ag
 
 GraphQL Proxy Only is a GraphQL API with a single data source and a read-only schema. The schema is automatically loaded from the GraphQL upstream, which must support introspection queries.
 Like other APIs, the GraphQL API supports policies, but with more advanced settings.
-For an intro to GraphQL in Tyk, go to the [overview section]({{< ref "graphql">}}).
 
 ### Creating a GraphQL API via the Dashboard UI
 
@@ -447,7 +447,7 @@ and you don't want some associate with a certain key to access the `balance` fie
     ]
 }
 ```
-Check the [Setup field-based permission](https://tyk.io/docs/graphql/field-based-permissions/#setup-field-based-permissions-in-dashboard) section, to learn how to configure them.
+Check the [Setup field-based permission]({{< ref "api-management/graphql#setup-field-based-permissions-in-dashboard" >}}) section, to learn how to configure them.
 
 
 #### Complexity Limiting
@@ -474,12 +474,12 @@ The complexity of a GraphQL query is about its depth. checkout this query:
 The above query has a depth of seven since the nested queries are seven.
 
 Tyk offers a solution to limit the depth of a query.
-Check out [this link](https://tyk.io/docs/graphql/complexity-limiting/#enable-from-the-dashboard) on how to set query depth.
+Check out [this link]({{< ref "api-management/graphql#query-depth-limit" >}}) on how to set query depth.
 
 #### Developer Portal
 
 As of Tyk v3.0.0, you can now publish GraphQL APIs to the Tyk Developer Portal.
-[This section](https://tyk.io/docs/tyk-developer-portal/graphql/) will show how you can expose a GraphQL API to the developer portal.
+[This section]({{< ref "tyk-developer-portal/tyk-portal-classic/graphql" >}}) will show how you can expose a GraphQL API to the developer portal.
 
 ## Introspection
 
@@ -489,7 +489,7 @@ A GraphQL server can provide information about its schema. This functionality is
 
 If **introspection** is a completely new concept for you, browse through the official [GraphQL Specification](https://spec.graphql.org/October2021/#sec-Introspection) published by the GrapQL Foundation to find out more.
 
-When [creating a GraphQL proxy]({{< ref "api-management/graphql#create-a-graphql-api">}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
+When [creating a GraphQL proxy]({{< ref "api-management/graphql#create-a-graphql-api" >}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
 
 {{< note success >}}
 **Note**  
@@ -507,7 +507,7 @@ In the *Create new API* screen you have to tick the **Upstream Protected** optio
 
  - From the **Upstream protected by** section choose the right option for your case: Headers or Certificate.
  - Choosing **Headers** will allow you to add multiple key/value pairs in *Introsopection headers* section. 
- - You can also **Persist headers for future use** by ticking that option. This will save information you provided in case in the future your schema changes and you need to sync it again. To understand better where this information will be saved, go to [GQL Headers]({{< ref "api-management/graphql#graphql-apis-headers">}}). To read more about schema syncing go [here]({{< ref "api-management/graphql#syncing-gql-schema">}}).
+ - You can also **Persist headers for future use** by ticking that option. This will save information you provided in case in the future your schema changes and you need to sync it again. To understand better where this information will be saved, go to [GQL Headers]({{< ref "api-management/graphql#graphql-apis-headers" >}}). To read more about schema syncing go [here]({{< ref "api-management/graphql#syncing-gql-schema" >}}).
 - Choosing **Certificate** will allow you to provide *Domain* details and either *Select certificate* or *Enter certificate ID*.
 
 #### Turning off introspection
@@ -528,7 +528,7 @@ GraphQL introspection is enabled in Tyk by default. You can disable the introspe
 {{< tabs_start >}}
 {{< tab_start "Tyk Dashboard" >}}
 
-First, check the general information on [how to create a security policy with Tyk]({{< ref "getting-started/create-security-policy" >}})
+First, check the general information on [how to create a security policy with Tyk]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}})
 
 For GraphQL APIs the *API ACCESS* section will show additional, GQL-specific options that can be enabled. 
 
@@ -541,7 +541,7 @@ Because introspection control in Tyk works on Policy and Key level, it means you
 {{< tab_end >}}
 {{< tab_start "Tyk APIs" >}}
 
-First, you need to learn [how to create a security policy with Tyk API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with Tyk API]({{< ref "api-management/policies#access-key-level-security" >}}).
+First, you need to learn [how to create a security policy with Tyk API]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) or [how to create an API Key with Tyk API]({{< ref "api-management/policies#access-key-level-security" >}}).
 
 Once you learn how to utilize the API to create a security policy or a key, you can use the following snippet: 
 
@@ -572,7 +572,7 @@ With this configuration, we set `true` to `disable_introspection` field. When yo
 
 
 
-Introspection also works for the **[Universal Data Graph]({{< ref "api-management/data-graph#overview" >}})**.
+Introspection also works for the [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}).
 
 ### Introspection Queries
 
@@ -876,7 +876,7 @@ If you prefer to introspect GraphQL all at once, you can do that by sending this
   
 ```
 
-Tyk also allows you to block introspection queries for security reasons if you wish to do so. More information on how to do that is provided [here]({{< ref "api-management/graphql#turning-off-introspection">}}).
+Tyk also allows you to block introspection queries for security reasons if you wish to do so. More information on how to do that is provided [here]({{< ref "api-management/graphql#turning-off-introspection" >}}).
 
 ## Validation
 
@@ -907,7 +907,7 @@ The schema validation will prevent you from saving or updating an API with a bro
  - No duplicated enum values
  - No usage of unknown types
 
-When using the [Dashboard API]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition">}}) the response for a broken schema will be a *400 Bad Request* with a body containing the validation errors. For example:
+When using the [Dashboard API]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition">}}) the response for a broken schema will be a *400 Bad Request* with a body containing the validation errors. For example:
 
 ```json
 {
@@ -959,7 +959,7 @@ You can enrich any GraphQL request proxied through Tyk Gateway with additional i
 
 {{< img src="/img/dashboard/graphql/headers-gql-request.png" alt="Request headers" >}}
 
-**Request headers** values can be defined as context variables. To know how to refer to request context variables check [this page]({{< ref "api-management/traffic-transformation#request-context-variables">}}).
+**Request headers** values can be defined as context variables. To know how to refer to request context variables check [this page]({{< ref "api-management/traffic-transformation/request-context-variables" >}}).
 
 Any header key/value pair defined in **Request headers** will only be used to inject headers into requests proxied through the Gateway. It will not be used to introspect the upstream schema from Tyk Dashboard.
 
@@ -995,7 +995,7 @@ Syncing schemas is only available for proxy-only GraphQL APIs and **not** for UD
 
 {{< img src="/img/dashboard/graphql/schema_sync.png" alt="Sync Schema Button" >}}
 
-If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute the introspection query correctly. You can add those detail while [creating GQL API]({{< ref "api-management/graphql#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "api-management/graphql#introspection-headers">}}) later on.
+If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute the introspection query correctly. You can add those detail while [creating GQL API]({{< ref "api-management/graphql#introspection-for-protected-upstreams" >}}) or using [Introspection headers]({{< ref "api-management/graphql#introspection-headers" >}}) later on.
 
 
 
@@ -1111,7 +1111,7 @@ If you run a request to your proxy, you should get a response similar to this:
 
 #### Dynamic variables
 
-We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{(< ref "api-management/traffic-transformation#request-context-variables">)}})
+We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{< ref "api-management/traffic-transformation/request-context-variables" >}})
 
 Below is an examples of using an incoming `code` header value as a variable in `persist_graphql` middleware configuration:
 
@@ -1409,7 +1409,7 @@ When a field is restricted and used in a GraphQL operation, the consumer will re
 ### Field based permissions with the list of allowed types
 Field access can be restricted by setting up an allowed types list in a policy or directly on a key. If new fields are added to the GraphQL schema, you don't need to update the field-based permissions. This is because the fields that are not in the list of allowed types are automatically access-restricted.
 
-First, you need to learn [how to create a security policy with the API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with the API]({{< ref "getting-started/create-security-policy" >}}).
+First, you need to learn [how to create a security policy with the API]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) or [how to create an API Key with the API]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}).
 
 Once you learn how to utilize the API to create a security policy or key, you can use the following snippet:
 
@@ -1670,7 +1670,7 @@ type User {
 }
 ```
 
-#### Creating a subgraph via the Dasboard UI
+#### Creating a subgraph via the Dashboard UI
 
 1. Log in to the Dashboard and go to APIs > Add New API > Federation > Subgraph.
 {{< img src="/img/dashboard/graphql/add-subgraph-api.png" alt="Add federation subgraph" >}}
@@ -1691,22 +1691,22 @@ In case your upstream URL is protected, select **Upstream Protected** and provid
 {{< note success >}}
 Note
 
-In v4.0 subgraphs will be set to **Internal** by default.
+In v4.0, subgraphs will be set to **Internal** by default.
 
 {{< /note >}}
 
-4. Once you have configured all the options click Save. The subgraph is now visible in the list of APIs.
+4. Once you have configured all the options, click Save. The subgraph is now visible in the list of APIs.
 {{< img src="/img/dashboard/graphql/subgraph-api-listing.png" alt="Subgraph API listing" >}}
 
-#### Creating a supergraph via the Dasboard UI
+#### Creating a supergraph via the Dashboard UI
 1. Log in to the Dashboard and go to APIs > Add New API > Federation > Supergraph.
 {{< img src="/img/dashboard/graphql/add-supergraph-api.png" alt="Add supergraph API" >}}
 
-2. In the Details section select all the subgraphs that will be included in your supergraph.
+2. In the Details section, select all the subgraphs that will be included in your supergraph.
 {{< img src="/img/dashboard/graphql/select-subgraphs.png" alt="Select subgraphs" >}}
 
 3. Go to Configure API and configure your supergraph just as you would any other API in Tyk.
-4. Once you configure all the options click Save. The supergraph is now available in your list of APIs.
+4. Once you configure all the options, click Save. The supergraph is now available in your list of APIs.
 {{< img src="/img/dashboard/graphql/supergraph-api-listing.png" alt="Supergraph API listing" >}}
 
 #### Defining Headers
@@ -1715,7 +1715,7 @@ In v4.0 you can define global (Supergraph) headers. Global headers are forwarded
 ##### Setting a Global Header
 
 1. After creating your supergraph, open the API in your Dashboard.
-2. From the Subgraphs tab click Global Headers.
+2. From the Subgraphs tab, click Global Headers.
 {{< img src="/img/dashboard/graphql/global-header1.png" alt="Global Header setup for a supergraph" >}}
 
 3. Enter your header name and value. You can add more headers by clicking Add Headers.
@@ -2006,6 +2006,24 @@ The values for subscription types are the same on all API types:
 - `graphql-transport-ws`
 - `sse` (Server-Sent Events)
 
+##### HTTP method for Server-Sent Event subscription
+
+When using `subscription_type=sse`, Tyk will use the HTTP `GET` method to subscribe to the upstream service. For some use cases, for example, to support larger subscription payloads or to increase security by keeping the subscription payload out of server logs, the upstream requires HTTP `POST`. In Tyk 5.9.0, we have added `POST` support for SSE with the introduction of the boolean `use_sse_post` option, which is only relevant if `subscription_type=sse`.
+
+```json
+{
+  "graphql": {
+    "proxy": {
+      "subscription_type": "sse",
+      "sse_use_post": true
+    }
+  }
+}
+```
+
+If you need to use HTTP `GET` then you can omit `sse_use_post` or set it to `false`.
+
+
 ##### GraphQL Proxy
 
 ```
@@ -2103,6 +2121,14 @@ Tyk offers you two types of Playgrounds, depending on who should be authorized t
 
 * **Playground** tab in `API Designer`, that's only accessible via Tyk Dashboard and is always enabled. You need to log into the Tyk Dashboard to be able to use it.
 * **Public Playground** that you can enable for any GraphQL API and that is accessible for any consumer interacting with your GQL API. This playground will follow all security rules you set for your GQL API - authentication, authorization, etc.
+
+{{< note >}}
+**Note** 
+
+The Public Playground relies on assets in the `playground` folder under [template_path]({{< ref "tyk-oss-gateway/configuration#template_path" >}}) (default: `/opt/tyk-gateway/templates`).
+If you change this path, be sure to copy the `playground` folder to the new location to preserve functionality.
+
+{{< /note >}}
 
 #### Enabling Public GraphQL Playground
 

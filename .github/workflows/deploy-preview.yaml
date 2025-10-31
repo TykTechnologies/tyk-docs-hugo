@@ -1,0 +1,66 @@
+name: Netlify Deploy Preview URL
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  comment-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set deploy preview URL
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          SITE_NAME=tyk-docs
+          DEPLOY_URL="https://deploy-preview-${PR_NUMBER}--${SITE_NAME}.netlify.app/docs/nightly"
+          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+
+      - name: Wait for deploy preview to be live (max 3 tries)
+        run: |
+          MAX_RETRIES=3
+          RETRY_DELAY=5  # seconds (reduced for testing)
+          COUNT=0
+          SUCCESS=0
+
+          while [ $COUNT -lt $MAX_RETRIES ]; do
+            echo "Checking if $DEPLOY_URL is live (attempt $((COUNT+1))/$MAX_RETRIES)..."
+            # Use -L to follow redirects, which is important because Netlify often uses redirects
+            STATUS_CODE=$(curl -L -s -o /dev/null -w "%{http_code}" "$DEPLOY_URL")
+
+            if [ "$STATUS_CODE" -eq 200 ]; then
+              echo "✅ Deploy preview is live!"
+              SUCCESS=1
+              break
+            else
+              echo "❌ Deploy preview not live yet (status: $STATUS_CODE). Retrying in $RETRY_DELAY seconds..."
+              sleep $RETRY_DELAY
+            fi
+
+            COUNT=$((COUNT+1))
+          done
+
+          if [ "$SUCCESS" -ne 1 ]; then
+            echo "⚠️ Deploy preview did not become live after $MAX_RETRIES attempts."
+          fi
+
+          echo "DEPLOY_PREVIEW_READY=$SUCCESS" >> $GITHUB_ENV
+
+      - name: Post or update PR comment
+        if: env.DEPLOY_PREVIEW_READY == '1'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚀 **Deploy preview available:**
+            👉 [Click here to view preview](${{ env.DEPLOY_URL }})
+
+      - name: Comment failure if deploy not ready
+        if: env.DEPLOY_PREVIEW_READY != '1'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ⚠️ Deploy preview for PR #${{ github.event.pull_request.number }} did not become live after 3 attempts.
+            Please check Netlify or try manually: [Preview URL](${{ env.DEPLOY_URL }})

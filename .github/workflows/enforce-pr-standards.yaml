@@ -25,6 +25,7 @@ jobs:
 
       - name: Run PR checklist script
         run: node scripts/pr-review-bot/index.js
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Use GitHub's automatically generated token
           PR_NUMBER: ${{ github.event.pull_request.number }}

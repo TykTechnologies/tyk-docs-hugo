@@ -1,9 +1,27 @@
 ---
 date: 2017-03-27T16:05:33+01:00
 title: Frequently Asked Questions
-tags: ["configuration files backup", "backup tyk", "tyk.conf", "upgrade tyk", "database backup"]
-tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
-tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
+description: Frequently asked questions about Tyk, including configuration file backups, gateway version checking, and high traffic handling.
+tags:
+    - FAQ
+    - frequently asked questions
+    - answers
+    - configuration files backup
+    - backup tyk
+    - tyk.conf
+    - upgrade tyk
+    - database backup
+    - Analytics
+    - Distributed Analytics
+    - Redis
+    - Redis Shards
+    - analytics_config.enable_multiple_analytics_keys
+    - do_not_track
+    - RPS
+    - Requests Per Second
+    - CPU
+    - high load
+    - high traffic
 aliases:
     - /frequently-asked-questions/check-current-gateway-version/
     - /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
@@ -11,7 +29,6 @@ aliases:
     - /frequently-asked-questions/how-to-backup-tyk
     - /troubleshooting/tyk-installation/couldnt-unmarshal-config-error
     - /frequently-asked-questions/datadog-logs-showup-as-errors
-
 weight: 230
 menu:
     main:
@@ -49,8 +66,8 @@ This section lists commonly asked questions or frequently encountered issues and
 5. **How to Backup Middleware Directory for Custom Plugins ?**
 
     If you use custom middleware plugins to extend your application's capabilities, regularly back up the middleware directory to preserve your customizations.
-    Details on middleware installation for [Tyk Self-Managed users](https://tyk.io/docs/plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro/) (users of the licensed product).
-    Details on middleware installation for [Tyk Open Source users](https://tyk.io/docs/plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce/)
+    Details on middleware installation for [Tyk Self-Managed users]({{< ref "api-management/plugins/javascript#installing-middleware-on-tyk-self-managed" >}}) (users of the licensed product).
+    Details on middleware installation for [Tyk Open Source users]({{< ref "api-management/plugins/javascript#installing-middleware-on-tyk-oss" >}})
 
     **Note:** Tyk's default name is `/middleware`. You might use a different name for it.
 
@@ -60,14 +77,14 @@ This section lists commonly asked questions or frequently encountered issues and
     When using *Tyk Gateway* as an open-source product, it could use a dedicated directory to load your Tyk API definitions and start serving them. 
     If you use such a directory, ensure these definitions are part of your backup plan.
 
-    **Note:** Tyk's default name is `/apps`. You might use a different name for it based on this [config field](https://tyk.io/docs/tyk-stack/tyk-gateway/important-prerequisites/#tyk-config)
+    **Note:** Tyk's default name is `/apps`. You might use a different name for it based on this [config field]({{< ref "tyk-stack/tyk-gateway/important-prerequisites#tyk-config" >}})
 
 7. **How to Backup Tyk Policies Directory - For Tyk Open source users ?**
 
     When using *Tyk Gateway* as an open-source product, it could use a file to load policies to be used by API keys when consuming the APIs. 
     If you use a policies file, ensure it is also part of your backup plan.
 
-    **Note:** Tyk's default name is `/policies`. You might use a different name for it based on this [config field](https://tyk.io/docs/tyk-stack/tyk-gateway/important-prerequisites/#path-to-policies-file)
+    **Note:** Tyk's default name is `/policies`. You might use a different name for it based on this [config field]({{< ref "tyk-stack/tyk-gateway/important-prerequisites#path-to-policies-file" >}})
 
 8. **How to Backup Redis ?**
 
@@ -128,7 +145,7 @@ This section lists commonly asked questions or frequently encountered issues and
     {{< note success >}}
     **Note** 
 
-    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     The Enterprise Developer Portal supports SQL databases (MariaDB, MySQL, and PostgreSQL) for storing the portal's CMS assets.
