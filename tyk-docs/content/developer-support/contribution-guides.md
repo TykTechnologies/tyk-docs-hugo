@@ -26,7 +26,7 @@ This secion provides instructions for setting up your local environment to work 
 
 1. **Install Mintlify CLI globally**:
    ```bash
-   npm install -g mintlify
+   npm i -g mint
    ```
 2. **Clone the Tyk Docs repository**:
    ```bash
@@ -41,7 +41,7 @@ This secion provides instructions for setting up your local environment to work 
 
 3. **Start the Mintlify development server**:
    ```bash
-   mintlify dev
+   mint dev
    ```
 4. Open your browser and go to `http://localhost:3000` to view the documentation.
 
@@ -186,7 +186,7 @@ To make changes to an existing page in the Tyk documentation, follow these steps
 4. **Preview your changes locally** to ensure formatting and layout appear as expected.
 
    ```bash
-   mintlify dev
+   mint dev
    ```
 
 5. **Commit and push your changes:**
