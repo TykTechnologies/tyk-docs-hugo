@@ -2,7 +2,7 @@
 title: "Custom Plugins"
 date: 2025-01-10
 tags: []
-description: ""
+description: "Learn how to extend Tyk's capabilities using custom plugins to enhance API functionality."
 keywords: []
 aliases:
   - /plugins
