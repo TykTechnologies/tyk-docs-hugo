@@ -1,8 +1,8 @@
 ---
 title: Tyk Pump Release Notes
 date: 2024-02-02
-description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
-tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
+description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.X.X series."
+tags: ["Tyk Pump", "Release notes", "v1.11", "v1.12", "v1.13", "changelog"]
 aliases:
   - /product-stack/tyk-pump/release-notes/pump-1.10
   - /product-stack/tyk-pump/release-notes/pump-1.11
@@ -20,7 +20,232 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 1.13 Release Notes
+
+### 1.13.0 Release Notes
+
+#### Release Date 29 October 2025
+
+#### Breaking Changes
+
+This release has no breaking changes, but does include the deprecation of two global configuration options ([DecodeRawRequest]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_request_decoded" >}}) and [DecodeRawResponse]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_response_decoded" >}})) that did not previously work. There is no change to functionality from these deprecations.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      |
+| --------------------------------------------------------- | ----------------- | ------------------------ | 
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x       | 13.x - 17.x              | 
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | 
+| [Valkey](https://valkey.io/download/)                     | 8.0.x, 8.1.x      | 7.2.x, 8.0.x, 8.1.x      |                            
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+Deprecated the global configuration options [DecodeRawRequest]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_request_decoded" >}}) and [DecodeRawResponse]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#raw_response_decoded" >}}).
+For further information, please check the [changelog]({{< ref "#Changelog-v1.13.0" >}}) below.
+
+#### Upgrade instructions
+
+For users currently on v1.12.2, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.12.2 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.13.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.13.0)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.13.0
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.13.0)
+
+#### Changelog {#Changelog-v1.13.0}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Deprecated payload decoding global configuration options</summary>
+
+We have deprecated the global `DecodeRawRequest` and `DecodeRawResponse` configuration options, which were never correctly implemented and led to confusion when combined with the Pump-specific options. Now, if you want a Pump to decode the base64 encoded request and/or response payloads when transferring traffic logs to your data sink, you should set the options in the configuration for that Pump.
+
+</details>
+</li>
+</ul>
+
+##### Added
+<ul>
+
+<li>
+<details>
+<summary>Added support for encrypted Kinesis streams in Pump</summary>
+
+Added support for server-side encryption in the Kinesis Pump by introducing a new configuration option [TYK_PMP_PUMPS_KINESIS_META_KMSKEYID]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#pumpskinesismetakmskeyid" >}}) that allows users to specify an AWS KMS key for encrypting data at rest in Kinesis Data Streams.
+
+This enhancement enables compliance with strict regulatory requirements and security needs by automatically encrypting data before it's written to Kinesis storage and decrypting it when retrieved. The feature is backward compatible, with server-side encryption disabled by default for existing deployments.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Added "Latency.Total" and "Latency.Upstream" fields to InfluxDB2 Pump</summary>
+
+Added two new fields to the traffic logs transferred using the InfluxDB2 pump. 
+
+1. `Latency.Total`: Represents the total time taken to process a request.
+2. `Latency.Upstream`: Represents the time taken to communicate with the upstream.
+
+These metrics can be used to calculate the Gateway processing time (`Latency.Total` - `Latency.Upstream`), which is essential for monitoring API performance and diagnosing bottlenecks. This enhancement enables customers to perform comprehensive latency analysis and identify performance bottlenecks in their API infrastructure.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Added "batchbytes" configuration option for Kafka pump</summary>
+
+Added a new configuration option [TYK_PMP_PUMPS_KAFKA_META_BATCHBYTES]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#pumpskafkametabatch_bytes" >}}) to the Kafka pump that allows users to configure the maximum size (in bytes) of a batch before it is sent to a Kafka partition. 
+
+This enhancement resolves issues where batched analytics data exceeded Kafka's default 1MB message size limit, causing "Message Size Too Large" errors and resulting in missing analytics data. Users can now optimize the batch size to match their Kafka topic configurations, with backward compatibility maintained through the default 1MB limit.
+
+</details>
+</li>
+
+</ul>
+
 ## 1.12 Release Notes
+
+### 1.12.2 Release Notes
+
+#### Release 15th October 2025
+
+#### Release Highlights
+
+This release strengthens Tyk Pump's security foundation with updates, including an upgrade to Golang 1.24 for enhanced runtime security and the resolution of two CVEs (CVE-2025-22871 and CVE-2025-22869), ensuring robust protection against identified security vulnerabilities.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.2" >}}) below.
+
+#### Breaking Changes
+This release has no breaking changes
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.12.1, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.12.1 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.12.2](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.12.2)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.12.2
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.2)
+
+#### Changelog {#Changelog-v1.12.2}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgrade Tyk Pump to Golang 1.24</summary>
+
+Tyk Pump has been upgraded to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying current with the latest Go versions.
+</details>
+</li>
+</ul>
+
+##### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high-priority CVEs identified in Tyk Pump, providing increased protection against security vulnerabilities:<br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22871" target="_blank">CVE-2025-22871</a><br>
+- <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-22869" target="_blank">CVE-2025-22869</a>
+</details>
+</li>
+</ul>
+
+
+### 1.12.1 Release Notes
+
+#### Release Date 18 August 2025
+
+#### Release Highlights
+
+This release improves log reliability in the Syslog Pump by ensuring that raw request and response data are no longer fragmented into multiple entries. Logs are now consolidated into a single entry per API request, making analysis easier while preserving compatibility with existing log parsers.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.1" >}}) below.
+
+#### Breaking Changes
+This release has no breaking changes
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.12.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.12.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.12.1](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.12.1)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.12.1
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.1)
+
+#### Changelog {#Changelog-v1.12.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Consolidated Syslog Log Entries</summary>
+
+Resolved an issue in the Syslog Pump where enabling `Decode Raw Request` and `Decode Raw Response` caused log entries to fragment into multiple messages due to unescaped newline characters. The fix ensures a single consolidated log entry by escaping newlines (\n) in raw request and response fields, maintaining backward compatibility with existing log parsers.
+
+</details>
+</li>
+
+</ul>
 
 ### 1.12.0 Release Notes
 
@@ -146,7 +371,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.2)
 
-#### Changelog {#Changelog-v1.11.2}
+#### Changelog
   
 ##### Fixed
 
@@ -212,7 +437,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.1)
 
-#### Changelog {#Changelog-v1.11.1}
+#### Changelog
   
 ##### Changed
 
@@ -277,7 +502,7 @@ This release focuses on improving security and compliance, enhancing integration
   ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.0)
 
-#### Changelog {#Changelog-v1.11.0}
+#### Changelog
 
 
 ##### Added
@@ -342,7 +567,7 @@ This release focuses on improving security and compliance, enhancing integration
   ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.10.0)
 
-### Changelog {#Changelog-v1.10.0}
+### Changelog
 
 #### Added
 
@@ -448,7 +673,7 @@ There has been a significant enhancement in Tyk Graph Pump with the removal of t
   ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.9.0)
 
-### Changelog {#Changelog-v1.9.0}
+### Changelog
 
 #### Added
 

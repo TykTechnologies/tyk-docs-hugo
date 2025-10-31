@@ -11,7 +11,7 @@ aliases:
   - /advanced-configuration/transform-traffic/request-body
 ---
 
-## Overview {#request-body-overview}
+## Overview
 
 Tyk enables you to modify the payload of API requests before they are proxied to the upstream. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to HTTP methods that can support a request body (i.e. PUT, POST or PATCH).
 
@@ -82,10 +82,6 @@ The Request Body Transform supports two helper functions that you can use in you
  - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "api-management/traffic-transformation/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
 
 <hr>
-
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "#request-body-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "#request-body-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Body Transform middleware summary

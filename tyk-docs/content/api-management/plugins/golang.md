@@ -66,6 +66,30 @@ We provide the [Tyk Plugin Compiler]({{< ref "api-management/plugins/golang#plug
 - https://github.com/golang/go/issues/19004
 - https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
 
+#### Understanding Plugin Compiler Security Scans
+
+The Tyk Plugin Compiler Docker image is a development tool used exclusively during the build phase to compile custom Go plugins for the Tyk Gateway. This tool:
+
+1. **Is not a runtime component** - It is never deployed as part of your production Tyk environment
+2. **Operates in isolated build environments** - It should only be used in controlled development or CI/CD pipelines
+3. **Is not designed to be network-exposed** - It should never be deployed as a service or exposed to untrusted networks
+
+##### Technical Context
+The Plugin Compiler is built on Debian Bullseye to ensure binary compatibility with RHEL8 environments, which are commonly used in enterprise Tyk deployments. Security scanning tools may flag numerous Common Vulnerabilities and Exposures (CVEs) in the base Debian Bullseye libraries included in this image.
+
+##### Security Clarification
+These CVEs do not represent an exploitable attack surface in your Tyk deployment for several reasons:
+
+1. **Build-time vs. Runtime Separation:** The Plugin Compiler is strictly a build-time tool. The compiled plugins that it produces are what get deployed to your Tyk Gateway, not the compiler itself.
+
+2. **Ephemeral Usage Pattern**: The recommended usage pattern is to run the compiler only when needed to generate plugin binaries, then discard the container.
+
+3. **Air-gapped Operation**: The compilation process typically occurs in development environments or CI/CD pipelines that are separate from production systems.
+
+4. **No Persistent Deployment**: Unlike the Tyk Gateway, Dashboard, and other runtime components, the Plugin Compiler is never deployed as a long-running service in your API management infrastructure.
+
+For optimal security, we recommend running the Plugin Compiler in isolated build environments and transferring only the compiled plugin binaries to your production Tyk deployment.
+
 
 ### Setting up your environment
 
@@ -494,6 +518,13 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+{{< note warning >}}
+**Note**  
+
+Tyk Gateway sets the session in the [Authentication layer]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) of the middleware chain. Because of this, the session object does not exist until the middleware chain runs after the authentication middleware. If you call `ctx.GetSession` inside a custom auth plugin, it will always return an empty object.
+
+{{< /note >}}
+
 The invocation of `ctx.GetSession(r)` returns an SessionState object.
 The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/user/session.go#L106).
 
@@ -778,8 +809,8 @@ Here we see:
 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
-- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud#configure-plugins" >}})
-- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud#uploading-your-bundle" >}})
+- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud/using-plugins" >}})
+- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}})
 
 ## Example custom Go plugins
 

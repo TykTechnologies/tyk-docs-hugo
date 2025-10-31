@@ -11,7 +11,7 @@ aliases:
   - /advanced-configuration/transform-traffic/request-headers
 ---
 
-## Overview {#request-headers-overview}
+## Overview
 
 Tyk allows you to modify the headers of incoming requests to your API endpoints before they are passed to your upstream service.
 
@@ -63,10 +63,6 @@ You can enrich the request headers by injecting data from context variables or s
 - values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
 <hr>
-
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "#request-headers-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "#request-headers-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Request Header Transform middleware summary

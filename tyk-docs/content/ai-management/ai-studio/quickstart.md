@@ -1,12 +1,12 @@
 ---
-title: "Quickstart"
+title: "Installation Guide - Docker/Packages"
 date: 2025-04-25
-tags: ["AI Studio", "AI Management", "Quickstart"]
-description: "AI Studio Quickstart"
-keywords: ["AI Studio", "AI Management", "Quickstart"]
+tags: ["AI Studio", "AI Management", "Installation"]
+description: "Install Tyk AI Studio using Docker Compose or native packages"
+keywords: ["AI Studio", "AI Management", "Installation", "Docker", "Packages"]
 ---
 
-This guide will help you get started with the Tyk AI Studio using Docker Compose or package installation.
+This guide will help you install and configure Tyk AI Studio using Docker Compose or native packages. This is the recommended installation method for most users.
 
 ## Prerequisites
 
@@ -201,11 +201,34 @@ The Docker Compose setup includes:
   - Stores application data
   - Uses default credentials (configurable via environment variables)
 
+## First User Registration
+
+After starting the service, you need to create your first admin user:
+
+1. **Access the application**: Open your browser and navigate to `http://localhost:8080`
+2. **Register with admin email**: Use the EXACT email address you set in the `ADMIN_EMAIL` environment variable
+3. **Complete registration**: The first user who registers with the admin email will automatically become the administrator
+
+{{< note success >}}
+**Important**: The first user registration must use the same email address specified in the `ADMIN_EMAIL` environment variable. This user will have full administrative privileges.
+{{< /note >}}
+
+## Next Steps
+
+Once you've completed the installation and registered your first user:
+
+1. **Configure your first LLM**: Add connections to AI providers like OpenAI, Anthropic, or Azure OpenAI
+2. **Set up user management**: Create additional users and configure permissions
+3. **Explore the AI Portal**: Try the chat interface and explore available tools
+
+Continue to the [First Steps guide]({{< ref "ai-management/ai-studio/configuration" >}}) for detailed configuration instructions.
+
 ## Troubleshooting
 
 If you encounter issues:
 
 1. Check that all required ports (8080, 9090) are available
-2. Ensure your `.env` file contains valid API keys
+2. Ensure your `.env` file contains valid API keys and the correct `ADMIN_EMAIL`
 3. Verify that Docker and Docker Compose are properly installed
 4. Check the logs for any error messages: `docker compose logs -f`
+5. **Registration issues**: Make sure you're using the exact email address from `ADMIN_EMAIL`

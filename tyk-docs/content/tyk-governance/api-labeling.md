@@ -1,11 +1,13 @@
 ---
 title: API Labeling and Categorization
 date: 2025-04-28T15:49:11Z
-description: ""
-tags: ["Tyk Governance", "API Labeling", "API Categorization"]
+description: "Organize, classify, and filter your APIs using customizable metadata tags to create a structured taxonomy for your API landscape."
+tags: ["Tyk Governance", "API Labeling", "API Categorization", "API Metadata", "API Organization"]
 ---
 
-[Overview](#overview) | [Quick Start](#quick-start) | [How It Works](#how-it-works) | [Use Cases](#use-cases) | [Best Practices](#best-practices-and-recommendations) | [FAQs](#faqs) | [Troubleshooting](#troubleshooting)
+## Availability
+
+- Version: Available since v0.1
 
 ## Overview
 
@@ -32,61 +34,61 @@ In this tutorial, we'll explore how to use API labeling to categorize and filter
 
 1. **Access the API Repository**
 
-	Navigate to the API Repository section in your Tyk Governance dashboard.
+    Navigate to the API Repository section in your Tyk Governance dashboard.
 
-2. **Explore default labels**
+2. **Explore Default Labels**
 
-	Tyk Governance comes with pre-configured default labels such as "Business Domain" and "API Criticality".
+    Tyk Governance comes with pre-configured default labels such as "Business Domain" and "API Criticality".
 
-3. **Apply labels to APIs**
+3. **Apply Labels to APIs**
 
-	Select an API and click "Edit" to apply or modify labels:
+    Select an API and click "Edit" to apply or modify labels:
 
-	- Set "Business Domain" to an appropriate value (e.g., "Finance", "Customer", "Product")
-	- Assign "API Criticality" based on the API's importance (Tier 1 for mission-critical, Tier 2 for important, Tier 3 for non-critical)
-	- Add any custom labels that have been defined by your Governance Admin
+    - Set "Business Domain" to an appropriate value (e.g., "Finance", "Customer", "Product")
+    - Assign "API Criticality" based on the API's importance (Tier 1 for mission-critical, Tier 2 for important, Tier 3 for non-critical)
+    - Add any custom labels that your Governance Admin has defined
 
-4. **Filter APIs using labels**
+4. **Filter APIs Using Labels**
 
-	Use the search and filter functionality to find APIs based on their labels:
+    Use the search and filter functionality to find APIs based on their labels:
 
-	- Filter to show only Tier 1 APIs
-	- Search for APIs in a specific business domain
-	- Combine multiple label filters for precise results
+    - Filter to show only Tier 1 APIs
+    - Search for APIs in a specific business domain
+    - Combine multiple label filters for precise results
 
-5. **Create a custom label (Admin only)**
+5. **Create a Custom Label (Admin only)**
 
-	Governance Admin users can create custom labels programmatically using the API:
+    Governance Admin users can create custom labels programmatically using the API:
 
-	Example using cURL:
+    Example using cURL:
 
-```bash
-	curl -X POST https://your-governancel-instance.tyk.io/api/labels/ \
-	-H "Content-Type: application/json" \
-	-H "X-API-Key: YOUR_ADMIN_TOKEN" \
-	-d '{
-		"name": "compliance",
-		"values": ["PCI-DSS", "GDPR", "HIPAA"]
-	}'
-```
+    ```bash
+    curl -X POST https://your-governance-instance.tyk.io/api/labels/ \
+    -H "Content-Type: application/json" \
+    -H "X-API-Key: YOUR_ADMIN_TOKEN" \
+    -d '{
+        "name": "compliance",
+        "values": ["PCI-DSS", "GDPR", "HIPAA"]
+    }'
+    ```
 
-A successful request will return a 200 OK status code and the newly created label object:
+    A successful request will return a 200 OK status code and the newly created label object:
 
-```json
-	{
-	"id": "64a1b2c3d4e5f6a7b8c9d0e1",
-	"name": "compliance",
-	"values": ["PCI-DSS", "GDPR", "HIPAA"]
-	}
-```
+    ```json
+    {
+    "id": "64a1b2c3d4e5f6a7b8c9d0e1",
+    "name": "compliance",
+    "values": ["PCI-DSS", "GDPR", "HIPAA"]
+    }
+    ```
 
-**Notes**:
-- The name field is required and must be unique
-- The values field is optional. If provided, it defines the allowed values for this label
-- If values is empty, the label will accept any value (free text)
-- Only users with admin privileges can create labels
-- Once created, labels can be applied to APIs using the /api/{api-id}/labels endpoint
-- After creating a custom label, it will be available for selection when labeling APIs, either through the UI or via the API labeling endpoints.
+    **Notes**:
+    - The name field is required and must be unique
+    - The values field is optional. If provided, it defines the allowed values for this label
+    - If values is empty, the label will accept any value (free text)
+    - Only users with admin privileges can create labels
+    - Once created, labels can be applied to APIs using the `/api/{api-id}/labels` endpoint
+    - After creating a custom label, it will be available for selection when labeling APIs, either through the UI or via the API labeling endpoints
 
 ### Validation
 
@@ -100,19 +102,19 @@ API Labeling and Categorization works through a flexible key-value metadata syst
 
 ### Labeling System Architecture
 
-1. **Bootstrap Default Labels**: During initial setup, Tyk Governance creates default label definitions such as "Business Domain" and "API Criticality".
+1. **Bootstrap Default Labels**: During initial setup, Tyk Governance creates default label definitions such as "Business Domain" and "API Criticality"
 2. **Label Definition**: Each label has:
-	- A unique key (e.g., "business_domain")
-	- A display name (e.g., "Business Domain")
-	- A value type (free text or predefined values)
-	- Optional predefined values (e.g., "Finance", "HR", "Operations")
+    - A unique key (e.g., "business_domain")
+    - A display name (e.g., "Business Domain")
+    - A value type (free text or predefined values)
+    - Optional predefined values (e.g., "Finance", "HR", "Operations")
 
 3. **Label Application**: Labels are applied to APIs as key-value pairs:
-	- Key: The label identifier (e.g., "business_domain")
-	- Value: The specific value for this API (e.g., "Finance")
+    - Key: The label identifier (e.g., "business_domain")
+    - Value: The specific value for this API (e.g., "Finance")
 
-4. **Label Storage**: Labels are stored as metadata with each API in the repository database.
-5. **Search and Filter**: Tyk Governance indexes labels to enable efficient filtering and searching.
+4. **Label Storage**: Labels are stored as metadata with each API in the repository database
+5. **Search and Filter**: Tyk Governance indexes labels to enable efficient filtering and searching
 
 ## Use Cases
 
@@ -147,7 +149,7 @@ Use labels to indicate lifecycle stage (Development, Testing, Production, Deprec
 
 ## FAQs
 
-<details> <summary><b>Can I create custom labels with my own predefined values?</b></summary>
+<details> <summary><b>Can I create custom labels with my predefined values?</b></summary>
 
 Yes, Governance Administrators can create custom labels with either free text values or a predefined list of acceptable values.
 
@@ -155,7 +157,7 @@ Yes, Governance Administrators can create custom labels with either free text va
 
 <details> <summary><b>How do labels differ from tags?</b></summary>
 
-Labels are structured key-value pairs that can be validated and used for governance, while tags are typically simpler, unstructured text values used primarily for search.
+Labels are structured key-value pairs that can be validated and used for governance, while tags are typically simpler, unstructured text values mainly used for search.
 
 </details> 
 
@@ -169,7 +171,7 @@ Yes, the discovery process attempts to map source system metadata to correspondi
 
 <details> <summary><b>Labels not appearing in filter options</b></summary>
 
-- Ensure the label has been properly defined by a Governance Admin  
+- Ensure a Governance Admin has properly defined the label  
 - Check that at least one API has been tagged with this label  
 - Refresh the browser cache if the label was recently added  
 

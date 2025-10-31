@@ -106,7 +106,7 @@ Allow unrestricted access for public APIs.
 Tyk has previously offered two types of OAuth authentication flow; [Tyk as the authorization server]() and Tyk connecting to an external *auth server* via a dedicated *External OAuth* option. The dedicated external *auth server* option was deprecated in Tyk 5.7.0.
 <br>
 
-For third-party OAuth integration we recommend using the JSON Web Token (JWT) middleware which is described [above]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
+For third-party OAuth integration we recommend using the JSON Web Token (JWT) middleware which is described [here]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
 <br>
 
 The remainder of this section is left for reference and is not maintained.
@@ -196,7 +196,7 @@ There could be cases when you don’t need to introspect a JWT access token from
   - a base64 encoded static secret
   - a valid JWK url in plain text
   - a valid JWK url in base64 encoded format
-- `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#adjust-jwt-clock-skew-configuration" >}}) for json web token validation.
+- `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "api-management/authentication/jwt-claim-validation#clock-skew-configuration" >}}) for json web token validation.
 - `identityBaseField` - the identity key name for claims. If empty it will default to `sub`.
 
 ##### Example: Tyk OAS API definition with JWT validation enabled
@@ -370,4 +370,4 @@ Securing your APIs is a foundational step toward managing data integrity and acc
 
 Defining Access Policies: Use Tyk’s policies to refine API access controls, rate limits, and quotas. This lets you align your security model with business needs and enhance user experience through granular permissions. You can learn more about policies [here](/api-management/policies/).
 
-Exploring API Analytics: Leverage Tyk’s analytics to monitor access patterns, track usage, and gain insights into potential security risks or high-demand endpoints. Understanding usage data can help in optimizing API performance and enhancing security measures. You can learn more about analytics [here](/tyk-dashboard-analytics/).
+Exploring API Analytics: Leverage Tyk’s analytics to monitor access patterns, track usage, and gain insights into potential security risks or high-demand endpoints. Understanding usage data can help in optimizing API performance and enhancing security measures. You can learn more about analytics [here]({{< ref "api-management/dashboard-configuration#analyzing-api-traffic-activity" >}}).

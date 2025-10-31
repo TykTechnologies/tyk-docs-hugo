@@ -576,7 +576,7 @@ Tyk Gateway will now generate two spans for each request made to your APIs, enca
 
 You can generate more detailed traces for requests to an API by setting the [server.detailedTracing]({{< ref "api-management/gateway-config-tyk-oas#detailedtracing" >}}) flag in the Tyk Vendor Extension of the API definition.
 
-For users of the Tyk Dashboard UI, the **Enable Detailed Tracing** option in the Tyk OAS API Designer allows you to set and unset this option for the API.
+For users of the Tyk Dashboard UI, the **OpenTelemetry Tracing** option in the Tyk OAS API Designer allows you to set and unset this option for the API.
 
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-oas.png" alt="Detailed Tracing Disabled" width="800px" >}}
 
@@ -708,27 +708,26 @@ Whether you're using Tyk API Gateway in an open-source (OSS) or commercial deplo
 
     ```yaml
     receivers:
-    otlp:
+      otlp:
         protocols:
-        grpc:
+          grpc:
             endpoint: 0.0.0.0:4317
     processors:
-    batch:
+      batch:
         send_batch_max_size: 100
         send_batch_size: 10
         timeout: 10s
     exporters:
-    datadog:
+      datadog:
         api:
-        site: "YOUR-DATADOG-SITE"
-        key: "YOUR-DATAGOG-API-KEY"
+          site: "YOUR-DATADOG-SITE"
+          key: "YOUR-DATAGOG-API-KEY"
     service:
-    pipelines:
+      pipelines:
         traces:
-        receivers: [otlp]
-        processors: [batch]
-        exporters: [datadog]
-
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [datadog]
     ```
 
 2. **Configure a test API**
@@ -744,18 +743,18 @@ Whether you're using Tyk API Gateway in an open-source (OSS) or commercial deplo
         "use_keyless": true,
         "detailed_tracing": true,
         "version_data": {
-        "not_versioned": true,
-        "versions": {
+          "not_versioned": true,
+          "versions": {
             "Default": {
-            "name": "Default",
-            "use_extended_paths": true
+              "name": "Default",
+              "use_extended_paths": true
             }
-        }
+          }
         },
         "proxy": {
-        "listen_path": "/hello-world/",
-        "target_url": "http://httpbin.org/",
-        "strip_listen_path": true
+          "listen_path": "/hello-world/",
+          "target_url": "http://httpbin.org/",
+          "strip_listen_path": true
         },
         "active": true
     }
@@ -768,43 +767,43 @@ Whether you're using Tyk API Gateway in an open-source (OSS) or commercial deplo
     ```yaml
     version: "2"
     services:
-    # OpenTelemetry Collector Contrib
-    otel-collector:
+      # OpenTelemetry Collector Contrib
+      otel-collector:
         image: otel/opentelemetry-collector-contrib:latest
         volumes:
-        - ./otel-collector.yml:/etc/otel-collector.yml
+          - ./otel-collector.yml:/etc/otel-collector.yml
         command: ["--config=/etc/otel-collector.yml"]
         ports:
-        - "4317" # OTLP gRPC receiver
+          - "4317" # OTLP gRPC receiver
         networks:
-        - tyk
-    
-    # Tyk API Gateway, open-source deployment
-    tyk:
+          - tyk
+      
+      # Tyk API Gateway, open-source deployment
+      tyk:
         image: tykio/tyk-gateway:v5.2
         ports:
-        - 8080:8080
+          - 8080:8080
         environment:
-        - TYK_GW_OPENTELEMETRY_ENABLED=true
-        - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
-        - TYK_GW_OPENTELEMETRY_ENDPOINT=otel-collector:4317
+          - TYK_GW_OPENTELEMETRY_ENABLED=true
+          - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
+          - TYK_GW_OPENTELEMETRY_ENDPOINT=otel-collector:4317
         volumes:
-        - ./apps:/opt/tyk-gateway/apps
+          - ./apps:/opt/tyk-gateway/apps
         depends_on:
-        - redis
+          - redis
         networks:
-        - tyk
+          - tyk
 
-    redis:
+      redis:
         image: redis:4.0-alpine
         ports:
-        - 6379:6379
+          - 6379:6379
         command: redis-server --appendonly yes
         networks:
-        - tyk
+          - tyk
 
     networks:
-    tyk:
+      tyk:
     ```
 
 
@@ -877,32 +876,32 @@ This documentation covers how to set up Dynatrace to ingest OpenTelemetry traces
 
     ```yaml
     receivers:
-    otlp:
+      otlp:
         protocols:
-        http:
+          http:
             endpoint: 0.0.0.0:4318
-        grpc:
+          grpc:
             endpoint: 0.0.0.0:4317
     processors:
-    batch:
+      batch:
     exporters:
-    otlphttp:
+      otlphttp:
         endpoint: "https://<YOUR-ENVIRONMENT-STRING>.live.dynatrace.com/api/v2/otlp"
         headers:
-        Authorization: "Api-Token <YOUR-DYNATRACE-API-KEY>" # You must keep 'Api-Token', just modify <YOUR-DYNATRACE-API-KEY>
+          Authorization: "Api-Token <YOUR-DYNATRACE-API-KEY>" # You must keep 'Api-Token', just modify <YOUR-DYNATRACE-API-KEY>
     extensions:
-    health_check:
-    pprof:
+      health_check:
+      pprof:
         endpoint: :1888
-    zpages:
+      zpages:
         endpoint: :55679
     service:
-    extensions: [pprof, zpages, health_check]
-    pipelines:
+      extensions: [pprof, zpages, health_check]
+      pipelines:
         traces:
-        receivers: [otlp]
-        processors: [batch]
-        exporters: [otlphttp]
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [otlphttp]
     ```
 
     2. **Docker Compose File**
@@ -914,21 +913,21 @@ This documentation covers how to set up Dynatrace to ingest OpenTelemetry traces
     ```yaml
     version: "3.9"
     services:
-    otel-collector:
+      otel-collector:
         image: otel/opentelemetry-collector:latest
         volumes:
-        - ./configs/otel-collector-config.yml:/etc/otel-collector.yml
+          - ./configs/otel-collector-config.yml:/etc/otel-collector.yml
         command: ["--config=/etc/otel-collector.yml"]
         networks:
-        - tyk
+          - tyk
         ports:
-        - "1888:1888" # pprof extension
-        - "13133:13133" # health_check extension
-        - "4317:4317" # OTLP gRPC receiver
-        - "4318:4318" # OTLP http receiver
-        - "55670:55679" # zpages extension
+          - "1888:1888" # pprof extension
+          - "13133:13133" # health_check extension
+          - "4317:4317" # OTLP gRPC receiver
+          - "4318:4318" # OTLP http receiver
+          - "55670:55679" # zpages extension
     networks:
-    tyk:
+      tyk:
     ```
 
 3. **Testing and Viewing Traces**
@@ -987,11 +986,11 @@ Credit: Elasticsearch, [OpenTelemetry on Elastic](https://www.elastic.co/blog/op
 
     ```yaml
     tyk-gateway:
-    gateway:
+      gateway:
         opentelemetry:
-        enabled: true
-        endpoint: {{Add your endpoint here}}
-        exporter: grpc
+          enabled: true
+          endpoint: {{Add your endpoint here}}
+          exporter: grpc
     ```
 
     For Docker Compose:
@@ -999,9 +998,9 @@ Credit: Elasticsearch, [OpenTelemetry on Elastic](https://www.elastic.co/blog/op
 
     ```yaml
     environment:
-    - TYK_GW_OPENTELEMETRY_ENABLED=true
-    - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
-    - TYK_GW_OPENTELEMETRY_ENDPOINT={{Add your endpoint here}}
+      - TYK_GW_OPENTELEMETRY_ENABLED=true
+      - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
+      - TYK_GW_OPENTELEMETRY_ENDPOINT={{Add your endpoint here}}
     ```
 
     Make sure to replace `<Add your endpoint here>` with the appropriate endpoint from your OpenTelemetry collector.
@@ -1029,23 +1028,23 @@ Credit: Elasticsearch, [OpenTelemetry on Elastic](https://www.elastic.co/blog/op
 
     ```yaml
     receivers:
-    otlp:
+      otlp:
         protocols:
-        grpc:
+          grpc:
             endpoint: 0.0.0.0:4317 # OpenTelemetry receiver endpoint
     processors:
-    batch:
+      batch:
     exporters:
     otlp/elastic:
         endpoint: "ELASTIC_APM_SERVER_ENDPOINT_GOES_HERE" #exclude scheme, e.g. HTTPS:// or HTTP://
         headers:
-        # Elastic APM Server secret token
-        Authorization: "Bearer ELASTIC_APM_SECRET_TOKEN_GOES_HERE"
+          # Elastic APM Server secret token
+          Authorization: "Bearer ELASTIC_APM_SECRET_TOKEN_GOES_HERE"
     service:
-    pipelines:
+      pipelines:
         traces:
-        receivers: [otlp]
-        exporters: [otlp/elastic]
+          receivers: [otlp]
+          exporters: [otlp/elastic]
     ```
 
     If are running Elasticsearch locally, you will need to use your APM Server endpoint (elastic-apm-server:8200) and set-up [a secret token authorization in ElasticSearch](https://www.elastic.co/guide/en/observability/current/secret-token.html).
@@ -1113,32 +1112,32 @@ You can follow the [official New Relic documentation](https://docs.newrelic.com/
 
     ```yaml
     receivers:
-    otlp:
+      otlp:
         protocols:
-        http:
+          http:
             endpoint: 0.0.0.0:4318
-        grpc:
+          grpc:
             endpoint: 0.0.0.0:4317
     processors:
-    batch:
+      batch:
     exporters:
-    otlphttp:
+      otlphttp:
         endpoint: "<YOUR-ENVIRONMENT-STRING>"
         headers:
-        api-Key: "<YOUR-NEW-RELIC-API-KEY>"
+          api-Key: "<YOUR-NEW-RELIC-API-KEY>"
     extensions:
-    health_check:
-    pprof:
+      health_check:
+      pprof:
         endpoint: :1888
-    zpages:
+      zpages:
         endpoint: :55679
     service:
-    extensions: [pprof, zpages, health_check]
-    pipelines:
+      extensions: [pprof, zpages, health_check]
+      pipelines:
         traces:
-        receivers: [otlp]
-        processors: [batch]
-        exporters: [otlphttp]
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [otlphttp]
     ```
 
     - Replace `<YOUR-ENVIRONMENT-STRING>` with your specific New Relic endpoint (`https://otlp.nr-data.net` for US or `https://otlp.eu01.nr-data.net` for EU).
@@ -1153,22 +1152,22 @@ You can follow the [official New Relic documentation](https://docs.newrelic.com/
     ```yaml
     version: "3.9"
     services:
-    otel-collector:
+      otel-collector:
         image: otel/opentelemetry-collector:latest
         volumes:
-        - ./otel-collector-config.yml:/etc/otel-collector.yml
+          - ./otel-collector-config.yml:/etc/otel-collector.yml
         command: ["--config=/etc/otel-collector.yml"]
         networks:
-        - tyk
+          - tyk
         ports:
-        - "1888:1888" # pprof extension
-        - "13133:13133" # health_check extension
-        - "4317:4317" # OTLP gRPC receiver
-        - "4318:4318" # OTLP http receiver
-        - "55670:55679" # zpages extension
+          - "1888:1888" # pprof extension
+          - "13133:13133" # health_check extension
+          - "4317:4317" # OTLP gRPC receiver
+          - "4318:4318" # OTLP http receiver
+          - "55670:55679" # zpages extension
 
     networks:
-    tyk:
+      tyk:
     ```
     <br>
 
@@ -1241,12 +1240,12 @@ Ensure the following prerequisites are met before proceeding:
     ```yaml
     version: "2"
     services:
-    # Jaeger: Distributed Tracing System
-    jaeger-all-in-one:
+      # Jaeger: Distributed Tracing System
+      jaeger-all-in-one:
         image: jaegertracing/all-in-one:latest
         ports:
-        - "16686:16686" # Jaeger UI
-        - "4317:4317" # OTLP receiver
+          - "16686:16686" # Jaeger UI
+          - "4317:4317" # OTLP receiver
     ```
 
     This configuration sets up Jaeger's all-in-one instance with ports exposed for Jaeger UI and the OTLP receiver.
@@ -1269,18 +1268,18 @@ Ensure the following prerequisites are met before proceeding:
         "use_keyless": true,
         "detailed_tracing": true,
         "version_data": {
-        "not_versioned": true,
-        "versions": {
+          "not_versioned": true,
+          "versions": {
             "Default": {
-            "name": "Default",
-            "use_extended_paths": true
+              "name": "Default",
+              "use_extended_paths": true
             }
-        }
+          }
         },
         "proxy": {
-        "listen_path": "/hello-world/",
-        "target_url": "http://httpbin.org/",
-        "strip_listen_path": true
+          "listen_path": "/hello-world/",
+          "target_url": "http://httpbin.org/",
+          "strip_listen_path": true
         },
         "active": true
     }
@@ -1298,23 +1297,23 @@ Ensure the following prerequisites are met before proceeding:
     # ... Existing docker-compose.yml content for jaeger
 
     tyk:
-    image: tykio/tyk-gateway:v5.2.0
-    ports:
+      image: tykio/tyk-gateway:v5.2.0
+      ports:
         - 8080:8080
-    environment:
+      environment:
         - TYK_GW_OPENTELEMETRY_ENABLED=true
         - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
         - TYK_GW_OPENTELEMETRY_ENDPOINT=jaeger-all-in-one:4317
-    volumes:
+      volumes:
         - ${TYK_APPS:-./apps}:/opt/tyk-gateway/apps
-    depends_on:
+      depends_on:
         - redis
 
     redis:
-    image: redis:4.0-alpine
-    ports:
+      image: redis:4.0-alpine
+      ports:
         - 6379:6379
-    command: redis-server --appendonly yes
+      command: redis-server --appendonly yes
     ```
 
     - Navigate to the directory containing the docker-compose.yml file in your terminal.
@@ -1387,7 +1386,7 @@ Ensure the following prerequisites are in place before proceeding:
     apiVersion: jaegertracing.io/v1
     kind: Jaeger
     metadata:
-    name: jaeger-all-in-one
+      name: jaeger-all-in-one
     EOF
     ```
 
@@ -1418,7 +1417,7 @@ Ensure the following prerequisites are in place before proceeding:
     {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
     {{< /note >}}
 
 
@@ -1448,16 +1447,16 @@ Please make sure you are installing Redis versions that are supported by Tyk. Pl
     apiVersion: tyk.tyk.io/v1alpha1
     kind: ApiDefinition
     metadata:
-    name: hello-world
+      name: hello-world
     spec:
-    name: hello-world
-    use_keyless: true
-    protocol: http
-    active: true
-    proxy:
-    target_url: http://httpbin.org/
-    listen_path: /hello-world
-    strip_listen_path: true
+      name: hello-world
+      use_keyless: true
+      protocol: http
+      active: true
+      proxy:
+        target_url: http://httpbin.org/
+        listen_path: /hello-world
+        strip_listen_path: true
     ```
 
     To apply this API definition, run the following command:

@@ -4,13 +4,20 @@ date: 2024-05-17T15:51:00+01:00
 tags: [ "Contributing", "Documentation", "Community" ]
 description: "How to contribute to Tyk documentation"
 aliases:
-   - /contribute
-   - /ui-examples/feature-cards 
-   - /ui-examples/test-pill-label 
-   - /ui-examples/youtube-video-embed
+  - /contribute
+  - /ui-examples/test-pill-label
+  - /ui-examples/feature-cards
+  - /ui-examples/youtube-video-embed
 ---
 
 This section provides resources and guidance for contributors to Tyk's documentation. Whether you're fixing a typo, adding new content, or helping improve our documentation standards, you'll find the tools and guidelines you need here.
+
+## What this section covers
+
+This contribution section includes:
+
+- **[Inclusive naming]({{< ref "developer-support/documentation-projects/inclusive-naming" >}})** - Information about Tyk's inclusive language initiative and the work done to update documentation terminology
+- **UI component examples** - Documentation and examples for using shortcodes in our documentation system
 
 ## How to contribute to our docs
 

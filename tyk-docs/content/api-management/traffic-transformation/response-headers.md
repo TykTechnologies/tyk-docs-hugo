@@ -10,7 +10,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/response-header-tyk-classic
 ---
 
-## Overview {#response-headers-overview}
+## Overview
 
 Tyk enables you to modify header information when a response is proxied back to the client. This can be very useful in cases where you have an upstream API that potentially exposes sensitive headers that you need to remove.
 
@@ -60,10 +60,6 @@ You can enrich the response headers by injecting data from context variables or 
 - values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
 <hr>
-
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "#response-headers-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "#response-headers-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Response Header Transform middleware summary

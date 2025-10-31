@@ -47,10 +47,6 @@ A trigger combines one or more rules with a target (or `rewriteTo`) URL. If the 
 
 More detail on URL Rewrite triggers and rules can be found [here]({{< ref "transform-traffic/url-rewriting#url-rewriting-overview" >}}).
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "transform-traffic/url-rewriting#url-rewriting-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "transform-traffic/url-rewriting#url-rewriting-using-classic" >}}).
-
 <!-- proposed "summary box" to be shown graphically on each middleware page
 
 ## URL Rewrite middleware summary
@@ -736,6 +732,6 @@ spec:
                   "rewrite_to": "https://beta.library.com/books/author"
 ```
 
-For further examples check out the [internal looping]({{< ref "api-management/automations/operator#internal-looping-with-tyk-operator" >}}) page.
+For further examples check out the [internal looping]({{< ref "product-stack/tyk-operator/advanced-configurations/internal-looping" >}}) page.
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Install and Configure Developer Portal"
-date: 2025-02-10
+title: "Install Developer Portal"
+date: 2025-07-26
 linkTitle: API Management
 tags: ["Developer Portal", "Tyk", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
 keywords: ["Developer Portal", "Tyk", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
@@ -57,6 +57,13 @@ To enable this feature, you need to specify a connection configuration to an ema
 You can choose to use a server that is installed on your premises or an SMTP-compatible SaaS product.
 For step-by-step instructions, please refer to [the Email Settings section]({{< ref "portal/customization/email-notifications" >}})
 
+
+{{< note success >}}
+**Note: SQLite support** 
+
+Tyk Developer Portal no longer supports SQLite as of the release of version 1.14.0. To ensure a smooth experience, please migrate to [PostgreSQL]({{< ref "planning-for-production/database-settings#postgresql" >}}) or another supported alternative.
+{{< /note >}}
+
 ## Portal Installation Process
 
 The portal installation process comprises two steps:
@@ -93,7 +100,7 @@ Install on Red Hat
 ### Docker
 
 This section explains how to install Tyk Enterprise Developer Portal in a container using Docker.
-Depending on your preferences, you can use MariaDB, MySQL, PostgreSQL or SQLite as database.
+Depending on your preferences, you can use MariaDB, MySQL or PostgreSQL for the database.
 
 In this recipe, the database and the portal container will run on the same network, with the database storing its data on a volume. The portal's CMS assets (images, files and themes) are stored in the database, although this guide provides links to the documentation to use a persistent volume or an S3 bucket as a storage medium for CMS assets.
 Additionally, all settings for the Portal are configured using an env-file.
@@ -246,12 +253,6 @@ The above MySQL configuration is an example. You can customize deployment of you
 Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
     {{< /warning >}}
 
-    {{< note success >}}
-**Note** 
-
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
-    {{< /note >}}
-
 3. **Create an environment variables file**
 
     Creating an environment variables file to specify settings for the portal is the next step.
@@ -307,84 +308,11 @@ SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please t
     docker volume rm tyk-portal-mysql-data
     ```
 
-#### Using Sqlite
-
-{{< warning success >}}
-**Warning**
-SQLite is useful for quick deployment and testing, however we don't recommend using it in production.
-{{< /warning >}}
-
-{{< note success >}}
-**Note** 
-
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
-{{< /note >}}
-
-1. **Create a volume for the portal's database**
-
-    To start with, you need to create a single volume for sqlite:
-    ```console
-    mkdir -p /tmp/portal/db
-    chmod -R o+x,o+w /tmp/portal
-    ```
-
-2. **Create an environment variables file**
-
-    Creating an environment variables file to specify settings for the portal is the next step.
-    This is optional, as you can alternatively specify all the variables using the -e option when starting your deployment.
-
-    Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to the [configuration]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}})] section in the Tyk Enterprise Developer Portal documentation.
-    ```ini
-    PORTAL_HOSTPORT=3001
-    PORTAL_DATABASE_DIALECT=sqlite3
-    PORTAL_DATABASE_CONNECTIONSTRING=db/portal.db
-    PORTAL_DATABASE_ENABLELOGS=false
-    PORTAL_THEMING_THEME=default
-    PORTAL_STORAGE=db
-    PORTAL_LICENSEKEY=<your-license-here>
-    ```
-
-    Once you have completed this step, you are ready to launch the portal application with SQLite in a Docker container.
-
-3. **Pull and launch the portal container**
-
-    To pull and launch the portal using Docker, use the command provided below.
-    Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7.
-    You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "developer-support/release-notes/portal#170-release-notes" >}}) section.
-    ```console
-    docker run -d \
-        -p 3001:3001 \
-        --env-file .env \
-        --mount type=bind,src=/tmp/portal/db,dst=/opt/portal/db \
-        --mount type=bind,src=/tmp/portal/themes,dst=/opt/portal/themes \
-        --mount type=bind,src=/tmp/portal/system,dst=/opt/portal/public/system \
-        --name tyk-portal \
-        tykio/portal:<tag>
-    ```
-
-    This command will launch the portal on localhost at port 3001. Now, you can bootstrap the portal and start managing your API products.
-
-4. **Bootstrap the portal**
-
-    Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first time you are launching it. Follow the [bootstrapping]({{< ref "#bootstrapping-enterprise-developer-portal" >}}) section of the documentation to bootstrap the portal via the UI or the admin API.
-
-5. **Clean Up**
-
-    If you want to clean up your environment or start the installation process from scratch, execute the following commands to stop and remove the portal container:
-    ```console
-    docker stop tyk-portal
-    docker rm tyk-portal
-    ```
-
-    Since the SQLite data is persisted in the file system, you need to remove the following file for a complete deletion of the portal:
-    ```console
-    rm -rf /tmp/portal/db
-    ```
 
 ### Docker Compose
 
 This section provides a clear and concise, step-by-step recipe for launching the Tyk Enterprise Developer Portal in a container using Docker Compose.
-Depending on your preferences, you can use MariaDB, MySQL, PostgreSQL or SQLite as database.
+Depending on your preferences, you can use MariaDB, MySQL or PostgreSQL for the database.
 
 In this recipe, the database and the portal containers will run on the same network, with the database storing it's data on a volume. The portal's CMS assets (images, files and themes) are stored in the database, although this guide provides links to the documentation to use a persistent volume or an S3 bucket as a storage medium for CMS assets.
 Additionally, all settings for the Portal are configured using an env-file.
@@ -590,77 +518,6 @@ To successfully install the Tyk Enterprise Developer Portal with Docker Compose,
     docker-compose down
     ```
 
-#### Using Sqlite
-
-1. **Create an environment variables file for configuring the portal and the database**
-
-    Creating an environment file to specify settings for the portal is the next step.
-    This is optional, as you can alternatively specify all the variables using the -e option when starting your deployment.
-
-    Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to the [configuration section({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}})] in the Tyk Enterprise Developer Portal documentation.
-    ```ini
-    PORTAL_HOSTPORT=3001
-    PORTAL_DATABASE_DIALECT=sqlite3
-    PORTAL_DATABASE_CONNECTIONSTRING=db/portal.db
-    PORTAL_DATABASE_ENABLELOGS=false
-    PORTAL_THEMING_THEME=default
-    PORTAL_THEMING_PATH=./themes
-    PORTAL_LICENSEKEY=<your-license-here>
-    PORTAL_STORAGE=db
-    ```
-
-    Once you have completed this step, you are ready to launch the portal application with SQLite via Docker Compose.
-
-2. **Create a docker-compose file**
-
-    Before launching the portal using docker-compose, you will need to create a `docker-compose.yaml` file.
-    An example of the portal's docker-compose file is provided below, which you can use as a starting point and further customize to meet your specific requirements.
-    ```yaml
-    version: '3.6'
-    services:
-    tyk-portal:
-        image: tykio/portal:<tag>
-        volumes:
-        - /tmp/portal/db:/opt/portal/db
-        ports:
-        - 3001:3001
-        environment:
-        - PORTAL_DATABASE_DIALECT=${PORTAL_DATABASE_DIALECT}
-        - PORTAL_DATABASE_CONNECTIONSTRING=${PORTAL_DATABASE_CONNECTIONSTRING}
-        - PORTAL_THEMING_THEME=${PORTAL_THEMING_THEME}
-        - PORTAL_THEMING_PATH=${PORTAL_THEMING_PATH}
-        - PORTAL_LICENSEKEY=${PORTAL_LICENSEKEY}
-        - PORTAL_STORAGE=${PORTAL_STORAGE}
-    ```
-
-3. **Pull and launch the portal container using docker-compose**
-
-    To launch the portal using docker-compose, execute the command provided below.
-    ```console
-    docker-compose --env-file .env up -d
-    docker-compose --env-file .env up -d
-    ```
-
-    This command will launch the portal on localhost at port 3001. Now, you can bootstrap the portal and start managing your API products.
-
-4. **Bootstrap the portal**
-
-    Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first time you are launching it. Follow the [bootstrapping section]({{< ref "#bootstrapping-enterprise-developer-portal" >}}) of the documentation to bootstrap the portal via the UI or the admin API.
-
-5. **Clean up**
-
-    If you want to clean up your environment or start the installation process from scratch, execute the following commands to stop and stop and remove the portal container:
-    ```console
-    docker-compose down
-    docker-compose down
-    ```
-
-    Since the SQLite data is persisted in the mounted volume (`/tmp/portal/db` in the above example), to completely erase the deployment, you will also need to delete it for a complete clean-up:
-    ```console
-    rm -rf /tmp/portal/db
-    rm -rf /tmp/portal/db
-    ```
-
 ### Kubernetes
 
 #### Using New Helm Chart
@@ -702,7 +559,7 @@ To install the portal using helm charts, you need to take the following steps:
     | `license` | Tyk license key for your portal installation |
     | `storage.type` | Portal storage type, e.g. *fs*, *s3* and *db* |
     | `image.tag` | Enterprise Portal version. You can get the latest version image tag from [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) |
-    | `database.dialect` | Portal database dialect, e.g. *mysql*, *postgres* and *sqlite3* |
+    | `database.dialect` | Portal database dialect, e.g. *mysql*, *postgres* |
     | `database.connectionString`| Connection string to the Portal's database, e.g. for the *mysql* dialect: `admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true` |
 
     In addition to `values.yaml`, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
@@ -753,12 +610,6 @@ This guide provides a clear and concise, step-by-step recipe for installing the 
 
 2. **Config settings**
 
-    {{< note success >}}
-**Note** 
-
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
-    {{< /note >}}
-
     You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
 
     | Field Name | Description |
@@ -766,7 +617,7 @@ Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please trans
     | `enterprisePortal.enabled` | Enable Portal installation |
     | `enterprisePortal.bootstrap` | Enable Portal bootstrapping |
     | `enterprisePortal.license`| Tyk license key for your portal installation |
-    | `enterprisePortal.storage.type`| Portal database dialect, e.g *mysql*, *postgres* or *sqlite3* |
+    | `enterprisePortal.storage.type`| Portal database dialect, e.g *mysql*, *postgres* |
     | `enterprisePortal.storage.connectionString` | Connection string to the Portal's database, e.g for the mysql dialect: `admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true` |
 
     In addition to values.yaml, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
@@ -829,23 +680,17 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
 
 3. **Update the configuration file with your license**
 
-    {{< note success >}}
-**Note** 
-
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
-    {{< /note >}}
-
     Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.
     Initially, the config file is filled with the default values. The minimal configuration change to start the portal is to add the `LicenseKey` property to the config file.
-    The below sample configuration will start the portal on portal 3001 with SQLite as a database, no TLS enabled, and all CMS assets (images, theme files, etc.) are stored in the filesystem.
+    The below sample configuration will start the portal on portal 3001 with PostgreSQL as a database, no TLS enabled, and all CMS assets (images, theme files, etc.) are stored in the filesystem.
     You can, however, customize the provided example and make more suitable for your need using the [configuration]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) reference.
     ```json
     {
     "HostPort": 3001,
     "LicenseKey": "<your-license-here>",
     "Database": {
-        "Dialect": "sqlite3",
-        "ConnectionString": "portal.db",
+        "Dialect": "postgres",
+        "ConnectionString": "host=tyk-portal-postgres port=5432 dbname=portal user=admin password=secr3t sslmode=disable",
         "EnableLogs": false
     },
     "Blog": {
@@ -985,7 +830,5 @@ For global configurations of the Developer Portal deployment refer this [config 
 
 ## API Documentation
 
-The Dashboard exposes two APIs:
+The Developer Portal exposes an [API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}).
 
-1. [Enterprise Developer Portal API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}})
-2. [Enterprise Developer Portal Admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints" >}})

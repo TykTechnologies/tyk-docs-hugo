@@ -590,6 +590,40 @@ Resolution can be:
 - local, by providing a ZIP archive containing all fragments
 - remote, by providing resolvable paths to the secondary fragments (this is particularly used if the main fragment is provided via URL, as all fragments can then exist on the same file server).
 
+{{< note success >}}
+**Note**  
+
+The **main fragment** must be in a file named `openapi.json` or `openapi.yaml` (depending on the format used).
+{{< /note >}}
+
+##### Creating the ZIP Archive
+
+When creating ZIP archives for the multi-part OpenAPI import feature, it's important to exclude operating system metadata files that could interfere with the import process.
+
+- **MacOS Users**
+
+    When using the `zip` command on MacOS, include the `-X` flag to exclude extended attributes and hidden files: `zip -X -r archive.zip directory/`
+    
+- **Linux Users**
+
+    When using the `zip` command on Linux, you can exclude hidden files using: `zip -r archive.zip directory/ -x "*/\.*"`
+
+    To exclude specific metadata files: `zip -r archive.zip directory/ -x "*/\.*" "*/Thumbs.db" "*/.DS_Store"`
+
+- **Windows Users**
+
+    When using PowerShell to create ZIP archives on Windows, you can exclude hidden and system files with: `Compress-Archive -Path "directory\*" -DestinationPath "archive.zip" -CompressionLevel Optimal`
+
+    To exclude specific metadata files (like Thumbs.db or .DS_Store) you can use: `Get-ChildItem "directory" -Recurse -File | Where-Object { $_.Name -notmatch '(^\.DS_Store$|^Thumbs\.db$)' } | Compress-Archive -DestinationPath "archive.zip"`
+
+- **Using GUI Tools**
+
+    If using GUI tools like WinZip, WinRAR, or the built-in archive utilities:
+    - Ensure options to include hidden/system files are disabled
+    - Look for options like "Store Mac OS X resource forks/special files" and disable them
+    - Some tools have specific options to exclude .DS_Store files and other metadata
+
+Including these unwanted files may cause validation errors during the import process.
 
 ## Maintaining your APIs
 

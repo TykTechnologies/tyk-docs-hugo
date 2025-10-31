@@ -1,9 +1,33 @@
 {
   "home": "tyk-dashboard",
   "licensed": true,
-  "latest": "5.8.1",
-  "lts": "5.8.1",
+  "latest": "5.10.0",
+  "lts": "5.8.7",
   "releaseNotesPath": "developer-support/release-notes/dashboard",
+  "5.10.0": {
+    "date": "13/10/2025",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.10.0"
+  },
+  "5.9.2": {
+    "date": "04/09/2025",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.9.2"
+  },
+  "5.9.1": {
+    "date": "14/08/2025",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.9.1"
+  },
+  "5.9.0": {
+    "date": "04/08/2025",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.9.0"
+  },
+  "5.8.3": {
+    "date": "14/07/2025",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.8.3"
+  },
+  "5.8.2": {
+    "date": "01/07/2025",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.8.2"
+  },
   "5.8.1": {
     "date": "09/05/2025",
     "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.8.1"

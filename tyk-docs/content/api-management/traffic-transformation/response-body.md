@@ -10,7 +10,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/response-body-tyk-classic
 ---
 
-## Overview {#response-body-overview}
+## Overview
 
 Tyk enables you to modify the payload of API responses received from your upstream services before they are passed on to the client that originated the request. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to endpoints that return a body with the response.
 
@@ -82,9 +82,6 @@ The Response Body Transform supports two helper functions that you can use in yo
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "#response-body-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "#response-body-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Response Body Transform middleware summary
@@ -423,7 +420,7 @@ spec:
               delete_headers: []
 ```
 
-#### Tyk Gateway < 5.3.0 Example {#gw-lt-5-3-example}
+#### Tyk Gateway < 5.3.0 Example
 
 If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition containing a `response_body_transform` item, as highlighted below:
 

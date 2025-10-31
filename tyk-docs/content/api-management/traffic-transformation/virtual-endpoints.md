@@ -12,7 +12,7 @@ aliases:
   - /compose-apis/virtual-endpoints
 ---
 
-## Overview {#virtual-endpoints-overview}
+## Overview
 
 Tyk's Virtual Endpoint is a programmable middleware component that is invoked towards the end of the request processing chain. It can be enabled at the per-endpoint level and can perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
 
@@ -67,10 +67,6 @@ Virtual endpoints are not available in Tyk Cloud Classic.
 {{< /note >}}
 
 <hr>
-
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "#virtual-endpoints-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "#virtual-endpoints-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Virtual Endpoint middleware summary

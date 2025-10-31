@@ -3,6 +3,8 @@ title: "Inclusive Naming"
 date: 2024-05-17T15:51:00+01:00
 tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive", "Inclusive Naming Project" ]
 description: "Explains the inclusive naming initiative concerning Tyk docs"
+aliases:
+  - /developer-support/inclusive-naming-policy
 ---
 
 This document is intended for Tyk users, contributors, and anyone interested in our commitment to inclusive language within Tyk's documentation and product interfaces.

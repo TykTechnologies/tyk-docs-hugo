@@ -41,7 +41,1446 @@ aliases:
 Our minor releases are supported until our next minor comes out.
 
 ---
+## 5.10 Release Notes 
+
+### 5.10.0 Release Notes 
+
+#### Release Date 13th October 2025
+
+#### Release Highlights
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.10.0" >}}).
+
+##### OpenAPI Compliant Multi-Authentication for Tyk OAS APIs
+
+Tyk Gateway now supports true OpenAPI specification compliant authentication workflows, giving developers the flexibility to implement industry-standard security patterns while maintaining backward compatibility.
+
+OpenAPI compliant authentication brings:
+
+- **Multiple authentication paths**: Process all entries in the OpenAPI `security` section, not just the first one
+- **Flexible security combinations**: Enable authentication scenarios like "OAuth2 OR Auth Token" where clients can choose their preferred method
+- **Proprietary method integration**: Seamlessly combine standard OpenAPI authentication with Tyk's proprietary methods (Custom Authentication plugin, HMAC) using the same flexible logic
+- **Standards compliance**: Follow OpenAPI security specification patterns that developers expect
+
+Backward compatibility guaranteed:
+
+- **Legacy mode preserved**: Existing APIs continue to work unchanged with the current AND-only logic
+- **Opt-in enhancement**: Switch to compliant mode via the `securityProcessingMode` configuration when ready
+- **No breaking changes**: Existing multi-security configurations remain functional
+
+**Real-world applications**
+
+- Support diverse client authentication capabilities within the same API
+- Implement progressive authentication strategies (basic → advanced security)
+- Align with OpenAPI tooling and documentation expectations
+- Reduce integration complexity for API consumers
+
+Perfect for organizations wanting to leverage standard OpenAPI security patterns while maintaining the flexibility of Tyk's advanced authentication features.
+
+For more details, please see the dedicated [Multi Auth]({{< ref "basic-config-and-security/security/authentication-authorization/multiple-auth/" >}}) section.
+
+##### Comprehensive JWT Claim Validation for Tyk OAS APIs
+
+Tyk Gateway now provides enterprise-grade JWT validation capabilities exclusively for Tyk OAS APIs, enabling complete control over token validation beyond basic expiry and signature checks.
+
+**Complete registered claim validation**
+
+- **Multi-Identity Provider support**: Validate issuer, audience, and subject claims against multiple allowed values
+- **Flexible claim mapping**: Configure different claim names for subject, policy, and scope mapping to support various Identity Providers (Keycloak, Okta, Auth0, etc.) within the same API
+- **JWT ID enforcement**: Require unique token identifiers for enhanced security
+
+**Advanced custom claim validation**
+
+- **Flexible validation rules**: Define validation for any JWT claim using required, exact match, or containment rules
+- **Rich data type support**: Handle strings, numbers, booleans, and arrays with nested claim access using dot notation
+- **Non-blocking validation**: Monitor claim compliance without rejecting requests, perfect for gradual policy enforcement
+
+**Real-world applications**
+
+- Role-based access control with custom permission claims
+- Department or organization-based API access restrictions
+- Multi-tenant scenarios with flexible claim validation
+- Gradual migration from legacy authentication systems
+
+This enhancement makes Tyk's JWT middleware the primary validation mechanism for complex enterprise authentication scenarios, providing the flexibility needed for modern Identity Provider integrations while maintaining backward compatibility.
+
+Ideal for organizations that require sophisticated JWT validation beyond standard token checks.
+
+For more details, please see the dedicated [JWT Auth]({{< ref "api-management/authentication/jwt-authorization" >}}) section.
+
+##### Advanced JWKS Cache Management for Tyk OAS APIs
+
+Tyk Gateway now provides comprehensive JWKS (JSON Web Key Set) cache control for Tyk OAS APIs, delivering significant performance improvements and operational flexibility for JWT validation workflows with:
+
+- **Configurable cache timeouts**: Set custom cache durations per Identity Provider to match their key rotation schedules
+- **On-demand cache invalidation**: Instantly refresh cached keys for any API (Classic or OAS) when Identity Providers rotate their signing keys
+- **Intelligent pre-fetching**: Eliminate first-request latency by fetching JWKS data during Tyk OAS API initialization
+
+**Key benefits**
+
+- Faster JWT validation with reduced Identity Provider round-trips
+- Zero cold-start delays for JWT-protected endpoints
+- Immediate response to Identity Provider key rotations
+- Better performance in high-traffic JWT validation scenarios
+
+This enhancement is particularly valuable for organizations migrating to Tyk OAS APIs or those requiring consistent low-latency JWT validation performance with multiple Identity Providers that have different key rotation policies.
+
+For more details, please see the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#signature-validation" >}}) section.
+
+##### Centralized External Service Configuration
+
+Tyk Gateway now provides unified configuration for all external service connections through the new
+`external_services` section. This enhancement brings together previously scattered and incomplete configuration options into a single, coherent system that supports:
+
+- **Proxy configuration**: Apply proxy settings globally or per service, with automatic support for standard environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`)
+- **mTLS certificate management**:Centralized certificate configuration for secure connections to external services
+- **Comprehensive service coverage**: Covers all external integrations, including databases, OAuth providers, and webhook endpoints
+
+This improvement simplifies deployment in enterprise environments where proxy servers and certificate management are critical, while maintaining full backward compatibility with existing configurations.
+
+**Key benefits**
+- Reduced configuration complexity and duplication
+- Better security through centralized certificate management
+- Simplified proxy configuration for containerized deployments
+- Consistent external service connection handling across all Tyk components
+
+For more details, please see the dedicated [section]({{< ref "configure/external-service" >}}).
+
+##### Proactive Certificate Expiry Monitoring
+
+Tyk Gateway now automatically monitors certificate health and proactively alerts administrators before certificates expire, helping prevent service outages caused by expired mTLS certificates.
+
+The new certificate monitoring system provides:
+
+- **Early warning notifications**: Configurable alerts when certificates approach expiry (default: 30 days)
+- **Immediate expiry detection**: Real-time notifications when expired certificates are detected in use
+- **Comprehensive coverage**: Monitors certificates used in both client-to-Gateway and Gateway-to-upstream connections
+- **Smart throttling**: Built-in cooldown mechanisms prevent alert flooding while ensuring visibility
+
+These events integrate seamlessly with existing monitoring and alerting systems through Tyk's standard event framework, enabling teams to set up automated workflows for certificate renewal and replacement.
+
+**Key benefits**
+
+- Prevent unexpected API outages due to expired certificates
+- Reduce manual certificate monitoring overhead
+- Enable proactive certificate lifecycle management
+- Improve overall API reliability and uptime
+
+Perfect for organizations managing multiple certificates across complex API infrastructures where manual tracking becomes impractical.
+
+For more details, please see the dedicated [Gateway events]({{< ref "api-management/gateway-events" >}}) section.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.10.0}
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|---- |
+| 5.10.0 | MDCB v2.8.5       | MDCB v2.8.5 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.3       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | Pump v1.12.2      | Pump all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.24                   |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.10.0}
+
+If you are upgrading to 5.10.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.10.0)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.10.0
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Gateway. You will need to modify them to install v5.10.0.
+
+- [Source code tarball of Tyk Gateway v5.10.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.10.0)
+
+#### Changelog {#Changelog-v5.10.0}
+
+##### Added
+
+<ul>
+
+<li>
+<details>
+<summary>OpenAPI compliant multi-authentication mode for Tyk OAS APIs</summary>
+
+Added OpenAPI Specification compliant multi-authentication support for Tyk OAS APIs, providing flexible authentication workflows that follow standard OpenAPI security patterns.
+
+**Compliant mode (new)**
+- Processes all entries in the OpenAPI `security` section sequentially, not just the first entry
+- Supports a local `security` section in the Tyk vendor extension for proprietary authentication methods (Custom Authentication plugin, HMAC)
+- Uses AND logic within each security entry and OR logic between entries, enabling flexible authentication combinations such as: OAuth2 OR Auth Token
+- Allows clients to authenticate using any of the defined security combinations
+
+**Legacy mode (existing behavior)**
+- Continues to use only the first entry from the OpenAPI `security` section
+- Combines all declared methods with proprietary vendor extension methods using AND logic
+- Requires clients to satisfy ALL authentication methods
+
+The authentication processing mode is controlled by the new `server.authentication.securityProcessingMode`
+field in the Tyk Vendor Extension, with `legacy` as the default to ensure backward compatibility. In compliant mode, proprietary authentication methods are configured in the new `server.authentication.security` section within the vendor extension, following the same array structure as the OpenAPI `security` section. This prevents breaking changes for existing API definitions that contain multiple entries in the
+`security` section but were designed for legacy processing behavior.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Enhanced JWT claim validation for Tyk OAS APIs</summary>
+
+Tyk OAS APIs now support comprehensive validation of JWT registered claims, extending beyond basic token validation to provide complete access control capabilities. This enhancement includes:
+
+**Registered claim validation**
+
+- **Subject, issuer, and audience validation**: Validate tokens against allowed values with support for multiple entries per claim type
+- **JWT ID enforcement**: Require presence of unique token identifiers (`jti`) when needed
+- **Flexible claim mapping**: Configure different claim names for subject, base policy, and scope-to-policy mapping to support multiple Identity Providers within the same API setup (e.g., Keycloak's `scope` vs Okta's `scp`)
+
+**Custom claim validation framework**
+
+- **Flexible validation rules**: Define validation for any custom JWT claim using three rule types: `required` (claim must exist), `exact_match` (claim equals specific values), or `contains` (claim contains specific values)
+- **Advanced data support**: Handle string, number, boolean, and array data types with nested claim access using dot notation (e.g., `user.department`)
+- **Non-blocking validation**: Configure rules to log warnings instead of rejecting requests for monitoring and gradual enforcement scenarios
+
+These features enable advanced use cases, such as role-based access control, department validation, and custom permission schemes, while maintaining backward compatibility with existing JWT configurations.
+
+**Note:** Available only for Tyk OAS APIs and configured directly in the API definition via the Tyk Vendor Extension.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Enhanced JWKS caching with configurable timeout, invalidation, and pre-fetching</summary>
+
+Enhanced the JWKS (JSON Web Key Set) caching system with three key improvements to reduce latency and provide better control over JWT validation:
+
+Configurable cache timeout - Tyk OAS APIs can now specify custom cache timeout values for JWKS endpoints in their JWT validation configuration, allowing fine-tuned control over cache refresh intervals based on Identity Provider requirements.
+
+- Cache invalidation API - Administrators can now manually invalidate JWKS cache entries via new Gateway API endpoints (`DELETE /tyk/cache/jwks/{apiID}` and `DELETE /tyk/cache/jwks`), either targeting specific APIs or purging all cached JWKS data. This enables immediate cache refresh when Identity Provider keys are rotated.
+- Automatic pre-fetching - For Tyk OAS APIs, JWKS data is now automatically fetched and cached when API definitions are loaded, eliminating cold-start delays for JWT validation. Pre-fetching includes comprehensive logging of fetch attempts and results, and failures do not prevent API initialization.
+
+**Note:** For Tyk Classic APIs, JWKS caching behavior remains unchanged with on-demand fetching during token validation using the default cache timeout (60 seconds). Cache invalidation via the new API endpoints works for both Classic and OAS APIs.
+
+These enhancements improve JWT validation performance for Tyk OAS APIs and provide administrators with better tools for managing JWKS cache lifecycle when Identity Provider keys change.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Enhanced external service integration with proxy and mTLS support</summary>
+
+Added a new `external_services` section in the [Gateway configuration]({{< ref "configure/external-service" >}}) to provide centralized configuration for proxy settings and mTLS certificates when communicating with external services. This includes connections to persistent and temporal storage, OAuth 2.0 Authorization Servers, and webhook targets.
+
+Tyk Gateway can now apply proxy settings from standard environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`) or use the new granular configuration options. All existing configuration methods remain supported, including legacy options such as `jwt_ssl_insecure_skip_verify` and `http_proxy`.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway Certificate Expiry Notification Events</summary>
+
+Introduced a proactive event system to warn administrators when mTLS certificates are approaching expiry. The Gateway now emits two new [API events]({{< ref "api-management/gateway-events#api-events" >}}) to provide visibility into certificate status:
+
+- `CertificateExpiringSoon` - Generated when a certificate is used in an API request (either client-to-Gateway or Gateway-to-upstream) within a configurable time period of its expiry date
+- `CertificateExpired` - Generated when an attempt is made to use an already expired certificate, in addition to the standard error response sent to the API client
+
+A cooldown mechanism prevents event flooding by throttling the generation of these notifications. The threshold for the `CertificateExpiringSoon` event and cooldown parameters are configured in the Gateway configuration:
+
+```
+"security": {
+  "certificate_expiry_monitor": {}
+}
+```
+
+The default threshold is 30 days before expiry.
+</details>
+</li>
+
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Go 1.24 Upgrade for Tyk Gateway</summary>
+
+The Tyk Gateway has been updated to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying up-to-date with Go versions.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Support for pre-configurable versioning setup for Tyk OAS APIs</summary>
+
+Implemented changes to the validation of Tyk OAS API definitions to support the enhanced versioning workflow implemented in Tyk Dashboard v5.10.0. This allows the pre-configuration of versioning settings before creating any child versions. You can now define the version identifier location (header, URL path, or query parameter) and key/name/pattern, and the request proxying behavior on a non-versioned API, preparing it to become a base API.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed panic when an unexpected query parameter is provided to the Gateway API</summary>
+
+Fixed an issue where sending certain unexpected query parameters to the `GET /tyk/apis/oas/{id}` endpoint could cause a panic.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed duplication of version identifier configuration when importing OpenAPI description</summary>
+
+Fixed an issue where importing an OpenAPI description with an `apiKey` security scheme, while using the `authentication` query parameter, resulted in the unnecessary generation of a `header` object within the Tyk Vendor Extension (`x-tyk-api-gateway`), duplicating information already present in the declared OpenAPI security scheme.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed mock responses not working with internal API proxying</summary>
+
+Fixed an issue where Tyk OAS mock response middleware failed to execute when internal API proxying was enabled. Mock responses configured in the target API are now correctly returned when a request is redirected to another API on the same Tyk Gateway instance via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}).
+</details>
+</li>
+
+<li>
+<details>
+<summary>Base API CORS settings incorrectly applied to child API versions</summary>
+
+Fixed an issue where CORS settings from the base API were incorrectly applied to all versions of a Tyk OAS API, preventing child API versions from using their own CORS configuration. This occurred because the CORS check was performed before the request was routed to the correct API version.
+
+The processing order has been corrected so that requests are first routed to the appropriate version (base or child), then the correct CORS settings are applied, allowing each API version to have its own CORS configuration.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Request Body Transform middleware not being applied with regex in URL rewrite</summary>
+
+Fixed an issue where Response Body Transformation middleware failed to apply to endpoints that used URL rewrite with regex patterns. When the endpoint path contained regex metacharacters (e.g., $, ^, (), []), these characters interfered with the body transformation's internal pattern-matching process, preventing the middleware from executing.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed duration format validation errors in Tyk OAS API definitions</summary>
+
+Resolved an issue where the Gateway automatically converted Readable Duration values (such as uptime test timeouts) in Tyk OAS API definitions from integer-based formats to decimal formats, which triggered schema validation warnings. The effect of this was seen in the Tyk OAS API editor in the Dashboard UI where, for example, a duration of '4s500ms' would be converted to '4.5s' when reopening an API definition. 
+
+Duration values are now consistently serialized and maintained in their original, integer-based format, preventing these validation errors.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed TLS configuration not being applied for Redis rate limiting</summary>
+
+Fixed an issue where Tyk Gateway did not properly apply the configured TLS settings when connecting to Redis for rate limiting operations. This could result in connection failures and incorrect `HTTP 429 Too Many Requests` responses being returned to clients. The rate limiter now correctly establishes TLS connections to Redis.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Gateway crash when deleting APIs with Uptime Test enabled</summary>
+
+Fixed a bug where deleting an API with the Uptime Test feature enabled could cause the Gateway to crash due to a nil pointer dereference during cleanup operations. The Gateway now properly handles memory cleanup when removing APIs with active uptime tests, preventing crashes and ensuring stable API lifecycle management.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Gateway re-registration failures after restart</summary>
+
+Fixed an issue where Gateways could fail to re-register with the Dashboard after a restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. 
+
+The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed body decompression errors with GraphQL APIs when analytics is enabled</summary>
+
+Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in End of File (EOF) errors. 
+
+The Gateway now properly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Stricter validation for version name parameter when creating a new child API version</summary>
+
+Fixed an issue where users could create child Tyk OAS API versions using the `/tyk/apis/oas` endpoint without specifying a valid version name (`new_version_name`). The Gateway API now rejects such requests with an `HTTP 422 Unprocessable Entity` error, ensuring all versions have meaningful identifiers and preventing the creation of unusable or empty version entries.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed inconsistent middleware updates for Tyk OAS API `PATCH` requests</summary>
+
+Fixed an issue where updating a Tyk OAS API via `PATCH /tyk/apis/oas/{apiId}` did not properly update the Tyk Vendor Extension (`x-tyk-api-gateway`). When endpoints were removed or modified in the OpenAPI description, their corresponding middleware definitions could persist incorrectly in the vendor extension, leaving the API definition in an inconsistent state. 
+
+The vendor extension is now correctly rebuilt to reflect all changes made to the OpenAPI description.
+</details>
+</li>
+
+</ul>
+
+## 5.9 Release Notes 
+
+### 5.9.2 Release Notes
+
+#### Release Date 5th September 2025
+
+#### Release Highlights
+
+This is a version bump to align with Dashboard v5.9.2, no changes have been implemented in this release. For further information, please see the release notes for Dashboard [v5.9.2]({{< ref "developer-support/release-notes/dashboard#592-release-notes" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|---- |
+| 5.9.2  | MDCB v2.8.4       | MDCB v2.8.4 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.3       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | Pump v1.12.1      | Pump all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.9.2}
+
+If you are upgrading to 5.9.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.9.2)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.9.2
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Gateway. You will need to modify them to install v5.9.2.
+
+- [Source code tarball of Tyk Gateway v5.9.2](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.2)
+
+#### Changelog {#Changelog-v5.9.2}
+
+Since this release was version-bumped only to align with Dashboard v5.9.2, no changes were encountered in this release.
+
+### 5.9.1 Release Notes
+
+#### Release Date 14th August 2025
+
+#### Release Highlights
+
+This release restores the stable /hello health-check behavior for Kubernetes probes. Deployments using /hello for liveness or readiness will now behave consistently again.
+
+It also fixes a schema compatibility issue in the URL Rewrite middleware, ensuring that API promotion and validation flows no longer fail due to schema mismatches.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.1" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|---- |
+| 5.9.1  | MDCB v2.8.3       | MDCB v2.8.3 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.2       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | Pump v1.12.0      | Pump all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.9.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.9.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.9.1
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.9.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.1)
+
+#### Changelog {#Changelog-v5.9.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Gateway `/hello` endpoint behaviour restored when Redis is unavailable</summary>
+
+Reverted the change introduced in versions 5.9.0 and 5.8.3 to the `/hello` health check endpoint, restoring its original functionality. This fix resolves an issue where the endpoint returned a 503 error when Redis was down. The `/hello` endpoint now correctly returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness and readiness probes.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
+
+Fixed a breaking change in the URL Rewrite middleware schema where the ’negate’ field inadvertently became mandatory in versions 5.8.3 and 5.9.0. This change caused validation errors when promoting APIs created in earlier versions (e.g., 5.8.1) to newer environments. The ’negate’ field is now optional again, restoring backward compatibility and defaulting to ‘false’ when omitted.
+
+</details>
+</li>
+
+</ul>
+
+### 5.9.0 Release Notes
+
+#### Release Date 4th August 2025
+
+#### Release Highlights
+
+This release builds on the recent release of [Tyk 5.8.3]({{< ref "developer-support/release-notes/gateway#583-release-notes" >}}), adding a collection of new capabilities. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.9.0" >}}).
+
+##### Accept JSON Web Tokens (JWTs) Issued By Multiple Identity Providers
+
+Tyk can now validate JWTs against multiple JSON Web Key Set (JWKS) endpoints, allowing you to use different IdPs to issue JWTs for the same API. Previously, we supported only a single JWKS endpoint in the `source` field, but now you can register multiple JWKS endpoints in the Tyk OAS API definition.
+
+When a request is received bearing a JWT, Tyk will retrieve JWKS from all registered IdPs to check the token's validity, for full details of how to use this powerful feature see the improved [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#remotely-stored-keys-jwks-endpoint" >}}) section.
+
+**Please note that this functionality is not available for Tyk Classic APIs.**
+
+##### Compatibility with Valkey
+
+Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
+
+##### Enhancements to Tyk Streams for Enterprise Edition
+
+We've added support for additional processors, inputs and outputs for [Tyk Streams event driven APIs]({{< ref "api-management/event-driven-apis" >}}), extending the flexibility of this powerful feature.
+
+#### Breaking Changes
+
+**1. Modified `/hello` endpoint behavior affects kubernetes deployments**
+
+In Tyk Gateway version 5.9.0, we introduced a breaking change to the `/hello` health check endpoint behavior. Previously, this endpoint would always return HTTP 200 during normal operations, regardless of Redis connectivity. The change made the endpoint return HTTP 503 when Redis was unavailable (which shouldn't be the case), which caused issues for Kubernetes deployments using this endpoint for liveness probes.
+
+##### Impact
+
+-   Kubernetes pods may be unnecessarily terminated when Redis becomes temporarily unavailable
+-   Deployments using `/hello` for both liveness and readiness probes experience disruption
+-   This contradicts the documented behavior that the Gateway continues functioning when Redis is unavailable
+
+##### Expected Fix Version
+
+This issue will be fixed in Tyk Gateway version 5.9.1, where we will:
+
+-   Revert the `/hello` endpoint to its pre-5.8.3 behavior (always return HTTP 200 during normal operations)
+-   Ensure backward compatibility for existing Kubernetes deployments
+
+**2. URL rewrite rules now require explicit `negate` field**
+
+A breaking change has been identified in Tyk 5.9.0 regarding [URL rewrite rules]({{< ref "transform-traffic/url-rewriting" >}}). The `negate` field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
+
+##### What Changed
+
+In Tyk 5.8.2 and earlier, the `negate` field in [URL rewrite rules]({{< ref "transform-traffic/url-rewriting" >}}) included an omitempty tag, making it optional in JSON. If not provided, it would default to false
+
+In Tyk 5.9.0, this omitempty tag has been removed, making the negate field mandatory in all URL rewrite rule configurations.
+
+##### Impact
+
+API definitions that worked in Tyk 5.8.2 will fail validation in Tyk 5.9.0 if they contain URL rewrite rules without an explicit negate field. This may cause API updates, or promotion between environments failures between environments with error messages similar to:
+
+```
+Error: API Updating Returned error: {
+  "Status": "Error",
+  "Message": "x-tyk-api-gateway.middleware.operations.(.*)OPTIONS.urlRewrite.triggers.0.rules.0: negate is required"
+}
+```
+
+##### Workarounds
+
+When using Tyk 5.9.0, you must explicitly include the negate field in all URL rewrite rules:
+
+```
+{
+  "rules": [
+    {
+      "in": "header",
+      "name": "x-example",
+      "pattern": "test",
+      "negate": false  // This field is now required
+    }
+  ]
+}
+```
+
+Set negate: false for standard matching behavior, or negate: true
+
+##### Expected fix version
+
+This issue will be fixed in Tyk 5.9.1, where we're going to make negate field optional again.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|--------|-------------------|---- |
+| 5.9.0  | MDCB v2.8.2       | MDCB v2.8.2 |
+|        | Operator v1.2.0   | Operator v0.17 |
+|        | Sync v2.1.2       | Sync v2.1.0 |
+|        | Helm Chart v4.0   | Helm all versions |
+|        | Pump v1.12.0      | Pump all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency | Tested Versions | Compatible Versions | Comments | 
+| ---------------------- | --------------- | ------------------- | -------- | 
+| [Go](https://go.dev/dl/)               | 1.23                   |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x  | v3.0.x | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.9.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.9.0)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.9.0
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.9.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.9.0)
+
+#### Changelog {#Changelog-v5.9.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Valkey Database Compatibility</summary>
+
+Added compatibility with Valkey database as an alternative to Redis. This is for fresh environments, with no migration support from Redis.
+</details>
+</li>
+<li>
+<details>
+<summary>Authenticate with Multiple JWKS Providers</summary>
+
+Added support for configuration of multiple JWKS (JSON Web Key Set) endpoints in the Tyk OAS API definition. This enables the Gateway to authenticate JSON Web Tokens (JWTs) in multi-identity provider environments. The JWKS endpoints are configured in the new `jwksURIs` array in the JWT Auth `securityScheme`. This will take precedence over the existing `source` field, and existing API definitions will be automatically migrated to use the new field, while maintaining backward compatibility in case of rollback.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Added GraphQL subscription support for upstream SSE servers that require the POST method</summary>
+
+Enabled configuration for GraphQL SSE subscriptions to use `POST` requests instead of `GET`, addressing compatibility issues with upstream servers that require `POST`. We’ve added a new option `proxy.sse_use_post` which can be set if `proxy.subscription_type=sse` to cause Tyk to issue `POST` requests. This allows for larger subscription payloads and keeps the subscription payload out of the URL.
+</details>
+</li>
+<li>
+<details>
+<summary>Added AMQP and MQTT as Input/Output Methods for Tyk Streams APIs</summary>
+
+Added support for AMQP (0.9 and 1.0) and MQTT to be used for input and output methods when constructing Tyk Streams APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Added Bloblang as a Processor for Tyk Streams APIs</summary>
+
+Added support for Bloblang to be used as a new processor option for Tyk Streams APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Added KeyID to Tyk Protobufs</summary>
+
+Added the missing `KeyID` field to the coprocess `SessionState` proto, allowing gRPC plugins to access it and aligning it with the Go `SessionState` struct. This enables full feature parity for custom authentication and session management in gRPC plugins.
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated to use latest kin-openapi</summary>
+
+Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensures improved compatibility, full stack interoperability, and continued support for existing OpenAPI 3.0.x specifications.
+</details>
+</li>
+</ul>
+
+---
+
 ## 5.8 Release Notes
+
+### 5.8.7 Release Notes
+
+#### Release Date 29 October 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.7" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----     |---- |---- |
+| 5.8.7   | MDCB v2.8.5     | MDCB v2.8.5 |
+|         | Operator v1.2.0 | Operator v0.17 |
+|         | Sync v2.1.4     | Sync v2.1.1 |
+|         | Helm Chart v4.0 | Helm all versions |
+|         | EDP v1.14.1     | EDP all versions |
+|         | Pump v1.13.0    | Pump all versions |
+|         | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.24  |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.7, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.7)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.7
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.7](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.7)
+
+#### Changelog {#Changelog-v5.8.7}
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Fixed Custom Authentication fallback when custom plugin bundle is disabled</summary>
+
+Fixed an issue where [Custom Authentication]({{< ref "api-management/authentication/custom-auth" >}}) could fall back to a previously configured alternative authentication method if the custom plugin bundle was not loaded. Now this is treated as for any other failed plugin load, and requests to the API will be rejected with `HTTP 500 Internal Server Error` to prevent access to an improperly configured endpoint.
+</details>
+</li>
+  
+<li>
+<details>
+<summary>Fixed Gateway panic when handling unexpected query parameters</summary>
+
+Fixed an issue where sending certain unexpected query parameters to the Gateway's `GET /tyk/apis/oas/{apiID}` endpoint could cause a panic instead of returning a proper `HTTP 400 Bad Request` response. The Gateway now handles unexpected query parameters gracefully without crashing, improving system stability and providing appropriate error responses to clients.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed issue with invalid or missing bundle manifests</summary>
+
+Fixed an issue where the Gateway would load and attempt to use plugin bundles even when the manifest file was invalid or missing. The Gateway now properly validates bundle manifests and fails safely by rejecting API requests when bundles cannot be properly loaded or verified.
+
+This prevents risks from corrupted or tampered bundles and ensures that APIs with invalid plugin configurations are not accessible, maintaining the integrity of authentication and authorization checks implemented by plugins.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed JWT key activation when toggling default policy from draft to active</summary>
+
+Fixed an issue where keys could remain deactivated when a policy applied to them was changed from `draft` to `active` status. When an access key/token is presented to Tyk in a request, policies linked to the key will be applied, configuring the authorization for that request. If any policy is in `draft` state, the key will be rejected.
+
+Toggling the policy to the `active` state should activate any keys to which the policy is applied. Previously, if the policy had never been applied when it was in `draft` state, there was an issue where keys would incorrectly be marked as `inactive`. This has now been resolved, and the policy state is correctly mapped to keys.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Added new configuration option for limiting response body size</summary>
+
+Added a new configuration option, [HttpServerOptions.MaxResponseBodySize]({{< ref "tyk-oss-gateway/configuration#http_server_optionsmax_response_body_size" >}}) to limit the maximum size of the response bodies processed during any response body transformations.  When the limit is exceeded, the Gateway returns `HTTP 500 Response Body Too Large` instead of attempting to process the oversized content.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed plugin loading failure errors being ignored for gRPC, Python, and Lua plugins</summary>
+
+Fixed an issue where plugin loading failure errors were ignored for gRPC, Python, and Lua plugins, allowing API requests to be processed even when plugins failed to load. The Gateway now properly validates plugin drivers during request processing and fails safely by returning `HTTP 500 Internal Server Error` when any plugin fails to load, ensuring consistent behavior across all plugin types.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved path handling during bundle decompression.</summary>
+
+Tyk Gateway now validates all file paths in zip bundles before extraction, rejecting bundles that contain invalid paths. Bundle extraction fails immediately upon detecting invalid paths, with detailed error logging, ensuring that only proper bundles with valid relative paths are processed.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed random version selection when `not_versioned` is set to true</summary>
+
+Fixed an issue where a **Tyk Classic API** with inconsistent versioning configuration would process requests using a **random version’s configuration**.
+
+A non-versioned API should:
+
+- Contain a single entry in `version_data.versions` with the API configuration.
+- Have the `version_data.not_versioned` flag set to `true`.
+
+Previously, if multiple entries existed in the `version_data.versions` array while `not_versioned` was set to `true`, the Gateway would **randomly select one** of those versions to process incoming requests.
+
+**New behavior:**
+
+When `version_data.not_versioned` is set to `true` and multiple versions are present, Tyk now deterministically selects the configuration for the **default version** instead of picking one at random.
+
+Tyk determines the default version as follows:
+
+- First, it looks for an entry named `"Default"`.
+- If not found, it checks for `"default"`.
+- If neither exists, it checks for an entry with an **empty string key** (`""`).
+- If none of these are found, Tyk returns an **error**, indicating a misconfigured non-versioned API.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed inappropriate warning logs for mock response requests</summary>
+
+Fixed an issue where the mock response middleware generated incorrect warning-level messages stating `session not found`, sending inappropriate rate-limit headers in the Gateway system logs.
+
+This warning was introduced incorrectly and caused confusion, as mock responses don't require session objects by design. The Gateway now returns to the previous behavior where mock response requests execute without generating spurious warning messages, reducing log noise.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Data Plane Gateway hanging when MDCB connection is lost</summary>
+
+Fixed an issue where a Data Plane Gateway could hang for all client requests when the MDCB connection was lost. This was caused by the Gateway incorrectly checking the Organisation quota when `TYK_GW_ENFORCEORGQUOTAS` was not set. If the Organisation quota cache expired before the Gateway performed a health check, the Gateway could hang.
+
+From this release, the Gateway does not check the Organisation quota cache if this is not set. For users relying on Organisation quotas (setting `TYK_GW_ENFORCEORGQUOTAS=true`), the scenario is different and the lock does not occur.
+</details>
+</li>
+
+</ul>
+
+### 5.8.6 Release Notes
+
+#### Release Date 25th September 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.6" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----     |---- |---- |
+| 5.8.6   | MDCB v2.8.4     | MDCB v2.8.4 |
+|         | Operator v1.2.0 | Operator v0.17 |
+|         | Sync v2.1.3     | Sync v2.1.1 |
+|         | Helm Chart v4.0 | Helm all versions |
+|         | EDP v1.14.1     | EDP all versions |
+|         | Pump v1.12.2    | Pump all versions |
+|         | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.24  |  1.24  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.24 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.6, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.6)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.6
+    ``` 
+- Helm charts
+  - [tyk-charts v4.0.0]({{<ref "developer-support/release-notes/helm-chart#400-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.6](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.6)
+
+#### Changelog {#Changelog-v5.8.6}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Go 1.24 Upgrade for Tyk Gateway</summary>
+
+The Tyk Gateway has been updated to [Golang 1.24](https://tip.golang.org/doc/go1.24), enhancing security by staying up-to-date with the latest Go versions.
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Fixed body decompression errors with GraphQL APIs when analytics is enabled</summary>
+
+Fixed an issue that caused repeated `Body decompression error: EOF` log messages when analytics were enabled for GraphQL APIs. The problem occurred because the Gateway attempted to decompress the response body after it had already been consumed for analytics processing, resulting in EOF (End of File) errors. The Gateway now correctly handles response body consumption for GraphQL APIs with analytics, eliminating the spurious error logs.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Gateway re-registration failures after restart</summary>
+
+Fixed an issue where Gateways could fail to re-register with the Dashboard after a restart, particularly during upgrades or in large-scale deployments. This resulted in `Authorization failed (Nonce empty)` errors and Gateway crash loops that prevented successful registration. The fix includes an updated license handler with hardened registration logic, enhanced Dashboard authentication retry mechanisms, and support for new "Unlimited Gateway" licenses, ensuring Gateways register reliably without entering failure loops even during heavy churn or rolling upgrades.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Gateway crash when deleting APIs with Uptime Test enabled</summary>
+
+Fixed a bug where deleting an API with the Uptime Test feature enabled could cause the Gateway to crash due to a nil pointer dereference during cleanup operations. The Gateway now properly handles memory cleanup when removing APIs with active uptime tests, preventing crashes and ensuring stable API lifecycle management.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed TLS configuration not being applied for Redis rate limiting</summary>
+
+Fixed an issue where Tyk Gateway did not properly apply the configured TLS settings when connecting to Redis for rate limiting operations. This could result in connection failures and incorrect `HTTP 429 Too Many Requests` responses being returned to clients. The rate limiter now correctly establishes TLS connections to Redis.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Request Body Transform middleware not being applied with regex in URL rewrite</summary>
+
+Fixed an issue where Response Body Transformation middleware failed to apply to endpoints that used URL rewrite with regex patterns. When the endpoint path contained regex metacharacters (e.g., $, ^, (), []), these characters interfered with the body transformation's internal pattern-matching process, preventing the middleware from executing.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Base API CORS settings incorrectly applied to child API versions</summary>
+
+Fixed an issue where CORS settings from the base API were incorrectly applied to all versions of a Tyk OAS API, preventing child API versions from using their own CORS configuration. This occurred because the CORS check was performed before the request was routed to the correct API version. The processing order has been corrected so that requests are first routed to the appropriate version (base or child), then the correct CORS settings are applied, allowing each API version to have its own CORS configuration.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed mock responses not working with internal API proxying</summary>
+
+Fixed an issue where Tyk OAS mock response middleware failed to execute when internal API proxying was enabled. Mock responses configured in the target API are now correctly returned when a request is redirected to another API on the same Tyk Gateway instance via [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}).
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed duplication of version identifier configuration when importing OpenAPI description</summary>
+
+Fixed an issue where importing an OpenAPI description with an `apiKey` security scheme, while using the `authentication` query parameter, resulted in the unnecessary generation of a `header` object within the Tyk Vendor Extension (`x-tyk-api-gateway`), duplicating information already present in the declared OpenAPI security scheme.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed duration format validation errors in Tyk OAS API definitions</summary>
+
+Resolved an issue where the Gateway automatically converted Readable Duration values (such as uptime test timeouts) in Tyk OAS API definitions from integer-based formats to decimal formats, which triggered schema validation warnings. The effect of this was seen in the Tyk OAS API editor in the Dashboard UI where, for example, a duration of '4s500ms' would be converted to '4.5s' when reopening an API definition. Duration values are now consistently serialized and maintained in their original integer-based format to prevent these validation errors.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Stricter validation for version name parameter when creating a new child API version</summary>
+
+Fixed an issue where users could create child Tyk OAS API versions using the `/tyk/apis/oas` endpoint without specifying a valid version name (`new_version_name`). The Gateway API now rejects such requests with an `HTTP 422 Unprocessable Entity` error, ensuring all versions have meaningful identifiers and preventing the creation of unusable or empty version entries.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed inconsistent middleware updates for Tyk OAS API `PATCH` requests</summary>
+
+Fixed an issue where updating a Tyk OAS API via `PATCH /tyk/apis/oas/{apiId}` did not properly update the Tyk Vendor Extension (`x-tyk-api-gateway`). When endpoints were removed or modified in the OpenAPI description, their corresponding middleware definitions could persist incorrectly in the vendor extension, leaving the API definition in an inconsistent state. The vendor extension is now correctly rebuilt to reflect all changes made to the OpenAPI description.
+</details>
+</li>
+
+</ul>
+
+### 5.8.5 Release Notes
+
+#### Release Date 18th August 2025
+
+#### Release Highlights
+
+Gateway 5.8.5 was version bumped only to align with Dashboard 5.8.5. Subsequently, no changes were encountered in release 5.8.5. For further information, please see the release notes for Dashboard [v5.8.5]({{< ref "developer-support/release-notes/dashboard#585-release-notes" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.5 | MDCB v2.8.4     | MDCB v2.8.4 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.1 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.5}
+
+If you are upgrading to 5.8.5, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.5)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.5
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.5](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.5)
+
+#### Changelog {#Changelog-v5.8.5}
+
+Since this release was version-bumped only to align with Dashboard v5.8.5, no changes were encountered in this release.
+
+
+### 5.8.4 Release Notes
+
+#### Release Date 13th August 2025
+
+#### Release Highlights
+
+This release restores the stable /hello health-check behavior for Kubernetes probes. Deployments using /hello for liveness or readiness will now behave consistently again.
+
+It also fixes a schema compatibility issue in the URL Rewrite middleware, ensuring that API promotion and validation flows no longer fail due to schema mismatches.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.4" >}}).
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.4 | MDCB v2.8.3     | MDCB v2.8.3 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.4, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.4)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.4
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.4](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.4)
+
+#### Changelog {#Changelog-v5.8.4}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Gateway /hello endpoint behaviour restored when Redis is unavailable</summary>
+
+Reverted the change introduced in versions 5.9.0 and 5.8.3 to the `/hello` health check endpoint, restoring its original functionality. This fix resolves an issue where the endpoint returned a 503 error when Redis was down. The `/hello` endpoint now correctly returns HTTP 200 during normal operations, ensuring compatibility with Kubernetes liveness and readiness probes.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>URL Rewrite Middleware Schema Compatibility Fix</summary>
+
+Fixed a breaking change in the URL Rewrite middleware schema where the 'negate' field incorrectly became mandatory in versions 5.8.3 and 5.9.0. This change caused validation errors when promoting APIs created in earlier versions (e.g., 5.8.1) to newer environments. The 'negate' field is now optional again, restoring backward compatibility and defaulting to 'false' when omitted.
+
+</details>
+</li>
+
+</ul>
+
+
+### 5.8.3 Release Notes
+
+#### Release Date 15th July 2025
+
+#### Release Highlights
+
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.3" >}}) below.
+
+#### Breaking Changes
+
+**1. Modified `/hello` endpoint behavior affects kubernetes deployments**
+
+In Tyk Gateway version 5.8.3, we introduced a breaking change to the `/hello` health check endpoint behavior. Previously, this endpoint would always return HTTP 200 during normal operations, regardless of Redis connectivity. The change made the endpoint return HTTP 503 when Redis was unavailable (which shouldn't be the case), which caused issues for Kubernetes deployments using this endpoint for liveness probes.
+
+##### Impact
+
+-   Kubernetes pods may be unnecessarily terminated when Redis becomes temporarily unavailable
+-   Deployments using `/hello` for both liveness and readiness probes experience disruption
+-   This contradicts the documented behavior that the Gateway continues functioning when Redis is unavailable
+
+
+##### Expected Fix Version
+
+This issue will be fixed in Tyk Gateway version 5.8.4, where we will:
+
+-   Revert the `/hello` endpoint to its pre-5.8.3 behavior (always return HTTP 200 during normal operations)
+-   Ensure backward compatibility for existing Kubernetes deployments
+
+**2. URL rewrite rules now require explicit `negate` field**
+
+A breaking change has been identified in Tyk 5.8.3 regarding [URL rewrite rules]({{< ref "transform-traffic/url-rewriting" >}}). The `negate` field, which was optional in previous versions, is now mandatory in all URL rewrite rule configurations.
+
+##### What Changed
+
+In Tyk 5.8.2 and earlier, the `negate` field in [URL rewrite rules]({{< ref "transform-traffic/url-rewriting" >}}) included an omitempty tag, making it optional in JSON. If not provided, it would default to false
+
+In Tyk 5.8.3, this omitempty tag has been removed, making the negate field mandatory in all URL rewrite rule configurations.
+
+##### Impact
+
+API definitions that worked in Tyk 5.8.2 will fail validation in Tyk 5.8.3 if they contain URL rewrite rules without an explicit negate field. This may cause API updates, or promotion between environments failures between environments with error messages similar to:
+
+```
+Error: API Updating Returned error: {
+  "Status": "Error",
+  "Message": "x-tyk-api-gateway.middleware.operations.(.*)OPTIONS.urlRewrite.triggers.0.rules.0: negate is required"
+}
+```
+
+##### Workarounds
+
+When using Tyk 5.8.3, you must explicitly include the negate field in all URL rewrite rules:
+
+```
+{
+  "rules": [
+    {
+      "in": "header",
+      "name": "x-example",
+      "pattern": "test",
+      "negate": false  // This field is now required
+    }
+  ]
+}
+```
+
+Set negate: false for standard matching behavior, or negate: true
+
+##### Expected fix version
+
+This issue will be fixed in Tyk 5.8.4, where we're going to make negate field optional again.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.3 | MDCB v2.8.2     | MDCB v2.8.2 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.1    | Sync v2.1.1 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.14 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.8.3)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.8.3
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball of Tyk Gateway v5.8.3](https://github.com/TykTechnologies/tyk/releases/tag/v5.8.3)
+
+#### Changelog {#Changelog-v5.8.3}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Tyk Gateway Now Supports Configurable Graceful Shutdown Period</summary>
+
+The Gateway now supports a configurable [graceful shutdown]({{< ref "planning-for-production/ensure-high-availability/graceful-shutdown" >}}) period, waiting up to `graceful_shutdown_timeout_duration` seconds (default value is 30s) for open connections to close before terminating. Additionally, improvements have been made to the liveness (`hello`) and readiness (`/ready`) endpoints.
+</details>
+</li>
+</ul>
+
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Load Balance Between gRPC Plugin Servers</summary>
+
+Fixed support for `dns:///` protocol for load balancing when using [gRPC plugins]({{< ref "api-management/plugins/rich-plugins#load-balancing-between-grpc-servers" >}}). Setting the new configuration option `TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING` to `true` will cause Tyk to balance the load between multiple gRPC servers; the default behavior (`false`) is to use a sticky connection to a single server.
+</details>
+</li>
+<li>
+<details>
+<summary>Restored TLS 1.2 Cipher Suite Support</summary>
+
+Fixed an issue introduced in Tyk 5.8.1 where several previously supported cipher suites were no longer recognized when configured, causing them to be silently skipped for clients relying on those ciphers. The issue was only visible with debug-level logging, making it difficult to diagnose in production environments. Support for these cipher suites has now been restored.
+</details>
+</li>
+<li>
+<details>
+<summary>Calling Invalid Stream API Endpoint Now Returns HTTP 404</summary>
+
+Gateway no longer returns `HTTP 500` when calling an invalid path on a streams API and will instead return `HTTP 404` as expected.
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable GraphQL Proxying for Interface Arguments</summary>
+
+Fixed an issue where Tyk has trouble proxying a GraphQL edge case; a request that includes an argument on an interface leads to errors proxying.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Repeated “Unsupported Protocol Scheme” Errors</summary>  
+
+Gateway no longer produces endless "unsupported protocol scheme" errors for Tyk Streams APIs
+</details>
+</li>
+<li>
+<details>
+<summary>Stability Fixes for GraphQL Subscriptions and Kafka Messaging</summary>  
+
+Fixed a panic triggered by starting GraphQL subscriptions and resolved an issue where Kafka messages failed to resolve correctly.  
+</details>
+</li>
+<li>
+<details>
+<summary>Removed Unnecessary Garbage Collection When Deleting Tyk Streams API</summary>
+
+Gateway no longer tries to start a garbage collection task after deleting a Tyk Streams API
+</details>
+</li>
+<li>
+<details>
+<summary>Detailed Traffic Logs Missing Payload</summary>
+
+Fixed an issue where the payload (request body) was not included in detailed traffic logs for the following scenarios:
+- `Content-Type "application/x-www-form-urlencoded"`
+- `Transfer-Encoding: chunked`
+</details>
+</li>
+<li>
+<details>
+<summary>Reliable SSE and WebSocket Streaming for Browser Clients</summary>
+
+Browser clients can now reliably consume streams outputs (SSE and WebSocket)
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk OAS API Definition Wasn't Accessible From Response Plugins</summary>  
+
+Fixed an issue when using Tyk OAS where the API definition was not accessible from Response Plugins unless a Request Plugin was also loaded. The issue was caused by the `ctx.GetOASDefinition(req)` function not consistently returning the proper OpenAPI Specification (OAS).
+</details>
+</li>
+</ul>
+
+---
 
 ### 5.8.2 Release Notes
 
@@ -55,7 +1494,7 @@ This patch release contains fixes to some bugs experienced when using MDCB and d
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.2}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -83,7 +1522,7 @@ Given the potential time difference between your upgrade and the release of this
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.2}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -105,23 +1544,24 @@ If you are upgrading to 5.8.2, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
+<summary>Gateways in Distributed Data Planes Were Unable To Perform mTLS When MDCB Link Unavailable</summary>
 
 Resolved an issue introduced in Tyk 5.7.1 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed Stale RPC Connections After DNS Changes</summary>
+<summary>More Resilient RPC Connections During DNS Changes</summary>
 
-We've fixed an issue where RPC connections remained stale when DNS records changed (such as ELB IP updates), leading to timeout errors. Based on direct customer reports, we've enhanced DNS resolution so all connections in the RPC pool now properly reconnect when endpoint IPs change. This eliminates service disruptions during infrastructure updates and ensures more resilient connectivity.
+The Data Plane could lose connectivity to MDCB when DNS records changed (for example due to ELB updates). The RPC address became stale and the Gateways could not reconnect.
+We have improved the RPC connection handling in the gateway to properly detect and respond to DNS changes, ensuring seamless reconnection when remote IPs become unavailable.
 </details>
 </li>
 <li>
 <details>
 <summary>Resolved MDCB Policy Sync Issue Caused by RPC Timeouts</summary>
 
-Fixed a bug where a timeout in an RPC call to MDCB would lead to policies not being synchronised to the data plane. 
+Fixed a bug where a timeout in an RPC call to MDCB could lead to policies not being synchronised to the data plane. 
 </details>
 </li>
 </ul>
@@ -140,7 +1580,7 @@ This patch release contains various bug fixes. For a comprehensive list of chang
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -168,7 +1608,7 @@ Given the potential time difference between your upgrade and the release of this
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.1}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -243,7 +1683,7 @@ With Tyk OAS we combine the industry standard OpenAPI description with the Tyk V
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.8.0}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -271,7 +1711,7 @@ Given the potential time difference between your upgrade and the release of this
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.8.0}
+#### Upgrade instructions
 
 If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -425,7 +1865,7 @@ Resolved an issue where the gateway incorrectly selected the OAuth upstream auth
 
 This patch release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.3" >}}) below.
 
-#### Dependencies {#dependencies-5.7.3}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -453,7 +1893,7 @@ Given the potential time difference between your upgrade and the release of this
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.7.3}
+#### Upgrade instructions
 
 If you are upgrading to 5.7.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -495,7 +1935,7 @@ This patch release contains a bug fix. For a comprehensive list of changes, plea
 #### Breaking Changes
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.2}
+#### Dependencies
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -524,7 +1964,7 @@ Given the potential time difference between your upgrade and the release of this
 There are no deprecations in this release.
 
 
-#### Upgrade instructions {#upgrade-5.7.2}
+#### Upgrade instructions
 If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
@@ -566,7 +2006,7 @@ This release focuses mainly on bug fixes. For a comprehensive list of changes, p
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.1}
+#### Dependencies
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -598,7 +2038,7 @@ Given the potential time difference between your upgrade and the release of this
 There are no deprecations in this release.
 
 
-#### Upgrade instructions {#upgrade-5.7.1}
+#### Upgrade instructions
 If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
@@ -724,7 +2164,7 @@ All of this possible in self-managed and k8s deployments of Tyk!
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.7.0}
+#### Dependencies
 
 
 ##### Compatibility Matrix For Tyk Components
@@ -756,7 +2196,7 @@ Given the potential time difference between your upgrade and the release of this
 In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 
 
-#### Upgrade instructions {#upgrade-5.7.0}
+#### Upgrade instructions
 If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
@@ -884,7 +2324,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.6.1}
+#### Dependencies
 
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
@@ -936,7 +2376,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ###### Future deprecations
 -->
 
-#### Upgrade instructions {#upgrade-5.6.1}
+#### Upgrade instructions
 
 If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -1071,7 +2511,7 @@ the core system.
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.6.0}
+#### Dependencies
 
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
@@ -1123,7 +2563,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ###### Future deprecations
 -->
 
-#### Upgrade instructions {#upgrade-5.6.0}
+#### Upgrade instructions
 
 If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -1311,7 +2751,7 @@ This release replaces Tyk Gateway 5.5.1 which was accidentally released as a non
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.2}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1339,7 +2779,7 @@ Given the potential time difference between your upgrade and the release of this
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.5.2}
+#### Upgrade instructions
 If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
@@ -1366,7 +2806,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 
 There are no breaking changes in this release.
 
-#### Dependencies {#dependencies-5.5.1}
+#### Dependencies
 
 ##### Compatibility Matrix For Tyk Components
 
@@ -1394,7 +2834,7 @@ Given the potential time difference between your upgrade and the release of this
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.5.1}
+#### Upgrade instructions
 If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
@@ -1482,7 +2922,7 @@ Experience improved performance with optimised creation and usage of Abstract Sy
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in the image.
 
-#### Dependencies {#dependencies-5.5.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1527,7 +2967,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ###### Future deprecations
 -->
 
-#### Upgrade instructions {#upgrade-5.5.0}
+#### Upgrade instructions
 If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 #### Downloads
@@ -1671,7 +3111,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 We have fixed a bug in the way that Tyk calculates the [key-level rate limit]({{< ref "api-management/rate-limit#key-level-rate-limiting" >}}) when multiple policies are applied to the same key. This fix alters the logic used to calculate the effective rate limit and so may lead to a different rate limit being applied to keys generated from your existing policies. See the [change log](#fixed) for details of the change.
 
-#### Dependencies {#dependencies-5.4.0}
+#### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1720,7 +3160,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ###### Future deprecations
 -->
 
-#### Upgrade instructions {#upgrade-5.4.0}
+#### Upgrade instructions
 If you are upgrading to 5.4.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 Add upgrade steps here if necessary.
@@ -1769,7 +3209,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
   - [tyk-charts v1.5]({{< ref "developer-support/release-notes/helm-chart#150-release-notes" >}})
 - [Source code tarball of Tyk Gateway v5.4.0](https://github.com/TykTechnologies/tyk/releases/tag/v5.4.0)
 
-#### Changelog {#Changelog-v5.4.0}
+#### Changelog
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
@@ -1916,6 +3356,7 @@ Corrected an issue where GraphQL OTel attributes were missing from spans when re
 Fixed a gateway panic issue observed by users when using the *Persist GQL* middleware without defined arguments. The gateway will no longer throw panics in these cases.
 </details>
 </li>
+
 <li>
 <details>
 <summary>Resolved issue with GraphQL APIs handling OPTIONS requests</summary>
@@ -1923,6 +3364,7 @@ Fixed a gateway panic issue observed by users when using the *Persist GQL* middl
 Fixed an issue with GraphQL API's Cross-Origin Resource Sharing (CORS) configuration, which previously caused the API to fail in respecting CORS settings. This resulted in an inability to proxy requests to upstream servers and handle OPTIONS/CORS requests correctly. With this fix, users can now seamlessly make requests, including OPTIONS method requests, without encountering the previously reported error.
 </details>
 </li>
+
 <li>
 <details>
 <summary>Resolved conflict with multiple APIs sharing listen path on different domains</summary>
@@ -1991,6 +3433,102 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ## 5.3 Release Notes
 
+### 5.3.12 Release Notes
+
+#### Release Date 12th September 2025
+
+#### Release Highlights
+
+This patch release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.12" >}}) below.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.12 | MDCB v2.8.4     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+If you are upgrading to 5.3.12, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.12)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.12
+    ``` 
+
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.3.12}
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Gateways in distributed Data Planes now cache certificates correctly in Redis</summary>
+  
+Resolved an issue introduced in Tyk 5.3.10 where Gateways in distributed Data Planes failed to cache TLS certificates correctly in the local Redis, resulting in potential service disruptions if MDCB became unavailable. Data plane gateways now reliably serve HTTPS and mTLS traffic even if MDCB is unavailable.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Stale RPC Connections After DNS Changes</summary>
+
+We’ve fixed an issue where RPC connections remained stale when DNS records changed (such as ELB IP updates), leading to timeout errors. Based on direct customer reports, we’ve enhanced DNS resolution so all connections in the RPC pool now properly reconnect when endpoint IPs change. This eliminates service disruptions during infrastructure updates and ensures more resilient connectivity.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Resolved MDCB Policy Sync Issue Caused by RPC Timeouts</summary>
+
+Fixed a bug where a timeout in an RPC call to MDCB would lead to policies not being synchronised to the data plane.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Gateway Registration Reliability During Upgrades</summary>
+
+We’ve resolved an issue that could cause Gateways to fail re-registration when restarting under certain licensing configurations during upgrades. This fix introduces support for new “Unlimited Gateway” licenses, enhances Gateway's Dashboard authentication retry logic, and ensures a smoother upgrade experience for large-scale deployments. Gateways now register reliably without entering failure loops, even under heavy churn or rolling upgrades.
+</details>
+</li>
+
+</ul>
+
+
+---
+
 ### 5.3.11 Release Notes
 
 #### Release Date 7 May 2025
@@ -2031,7 +3569,7 @@ Given the potential time difference between your upgrade and the release of this
 
 There are no deprecations in this release.
 
-#### Upgrade instructions {#upgrade-5.3.11}
+#### Upgrade instructions
 
 If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -3557,7 +5095,7 @@ We try to avoid making changes to our log messages, especially at error and crit
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 <!-- ##### Planned Breaking Changes -->
 
-#### Dependencies {#dependencies-5.3.0}
+#### Dependencies
 
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
@@ -3611,7 +5149,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ###### Future deprecations
 -->
 
-#### Upgrade instructions {#upgrade-5.3.0}
+#### Upgrade instructions
 
 If you are upgrading to 5.3.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
@@ -4511,7 +6049,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/sha256-47cfffda64ba492f79e8cad013a476f198011f5a97cef32464f1f47e1a9be9a2?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
 
-#### Changelog {#Changelog-v5.2.1}
+#### Changelog
 
 ##### Changed
 
@@ -4911,7 +6449,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 
 ## 5.0 Release Notes
 
-### 5.0.15 Release Notes {#rn-v5.0.15}
+### 5.0.15 Release Notes
 
 #### Release Date 24 October 2024
 
@@ -4947,7 +6485,7 @@ In version 5.0.14, Tyk Gateway could encounter panic when attempting to reconnec
 
 ---
 
-### 5.0.14 Release Notes {#rn-v5.0.14}
+### 5.0.14 Release Notes
 
 #### Release Date 18th September 2024
 
@@ -4991,7 +6529,7 @@ section for detailed upgrade instructions.
 This release fixes some issues related to the way that Tyk performs URL path matching, introducing two new Gateway
 configuration options to control path matching strictness.
 
-#### Changelog {#Changelog-v5.0.14}
+#### Changelog
 
 ##### Added
 
@@ -5083,7 +6621,7 @@ Customers should clear their edge Redis instances of any potentially affected ke
 ensure proper synchronization across their environments. Please refer to the item in the [fixed](#fixed) section of the
 changelog for recommended actions.
 
-#### Changelog {#Changelog-v5.0.13}
+#### Changelog
 
 ##### Fixed
 
@@ -5306,7 +6844,7 @@ for your PRs that further improve the quality of Tyk OSS Gateway!
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.0.0/images/sha256-196815adff2805ccc14c267b14032f23913321b24ea86c052b62a7b1568b6725?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.0)
 
-#### Changelog {#Changelog-v5.0.0}
+#### Changelog
 
 ##### Added
 
@@ -5807,10 +7345,6 @@ Detailed logging is used in a lot of the cases for debugging issues. Now as well
 New detailed logging changes are available only to our Self-Managed customers currently.
 
 [Read More]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}})
-
-##### Better Redis failover
-
-Now, if Redis is not available, Tyk will be more gracefully handle this scenario, and instead of simply timing out the Redis connection, will dynamically disable functionality which depends on redis, like rate limits or quotas, and will re-enable it back once Redis is available. The Tyk Gateway can even be started without Redis, which makes possible scenarios, such as when the Gateway proxies Redis though itself, like in a Redis Sentinel setup.
 
 ##### Ability to shard analytics to different data-sinks
 

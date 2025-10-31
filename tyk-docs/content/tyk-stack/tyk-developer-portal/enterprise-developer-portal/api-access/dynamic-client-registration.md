@@ -1,6 +1,6 @@
 ---
 title: "Dynamic Client Registration"
-date: 2025-02-10
+date: 2025-07-26
 tags: ["Developer Portal", "Tyk", "Dynamic Client Registration"]
 keywords: ["Developer Portal", "Tyk", "Dynamic Client Registration"]
 description: "How to configure Dynamic Client Registration in Tyk developer portal"
@@ -27,12 +27,12 @@ Tyk Enterprise Developer portal allows API providers to set up a connection with
 
 <br/>
 
-### Prerequisites
+## Prerequisites
 Before getting starting with configuring the portal, it's required to configure your Identity provider and the Dashboard beforehand.
 
-#### Create an initial access token
+### Create an initial access token
 Before setting up Tyk Enterprise Developer Portal to work with DCR, you need to configure the identity provider. Please refer to the guides for popular providers to create the initial access token for DCR:
-* [Gluu](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration)
+* [Gluu](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect#dynamic-client-registration)
 * [Curity](https://curity.io/docs/idsvr/latest/token-service-admin-guide/dcr.html)
 * [Keycloak](https://github.com/keycloak/keycloak/blob/25.0.6/docs/documentation/securing_apps/topics/client-registration.adoc)
 * [Okta](https://developer.okta.com/docs/reference/api/oauth-clients/)
@@ -43,13 +43,48 @@ Before setting up Tyk Enterprise Developer Portal to work with DCR, you need to 
 Whilst many providers require initial access tokens, they are optional. Please refer to your provider documentation to confirm if required.
 {{< /note >}}
 
-#### Create OAuth2.0 scopes to enforce access control and rate limit
+### Create OAuth2.0 scopes to enforce access control and rate limit
 
 Tyk uses OAuth2.0 scope to enforce access control and rate limit for API Products. Therefore, creating at least two scopes for an API Product and plan is required. 
 
-The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below.
+The below example demonstrates how to achieve that with Curity, Keycloak and Okta in the tabs below.
 
 {{< tabs_start >}}
+{{< tab_start "Curity" >}}
+
+1. **Navigate to Profiles &#8594; Token Service &#8594; Scopes**
+
+    Click `+ New` to create a new scope.
+    
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-add-scope.jpg" alt="Navigate to the Scopes menu" >}}
+
+2. **Give the new scope a name**
+
+    Name the scope **product_payments** and click `Create`. Repeat to create another scope and give it the name **free_plan**.
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-product.jpg" alt="Name the scope product_payments" >}}
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/curity-name-scope-plan.jpg" alt="Name the scope free_plan" >}}
+
+    The created scopes can now be assigned to OAuth Clients configured, including DCR clients when they are registered.
+
+**Unauthenticated DCR**
+
+The Curity Identity Server by default requires a {{< tooltip >}}nonce token{{< definition >}}A token that can only be used once{{< /definition >}}{{< /tooltip >}} with a `dcr` scope to authenticate the DCR endpoint. It obtains this via normal OAuth flows. It is, however, not possible to define an OAuth client_id and secret in Tyk to obtain such a token. A workaround is to disable authentication of the DCR endpoint in the Curity Identity Server by setting it to use no-authentication. 
+
+<br>
+
+{{< warning success >}}
+**Use in secure environments only**
+
+When configuring the DCR endpoint in the Curity Identity Server to use `no-authentication`, ensure that the communication between Tyk and the Curity Identity Server is secured so that it is only accessible to Tyk.
+
+To configure this in the AdminUI of the Curity Identity Server, go to Profiles &#8594; Token Service &#8594; Dynamic Registration &#8594; scroll to the Non-templatized section and set Authentication Method to `no-authentication`.  
+
+{{< /warning >}}
+
+{{< tab_end >}}
+
 {{< tab_start "Keycloak" >}}
 
 1. **Navigate to the Client scopes menu item**
@@ -94,7 +129,7 @@ When using Keycloak, ensure that you set the type of the scope to be `Optional`.
 
 {{< tabs_end >}}
 
-### Create Tyk policies for an API Product and plan
+## Create Tyk policies for an API Product and plan
 
 {{< note >}}
 **Note**
@@ -114,7 +149,7 @@ Navigate to the Tyk Dashboard and create two policies: one for a plan and one fo
     {{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-plan.png" alt="Create a policy for a plan" >}}
 
 
-#### Create the No Operation policy and API
+### Create the No Operation policy and API
 
 {{< note >}}
 **Note**
@@ -153,7 +188,7 @@ To avoid that, you need to create the No Operation API and policy that won't gra
     Configure the No Operation policy and save it:
     {{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-policy.png" alt="Save the No Operation policy" >}}
 
-#### Configure scope to policy mapping
+### Configure scope to policy mapping
 
 {{< note >}}
 **Note**
@@ -190,12 +225,12 @@ To achieve that, perform the following steps for each API included in the API Pr
 
     {{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-scope-to-policy-mapping-for-the-plan-scope.png" alt="Add scope to policy mapping for the plan scope" >}}
 
-### Configure Tyk Enterprise Developer Portal to work with an identity provider
+## Configure Tyk Enterprise Developer Portal to work with an identity provider
 
 Set up the portal to work with your IdP.
 
 
-#### Configure the App registration settings
+### Configure the App registration settings
 
 In the portal, navigate to the `OAuth2.0 Providers` menu section. In that section, you need to configure the connection settings to the IdP and define one or more types (configurations) of OAuth 2.0 clients. For instance, you can define two types of OAuth 2.0 clients:
 * A confidential client that supports the Client credential grant type for backend integrations;
@@ -204,7 +239,7 @@ In the portal, navigate to the `OAuth2.0 Providers` menu section. In that sectio
 Each configuration of OAuth 2.0 client could be associated with one or multiple API Products so that when an API Consumer requests access to an API Product, they can select a client type that is more suitable for their use case.
 
 
-##### Specify connection setting to your IdP
+#### Specify connection setting to your IdP
 
 To connect the portal to the IdP, you need to specify the following settings:
 * OIDC well-known configuration URL.
@@ -214,9 +249,16 @@ First of all, select your IdP from the `Identity provider` dropdown list. Differ
 
 Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the `SSL secure skip verify` checkbox.
 
-The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below.
+The below example demonstrates how to achieve that with Curity, Keycloak and Okta in the tabs below.
 
 {{< tabs_start >}}
+
+{{< tab_start "Curity" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-oauth-provider.jpg" alt="Specify connection setting" >}}
+
+Set a **Name**, set the **Identity Provider Type** to `Other`, and the **OIDC well-known configuration URL** aproppriately.
+{{< tab_end >}}
 
 {{< tab_start "Keycloak" >}}
 
@@ -236,7 +278,7 @@ The below example demonstrates how to achieve that with Keycloak and Okta in the
 
 {{< tabs_end >}}
 
-##### Create client configurations
+#### Create client configurations
 Once the connection settings are specified, you need to create one or multiple types of clients. You might have multiple types of clients that are suitable for different use cases, such as backend integration or web applications.
 
 You need at least one type of client for the DCR flow to work. To add the first client type, scroll down to the `Client Types` section and click on the `Add client type` button.
@@ -251,9 +293,15 @@ To configure a client type, you need to specify the following settings:
 
 Please note that your IdP might override some of these settings based on its configuration.
 
-The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below. After configuring a client type, scroll to the top of the page to save it by clicking on the `SAVE CHANGES` button.
+The below example demonstrates how to achieve that with Curity, Keycloak and Okta in the tabs below. After configuring a client type, scroll to the top of the page to save it by clicking on the `SAVE CHANGES` button.
 
 {{< tabs_start >}}
+
+{{< tab_start "Curity" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-client-type.jpg" alt="Configure a client type" >}}
+
+{{< tab_end >}}
 
 {{< tab_start "Keycloak" >}}
 
@@ -271,10 +319,10 @@ The below example demonstrates how to achieve that with Keycloak and Okta in the
 
 {{< tabs_end >}}
 
-### Configure API Products and plans for the DCR flow
+## Configure API Products and plans for the DCR flow
 Once the App registration settings are configured, it is time for the final step: to configure the API Products and plans to work with the DCR flow.
 
-#### Configure API Products for the DCR flow
+### Configure API Products for the DCR flow
 
 To configure API Products to work with the DCR flow, you need to:
 * Enable the DCR flow for the products you want to work with the DCR flow.
@@ -288,6 +336,12 @@ After that, specify the scope for this API product. You should have at least one
 Finally, select one or multiple types of clients that were created in [the Create client configurations]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-client-configurations" >}}) section of this guide to associate them with that product.
 
 {{< tabs_start >}}
+
+{{< tab_start "Curity" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/curity-enable-product-dcr.jpg" alt="Configure an API Product to work with the DCR flow" >}}
+
+{{< tab_end >}}
 
 {{< tab_start "Keycloak" >}}
 
@@ -313,7 +367,7 @@ From version 1.13.0, you can complete the DCR configuration for a product under 
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-dcr.png" alt="Add DCR settings" >}}
 {{< /note >}}
 
-##### Configure plans for the DCR flow
+#### Configure plans for the DCR flow
 
 The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites" >}}). If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
@@ -327,14 +381,14 @@ From version 1.13.0, you can complete the DCR configuration for a plan under the
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-plan-advanced-settings.png" alt="Add Plan Advanced Settings" >}}
 {{< /note >}}
 
-### Test the DCR flow
+## Test the DCR flow
 To test the DCR flow, you need to perform the following actions:
 - Request access to the API product and plan you have selected for the DCR flow as a developer.
 - Approve the access request as an admin.
 - As a developer, copy the access credentials and obtain an access token.
 - As a developer, make an API call to verify the flow's functionality.
 
-#### Request access to the API Product
+### Request access to the API Product
 To request access to the DCR enabled API Product:
 - Log in as a developer and navigate to the catalog page.
 - Select the DCR enabled API Product and add it to the shopping cart.
@@ -344,11 +398,17 @@ To request access to the DCR enabled API Product:
 - Finally, select the applicable type of client and click on the `Submit request` button. 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/request-access-to-the-dcr-enabled-product.png" alt="Request access to the DCR enabled product" width="600" >}}
 
-#### Approve the access request
+### Approve the access request
 To approve the access request, navigate to the `Access requests` menu in the portal, select the access request and approve it by clicking on the `Approve` button.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/approve-dcr-access-request.png" alt="Approve DCR access request" >}}
 
-#### Obtain an access token
+{{< note success >}}
+**Note**  
+
+When approving an access request, if the Plan scope is not already present in the API Product's scope mappings the Portal will append it in the scope-to-policy mapping declared in the API definition, mapping it to the Id of the Tyk Dashboard consumption policy that relates to the Plan. This will ensure that when the JWT is presented to Tyk, the Plan will be applied to the session.
+{{< /note >}}
+
+### Obtain an access token
 Once the access request is approved, the developer should receive an email informing them of the approval. Please refer to [the email customization section]({{< ref "portal/customization/email-notifications" >}}) if you wish to change the email template.
 
 As a developer, navigate to the `My Dashboard` section in the developer portal, select the application, and copy the OAuth 2.0 credentials. 
@@ -368,7 +428,7 @@ Since in this example we use the client_secret_basic token endpoint authenticati
 As a result, you should receive a JWT access token containing the required scopes:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/jwt.png" alt="An example of a JWT" width="600" >}}
 
-#### Make an API Call
+### Make an API Call
 Finally, use the access token to make an API call and test the flow functionality:
 ```curl
 curl --location --request GET 'http://localhost:8080/payment-api/get' \

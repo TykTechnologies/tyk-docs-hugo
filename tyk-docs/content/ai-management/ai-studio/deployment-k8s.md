@@ -117,7 +117,7 @@ spec:
     spec:
       containers:
       - name: ai-studio
-        image: tykio/ai-studio:latest
+        image: tykio/tyk-ai-studio:latest
         envFrom:
         - secretRef:
             name: tyk-ai-config
@@ -201,7 +201,7 @@ spec:
     spec:
       containers:
       - name: ai-studio
-        image: tykio/ai-studio:latest
+        image: tykio/tyk-ai-studio:latest
         envFrom:
         - secretRef:
             name: tyk-ai-config
@@ -315,7 +315,7 @@ spec:
     spec:
       containers:
       - name: ai-studio
-        image: tykio/ai-studio:latest
+        image: tykio/tyk-ai-studio:latest
         envFrom:
         - secretRef:
             name: tyk-ai-config
@@ -616,7 +616,7 @@ To upgrade an existing installation:
 kubectl apply -f your-deployment.yaml
 
 # Or update just the image
-kubectl set image deployment/tyk-ai-studio ai-studio=tykio/ai-studio:new-version -n tyk-ai-studio
+kubectl set image deployment/tyk-ai-studio ai-studio=tykio/tyk-ai-studio:new-version -n tyk-ai-studio
 ```
 
 ### Uninstalling
@@ -667,6 +667,18 @@ kubectl describe pod <pod-name>
 - Ingress not working: Verify DNS records and TLS configuration
 - Resource constraints: Check pod resource limits and node capacity
 
+## First User Registration
+
+After deployment, you need to create your first admin user:
+
+1. **Access the application**: Navigate to your configured `SITE_URL` (e.g., `https://app.yourdomain.com`)
+2. **Register with admin email**: Use the EXACT email address you set in the `ADMIN_EMAIL` environment variable in your Secret
+3. **Complete registration**: The first user who registers with the admin email will automatically become the administrator
+
+{{< note success >}}
+**Important**: The first user registration must use the same email address specified in the `ADMIN_EMAIL` environment variable. This user will have full administrative privileges.
+{{< /note >}}
+
 ## Next Steps
 
-Once deployed, proceed to the [Initial Configuration]({{< ref "ai-management/ai-studio/configuration" >}}) guide to set up Tyk AI Studio.
+Once deployed and you've registered your first user, proceed to the [First Steps guide]({{< ref "ai-management/ai-studio/configuration" >}}) to configure Tyk AI Studio.

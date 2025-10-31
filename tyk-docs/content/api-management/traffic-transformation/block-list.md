@@ -10,7 +10,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/block-list-tyk-classic
 ---
 
-## Overview {#block-list-overview}
+## Overview
 
 The Block List middleware is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`.
 
@@ -44,10 +44,6 @@ Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-ma
 {{< /note >}}
 
 <hr>
-
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the block list middleware [here]({{< ref "#block-list-using-tyk-oas" >}}).
-
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the block list middleware [here]({{< ref "#block-list-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  # Block List middleware summary

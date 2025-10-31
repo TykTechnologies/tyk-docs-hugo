@@ -114,6 +114,36 @@ Type: `[]string`<br />
 
 Certificates used for MDCB Mutual TLS
 
+### security.certificate_expiry_monitor
+CertificateExpiryMonitor configures the certificate expiry monitoring and notification feature
+
+### security.certificate_expiry_monitor.warning_threshold_days
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_WARNINGTHRESHOLDDAYS</b><br />
+Type: `int`<br />
+
+WarningThresholdDays specifies the number of days before certificate expiry that the Gateway will start generating CertificateExpiringSoon events when the certificate is used
+Default: DefaultWarningThresholdDays (30 days)
+
+### security.certificate_expiry_monitor.check_cooldown_seconds
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_CHECKCOOLDOWNSECONDS</b><br />
+Type: `int`<br />
+
+CheckCooldownSeconds specifies the minimum time in seconds that the Gateway will leave between checking for the expiry of a certificate when it is used in an API request - if a certificate is used repeatedly this prevents unnecessary expiry checks
+Default: DefaultCheckCooldownSeconds (3600 seconds = 1 hour)
+
+### security.certificate_expiry_monitor.event_cooldown_seconds
+ENV: <b>TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_EVENTCOOLDOWNSECONDS</b><br />
+Type: `int`<br />
+
+EventCooldownSeconds specifies the minimum time in seconds between firing the same certificate expiry event - this prevents unnecessary events from being generated for an expiring or expired certificate being used repeatedly; note that the higher of the value configured here or the default (DefaultEventCooldownSeconds) will be applied
+Default: DefaultEventCooldownSeconds (86400 seconds = 24 hours)
+
+### external_services
+ENV: <b>TYK_GW_EXTERNALSERVICES</b><br />
+Type: `ExternalServiceConfig`<br />
+
+External service configuration for proxy and mTLS support
+
 ### http_server_options
 Gateway HTTP server configuration
 
@@ -1044,7 +1074,22 @@ The reason this value is configurable is because sample data takes up space in y
 ENV: <b>TYK_GW_HEALTHCHECKENDPOINTNAME</b><br />
 Type: `string`<br />
 
-Enables you to rename the /hello endpoint
+HealthCheckEndpointName Enables you to change the liveness endpoint.
+Default is "/hello"
+
+### readiness_check_endpoint_name
+ENV: <b>TYK_GW_READINESSCHECKENDPOINTNAME</b><br />
+Type: `string`<br />
+
+ReadinessCheckEndpointName Enables you to change the readiness endpoint
+Default is "/ready"
+
+### graceful_shutdown_timeout_duration
+ENV: <b>TYK_GW_GRACEFULSHUTDOWNTIMEOUTDURATION</b><br />
+Type: `int`<br />
+
+GracefulShutdownTimeoutDuration sets how many seconds the gateway should wait for an existing connection
+to finish before shutting down the server. Defaults to 30 seconds.
 
 ### oauth_refresh_token_expire
 ENV: <b>TYK_GW_OAUTHREFRESHEXPIRE</b><br />
@@ -1623,6 +1668,12 @@ ENV: <b>TYK_GW_COPROCESSOPTIONS_GRPCAUTHORITY</b><br />
 Type: `string`<br />
 
 Authority used in GRPC connection
+
+### coprocess_options.grpc_round_robin_load_balancing
+ENV: <b>TYK_GW_COPROCESSOPTIONS_GRPCROUNDROBINLOADBALANCING</b><br />
+Type: `bool`<br />
+
+GRPCRoundRobinLoadBalancing enables round robin load balancing for gRPC services; you must provide the address of the load balanced service using `dns:///` protocol in `coprocess_grpc_server`.
 
 ### coprocess_options.python_path_prefix
 ENV: <b>TYK_GW_COPROCESSOPTIONS_PYTHONPATHPREFIX</b><br />

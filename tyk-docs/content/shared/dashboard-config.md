@@ -1368,6 +1368,30 @@ Type: `bool`<br />
 
 This flag enables the Tyk Streaming feature.
 
+### streaming.enable_all_experimental
+ENV: <b>TYK_DB_STREAMING_ENABLEALLEXPERIMENTAL</b><br />
+Type: `bool`<br />
+
+EnableAllExperimental indicates whether all experimental features for streaming are enabled. This is useful for testing purposes.
+
+Warning:
+  This flag should not be enabled in production environments.
+
+### notifications.certificate_expiry_monitor
+The configuration for the Gateway's Certificate Expiry Monitor which generates events when expired or soon to expire TLS certificates are used in client or upstream authentication.
+
+### notifications.certificate_expiry_monitor.metadata_refresh_interval_minutes
+ENV: <b>TYK_DB_NOTIFICATIONS_CERTIFICATEEXPIRYMONITOR_METADATAREFRESHINTERVALMINUTES</b><br />
+Type: `int`<br />
+
+Specifies the interval (in minutes) for refreshing certificate metadata.
+
+### notifications.certificate_expiry_monitor.warning_threshold_days
+ENV: <b>TYK_DB_NOTIFICATIONS_CERTIFICATEEXPIRYMONITOR_WARNINGTHRESHOLDDAYS</b><br />
+Type: `int`<br />
+
+Specifies the number of days before certificate expiry that the Dashboard will start generating warnings when the certificate is used. This should match the equivalent Gateway configuration `TYK_GW_SECURITY_CERTIFICATEEXPIRYMONITOR_WARNINGTHRESHOLDDAYS`.
+
 ### labs
 Experimental and beta features configuration settings
 
@@ -1376,4 +1400,10 @@ ENV: <b>TYK_DB_DISABLETELEMETRY</b><br />
 Type: `bool`<br />
 
 Enable or disable sending telemetry data such as analytics, API configurations, etc.
+
+### escape_dots_in_oas_paths
+ENV: <b>TYK_DB_ESCAPEDOTSINOASPATHS</b><br />
+Type: `bool`<br />
+
+When enabled, dots in OAS field names will be escaped to \\u002e for DocumentDB compatibility
 
