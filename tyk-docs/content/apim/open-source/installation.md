@@ -21,6 +21,10 @@ aliases:
 ---
 
 
+## Important Prerequisites
+
+**Redis is required for ALL Tyk installations**. Before proceeding with any installation method, ensure you have a Redis instance available that meets our [Redis requirements and recommendations]({{< ref "planning-for-production/redis-requirements" >}}). Redis is the primary dependency that enables Tyk to function and must be installed and running before you begin.
+
 ## Introduction
 
 The backbone of all our products is our open source Gateway. You can install our Open Source / Community Edition on the following platforms:

@@ -68,6 +68,13 @@ aliases:
   - /tyk-on-premises/on-ubuntu
   - /tyk-on-premises/redhat-rhel-centos
 ---
+
+{{< note success >}}
+**Important Prerequisites**
+
+Redis is an essential requirement for all Tyk products. Before proceeding with any installation, please ensure you have a Redis instance available that meets our [Redis requirements and recommendations]({{< ref "planning-for-production/redis-requirements" >}}). Tyk will not function without Redis.
+{{< /note >}}
+
 ## Introduction
 
 {{< grid >}}
