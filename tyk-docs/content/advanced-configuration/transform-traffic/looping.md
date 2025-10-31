@@ -1,6 +1,7 @@
 ---
 date: 2017-03-23T17:36:15Z
 title: Looping
+description: "Learn how to use looping in Tyk's URL Rewriting to redirect requests internally within the gateway for improved performance and flexibility."
 menu:
   main:
     parent: "URL Rewriting"
