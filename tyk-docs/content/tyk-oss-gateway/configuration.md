@@ -1,6 +1,7 @@
 ---
 date: 2017-03-27T12:51:44+01:00
 title: Tyk Gateway Configuration Options
+description: Configuration options and environment variables for Tyk Gateway.
 menu:
   main:
     parent: Tyk Gateway

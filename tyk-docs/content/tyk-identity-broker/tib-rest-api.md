@@ -1,5 +1,6 @@
 ---
 title: TIB REST API
+description: Tyk Identity Broker (TIB) REST API, including endpoints for managing identity profiles and configurations.
 menu:
   main:
     parent: "Tyk Identity Broker"

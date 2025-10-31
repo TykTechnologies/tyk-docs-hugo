@@ -1,6 +1,7 @@
 ---
 date: 2017-03-27T16:05:33+01:00
 title: Frequently Asked Questions
+description: Frequently asked questions about Tyk, including configuration file backups, gateway version checking, and high traffic handling.
 tags:
     - FAQ
     - frequently asked questions
