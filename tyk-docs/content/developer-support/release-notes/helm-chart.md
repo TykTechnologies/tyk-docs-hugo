@@ -23,6 +23,53 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 4.0 Release Notes
 
+### 4.0.2 Release Notes
+
+#### Release Date xx October 2025
+
+#### Release Highlights
+Tyk Charts 4.0.2 is a version alignment release that ensures compatibility with the most recent Tyk LTS release [5.8.7]({{< ref "developer-support/release-notes/dashboard#587-release-notes" >}}). No functional changes have been implemented in this release.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-4.0.2}
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency  | Tested Versions  | Compatible Versions  | Comments | 
+| ------------------------| ---------------- | -------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)   | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+ | | 
+| [Helm](https://helm.sh)               | 3.14.x              | 3.x  | | 
+| [Redis](https://redis.io/download/)   | 5.x, 6.x, 7.x  | 5.x, 6.x, 7.x | |
+| [Valkey](https://valkey.io/download/) | 7.2.x, 8.0.x, 8.1.x | 7.2.x, 8.0.x, 8.1.x | |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 6, 7, 8 | 5, 6, 7, 8 | Used by Tyk Dashboard, Pump, and MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x | 13.x - 17.x | Used by Tyk Dashboard, Pump, and MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+You can use helm upgrade to upgrade your release
+
+```bash
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
+```
+
+#### Downloads
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v4.0.2.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/4.0.2)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/4.0.2)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/4.0.2)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/4.0.2)
+
+#### Changelog {#Changelog-v4.0.2}
+No changes in this release.
+
 ### 4.0.1 Release Notes
 
 #### Release Date 21st October 2025
