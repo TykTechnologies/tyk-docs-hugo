@@ -2,7 +2,7 @@
 title: "Custom Plugins Advance Configuration"
 date: 2025-01-10
 tags: []
-description: ""
+description: "Explore advanced configuration options for custom plugins in Tyk, including CICD automation, OpenTelemetry instrumentation, and gRPC server health checks in Kubernetes."
 keywords: []
 aliases:
   - /plugins/get-started-selfmanaged/deploy-plugins
