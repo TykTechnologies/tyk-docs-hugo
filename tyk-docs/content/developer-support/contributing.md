@@ -36,5 +36,4 @@ For detailed contribution guidelines, including pull request requirements, codin
 
 ### Technical guidance
 
-Our docs are compiled using the [Hugo static site generator](https://gohugo.io/). For detailed technical guidance on creating and updating documentation pages, see the [technical guide](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md) referenced in our [CONTRIBUTING.md](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md) file.
-
+Our docs uses [Mintlify](https://mintlify.com/). For detailed technical guidance on creating and updating documentation pages, see the [technical guide]({{< ref "developer-support/contribution-guides" >}}).
