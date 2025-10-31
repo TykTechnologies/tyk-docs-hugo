@@ -39,5 +39,3 @@ Upstream Basic Authentication and Oauth 2.0 support are only available to licens
 
 Note that OAuth 2.0 Password Grant is prohibited in the [OAuth 2.0 Security Best Practice](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13#section-3.4") but is supported by Tyk for use with legacy upstream services.
 {{< /warning >}}
-
-
