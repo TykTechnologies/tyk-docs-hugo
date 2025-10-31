@@ -1,6 +1,7 @@
 ---
 date: 2017-03-27T16:05:33+01:00
 title: Tyk Upgrading Guide
+description: Tyk upgrade guide for different deployment models and installation types
 tags: ["configuration files backup", "backup tyk", "tyk.conf", "upgrade tyk", "database backup"]
 aliases:
   - /developer-support/cloud-saas
