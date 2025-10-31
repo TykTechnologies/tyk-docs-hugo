@@ -11,6 +11,7 @@ aliases:
   - /tyk-oss/
   - /getting-started/tyk-components/gateway/
   - /concepts/tyk-components/gateway/
+description: Overview of Tyk Gateway features and deployment options.
 ---
 
 ## What is the Tyk Gateway?
