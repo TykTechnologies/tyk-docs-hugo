@@ -3,6 +3,7 @@ date: 2021-02-12T18:15:30+13:00
 title: Tyk Stack
 weight: 7
 menu: main
+description: Overview of Tyk Stack components, both open-source and closed-source.
 aliases:
     - /getting-started/tyk-components/
 ---

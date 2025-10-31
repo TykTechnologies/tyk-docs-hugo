@@ -1,6 +1,7 @@
 ---
 date: 2017-03-27T14:55:44+01:00
 title: Tyk Dashboard Configuration Options
+description: Configuration options and environment variables for Tyk Dashboard.
 menu:
   main:
     parent: "Tyk Dashboard"
