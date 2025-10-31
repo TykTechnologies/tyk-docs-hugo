@@ -2892,9 +2892,9 @@ ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_USEMIXEDCOLLECTION</b><br />
 Type: `bool`<br />
 
 If set to `true` the Mongo Aggregate pump will send analytics to two collections:
-- z_tyk_analyticz_aggregate_{ORG ID}
+- `z_tyk_analyticz_aggregate_{ORG ID}`
 - tyk_analytics_aggregates
-When set to 'false' your pump will only store analytics to z_tyk_analyticz_aggregate_{ORG ID}.
+When set to 'false' your pump will only store analytics to `z_tyk_analyticz_aggregate_{ORG ID}`.
 
 ### pumps.mongoaggregate.meta.track_all_paths
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_TRACKALLPATHS</b><br />
