@@ -8,7 +8,7 @@ aliases:
 ---
 
 To configure the Tyk Enterprise Developer Portal, you can use either a config file or environment variables.
-The below table provides reference to all options available to you when configuring the portal.
+The table below provides a reference to all options available to you when configuring the portal.
 ## Portal settings
 This section explains the general portal settings, including which port it will be listening on, how often it should synchronize API Products and plans with the Tyk Dashboard, and so on.
 Most of these settings are optional, except for the PORTAL_LICENSEKEY. If you don't specify these settings, the default values will be used.
@@ -79,8 +79,8 @@ Not required. If it is not specified, the default value is 10.
 **Config file:** Theming.Theme <br/>
 **Type:** `string` <br/>
 **Description**: The name of a theme the portal should use after the start-up. You can change this later via the Themes UI.
-It's not required to specify as the portal comes with only one theme named `default`,  therefore, PORTAL_THEMING_THEME defaults `default`.
-However, if you already created [a theme]({{< ref "portal/customization#" >}}) and want the portal to use when it's starts for the first time, then you can use this setting to achieve that.
+It's not required to specify, as the portal comes with only one theme named `default`;  therefore, PORTAL_THEMING_THEME defaults to `default`.
+However, if you have  already created [a theme]({{< ref "portal/customization#" >}}) and want the portal to use when it starts for the first time, then you can use this setting to achieve that.
 
 ### PORTAL_THEMING_PATH
 **Config file:** Theming.Path <br/>
@@ -110,19 +110,19 @@ Please note that the size of individual files should not exceed 5 MB. If the siz
 - `stoplight` to use Stoplight as a documentation renderer;
 - `redoc` to use Redoc as a documentation renderer.
 
-**Description**: Use this setting to specify which OAS documentation renderer to use to render Open API Specification. Not required. If it is not specified, the default value is `stoplight`.
+**Description**: Use this setting to specify which OAS documentation renderer to use to render the OpenAPI Specification. Not required. If it is not specified, the default value is `stoplight`.
 
 ### PORTAL_DCR_LOG_ENABLED
 **Config file:** DCRLogEnabled <br/>
 **Type:** `boolean` <br/>
-**Description**: When enabled, the portal will print raw responses from OAuth2.0 Identity Provider for the DCR flow.
-Raw responses from the Identity Providers may contain sensitive information, therefore we recommend enabling this option only for debugging purposes. Available options are:
+**Description**: When enabled, the portal will print raw responses from the OAuth2.0 Identity Provider for the DCR flow.
+Raw responses from the Identity Providers may contain sensitive information; therefore, we recommend enabling this option only for debugging purposes. Available options are:
 - `true` for enabling the detailed logs;
 - `false` for disabling the detailed logs.
 The default value is `false`.
 
 ## Audit log settings
-This section explains how to configure the audit log in the portal. When the audit log is enabled, each admins' action will leave a trace in the *portal.log* file located at in the directory specified by the `PORTAL_AUDIT_LOG_ENABLE` setting.
+This section explains how to configure the audit log in the portal. When the audit log is enabled, each admin's action will leave a trace in the *portal.log* file located in the directory specified by the `PORTAL_AUDIT_LOG_ENABLE` setting.
 
 ### PORTAL_AUDIT_LOG_ENABLE
 **Config file:** AuditLog.Enable <br/>
@@ -137,25 +137,25 @@ This section explains how to configure the audit log in the portal. When the aud
 ## Session management
 This section explains how to configure session management for the portal. Using the settings below, you can configure:
 - Name of the portal's session cookie.
-- Various aspects of cookie security, including: should it be sent using an TLS-encrypted connection and is it accessible by Javascript API on the client-side?
+- Various aspects of cookie security, including: should it be sent using a TLS-encrypted connection,and is it accessible by JavaScript API on the client-side?
 - Cookie encryption key.
 - Cookie lifetime.
 
 ### PORTAL_SESSION_NAME
 **Config file:** Session.Name <br/>
 **Type:** `string` <br/>
-**Description**: Name of the portal's cookie. Default value is `portal-session`.
+**Description**: Name of the portal's cookie. The default value is `portal-session`.
 
 ### PORTAL_SESSION_SECURE
 **Config file:** Session.Secure <br/>
 **Type:** `boolean` <br/>
 **Description**: Controls whether the portal adds the `Secure` attribute to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs. It's important to note that if the connection between the portal and the browser is not secured with TLS, the browser will ignore the `Secure` attribute.
-We recommend enabling TLS and setting this attribute to `true` for all production environments. Default value is `false`.
+We recommend enabling TLS and setting this attribute to `true` for all production environments. The default value is `false`.
 
 ### PORTAL_SESSION_HTTPONLY
 **Config file:** Session.HttpOnly <br/>
 **Type:** `boolean` <br/>
-**Description**: Controls whether the portal adds the `HttpOnly` attribute to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs. This cookie attribute controls if the cookie is only accessible at the server and not by Javascript on the client side.
+**Description**: Controls whether the portal adds the `HttpOnly` attribute to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs. This cookie attribute controls if the cookie is only accessible at the server and not by JavaScript on the client side.
 This is a security measure to prevent XSS attacks.
 
 We recommend setting it to `true` in production environments. The default value is `true`.
@@ -163,7 +163,7 @@ We recommend setting it to `true` in production environments. The default value 
 ### PORTAL_SESSION_SAMESITE
 **Config file:** Session.SameSite <br/>
 **Type:** `string` <br/>
-**Description**: Controls the value of the `SameSite` attribute for the portal’s cookie. The portal adds the `SameStie` attribute with the value specified in `PORTAL_SESSION_SAMESITE` to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs.
+**Description**: Controls the value of the `SameSite` attribute for the portal’s cookie. The portal adds the `SameSite` attribute with the value specified in `PORTAL_SESSION_SAMESITE` to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs.
 Available options are:
 - `None`;
 - `Lax`;
@@ -263,7 +263,7 @@ Values for TLS Versions:
 ### PORTAL_TLS_CERTIFICATES
 **Config file:** TLSConfig.Certificates <br/>
 **Type:** `json` <br/>
-**Description**: JSON (or JSON-formatted string in case of environment variable) containing list of certificates. Each certificate is defined by three properties:
+**Description**: JSON (or JSON-formatted string in case of environment variable) containing a list of certificates. Each certificate is defined by three properties:
 - Name
 - CertFile
 - KeyFile
@@ -271,7 +271,7 @@ Values for TLS Versions:
 ### PORTAL_API_SECRET
 **Config file:** PortalAPISecret <br/>
 **Type:** `string` <br/>
-**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "portal/settings#configure-developer-portal-sso" >}}) with the Tyk Identity Broker.
+**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso" >}}) with the Tyk Identity Broker.
 You can specify any string value in this setting. Omit this setting if you don't require SSO. 
 
 ## Response Headers Configuration
@@ -304,18 +304,18 @@ export PORTAL_RESPONSE_HEADERS='[{"Key":"X-Frame-Options", "Value":"DENY"}, {"Ke
 ```
 
 **Common use cases include:**
-- Security headers (X-Frame-Options, Content-Security-Policy)
+- Security headers (`X-Frame-Options`, `Content-Security-Policy`)
 - CORS headers
 - Cache control headers
 - Custom application headers
 
 If the JSON format is invalid, the Portal will return an error message indicating the correct format:
 ```
-Invalid value for PORTAL_RESPONSE_HEADERS. Valid Format: '[{"Key":"header-key", "Value":"value-for-given-key"}]'
+Invalid value for PORTAL_RESPONSE_HEADERS. Valid Format: '[{"Key": "header-key", "Value": "value-for-given-key"}]'
 ```
 
 ## Storage settings
-Using variables from this section, you can configure storage for the portal's CMS assets such as themes, images, and Open API Specification files. The portal supports two types of storage:
+Using variables from this section, you can configure storage for the portal's CMS assets, such as themes, images, and Open API Specification files. The portal supports two types of storage:
 - S3 volume;
 - And filesystem.
 
@@ -398,7 +398,7 @@ This option is only required for the `s3` storage type and will be ignored for t
 ### PORTAL_ASSETS_CACHE_DISABLE
 **Config file:** AssetsCache.Disable <br/>
 **Type:** `boolean` <br/>
-**Description**: If the storage type is set to `db`, an in memory cache will be used for the themes storage. This configuration disables the assets cache. The default value is `false`.
+**Description**: If the storage type is set to `db`, an in-memory cache will be used for the themes storage. This configuration disables the assets cache. The default value is `false`.
 
 ## TLS configuration
 This section explains the TLS configuration settings to enable connection to the portal's UI over HTTPS.
@@ -406,14 +406,14 @@ This section explains the TLS configuration settings to enable connection to the
 ### PORTAL_TLS_ENABLE
 **Config file:** TLSConfig.Enable <br/>
 **Type:** `boolean` <br/>
-**Description**: Enables or disables connection over https. When TLS is enabled, the portal will expect a TLS certificate to be provided via *PORTAL_TLS_CERTIFICATES*.
+**Description**: Enables or disables connection over HTTPS. When TLS is enabled, the portal will expect a TLS certificate to be provided via *PORTAL_TLS_CERTIFICATES*.
 When TLS is enabled and no certificates are provided, the portal won't start. The default value is `false`.
 
 ### PORTAL_TLS_CERTIFICATES
 **Config file:** TLSConfig.Certificates <br/>
 **Type:** `string` <br/>
-**Description**: A JSON formatted string that provides the hostname , in addition to the paths to a TLS certificate and key file:
-- `Name`: The hostname of the portal. This should match with the hostname of the certificate file.
+**Description**: A JSON-formatted string that provides the hostname, in addition to the paths to a TLS certificate and key file:
+- `Name`: The hostname of the portal. This should match the hostname of the certificate file.
 - `CertFile`: The path to a TLS certificate file in the CRT format for the specified hostname.
 - `KeyFile`: The path to a TLS key file for the specified hostname.
 Example:
@@ -473,23 +473,24 @@ PORTAL_DATABASE_CONNECTION_MAX_LIFETIME=180000
 
 ### PORTAL_DATABASE_MAXRETRIES
 **Config file:** Database.MaxRetries <br/>
-**Type:** `boolean` <br/>
+**Type:** `int` <br/>
 **Description**: Defines how many times the portal will retry to connect to the database. Optional, the default value is 3.
 
 ### PORTAL_DATABASE_RETRYDELAY
-**Config file:** Database.MaxRetries <br/>
-**Type:** `boolean` <br/>
-**Description**: Defines delay between connect attempts (in milliseconds). Optional, the default value is 5000.
+**Config file:** Database.RetryDelay <br/>
+**Type:** `int` <br/>
+**Description**: Defines the delay between connect attempts (in milliseconds). Optional. Default value: 5000.
 
 ### PORTAL_DATABASE_MAX_OPEN_CONNECTIONS
 **Config file:** Database.MaxOpenConnections <br/>
 **Type:** `int` <br/>
-**Description**: Defines the maximum number of concurrent connections that the database can handle from the application. When the number of open connections reaches this limit, new requests will wait until a connection becomes available. Optional, the default value is unlimited.
+**Description**: Defines the maximum number of concurrent connections that the database can handle from the application. When the number of open connections reaches this limit, new requests will wait until a connection becomes available. Optional. Default value: unlimited.
+
 
 ### PORTAL_DATABASE_MAX_IDLE_CONNECTIONS
 **Config file:** Database.MaxIdleConnections <br/>
 **Type:** `int` <br/>
-**Description**: Defines the maximum number of idle connections in the database connection pool. Idle connections are open but not currently being used. Keeping some idle connections can improve performance by reducing the time it takes to establish a new connection when demand increases. Optional, the default value is 2.
+**Description**: Defines the maximum number of idle connections in the database connection pool. Idle connections are open but not currently being used. Keeping some idle connections can improve performance by reducing the time it takes to establish a new connection when demand increases. Optional. Default value: 2.
 
 ### PORTAL_DATABASE_CONNECTION_MAX_LIFETIME
 **Config file:** Database.ConnectionMaxLifetime <br/>
@@ -503,14 +504,14 @@ This section explains how to configure [CORS](https://developer.mozilla.org/en-U
 ### PORTAL_CORS_ENABLE
 **Config file:** CORS.Enable <br/>
 **Type:** `boolean` <br/>
-**Description**: Enables or disables the CORS settings for the portal. When disabled no CORS settings are applied.
+**Description**: Enables or disables the CORS settings for the portal. When disabled, no CORS settings are applied.
 In other words, any cross-origin request will be denied. When enabled, the below defined CORS settings are applied. The default value is `false`.
 
 ### PORTAL_CORS_ALLOWED_ORIGINS
 **Config file:** CORS.AllowedOrigins <br/>
 **Type:** `[string]` <br/>
 **Description**: A list of origin domains to allow access from. Wildcards are also supported, e.g. [`*.foo.com`] will allow access from any domain that ends with *.foo.com*.
-By default, no origins are allowed. To apply this setting an array of the allowed origins.
+By default, no origins are allowed. To apply this setting, an array of the allowed origins.
 
 To configure using a configuration file:
 ```json
@@ -546,7 +547,7 @@ PORTAL_CORS_ALLOWED_HEADERS=X-Method-Override,X-API-Key
 ### PORTAL_CORS_ALLOWED_METHODS
 **Config file:** CORS.AllowedMethods <br/>
 **Type:** `[string]` <br/>
-**Description**: A list of methods that are allowed access access. To apply this setting specify an array of the allowed methods. By default, `GET` and `POST` methods are allowed.
+**Description**: A list of methods that are allowed access. To apply this setting, specify an array of the allowed methods. By default, `GET` and `POST` methods are allowed.
 
 To configure using a configuration file:
 ```json
@@ -564,7 +565,7 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
 ### PORTAL_CORS_MAX_AGE
 **Config file:** CORS.MaxAge <br/>
 **Type:** `int` <br/>
-**Description**: Indicates how long the results of a preflight request can be cached. The default value is `0` which stands for no max age.
+**Description**: Indicates how long the results of a preflight request can be cached. The default value is `0`, which stands for no max age.
 
 ### PORTAL_DISABLE_CSRF_CHECK
 **Config file:** DisableCSRFCheck <br/>
@@ -574,17 +575,17 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
 ### PORTAL_CORS_ALLOW_CREDENTIALS
 **Config file:** CORS.AllowCredentials <br/>
 **Type:** `boolean` <br/>
-**Description**: Indicates whether the request can include user credentials like cookies, HTTP authentication or client side SSL certificates. The default is `false`.
+**Description**: Indicates whether the request can include user credentials like cookies, HTTP authentication, or client-side SSL certificates. The default is `false`.
 
 ### PORTAL_TIB_ENABLED
-**Config file:** TIB.Enabled <br/>
+**Config file:** TIB.Enable <br/>
 **Type:** `boolean` <br/>
 **Description**: Enables or disables the Tyk Identity Broker (TIB) integration. When disabled, it will not appear in the UI. The default value is `false`.
 
 ### PORTAL_NOTIFICATIONS_JOB_FREQUENCY
 **Config file:** NotificationsJobFrequency <br/>
 **Type:** `int` <br/>
-**Description**: Defines the frequency of the notifications job that fetch notifications from the portal's database in minutes. The default value is `30` minutes.
+**Description**: Defines the frequency of the notifications job that fetches notifications from the portal's database in minutes. The default value is `30` minutes.
 
 
 ## Sample config file
@@ -630,7 +631,7 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
     "RetryDelay": 2000
   },
   "TIB": {
-    "Enabled": true
+    "Enable": true
   }
 }
 ```
@@ -660,6 +661,5 @@ PORTAL_DATABASE_DIALECT="mysql"
 PORTAL_DATABASE_CONNECTIONSTRING="admin:secr3t@(localhost:3308)/portal?charset=utf8&parseTime=True&loc=Local"
 PORTAL_DATABASE_ENABLELOGS=true
 PORTAL_DATABASE_MAXRETRIES=3
-PORTAL_DATABASE_RETRYDELAY=5000
 PORTAL_TIB_ENABLED=true
 ```

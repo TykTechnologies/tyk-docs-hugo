@@ -18,7 +18,7 @@ aliases:
 
 ## Introduction
 
-Golang plugins are a very flexible and powerful way to extend the functionality of Tyk by attaching custom logic written in Go to [hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) in the Tyk [middleware chain]({{< ref "concepts/middleware-execution-order" >}}).
+Golang plugins are a very flexible and powerful way to extend the functionality of Tyk by attaching custom logic written in Go to [hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) in the Tyk [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}).
 The chain of middleware is specific to an API and gets created at API load time. When Tyk Gateway performs an API re-load it also loads any custom middleware and "injects" them into a chain to be called at different stages of the HTTP request life cycle.
 
 For a quick-start guide to working with Go plugins, start [here]({{< ref "api-management/plugins/overview#getting-started" >}}).
@@ -27,16 +27,16 @@ The [Go plugin writing guide]({{< ref "api-management/plugins/golang#writing-cus
 
 ## Supported plugin types
 
-All of Tyk's [custom middleware hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) support Go plugins. They represent different stages in the request and response [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) where custom functionality can be added.
+All of Tyk's [custom middleware hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) support Go plugins. They represent different stages in the request and response [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) where custom functionality can be added.
 
-- **Pre** - supports an array of middlewares to be run before any others (i.e. before authentication)
+- **Pre** - supports an array of middleware that run before any others (i.e. before authentication)
 - **Auth** - this middleware performs custom authentication and adds API key session info into the request context and can be used only if the API definition has both:
   - `"use_keyless": false`
   - `"use_go_plugin_auth": true`
 - **Post-Auth** - supports an array of middleware to be run after authentication; at this point, we have authenticated the session API key for the given key (in the request context) so we can perform any extra checks. This can be used only if the API definition has both:
   - `"use_keyless": false`
   - an authentication method specified
-- **Post** - supports an array of middlewares to be run at the very end of the middleware chain; at this point Tyk is about to request a round-trip to the upstream target
+- **Post** - supports an array of middleware that run at the very end of the middleware chain, just before Tyk makes a round-trip to the upstream target
 - **Response** - run only at the point the response has returned from a service upstream of the API Gateway; note that the [method signature for Response Go plugins]({{< ref "api-management/plugins/golang#creating-a-custom-response-plugin" >}}) is slightly different from the other hook types
 
 {{< note info >}}
@@ -61,10 +61,34 @@ Plugins are currently supported only on Linux, FreeBSD, and macOS, making them u
 
 ### Tyk Plugin Compiler
 
-We provide the [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
+We provide the [Tyk Plugin Compiler]({{< ref "api-management/plugins/golang#plugin-compiler" >}}) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
 
 - https://github.com/golang/go/issues/19004
 - https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
+
+#### Understanding Plugin Compiler Security Scans
+
+The Tyk Plugin Compiler Docker image is a development tool used exclusively during the build phase to compile custom Go plugins for the Tyk Gateway. This tool:
+
+1. **Is not a runtime component** - It is never deployed as part of your production Tyk environment
+2. **Operates in isolated build environments** - It should only be used in controlled development or CI/CD pipelines
+3. **Is not designed to be network-exposed** - It should never be deployed as a service or exposed to untrusted networks
+
+##### Technical Context
+The Plugin Compiler is built on Debian Bullseye to ensure binary compatibility with RHEL8 environments, which are commonly used in enterprise Tyk deployments. Security scanning tools may flag numerous Common Vulnerabilities and Exposures (CVEs) in the base Debian Bullseye libraries included in this image.
+
+##### Security Clarification
+These CVEs do not represent an exploitable attack surface in your Tyk deployment for several reasons:
+
+1. **Build-time vs. Runtime Separation:** The Plugin Compiler is strictly a build-time tool. The compiled plugins that it produces are what get deployed to your Tyk Gateway, not the compiler itself.
+
+2. **Ephemeral Usage Pattern**: The recommended usage pattern is to run the compiler only when needed to generate plugin binaries, then discard the container.
+
+3. **Air-gapped Operation**: The compilation process typically occurs in development environments or CI/CD pipelines that are separate from production systems.
+
+4. **No Persistent Deployment**: Unlike the Tyk Gateway, Dashboard, and other runtime components, the Plugin Compiler is never deployed as a long-running service in your API management infrastructure.
+
+For optimal security, we recommend running the Plugin Compiler in isolated build environments and transferring only the compiled plugin binaries to your production Tyk deployment.
 
 
 ### Setting up your environment
@@ -189,7 +213,7 @@ Using the *Go workspace* ensures build compatibility between the plugins and Gat
 
     Compatibility in general is a big concern when working with Go plugins: as the plugins are tightly coupled to the Gateway, consideration must always be made for the build restrictions enforced by environment and configuration options.
 
-    Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins/).
+    Continue with [Loading Go Plugins into Tyk]({{< ref "api-management/plugins/golang#loading-custom-go-plugins-into-tyk" >}}).
 
 ### Debugging Golang Plugins
 
@@ -323,7 +347,7 @@ Custom Go plugins can access various data objects relating to the API request:
 
 Custom Go plugins can also [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}) and stop further processing of the API request such that it is not sent to the upstream service.
 
-For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub">}}).
+For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub" >}}).
 To see an example of a Go plugin, please visit our [Go plugin examples]({{< ref "api-management/plugins/golang#example-custom-go-plugins" >}}) page.
 
 ### Accessing the internal state of a custom plugin
@@ -494,6 +518,13 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+{{< note warning >}}
+**Note**  
+
+Tyk Gateway sets the session in the [Authentication layer]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) of the middleware chain. Because of this, the session object does not exist until the middleware chain runs after the authentication middleware. If you call `ctx.GetSession` inside a custom auth plugin, it will always return an empty object.
+
+{{< /note >}}
+
 The invocation of `ctx.GetSession(r)` returns an SessionState object.
 The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/user/session.go#L106).
 
@@ -501,7 +532,7 @@ Here is an [example](https://github.com/TykTechnologies/custom-plugin-examples/b
 
 ### Terminating the request
 
-You can terminate the request within your custom Go plugin and provide an HTTP response to the originating client, such that the plugin behaves similarly to a [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}).
+You can terminate the request within your custom Go plugin and provide an HTTP response to the originating client, such that the plugin behaves similarly to a [virtual endpoint]({{< ref "api-management/traffic-transformation/virtual-endpoints" >}}).
 
 - the HTTP request processing is stopped and other middleware in the chain won't be used
 - the HTTP request round-trip to the upstream target won't happen
@@ -778,14 +809,14 @@ Here we see:
 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
-- [Enabling Plugins On The Control Plane](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/setup-control-plane/#what-do-i-need-to-do-to-use-plugins)
-- [Uploading Your Plugin Bundle To S3 Bucket](https://tyk.io/docs/tyk-cloud#uploading-your-bundle)
+- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud/using-plugins" >}})
+- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}})
 
 ## Example custom Go plugins
 
 This document provides a working example for providing specific functionality with a custom Go plugin.
 
-For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub">}}).
+For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub" >}}).
 
 ### Using a custom Go plugin as a virtual endpoint
 

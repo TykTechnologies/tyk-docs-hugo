@@ -1,0 +1,24 @@
+name: Probe Engineer handler
+
+on:
+  issue_comment:
+    types: [created]          
+
+# Define permissions needed for the workflow
+permissions:
+  issues: write
+  pull-requests: write
+  contents: write
+
+jobs:
+  trigger_probe_implement:
+    uses: probelabs/probe/.github/workflows/probe.yml@main
+    with:
+      command_prefix: "/writer" # Or '/ai', '/ask', etc.
+      allow_edit: true
+      prompt: ./.probe/writer.md
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.PROBE_ANTHROPIC_API_KEY }}
+      ANTHROPIC_API_URL: ${{ secrets.PROBE_ANTHROPIC_URL }}
+      APP_ID: ${{ secrets.PROBE_APP_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.PROBE_APP_PRIVATE_KEY }}

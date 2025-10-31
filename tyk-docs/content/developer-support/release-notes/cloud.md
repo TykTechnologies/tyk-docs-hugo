@@ -1,19 +1,21 @@
 ---
 title: Tyk Cloud Release Notes
-date: xx
+date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "1.28.0", "1.28.1", "1.29.0", "1.30.0", "changelog"]
 
 ---
 
-## 1.25.0 Release Notes
+## 1.30.0 Release Notes
 
-### Release Date 10 of February 2025
+### Release Date 1st September 2025
+
 
 ### Release Highlights
-This Tyk Cloud update enhances Gateway version management, ensuring a more streamlined, secure, and user-friendly experience. With the new UI versioning updates, users have clearer visibility into supported versions, direct upgrade recommendations, and the ability to automate version upgrades for effortless maintenance.
-These changes empower teams to stay on supported, secure, and high-performing versions.
-For more details, check out the [documentation on Gateway versioning and auto-upgrades](https://tyk.io/docs/developer-support/release-notes/special-releases/)
+
+This release expands observability and upgrade management capabilities in Tyk Cloud. Teams can now export application logs to external log vendors, giving full flexibility in integrating with their preferred OpenTelemetry-compatible provider. Additionally, we’ve enhanced the auto-upgrade experience by providing detailed email notifications when the process begins.
+
+For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.30.0" >}}) below.
 
 ### Breaking Changes
 
@@ -26,7 +28,486 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-### Changelog {#Changelog-v1.25.0}
+### Changelog {#Changelog-v1.30.0}
+
+#### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Export Application Logs to Observability Providers</summary>
+
+Cloud users can now export Tyk application logs to observability providers using OpenTelemetry (such as Datadog, New Relic, Elastic, and Dynatrace). This feature can be enabled or disabled per deployment, and logs are streamed in real time to the chosen provider, enabling better monitoring and faster troubleshooting.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Email Notifications for Auto-Upgrades</summary>
+
+Introduced automated email notifications to inform organisations and team admins when a Control Plane [auto-upgrade]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#auto-upgrade" >}}) begins. Notifications include key details such as deployment name and version changes, helping teams track upgrade activity more effectively.
+
+
+</details>
+</li>
+
+</ul>
+
+## 1.29.0 Release Notes
+
+### Release Date 15 July 2025
+
+### Release Highlights
+
+This release introduces Auto-Upgrades for Control Plane deployments, allowing teams to stay up to date with the latest features on a configurable schedule, with related Data Planes upgraded automatically. We’ve also improved SSO access control by assigning a default 'View Only' role to newly provisioned SSO users, thereby enhancing security and auditability.
+
+
+For a complete list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.29.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.29.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>New Role to Restrict Local Login for SSO Users</summary>
+
+Introduced a new “View Only” role to enhance access control for organizations using SSO. Now, SSO users are granted this read-only role by default. This improves auditability and reduces the risk of unauthorized actions when SSO is the preferred authentication method.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Auto-Upgrade for Control Plane Deployments</summary>
+
+Users can now opt into automatic upgrades for Control Plane deployments and configure a weekly schedule to match their maintenance windows. This would also automatically upgrade the corresponding data planes related to this control plane to the latest available version in the channel.
+
+</details>
+</li> 
+
+</ul>
+
+## 1.28.1 Release Notes
+
+### Release Date 03 June 2025
+
+### Release Highlights
+
+This release improves Tyk Cloud’s security, scalability, and reliability. We’ve hardened the signup and login flows, improved sensitive data handling in API responses, and enhanced Redis scalability in Control Plane deployments to support larger workloads.
+
+For a full list of changes, see the detailed [changelog]({{< ref "#Changelog-v1.28.1" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.28.1}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Improved scalability for Redis in Control Plane Deployments</summary>
+
+The change brings more flexible Redis scaling capabilities in the Control Plane deployments. Control Planes are now able to handle more/larger API keys in storage without causing stability issues. Tyk Cloud will expand this storage using this capability when needed, but a permanent arrangement is subject to commercial terms.
+
+</details>
+</li> 
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Hardened Signup Flow Validation</summary>
+
+Improved the signup logic to prevent unintended automation and ensure tighter control over account creation, enhancing platform security and reliability.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Consistent Login Response Behavior</summary>
+
+Standardized response status codes in the login process to prevent discrepancies that could lead to information exposure through http status code.
+
+</details>
+</li> 
+</ul>
+
+<ul>
+<li>
+<details>
+<summary>Sanitized Sensitive Data in API Responses</summary>
+
+Resolved an issue where certain sensitive fields could be inadvertently included in API responses. The platform now enforces stricter data handling and output sanitization.
+
+</details>
+</li> 
+</ul>
+
+## 1.28.0 Release Notes
+
+### Release Date 26 May 2025
+
+### Release Highlights
+
+This release focuses on further enhancing Tyk Cloud’s stability, security, and overall user experience. We've resolved several UI issues, improved input validation, standardized security defaults across versions, and strengthened core platform behavior. Additionally, we’ve introduced new 2025 pricing plans!
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.28.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.28.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>2025 Tyk Cloud Pricing Plans Introduced</summary>
+
+Tyk Cloud has introduced the 2025 base pricing plans, featuring new Core, Professional, and Enterprise tiers. These changes provide clearer value differentiation across plans while maintaining flexibility for both SaaS and Hybrid deployments. The "Account" section is now hidden for new customers, though existing customers remain unaffected. Usage and quota are still available in the "System Usage" and "Monitoring" sections. For more information, please check the [Pricing & Plans](https://tyk.io/pricing/)
+
+</details>
+</li> 
+</ul>
+
+#### Fixed
+
+<ul>
+  
+<li>
+<details>
+<summary>Improved Validation for Hybrid Data Plane Names</summary>
+
+We’ve fixed an issue where pasting invalid characters, such as tabs and spaces, into the hybrid data plane name field would break the registration flow in Ara. The system now includes input validation on both the frontend and backend, ensuring only valid characters are accepted. This prevents configuration issues and improves the reliability of the hybrid data plane creation process.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Login Handling in Tyk Cloud</summary>
+
+We’ve made backend improvements to the Tyk Cloud login functionality to enhance its security and resilience against automated attacks. These changes help ensure a more consistent and secure authentication experience.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Secure Defaults Aligned Across Dashboard Versions</summary>
+
+We’ve fixed an issue where secure configuration defaults for the Tyk Dashboard admin view were not properly applied in older versions (v5.3). These settings now default to true in v5.8+ as intended, while remaining false in v5.3 to preserve backward compatibility. This ensures consistent and expected security behavior across versions.
+
+**Note:** Changes in deployment configurations are applied during a redeployment, triggered by the user or system. In addition, defaults can be changed individually by creating a support ticket.
+
+</details>
+</li>
+
+</ul>
+
+## 1.27.0 Release Notes
+
+### Release Date 23 April 2025
+
+
+### Release Highlights
+
+This release focuses on improving Tyk Cloud's stability, security, and reliability. We’ve addressed several bugs, enhanced UI behavior, resolved performance bottlenecks, and implemented secure defaults to strengthen the platform’s security posture. 
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.27.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.27.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Clear Error Message Shown When Control Plane Deployment Fails</summary>
+
+Tyk Cloud now displays an informative error message when a Control Plane fails to deploy. Previously, users received no feedback, causing confusion. The new message lets users know the issue is being addressed and guides what to do next, improving transparency and user experience during deployment failures.
+
+</details>
+</li>  
+
+<li>
+<details>
+<summary>UI Support for Enabling Audit Logging on Control Planes</summary>
+
+Audit logging can now be enabled or disabled directly from the UI for Control Plane deployments if it is included in your plan.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Secure Defaults Now Applied for Admin Token Visibility</summary>
+
+As announced in the previous release, Tyk Cloud now defaults to secure settings that restrict admin users from viewing or resetting other users' API tokens in the Dashboard.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Performance of Hybrid Visibility Functionality</summary>
+
+We’ve made backend improvements to enhance the performance and stability of hybrid node visibility features in Tyk Cloud. These changes help support larger datasets more efficiently, ensuring smoother operations and better scalability behind the scenes.
+
+</details>
+</li>
+  
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Telemetry Optional Fields Now Persist After Saving</summary>
+
+Fixed an issue where optional fields in the ‘Edit New Relic Connection’ section of the Telemetry UI would disappear after saving. With this fix, all optional configuration fields now persist correctly, ensuring that user-defined telemetry settings are saved and visible for further updates.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Telemetry Export Now Applies Correctly on Existing Deployments</summary>
+
+Fixed an issue where enabling telemetry export on an existing deployment did not apply the expected network policy changes. This fix ensures that configuration changes are consistently applied, so telemetry features work as intended without requiring manual intervention.
+
+</details>
+</li>    
+
+<li>
+<details>
+<summary>Team Dropdown No Longer Locks When Switching Deployment Types</summary>
+
+We’ve resolved a UI issue where the team dropdown became unresponsive when switching between Control Plane and Hybrid Data Plane types during deployment creation. This fix ensures that users can seamlessly switch deployment types.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Reduced Data in Telemetry Configuration Responses</summary>
+
+We’ve removed unnecessary data from telemetry export configuration API responses to ensure cleaner and more secure payloads.
+
+</details>
+</li> 
+
+</ul>
+
+
+## 1.26.0 Release Notes
+
+### Release Date 17 of March 2025
+
+### Release Highlights
+
+Tyk Cloud now provides greater compliance controls, allowing customers to manage audit logging and storage more effectively. With new audit log storage and the ability to enable or disable audit logging per Control Plane deployment, users can optimize costs while maintaining security and compliance. These improvements give organizations more flexibility in handling audit data based on their specific regulatory and operational needs. To enable this feature, please contact your account manager.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.26.0" >}}) below.
+
+#### Admin Behavior Update in Control Planes v5.8.0
+In the next Tyk Cloud release, starting with the Control Planes version 5.8.0, we will be  restricting Tyk Dashboard admin users' ability to view and reset other users' API tokens. This change will automatically apply to all Control Plane deployments that are either newly created with or upgraded to version 5.8.0 or later.
+
+This security improvement helps protect sensitive access credentials and provides better isolation between user accounts. If your organization requires the previous behavior for specific operational needs, you can revert this change by submitting a request to Tyk Support.
+
+We remain committed to continuously improving the security of our platform while maintaining the flexibility needed for diverse environments.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.26.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Enable/Disable Audit Logging for Control Plane Deployments</summary>
+
+Tyk Cloud allows users to enable or disable audit logging for their [Control Plane]({{< ref "api-management/mdcb#data-plane" >}}) (CP) deployments, providing greater flexibility in managing compliance and storage costs. To enable this feature, please contact your account manager.
+
+Tyk Cloud now also enforces audit log storage quotas based on contractual terms (a storage quota limit assigned to organizations based on their subscription), allowing customers to manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs, dropping the oldest logs to fit the new ones within the quota.
+
+For more information, please check the [Tyk Dashboard documentation on the feature](https://tyk.io/docs/api-management/dashboard-configuration/#retrieving-audit-logs-via-api)
+
+</details>
+</li>  
+
+<li>
+<details>
+<summary>Enhanced Onboarding Experience for Trial Users</summary>
+
+Tyk Cloud now enables the onboarding wizard by default for trial users, providing a guided Quick Start experience in Tyk 5.8.0.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Stability Improvements When Deploying Control Planes</summary>
+
+Tyk Cloud now features enhanced stability for Control Plane deployments, even in cases of license server issues.
+
+</details>
+</li>
+  
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Protecting Go Plugin Functionality by Isolating MServ API Definitions</summary>
+
+Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, posing the risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational while deployments become more secure and error-proof. This change applies to new deployments only; existing deployments with plugins enabled will be gradually migrated in the future to avoid unexpected service disruption.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Provision First and Last Name for Cloud SSO Users</summary>
+
+Tyk Cloud now correctly populates first and last names when provisioning new users via SSO (Google SSO, KeyCloak). Previously, only the first name was set, causing validation errors when updating roles due to a missing last name. This fix ensures that SSO-provisioned users have complete profiles, preventing onboarding issues and improving role management for organizations
+
+</details>
+</li>    
+
+<li>
+<details>
+<summary>Enforce 'Only Registered Users' Flag for SSO in Tyk Cloud</summary>
+
+Tyk Cloud now correctly enforces the 'Only Registered Users' flag for SSO (Google SSO, KeyCloak), preventing the creation of unregistered users via just-in-time provisioning. Previously, users without a corresponding local entry could still be created even when this setting was enabled.
+
+</details>
+</li>    
+
+<li>
+<details>
+<summary>Incorrect Display of Custom Domain Field in EDP</summary>
+
+Tyk Cloud now correctly hides the custom domain field in the Enterprise Developer Portal (EDP) edit page when the custom domain entitlement is not enabled. Previously, the field was visible even for organizations without access to this feature, causing confusion.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Improved Probes for Control Plane Deployments with SSO</summary>
+
+Tyk Cloud now ensures more reliable health checks for Control Plane deployments when SSO is configured.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Accurate Subscription Limits in Monitoring Charts</summary>
+
+The monitoring chart in Tyk Cloud now correctly displays the subscription limit based on the organization’s entitlement.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Improved Analytics Performance in Tyk Cloud</summary>
+
+Changing the analytics storage quota in Tyk Cloud no longer removes critical database indices, which previously led to performance degradation. This fix ensures that indices are preserved, maintaining fast query performance and data integrity. Customers should now experience improved analytics performance, especially when adjusting storage quotas.
+
+</details>
+</li> 
+
+</ul>
+
+---
+
+## 1.25.0 Release Notes
+
+### Release Date 10 of February 2025
+
+### Release Highlights
+This Tyk Cloud update enhances Gateway version management, ensuring a more streamlined, secure, and user-friendly experience. With the new UI versioning updates, users have clearer visibility into supported versions, direct upgrade recommendations, and the ability to automate version upgrades for effortless maintenance.
+These changes empower teams to stay on supported, secure, and high-performing versions.
+For more details, check out the [documentation on Gateway versioning and auto-upgrades]({{< ref "developer-support/release-types/long-term-support" >}})
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog
 
 #### Added
 
@@ -180,7 +661,7 @@ This Tyk Cloud update introduces a groundbreaking feature for enhanced API obser
 
 This feature enables trace export capabilities, providing deep insights into API and plugin performance. It marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
 
-For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud#enabling-telemetry-in-tyk-cloud" >}}).
+For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud/telemetry" >}}).
 
 ### Breaking Changes
 
@@ -201,9 +682,9 @@ There are no deprecations in this release
 
 ### Release Highlights
 
-This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud#uploading-your-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
+This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud/using-plugins#uploading-your-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
 
-For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0">}}) below.
+For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0" >}}) below.
 
 ### Breaking Changes
 
@@ -341,3 +822,6 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
+
+

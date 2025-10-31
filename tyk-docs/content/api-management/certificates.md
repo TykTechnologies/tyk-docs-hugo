@@ -12,7 +12,6 @@ aliases:
   - security/tls-and-ssl
   - basic-config-and-security/security/tls-and-ssl
   - basic-config-and-security/security/certificate-pinning
-  - security/certificate-pinning
 ---
 
 ## Introduction
@@ -21,38 +20,48 @@ Secure communication is essential in today's digital landscape. TLS/SSL protocol
 
 In this section, we delve into the following key topics: 
 
-1. **[Enabling TLS in Tyk]({{< ref "#enable-tlsssl-in-tyk" >}})**: 
+1. **[Enabling TLS in Tyk components]({{< ref "api-management/certificates#enable-tlsssl-in-tyk-components" >}})**: 
     Learn how to enable and configure TLS/SSL for Tyk Gateway and Dashboard to secure your communication.
-2. **[TLS Support in Tyk]({{< ref "#tlsssl-support" >}})**: 
+2. **[TLS Support in Tyk]({{< ref "api-management/certificates#tlsssl-configuration" >}})**: 
     Understand the supported TLS versions, cipher suites, their configurations, and best practices for secure communication.
-3. **[Configuring Tyk Certificate Storage]({{< ref "#using-tyk-certificate-storage" >}})**: 
+3. **[Configuring Tyk Certificate Storage]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}})**: 
     Discover how to manage and store certificates for seamless TLS configuration in Tyk.
-4. **[Advance TLS Configuration]({{< ref "#additional-tlsssl-configuration" >}})**: 
     Explore advanced TLS settings for enhanced security.
-5. **[Self Signed Certificates]({{< ref "#self-signed-certificates" >}})**: 
+4. **[Self Signed Certificates]({{< ref "api-management/certificates#self-signed-certificates" >}})**: 
     Learn how to configure and use self-signed certificates for secure communication in Tyk.
-6. **[Configuring Internal Proxy Setup]({{< ref "#internal-proxy-setup" >}})**: 
+5. **[Configuring Internal Proxy Setup]({{< ref "api-management/certificates#internal-proxy-setup" >}})**: 
     Set up internal proxies with TLS to ensure secure communication within your architecture.
-7. **[Configuring Certificate Pinning]({{< ref "#certificate-pinning" >}})**: 
-    Learn how to enable certificate pinning for added security against Man In The Middle (MITM) attacks.
 
-## Enable TLS/SSL in Tyk
+### Certificates 
 
-TLS/SSL protocol is supported by all Tyk components. You can enable SSL in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_analytics.conf` files.
+If you have had to configure an SSL server or SSH access, the following information below should be familiar to you. 
 
-For self signed certificates additional consideration has to be taken place, [refer the below section]({{< ref "#self-signed-certificates" >}}).
+Let's start with certificate definition. Here is what [Wikipedia](https://en.wikipedia.org/wiki/Public_key_certificate) says:
+
+> In cryptography, a public key certificate, also known as a digital certificate or identity certificate, is an electronic document used to prove the ownership of a public key. The certificate includes information about the key, information about the identity of its owner (called the subject), and the digital signature of an entity that has verified the certificate's contents (called the issuer). If the signature is valid, and the software examining the certificate trusts the issuer, then it can use that key to communicate securely with the certificate's subject.
+
+When it comes to authorization, it is enough for the server that has a public client certificate in its trusted certificate storage to trust it. However, if you need to send a request to the server protected by mutual TLS, or need to configure the TLS server itself, you also need to have a private key, used while generating the certificate, to sign the request.
+
+Using Tyk, you have two main certificate use cases:
+
+1. Certificates without public keys used for [client authorization and authentication]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
+2. Certificates with private keys used for [upstream access]({{< ref "api-management/upstream-authentication/mtls" >}}), and server certificates (in other words when we need to sign and encrypt the request or response).
+
+### PEM format
+
+Before a certificate can be used by Tyk, it must be encoded into **PEM format**. If you are using an `openssl` command to generate certificates, it should use PEM by default. A nice bonus of the PEM format is that it allows having multiple entries inside the same file. So in cases where a certificate also requires a private key, you can just concatenate the two files together.
+
+## Enable TLS/SSL in Tyk components
+
+TLS protocol is supported by all Tyk components. You can enable TLS in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_analytics.conf` files.
+
+For self signed certificates additional consideration has to be taken place, [refer to the section below]({{< ref "#self-signed-certificates" >}}).
 
 <br>
 
-{{< note success >}} 
-**Note**
-
-It is important to consider that TLS 1.3 doesn't support [cipher](https://en.wikipedia.org/wiki/Cipher_suite) selection. This isn't a Tyk decision, though.
-{{< /note >}}
-
 ### Gateway
 
-The below **tyk.conf** is the minimum to enable TLS/SSL.
+You'll need to add the following to your **tyk.conf** as the minimum to enable TLS for the Gateway:
 
 ```json
 "http_server_options": {
@@ -69,7 +78,7 @@ The below **tyk.conf** is the minimum to enable TLS/SSL.
 
 ### Dashboard
 
-**tyk_analytics.conf**
+You'll need to add the following to your **tyk_analytics.conf** as the minimum to enable TLS for the Dashboard:
 
 ```json
 "http_server_options": {
@@ -83,6 +92,8 @@ The below **tyk.conf** is the minimum to enable TLS/SSL.
   ]
 }
 ```
+
+Set the [host_config.generate_secure_paths]({{< ref "tyk-dashboard/configuration#host_configgenerate_secure_paths" >}}) flag to `true` so that your Dashboard URL starts with HTTPS.
 
 If you are using self-signed certs or are in a test environment, [you can tell Tyk to ignore validation on certs Mutual TLS support]({{< ref "#self-signed-certificates" >}})
 
@@ -106,7 +117,18 @@ $ curl -k https://localhost:3000
 <html response>
 ```
 
-## TLS/SSL Configuration Fields
+### MDCB 
+
+Mutual TLS configuration in an MDCB environment has specific requirements. An MDCB environment consists of a Control Plane and multiple Data Planes that, using MDCB, sync configuration. 
+The Control Plane and Data Plane deployments usually do not share any secrets; thus a certificate with private keys encoded with secret in the Control Plane will not be accessible to Data Plane gateways. 
+
+To solve this issue, you need to set `security.private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
+send them to client without password. Using a secure connection between Data Plane Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
+
+
+## TLS/SSL Configuration
+
+TLS is configured in the `http_server_options` section of your Gateway and Dashboard configuration files. This has the following structure, common to both components:
 
 ```{.copyWrapper}
 "http_server_options": {
@@ -125,50 +147,38 @@ $ curl -k https://localhost:3000
 },
 ```
 
-
-You can enter multiple certificates, that link to multiple domain names, this enables you to have multiple SSL certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP.
-
-The `min_version` setting is optional, you can set it to have Tyk only accept connections from TLS V1.0, 1.1, 1.2 or 1.3 respectively.
-
-The `max_version` allows you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
-
-Finally, set the [host_config.generate_secure_paths]({{< ref "tyk-dashboard/configuration#host_configgenerate_secure_paths" >}}) flag to `true` in your `tyk_analytics.conf`
-
-## TLS/SSL Support
+- `min_version` and `max_version` are optional and allow you to configure the [versions of TLS]({{< ref "#supported-tls-versions" >}}) from which Tyk will accept connections
+- `ssl_ciphers` allows you to select the [cipher suite]({{< ref "#supported-tls-cipher-suites" >}}) that will be used to negotiate connections
+- you can enter multiple certificates to be used in the encryption that will be applied for different domain names, this enables you to have multiple TLS certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP
 
 ### Supported TLS Versions
 
-You need to use the following values for setting the TLS `min_version` and `max_version`. The numbers associated with the TLS versions (e.g., 769 for TLS 1.0, 770 for TLS 1.1, etc.) represent protocol version numbers used in the TLS protocol specification. These are standardized numerical values assigned by the Internet Engineering Task Force (IETF) to identify each TLS version during communication.
+You need to use the following values for setting the TLS `min_version` and `max_version`. The numbers associated with the TLS versions represent protocol version numbers used in the TLS protocol specification. These are standardized numerical values assigned by the Internet Engineering Task Force (IETF) to identify each TLS version during communication.
 
-| TLS Version   | Value to Use   |
-|---------------|----------------|
-|      1.0      |      769       |
-|      1.1      |      770       |
-|      1.2      |      771       |
-|      1.3      |      772       |
+| TLS Version           | Value to Use   |
+|-----------------------|----------------|
+|      1.0 (see note)   |      769       |
+|      1.1 (see note)   |      770       |
+|      1.2              |      771       |
+|      1.3              |      772       |
+
+If you do not configure minimum and maximum TLS versions, then Tyk Gateway will default to:
+ - minimum TLS version: 1.2
+ - maximum TLS version: 1.3
 
 {{< note success >}}
 **Note**  
 
-If you do not configure minimum and maximum TLS versions, then Tyk Gateway will default to:
- - minimum TLS version: 1.0
- - maximum TLS version: 1.2
+Tyk uses Golang libraries to provide TLS functionality, so the range of TLS versions supported by the Gateway is dependent upon the underlying library. Support for TLS 1.0 and 1.1 was removed in Go 1.22 (which was adopted in Tyk 5.3.6/5.6.0), so these are no longer supported by Tyk.
 {{< /note >}}
 
 ### Supported TLS Cipher Suites
 
-Each protocol (TLS 1.0, 1.1, 1.2, 1.3) provides cipher suites. With strength of encryption determined by the cipher negotiated between client & server.
-
-You can optionally add the additional `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf` which takes an array of strings as its value. 
-
-
-{{< note info >}}
-**Note**  
+The strength of encryption is determined by the cipher that is negotiated between client & server; each version of the TLS protocol provides a suite of available ciphers. 
 
 TLS 1.3 protocol does not allow the setting of custom ciphers, and is designed to automatically pick the most secure cipher.
-{{< /note >}}
 
-Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
+When using earlier TLS protocols, you can deliberately choose the ciphers to be used using the `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf`. This takes an array of strings as its value. Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
 
 For example:
 
@@ -220,7 +230,6 @@ SSL-Session:
     Master-Key: 88D36C895808BDF9A5481A8CFD68A0B821CF8E6A6B8C39B40DB22DA82F6E2E791C77A38FDF5DC6D21AAE3D09825E4A2A
 ```
 
-## Additional TLS/SSL Configuration
 
 ### Validate Hostname against Common Name
 
@@ -332,17 +341,53 @@ This example shows how to enable a custom domain (`buraksekili.dev`) with a TLS 
 {{< tabs_end >}}
 
 
-## Using Tyk Certificate Storage
+## Certificate Management 
 
-In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support](https://tyk.io/docs/security/tls-and-ssl/mutual-tls/) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
+Tyk provides two options to manage certificates: plain files or certificate storage with a separate API.
 
-{{< note success >}}
-**Note**  
+All configuration options, which require specifying certificates, support both plain file paths or certificate IDs. You are able to mix them up, and Tyk will automatically distinguish file names from certificate IDs.
 
-This approach only works with the Tyk Gateway at present. Dashboard support has not been implemented yet.
-{{< /note >}}
+The Tyk Gateway and Dashboard Admin APIs provide endpoints to create, remove, list, and see information about certificates. For the Gateway, the endpoints are:
 
-In order to add new server certificates:
+* Create: `POST /tyk/certs` with PEM body. Returns `{"id": "<cert-id>", ... }`
+* Delete: `DELETE /tyk/certs/<cert-id>`
+* Get info: `GET /tyk/certs/<cert-id>`. Returns meta info about the certificate, something similar to: 
+```json
+{ 
+  "id": "<cert-id>",
+  "fingerprint": <fingerprint>,
+  "has_private_key": false, 
+  "issuer": <issuer>,
+  "subject": "<cn>", ... 
+}
+```
+* Get info about multiple certificates: `GET /tyk/certs/<cert-id1>,<cert-id2>,<cert-id3>`. 
+Returns array of meta info objects, similar to above.
+* List all certificate IDs: `GET /tyk/certs`. Returns something similar to:
+
+```json
+{ "certs": "<cert-id1>", "<cert-id2>", ...  }
+```
+
+The Dashboard Admin API is very similar, except for a few minor differences:
+
+* Endpoints start with `/api` instead of `/tyk`, e.g. `/api/certs`, `/api/certs/<cert-id>`, etc.
+* All certificates are managed in the context of the organization. In other words, certificates are not shared between organizations.
+
+Certificate storage uses a hex encoded certificate SHA256 fingerprint as its ID. When used with the Dashboard API, Tyk additionally appends the organization id to the certificate fingerprint. It means that certificate IDs are predictable, and you can check certificates by their IDs by manually 
+generating certificate SHA256 fingerprint using the following command:
+ 
+```{.copyWrapper}
+openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>.
+```
+
+You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing. If a private key is found it will be encrypted with AES256 algorithm 3 using the `security.private_certificate_encoding_secret` secret, defined in `tyk.conf` file. Otherwise, the certificate will use the [secret]({{< ref "tyk-oss-gateway/configuration#secret" >}}) value in `tyk.conf`.
+
+### Using Tyk Certificate Storage
+
+In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
+
+In order to add new server certificates to the Gateway:
 
 1. Ensure that both private key and certificates are in PEM format
 2. Concatenate Cert and Key files to single file
@@ -359,12 +404,12 @@ In order to add new server certificates:
 
     * Using environment variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
 
-    The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
+    The Domain in this case will be extracted from standard certificate fields: `DNSNames`.
 
     {{< note success >}}
 **Note**  
 
-`Subject.CommonName` is deprecated and its support will be removed in Tyk V5.
+Prior to Tyk v5, the Domain could also be extracted from the now deprecated `Subject.CommonName` field.
     {{< /note >}}
 
 ## Self Signed Certificates
@@ -378,254 +423,38 @@ For example, if you are using a self-signed cert on the Dashboard, in order for 
 
 Alternatively, you can disable the verification of SSL certs in the component configurations below.  **You shouln't do this in production!**
 
-### Gateway
+### Creating a self-signed certificate pair
+You can create self-signed client and server certificates with this command:
+```{.copyWrapper}
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+```
+
+For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{< ref "api-management/certificates" >}}).
+
+To get certificate SHA256 fingerprint use the following command:
+
+```{.copyWrapper}
+openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>
+```
+
+If you are testing using cURL, your command will look like: 
+
+```{.copyWrapper}
+curl --cert client_cert.pem --key client_key.pem https://localhost:8181
+```
+
+### Using self-signed certificates with Tyk Gateway
 
 You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk.conf to allow the use of self-signed certificates when connecting to the Gateway.
 
-###  Dashboard
+###  Using self-signed certificates with Tyk Dashboard
 
 You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk_analytics.conf to allow the use of self-signed certificates when connecting to the Dashboard.
 
-### API level
 
-You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to allow Tyk to an insecure HTTPS/TLS API Upstream.
 
 ## Internal Proxy Setup
 
-From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup]({{< ref "api-management/gateway-config-tyk-classic#internal-proxy-setup" >}}) for more details.
+From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup]({{< ref "api-management/gateway-config-tyk-classic#proxy-transport-settings" >}}) for more details.
 
-## Certificate Pinning
 
-Certificate pinning is a feature which allows you to allow only specific public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
-
-Using Tyk you can allow one or multiple public keys per domain. Wildcard domains are also supported.
-
-Public keys are stored inside the Tyk certificate storage, so you can use Certificate API to manage them.
-
-{{< note success >}}
-**Note**  
-
-Only public keys in PEM format are supported.
-{{< /note >}}
-
-If public keys are not provided by your upstream, you can extract them
-by yourself using the following command:
-```{.copyWrapper}
-openssl s_client -connect httpbin.org:443 -servername httpbin.org 2>/dev/null | openssl x509 -pubkey -noout
-```
-If you already have a certificate, and just need to get its public key, you can do it using the following command:
-```{.copyWrapper}
-openssl x509 -pubkey -noout -in cert.pem
-```
-
-{{< note success >}}
-**Note**  
-
-Upstream certificates now also have wildcard domain support.
-{{< /note >}}
-
-### Configuring Certificate Pinning
-
-To configure **Certificate Pinning** with specific settings or advanced configurations, complete the following steps in the tabs below.:
-
-{{< tabs_start >}}
-
-{{< tab_start "Gateway Level" >}}
-You can define them globally, from the Tyk Gateway configuration file - `tyk.conf` using the `security.pinned_public_keys` field, using the following format:
-```
-{
-  "example.com": "<key-id>",
-  "foo.com": "/path/to/pub.pem",
-  "*.wild.com": "<key-id>,<key-id-2>"
-}
-```
-
-For `key-id` you should set the ID returned after you upload the public key using the Certificate API. Additionally, you can just set path to the public key located on your server. You can specify multiple public keys by separating their IDs by a comma.
-{{< tab_end >}}
-
-{{< tab_start "API Level" >}}
-You can define them via an API definition `pinned_public_keys` field, using the following format:
-```
-{
-  "example.com": "<key-id>",
-  "foo.com": "/path/to/pub.pem",
-  "*.wild.com": "<key-id>,<key-id-2>"
-}
-```
-
-For `key-id` you should set the ID returned after you upload the public key using the Certificate API. Additionally, you can just set path to the public key located on your server. You can specify multiple public keys by separating their IDs by a comma.
-{{< tab_end >}}
-
-{{< tab_start "Dashboard UI" >}}
-
-You can define certificate public key pinning from the **Advanced** tab of the API Designer.
-
-{{< img src="/img/2.10/cert_public_key_pinning.png" alt="Certificate Pinning" >}}
-
-1. Click **Attach Certificate**
-{{< img src="/img/2.10/add_public_keys.png" alt="Pinning Options" >}}
-1. From the **Add upstream certificates** options add the domain details and then add a new certificate ID or the server path to a certificate, or select from any certificates you have added previously.
-2. Click **Add**
-
-{{< tab_end >}}
-
-{{< tab_start "Tyk Operator - Classic" >}}
-Tyk Operator supports configuring certificate pinning using one of the following fields within the ApiDefinition object:
-
-- **pinned_public_keys**: Use public keys uploaded via the Certificate API.
-- **pinned_public_keys_refs**: Uses public keys configured from Kubernetes secret objects.
-
-###### pinned_public_keys
-
-Use the `pinned_public_keys` mapping to pin public keys to specific domains, referencing public keys that have been uploaded to Tyk Certificate storage via the Certificate API.  
-
-```yaml
-pinned_public_keys:
-  "foo.com": "<key_id>",
-  "*": "<key_id-1>,<key_id-2>"
-```
-
-Each `key-id` value should be set to the ID returned from uploading the public key via the Certificate API. Multiple public keys can be specified by separating their IDs by a comma.
-
-<br>
-
-###### pinned_public_keys_refs
-
-The `pinned_public_keys_refs` mapping should be used to configure pinning of public keys sourced from Kubernetes secret objects for different domains.
-
-Each key should be set to the name of the domain and the value should refer to the name of a Kuberenetes secret object that holds the corresponding public key for that domain.
-
-Wildcard domains are supported and "*" can be used to denote all domains.
-
-{{< warning >}}
-**Caveats**
-
-- Only *kubernetes.io/tls* secret objects are allowed.
-- Please use the *tls.crt* field for the public key.
-- The secret that includes a public key must be in the same namespace as the ApiDefinition object.
-{{< /warning >}}
-
-The example below illustrates a scenario where the public key from the Kubernetes secret object, *httpbin-secret*, is used for all domains, denoted by the wildcard character '*'. In this example the *tls.crt* field of the secret is set to the actual public key of *httpbin.org*. Subsequently, if you any URL other than https://httpbin.org is targetted (e.g. https://github.com/) a *public key pinning error* will be raised for that particular domain. This is because the public key of *httpbin.org* has been configured for all domains.
-
-```yaml
-# ApiDefinition object 'pinned_public_keys_refs' field uses the following format:
-#  spec:
-#   pinned_public_keys_refs:
-#    "domain.org": <secret_name> # the name of the Kubernetes Secret Object that holds the public key for the 'domain.org'.
-#
-# In this way, you can refer to Kubernetes Secret Objects through 'pinned_public_keys_refs' field.
-#
-# In this example, we have an HTTPS upstream target as `https://httpbin.org`. The public key of httpbin.org is obtained
-# with the following command:
-#   $ openssl s_client -connect httpbin.org:443 -servername httpbin.org 2>/dev/null | openssl x509 -pubkey -noout
-#
-# Note: Please set tls.crt field of your secret to actual public key of httpbin.org.
-#
-# We are creating a secret called 'httpbin-secret'. In the 'tls.crt' field of the secret, we are specifying the public key of the
-#  httpbin.org obtained through above `openssl` command, in the decoded manner.
-#
-apiVersion: v1
-kind: Secret
-metadata:
-  name: httpbin-secret
-type: kubernetes.io/tls
-data:
-  tls.crt: <PUBLIC_KEY> # Use tls.crt field for the public key.
-  tls.key: ""
----
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-certificate-pinning
-spec:
-  name: httpbin - Certificate Pinning
-  use_keyless: true
-  protocol: http
-  active: true
-  pinned_public_keys_refs:
-    "*": httpbin-secret
-  proxy:
-    target_url: https://httpbin.org
-    listen_path: /pinning
-    strip_listen_path: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-```
-
-{{< tab_end >}}
-
-{{< tab_start "Tyk Operator - OAS" >}}
-
-Tyk Operator supports certificate pinning in Tyk OAS custom resource, allowing you to secure your API by pinning a public key stored in a secret to a specific domain.
-
-Example of public keys pinning
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: cm
-  namespace: default
-data:
-  test_oas.json: |-
-    {
-      "info": {
-        "title": "httpbin with certificate pinning",
-        "version": "1.0.0"
-      },
-      "openapi": "3.0.3",
-      "components": {},
-      "paths": {},
-      "x-tyk-api-gateway": {
-        "info": {
-          "name": "httpbin with certificate pinning",
-          "state": {
-            "active": true
-          }
-        },
-        "upstream": {
-          "url": "https://httpbin.org/"
-        },
-        "server": {
-          "listenPath": {
-            "value": "/httpbin/",
-            "strip": true
-          }
-        }
-      }
-    }
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: domain-secret
-type: kubernetes.io/tls # The secret needs to be a type of kubernetes.io/tls
-data:
-  tls.crt: <PUBLIC_KEY>
-  tls.key: ""
----
-apiVersion: tyk.tyk.io/v1alpha1
-kind: TykOasApiDefinition
-metadata:
-  name: "oas-pinned-public-keys"
-spec:
-  tykOAS:
-    configmapRef:
-      keyName: test_oas.json
-      name: cm
-  certificatePinning:
-    enabled: true
-    domainToPublicKeysMapping:
-      - domain: "httpbin.org"
-        publicKeyRefs:
-          - domain-secret
-```
-
-This example demonstrates how to enable certificate pinning for the domain `httpbin.org` using a public key stored in a Kubernetes secret (`domain-secret`).
-{{< tab_end >}}
-
-{{< tabs_end >}}

@@ -5,17 +5,17 @@ env:
 
 jobs:
   Check-max-levels:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Check-menu-max-levels
     steps:
 
       # Checkout your code
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: '1.20'
+          go-version: '1.24.2'
       - name: "Check navigation level does not exceed the defined maximum"
         run: |
           cd scripts/navigation-levels

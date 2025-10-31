@@ -14,7 +14,7 @@ It includes the following components:
 
 Furthermore, it has all the required modifications to easily connect to Tyk Cloud or Multi Data Center (MDCB) control plane.
 
-[Supported MDCB versions]({{< ref "tyk-cloud#tyk-cloud-mdcb-supported-versions" >}})
+[Supported MDCB versions]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways#tyk-cloud-mdcb-supported-versions" >}})
 
 By default, this chart installs following components as subcharts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
 
@@ -27,13 +27,13 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For a quick start guide, please see [deploy hybrid gateway]({{<ref "tyk-cloud#deploy-hybrid-gateways">}}).
+For a quick start guide, please see [deploy hybrid gateway]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}).
 
 ## Prerequisites
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
-- [Redis]({{< ref "tyk-open-source#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway.
+- [Redis]({{< ref "apim/open-source/installation#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway.
 - Connection details to remote control plane. See below for how to obtain them from Tyk Cloud or Tyk Control Plane chart.
 
 ## Obtain Remote Control Plane Connection details from Tyk Cloud
@@ -146,7 +146,7 @@ helm show values tyk-helm/tyk-data-plane > values.yaml
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
 Alternatively, you can use `--set` flag to set it in Tyk installation.
 
-To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{<ref "tyk-environment-variables">}}). 
+To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{< ref "tyk-oss-gateway/configuration" >}}). 
 
 
 ### Setting Environment Variables
@@ -185,7 +185,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-self-managed#store-configuration-with-key-value-store">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-configuration-reference/kv-store" >}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -212,7 +212,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -317,7 +317,7 @@ global:
 
 ### Tyk MDCB Synchroniser (Optional)
 
-If control plane MDCB has enabled [Synchroniser feature]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}), the following fields should be set accordingly:
+If control plane MDCB has enabled [Synchroniser feature]({{< ref "api-management/mdcb#synchroniser-feature-with-mdcb" >}}), the following fields should be set accordingly:
 
 ```yaml
 global:
@@ -331,7 +331,7 @@ global:
 Configure below inside `tyk-gateway` section.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{< ref "developer-support/release-notes/gateway" >}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 
@@ -428,7 +428,7 @@ An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set t
 
 *Control Port*
 
-Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{<ref "tyk-gateway-api">}}) on a separate port and protect it behind a firewall if needed.
+Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{< ref "tyk-gateway-api" >}}) on a separate port and protect it behind a firewall if needed.
 
 #### Sharding
 
@@ -455,7 +455,7 @@ Gateway liveness probes can be customised via `gateway.livenessProbe` field. All
 
 Gateway readiness probes can be customised via `gateway.readinessProbe` field. All fields from PodReadinessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
 
-For further details for configuring Tyk Gateway, please consult the [Tyk Gateway Configuration Options]({{<ref "tyk-oss-gateway/configuration">}}) guide.
+For further details for configuring Tyk Gateway, please consult the [Tyk Gateway Configuration Options]({{< ref "tyk-oss-gateway/configuration" >}}) guide.
 
 ### Pump Configurations
 

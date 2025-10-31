@@ -1,0 +1,114 @@
+$tab-spacing: 20px;
+$border-color: #e3ceff;
+$hover-bg: #f3f4f6;
+$active-color: #8438fa;
+$text-color: #374151;
+
+.tabs-menu {
+  z-index: 100;
+  background: #fff;
+  transition: top 0.3s ease;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid #e3ceff;
+}
+
+body.has-hubspot-banner .tabs-menu {
+  top: calc(64px + 68px); 
+}
+
+.sidebar-tab-title {
+  display: none !important;
+}
+
+.tabs-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  margin: 20px 15px 0 15px;
+}
+
+.tabs-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: $tab-spacing;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tab-item {
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.tab-link {
+  color: $text-color;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  
+  &:hover {
+    background: $hover-bg;
+    color: darken($text-color, 10%);
+  }
+}
+@media (max-width: 768px) {
+  .tab-item {
+    font-size: 13px;
+  }
+
+  .tab-link {
+    padding: 8px 10px;
+  }
+
+}
+
+@media (max-width: 1024px) {
+  .documentation-table-of-contents-container {
+    order: -1;
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 1rem;
+  }
+
+  .tab-link {
+    padding: 0;
+  }
+
+  .documentation-table-of-contents {
+    position: relative;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    background: transparent;
+    padding: 0;
+  }
+
+  .page-content__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabs-wrapper .nav_sub_active {
+    border-bottom: 2px solid $active-color;
+  }
+}

@@ -7,7 +7,12 @@ menu:
 weight: 1
 aliases:
   - /tyk-stack/tyk-developer-portal/key-requests/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ### List All Key Requests
 

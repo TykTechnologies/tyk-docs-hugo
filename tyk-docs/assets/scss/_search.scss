@@ -281,3 +281,9 @@ pre {
     color: var(--docsearch-text-color);
     outline: none;
 }
+
+/* Fix Algolia search modal being hidden under top nav */
+.DocSearch-Container {
+    position: relative;
+    z-index: 1050 !important;
+}

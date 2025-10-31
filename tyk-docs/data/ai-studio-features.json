@@ -1,0 +1,29 @@
+{
+    "components": [
+        {
+            "title": "Centralized AI Management",
+            "icon": "🗄️",
+            "image": "/img/ai-management/centralized-management.png",
+            "description": "Unify and govern AI usage with role-based access, rate limiting, monitoring, and compliance controls."
+ 
+        },
+        {
+            "title": "AI Gateway",
+            "icon": "🚪",
+            "image": "/img/ai-management/ai-gateway.png",
+            "description": "Securely proxy LLMs, integrate custom models, and track usage/costs through a central gateway."
+        },
+        {
+            "title": "AI Portal",
+            "icon": "🔍",
+            "image": "/img/ai-management/ai-portal.png",
+            "description": "Empower developers with a curated catalog of AI tools and services for faster innovation."
+        },
+        {
+            "title": "AI Chat",
+            "icon": "💬",
+            "image": "/img/ai-management/ai-chat.png",
+            "description": "Enable direct, secure interaction with AI tools and data sources via intuitive chat interfaces."
+        }
+    ]
+}

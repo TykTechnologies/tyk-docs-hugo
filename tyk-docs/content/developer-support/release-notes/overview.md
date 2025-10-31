@@ -11,4 +11,4 @@ aliases:
 
 View the release notes for both our licensed and open source components. The notes contain detailed insights about features, enhancements and bug fixes, and are a vital resource for developers evaluating upgrades.
 
-Please consult our [LTS policy]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for information and guidelines relating to Long Term Support releases.
+Please consult our [LTS policy]({{< ref "developer-support/release-types/long-term-support" >}}) for information and guidelines relating to Long Term Support releases.

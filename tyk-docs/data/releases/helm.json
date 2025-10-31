@@ -1,8 +1,20 @@
 {
   "home": "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack",
   "licensed": false,
-  "latest": "2.2.0",
-  "releaseNotesPath": "product-stack/tyk-charts/release-notes/version-2.2",
+  "latest": "4.0.1",
+  "releaseNotesPath": "developer-support/release-notes/helm-chart",
+  "4.0.1": {
+    "date": "26/09/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-charts/releases/tag/v4.0.1" 
+  },
+  "4.0.0": {
+    "date": "26/09/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-charts/releases/tag/v4.0.0" 
+  },
+  "3.0.0": {
+    "date": "01/04/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-charts/releases/tag/v3.0.0" 
+  },
   "2.2.0": {
     "date": "9/12/2024",
     "tag": "https://github.com/TykTechnologies/tyk-charts/releases/tag/v2.2.0" 

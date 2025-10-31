@@ -7,7 +7,12 @@ menu:
 weight: 11 
 aliases:
   - /tyk-developer-portal/monetise/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 Out of the box, the Tyk Developer Portal does not have a billing component, however, this does not mean that it is not possible to enable monetization within a Portal developer access flow.
 

@@ -1,0 +1,32 @@
+{
+    "components": [
+        {
+            "title": "Documentation",
+            "icon": "📚",
+            "description": "Comprehensive documentation with examples and guides.",
+            "path": "/developer-support/contributing",
+            "button_text": "Learn More"
+        },
+        {
+            "title": "Shortcodes",
+            "icon": "🧩",
+            "description": "Reusable components to enhance your content.",
+            "path": "/ui-examples/feature-cards",
+            "button_text": "View Shortcodes"
+        },
+        {
+            "title": "Styling",
+            "icon": "🎨",
+            "description": "Consistent visual elements for a polished look.",
+            "path": "/portal/customization",
+            "button_text": "Explore Styles"
+        },
+        {
+            "title": "Templates",
+            "icon": "📋",
+            "description": "Pre-built layouts for common documentation needs.",
+            "path": "/tyk-developer-portal/customise",
+            "button_text": "See Templates"
+        }
+    ]
+}

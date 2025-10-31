@@ -1,8 +1,33 @@
 {
   "home": "tyk-pump",
   "licensed": false,
-  "latest": "1.11.1",
-  "releaseNotesPath": "product-stack/tyk-pump/release-notes/pump-1.11",
+  "latest": "1.13.0",
+  "releaseNotesPath": "developer-support/release-notes/pump",
+  "1.13.0": {
+    "date": "29/10/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.13.0",
+    "docker": "https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=1&name=v1.13.0"
+  },
+  "1.12.2": {
+    "date": "18/08/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.2",
+    "docker": "https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=1&name=v1.12.2"
+  },
+  "1.12.1": {
+    "date": "18/08/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.1",
+    "docker": "https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=1&name=v1.12.1"
+  },
+  "1.12.0": {
+    "date": "28/03/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.0",
+    "docker": "https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=1&name=v1.12.0"
+  },
+  "1.11.2": {
+    "date": "10/01/2025",
+    "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.2",
+    "docker": "https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=1&name=v1.11.2"
+  },
   "1.11.1": {
     "date": "4/12/2024",
     "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.1",

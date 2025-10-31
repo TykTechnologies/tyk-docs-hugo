@@ -1,6 +1,7 @@
 ---
 date: 2020-02-18T15:08:55Z
-Title: Useful Configurations when Getting started
+title: Useful Configurations when Getting started
+description: Important prerequisites and configurations needed before proceeding with Tyk tutorials.
 aliases:
   - /getting-started/tutorials/important-prerequisites/
 ---

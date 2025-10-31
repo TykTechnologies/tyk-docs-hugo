@@ -1,7 +1,7 @@
 ---
 title: Tyk Multi Data Center Bridge Release Notes
-description: "Tyk Multi Data-Center Bridge v2.7 release notes"
-tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.7", "2.7"]
+description: "Tyk Multi Data-Center Bridge v2.8 release notes"
+tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center"]
 aliases:
   - /release-notes/mdcb/mdcb
   - /release-notes/mdcb/
@@ -26,7 +26,378 @@ Licensed Protected Product
 Our minor releases are supported until our next minor comes out.
 
 ---
+## 2.8 Release Notes
 
+### 2.8.5 Release Notes
+
+#### Release Date 13th October 2025
+
+#### Release Highlights
+
+This release enhances the operational reliability of MDCB. We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures by implementing intelligent exponential backoff retry logic, ensuring continuous operation during Redis outages and network disruptions.
+Additionally, we've upgraded the platform to Golang 1.24, strengthening security through the latest language improvements and maintaining our commitment to using current, supported runtime environments.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.5" >}}).
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-2.8.5}
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
+| ------------------------------- | --------------- | ------------------- | -------- | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are upgrading to 2.8.5, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.5](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.5)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.5
+    ```
+#### Changelog {#Changelog-v2.8.5}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgrade Tyk MDCB to Golang 1.24</summary>
+
+Tyk MDCB has been upgraded to [Golang 1.24](https://tip.golang.org/doc/go1.24), improving security by staying current with the latest Go versions.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Enhanced Redis Connection Resilience with Intelligent Retry Logic</summary>
+
+We've resolved a synchronization issue where MDCB would permanently stop syncing with Gateways after Redis connection failures. The system now implements robust exponential backoff retry logic that continues indefinitely until a successful reconnection is achieved, ensuring your API infrastructure maintains continuous operation during Redis outages, network disruptions, or server restarts. 
+
+Previously, MDCB would attempt only a single reconnection before silently abandoning the sync process while appearing healthy, leaving Gateways without updates. 
+
+With this enhancement, both pub/sub and keyspace listeners automatically recover from transient Redis issues, provide clear logging of retry attempts for improved observability, and eliminate the need for manual MDCB restarts to restore synchronization.
+</details>
+</li>
+</ul>
+
+### 2.8.4 Release Notes
+
+#### Release Date 18th August 2025
+
+#### Release Highlights
+
+This release fixes a compatibility issue between MDCB and Dashboard where APIs containing dots (.) in their paths were not handled correctly in MDCB. API definitions are now processed consistently with the Dashboard, ensuring middleware works as expected across all gateways.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.4" >}}).
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
+| ------------------------------- | --------------- | ------------------- | -------- | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+To resolve the compatibility issue between MDCB and Tyk Dashboard when OAS API definition paths contain dot (.) characters, you can choose **one** of the following upgrade paths:
+
+##### Recommended Upgrade Paths
+
+1. **Upgrade Dashboard (Preferred)**
+
+   * Upgrade to Dashboard v5.8.5 to resolve the issue.
+   * In this version, `escape_dots_in_oas_paths` defaults to `false`, and the Dashboard automatically unescapes dots in all API definitions.
+   * **No MDCB upgrade is required.**
+
+2. **Upgrade MDCB to v2.8.4 (Alternative if you cannot upgrade the Dashboard)**
+
+    - Enable `escape_dots_in_oas_paths` in both Dashboard and MDCB configurations.
+    - This ensures consistent escaping/decoding of dots across all components.
+
+If you are upgrading to 2.8.4, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.4](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.4)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.4
+    ```
+#### Changelog {#Changelog-v2.8.4}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Consistent Handling of Escaped Dots in OAS Paths</summary>
+
+Resolved a compatibility issue introduced in Dashboard v5.8.3, where MDCB failed to unescape dot characters (e.g., `\u002e`) in OAS API definition paths when reading from the database. This caused the [request validation]({{< ref "api-management/traffic-transformation/request-validation" >}}) and [mock response]({{< ref "api-management/traffic-transformation/mock-response" >}}) middleware configured on affected endpoints not to be applied. 
+
+To align MDCB's dot handling mechanism with Tyk Dashboard, a new configuration option, `escape_dots_in_oas_paths`, has been introduced in both Dashboard and MDCB:
+
+* By Default, `escape_dots_in_oas_paths` is set to `false` in both MDCB and Dashboard, restoring the Dashboard behaviour before v5.8.3, where dots are unescaped.
+* When `escape_dots_in_oas_paths` is set to `true`, Dots are escaped for compatibility with specific databases. With this config set to true, MDCB and Dashboard encode/decode these paths consistently.
+
+Check the [Upgrade and Compatibility section]({{< ref "#upgrade-instructions" >}}) for details on the recommended upgrade path.
+</details>
+</li>
+</ul>
+
+
+### 2.8.3 Release Notes
+
+#### Release Date 13th August 2025
+
+#### Release Highlights
+
+This release updates MDCB to maintain compatibility with recent changes to the [URL Rewrite Middleware schema]({{< ref "developer-support/release-notes/gateway#release-highlights-1" >}}), ensuring seamless interoperability with the latest Gateway and Dashboard versions.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.3" >}}).
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
+| ------------------------------- | --------------- | ------------------- | -------- | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are upgrading to 2.8.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.3](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.3)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.3
+    ```
+#### Changelog {#Changelog-v2.8.3}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>MDCB Compatibility Update for URL Rewrite Middleware Changes</summary>
+
+We have updated MDCB to align with the recent [URL Rewrite Middleware schema]({{< ref "developer-support/release-notes/gateway#release-highlights-1" >}}). This update ensures that MDCB remains fully compatible and behaves consistently with the latest Gateway and Dashboard releases.
+
+</details>
+</li>
+</ul>
+
+
+### 2.8.2 Release Notes
+
+#### Release Date 4th August 2025
+
+#### Release Highlights
+
+This release contains a bump to the API definitions to align with changes in Gateway and Dashboard v5.9.0; no functional changes have been implemented to MDCB in this release.
+
+##### Compatibility with Valkey
+
+Tyk is now fully compatible with [Valkey](https://valkey.io/), the open-source (BSD) high-performance key/value datastore backed by the Linux Foundation, as an alternative to Redis.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency          | Tested Versions | Compatible Versions | Comments | 
+| ------------------------------- | --------------- | ------------------- | -------- | 
+| [Redis](https://redis.io/download/)    | 6.2.x, 7.x, 7.4.x      | 6.2.x, 7.x, 7.4.x      | | 
+| [Valkey](https://valkey.io/download/)  | 7.2.x, 8.0.x, 8.1.x    | 7.2.x, 8.0.x, 8.1.x    | | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are upgrading to 2.8.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.2](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.2)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.2
+    ```
+#### Changelog
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Valkey Database Compatibility</summary>
+
+Added compatibility with Valkey database as an alternative to Redis. This is for fresh environments, with no migration support from Redis.
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated to use latest kin-openapi</summary>
+
+Upgraded to use the latest upstream version of kin-openapi (v0.132.0). This ensures improved compatibility, full stack interoperability, and continued support for existing OpenAPI 3.0.x specifications.
+</details>
+</li>
+</ul>
+
+### 2.8.1 Release Notes
+
+#### Release Date 9 May 2025
+
+#### Release Highlights
+
+This is a version bump to align with Gateway and Dashboard v5.8.1; no changes have been implemented in this release.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are upgrading to 2.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image v2.8.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.1)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.1
+    ```
+#### Changelog
+
+No changes in this release.
+
+
+### 2.8.0 Release Notes
+
+#### Release Date 28 March 2025
+
+#### Release Highlights
+
+This release brings enhanced database compatibility and improved system stability. MDCB now fully supports PostgreSQL 17, ensuring seamless integration with the latest database version, while SQLite support has been removed to streamline maintenance. Additionally, we have resolved the "Key Not Found" error spam in MDCB logs, reducing unnecessary resource consumption and improving performance in customer environments.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.0" >}}) below.
+
+#### Breaking Changes
+This release removes support for SQLite in MDCB, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.7.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.7.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.8.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.8.0)
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.8.0
+    ```
+#### Changelog {#Changelog-v2.8.0}
+
+##### Changed
+<ul>
+
+<li>
+<details>
+<summary>Support for PostgreSQL 17</summary>
+
+MDCB now supports PostgreSQL 17, ensuring compatibility with the latest database version.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Removal of SQLite Support in MDCB</summary>
+
+SQLite support has been fully removed from MDCB.
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Resolved "Key Not Found" Errors Spamming MDCB Logs</summary>
+
+We've addressed an issue where MDCB logs were flooded with "Key Not Found" errors, causing performance degradation in customer environments.
+With this fix, MDCB now handles these cases more efficiently, reducing log noise, preventing unnecessary resource consumption, and improving overall system stability.
+</details>
+    
+</li>
+  
+</ul>
+
+---
 ## 2.7 Release Notes
 ### 2.7.2 Release Notes
 
@@ -40,7 +411,7 @@ Tyk MDCB 2.7.2 has been updated to support API configurations from Tyk 5.7.0.
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Dependencies {#dependencies-X.Y.Z}
+#### Dependencies
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -65,7 +436,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     docker pull tykio/tyk-mdcb-docker:v2.7.2
     ```
 
-#### Changelog {#Changelog-v2.7.2}
+#### Changelog
 
 ##### Updated
 <ul>
@@ -126,7 +497,7 @@ MDCB (Multi-Data Center Bridge) has been enhanced to support the storage of Grap
   ```
 
 
-#### Changelog {#Changelog-v2.7.1}
+#### Changelog
 
 ##### Added
 <ul>
@@ -173,7 +544,7 @@ There are no deprecations in this release, however with the introduction of new 
 
 ##### Recommendations for users:
 
-- Migrate to new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
+- Migrate to new [health check]({{< ref "api-management/mdcb#health-check" >}}) endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
 
 #### Upgrade instructions
 If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.6.0 and upgrade directly to this release.
@@ -181,7 +552,7 @@ If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest r
 #### Release Highlights
 
 ##### New Health check probes
-Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints have been added to improve monitoring and diagnostics:
+Two new [health check]({{< ref "api-management/mdcb#health-check" >}}) endpoints have been added to improve monitoring and diagnostics:
 
 1. `/liveness`: This endpoint provides a quick check to determine if the MDCB application is alive and running.
 2. `/readiness`: This endpoint offers a detailed status of components and dependencies required for MDCB to serve traffic. It includes status checks for:
@@ -192,7 +563,7 @@ Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-cent
 These new endpoints allow for more granular monitoring of MDCB's operational status, enabling quicker identification and resolution of potential issues.
 
 ##### New Configuration Access Endpoint
-Two new `/config` and `/env` [endpoints]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#check-mdcb-configurations" >}}) have been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
+Two new `/config` and `/env` [endpoints]({{< ref "api-management/mdcb#check-mdcb-configurations" >}}) have been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
 
 - Secure access to configuration data
 - Automatic redaction of sensitive information
@@ -200,7 +571,7 @@ Two new `/config` and `/env` [endpoints]({{< ref "tyk-multi-data-centre/setup-co
 
 This addition enhances debugging capabilities and provides valuable insights into the MDCB instance's current settings.
 
-Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
+Please refer to the [changelog]({{< ref "#Changelog-v2.7.0" >}}) below.
 
 #### Downloads
 - [Docker image v2.7.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.0)
@@ -236,8 +607,6 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
       Added `/env` endpoint that returns MDCB instance configuration as a list of environment variable keys and values. It requires an administrative key provided in the `x-tyk-authorization` header for access, ensuring secure and controlled usage. Successful requests returns a list of environment variable keys and values with passwords and sensitive information redacted.
       </details>
   </li>
- </details>
- </li>
  </ul>
 
 
@@ -298,7 +667,7 @@ MDCB 2.6.0 is an update for compatibility for synchronisation with Tyk v5.4 API 
 ##### Comprehensive Data Plane Node Information
 MDCB 2.6 introduces a new `/dataplanes` endpoint that provides a comprehensive view of all data plane nodes connected to MDCB, including crucial metadata and status information for each node. The admin secret is required in the header to access these information.
 
-Please refer to the [changelog]({{< ref "#Changelog-v2.6.0">}}) below.
+Please refer to the [changelog]({{< ref "#Changelog-v2.6.0" >}}) below.
 
 #### Downloads
 - [Docker image v2.6.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.6.0)
@@ -385,7 +754,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x or 2.5.0 version, we advise you to upgrade as soon as possible to this latest release. If you are on an older version, you should skip 2.5.0 and upgrade directly to this release.
 
 #### Release Highlights
-This release contains bug fixes as detailed in the [changelog]({{< ref "#Changelog-v2.5.1">}}) below.
+This release contains bug fixes as detailed in the [changelog]({{< ref "#Changelog-v2.5.1" >}}) below.
 
 #### Downloads
 - [Docker image v2.5.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.1)
@@ -461,7 +830,7 @@ We have upgraded mongo-go driver to [mongo-go v1.13.1](https://github.com/mongod
 ##### Security Fixes
 We have fixed a security issue affecting MDCB v2.2.0 to v2.4.x, where certain per-API access rights from policies are not properly relayed to edge gateways. We strongly recommend upgrading to MDCB version 2.5.0 to ensure the proper enforcement of per-API access rights across all gateways in your deployment.
 
-Please refer to the [changelog]({{< ref "#Changelog-v2.5.0">}}) below.
+Please refer to the [changelog]({{< ref "#Changelog-v2.5.0" >}}) below.
 
 #### Downloads
 - [Docker image v2.5.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.0)
@@ -544,7 +913,7 @@ MDCB 2.4.x supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use MDC
    
 MDCB uses `mongo-go` as the default MongoDB driver from v2.5.0. This provides support for MongoDB 4.4.x, 
 5.0.x, 6.0.x, 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. 
-[MongoDB supported versions](https://tyk.io/docs/tyk-self-managed#supported-versions#supported-versions) 
+[MongoDB supported versions]({{< ref "planning-for-production/database-settings#supported-versions" >}}) 
 page provides details on how to configure MongoDB drivers in Tyk.
  </details>
  </li>
@@ -601,7 +970,7 @@ This release resolved an issue causing partial outages in Tyk Cloud Hybrid gatew
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.3/images/sha256-832f461782fbc6182382798a89025b0489f529427521f92683f33df1ebbd4218?context=explore)
 
-#### Changelog {#Changelog-v2.4.3}
+#### Changelog
 
 ##### Fixed
 <ul>
@@ -630,7 +999,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.2">}}) below.
+This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.2" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.2/images/sha256-bdd708718153fdc25d13573d280fb5a715f11b1d2c97c6d59837d8dd83bf3c6c?context=explore)
@@ -664,7 +1033,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.1">}}) below.
+This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.1" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.1/images/sha256-2debf08c95c46a4662a00b2193ee142998826ed7c5e2bb4a4633737c0a4de2e3?context=explore)
@@ -690,7 +1059,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+. Please refer to the [changelog]({{< ref "#Changelog-v2.4.0">}}) below.
+MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+. Please refer to the [changelog]({{< ref "#Changelog-v2.4.0" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.0/images/sha256-b5fad5b4c1c8b912999816ab51ff51e62fdd733fc43256187f22e1218b287f26?context=explore)
@@ -736,7 +1105,7 @@ MDCB 2.2.0 brings support for using the official [MongoDB go driver](https://www
 From MDCB 2.2.0, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set the new *MDCB* config option driver to `mongo-go`.
 
 The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
-* [mgo](https://github.com/go-mgo/mgo) (default): Uses the `mgo` driver which is the existing one Tyk has been using till now. This driver supports *MongoDB* versions up to v4 (lower or equal to v4, <=v4). You can get more information about this driver [here](https://github.com/go-mgo/mgo). This driver will stay the default till the next release, to allow users more time for migration. After that, the default driver will be `mongo-go`.
+* [mgo](https://github.com/go-mgo/mgo) (default): Uses the `mgo` driver which is the existing one Tyk has been using till now. This driver supports *MongoDB* versions up to v4 (lower or equal to v4, `<=v4`). You can get more information about this driver [here](https://github.com/go-mgo/mgo). This driver will stay the default till the next release, to allow users more time for migration. After that, the default driver will be `mongo-go`.
 * [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official *MongoDB driver*. This driver supports MongoDB v4 or newer (greater or equal to v4, >=v4).
 
 Tyk 5.0.2 and Tyk Pump 1.8.0 also support the new driver option.

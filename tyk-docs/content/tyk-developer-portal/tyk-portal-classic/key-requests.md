@@ -6,7 +6,12 @@ menu:
     parent: "Tyk Portal Classic"
 aliases:
   - /tyk-developer-portal/key-requests
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< include "legacy-classic-portal-api" >}}
 
 ## Key Requests
 

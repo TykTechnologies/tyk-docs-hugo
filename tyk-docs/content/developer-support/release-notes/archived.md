@@ -1,5 +1,6 @@
 ---
 title: Archived Releases
+description: "Tyk Old releases"
 tags: ["Tyk", "Archived", "Release notes", "v2.4", "v2.5", "v2.6", "v2.7", "v2.8", "v2.9", "2.9"]
 aliases:
   - /product-stack/tyk-dashboard/release-notes/old-releases/version-2.4
@@ -66,7 +67,7 @@ Other changes:
 
 Now you can set granular permissions on per user basis, by injecting permissions to the "scope" claim of a JSON Web Token. To make it work you need to provide mapping between the scope and policy ID, and thanks to enchanced policy merging capabilities mentioned above, Tyk will read the scope value from the JWT and will generate dynamic access rules. Your JWT scopes can look like `"users:read companies:write"` or similar, it is up to your imagination. OpenID supports it as well, but at the moment only if your OIDC provider can generate ID tokens in JWT format (which is very common this days).
 
-See our [JWT Scope docs]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details.
+See our [JWT Scope docs]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) for more details.
 
 ### Go plugins
 
@@ -94,7 +95,7 @@ See our [Golang plugin documentation]({{< ref "api-management/plugins/golang#" >
 We have listened to you, and tracing is recently one of your most common requests. Distributed tracing takes your monitoring and profiling experience to the next level, since you can see the whole request flow, even if it has complex route though multiple services. And inside this flow, you can go deep down into the details like individual middleware execution performance.
 At the moment we are offering [OpenTracing](https://opentracing.io/) support, with [Zipkin](https://zipkin.io/) and [Jaeger](https://www.jaegertracing.io/) as supported tracers.
 
-See our [Distributed Tracing documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) for more details.
+See our [Distributed Tracing documentation]({{< ref "api-management/logs-metrics#opentelemetry" >}}) for more details.
 
 ### HMAC request signing
 
@@ -127,7 +128,7 @@ The following algorithms are supported:
 
 We worked a lot with our clients to build a way nicer on-boarding experience for Tyk. Instead of using the command line, you can just run the Dashboard, and complete a form which will configure your Dashboard. However, we did not forget about our experienced users too, and now provide a CLI enchanced tool for bootstrapping Tyk via a command line.
 
-See our updated [Getting Started]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) section and [new CLI documentation]({{< ref "tyk-self-managed" >}}).
+See our updated [Getting Started]({{< ref "tyk-self-managed/install" >}}) section and [new CLI documentation]({{< ref "tyk-self-managed" >}}).
 
 ### DNS Caching
 
@@ -163,7 +164,7 @@ See our [Dashboard SSO documentation]({{< ref "api-management/dashboard-configur
 
 ### Importing WSDL APIs
 
-WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "getting-started/import-apis" >}}) for more details.
+WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}}) for more details.
 
 ### Updated Versions
 
@@ -247,7 +248,7 @@ There is a [new section]({{< ref "api-management/dashboard-configuration#dashboa
 
 
 > **TLDR**
-> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "tyk-self-managed#planning-for-production" >}})
+> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "planning-for-production" >}})
 
 We have thoroughly analyzed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
 
@@ -745,7 +746,7 @@ We have added support for New Relic Instrumentation using:
 
 `"newrelic": {"app_name": "<app-id>", "license_key": "<key>"}`
 
-[Docs]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}})
+[Docs]({{< ref "api-management/logs-metrics#statsd-instrumentation" >}})
 
 #### Default API Versioning
 
@@ -753,7 +754,7 @@ You can now specify a default API version, and it will be used if a version is n
 
 `spec.version_data.default_version`
 
-[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
+[Docs]({{< ref "api-management/gateway-config-tyk-classic#tyk-classic-api-versioning" >}})
 
 #### Disable URL Encoding
 
@@ -803,7 +804,7 @@ With this release we have refreshed the entire Dashboard UI with a new look-and-
 
 We have added API and Policy search functionality, which should help those with long lists.
 
-* [API Docs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}})
+* [API Docs]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition" >}})
 * [Policy Docs]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
 
 #### A New, Interactive Getting Started Walkthrough
@@ -814,7 +815,7 @@ We have swapped out the old Getting started tutorial and added a new interactive
 
 We have extended the URL Rewrite plugin functionality by enabling users to create more advanced rewrite rules based on Header matches, Query string variable/value matches, Path part matches, (i.e. components of the path itself), Session metadata values, and Payload matches.
 
-[Docs]({{< ref "transform-traffic/url-rewriting" >}})
+[Docs]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}})
 
 #### Portal Session Lifetime
 
@@ -912,7 +913,7 @@ Here are the packages and their versions we are releasing today: Tyk Gateway v2.
 
 #### Mutual TLS
 
-A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
+A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}).
 
 
 #### Extended use of Multiple Policies
@@ -964,17 +965,17 @@ We have added a new **Tag headers** section to the Dashboard **API Designer Adva
 
 More SSO functionality is something that a lot of our customers have been asking for. In this release we've significantly improved our support for SSO, and you can now:
 
-* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
+* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "api-management/single-sign-on-ldap" >}})
 * Set permissions for your users, logged via SSO, via `sso_permission_defaults` in Dashboard config file. [Docs]({{< ref "api-management/external-service-integration" >}})
 * Setup a login page redirect, using `sso_custom_login_url` and `sso_custom_portal_login_url` Dashboard config options to enable users login using a custom SSO login page. [Docs]({{< ref "api-management/external-service-integration" >}})
-* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
+* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "api-management/custom-auth-with-proxy-identity-provider" >}})
 
 
 
 ### <a name="gateway"></a>Tyk Gateway v2.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -991,7 +992,7 @@ If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
 #### Include `x-tyk-api-expires` date header for versioned APIs
 If a request is made for an API which has an expiry date, the response will include the `x-tyk-api-expires` header with expiry date. 
 
-[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
+[Docs]({{< ref "api-management/gateway-config-tyk-classic#tyk-classic-api-versioning" >}})
 
 #### Run Admin Control API on a separate port
 Using `control_api_port` option in configuration file, you can run the admin control api on a separate port, and hide it behind firewall if needed.
@@ -1025,7 +1026,7 @@ We have added the `jsonMarshal` helper to the body transform templates. You can 
 
 Example: `{{ .myField | jsonMarshal }}`
 
-[Docs]({{< ref "transform-traffic/request-body" >}})
+[Docs]({{< ref "api-management/traffic-transformation/request-body" >}})
 
 #### Added a blocking reload endpoint
 
@@ -1059,7 +1060,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 ### <a name="dashboard"></a>Tyk Dashboard v1.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -1090,14 +1091,14 @@ Example:
 [Docs]({{< ref "api-management/external-service-integration" >}})
 
 #### Set custom login pages for portal and dashboard
-If you are using 3-rd party authentification like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
+If you are using 3-rd party authentication like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
 
 [Docs]({{< ref "api-management/external-service-integration" >}})
 
-#### Added new set of APIs for custom dashboard authentification
+#### Added new set of APIs for custom dashboard authentication
 Added new `/admin/sso` endpoint for custom integration. In fact, the same API is used by our own Tyk Identity Broker. 
 
-[Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
+[Docs]({{< ref "api-management/custom-auth-with-proxy-identity-provider" >}})
 
 
 #### Service discovery form improved with most common pre-defined templates
@@ -1140,9 +1141,6 @@ The country code in the log browser has been changed to a link to the geographic
 #### Fixed the` proxy.preserve_host_header` field when saved via the UI.
 Previously, the field was available in the API definition, but got removed if the API was saved via the UI.
 
-#### Fixed the port removal in service discovery properties.
-https://github.com/TykTechnologies/tyk-analytics-ui/issues/12
-
 #### Prevent an admin user revoking their own permissions.
 This is a  UI only fix, it is still allowable via the API (which is OK).
 
@@ -1163,14 +1161,14 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
 ### <a name="mdcb"></a> MDCB v1.4.0
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
+Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}})
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 
 
 ### <a name="tib"></a>TIB v0.2
   
-Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
+Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "api-management/single-sign-on-ldap" >}})
 
 ### <a name="upgrade"></a>Upgrading all new Components
 

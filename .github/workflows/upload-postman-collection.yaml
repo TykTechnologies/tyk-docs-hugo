@@ -1,0 +1,97 @@
+name: Import Swagger to Postman
+
+on:
+  workflow_dispatch:
+    inputs:
+      next_latest_branch:
+        description: 'The branch to checkout (e.g. release-5.8)'
+        required: true
+
+jobs:
+  import-swagger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.next_latest_branch }}
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Import and Update Collections
+        env:
+          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
+          POSTMAN_WORKSPACE: ${{ secrets.POSTMAN_WORKSPACE }}
+        run: |
+          #!/bin/bash
+          set -e
+          files=(
+            "gateway-swagger.yml"
+            "dashboard-swagger.yml"
+            "mdcb-swagger.yml"
+            "enterprise-developer-portal-swagger.yaml"
+            "dashboard-admin-swagger.yml"
+          )
+          
+          for file in "${files[@]}"; do
+            echo "Processing $file..."
+          
+            # Extract the swagger version from the top-level info block.
+            swagger_version=$(awk '
+              /^[[:space:]]*openapi:/ {found=1}
+              found && /^[[:space:]]*info:/ {ininfo=1}
+              ininfo && /^[[:space:]]*version:/ {
+                sub(/^[[:space:]]*version:[[:space:]]*/, "");
+                print;
+                exit
+              }
+            ' "tyk-docs/assets/others/$file")
+            echo "Extracted swagger version: $swagger_version"
+          
+            # Read and convert file contents to a JSON-escaped string.
+            input=$(cat "tyk-docs/assets/others/$file" | jq -Rs '.')
+          
+            # Build the JSON payload for import.
+            payload="{\"type\": \"string\", \"input\": $input}"
+            echo "$payload" > "payload-${file}.json"
+            echo "Payload for $file saved to payload-${file}.json"
+          
+            # Import the swagger file into Postman and capture the response.
+            response=$(curl --fail --silent --location --request POST "https://api.getpostman.com/import/openapi?workspace=${POSTMAN_WORKSPACE}" \
+              --header "X-Api-Key: ${POSTMAN_API_KEY}" \
+              --header "Content-Type: application/json" \
+              --data "@payload-${file}.json")
+            echo "Import response: $response"
+          
+            # Extract collection uid and current name from the response.
+            collection_uid=$(echo "$response" | jq -r '.collections[0].uid')
+            current_name=$(echo "$response" | jq -r '.collections[0].name')
+            echo "Imported collection uid: $collection_uid"
+            echo "Current collection name: $current_name"
+          
+            # Construct the new name by appending the swagger version (e.g., "Tyk Dashboard API v5.8.0").
+            new_name="${current_name} v${swagger_version}"
+            echo "New collection name: $new_name"
+          
+            # Build the PATCH payload to update only the collection name.
+            update_payload=$(jq -n --arg new_name "$new_name" '{
+              collection: {
+                info: {
+                  name: $new_name
+                }
+              }
+            }')
+            echo "Update payload: $update_payload"
+          
+            # Update the collection using the PATCH endpoint.
+            update_response=$(curl --fail --silent --location --request PATCH "https://api.getpostman.com/collections/${collection_uid}" \
+              --header "X-Api-Key: ${POSTMAN_API_KEY}" \
+              --header "Content-Type: application/json" \
+              --data "$update_payload")
+            echo "Update response: $update_response"
+          
+            echo "Done processing $file"
+          done

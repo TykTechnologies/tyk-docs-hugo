@@ -5,7 +5,8 @@ info:
     name: Tyk Technologies
     url: https://tyk.io/contact
   description: |2
-
+    <img src="https://tyk.io/docs/img/swagger_dashboard_image.png" width="963" height="250">
+    
     ## <a name="introduction"></a> Introduction
 
     The Tyk Dashboard API offers granular, programmatic access to a centralised database of resources that your Tyk nodes can pull from. This API has a dynamic user administrative structure which means the secret key that is used to communicate with your Tyk nodes can be kept secret and access to the wider management functions can be handled on a user-by-user and organisation-by-organisation basis.
@@ -38,12 +39,12 @@ info:
     name: Mozilla Public License Version 2.0
     url: https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md
   title: Tyk Dashboard API
-  version: 5.7.1
+  version: 5.10.0
 servers:
 - url: https://{tenant}
   variables:
     tenant:
-      default: localhost:8080
+      default: localhost:3000
       description: Your dashboard host
 security:
 - bearerAuth: []
@@ -101,8 +102,8 @@ tags:
     description: Additional Permissions full documentation.
     url: https://tyk.io/docs/tyk-dashboard-api/org/permissions/
   name: Additional Permissions
-- description: Get OAS schema.
-  name: Schema
+- description: Get schemas.
+  name: Schemas
 - description: |
     Webhooks are a great way to let external applications know about the status of a user, an API or an event that has occurred in the Tyk gateway <br/>
 
@@ -174,6 +175,8 @@ tags:
   name: Single Sign On
 - description: System API.
   name: System
+- description: Notifications for an organisation
+  name: Organisation Notifications
 paths:
   /api/activity/keys/{keyHash}/{startDay}/{startMonth}/{startYear}/{EndDay}/{EndMonth}/{EndYear}:
     get:
@@ -576,7 +579,7 @@ paths:
                 name: Tyk Test API
                 org_id: 664a14650619d40001f1f00f
                 proxy:
-                  listen_path: /tyk-api-test/
+                  listen_path: /tyk-api-test-one/
                   strip_listen_path: true
                   target_url: https://httpbin.org
                 use_oauth2: true
@@ -1615,6 +1618,92 @@ paths:
       summary: Get API URLs
       tags:
       - APIs
+  /api/proxy:
+    post:
+      summary: Proxy API request
+      operationId: proxyRequest
+      description: |
+        Forwards a request to a specified gateway endpoint. This endpoint allows you to send requests to other services through the Tyk gateway, which can be useful for testing or accessing protected resources.
+        
+        The proxy will forward your request to the specified URL, including any headers and body data you provide. It then returns the response from the target service, including status code, headers, and body.
+      tags:
+        - Proxy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProxyRequest'
+            example:
+              method: "GET"
+              url: "http://localhost:8181/test-oas/get"
+              headers:
+                test: "tyk"
+                Content-Type: "application/json"
+              body:
+                name: "New Resource"
+                description: "Description of the resource."
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyResponse'
+              example:
+                status_code: 200
+                headers:
+                  Access-Control-Allow-Credentials: "true"
+                  Access-Control-Allow-Origin: "*"
+                  Content-Length: "364"
+                  Content-Type: "application/json"
+                  Date: "Thu, 19 Dec 2024 14:10:48 GMT"
+                  Server: "gunicorn/19.9.0"
+                  X-Ratelimit-Limit: "0"
+                  X-Ratelimit-Remaining: "0"
+                  X-Ratelimit-Reset: "0"
+                body:
+                  args: {}
+                  headers:
+                    Accept-Encoding: "gzip"
+                    Content-Length: "83"
+                    Content-Type: "application/json"
+                    Host: "httpbin.org"
+                    Test: "tyk"
+                    User-Agent: "Go-http-client/1.1"
+                    X-Amzn-Trace-Id: "Root=1-67642968-11206636527acf9a25d230c3"
+                  origin: "::1, 81.18.84.15"
+                  url: "http://httpbin.org/get"
+        '400':
+          description: Bad request - usually due to malformed request syntax
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                Status: "Error"
+                Message: "Invalid proxy request"
+                Meta: null
+        '403':
+          description: Forbidden - URL not recognized or not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                Status: "Error"
+                Message: "Provided URL is not a recognised gateway URL"
+                Meta: null
+        '500':
+          description: Internal server error - issue with proxy or target service
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                Status: "Error"
+                Message: "Failed to process proxy request"
+                Meta: null
   /api/apis/categories:
     get:
       description: Get a list of all the defined API categories and the number(count)
@@ -1990,6 +2079,13 @@ paths:
           required: true
           schema:
             type: string
+        - name: "Content-Type"
+          in: header
+          required: true
+          description: "Content type for streams endpoints should be `application/vnd.tyk.streams.oas`"
+          schema:
+            type: string
+            enum: ["application/vnd.tyk.streams.oas"]
       responses:
         "200":
           content:
@@ -2055,6 +2151,13 @@ paths:
           required: true
           schema:
             type: string
+        - name: "Accept"
+          in: header
+          required: true
+          description: "Accept type for streams endpoints should be `application/vnd.tyk.streams.oas`"
+          schema:
+            type: string
+            enum: ["application/vnd.tyk.streams.oas"]
       responses:
         "200":
           content:
@@ -2355,8 +2458,8 @@ paths:
                     scheme: bearer
                     type: http
               info:
-                description: This is a sample OAS.
-                title: OAS Sample
+                description: This is a sample OpenAPI description.
+                title: Sample OpenAPI description
                 version: 1.0.0
               openapi: 3.0.3
               paths:
@@ -2390,13 +2493,21 @@ paths:
                 server:
                   listenPath:
                     strip: true
-                    value: /user-test/
+                    value: /user-test-one/
                 upstream:
                   url: https://localhost:8080
             schema:
               allOf:
               - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
               - $ref: '#/components/schemas/XTykApiGateway'
+          application/x-yaml:
+            examples:
+              oasExample:
+                $ref: '#/components/examples/oasExample'
+            schema:
+              allOf:
+                - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
+                - $ref: '#/components/schemas/XTykApiGateway'
       responses:
         "200":
           content:
@@ -2553,6 +2664,14 @@ paths:
                 allOf:
                 - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
                 - $ref: '#/components/schemas/XTykApiGateway'
+            application/x-yaml:
+              examples:
+                oasExample:
+                  $ref: '#/components/examples/oasExample'
+              schema:
+                allOf:
+                  - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
+                  - $ref: '#/components/schemas/XTykApiGateway'
           description: Fetched API.
           headers:
             x-tyk-base-api-id:
@@ -2631,64 +2750,26 @@ paths:
                 summary: Patch By Url
                 value:
                   url: https://gist.githubusercontent.com/lghiur/385183f81d0878e5806fffab843d2ef2/raw/1da0aa8b08b496e6c8c84c4996fad6c4877218a0/Petstore%2520Tyk%2520OAS%2520API%2520Definition
-              PatchOASExample:
-                summary: Patch Tyk Oas Example
-                value:
-                  components:
-                    securitySchemes:
-                      bearerAuth:
-                        description: The API Access Credentials
-                        scheme: bearer
-                        type: http
-                  info:
-                    description: This is a sample OAS.
-                    title: OAS Sample
-                    version: 1.0.0
-                  openapi: 3.0.3
-                  paths:
-                    /api/sample/users:
-                      get:
-                        operationId: getUsersSample
-                        responses:
-                          "200":
-                            content:
-                              application/json:
-                                schema:
-                                  items:
-                                    properties:
-                                      name:
-                                        type: string
-                                    type: object
-                                  type: array
-                            description: fetched users
-                        summary: Get users
-                        tags:
-                        - users
-                  security:
-                  - bearerAuth: []
-                  servers:
-                  - url: https://localhost:8080
-                  x-tyk-api-gateway:
-                    info:
-                      name: user
-                      state:
-                        active: true
-                    server:
-                      listenPath:
-                        strip: true
-                        value: /user-test/
-                    upstream:
-                      url: https://localhost:8080
+              PatchByOASExample:
+                $ref: '#/components/examples/PatchOASExample'
             schema:
               oneOf:
               - $ref: '#/components/schemas/ApiImportByUrlPayload'
               - allOf:
                 - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
                 - $ref: '#/components/schemas/XTykApiGateway'
+          application/x-yaml:
+            examples:
+              oasExample:
+                $ref: '#/components/examples/PatchOASExample'
+            schema:
+              allOf:
+              - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
+              - $ref: '#/components/schemas/XTykApiGateway'
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/FormDataFile'
-        description: The content of the file should be the OpenAPI document in JSON
+        description: The content of the file should be the OpenAPI document in JSON or YAML
           format.
       responses:
         "200":
@@ -2770,8 +2851,8 @@ paths:
                     scheme: bearer
                     type: http
               info:
-                description: This is a sample OAS.
-                title: OAS Sample
+                description: This is a sample OpenAPI description.
+                title: Sample OpenAPI description
                 version: 1.0.0
               openapi: 3.0.3
               paths:
@@ -2805,13 +2886,21 @@ paths:
                 server:
                   listenPath:
                     strip: true
-                    value: /user-test/
+                    value: /user-test-three/
                 upstream:
                   url: https://localhost:8080
             schema:
               allOf:
               - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
               - $ref: '#/components/schemas/XTykApiGateway'
+          application/x-yaml:
+            examples:
+              oasExample:
+                $ref: '#/components/examples/oasExample'
+            schema:
+              allOf:
+                - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
+                - $ref: '#/components/schemas/XTykApiGateway'
       responses:
         "200":
           content:
@@ -3057,6 +3146,13 @@ paths:
           enum:
           - public
           type: string
+      - name: Content-Type
+        in: header
+        required: false
+        description: Content type of the fetched data. The endpoint returns data in JSON format if Content-Type header is empty.
+        schema:
+          type: string
+          enum: [ "application/json", "application/x-yaml" ]
       responses:
         "200":
           content:
@@ -3164,6 +3260,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
           description: API not found.
+        "422":
+          content:
+            application/json:
+              example:
+                Message: '{apiId} is not recognised'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: API not recognised.
       summary: List OAS API versions.
       tags:
       - OAS APIs
@@ -3224,8 +3330,8 @@ paths:
                       scheme: bearer
                       type: http
                 info:
-                  description: This is a sample OAS.
-                  title: OAS Sample
+                  description: This is a sample OpenAPI description.
+                  title: Sample OpenAPI description
                   version: 1.0.0
                 openapi: 3.0.3
                 paths:
@@ -3259,8 +3365,8 @@ paths:
                       scheme: bearer
                       type: http
                 info:
-                  description: This is a sample OAS.
-                  title: OAS Sample
+                  description: This is a sample OpenAPI description.
+                  title: Sample OpenAPI description
                   version: 1.0.0
                 openapi: 3.0.3
                 paths:
@@ -3294,7 +3400,7 @@ paths:
                   server:
                     listenPath:
                       strip: true
-                      value: /user-test/
+                      value: /user-test-four/
                   upstream:
                     url: https://localhost:8080
             schema:
@@ -3348,7 +3454,7 @@ paths:
     post:
       description: For use with an existing OpenAPI document that you want to expose
         via your Tyk Gateway. <br/> Create a new Tyk OAS API from an OpenAPI document
-        in JSON format (without x-tyk-api-gateway extension). <br/>The payload can
+        in JSON or YAML format (without x-tyk-api-gateway extension). <br/>The payload can
         contain either a fully fledged OpenAPI document or a URL pointing to an OpenAPI
         document.
       operationId: importOAS
@@ -3391,6 +3497,13 @@ paths:
         required: false
         schema:
           type: boolean
+      - name: Content-Type
+        in: header
+        required: false
+        description: Content type of the imported document. If Content-Type header is empty, it's assumed that Content-Type is application/json.
+        schema:
+          type: string
+          enum: [ "application/json", "application/x-yaml" ]
       requestBody:
         content:
           application/json:
@@ -3398,7 +3511,7 @@ paths:
               ImportByUrl:
                 summary: Import By Url
                 value:
-                  url: https://gist.githubusercontent.com/Keithwachira/e4f11baefb68f2ace5dd2297b7ccc3e0/raw/bd0aeee05d1bd380535af7a8d5d59aa30f9b5aad/tykOas.json
+                  url: https://gist.githubusercontent.com/yurisasuke/e4f11baefb68f2ace5dd2297b7ccc3e0/raw/bb476fa4d4a48874b26d9df9bf62094d1a07f040/tykOas.json
               ImportTykOAS:
                 summary: Import Tyk Oas Example
                 value:
@@ -3409,8 +3522,8 @@ paths:
                         scheme: bearer
                         type: http
                   info:
-                    description: This is a sample OAS.
-                    title: OAS Sample
+                    description: This is a sample OpenAPI description.
+                    title: Sample OpenAPI description
                     version: 1.0.0
                   openapi: 3.0.3
                   paths:
@@ -3440,10 +3553,16 @@ paths:
               oneOf:
               - $ref: '#/components/schemas/ApiImportByUrlPayload'
               - $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
+          application/x-yaml:
+            examples:
+              oasExample:
+                $ref: '#/components/examples/oasExampleWithoutTykExtension'
+            schema:
+              $ref: https://raw.githubusercontent.com/TykTechnologies/tyk/refs/heads/master/apidef/oas/schema/3.0.json
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/FormDataFile'
-        description: The content of the file should be the OpenAPI document in JSON
+        description: The content of the file should be the OpenAPI document in JSON or YAML
           format (without x-tyk-api-gateway extension).
       responses:
         "200":
@@ -3946,6 +4065,42 @@ paths:
       summary: List OAuth client tokens.
       tags:
       - Oauth
+  /api/apis/migrate:
+    post:
+      description: Migrate APIs from Tyk Classic to Tyk OAS format. The endpoint supports different migration modes including dry run, staging, promotion and direct migration.
+      operationId: migrateAPI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MigrateAPIRequest'
+            example:
+              mode: "dryRun"
+              apiIDs: [ "api123", "api456" ]
+              abortOnFailure: true
+      responses:
+        "200":
+          description: Migration completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MigrateAPIResponse'
+        "400":
+          description: Bad request - validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+      summary: Migrate APIs from Tyk Classic to Tyk OAS format.
+      tags:
+      - MigrateOAS
+
   /api/apis/search:
     get:
       description: This will return a list of APIs whose names matches the provided
@@ -4588,6 +4743,25 @@ paths:
           enum:
           - detailed
           type: string
+      - description: |- 
+          Used to apply filtering to the list of certificates returned in the response. 
+          With this option you are able to filter by certificates that can be used when signing a request (i.e. they contain a private key),
+          or those used to validate a signature (i.e. they do not contain a private key, only the public key).
+          This query param works only in combination with detailed mode (mode=detailed). 
+          `omit` (default) – Returns all certificates.
+          with_pk – Returns only certificates that include a private key.
+          without_pk – Returns only certificates that do not include a private key.
+        name: filter
+        example: omit
+        required: false
+        in: query
+        schema:
+          type: string
+          default: omit
+          enum:
+            - omit
+            - with_pk
+            - without_pk
       responses:
         "200":
           content:
@@ -7452,13 +7626,21 @@ paths:
       - Policies
   /api/schema:
     get:
-      description: Get OAS schema.
+      deprecated: true
+      description: Get API definition OAS schema.  An alias to `/api/schemas/apidefs/oas`.
       operationId: getSchema
       parameters:
       - description: The OAS version.
         example: 3.0.3
         in: query
         name: oasVersion
+        required: false
+        schema:
+          type: string
+      - description: Pretty print the result.
+        example: 'true'
+        in: query
+        name: pretty
         required: false
         schema:
           type: string
@@ -7493,15 +7675,185 @@ paths:
           content:
             application/json:
               example:
-                Message: Could not retrieve OAS schema. Schema not found for version.
+                Message: Could not retrieve schema. schema not found for version.
                 Meta: null
                 Status: Error
               schema:
                 $ref: '#/components/schemas/ApiResponse'
           description: Internal server error.
-      summary: Get OAS schema.
+      summary: Get API definition OAS schema.
       tags:
-      - Schema
+      - Schemas
+  /api/schemas/apidefs:
+    get:
+      description: Get all API definition schemas.
+      operationId: getAllApidefsSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllApidefSchemasResponse'
+          description: All API definition schemas response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get all API definition schemas.
+      tags:
+      - Schemas
+  /api/schemas/apidefs/oas:
+    get:
+      description: Get API definition OAS schema.
+      operationId: getApidefOASSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+        - description: Pretty print the result.
+          example: 'true'
+          in: query
+          name: pretty
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+          description: OAS schema response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs/oas'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get API definition OAS schema.
+      tags:
+      - Schemas
+  /api/schemas/apidefs/streams-oas:
+    get:
+      description: Retrieve schema for Tyk Streams APIs, enabling developers and integrators to validate or generate stream-based API definitions programmatically. Optionally select the OAS version and pretty-print formatting.
+      operationId: getApidefStreamsOASSchema
+      parameters:
+        - description: The OAS version.
+          example: 3.0.3
+          in: query
+          name: oasVersion
+          required: false
+          schema:
+            type: string
+        - description: Pretty print the result.
+          example: 'true'
+          in: query
+          name: pretty
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+          description: OAS schema response.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/schemas/apidefs/streams-oas'
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Could not retrieve schema. schema not found for version.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Get API definition Streams OAS schema.
+      tags:
+      - Schemas
   /api/sso:
     post:
       description: The Dashboard exposes the /api/sso Dashboard API which allows you
@@ -9046,7 +9398,9 @@ paths:
           required: false
           schema:
             type: integer
-        - description: Filters audit logs based on the specific URL path of the API endpoint that was accessed. This parameter allows you to focus on actions performed on particular resources or sections of your API.
+        - description: | 
+            This parameter filters audit logs based on partially matching the accessed API endpoint's URL path. It allows searching for actions performed on related resources or sections of the API by matching any portion of the URL. The match is case-sensitive and ignores additional path segments or query parameters beyond the matched portion.  
+            For example, if the database contains URLs like `/tib/create`, `/tib/get/1?schema=json`,  `/api/schema`, and `/schema1` searching with `url=schema` would return  `/api/schema` and `/schema1`.
           example: /api/apis
           in: query
           name: url
@@ -9067,9 +9421,29 @@ paths:
           required: false
           schema:
             type: string
+        - description: Determines whether the response should be a downloadable file containing the records. If set to `true`, the API returns a file instead of a JSON list of records. When enabled, pagination is not applied, and the file will include all records that match the search criteria.
+          example: true
+          in: query
+          name: download
+          required: false
+          schema:
+            type: boolean
+        - description: Specifies the format of the downloadable file. This parameter is only applied when `download` is set to `true`. If set to `csv`, the file content will be in CSV format; otherwise, JSON format will be used.
+          in: query
+          name: type
+          required: false
+          schema:
+            type: string
+            enum: [ csv, json ]
+          example: csv
       responses:
         "200":
           content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+                description: A file containing the audit logs in either JSON or CSV format, depending on the `type` query parameter.
             application/json:
               example:
                 pages: 1
@@ -9137,6 +9511,136 @@ paths:
       summary: List audit logs
       tags:
         - AuditLogs
+  /api/audit-logs/{audit-log-id}:
+    get:
+      description: Retrieve a single audit log from database by ID
+      operationId: getAuditLog
+      parameters:
+        - description: ID of the audit log record to fetch.
+          example: 1
+          in: path
+          name: audit-log-id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _id: 672a83e2b0418b224440ce29
+                req_id: 0462e283-a55f-41ab-6482-60d2eeb1858c
+                org_id: 66cf7f8db0418b1fbe91852b
+                date: Tue, 05 Nov 2024 17:45:22 -03
+                timestamp: 1730839522
+                ip: 127.0.0.1
+                user: jhon@mail.com
+                action: ''
+                method: GET
+                url: "/api/audit-logs"
+                status: 200
+              schema:
+                $ref: '#/components/schemas/AuditLog'
+          description: Audit Log retrieved successfully
+        "400":
+          content:
+            application/json:
+              example:
+                Message: could not retrieve audit record
+                Meta: null
+                Status: Error
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/audit-log'
+                Meta: null
+                Status: Error
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              example:
+                Message: could not retrieve audit record
+                Meta: null
+                Status: Error
+          description: NotFound
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Failed to fetch audit record.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Retrieve single audit log
+      tags:
+        - AuditLogs
+  /api/org/notifications:
+    get:
+      description: Retrieve all notifications that have been issued for a specific Tyk Organisation.
+      operationId: getAllOrganisationNotifications
+      parameters:
+        - description: Setting refresh to true will force the API to refresh the list of notifications.
+          example: 'true'
+          in: query
+          name: refresh
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+           application/json:
+              example:
+                - id: b52f491a-2946-408b-9330-2736db85705b
+                  created_at: 2025-08-13T11:16:12.194968+02:00
+                  org_id: 683d6e6a954737af2aa8e5c2
+                  hash: '17090217262863020087'
+                  kind: warning
+                  topic: certificate.expiry
+                  title: Certificate will expire soon
+                  message: Certificate with ID 683d6e6a954737af2aa8e5c20d545f3211d5a53684114dc8b3ebb2503edf6fabf2e5812425be2fa108f3fb4d will expire in less than 18 days
+                  data:
+                    cert_id: 683d6e6a954737af2aa8e5c20d545f3211d5a53684114dc8b3ebb2503edf6fabf2e5812425be2fa108f3fb4d
+                    expiry_date: 2025-08-31T08:41:53Z
+                    days_remaining: 17
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganisationNotification'
+
+          description: Returns a list of notifications that have been issued for the specified Tyk Organisation.
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/org/notifications'
+                Meta: null
+                Status: Error
+          description: Forbidden
+      summary: Retrieve notifications
+      tags:
+        - Organisation Notifications
 components:
   examples:
     aggregateAnalytics:
@@ -9176,8 +9680,8 @@ components:
               scheme: bearer
               type: http
         info:
-          description: This is a sample OAS.
-          title: OAS Sample
+          description: This is a sample OpenAPI description.
+          title: Sample OpenAPI description
           version: 1.0.0
         openapi: 3.0.3
         paths:
@@ -9211,7 +9715,91 @@ components:
           server:
             listenPath:
               strip: true
-              value: /user-test/
+              value: /user-test-five/
+          upstream:
+            url: https://localhost:8080
+    oasExampleWithoutTykExtension:
+      value:
+        components:
+          securitySchemes:
+            bearerAuth:
+              description: The API Access Credentials
+              scheme: bearer
+              type: http
+        info:
+          description: This is a sample OpenAPI description.
+          title: Sample OpenAPI description
+          version: 1.0.0
+        openapi: 3.0.3
+        paths:
+          /api/sample/users:
+            get:
+              operationId: getUsersSample
+              responses:
+                "200":
+                  content:
+                    application/json:
+                      schema:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                        type: array
+                  description: fetched users
+              summary: Get users
+              tags:
+                - users
+        security:
+          - bearerAuth: [ ]
+        servers:
+          - url: https://localhost:8080
+    PatchOASExample:
+      summary: Patch Tyk OAS Example
+      value:
+        components:
+          securitySchemes:
+            bearerAuth:
+              description: The API Access Credentials
+              scheme: bearer
+              type: http
+        info:
+          description: This is a sample OpenAPI description.
+          title: Sample OpenAPI description
+          version: 1.0.0
+        openapi: 3.0.3
+        paths:
+          /api/sample/users:
+            get:
+              operationId: getUsersSample
+              responses:
+                "200":
+                  content:
+                    application/json:
+                      schema:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                        type: array
+                  description: fetched users
+              summary: Get users
+              tags:
+                - users
+        security:
+          - bearerAuth: [ ]
+        servers:
+          - url: https://localhost:8080
+        x-tyk-api-gateway:
+          info:
+            name: user
+            state:
+              active: true
+          server:
+            listenPath:
+              strip: true
+              value: /user-test-two/
           upstream:
             url: https://localhost:8080
     paginatedApiExample:
@@ -9372,7 +9960,7 @@ components:
           server:
             listenPath:
               strip: true
-              value: /user-test/
+              value: /user-test-six/
           upstream:
             url: https://localhost:8080
         x-tyk-streaming:
@@ -9380,7 +9968,7 @@ components:
             stream1:
               input:
                 kafka:
-                  addressess:
+                  addresses:
                     - localhost:9093
                   auto_replay_nacks: true
                   checkpoint_limit: 1024
@@ -9437,7 +10025,7 @@ components:
         type: string
     ListenPath:
       description: Listen path for the API.
-      example: /user-test/
+      example: /user-test-seven/
       in: query
       name: listenPath
       required: false
@@ -9500,6 +10088,53 @@ components:
         format: date
         type: string
   schemas:
+    ProxyRequest:
+      type: object
+      required:
+        - method
+        - url
+      properties:
+        method:
+          type: string
+          description: HTTP method for the proxy request (GET, POST, PUT, DELETE, etc.)
+        url:
+          type: string
+          description: Full URL for the proxy request (valid Gateway url), including scheme, host, and path
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Headers to be sent with the proxy request
+        body:
+          type: object
+          description: Body of the proxy request, typically used for POST or PUT requests
+    ProxyResponse:
+      type: object
+      properties:
+        status_code:
+          type: integer
+          description: HTTP status code of the proxied response
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Headers received from the proxied response
+        body:
+          type: object
+          description: Body of the proxied response, parsed as JSON if possible
+    ErrorResponse:
+      type: object
+      properties:
+        Status:
+          type: string
+          description: Error status, typically "Error"
+        Message:
+          type: string
+          description: Detailed error message explaining what went wrong
+        Meta:
+          type: object
+          nullable: true
+          description: Additional metadata about the error, if available
     APICertificateStatusMessage:
       properties:
         id:
@@ -10408,6 +11043,16 @@ components:
         pages:
           type: integer
       type: object
+    CertificateExpiryData:
+      properties:
+        cert_id:
+          type: string
+        expiry_date:
+          type: string
+        days_remaining:
+          type: integer
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk-analytics/dashboard/repository/notification
     CertificateList:
       properties:
         certs:
@@ -11798,6 +12443,18 @@ components:
           type: string
       type: object
       x-go-package: github.com/TykTechnologies/tyk/gateway
+    AllApidefSchemasResponse:
+      properties:
+        message:
+          type: string
+        schemas:
+          properties:
+            oas: {}
+            streamsOAS: {}
+        status:
+          type: string
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk-analytics/dashboard
     OAuthApps:
       properties:
         apps:
@@ -11969,6 +12626,31 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/ParameterRef'
       type: object
+    OrganisationNotification:
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+        org_id:
+          type: string
+        hash:
+          type: string
+        kind:
+          type: string
+          enum: [ "critical", "warning" ]
+        topic:
+          type: string
+          enum: [ "certificate.expiry" ]
+        title:
+          type: string
+        message:
+          type: string
+        data:
+          oneOf:
+            - $ref: "#/components/schemas/CertificateExpiryData"
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk-analytics/dashboard/model
     PathItem:
       properties:
         $ref:
@@ -12972,11 +13654,13 @@ components:
           $ref: '#/components/schemas/ServiceDiscovery'
       type: object
     TimeDuration:
-      format: int64
-      type: integer
+      format: duration
+      type: string
+      example: "30s"
     TimeReadableDuration:
-      format: int64
-      type: integer
+      format: duration
+      type: string
+      example: PT2H30M15S
     TrackEndpoint:
       nullable: true
       properties:
@@ -13580,6 +14264,123 @@ components:
               type: object
               additionalProperties: true
             #to be added
+    MigrateAPIRequest:
+      type: object
+      required:
+        - mode
+      properties:
+        apiIDs:
+          type: array
+          items:
+            type: string
+          description: List of API IDs to migrate. Cannot be used together with 'all'
+        all:
+          type: boolean
+          description: Migrate all APIs. Cannot be used together with 'apiIDs'
+        abortOnFailure:
+          type: boolean
+          description: Stop migration process on first failure
+        mode:
+          type: string
+          enum:
+            - dryRun
+            - stage
+            - promote
+            - direct
+          description: Migration mode to use
+        overrideStaged:
+          type: boolean
+          description: When mode is staged and overrideStaged is set to true, migration process will overwrite already existing staged API with the same staged ID
+    MigrateAPIResponse:
+      description: migration API response object
+      type: object
+      properties:
+        success:
+          description: reports details of APIs migrated successfully
+          type: object
+          properties:
+            count:
+              description: count of APIs migrated successfully
+              type: integer
+            apiIDs:
+              description: list of API IDs migrated successfully
+              type: array
+              items:
+                type: string
+            stagedAPIs:
+              description: reports the details of APIs staged in stage mode
+              type: array
+              items:
+                type: object
+                properties:
+                  classicAPIID:
+                    type: string
+                  oasAPIID:
+                    type: string
+            definitions:
+              type: array
+              items:
+                type: object
+                properties:
+                  apiID:
+                    type: string
+                  baseAPI:
+                    description: contains the migrated base API in Tyk OAS format
+                    type: object
+                  versions:
+                    description: contains the versioned API definitions in Tyk OAS format
+                    type: array
+                    items:
+                      type: object
+        failure:
+          description: reports the details of failed API migrations
+          type: object
+          properties:
+            count:
+              description: count of APIs failed migration
+              type: integer
+            errors:
+              description: details of errors occurred during migration
+              type: array
+              items:
+                type: object
+                properties:
+                  apiID:
+                    type: string
+                  message:
+                    type: array
+                    items:
+                      type: string
+        skipped:
+          description: reports the details of skipped APIs
+          type: object
+          properties:
+            count:
+              type: integer
+            apis:
+              type: array
+              items:
+                type: object
+                properties:
+                  apiID:
+                    type: string
+                  message:
+                    type: string
+                  key:
+                    type: string
+                    nullable: true
+                    enum:
+                      - already_migrated
+                      - already_staged
+                      - is_tcp
+                      - is_streams
+                      - is_graphql
+                      - is_websocket
+                      - not_staged
+
+        abortedOnFailure:
+          description: reports whether migration process aborted on first failure
+          type: boolean
   securitySchemes:
     bearerAuth:
       description: The Tyk Dashboard API Access Credentials

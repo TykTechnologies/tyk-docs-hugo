@@ -1,10 +1,8 @@
 ---
-date: 2017-03-24T12:52:17Z
-title: WebSockets
-menu: 
-  main:
-    parent: "Advanced Configuration"
-weight: 5  
+title: "Websockets"
+date: 2019-09-23T10:28:52+03:00
+description: How to use websockets in Tyk
+tags: ["websockets", "Other Protocol"]
 ---
 
 As from Tyk gateway v2.2, Tyk supports transparent WebSocket connection upgrades. To enable this feature, set the `enable_websockets` value to `true` in your `tyk.conf` file.
@@ -25,24 +23,25 @@ We are going to set up Tyk with a WebSocket proxy using our [Tyk Pro Docker Demo
 
 We will be using the [Postman WebSocket Echo Service](https://blog.postman.com/introducing-postman-websocket-echo-service/) to test the connection.
 
-### Step 1. Setup the API in Tyk
+**Steps for Configuration**
 
-Create a new API in Tyk. For this demo we are going to select Open (Keyless) as the **Authentication mode**.
+1. **Setup the API in Tyk**
 
-Set the **Target URL** to `wss://ws.postman-echo.com/raw`
+    Create a new API in Tyk. For this demo we are going to select Open (Keyless) as the **Authentication mode**.
 
+    Set the **Target URL** to `wss://ws.postman-echo.com/raw`
 
-### Step 2. Test the Connection
+2. **Test the Connection**
 
-1. From Postman, select **File > New > WebSocket Request** (or from **Workspace > New > WebSocket Request** if using the web based version).
+    1. From Postman, select **File > New > WebSocket Request** (or from **Workspace > New > WebSocket Request** if using the web based version).
 
-{{< img src="/img/dashboard/system-management/postman-websocket-request.png" alt="Postman WebSocket Request" >}}
+    {{< img src="/img/dashboard/system-management/postman-websocket-request.png" alt="Postman WebSocket Request" >}}
 
-2. Enter your Tyk API URL in the **Enter server URL** field (minus the protocol).
-3. Enter some text in the **New Message** field and click **Send**.
-4. You will see a successful connection.
+    2. Enter your Tyk API URL in the **Enter server URL** field (minus the protocol).
+    3. Enter some text in the **New Message** field and click **Send**.
+    4. You will see a successful connection.
 
-{{< img src="/img/dashboard/system-management/postman-websocket-test.png" alt="Postman WebSocket Connection Result" >}}
+    {{< img src="/img/dashboard/system-management/postman-websocket-test.png" alt="Postman WebSocket Connection Result" >}}
 
 {{< note success >}}
 **Note**  
@@ -54,4 +53,5 @@ An example Header configuration for using an Authentication Token with an API:
 
 {{< img src="/img/dashboard/system-management/websocket-auth-token.png" alt="Postman WebSocket Connection Result with Authorization token" >}}
 
-See the [Access an API]({{< ref "getting-started/create-api-key" >}}) tutorial for details on adding an Authentication Token to your APIs.
+See the [Access an API]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) tutorial for details on adding an Authentication Token to your APIs.
+

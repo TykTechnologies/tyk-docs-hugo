@@ -9,13 +9,13 @@
 
 In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3) (OAS).  
 This introduces a standard way to describe the vendor-agnostic elements of an API (the OpenAPI Definition, stored as an OpenAPI Document); we take this and add Tyk-specific configuration options to create the *Tyk OAS API Definition*. You can import your own OpenAPI document and Tyk will use this to generate the Tyk OAS API Definition.  
-For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#tutorial-1-create-a-tyk-oas-api-using-the-tyk-gateway-api" >}}).
+For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "api-management/gateway-config-managing-oas#creating-an-api" >}}).
 
 {{< /note >}}
 
 **Prerequisites**
 
-In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}).
+In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}).
 
 {{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Try it free" >}}
 
@@ -40,7 +40,7 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
     {{< img src="/img/dashboard/4.1-updates/create-api.png" alt="Create API" >}}
 
     - In the **Overview** section, add a **Name** for your API and select the **Type** of API you wish to create. We will use HTTP for this tutorial. 
-    - In the **Details** section, add the **Upstream URL**. This is the Target URL that hosts the service to which you want to proxy incoming requests. You can configure Tyk to perform round-robin load balancing between multiple upstream servers (Target URLs) by selecting **Enable round-robin load balancing**; see [Load Balancing]({{< ref "tyk-self-managed#load-balancing" >}}) for more details. For this tutorial, we will use a single upstream target: [http://httpbin.org](http://httpbin.org).
+    - In the **Details** section, add the **Upstream URL**. This is the Target URL that hosts the service to which you want to proxy incoming requests. You can configure Tyk to perform round-robin load balancing between multiple upstream servers (Target URLs) by selecting **Enable round-robin load balancing**; see [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing" >}}) for more details. For this tutorial, we will use a single upstream target: [http://httpbin.org](http://httpbin.org).
     - Click **Configure API** when you have finished.
 
 4. **Set up authentication for your API**
@@ -56,7 +56,7 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
     - **Auth Key Header Name**: The header parameter that will hold the authentication token (or key) for requests to this API; the default for this is `Authorization`.
     - **Allow query parameter as well as header**: This option allows the authentication token to be set in the query parameter, not just in the Request Header. For this tutorial, leave this unchecked.
     - **Use Cookie Value**: Tyk also supports the use of a cookie value as an alternative authentication token location. For this tutorial, leave this unchecked.
-    - **Enable client certificate**: Tyk supports the use of Mutual TLS to authenticate requests to your API; you would use this checkbox to enable this mode. See [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) for details on implementing this feature. For this tutorial, leave this unchecked.
+    - **Enable client certificate**: Tyk supports the use of Mutual TLS to authenticate requests to your API; you would use this checkbox to enable this mode. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#why-use-mutual-tls" >}}) for details on implementing this feature. For this tutorial, leave this unchecked.
 
 5. **Save the API**
 

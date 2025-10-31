@@ -12,11 +12,12 @@ tags:
 - API Gateway
 title: Create Tyk Account
 aliases:
-    - /tyk-cloud/initial-portal-config
 ---
 
 
 Welcome to Tyk! This guide will walk you through the process of creating your account and getting started with our powerful API management platform.
+
+Updated workflow.
 
 ## Choosing Your Tyk Solution
 
@@ -24,6 +25,9 @@ Tyk offers multiple deployment options to suit your needs:
 
 - **Tyk Cloud**: A fully managed service for easy API management at any scale.
 - **Tyk Self-Managed**: Install the full lifecycle API management solution in your own infrastructure.
+
+    > This page focuses on getting started with Tyk Cloud, If you are looking for information on Tyk Self-Managed, please refer to the [Getting Started with Tyk Self-Managed Guide]({{< ref "getting-started/quick-start" >}}).
+
 - **Tyk Open Source**: The core API Gateway, freely available and open source.
 
 For this guide, we'll focus on creating an account for Tyk Cloud, which offers a free 48 hour trial.
@@ -87,7 +91,7 @@ After a few minutes, the "Add API" button should appear. Select it and you will 
 
 
 ### Step 7: Start Creating APIs
-Finally, you will be taken to the Tyk Dashboard. Select "Design From Scratch" and continue on to [our tutorial](/getting-started/configure-first-api) to learn how to setup and secure your APIs.
+Finally, you will be taken to the Tyk Dashboard. Select "Design From Scratch" and continue on to [our tutorial]({{< ref "getting-started/configure-first-api" >}}) to learn how to setup and secure your APIs.
 
 {{< img src="/img/getting-started/create-account-design-from-scratch.png" alt="Create Account Design From Scratch" >}}
 

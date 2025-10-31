@@ -364,17 +364,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
   .search_widget {
     flex-grow: 1;
     margin-left: 1.8rem;
     margin-right: 1.8rem;
+    position: relative;
+    display: flex;
+    align-items: center;
   }
+  
   @media only screen and (max-width: 1024px) {
     .search_widget {
       margin-right: 70px;
     }
+    
+    .ask-ai-btn {
+      position: absolute;
+      right: 75px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
   }
 }
+
 .header__nav_container {
   display: flex;
   align-items: center;
@@ -391,4 +405,18 @@
   font-weight: 500;
   line-height: 20px;
   padding: 2px;
+}
+
+/* Style for the Ask AI button */
+.mn-btn.ask-ai {
+  background-color: #10e7a9; /* Tyk green color */
+  border: none;
+  border-radius: 4px;
+  margin-left: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.mn-btn.ask-ai:hover {
+  background-color: #0dc994;
 }

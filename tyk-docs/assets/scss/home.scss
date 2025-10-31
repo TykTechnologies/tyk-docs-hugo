@@ -201,6 +201,10 @@ ol, ul {
   color: $brand-black;
 }
 
+.home-mobile-margin {
+  margin-top: 40px;
+}
+
 @media (min-width: 992px) {
   .section-padding {
     padding-inline: 1%;

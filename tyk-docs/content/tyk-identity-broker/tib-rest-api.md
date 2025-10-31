@@ -1,5 +1,6 @@
 ---
 title: TIB REST API
+description: Tyk Identity Broker (TIB) REST API, including endpoints for managing identity profiles and configurations.
 menu:
   main:
     parent: "Tyk Identity Broker"
@@ -16,7 +17,7 @@ TIB does not store profiles in a shared store, so if you have multiple TIB insta
 Starting from Tyk Dashboard 3, TIB is built-in to the dashboard. TIB endpoints are exposed as part of dashboard API on the `/api/tib/` prefix. So if in the guide below external TIB API endpoint is `/api/profiles` the similar endpoint on the dashboard API will be `/api/tib/profiles`.
 
 
-## <a name="list-profile"></a>List Profiles 
+## List Profiles 
 
 ```{.copyWrapper}
 GET /api/profiles/

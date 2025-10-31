@@ -178,13 +178,38 @@ $(document).ready(function(e){
 
 	$('code[class^="language"]:not(.language-diff)').copyToClipboard();
 
+	//Handle header hyperlinks
+	$(document).ready(function() {
+		// Handle header hyperlinks for copying
+		$('.wysiwyg').find('h2:not(.see_also_heading), h3:not(.see_also_heading), h4:not(.see_also_heading), h5:not(.see_also_heading)').each(function () {
+			var heading = $(this);
+			var id = heading.attr('id');
 
-//Handle header hyperlinks
-	$('.wysiwyg').find('h2:not(.see_also_heading), h3:not(.see_also_heading), h4:not(.see_also_heading), h5:not(.see_also_heading)').hover(function () {
-		$(this).append('<a href=#' + $(this).context.id + '><img src="/docs/img/link.svg" />  </a>'); },
-		function(){
-			$(this).find($('a[href="#' + $(this).context.id +'"]')).remove();
+			if (id) {
+				var linkIcon = $('<a href="#' + id + '" class="copy-anchor" title="Copy link"><img src="/docs/img/link.svg" class="copy-icon" /></a>');
+				heading.append(linkIcon);
+
+				linkIcon.on('click', function (e) {
+					e.preventDefault(); // Prevent default anchor jump
+					var fullUrl = window.location.origin + window.location.pathname + '#' + id;
+
+					navigator.clipboard.writeText(fullUrl).then(() => {
+						var img = $(this).find('img');
+
+						// Change to check.svg
+						img.attr('src', '/docs/img/check.svg');
+
+						// Reset back to link.svg after 2 seconds
+						setTimeout(() => {
+							img.attr('src', '/docs/img/link.svg');
+						}, 2000);
+					}).catch(err => {
+						console.error("Failed to copy:", err);
+					});
+				});
+			}
 		});
+	});
 });
 
 $(document).ready(function(e){

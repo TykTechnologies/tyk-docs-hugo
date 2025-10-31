@@ -20,6 +20,10 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 #### Release Highlights
 
+<Add Release Summary>
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-vX.Y.Z) below.
+
 #### Breaking Changes
 This release has no breaking changes.
 
@@ -36,7 +40,7 @@ This release has no breaking changes.
 |                 |                           | Pump vX - vY            |
 |                 |                           | TIB vX - vY             |
       
-##### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-vX.Y.Z}
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
@@ -50,7 +54,10 @@ Given the time difference between your upgrade and the release of this version, 
 There are no deprecations in this release.
 
 #### Upgrade instructions
-For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
+For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. 
+- If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
+- If you are on an older major version (e.g., vX-1.Y.Z), we recommend reading all the release notes between your current version and the one you’re upgrading to
+
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
@@ -107,6 +114,9 @@ The actual changelog item text should go here. It should be no more than three o
 <summary>Changelog item summary</summary>
 
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+
+The line item should follow the below template.
+*Fixed an issue where [describe the issue], which caused [describe the impact]. This has been resolved by [describe the fix].*
 </details>
 </li>
 <li>
@@ -147,7 +157,7 @@ Repeat the release notes section above for every patch here
 Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
-- [OpenAPI Document]({{<ref "" >}})
+- [OpenAPI Document]({{< ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
 ### FAQ

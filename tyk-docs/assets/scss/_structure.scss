@@ -81,7 +81,6 @@ body {
 
     .hasSidebar &__container {
       padding-right: 20px;
-      padding-top: 10px;
       padding-left: 20px;
     }
   }
@@ -94,7 +93,6 @@ body {
 
     .hasSidebar &__container {
       padding-right: 20px;
-      padding-top: 60px;
       padding-left: 100px;
     }
   }
@@ -145,6 +143,17 @@ body {
   margin-top: 5px !important;
   font-size: 12px;
   color: #44546f;
+}
+
+.page-content,
+.section-page {
+  padding-top: 40px;
+}
+
+.page-content {
+  h4 {
+    scroll-margin-top: 10px;
+  }
 }
 
 .metadata_heading {

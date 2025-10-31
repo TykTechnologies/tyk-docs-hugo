@@ -31,13 +31,13 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{<ref "tyk-self-managed#install-tyk-stack-with-helm-chart-postgresql">}}) or [Quick Start with Helm Chart and MongoDB]({{<ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb">}}).
+For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-postgresql" >}}) or [Quick Start with Helm Chart and MongoDB]({{< ref "tyk-self-managed/install#install-tyk-stack-with-helm-chart-mongodb" >}}).
 
 ## Prerequisites
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis](https://tyk.io/docs/migration-to-tyk#configure-legacy-tyk-headless-helm-chart) should already be installed or accessible by the gateway and dashboard.
+* [Redis]({{< ref "tyk-configuration-reference/redis-cluster-sentinel" >}}) should already be installed or accessible by the gateway and dashboard.
 * [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by dashboard. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 
 {{< note success >}}
@@ -96,7 +96,7 @@ helm show values tyk-helm/tyk-stack > values.yaml
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
 Alternatively, you can use `--set` flag to set it in Tyk installation. See [Using Helm](https://helm.sh/docs/intro/using_helm/) for examples.
 
-To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{<ref "tyk-environment-variables">}}). 
+To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{< ref "tyk-oss-gateway/configuration" >}}). 
 
 ### Bootstrapping
 
@@ -157,7 +157,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-self-managed#store-configuration-with-key-value-store">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{< ref "tyk-configuration-reference/kv-store" >}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -184,7 +184,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed/install#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -489,7 +489,7 @@ Note: If you are using `global.secrets.useSecretName`, you must configure the op
 This section explains how to configure the `tyk-gateway` section for updating the Gateway version, enabling TLS, enabling autoscaling etc.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{< ref "developer-support/release-notes/gateway" >}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 
@@ -586,7 +586,7 @@ An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set t
 
 *Control Port*
 
-Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{<ref "tyk-gateway-api">}}) on a separate port and protect it behind a firewall if needed.
+Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{< ref "tyk-gateway-api" >}}) on a separate port and protect it behind a firewall if needed.
 
 #### Sharding
 
@@ -688,9 +688,9 @@ To enable Pump, set `global.components.pump` to true, and configure below inside
 **Note**
 
 For additional information on Tyk Pump configurations, refer to the 
-[Setup Dashboard Analytics]({{<ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config">}}) documentation.
+[Setup Dashboard Analytics]({{< ref "api-management/tyk-pump#setup-dashboard-analytics" >}}) documentation.
 
-To explore the list of supported backends for Tyk Pump, please visit [Pump Backends]({{<ref "tyk-stack/tyk-pump/other-data-stores">}}).
+To explore the list of supported backends for Tyk Pump, please visit [Pump Backends]({{< ref "api-management/tyk-pump#external-data-stores" >}}).
 {{< /note >}}
 
 #### Prometheus Pump
@@ -818,7 +818,7 @@ To enable [bootstrapping](#bootstrapping), set `global.components.bootstrap` to 
 {{< note success >}}
 **Note**
 
-During bootstrapping, admin user needs to reset its password. It may be denied by Dashboard OPA rules if [OPA]({{<ref "tyk-dashboard/open-policy-agent">}}) was enabled. Please disable OPA during the initial bootstrapping or set Dashboard configuration [TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD]({{<ref "tyk-dashboard/configuration#securityallow_admin_reset_password">}}) to true.
+During bootstrapping, admin user needs to reset its password. It may be denied by Dashboard OPA rules if [OPA]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}) was enabled. Please disable OPA during the initial bootstrapping or set Dashboard configuration [TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD]({{< ref "tyk-dashboard/configuration#securityallow_admin_reset_password" >}}) to true.
 {{< /note >}}
 
 #### Bootstrapped Environments
@@ -848,7 +848,7 @@ tyk-dev-portal:
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings#postgresql" >}}), [MongoDB]({{< ref "planning-for-production/database-settings#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 By default, Tyk Developer Portal use `sqlite3` to store portal metadata. If you want to use other SQL Database, please modify the section below.
@@ -867,7 +867,7 @@ tyk-dev-portal:
 
 #### Storage Settings
 
-Tyk Developer Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Developer Portal storage settings]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal-settings">}}) page for all the available options. 
+Tyk Developer Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Developer Portal storage settings]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal-settings" >}}) page for all the available options. 
 
 If you use the file system as storage, please set `tyk-dev-portal.storage.type` to `fs`, and configure `tyk-dev-portal.storage.persistence` to mount an existing persistent volume to Tyk Developer Portal.
 
@@ -927,7 +927,7 @@ tyk-dev-portal:
 
 #### Other Configurations
 
-Other [Developer Portal configurations]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration">}}) can be set by using environment variables with `extraEnvs` fields, e.g.:
+Other [Developer Portal configurations]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) can be set by using environment variables with `extraEnvs` fields, e.g.:
 
 ```yaml
 tyk-dev-portal:
@@ -939,7 +939,7 @@ tyk-dev-portal:
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}})
+Please refer to the [Tyk Operator Installation Guide]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -950,4 +950,4 @@ to `true`.
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
 > Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
-> official documentation: [Installing Tyk Operator]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}).
+> official documentation: [Installing Tyk Operator]({{< ref "tyk-stack/tyk-operator/installing-tyk-operator" >}}).

@@ -1,41 +1,14 @@
-### For internal users - Please add a Jira DX PR ticket to the subject!
-<br>
+## Contributor checklist
+
+- [ ] Reviewed *PR Code suggestions* and updated accordingly
+- [ ] **Tyklings:** Labled the PR with the relevant releases
+- [ ] **Tyklings:** Added Jira DX PR ticket to the subject
 
 ---
 
-### Preview Link
-<!-- Add a direct preview link to make it easier for the reviewer to review. Best to add a few direct links to the pages in the PR -->
-<br>
+## New Contributors 
+- [ ] Start the PR branch from our latest `master`
+- [ ] I have read the [repository contribution guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md)
+- [ ] I have read the [repository technical guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md)
 
-### Description
-<!-- 1. Describe your changes in detail. Why is this change required? What problem does it solve?
-     2. Please explain the change to the reviewer. Pay special attention to changes that are hard to spot, 
-       for example:
-       2.1. Name change in the file name or directory name - please flag it out since it’s hard 
-            to compare text after such a change 
-       2.2. Terminology change - flag it out to make sure the reviewer is aware before approving
-     3. @mentions of the person to review the proposed changes. They need to be able to know the topic well in order to approve it.
--->
-<br>
-
-#### Screenshots (if appropriate)
-<br>
-
-## Checklist
-<!-- Go over all the following points, and put an `x` in all the boxes that apply -->
-
-- [ ] I have added a **preview link** to the PR description.
-- [ ] I have reviewed the suggestions made by our AI (PR Agent) and updated them accordingly (spelling errors, rephrasing, etc.)
-- [ ] I have [reviewed the guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md) for contributing to this repository.
-- [ ] I have [read the technical guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md) for contributing to this repository.
-- [ ] Make sure you have started *your change* off *our latest `master`*.
-- [ ] **For Tyk Members** - Please add a Jira DX PR ticket to the subject!
-- [ ] **For Tyk Members** - I have added the appropriate release label to this PR:  
-  - If it is for a future release, label it as **`future-release`** and specify the version (e.g., `future-release, 6.0`).  
-  - If it should be merged into an older version, use the specific version label (e.g., `4.1`, `5.1`).  
-  - If no label is added, it will be assumed that the PR should be merged into the latest current version (e.g., `5.5`) and `master`.
-<!-- Label your PR according to the type of changes that your code introduces. This ensures that we know how/when to publish the PR. These are the options:
-- Fixing typo (please merge to production) - add the label `now`
-- Documenting a new feature (please merge to production) - add the label `now`
-- Documentation for future release (please do not merge to production) - add label `future release` and label of the release
-- [Something else (please add if needs merging to production or not) - add label according to the above logic -->
+---

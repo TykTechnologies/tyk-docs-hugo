@@ -121,7 +121,7 @@ For teams operating within Kubernetes, Tyk Operator integrates seamlessly, provi
 
 ### Tyk Streams
 
-**[Tyk Streams]({{< ref "product-stack/tyk-streaming/overview" >}})** is Tyk’s real-time data streaming tool for APIs, enabling applications to receive data as events happen:
+**[Tyk Streams]({{< ref "api-management/event-driven-apis#" >}})** is Tyk’s real-time data streaming tool for APIs, enabling applications to receive data as events happen:
 
 - **Real-Time Data**: Pushes live data to clients in real time.
 - **Event-Driven Architecture**: Triggers immediate responses to data changes.
@@ -169,7 +169,7 @@ Tyk Helm Charts are particularly useful for teams deploying Tyk in Kubernetes, s
 
 ### Universal Data Graph (UDG)
 
-The **[Universal Data Graph (UDG)]({{< ref "universal-data-graph" >}})** provides a single API endpoint for accessing data from multiple sources using GraphQL, offering:
+The **[Universal Data Graph (UDG)]({{< ref "api-management/data-graph#overview" >}})** provides a single API endpoint for accessing data from multiple sources using GraphQL, offering:
 
 - **Data Aggregation**: Combines data from disparate sources into a unified API.
 - **Customizable Data Access**: Clients can query only the data they need.

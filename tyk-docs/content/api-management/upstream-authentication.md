@@ -9,7 +9,8 @@ tags:
     - Basic Auth
 description: Authenticating Tyk Gateway with upstream services
 date: "2024-11-18"
-
+aliases:
+  - security/certificate-pinning
 ---
 
 ## Introduction
@@ -19,31 +20,26 @@ Tyk Gateway sits between your clients and your services, securely routing reques
 In the same way as you use Client Authentication to securely confirm the identity of the API clients, your upstream services probably need to securely confirm the identity of their client - namely Tyk. This is where Tyk's flexible **Upstream Authentication** capability comes in.
 
 When using Tyk, you can choose from a range of authentication methods for each upstream API:
-- [Mutual TLS]({{< ref "api-management/client-authentication#upstream-mtls" >}})
-- [Token-based authentication]({{< ref "#token-based-authentication" >}})
-- [Request signing using HMAC]({{< ref "api-management/client-authentication#upstream-hmac-request-signing" >}})
-- [Basic Authentication](#basic-authentication)
-- [OAuth 2.0](#upstream-oauth-20)
-    - [OAuth 2.0 Client Credentials](#oauth-client-credentials)
-    - [OAuth 2.0 Password Grant](#oauth-resource-owner-password-credentials)
+- [Mutual TLS]({{< ref "api-management/upstream-authentication/mtls" >}})
+- [Token-based authentication]({{< ref "api-management/upstream-authentication/auth-token" >}})
+- [Request signing]({{< ref "api-management/upstream-authentication/request-signing" >}})
+- [Basic Authentication]({{< ref "api-management/upstream-authentication/basic-auth" >}})
+- [OAuth 2.0]({{< ref "api-management/upstream-authentication/oauth" >}})
+    - [OAuth 2.0 Client Credentials]({{< ref "api-management/upstream-authentication/oauth#oauth-client-credentials" >}})
+    - [OAuth 2.0 Password Grant]({{< ref "api-management/upstream-authentication/oauth#oauth-resource-owner-password-credentials" >}})
 
 {{< note success >}}
 **Note**  
 
-Note that OAuth 2.0 Password Grant is prohibited in the [OAuth 2.0 Security Best Practice](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13#section-3.4") but is supported by Tyk for use with legacy upstream services.
+Upstream Basic Authentication and Oauth 2.0 support are only available to licensed users, via the Tyk Dashboard. These features are not available to open source users.
 {{< /note >}}
 
-<!-- 
-## Mutual TLS (mTLS)
+{{< warning success >}}
+**Warning**  
 
-what it is
-how to use it
-- API definition
-- Dashboard UI
-*** move and improve existing content from the client>gateway auth page ***
--->
+Note that OAuth 2.0 Password Grant is prohibited in the [OAuth 2.0 Security Best Practice](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13#section-3.4") but is supported by Tyk for use with legacy upstream services.
+{{< /warning >}}
 
-<hr>
 
 ## Token-based authentication
 
@@ -440,6 +436,10 @@ Select **OAuth** from the choice in the **Authentication Method** drop-down, the
 {{< img src="/img/dashboard/api-designer/upstream-oauth-password-grant.png" alt="Tyk OAS API Designer showing Upstream OAuth password grant configuration options" >}}
 
 
-### Note:
+{{< note success >}}
+**Note**  
 
 Any error encountered in the communication with the OAuth server will generate an `UpstreamOAuthError` event. This event can be used to trigger an event handler, for example you could use a [webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) to alert the system administrator of the issue.
+
+
+
