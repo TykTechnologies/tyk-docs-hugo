@@ -13,7 +13,7 @@ date: "2025-04-15"
 
 | Component   | Editions   |
 | ----------- | ---------- |
-| Tyk Gateway & Dashboard | Enterprise |
+| Gateway and Dashboard | Enterprise |
 
 ## Upstream OAuth 2.0
 
