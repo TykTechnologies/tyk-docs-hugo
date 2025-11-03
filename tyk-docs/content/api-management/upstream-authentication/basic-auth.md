@@ -9,6 +9,11 @@ description: How to authenticate upstream service basic authentication
 date: "2025-04-15"
 ---
 
+## Availability 
+
+| Component   | Editions   |
+| ----------- | ---------- |
+| Gateway and Dashboard | Enterprise |
 
 ## Basic Authentication
 
