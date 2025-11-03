@@ -9,6 +9,12 @@ description: How to authenticate upstream service using oauth
 date: "2025-04-15"
 ---
 
+## Availability 
+
+| Component   | Editions   |
+| ----------- | ---------- |
+| Gateway and Dashboard | Enterprise |
+
 ## Upstream OAuth 2.0
 
 OAuth 2.0 is an open standard authorization protocol that allows services to provide delegated and regulated access to their APIs; critically the user credentials are not shared with the upstream service, instead the client authenticates with a separate Authentication Server which issues a time-limited token that the client can then present to the upstream (Resource Server). The upstream service validates the token against the Authentication Server before granting access to the client.
