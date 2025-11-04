@@ -31,7 +31,7 @@ When using Tyk, you can choose from a range of authentication methods for each u
 {{< note success >}}
 **Note**  
 
-Upstream Basic Authentication and Oauth 2.0 support are only available to licensed users, via the Tyk Dashboard. These features are not available to open source users.
+Upstream Basic Authentication and OAuth 2.0 support are only available to licensed users, via the Tyk Dashboard. These features are not available to open source users.
 {{< /note >}}
 
 {{< warning success >}}
