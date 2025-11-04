@@ -3,7 +3,6 @@ title: "API Observability - Configuring Logs and Metrics"
 description: "Learn how to configure logs and metrics in Tyk for effective API observability, including integration with third-party tools."
 date: 2025-02-10
 tags: ["Metrics", "Traces", "Logs", "System Logs", "API Traffic", "Opentelemetry", "Datadog", "Dynatrace", "New Relic", "Elastic Search", "Jaeger", "Monitoring", "Observability"]
-description: ""
 keywords: ["Metrics", "Traces", "Logs", "System Logs", "API Traffic", "Opentelemetry", "Datadog", "Dynatrace", "New Relic", "Elastic Search", "Jaeger", "Monitoring", "Observability"]
 aliases:
   - /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/observability
