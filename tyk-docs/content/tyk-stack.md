@@ -10,6 +10,10 @@ aliases:
 
 {{< include "oss-product-list-include" >}}
 
+## Prerequisites
+
+Redis is an essential prerequisite for all Tyk products. For detailed Redis requirements and configuration guidance, see our [Redis requirements documentation]({{< ref "planning-for-production/redis-requirements" >}}).
+
 ## Closed Source
 
 The following Tyk components, created and maintained by the Tyk Team, are proprietary and closed-source:
