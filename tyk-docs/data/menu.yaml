@@ -665,12 +665,20 @@ menu:
                   path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
                   category: Page
                   show: True
+                - title: "Signature Validation"
+                  path: /api-management/authentication/jwt-signature-validation
+                  category: Page
+                  show: True
                 - title: "Claim Validation"
                   path: /api-management/authentication/jwt-claim-validation
                   category: Page
                   show: True
                 - title: "Authorization"
                   path: /api-management/authentication/jwt-authorization
+                  category: Page
+                  show: True
+                - title: "Split Token"
+                  path: /api-management/authentication/jwt-split-token
                   category: Page
                   show: True
               - title: "HMAC Signatures"
