@@ -916,9 +916,9 @@ Here we see that:
 - The response body has a JSON payload with the current time.
 - The upstream target was not reached. Our Tyk Golang plugin served this request and stopped processing after the response was sent.
 
-### Performing custom authentication with a Golang plugin
+## Custom Authentication Golang Plugins
 
-You can implement your own authentication method, using a Golang plugin and custom `"auth_check"` middleware. Ensure you set the two fields in Post Authentication Hook.
+You can implement your own authentication method, written in Golang.
 
 Let's have a look at the code example. Imagine we need to implement a very trivial authentication method when only one key is supported (in the real world you would want to store your keys in some storage or have some more complex logic).
 
@@ -960,9 +960,6 @@ func MyPluginAuthCheck(rw http.ResponseWriter, r *http.Request) {
   
   // auth was successful, add the session to the request's context so other middleware can use it
   ctx.SetSession(r, session, true)
-  
-  // if compiling on a version older than 4.0.1, use this instead
-  // ctx.SetSession(r, session, key, true) 
 }
 
 func main() {}
@@ -1038,6 +1035,80 @@ Authentication successful with the right API key:
 ```
 
 Here we see that our custom middleware successfully authenticated the request and we received a reply from the upstream target.
+
+
+### Tracking identities, users, rate limits.
+
+This note shows how to authenticate a request in a custom plugin, attach a `SessionState`, and have Tyk rate-limit and quota on your identity.
+
+```go
+package main
+
+import (
+    "net/http"
+
+    "github.com/TykTechnologies/tyk/ctx"
+    "github.com/TykTechnologies/tyk/user"
+)
+
+// Example auth_check middleware
+func MyPluginAuthCheck(rw http.ResponseWriter, r *http.Request) {
+    // 1) Authenticate the request (omitted)
+    identity := "user-123" // your identity from headers/JWT/etc
+
+    // 2) Build a session
+    s := &user.SessionState{
+        OrgID: "default",
+        // This is the default way that Tyk will track your identities.
+        // Using "KeyID".
+        // Usually, this should be set, otherwise, the below 
+        // rate limits will be applied globally across all API requestors.
+        KeyID: identity, // identity used for bucketing (via hash)
+        Rate:  100,      // 100 requests
+        Per:   60,       // per 60 seconds
+        // Optional quotas
+        // QuotaMax:         10000,
+        // QuotaRenewalRate: 86400,
+    }
+
+    // 3) Attach it
+    ctx.SetSession(r, s, false)
+}
+```
+
+### Custom Rate Limiting
+
+- By default, Tyk derives the rate limiter key from `session.KeyID`.
+- If you want a custom limiter key, set `session.MetaData["rate_limit_pattern"]` to a string. Tyk will evaluate it (supports `$tyk_meta.*` and `$tyk_context.*`) and use the resulting value as both the rate-limit key and quota key.
+
+```go
+// Custom limiter/quota key example
+	sessionObject = &user.SessionState{
+		OrgID: requestedAPI.OrgID,
+		Rate:  2,
+		Per:   5,
+		MetaData: map[string]interface{}{
+      // A counter is created for each "rate_limit_pattern".
+      // This becomes your new identity.
+			"rate_limit_pattern": realIp,
+		},
+	}
+```
+
+Notes:
+- If you provide `rate_limit_pattern`, Tyk uses that value directly (no auto-hashing). If you need hashing, hash it in your plugin before assigning.
+
+### Persisting the key
+
+By default -- custom auth keys aren't persisted beyond what's necessary to track rate limits, quotas, analytics, and so on.  
+However -- you may choose to persist the keys in the custom plugin.
+
+```go
+// Set session state using session object
+ctx.SetSession(r, sessionObject, true)
+```
+
+The third argument in the parameter instructs the Gateway to save/persist the key.  Note -- this isn't a global operation -- this would be scoped to the local Data Plane's redis.
 
 ## Upgrading your Tyk Gateway
 
