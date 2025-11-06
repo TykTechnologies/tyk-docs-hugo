@@ -28,7 +28,7 @@ Our minor releases are supported until our next minor comes out.
 #### Release Date xx October 2025
 
 #### Release Highlights
-Tyk Charts 4.0.2 is a version alignment release that ensures compatibility with the most recent Tyk LTS release [5.8.7]({{< ref "developer-support/release-notes/dashboard#587-release-notes" >}}). No functional changes have been implemented in this release.
+Tyk Charts 4.0.2 is a version alignment release that ensures compatibility with the most recent Tyk LTS release [5.8.8]({{< ref "developer-support/release-notes/dashboard#587-release-notes" >}}).and Developer Portal [1.15.0]({{< ref "developer-support/release-notes/portal#1150-release-notes" >}}). No functional changes have been implemented in this release.
 
 #### Breaking Changes
 This release has no breaking changes.
