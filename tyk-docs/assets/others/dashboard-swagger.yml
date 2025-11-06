@@ -7090,7 +7090,7 @@ paths:
           application/json:
             example:
               access_rights:
-                Itachi API:
+                8ddd91f3cda9453442c477b06c4e2da4:
                   allowed_urls:
                   - methods:
                     - GET
@@ -7274,7 +7274,7 @@ paths:
             application/json:
               example:
                 access_rights:
-                  Itachi API:
+                  8ddd91f3cda9453442c477b06c4e2da4:
                     allowed_urls:
                     - methods:
                       - GET
@@ -7379,7 +7379,7 @@ paths:
           application/json:
             example:
               access_rights:
-                Itachi API:
+                8ddd91f3cda9453442c477b06c4e2da4:
                   allowed_urls:
                   - methods:
                     - GET
