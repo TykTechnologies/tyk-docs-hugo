@@ -39,7 +39,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.10.1 Release Notes 
 
-#### Release Date 29 October 2025
+#### Release Date xx 2025
 
 #### Release Highlights
 
@@ -93,6 +93,18 @@ If you are upgrading to 5.10.1, please follow the detailed [upgrade instructions
 Please note that the Tyk Helm Charts are configured to install the LTS version of Tyk Dashboard. You will need to modify them to install v5.10.1.
 
 #### Changelog {#Changelog-v5.10.1}
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated Go build environment to Debian 12 ("Bookworm")</summary>
+We have updated the Go build environment from Debian 11 ("Bullseye") to Debian 12 ("Bookworm") across all pipelines. This change ensures that all builds use the latest Go 1.24 patch version, addressing recent CVEs and improving overall security and stability.
+
+</details>
+</li>
+</ul>
 
 ##### Added
 
