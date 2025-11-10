@@ -101,6 +101,18 @@ Please note that the Tyk Helm Charts are configured to install the LTS version o
 
 #### Changelog {#Changelog-v5.10.1}
 
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated Go build environment to Debian 12 ("Bookworm")</summary>
+We have updated the Go build environment from Debian 11 ("Bullseye") to Debian 12 ("Bookworm") across all pipelines. This change ensures that all builds use the latest Go 1.24 patch version, addressing recent CVEs and improving overall security and stability.
+
+</details>
+</li>
+</ul>
+
 ##### Fixed
 
 <ul>
