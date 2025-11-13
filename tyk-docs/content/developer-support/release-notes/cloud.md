@@ -8,9 +8,32 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 # 1.30 Release Notes
 
+## 1.30.2 Release Notes
+
+### Release Date xx 2025
+
+### Release Highlights
+
+In release 1.30.2, 
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.30.2}
+
+There is no changelog in this release.
+
 ## 1.30.1 Release Notes
 
-### Release Date 25th of 2025
+### Release Date 25th of October2025
 
 ### Release Highlights
 
@@ -849,6 +872,7 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
 
 
 
