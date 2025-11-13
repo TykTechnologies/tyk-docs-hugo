@@ -12,7 +12,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 This release improves the database connection management in customer Control Plane deployments. This change intends to make database-related operations more stable and capacity management more predictable. No customer action required.
 
-### Release Date xx 2025
+### Release Date 13th November 2025
 
 ### Release Highlights
 
@@ -35,7 +35,7 @@ There is no changelog in this release.
 
 ## 1.30.1 Release Notes
 
-### Release Date 25th of October2025
+### Release Date 29th of September 2025
 
 ### Release Highlights
 
@@ -874,6 +874,7 @@ Dependencies across all Tyk Cloud components have been updated to address report
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
 
 
 
