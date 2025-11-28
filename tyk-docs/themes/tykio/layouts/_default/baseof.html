@@ -71,6 +71,7 @@
   <title> {{ .Title }}</title>
   <meta name="description" content="{{ .Description }}"/>
   <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
+  <meta name="robots" content="noindex">
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
   {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
   <link rel="canonical" href="{{ $canonicalLink}}" />
