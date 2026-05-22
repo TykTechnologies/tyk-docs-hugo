@@ -9,8 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/cookie.css" | relURL }}">
 
-  {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
-  <link rel="canonical" href="{{ $canonicalLink}}" />
+  {{/* SEO fix: canonical_map.json maps each v4.0 page to its final 200 OK URL on the
+       latest docs, bypassing redirect chains that Google was ignoring. Falls back to
+       the old formula (strip version prefix) if no map entry exists. */}}
+  {{- $canonicalLink := replace .Permalink .Site.BaseURL .Site.Params.CanonicalBaseUrl -}}
+  {{- with index site.Data.canonical_map (strings.TrimPrefix "/docs/4.0/" .RelPermalink) -}}
+    {{- $canonicalLink = . -}}
+  {{- end -}}
+  <link rel="canonical" href="{{ $canonicalLink }}" />
 
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
