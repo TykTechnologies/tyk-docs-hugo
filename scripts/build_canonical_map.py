@@ -208,10 +208,8 @@ def main():
                 if used_fallback:
                     docs_json_resolved.append((map_key, final_url))
             else:
-                # Still unresolvable — keep old-formula fallback in the map
-                # (strip trailing slash to be consistent with Netlify normalization)
-                fallback = CANONICAL_BASE + map_key.rstrip("/")
-                canonical_map[map_key] = fallback
+                # Unresolvable — skip; baseof.html formula fallback handles these.
+                # They are logged to canonical_map_errors.json for manual resolution.
                 errors.append((map_key, final_url, status))
 
     elapsed = time.time() - start
