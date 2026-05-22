@@ -1,0 +1,22 @@
+[
+  {
+    "key": "release-notes/release-4.2/",
+    "resolved_url": "https://tyk.io/docs/release-notes/release-4.2",
+    "status": 404
+  },
+  {
+    "key": "tyk-cloud/account--billing/add-payment-method/",
+    "resolved_url": "https://tyk.io/docs/tyk-cloud/account--billing/add-payment-method",
+    "status": 404
+  },
+  {
+    "key": "tyk-cloud/account--billing/upgrade-free-trial/",
+    "resolved_url": "https://tyk.io/docs/tyk-cloud/account--billing/upgrade-free-trial",
+    "status": 403
+  },
+  {
+    "key": "tyk-cloud/account--billing/managing-billing-admins/",
+    "resolved_url": "https://tyk.io/docs/tyk-cloud/account--billing/managing-billing-admins",
+    "status": 403
+  }
+]
