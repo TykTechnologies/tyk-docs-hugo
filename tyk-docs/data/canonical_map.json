@@ -377,7 +377,7 @@
   "tyk-cloud/environments--deployments/managing-environments/": "https://tyk.io/docs/tyk-cloud/environments-deployments/managing-environments",
   "tyk-cloud/environments--deployments/managing-gateways/": "https://tyk.io/docs/tyk-cloud/environments-deployments/hybrid-gateways",
   "tyk-cloud/environments--deployments/managing-organisations/": "https://tyk.io/docs/tyk-cloud/environments-deployments/managing-organisations",
-  "tyk-cloud/environments--deployments/monitoring/": "https://tyk.io/docs/tyk-cloud/environments--deployments/monitoring",
+  "tyk-cloud/environments--deployments/monitoring/": "https://tyk.io/docs/tyk-cloud/environments-deployments/monitoring-how-it-works",
   "tyk-cloud/environments-deployments/hybrid-gateways/": "https://tyk.io/docs/tyk-cloud/environments-deployments/hybrid-gateways",
   "tyk-cloud/getting-started-tyk-cloud/create-account/": "https://tyk.io/docs/tyk-cloud",
   "tyk-cloud/getting-started-tyk-cloud/first-api/": "https://tyk.io/docs/tyk-cloud",
