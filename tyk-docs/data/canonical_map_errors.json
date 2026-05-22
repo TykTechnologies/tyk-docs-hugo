@@ -1,0 +1,42 @@
+[
+  {
+    "key": "",
+    "resolved_url": "https://tyk.io/docs/",
+    "status": 403
+  },
+  {
+    "key": "plugins/supported-languages/rich-plugins/grpc/grpc-plugins-tyk/",
+    "resolved_url": "https://tyk.io/docs/plugins/supported-languages/rich-plugins/grpc/grpc-plugins-tyk",
+    "status": 403
+  },
+  {
+    "key": "tyk-cloud/account--billing/add-payment-method/",
+    "resolved_url": "https://tyk.io/docs/tyk-cloud/account--billing/add-payment-method",
+    "status": 403
+  },
+  {
+    "key": "tyk-cloud/account--billing/managing-billing-admins/",
+    "resolved_url": "https://tyk.io/docs/tyk-cloud/account--billing/managing-billing-admins",
+    "status": 403
+  },
+  {
+    "key": "tyk-cloud/account--billing/upgrade-free-trial/",
+    "resolved_url": "https://tyk.io/docs/tyk-cloud/account--billing/upgrade-free-trial",
+    "status": 403
+  },
+  {
+    "key": "tyk-dashboard/getting-started/key-concepts/rbac/",
+    "resolved_url": "https://tyk.io/docs/tyk-dashboard/getting-started/key-concepts/rbac",
+    "status": 403
+  },
+  {
+    "key": "tyk-on-prem/installation/docker/docker-pro-demo/docker-pro-demo/",
+    "resolved_url": "https://tyk.io/docs/tyk-on-prem/installation/docker/docker-pro-demo/docker-pro-demo",
+    "status": 403
+  },
+  {
+    "key": "tyk-oss-gateway/install/",
+    "resolved_url": "https://tyk.io/docs/tyk-oss-gateway/install",
+    "status": 403
+  }
+]
