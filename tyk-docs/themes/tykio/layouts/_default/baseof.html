@@ -16,8 +16,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
-  <link rel="canonical" href="{{ $canonicalLink}}" />
+  {{/* SEO fix: canonical_map.json maps each v5.4 page to its final 200 OK URL on the
+       latest docs, bypassing redirect chains that Google was ignoring. Falls back to
+       the old formula (strip version prefix) if no map entry exists. */}}
+  {{- $canonicalLink := replace .Permalink .Site.BaseURL .Site.Params.CanonicalBaseUrl -}}
+  {{- with index site.Data.canonical_map (strings.TrimPrefix "/docs/5.4/" .RelPermalink) -}}
+    {{- $canonicalLink = . -}}
+  {{- end -}}
+  <link rel="canonical" href="{{ $canonicalLink }}" />
   <!--{{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
     <link rel="canonical" href="{{ .Permalink }}" />
   {{ else }}
