@@ -151,7 +151,8 @@ def main():
                 if used_fallback:
                     docs_json_resolved.append((map_key, final_url))
             else:
-                canonical_map[map_key] = OLD_BASE + map_key.rstrip("/")
+                # Unresolvable — skip; baseof.html formula fallback handles these.
+                # They are logged to canonical_map_errors.json for manual resolution.
                 errors.append((map_key, final_url, status))
 
     print(f"\nResolved {len(urls)} URLs in {time.time()-start:.1f}s")
