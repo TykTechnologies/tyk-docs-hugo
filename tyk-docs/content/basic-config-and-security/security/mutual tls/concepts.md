@@ -113,7 +113,7 @@ instead of getting TLS error, a client will receive 403 HTTP error.
 ## Authentication 
 Tyk can be configured to guess a user authentication key based on the provided client certificate. In other words, a user does not need to provide any key, except the certificate, and Tyk will be able to identify the user, apply policies, and do the monitoring - the same as with regular Keys.
 
-[Go here for more details](./client-mtls)
+[Go here for more details](../client-mtls)
 
 
 ### Using with Authorization 
