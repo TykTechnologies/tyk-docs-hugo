@@ -9,11 +9,11 @@ weight: 2
 ## Major features
 
 ## OpenAPI as a native API definition format
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability](https://tyk.io/docs/frequently-asked-questions/using-early-access-features/).
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability](https://tyk.io/docs/developer-support/release-types/early-access-feature).
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
-This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts](https://tyk.io/docs/getting-started/key-concepts/high-level-concepts/) for more details, or jump to [OAS Getting Started documentation](https://tyk.io/docs/getting-started/using-oas-definitions/create-an-oas-api/).
+This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts](https://tyk.io/docs/api-management/gateway-config-managing-oas) for more details, or jump to [OAS Getting Started documentation](https://tyk.io/docs/api-management/gateway-config-managing-oas).
 
 
 
@@ -43,7 +43,7 @@ So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins c
 - Added support for interfaces implementing interfaces in GQL schema editor
 - Added support for passing authorisation header in GQL API Playgrounds for subscription APIs
 - Added TYK_GW_OMITCONFIGFILE option for Tyk Gateway to ignore the values in the config file and load its configuration only from environment variables and default values
-- Added a way to modify Tyk analytics record via Go plugins [configurable with API definition](https://tyk.io/docs/plugins/analytics-plugins/). Can be used to sanitise analytics data. 
+- Added a way to modify Tyk analytics record via Go plugins [configurable with API definition](https://tyk.io/docs/api-management/plugins/plugin-types). Can be used to sanitise analytics data. 
 - Added new policy API REST endpoints
 - Added option to configure certificates for Tyk Gateway using [environment variable](https://tyk.io/docs/tyk-oss-gateway/configuration/#http_server_optionscertificates)
 - Added support for Python 3.9 plugins
