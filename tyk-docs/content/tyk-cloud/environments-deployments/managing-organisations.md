@@ -3,9 +3,9 @@ title: "Managing Organizations in Tyk Cloud"
 tags: ["Organizations", "Tyk Cloud", "Control Plane", "Cloud Data Plane"]
 description: "Learn how to manage organizations in Tyk Cloud, including organization, teams, deployments, and environments."
 aliases:
-  - /tyk-cloud/environments-&-deployments/managing-organisations
-  - /tyk-cloud/environments-deployments/managing-organisations
-  - /tyk-cloud/setup-org
+  - /tyk-cloud/environments-&-deployments/managing-organisations/
+  - /tyk-cloud/environments-deployments/managing-organisations/
+  - /tyk-cloud/setup-org/
 ---
 
 ## Overview

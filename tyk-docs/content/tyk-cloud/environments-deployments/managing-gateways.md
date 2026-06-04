@@ -3,7 +3,8 @@ title: "Managing Data Planes in Tyk Cloud"
 tags: ["Data Planes", "Tyk Cloud", "Control Plane", "Cloud Data Plane"]
 description: "Learn how to manage Data Planes in Tyk Cloud"
 aliases:
-
+  - /tyk-cloud/environments-&-deployments/managing-gateways/
+  - /tyk-cloud/environments--deployments/managing-gateways/
 ---
 
 ## Introduction

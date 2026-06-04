@@ -3,7 +3,7 @@ title: "Configure Telemetry in Tyk Cloud"
 tags: ["Telemetry", "Tyk Cloud", "Control Plane", "Data Plane", "Distributed Tracing"]
 description: "Learn how to set up and manage telemetry in Tyk Cloud for distributed tracing of your APIs."
 aliases:
-  - /tyk-cloud/telemetry/enable-telemetry
+  - /tyk-cloud/telemetry/enable-telemetry/
 ---
 
 ## Introduction

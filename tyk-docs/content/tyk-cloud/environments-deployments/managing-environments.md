@@ -3,10 +3,10 @@ title: "Managing Environments in Tyk Cloud"
 tags: ["Environments", "Tyk Cloud", "Control Plane", "Cloud Data Plane"]
 description: "Learn how to manage Environments in Tyk Cloud"
 aliases:
-  - /tyk-cloud/environments-&-deployments/managing-environments
-  - /tyk-cloud/environments-deployments/managing-environments
-  - /tyk-cloud/getting-started-tyk-cloud/setup-environment
-  - /tyk-cloud/create-environment
+  - /tyk-cloud/environments-&-deployments/managing-environments/
+  - /tyk-cloud/environments-deployments/managing-environments/
+  - /tyk-cloud/getting-started-tyk-cloud/setup-environment/
+  - /tyk-cloud/create-environment/
 ---
 
 ## Introduction

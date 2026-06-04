@@ -2,6 +2,9 @@
 title: "Configure Single Sign-On (SSO) in Tyk Cloud"
 tags: ["Single Sign-On", "SSO", "Tyk Cloud", "Control Plane", "Configuration"]
 description: "Learn how to set up and manage Single Sign-On (SSO) in Tyk Cloud Control Plane deployments."
+aliases:
+  - /tyk-cloud/teams-&-users/single-sign-on/
+  - /tyk-cloud/teams--users/single-sign-on/
 ---
 
 ## What is SSO?

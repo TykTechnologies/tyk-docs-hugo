@@ -3,8 +3,10 @@ title: "Managing Control Planes in Tyk Cloud"
 tags: ["Control Planes", "Tyk Cloud", "Control Plane", "Cloud Data Plane", "Auto Upgrade"]
 description: "Learn how to manage Control Planes in Tyk Cloud"
 aliases:
-  - /tyk-cloud/environments-&-deployments/managing-control-planes
-  - /tyk-cloud/environments-deployments/managing-control-planes
+  - /tyk-cloud/environments-&-deployments/managing-control-planes/
+  - /tyk-cloud/environments-&-deployments/managing-apis/
+  - /tyk-cloud/environments--deployments/managing-apis/
+  - /tyk-cloud/environments-deployments/managing-control-planes/
 ---
 
 ## Introduction

@@ -3,10 +3,10 @@ title: "Deploy Hybrid Gateways with Tyk Cloud"
 tags: ["Hybrid Gateways", "Tyk Cloud", "Control Plane", "Deployment"]
 description: "Learn how to deploy and manage hybrid gateways in Tyk Cloud, connecting your self-managed data planes to the Tyk Cloud control plane."
 aliases:
-  - /tyk-cloud/environments--deployments/hybrid-gateways
-  - /tyk-cloud/environments-&-deployments/hybrid-gateways
-  - /tyk-cloud/environments-deployments/hybrid-gateways-helm
-  - /get-started/with-tyk-hybrid
+  - /tyk-cloud/environments--deployments/hybrid-gateways/
+  - /tyk-cloud/environments-&-deployments/hybrid-gateways/
+  - /tyk-cloud/environments-deployments/hybrid-gateways-helm/
+  - /get-started/with-tyk-hybrid/
 ---
 
 ## Introduction

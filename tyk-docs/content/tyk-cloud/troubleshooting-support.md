@@ -3,14 +3,14 @@ title: "Troubleshooting Tyk Cloud"
 tags: ["Troubleshooting", "Tyk Cloud", "FAQs", "Support"]
 description: "Learn how to troubleshoot common issues in Tyk Cloud, including FAQs and support resources."
 aliases:
-  - /tyk-cloud/troubleshooting-&-support/tyk-cloud-mdcb-supported-versions
-  - /tyk-cloud/troubleshooting-&-support
-  - /tyk-cloud/troubleshooting-&-support/faqs
-  - /tyk-cloud/troubleshooting-&-support/glossary
-  - /tyk-cloud/troubleshooting-support
-  - /tyk-cloud/troubleshooting-support/faqs
-  - /tyk-cloud/troubleshooting-support/glossary
-  - /tyk-cloud/troubleshooting-support/tyk-cloud-mdcb-supported-versions
+  - /tyk-cloud/troubleshooting-&-support/tyk-cloud-mdcb-supported-versions/
+  - /tyk-cloud/troubleshooting-&-support/
+  - /tyk-cloud/troubleshooting-&-support/faqs/
+  - /tyk-cloud/troubleshooting-&-support/glossary/
+  - /tyk-cloud/troubleshooting-support/
+  - /tyk-cloud/troubleshooting-support/faqs/
+  - /tyk-cloud/troubleshooting-support/glossary/
+  - /tyk-cloud/troubleshooting-support/tyk-cloud-mdcb-supported-versions/
   - /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users
   - /troubleshooting/tyk-cloud-classic/301-moved-permanently
   - /troubleshooting/tyk-cloud-classic/413-request-entity-large

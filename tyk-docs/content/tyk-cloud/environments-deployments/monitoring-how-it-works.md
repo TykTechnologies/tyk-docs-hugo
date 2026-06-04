@@ -3,10 +3,12 @@ title: "How monitoring works in Tyk Cloud"
 tags: ["Monitoring", "Tyk Cloud", "Control Plane", "Data Plane"]
 description: "Learn how Tyk Cloud monitors throughput and storage metrics for your deployments."
 aliases:
-  - /tyk-cloud/environments-&-deployments/monitoring
-  - /tyk-cloud/environments-&-deployments/monitoring-usage
-  - /tyk-cloud/environments-deployments/monitoring
-  - /tyk-cloud/environments-deployments/monitoring-usage
+  - /tyk-cloud/environments-&-deployments/monitoring/
+  - /tyk-cloud/environments-&-deployments/monitoring-usage/
+  - /tyk-cloud/environments-&-deployments/monitoring-how-it-works/
+  - /tyk-cloud/environments--deployments/monitoring-how-it-works/
+  - /tyk-cloud/environments-deployments/monitoring/
+  - /tyk-cloud/environments-deployments/monitoring-usage/
 ---
 
 ### Tyk Cloud Monitor Metrics

@@ -3,15 +3,15 @@ title: "Manage Teams and Users in Tyk Cloud"
 tags: ["Teams", "Users", "Tyk Cloud", "User Management", "User Roles"]
 description: "Learn how to manage teams and users in Tyk Cloud, including user roles, team management, and single sign-on (SSO) configuration."
 aliases:
-  - /tyk-cloud/setup-team
-  - /tyk-cloud/teams-&-users/managing-teams
-  - /tyk-cloud/teams-&-users/managing-users
-  - /tyk-cloud/teams-&-users/user-roles
-  - /tyk-cloud/teams-users/managing-teams
-  - /tyk-cloud/teams-users/managing-users
-  - /tyk-cloud/teams-users/user-roles
-  - /tyk-cloud/teams-&-users
-  - /tyk-cloud/getting-started-tyk-cloud/setup-team
+  - /tyk-cloud/setup-team/
+  - /tyk-cloud/teams-&-users/managing-teams/
+  - /tyk-cloud/teams-&-users/managing-users/
+  - /tyk-cloud/teams-&-users/user-roles/
+  - /tyk-cloud/teams-users/managing-teams/
+  - /tyk-cloud/teams-users/managing-users/
+  - /tyk-cloud/teams-users/user-roles/
+  - /tyk-cloud/teams-&-users/
+  - /tyk-cloud/getting-started-tyk-cloud/setup-team/
 ---
 
 ## Introduction

@@ -3,19 +3,19 @@ title: "Manage Accounts and Billing in Tyk Cloud"
 tags: ["Accounts", "Billing", "Tyk Cloud", "Control Plane"]
 description: "Learn how to manage your Tyk Cloud account, including payment plans, billing methods, and account retirement."
 aliases:
-  - /tyk-cloud/account-billing/add-payment-method
-  - /tyk-cloud/account-billing/managing-billing-admins
-  - /tyk-cloud/account-billing/plans
-  - /tyk-cloud/account-billing/retirement
-  - /tyk-cloud/account-billing/upgrade-free-trial
-  - /tyk-cloud/account-&-billing/plans
-  - /tyk-cloud/create-account
-  - /tyk-cloud/account--billing/plans
-  - /tyk-cloud/account--billing/retirement
-  - /tyk-cloud/account-and-billing/add-payment-method
-  - /tyk-cloud/account-and-billing/our-plans
-  - /tyk-cloud/account-and-billing/retirement
-  - /tyk-cloud/account-and-billing/upgrade-free-trial
+  - /tyk-cloud/account-billing/add-payment-method/
+  - /tyk-cloud/account-billing/managing-billing-admins/
+  - /tyk-cloud/account-billing/plans/
+  - /tyk-cloud/account-billing/retirement/
+  - /tyk-cloud/account-billing/upgrade-free-trial/
+  - /tyk-cloud/account-&-billing/plans/
+  - /tyk-cloud/create-account/
+  - /tyk-cloud/account--billing/plans/
+  - /tyk-cloud/account--billing/retirement/
+  - /tyk-cloud/account-and-billing/add-payment-method/
+  - /tyk-cloud/account-and-billing/our-plans/
+  - /tyk-cloud/account-and-billing/retirement/
+  - /tyk-cloud/account-and-billing/upgrade-free-trial/
 ---
 
 ## Introduction

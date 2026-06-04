@@ -3,16 +3,16 @@ title: "Configure Custom Plugins in Tyk Cloud"
 tags: ["Plugins", "Tyk Cloud", "Control Plane", "Data Plane"]
 description: "Learn how to set up and manage custom plugins in Tyk Cloud Control Plane deployments."
 aliases:
-  - /tyk-cloud/configuration-options/using-plugins/api-test
-  - /tyk-cloud/configuration-options/using-plugins/python-code-bundle
-  - /tyk-cloud/configuration-options/using-plugins/python-custom-auth
-  - /tyk-cloud/configuration-options/using-plugins/setup-control-plane
-  - /tyk-cloud/configuration-options/using-plugins/uploading-bundle
-  - /using-plugins/python-custom-auth-plugin
-  - /python-custom-auth-plugin/api-middleware-test
-  - /python-custom-auth-plugin/python-code-bundle
-  - /python-custom-auth-plugin/setup-control-plane
-  - /python-custom-auth-plugin/uploading-bundle
+  - /tyk-cloud/configuration-options/using-plugins/api-test/
+  - /tyk-cloud/configuration-options/using-plugins/python-code-bundle/
+  - /tyk-cloud/configuration-options/using-plugins/python-custom-auth/
+  - /tyk-cloud/configuration-options/using-plugins/setup-control-plane/
+  - /tyk-cloud/configuration-options/using-plugins/uploading-bundle/
+  - /using-plugins/python-custom-auth-plugin/
+  - /python-custom-auth-plugin/api-middleware-test/
+  - /python-custom-auth-plugin/python-code-bundle/
+  - /python-custom-auth-plugin/setup-control-plane/
+  - /python-custom-auth-plugin/uploading-bundle/
 ---
 
 ## Introduction
