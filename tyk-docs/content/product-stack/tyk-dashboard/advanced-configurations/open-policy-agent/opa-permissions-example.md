@@ -1,4 +1,6 @@
-
+---
+title: "OPA Permissions Example"
+---
 
 ## Introduction
 
