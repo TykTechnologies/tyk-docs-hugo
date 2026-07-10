@@ -1,5 +1,6 @@
 ---
 date: 2022-06-28T12:16:37.959Z
+title: "Tyk OAS API Object"
 linktitle: TYK OAS API Object
 menu:
   main:
