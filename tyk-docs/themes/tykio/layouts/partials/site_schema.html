@@ -1,19 +1,24 @@
 <script type="application/ld+json">
 {
-    "@context" : "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "WebPage",
     "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "{{ .Site.BaseURL }}"
+        "@type": "WebPage",
+        "@id": "{{ .Site.BaseURL | replaceRE "^//" "https://" }}"
     },
-    "name" : "{{ .Title }}",
-    "headline" : "{{ .Title }}",
-    "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
-    "inLanguage" : "en-US",
-    "author" : "tyk ",
-    "copyrightHolder" : "Tyk",
-    "url" : "{{ .Permalink }}",
-    "keywords" : [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}]
-
+    "name": "{{ .Title }}",
+    "headline": "{{ .Title }}",
+    "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ end }}{{ end }}",
+    "inLanguage": "en-US",
+    "author": {
+        "@type": "Organization",
+        "name": "Tyk"
+    },
+    "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Tyk"
+    },
+    "url": "{{ .Permalink | replaceRE "^//" "https://" }}",
+    "keywords": [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}]
 }
 </script>
