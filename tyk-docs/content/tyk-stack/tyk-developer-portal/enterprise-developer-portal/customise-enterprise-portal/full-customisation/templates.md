@@ -8,7 +8,7 @@ description: |
     and functionality.
 ---
 
-# Overview
+## Overview
 
 Templates are a fundamental component of the Tyk Enterprise Developer Portal, enabling dynamic content generation and
 customization. The portal uses Golang templates to render the live portal views, allowing you to generate dynamic HTML
@@ -48,7 +48,7 @@ Portal templates:
 manipulate and display data.
 - [Email Templates](#email-templates): Information about email-specific templates and their available data.
 
-# Template Data
+## Template Data
 
 This section outlines the Tyk Enterprise Developer Portal templates that have access to specific template data. 
 It's important to note that data availability varies between templates, depending on their context and purpose.
@@ -843,7 +843,7 @@ ReDoc versions are available.
 
 </details>
 
-# Global Helper Functions
+## Global Helper Functions
 
 This section provides a detailed overview of the global helper functions available in the Tyk Enterprise Developer
 Portal templates. These functions are accessible across the public and private templates and allow you to perform
@@ -1515,7 +1515,7 @@ Returns the credential type ("oAuth2.0" or "authToken") given the credential.
 ```
 
 
-# Email Templates
+## Email Templates
 
 This section provides a detailed overview of the email template data available in the Tyk Enterprise Developer Portal. 
 The Tyk Enterprise Developer Portal uses a variety of email templates for different purposes, such as user registration

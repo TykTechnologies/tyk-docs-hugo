@@ -7,7 +7,7 @@ weight: 5
 menu: "main"
 ---
 
-# Understanding Tyk’s API Management Components
+## Understanding Tyk’s API Management Components
 
 Tyk offers a full ecosystem of API management tools, supporting every stage of the API lifecycle—from development and deployment to monitoring and scaling. With Tyk’s components, teams can seamlessly integrate, secure, and scale APIs across different environments, facilitating robust and reliable API operations.
 
@@ -191,7 +191,7 @@ Tyk’s components create a unified API management ecosystem, covering all aspec
 - **Unified Access**: UDG and Tyk Streams unify API Management by enabling seamless, multi-protocol data integration and delivery.
 - **Kubernetes Deployment**: Tyk Helm Charts simplifies deployment of Tyk on Kubernetes.
 
-# Conclusion
+## Conclusion
 
 Now that you’ve been introduced to the Tyk suite, you have a strong foundation in understanding how each component fits into a complete API management ecosystem. Whether you’re ready to start deploying APIs, securing them, or scaling across multiple environments, Tyk provides the tools and flexibility to bring your API projects to life.
 
