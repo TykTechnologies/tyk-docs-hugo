@@ -13,7 +13,6 @@ The middleware is configured in the Tyk Classic API Definition. You can do this 
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
-<<<<<<< HEAD
 ### Endpoint parsing
 
 When you define an endpoint in your API Definition (for example `GET /anything`), Tyk will also match for `GET /anything/somepath` and any other sub-path based on the `GET /anything` route.
@@ -24,10 +23,7 @@ If you add a `$` at the end of the `listen_path` (in our example `GET /anything$
 
 Thus, if you enable the middleware for `GET /anything$` then `GET /anything/somepath` will be proxied to the upstream and will not trigger the mock response.
 
-## Configuring the middleware in the Tyk Classic API Definition
-=======
 ## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
->>>>>>> b770f96a1... [TT-12871, TT-12550, TT-12865, DX-1678] Import draft of url matching (#5311)
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
@@ -117,8 +113,6 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an [allow list]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}). If this isn't done, then the mock will not be saved when you save your API in the designer.
 {{< /note >}}
-<<<<<<< HEAD
-=======
 
 ## Configuring the middleware in Tyk Operator {#tyk-operator}
 
@@ -168,4 +162,3 @@ spec:
                     headers: {}
                 path: /foo
 ```
->>>>>>> b770f96a1... [TT-12871, TT-12550, TT-12865, DX-1678] Import draft of url matching (#5311)
