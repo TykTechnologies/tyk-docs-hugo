@@ -51,7 +51,7 @@
     {{ partial "site_schema.html" . }}
 
     {{ if eq .Params.robots "noindex" }}
-    <meta name="robots" content="noindex">
+    <meta name="robots" content="noindex, nofollow">
     {{ end }}
 
     {{ if and (isset .Params "algolia") (isset .Params.algolia "importance") }}
