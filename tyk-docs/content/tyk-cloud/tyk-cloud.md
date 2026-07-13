@@ -23,7 +23,7 @@ Or click here to [learn more](/docs/tyk-cloud/what-is-tyk-cloud/)
 
 {{< grid >}}
 
-{{< badge read="15 mins" href="/docs/tyk-cloud/getting-started/" image="/docs/img/tyk-cloud.svg">}}
+{{< badge read="15 mins" href="/docs/tyk-cloud/getting-started/" image="/docs/img/tyk-cloud.svg" alt="Tyk Cloud logo">}}
 Configure Tyk Cloud
 {{< /badge >}}
 
