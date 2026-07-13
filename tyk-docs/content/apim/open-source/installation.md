@@ -17,27 +17,27 @@ The backbone of all our products is our open source Gateway. You can install our
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-docker/" image="/img/docker.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-docker/" image="/img/docker.png" alt="Docker logo">}}
 Install with Docker. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-kubernetes/" image="/img/k8s.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-kubernetes/" image="/img/k8s.png" alt="Kubernetes logo">}}
 Install with K8s. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-ansible/" image="/img/ansible.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-ansible/" image="/img/ansible.png" alt="Ansible logo">}}
 Install with Ansible. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-redhat-rhel-centos/" image="/img/redhat-logo2.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-redhat-rhel-centos/" image="/img/redhat-logo2.png" alt="Red Hat logo">}}
 Install on RHEL / CentOS. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-debian-ubuntu/" image="/img/debian-nd-753.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-debian-ubuntu/" image="/img/debian-nd-753.png" alt="Debian logo">}}
 Install on Debian / Ubuntu. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="https://github.com/TykTechnologies/tyk" image="/img/GitHub-Mark-64px.png">}}
+{{< badge read="10 mins" href="https://github.com/TykTechnologies/tyk" image="/img/GitHub-Mark-64px.png" alt="GitHub logo">}}
 Visit our Gateway GitHub Repo. 
 {{< /badge >}}
 
