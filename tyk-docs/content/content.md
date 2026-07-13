@@ -2,7 +2,7 @@
 publishdate: 2020-03-09
 lastmod: 2020-04-09
 Title: Tyk API Gateway Documentation
-diffTitleName:
+diffTitleName: "Tyk Documentation"
 menu:
   main:
     name: Home
