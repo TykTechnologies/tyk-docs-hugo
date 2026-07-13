@@ -1980,8 +1980,6 @@ global session lifetime, in seconds.
 ENV: <b>TYK_GW_KV_KV</b><br />
 Type: `struct`<br />
 
-See more details https://tyk.io/docs/migration-to-tyk#store-configuration-with-key-value-store/
-
 ### kv.consul.address
 ENV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />
 Type: `string`<br />
@@ -2094,7 +2092,7 @@ Sample Override Message Setting
 ENV: <b>TYK_GW_CLOUD</b><br />
 Type: `bool`<br />
 
-Cloud flag shows the Gateway runs in migration-to-tyk#begin-with-tyk-cloud.
+Cloud flag shows the Gateway runs in Tyk Cloud.
 
 ### jwt_ssl_insecure_skip_verify
 ENV: <b>TYK_GW_JWTSSLINSECURESKIPVERIFY</b><br />
