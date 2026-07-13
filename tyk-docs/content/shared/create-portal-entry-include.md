@@ -97,4 +97,4 @@ To save the API, click **SAVE**.
 
 You can now visit your portal to see the API catalogue entry. Select **Open Your Portal** from the **Your Developer Portal** menu:
 
-![Portal nav menu location](/docs/img/2.10/portal_menu.png)
+![Portal nav menu location](/docs/4.0/img/2.10/portal_menu.png)
