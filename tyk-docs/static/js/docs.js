@@ -186,7 +186,7 @@ $(document).ready(function(e){
 			var id = heading.attr('id');
 
 			if (id) {
-				var linkIcon = $('<a href="#' + id + '" class="copy-anchor" title="Copy link"><img src="/docs/img/link.svg" class="copy-icon" /></a>');
+				var linkIcon = $('<a href="#' + id + '" class="copy-anchor" title="Copy link"><img src="/docs/img/link.svg" alt="Copy link" class="copy-icon" /></a>');
 				heading.append(linkIcon);
 
 				linkIcon.on('click', function (e) {
@@ -198,10 +198,12 @@ $(document).ready(function(e){
 
 						// Change to check.svg
 						img.attr('src', '/docs/img/check.svg');
+						img.attr('alt', 'Copied to clipboard');
 
 						// Reset back to link.svg after 2 seconds
 						setTimeout(() => {
 							img.attr('src', '/docs/img/link.svg');
+							img.attr('alt', 'Copy link');
 						}, 2000);
 					}).catch(err => {
 						console.error("Failed to copy:", err);
