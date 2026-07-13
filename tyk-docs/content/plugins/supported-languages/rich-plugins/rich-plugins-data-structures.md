@@ -24,7 +24,7 @@ The remainder of this document illustrates a class diagram and explins the attri
 
 The class diagram below illustrates the structure of the [Object](#object) message, dispatched by Tyk to a gRPC server that handles custom plugins.
 
-{{< img src="/img/grpc/grpc-class-diagram.svg" width="600" >}}
+{{< img src="/img/grpc/grpc-class-diagram.svg" width="600" alt="UML class diagram of the rich plugin Object data structure and its relationships to MiniRequestObject, SessionState, ResponseObject, ReturnOverrides, BasicAuthData, JWTData, Monitor, and Header" >}}
 
 ---
 
