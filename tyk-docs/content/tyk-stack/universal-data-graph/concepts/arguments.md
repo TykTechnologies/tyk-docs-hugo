@@ -33,4 +33,4 @@ We can do this by using templating syntax to inject it into the URL which can be
 https://example.com/user/{{ .arguments.id }}
 ``` 
 
-![Create New API](/docs/img/dashboard/udg/concepts/arguments.gif)
+![Create New API](/docs/4.1/img/dashboard/udg/concepts/arguments.gif)
