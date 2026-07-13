@@ -17,35 +17,35 @@ aliases:
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/docker/" image="/docs/img/docker.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/docker/" image="/docs/img/docker.png" alt="Docker logo">}}
 Install with Docker 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/kubernetes/" image="/docs/img/k8s.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/kubernetes/" image="/docs/img/k8s.png" alt="Kubernetes logo">}}
 Install on K8s 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/ansible/" image="/docs/img/ansible.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/ansible/" image="/docs/img/ansible.png" alt="Ansible logo">}}
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/redhat-rhel-centos/" image="/docs/img/redhat-logo2.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/redhat-rhel-centos/" image="/docs/img/redhat-logo2.png" alt="Red Hat logo">}}
 Install on Red Hat 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/debian-ubuntu/" image="/docs/img/debian-nd-753.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/debian-ubuntu/" image="/docs/img/debian-nd-753.png" alt="Debian logo">}}
 Install on Ubuntu 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/aws/" image="/docs/img/aws.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/aws/" image="/docs/img/aws.png" alt="AWS logo">}}
 Install on Amazon AWS 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/heroku/" image="/docs/img/heroku-logo.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/heroku/" image="/docs/img/heroku-logo.png" alt="Heroku logo">}}
 Install Tyk on Heroku 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/microsoft-azure/" image="/docs/img/azure-2.png">}}
+{{< badge read="10 mins" href="/docs/tyk-on-premises/microsoft-azure/" image="/docs/img/azure-2.png" alt="Microsoft Azure logo">}}
 Install on Microsoft Azure 
 {{< /badge >}}
 
