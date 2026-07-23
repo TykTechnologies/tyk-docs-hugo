@@ -1,0 +1,43 @@
+{{/*
+  This branch is a frozen, pre-Mintlify (< 5.8) documentation version - it no
+  longer receives new content, so unlike the Mintlify site there is no single
+  place that tracks "the current latest version" here. Rather than hardcode a
+  version number that would need manual upkeep on every future release, the
+  banner just says "the latest release" and links to it.
+
+  Reuses the same canonical-link resolution as the SEO canonical <link> tag in
+  baseof.html: canonical_map.json gives an exact per-page equivalent URL on the
+  current docs site where one has been mapped, falling back to stripping the
+  version segment from the permalink otherwise.
+*/}}
+{{- $latestLink := replace .Permalink .Site.BaseURL .Site.Params.CanonicalBaseUrl -}}
+{{- with index site.Data.canonical_map (strings.TrimPrefix "/docs/5.7/" .RelPermalink) -}}
+  {{- $latestLink = . -}}
+{{- end -}}
+<div
+  id="tyk-outdated-banner"
+  style="position:relative;background:#d97706;color:#fff;text-align:center;font-size:14px;line-height:1.5;padding:10px 44px;border-radius:8px;margin:0 0 20px 0;">
+  <span>
+    &#9888;&#65039; <strong>Outdated Version</strong> - This page refers to an older version of our
+    documentation. We recommend using the
+    <a href="{{ $latestLink }}" style="color:#fff;font-weight:600;text-decoration:underline;">latest release</a>
+    for the most up-to-date guidance.
+  </span>
+  <button
+    type="button"
+    aria-label="Dismiss banner"
+    onclick="document.getElementById('tyk-outdated-banner').style.display='none'; try { localStorage.setItem('tykOutdatedBannerDismissed', '1'); } catch (e) {}"
+    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:16px;cursor:pointer;padding:4px;">
+    &#10007;
+  </button>
+</div>
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('tykOutdatedBannerDismissed') === '1') {
+        var el = document.getElementById('tyk-outdated-banner');
+        if (el) el.style.display = 'none';
+      }
+    } catch (e) {}
+  })();
+</script>

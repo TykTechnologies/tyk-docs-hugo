@@ -133,6 +133,8 @@
       <article class="page-content {{ if .Params.hideSidebar }}home-mobile-padding{{ end }}">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
+            {{ partial "outdated_version_banner.html" . }}
+
             {{ if .Params.diffTitle }}
               {{ if .Params.diffTitleName }}
                 <h1>{{ .Params.diffTitleName }}</h1>
