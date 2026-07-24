@@ -20,6 +20,6 @@
     "markdown-link-extractor": "^4.0.2",
     "marked": "^14.1.2",
     "openai": "^4.72.0",
-    "sharp": "0.32.6"
+    "sharp": "0.35.0"
   }
 }
