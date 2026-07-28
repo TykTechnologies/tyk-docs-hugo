@@ -39,6 +39,11 @@
 <script>
   (function () {
     var DISMISS_KEY = 'tykOutdatedBannerDismissed';
+    // This branch never releases a new version to key dismissal against (see
+    // the comment above), so instead a dismissal simply expires after a
+    // fixed number of days and the banner reappears on its own.
+    var DISMISS_DAYS = 7;
+    var DISMISS_MS = DISMISS_DAYS * 24 * 60 * 60 * 1000;
     var banner = document.getElementById('tyk-outdated-banner');
     if (!banner) return;
 
@@ -53,12 +58,13 @@
       banner.style.display = 'none';
       document.body.style.paddingTop = '';
       try {
-        localStorage.setItem(DISMISS_KEY, '1');
+        localStorage.setItem(DISMISS_KEY, String(Date.now()));
       } catch (e) {}
     };
 
     try {
-      if (localStorage.getItem(DISMISS_KEY) === '1') {
+      var dismissedAt = parseInt(localStorage.getItem(DISMISS_KEY), 10);
+      if (dismissedAt && Date.now() - dismissedAt < DISMISS_MS) {
         banner.style.display = 'none';
         return;
       }
