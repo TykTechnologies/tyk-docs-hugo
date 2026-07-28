@@ -1,0 +1,84 @@
+{{/*
+  This branch is a frozen, pre-Mintlify (< 5.8) documentation version - it no
+  longer receives new content, so unlike the Mintlify site there is no single
+  place that tracks "the current latest version" here. Rather than hardcode a
+  version number that would need manual upkeep on every future release, the
+  banner just says "the latest release" and links to it.
+
+  Reuses the same canonical-link resolution as the SEO canonical <link> tag in
+  baseof.html: canonical_map.json gives an exact per-page equivalent URL on the
+  current docs site where one has been mapped, falling back to stripping the
+  version segment from the permalink otherwise.
+
+  The banner is fixed to the viewport top rather than inserted into the page
+  content, so it stays visible regardless of scroll position - including when
+  a page loads scrolled straight to a heading anchor, which would otherwise
+  scroll straight past a banner embedded at the top of the content.
+*/}}
+{{- $latestLink := replace .Permalink .Site.BaseURL .Site.Params.CanonicalBaseUrl -}}
+{{- with index site.Data.canonical_map (strings.TrimPrefix "/docs/5.7/" .RelPermalink) -}}
+  {{- $latestLink = . -}}
+{{- end -}}
+<div
+  id="tyk-outdated-banner"
+  style="position:fixed;top:0;left:0;width:100%;z-index:500;box-sizing:border-box;background:#d97706;color:#fff;text-align:center;font-size:14px;line-height:1.5;padding:10px 44px;">
+  <span>
+    &#9888;&#65039; <strong>Outdated Version</strong> - This page refers to an older version of our
+    documentation. We recommend using the
+    <a href="{{ $latestLink }}" style="color:#fff;font-weight:600;text-decoration:underline;">latest release</a>
+    for the most up-to-date guidance.
+  </span>
+  <button
+    type="button"
+    aria-label="Dismiss banner"
+    onclick="window.tykDismissOutdatedBanner()"
+    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:16px;cursor:pointer;padding:4px;">
+    &#10007;
+  </button>
+</div>
+<script>
+  (function () {
+    var DISMISS_KEY = 'tykOutdatedBannerDismissed';
+    // This branch never releases a new version to key dismissal against (see
+    // the comment above), so instead a dismissal simply expires after a
+    // fixed number of days and the banner reappears on its own.
+    var DISMISS_DAYS = 7;
+    var DISMISS_MS = DISMISS_DAYS * 24 * 60 * 60 * 1000;
+    var banner = document.getElementById('tyk-outdated-banner');
+    if (!banner) return;
+
+    // Nothing else on this frozen v5.7 layout is fixed/sticky, so pushing the
+    // whole page down by the banner's own height is enough to keep the
+    // header and sidebar from rendering underneath it.
+    function syncPadding() {
+      document.body.style.paddingTop = banner.offsetHeight + 'px';
+    }
+
+    window.tykDismissOutdatedBanner = function () {
+      banner.style.display = 'none';
+      document.body.style.paddingTop = '';
+      try {
+        localStorage.setItem(DISMISS_KEY, String(Date.now()));
+      } catch (e) {}
+    };
+
+    try {
+      var dismissedAt = parseInt(localStorage.getItem(DISMISS_KEY), 10);
+      if (dismissedAt && Date.now() - dismissedAt < DISMISS_MS) {
+        banner.style.display = 'none';
+        return;
+      }
+    } catch (e) {}
+
+    syncPadding();
+
+    // The banner's text wraps onto more lines on narrower viewports, so its
+    // height - and the space reserved for it - needs to be recalculated on
+    // resize, not just once on load.
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(syncPadding, 100);
+    });
+  })();
+</script>
