@@ -17,6 +17,9 @@
     {{- $canonicalLink = . -}}
   {{- end -}}
   <link rel="canonical" href="{{ $canonicalLink }}" />
+  {{ if or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink) }}
+  <meta name="robots" content="noindex, follow" />
+  {{ end }}
 
 
 
