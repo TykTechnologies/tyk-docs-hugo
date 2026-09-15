@@ -18,6 +18,9 @@
     {{- $canonicalLink = . -}}
   {{- end -}}
   <link rel="canonical" href="{{ $canonicalLink }}" />
+  {{ if or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink) }}
+  <meta name="robots" content="noindex, follow" />
+  {{ end }}
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
   <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
