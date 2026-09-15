@@ -11,6 +11,7 @@
 /docs/5.4/* https://release-5-4--tyk-docs.netlify.app/docs/:splat 200!
 /docs/5.5/* https://release-5-5--tyk-docs.netlify.app/docs/:splat 200!
 /docs/5.6/* https://release-5-6--tyk-docs.netlify.app/docs/:splat 200!
+/docs/5.7/sitemap.xml https://tyk.io/docs/sitemap.xml 301
 /docs/5.7/* https://release-5-7--tyk-docs.netlify.app/docs/:splat 200!
 /docs/3-lts/* https://release-3-lts--tyk-docs.netlify.app/docs/:splat 200!
 /docs/nightly/* https://tyk-docs.netlify.app/docs/:splat 200! 
